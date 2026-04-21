@@ -499,7 +499,7 @@ h2.title {
 
 .slide--projects .map-panel {
   position: relative;
-  height: 58mm;
+  height: 54mm;
   border-radius: 4mm;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
@@ -515,7 +515,7 @@ h2.title {
   display: flex;
   flex-direction: column;
   gap: 1mm;
-  height: 58mm;
+  height: 54mm;
   position: relative;
   overflow: hidden;
 }

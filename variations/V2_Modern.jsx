@@ -160,7 +160,7 @@ function V2_Modern() {
                 display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14,
               }}>
                 {[
-                  { big: '15+', unit: 'yrs', label: 'Avg. experience' },
+                  { big: '15+', unit: 'yrs', label: 'Avg. experience per specialist' },
                   { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
                   { big: '40%', unit: 'more value', label: 'vs. Big Four' },
                 ].map((s, i) => (

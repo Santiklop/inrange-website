@@ -8,7 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const HTML_PATH = path.join(__dirname, 'web', 'index.html');
-const OUT_PATH = path.join(__dirname, 'inRange_Capability_Deck.pdf');
+const OUT_PATH = path.join(__dirname, process.env.OUT_PDF || 'inRange_Capability_Deck.pdf');
 
 const SITE_URL = 'https://www.inrange.nl';
 const MAILTO   = 'mailto:info@inrange.nl?subject=inRange%20—%20Hello';

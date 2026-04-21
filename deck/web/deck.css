@@ -266,7 +266,7 @@ h2.title {
 .slide--about .head { max-width: 210mm; }
 .slide--about h2 { margin-top: 4mm; max-width: 220mm; }
 .slide--about .body-grid {
-  margin-top: 14mm;
+  margin-top: 10mm;
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 14mm;
@@ -306,15 +306,15 @@ h2.title {
 }
 .at-a-glance .row {
   display: grid;
-  grid-template-columns: 34mm 1fr;
+  grid-template-columns: 30mm 1fr;
   gap: 5mm;
   align-items: baseline;
-  padding: 5mm 0;
+  padding: 4mm 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 .at-a-glance .row:first-of-type {
   border-top: none;
-  padding-top: 2mm;
+  padding-top: 1mm;
 }
 .at-a-glance .big {
   font-size: 34pt;

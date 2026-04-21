@@ -420,6 +420,26 @@ function SignalMapSection() {
             <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
               <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--brand-green-500)', animation: 'pulse 2s ease-in-out infinite' }} />
               <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)' }}>Project {String(active + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}</span>
+              <div style={{ marginLeft: 'auto', display: 'flex', gap: 6 }}>
+                {[
+                  { dir: -1, name: 'chevron-left', label: 'Previous project' },
+                  { dir: 1, name: 'chevron-right', label: 'Next project' },
+                ].map(({ dir, name, label }) => (
+                  <button
+                    key={name}
+                    onClick={() => setActive(a => (a + dir + projects.length) % projects.length)}
+                    aria-label={label}
+                    title={label}
+                    style={{
+                      width: 28, height: 28, borderRadius: 999, padding: 0, cursor: 'pointer',
+                      background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.15)',
+                      color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}
+                  >
+                    <Icon name={name} size={14} />
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div key={`card-${active}`} style={{ animation: 'slideIn 500ms var(--ease-out) both' }}>

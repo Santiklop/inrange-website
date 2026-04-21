@@ -609,10 +609,9 @@ function V2_Modern() {
                   <Icon name="mail" size={16} style={{ color: 'var(--brand-green-300)', flexShrink: 0 }} />
                   info@inrange.nl
                 </a>
-                <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
                 <a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer"
-                   style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10, alignSelf: 'flex-start', padding: '8px 14px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)', fontSize: 13, fontWeight: 600 }}>
-                  <LinkedInIcon size={16} />
+                   style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 12, alignSelf: 'flex-start' }}>
+                  <LinkedInIcon size={16} style={{ color: 'var(--brand-green-300)' }} />
                   Follow us on LinkedIn
                 </a>
               </div>

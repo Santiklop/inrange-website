@@ -401,14 +401,15 @@ h2.title {
 
 /* ============================= Slide 4 — How we work ============================= */
 
-.slide--process { padding: 22mm 18mm; background: var(--neutral-0); }
+.slide--process { padding: 22mm 18mm; background: var(--neutral-0); position: relative; }
 .slide--process .head-row {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 16mm;
-  align-items: end;
+  align-items: center;
   margin-bottom: 14mm;
 }
+.slide--process .head-row > p { padding-top: 6mm; }
 .slide--process .timeline {
   position: relative;
   display: grid;
@@ -492,7 +493,7 @@ h2.title {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 8mm;
-  margin-bottom: 4mm;
+  margin-bottom: 8mm;
 }
 
 .slide--projects .map-panel {
@@ -558,7 +559,7 @@ h2.title {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr 1fr;
-  height: 72mm;
+  height: 68mm;
   gap: 3.5mm;
   margin-bottom: 4mm;
 }

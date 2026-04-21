@@ -214,12 +214,12 @@ function V2_Modern() {
       {/* SERVICES — interactive split panel */}
       <section id="services" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 16 : 32, justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'end', marginBottom: isMobile ? 32 : 56 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 16 : (isTablet ? 48 : 72), alignItems: isNarrow ? 'start' : 'end', marginBottom: isMobile ? 32 : 56 }}>
             <div>
               <Eyebrow>Our services</Eyebrow>
               <h2 style={{ margin: '16px 0 0', fontSize: isMobile ? 34 : (isTablet ? 44 : 56), letterSpacing: '-0.03em', lineHeight: 1 }}>Six ways we help.</h2>
             </div>
-            <p style={{ maxWidth: 420, fontSize: 16, color: 'var(--fg-2)', margin: 0, lineHeight: 1.55 }}>
+            <p style={{ fontSize: isMobile ? 15.5 : 17, color: 'var(--fg-2)', margin: 0, lineHeight: 1.6 }}>
               A focused Transfer Pricing practice. Every engagement led by a senior specialist; every deliverable reviewed at partner level.
             </p>
           </div>

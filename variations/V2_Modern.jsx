@@ -510,7 +510,7 @@ function V2_Modern() {
               {
                 tag: 'Competitive Pricing',
                 big: '40%', unit: 'less',
-                title: 'Senior work at sustainable rates.',
+                title: 'High quality at sustainable rates.',
                 body: 'A lean delivery model pairs highly experienced, hands-on TP specialists with the power of AI — so you get the calibre of advice you’d expect from the Big Four at materially lower cost.',
               },
             ].map((x, i) => (

@@ -34,6 +34,7 @@ function V2_Modern() {
   const navLinks = [
     ['About us', 'about'],
     ['Services', 'services'],
+    ['Recent projects', 'projects'],
     ['Why inRange', 'why'],
     ['Contact', 'contact'],
   ];

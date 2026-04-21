@@ -92,14 +92,14 @@ function V2_Modern() {
         <div style={{ maxWidth: 1320, margin: '0 auto', padding: isMobile ? '12px 20px' : '14px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
           <Logo height={isMobile ? 32 : 40} />
           {!isMobile && (
-            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: 4, borderRadius: 999 }}>
+            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: isTablet ? 3 : 4, borderRadius: 999 }}>
               {navLinks.map(([label, id]) => (
-                <a key={id} href={`#${id}`} onClick={scrollTo(id)} style={{ padding: isTablet ? '6px 12px' : '8px 16px', fontSize: isTablet ? 12.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>{label}</a>
+                <a key={id} href={`#${id}`} onClick={scrollTo(id)} style={{ padding: isTablet ? '5px 9px' : '8px 16px', fontSize: isTablet ? 11.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>{label}</a>
               ))}
             </div>
           )}
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            {!isMobile && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
+            {!isNarrow && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
             {!isMobile && <Button variant="primary" size="sm" iconRight="download" onClick={downloadDeck}>Capability deck</Button>}
             {isMobile && (
               <button
@@ -375,7 +375,7 @@ function V2_Modern() {
             <div>
               <Eyebrow>How we work</Eyebrow>
               <h2 style={{ margin: '16px 0 0', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
-                A predictable path from scope to sign-off.
+                A predictable path from scope to sign{'\u2011'}off.
               </h2>
             </div>
             <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>
@@ -612,7 +612,7 @@ function V2_Modern() {
                 <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
                 <a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer"
                    style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10, alignSelf: 'flex-start', padding: '8px 14px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)', fontSize: 13, fontWeight: 600 }}>
-                  <Icon name="linkedin" size={16} />
+                  <LinkedInIcon size={16} />
                   Follow us on LinkedIn
                 </a>
               </div>
@@ -670,7 +670,7 @@ function V2_Modern() {
                   textDecoration: 'none',
                 }}
               >
-                <Icon name={icon} size={14} />
+                {icon === 'linkedin' ? <LinkedInIcon size={14} /> : <Icon name={icon} size={14} />}
               </a>
             ))}
           </div>

@@ -162,7 +162,7 @@ function V2_Modern() {
                 {[
                   { big: '15+', unit: 'yrs', label: 'Avg. experience' },
                   { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
-                  { big: '40%', unit: 'less', label: 'vs. Big Four' },
+                  { big: '40%', unit: 'more value', label: 'vs. Big Four' },
                 ].map((s, i) => (
                   <div key={s.big} style={{
                     paddingLeft: i === 0 ? 0 : 14,

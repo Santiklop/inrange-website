@@ -3,6 +3,7 @@
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
   const [activeService, setActiveService] = React.useState(-1);
+  const [activeStep, setActiveStep] = React.useState(-1);
   const isMobile = window.useMediaQuery('(max-width: 767px)');
   const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const isNarrow = isMobile || isTablet;
@@ -347,9 +348,8 @@ function V2_Modern() {
           </div>
 
           {/* PROCESS TIMELINE */}
-          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : (isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)'), gap: isMobile ? 28 : 20 }}>
-            {!isNarrow && <div style={{ position: 'absolute', top: 36, left: '6%', right: '6%', height: 2, background: 'var(--border-subtle)', zIndex: 0 }} />}
-            {[
+          {(() => {
+            const steps = [
               {
                 step: '01', title: 'Scope', timing: 'Week 1',
                 body: 'Discovery call, review of your group structure and intercompany flows, agreement on deliverables and fee.',
@@ -370,34 +370,103 @@ function V2_Modern() {
                 body: 'Tax-audit defence, controversy support, refreshes on change — and interim placement when your own team needs an extra set of hands.',
                 tags: ['Audit defence', 'Interim specialists'],
               },
-            ].map((p) => (
-              <div
-                key={p.step}
-                className="process-step"
-                style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 14, transition: 'transform 220ms var(--ease-out)' }}
-              >
-                <div style={{
-                  width: isNarrow ? 56 : 72, height: isNarrow ? 56 : 72, borderRadius: 999, background: 'var(--brand-navy-800)', color: '#fff',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'var(--font-display)', fontSize: isNarrow ? 18 : 22, fontWeight: 700, letterSpacing: '-0.02em',
-                  border: isNarrow ? 'none' : '4px solid #fff',
-                }}>{p.step}</div>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--fg-brand)' }}>{p.timing}</div>
-                <h3 style={{ fontSize: 26, margin: 0, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{p.title}</h3>
-                <p style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>{p.body}</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
-                  {p.tags.map(t => (
-                    <span key={t} className="process-tag" style={{
-                      fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 999,
-                      background: 'var(--brand-green-50)', color: 'var(--brand-green-700)',
-                      border: '1px solid rgba(0,0,0,0.04)',
-                      transition: 'background 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out)',
-                    }}>{t}</span>
-                  ))}
+            ];
+            if (isMobile) {
+              return (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8, background: '#fff', borderRadius: 20, padding: 8, border: '1px solid var(--border-subtle)' }}>
+                  {steps.map((p, i) => {
+                    const active = activeStep === i;
+                    return (
+                      <React.Fragment key={p.step}>
+                        <div
+                          onClick={(ev) => {
+                            const nextIdx = active ? -1 : i;
+                            setActiveStep(nextIdx);
+                            if (nextIdx !== -1) {
+                              const row = ev.currentTarget;
+                              requestAnimationFrame(() => {
+                                const nav = document.querySelector('nav');
+                                const offset = (nav ? nav.getBoundingClientRect().height : 72) + 12;
+                                const top = row.getBoundingClientRect().top + window.scrollY - offset;
+                                window.scrollTo({ top, behavior: 'smooth' });
+                              });
+                            }
+                          }}
+                          style={{
+                            padding: '14px 16px', borderRadius: active ? '14px 14px 0 0' : 14, cursor: 'pointer',
+                            background: active ? 'var(--brand-navy-800)' : 'transparent',
+                            color: active ? '#fff' : 'var(--fg-1)',
+                            transition: 'all 180ms var(--ease-standard)',
+                            display: 'flex', alignItems: 'center', gap: 14,
+                          }}
+                        >
+                          <div style={{
+                            width: 40, height: 40, borderRadius: 999,
+                            background: active ? 'var(--brand-green-500)' : 'var(--brand-navy-800)',
+                            color: '#fff',
+                            display: 'flex', alignItems: 'center', justifyContent: 'center',
+                            fontFamily: 'var(--font-display)', fontSize: 14, fontWeight: 700, letterSpacing: '-0.02em',
+                            flexShrink: 0,
+                          }}>{p.step}</div>
+                          <div style={{ flex: 1, minWidth: 0 }}>
+                            <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: active ? 'var(--brand-green-300)' : 'var(--fg-brand)' }}>{p.timing}</div>
+                            <div style={{ fontSize: 16, fontWeight: 600, letterSpacing: '-0.01em', marginTop: 3 }}>{p.title}</div>
+                          </div>
+                          <Icon name={active ? 'chevron-up' : 'chevron-down'} size={18} style={{ opacity: active ? 1 : 0.5, flexShrink: 0 }} />
+                        </div>
+                        {active && (
+                          <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '4px 20px 20px', borderRadius: '0 0 14px 14px' }}>
+                            <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 14.5, lineHeight: 1.6, margin: '0 0 14px' }}>{p.body}</p>
+                            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
+                              {p.tags.map(t => (
+                                <span key={t} style={{
+                                  fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 999,
+                                  background: 'rgba(31,168,74,0.18)', color: 'var(--brand-green-300)',
+                                  border: '1px solid rgba(31,168,74,0.28)',
+                                }}>{t}</span>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+                      </React.Fragment>
+                    );
+                  })}
                 </div>
+              );
+            }
+            return (
+              <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: 20 }}>
+                {!isTablet && <div style={{ position: 'absolute', top: 36, left: '6%', right: '6%', height: 2, background: 'var(--border-subtle)', zIndex: 0 }} />}
+                {steps.map((p) => (
+                  <div
+                    key={p.step}
+                    className="process-step"
+                    style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 14, transition: 'transform 220ms var(--ease-out)' }}
+                  >
+                    <div style={{
+                      width: isTablet ? 56 : 72, height: isTablet ? 56 : 72, borderRadius: 999, background: 'var(--brand-navy-800)', color: '#fff',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: 'var(--font-display)', fontSize: isTablet ? 18 : 22, fontWeight: 700, letterSpacing: '-0.02em',
+                      border: isTablet ? 'none' : '4px solid #fff',
+                    }}>{p.step}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--fg-brand)' }}>{p.timing}</div>
+                    <h3 style={{ fontSize: 26, margin: 0, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{p.title}</h3>
+                    <p style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>{p.body}</p>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 4 }}>
+                      {p.tags.map(t => (
+                        <span key={t} className="process-tag" style={{
+                          fontSize: 11, fontWeight: 600, padding: '5px 10px', borderRadius: 999,
+                          background: 'var(--brand-green-50)', color: 'var(--brand-green-700)',
+                          border: '1px solid rgba(0,0,0,0.04)',
+                          transition: 'background 180ms var(--ease-out), color 180ms var(--ease-out), transform 180ms var(--ease-out)',
+                        }}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
+            );
+          })()}
           <style>{`
             .process-tag:hover {
               background: var(--brand-green-500) !important;

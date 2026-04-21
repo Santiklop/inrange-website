@@ -2,11 +2,14 @@
 
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
-  const [activeService, setActiveService] = React.useState(0);
+  const [activeService, setActiveService] = React.useState(-1);
   const isMobile = window.useMediaQuery('(max-width: 767px)');
   const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const isNarrow = isMobile || isTablet;
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
+  React.useEffect(() => {
+    if (!isNarrow && activeService === -1) setActiveService(0);
+  }, [isNarrow, activeService]);
 
   const scrollTo = (id) => (e) => {
     if (e) e.preventDefault();
@@ -222,7 +225,7 @@ function V2_Modern() {
                 return (
                   <React.Fragment key={s.title}>
                     <div
-                      onClick={() => setActiveService(i)}
+                      onClick={() => setActiveService(active ? -1 : i)}
                       style={{
                         padding: '18px 20px', borderRadius: active ? '14px 14px 0 0' : 14, cursor: 'pointer',
                         background: active ? 'var(--brand-navy-800)' : 'transparent',
@@ -293,11 +296,13 @@ function V2_Modern() {
               </div>
               <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
                 <div style={{ position: 'absolute', top: -80, right: -80, width: 280, height: 280, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
+                {(() => { const svc = services[activeService < 0 ? 0 : activeService]; return (
                 <div style={{ position: 'relative' }}>
-                  <Eyebrow color="var(--brand-green-300)">{services[activeService].sub}</Eyebrow>
-                  <h3 style={{ color: '#fff', fontSize: 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{services[activeService].title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{services[activeService].body}</p>
+                  <Eyebrow color="var(--brand-green-300)">{svc.sub}</Eyebrow>
+                  <h3 style={{ color: '#fff', fontSize: 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{svc.title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{svc.body}</p>
                 </div>
+                ); })()}
                 <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
                   <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
                   <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>

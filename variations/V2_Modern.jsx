@@ -114,7 +114,7 @@ function V2_Modern() {
       </nav>
 
       {/* HERO */}
-      <section id="top" style={{ padding: isMobile ? '40px 20px 32px' : (isTablet ? '56px 32px 48px' : '72px 40px 56px'), maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
+      <section id="top" style={{ padding: isMobile ? '40px 20px 16px' : (isTablet ? '56px 32px 24px' : '72px 40px 24px'), maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
         <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.35fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: 'start' }}>
           {/* LEFT: headline */}
           <div>
@@ -177,16 +177,6 @@ function V2_Modern() {
           </div>
         </div>
 
-        {/* Ticker — TP topics we cover */}
-        <div style={{ marginTop: isMobile ? 48 : 80, borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', padding: '18px 0', overflow: 'hidden' }}>
-          <div style={{ display: 'flex', gap: 40, whiteSpace: 'nowrap', animation: 'scroll 40s linear infinite' }}>
-            {[...Array(2)].flatMap((_, i) => ['Master file', 'Local file', 'Country-by-Country Reporting', 'Benchmarking study', 'Intercompany agreements', 'Financial transactions', 'Business restructuring', 'Tax audit support', 'Economic analyses', 'Interim TP specialists'].map((t, j) => (
-              <span key={`${i}-${j}`} style={{ fontSize: 14, fontWeight: 500, color: 'var(--fg-3)', display: 'flex', alignItems: 'center', gap: 40 }}>
-                {t}<span style={{ color: 'var(--brand-green-500)' }}>✦</span>
-              </span>
-            )))}
-          </div>
-        </div>
       </section>
 
       {/* ABOUT */}
@@ -525,7 +515,6 @@ function V2_Modern() {
       </footer>
 
       <style>{`
-        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
       `}</style>

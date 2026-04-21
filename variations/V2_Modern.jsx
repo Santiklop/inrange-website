@@ -31,8 +31,16 @@ function V2_Modern() {
   const [toast, setToast] = React.useState(null);
   const downloadDeck = (e) => {
     if (e) e.preventDefault();
-    setToast('Capability deck — PDF coming soon. Email info@inrange.nl to request it.');
-    setTimeout(() => setToast(null), 4000);
+    // Trigger a file download. Using an <a> with `download` lets the browser save directly.
+    const a = document.createElement('a');
+    a.href = 'assets/inRange_Capability_Deck.pdf';
+    a.download = 'inRange_Capability_Deck.pdf';
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setToast('Downloading capability deck…');
+    setTimeout(() => setToast(null), 2500);
   };
   const navLinks = [
     ['About us', 'about'],

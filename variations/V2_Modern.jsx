@@ -590,7 +590,7 @@ function V2_Modern() {
               </p>
               <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                 <Button variant="primary" size={isMobile ? 'md' : 'lg'} iconRight="download" onClick={downloadDeck}>Download capability deck</Button>
-                <Button variant="outlineInverted" size={isMobile ? 'md' : 'lg'} onClick={() => window.location.href = 'mailto:info@inrange.nl'}>Let's connect</Button>
+                <Button variant="outlineInverted" size={isMobile ? 'md' : 'lg'} iconRight="arrow-up-right" onClick={() => window.location.href = 'mailto:info@inrange.nl'}>Email us</Button>
               </div>
             </div>
             <div style={{ borderLeft: isNarrow ? 'none' : '1px solid rgba(255,255,255,0.18)', borderTop: isNarrow ? '1px solid rgba(255,255,255,0.18)' : 'none', paddingLeft: isNarrow ? 0 : 40, paddingTop: isNarrow ? 24 : 0 }}>

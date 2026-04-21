@@ -30,6 +30,10 @@ function V2_Modern() {
     setToast('Capability deck — PDF coming soon. Email info@inrange.nl to request it.');
     setTimeout(() => setToast(null), 4000);
   };
+  const openEmail = (e) => {
+    if (e) e.preventDefault();
+    window.location.href = 'mailto:info@inrange.nl';
+  };
   const navLinks = [
     ['About us', 'about'],
     ['Services', 'services'],
@@ -94,7 +98,7 @@ function V2_Modern() {
             </div>
           )}
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            {!isMobile && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
+            {!isMobile && <Button variant="ghost" size="sm" onClick={openEmail}>Let's connect</Button>}
             {!isMobile && <Button variant="primary" size="sm" iconRight="download" onClick={downloadDeck}>Capability deck</Button>}
             {isMobile && (
               <button
@@ -116,7 +120,7 @@ function V2_Modern() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <Button variant="primary" size="md" iconRight="download" onClick={(e) => { downloadDeck(e); setMobileNavOpen(false); }} style={{ width: '100%', justifyContent: 'center' }}>Capability deck</Button>
-              <Button variant="secondary" size="md" onClick={(e) => { scrollTo('contact')(e); setMobileNavOpen(false); }} style={{ width: '100%', justifyContent: 'center' }}>Let's connect</Button>
+              <Button variant="secondary" size="md" onClick={(e) => { setMobileNavOpen(false); openEmail(e); }} style={{ width: '100%', justifyContent: 'center' }}>Let's connect</Button>
             </div>
           </div>
         )}
@@ -272,7 +276,7 @@ function V2_Modern() {
                         <div style={{ position: 'relative' }}>
                           <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
                           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                            <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
+                            <Button variant="primary" iconRight="arrow-right" onClick={openEmail}>Let's connect</Button>
                             <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
                           </div>
                         </div>
@@ -322,7 +326,7 @@ function V2_Modern() {
                 </div>
                 ); })()}
                 <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
-                  <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
+                  <Button variant="primary" iconRight="arrow-right" onClick={openEmail}>Let's connect</Button>
                   <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
                 </div>
               </div>

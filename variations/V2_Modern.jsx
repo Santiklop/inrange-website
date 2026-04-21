@@ -225,48 +225,96 @@ function V2_Modern() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1fr 1.3fr', gap: isNarrow ? 0 : 40, background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
-            <div style={{ padding: 16 }}>
-              {services.map((s, i) => (
-                <div key={s.title}
-                  onMouseEnter={() => setActiveService(i)}
-                  style={{
-                    padding: '20px 24px', borderRadius: 14, cursor: 'pointer',
-                    background: activeService === i ? 'var(--brand-navy-800)' : 'transparent',
-                    color: activeService === i ? '#fff' : 'var(--fg-1)',
-                    transition: 'all 220ms var(--ease-standard)',
-                    display: 'flex', alignItems: 'center', gap: 18,
-                  }}
-                >
-                  <div style={{
-                    width: 40, height: 40, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    background: activeService === i ? 'var(--brand-green-500)' : 'var(--brand-green-50)',
-                    color: activeService === i ? '#fff' : 'var(--brand-green-700)',
-                    flexShrink: 0,
-                  }}>
-                    <Icon name={s.icon} size={20} />
+          {isNarrow ? (
+            <div style={{ background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', padding: 8 }}>
+              {services.map((s, i) => {
+                const active = activeService === i;
+                return (
+                  <React.Fragment key={s.title}>
+                    <div
+                      onClick={() => setActiveService(i)}
+                      style={{
+                        padding: '18px 20px', borderRadius: active ? '14px 14px 0 0' : 14, cursor: 'pointer',
+                        background: active ? 'var(--brand-navy-800)' : 'transparent',
+                        color: active ? '#fff' : 'var(--fg-1)',
+                        transition: 'all 180ms var(--ease-standard)',
+                        display: 'flex', alignItems: 'center', gap: 14,
+                      }}
+                    >
+                      <div style={{
+                        width: 38, height: 38, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                        background: active ? 'var(--brand-green-500)' : 'var(--brand-green-50)',
+                        color: active ? '#fff' : 'var(--brand-green-700)',
+                        flexShrink: 0,
+                      }}>
+                        <Icon name={s.icon} size={19} />
+                      </div>
+                      <div style={{ flex: 1, minWidth: 0 }}>
+                        <div style={{ fontSize: 15.5, fontWeight: 600, letterSpacing: '-0.01em' }}>{s.title}</div>
+                        <div style={{ fontSize: 12, color: active ? 'var(--brand-green-300)' : 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
+                      </div>
+                      <Icon name={active ? 'chevron-up' : 'chevron-down'} size={18} style={{ opacity: active ? 1 : 0.5, flexShrink: 0 }} />
+                    </div>
+                    {active && (
+                      <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '4px 24px 28px', margin: '0 0 8px', borderRadius: '0 0 14px 14px', position: 'relative', overflow: 'hidden' }}>
+                        <div style={{ position: 'absolute', top: -60, right: -60, width: 180, height: 180, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
+                        <div style={{ position: 'relative' }}>
+                          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
+                          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                            <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
+                            <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </React.Fragment>
+                );
+              })}
+            </div>
+          ) : (
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 40, background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
+              <div style={{ padding: 16 }}>
+                {services.map((s, i) => (
+                  <div key={s.title}
+                    onMouseEnter={() => setActiveService(i)}
+                    style={{
+                      padding: '20px 24px', borderRadius: 14, cursor: 'pointer',
+                      background: activeService === i ? 'var(--brand-navy-800)' : 'transparent',
+                      color: activeService === i ? '#fff' : 'var(--fg-1)',
+                      transition: 'all 220ms var(--ease-standard)',
+                      display: 'flex', alignItems: 'center', gap: 18,
+                    }}
+                  >
+                    <div style={{
+                      width: 40, height: 40, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      background: activeService === i ? 'var(--brand-green-500)' : 'var(--brand-green-50)',
+                      color: activeService === i ? '#fff' : 'var(--brand-green-700)',
+                      flexShrink: 0,
+                    }}>
+                      <Icon name={s.icon} size={20} />
+                    </div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: '-0.01em' }}>{s.title}</div>
+                      <div style={{ fontSize: 12, color: activeService === i ? 'var(--brand-green-300)' : 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
+                    </div>
+                    <Icon name="arrow-right" size={18} style={{ opacity: activeService === i ? 1 : 0.3 }} />
                   </div>
-                  <div style={{ flex: 1 }}>
-                    <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: '-0.01em' }}>{s.title}</div>
-                    <div style={{ fontSize: 12, color: activeService === i ? 'var(--brand-green-300)' : 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
-                  </div>
-                  <Icon name="arrow-right" size={18} style={{ opacity: activeService === i ? 1 : 0.3 }} />
+                ))}
+              </div>
+              <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
+                <div style={{ position: 'absolute', top: -80, right: -80, width: 280, height: 280, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
+                <div style={{ position: 'relative' }}>
+                  <Eyebrow color="var(--brand-green-300)">{services[activeService].sub}</Eyebrow>
+                  <h3 style={{ color: '#fff', fontSize: 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{services[activeService].title}</h3>
+                  <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{services[activeService].body}</p>
                 </div>
-              ))}
-            </div>
-            <div style={{ background: 'var(--brand-navy-800)', padding: isMobile ? 28 : 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: -80, right: -80, width: 280, height: 280, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
-              <div style={{ position: 'relative' }}>
-                <Eyebrow color="var(--brand-green-300)">{services[activeService].sub}</Eyebrow>
-                <h3 style={{ color: '#fff', fontSize: isMobile ? 28 : 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{services[activeService].title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: isMobile ? 15 : 17, lineHeight: 1.6, margin: 0 }}>{services[activeService].body}</p>
-              </div>
-              <div style={{ marginTop: isMobile ? 28 : 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
-                <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
-                <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
+                <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
+                  <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
+                  <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </section>
 

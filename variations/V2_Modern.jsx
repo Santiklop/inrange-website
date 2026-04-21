@@ -21,7 +21,7 @@ function V2_Modern() {
       const navH = nav ? nav.getBoundingClientRect().height : 72;
       // Land just above the section's content (past its padding-top), not at the section's edge.
       const paddingTop = parseFloat(window.getComputedStyle(el).paddingTop) || 0;
-      const breathingRoom = 32;
+      const breathingRoom = 12;
       const y = el.getBoundingClientRect().top + window.scrollY + paddingTop - navH - breathingRoom;
       window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     };

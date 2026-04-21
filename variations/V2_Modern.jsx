@@ -13,10 +13,16 @@ function V2_Modern() {
 
   const scrollTo = (id) => (e) => {
     if (e) e.preventDefault();
-    const el = document.getElementById(id);
-    if (!el) return;
-    const y = el.getBoundingClientRect().top + window.scrollY - 72;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    const doScroll = () => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const nav = document.querySelector('nav');
+      const offset = (nav ? nav.getBoundingClientRect().height : 72) + 8;
+      const y = el.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    };
+    // Double-rAF lets pending state (e.g. mobile menu closing) settle before we measure.
+    requestAnimationFrame(() => requestAnimationFrame(doScroll));
   };
   const [toast, setToast] = React.useState(null);
   const downloadDeck = (e) => {
@@ -128,7 +134,7 @@ function V2_Modern() {
             <h1 style={{
               margin: 0, fontSize: isMobile ? 42 : (isTablet ? 58 : 76), lineHeight: 0.95, letterSpacing: '-0.035em', fontWeight: 700,
             }}>
-              Your trusted<br/>transfer pricing <span style={{
+              Your trusted{isNarrow ? ' ' : <br/>}transfer pricing <span style={{
                 background: 'linear-gradient(105deg, var(--brand-green-500), var(--brand-green-700))',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>partner.</span>
@@ -225,7 +231,19 @@ function V2_Modern() {
                 return (
                   <React.Fragment key={s.title}>
                     <div
-                      onClick={() => setActiveService(active ? -1 : i)}
+                      onClick={(ev) => {
+                        const nextIdx = active ? -1 : i;
+                        setActiveService(nextIdx);
+                        if (nextIdx !== -1) {
+                          const row = ev.currentTarget;
+                          requestAnimationFrame(() => {
+                            const nav = document.querySelector('nav');
+                            const offset = (nav ? nav.getBoundingClientRect().height : 72) + 12;
+                            const top = row.getBoundingClientRect().top + window.scrollY - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                          });
+                        }
+                      }}
                       style={{
                         padding: '18px 20px', borderRadius: active ? '14px 14px 0 0' : 14, cursor: 'pointer',
                         background: active ? 'var(--brand-navy-800)' : 'transparent',
@@ -359,10 +377,10 @@ function V2_Modern() {
                 style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', gap: 14, transition: 'transform 220ms var(--ease-out)' }}
               >
                 <div style={{
-                  width: 72, height: 72, borderRadius: 999, background: 'var(--brand-navy-800)', color: '#fff',
+                  width: isNarrow ? 56 : 72, height: isNarrow ? 56 : 72, borderRadius: 999, background: 'var(--brand-navy-800)', color: '#fff',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontFamily: 'var(--font-display)', fontSize: 22, fontWeight: 700, letterSpacing: '-0.02em',
-                  border: '4px solid #fff',
+                  fontFamily: 'var(--font-display)', fontSize: isNarrow ? 18 : 22, fontWeight: 700, letterSpacing: '-0.02em',
+                  border: isNarrow ? 'none' : '4px solid #fff',
                 }}>{p.step}</div>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--fg-brand)' }}>{p.timing}</div>
                 <h3 style={{ fontSize: 26, margin: 0, letterSpacing: '-0.02em', lineHeight: 1.1 }}>{p.title}</h3>
@@ -429,11 +447,12 @@ function V2_Modern() {
             ].map((x, i) => (
               <div key={x.tag} style={{
                 background: '#fff', borderRadius: 20, padding: isMobile ? 24 : 36, border: '1px solid var(--border-subtle)',
+                boxShadow: isNarrow ? 'var(--shadow-sm)' : 'none',
                 transition: 'all 220ms var(--ease-standard)', display: 'flex', flexDirection: 'column',
                 position: 'relative', overflow: 'hidden',
               }}
-                onMouseEnter={(e) => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+                onMouseEnter={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; } }}
+                onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; } }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--brand-green-600)' }}>0{i+1}</div>
@@ -453,7 +472,7 @@ function V2_Modern() {
           maxWidth: 1320, margin: '0 auto', background: 'var(--brand-navy-800)',
           borderRadius: isMobile ? 20 : 28, padding: isMobile ? '48px 24px' : (isTablet ? '64px 40px' : '96px 80px'), color: '#fff', position: 'relative', overflow: 'hidden',
         }}>
-          <div style={{ position: 'absolute', top: -120, right: -120, width: 400, height: 400, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.14 }} />
+          <div style={{ position: 'absolute', top: isNarrow ? -80 : -120, right: isNarrow ? -80 : -120, width: isMobile ? 220 : (isTablet ? 300 : 400), height: isMobile ? 220 : (isTablet ? 300 : 400), borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.14 }} />
           {!isNarrow && <div style={{ position: 'absolute', top: 80, right: 160, width: 180, height: 180, borderRadius: 999, border: '1px solid rgba(255,255,255,0.15)' }} />}
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.2fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: isNarrow ? 'start' : 'end' }}>
             <div>
@@ -494,7 +513,7 @@ function V2_Modern() {
           {[
             ['Services', [['Transfer Pricing Advice', 'services'], ['Transfer Pricing Documentation', 'services'], ['Audit Support', 'services'], ['Interim Placement Solutions', 'services'], ['Economic Analyses', 'services'], ['Legal Agreements', 'services']]],
             ['Company', [['About us', 'about'], ['How we work', 'coverage'], ['Recent projects', 'projects'], ['Advantages', 'why'], ['Contact', 'contact']]],
-            ['Contact', [['Saskia van Uijlenburgkade 104', null], ['Amsterdam, Netherlands', null], ['info@inrange.nl', 'mailto:info@inrange.nl'], ['+31 648 44 6063', 'tel:+31648446063']]],
+            ...(isMobile ? [] : [['Contact', [['Saskia van Uijlenburgkade 104', null], ['Amsterdam, Netherlands', null], ['info@inrange.nl', 'mailto:info@inrange.nl'], ['+31 648 44 6063', 'tel:+31648446063']]]]),
           ].map(([h, items]) => (
             <div key={h}>
               <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 16, color: 'var(--fg-1)' }}>{h}</div>
@@ -526,11 +545,12 @@ function V2_Modern() {
 
       {toast && (
         <div style={{
-          position: 'fixed', bottom: 32, left: '50%', transform: 'translateX(-50%)',
+          position: 'fixed', bottom: `calc(${isMobile ? 20 : 32}px + env(safe-area-inset-bottom))`,
+          left: '50%', transform: 'translateX(-50%)',
           background: 'var(--brand-navy-800)', color: '#fff', padding: '16px 24px',
           borderRadius: 14, fontSize: 14, fontWeight: 500, zIndex: 100,
           boxShadow: '0 12px 40px rgba(0,0,0,0.25)', display: 'flex', alignItems: 'center', gap: 14,
-          animation: 'toastIn 240ms var(--ease-standard)', maxWidth: 520,
+          animation: 'toastIn 240ms var(--ease-standard)', maxWidth: 'min(520px, calc(100vw - 32px))',
         }}>
           <Icon name="download" size={18} style={{ color: 'var(--brand-green-300)' }} />
           <span>{toast}</span>

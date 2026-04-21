@@ -395,6 +395,24 @@ function SignalMapSection() {
                 <span style={{ width: 9, height: 9, borderRadius: 999, background: 'var(--brand-green-500)' }} />Engagement
               </span>
             </div>
+
+            {/* pause/play — touch devices can't rely on hover */}
+            {isNarrow && (
+              <button
+                onClick={() => setPaused(p => !p)}
+                aria-label={paused ? 'Resume auto-advance' : 'Pause auto-advance'}
+                style={{
+                  position: 'absolute', bottom: 12, right: 12,
+                  width: 34, height: 34, borderRadius: 999,
+                  background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)',
+                  color: '#fff', cursor: 'pointer', padding: 0,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  backdropFilter: 'blur(8px)',
+                }}
+              >
+                <Icon name={paused ? 'play' : 'pause'} size={14} />
+              </button>
+            )}
           </div>
 
           {/* PROJECT CARD */}

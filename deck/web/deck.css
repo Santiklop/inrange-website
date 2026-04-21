@@ -462,85 +462,144 @@ h2.title {
   margin-top: auto;
 }
 
-/* ============================= Slide 5 — Recent projects (map) ============================= */
+/* ============================= Slide 5 — Recent projects (split layout) ============================= */
 
 .slide--projects {
   background: var(--brand-navy-800);
   color: #fff;
-  padding: 20mm 18mm 18mm;
+  padding: 15mm 18mm 14mm;
 }
-.slide--projects .head-row {
+.slide--projects .header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16mm;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 10mm;
   align-items: end;
-  margin-bottom: 10mm;
+  margin-bottom: 5mm;
 }
 .slide--projects h2 {
   color: #fff;
-  font-size: 32pt;
+  font-size: 28pt;
+  line-height: 1.05;
+  margin: 4mm 0 0;
 }
-.slide--projects .lede { color: var(--brand-navy-100); }
-.slide--projects .map-wrap {
-  position: relative;
-  height: calc(210mm - 20mm - 18mm - 42mm);
+.slide--projects .lede {
+  color: var(--brand-navy-100);
+  font-size: 11pt;
+  line-height: 1.5;
 }
-.slide--projects .map-wrap svg { width: 100%; height: 100%; display: block; }
 
-/* Floating engagement callouts layered over the map */
-.callout {
-  position: absolute;
-  background: rgba(7, 17, 29, 0.88);
-  border: 1px solid rgba(108, 206, 137, 0.35);
-  border-radius: 3mm;
-  padding: 4mm 5mm;
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.38);
-  min-width: 44mm;
-  max-width: 58mm;
-  backdrop-filter: blur(6px);
+.slide--projects .middle {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 8mm;
+  margin-bottom: 5mm;
 }
-.callout::before {
+
+.slide--projects .map-panel {
+  position: relative;
+  height: 62mm;
+  border-radius: 4mm;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.slide--projects .map-panel svg { width: 100%; height: 100%; display: block; }
+
+.footprint {
+  padding: 5mm 6mm 4mm;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 4mm;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+  height: 62mm;
+  position: relative;
+  overflow: hidden;
+}
+.footprint::after {
   content: '';
   position: absolute;
-  left: 6mm;
-  top: -1.5mm;
-  width: 3mm;
-  height: 3mm;
-  background: var(--brand-green-400);
-  border: 1.5px solid #fff;
+  top: -20mm; right: -20mm;
+  width: 50mm; height: 50mm;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px rgba(31, 168, 74, 0.25);
+  background: radial-gradient(closest-side, rgba(31, 168, 74, 0.34), transparent 72%);
+  pointer-events: none;
 }
-.callout__meta {
-  font-size: 8pt;
+.footprint .eyebrow {
+  color: var(--brand-green-300);
+  position: relative;
+  margin-bottom: 2mm;
+}
+.footprint .stat {
+  display: grid;
+  grid-template-columns: 18mm 1fr;
+  align-items: baseline;
+  gap: 3mm;
+  padding: 3mm 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+  position: relative;
+}
+.footprint .stat:first-of-type { border-top: none; padding-top: 0; }
+.footprint .stat .n {
+  font-size: 26pt;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 0.9;
+}
+.footprint .stat .lbl {
+  font-size: 10pt;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.35;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr 1fr;
+  height: 66mm;
+  gap: 3.5mm;
+}
+.project-card {
+  padding: 4mm 4.5mm;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  border-radius: 3mm;
+  display: flex;
+  flex-direction: column;
+  gap: 1mm;
+  position: relative;
+}
+.project-card .region {
+  font-size: 7.5pt;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--brand-green-300);
 }
-.callout__city {
-  font-size: 13pt;
+.project-card .city {
+  font-size: 12pt;
   font-weight: 700;
-  letter-spacing: -0.015em;
-  margin-top: 1mm;
+  letter-spacing: -0.018em;
   color: #fff;
+  line-height: 1.1;
 }
-.callout__tag {
-  font-size: 9pt;
+.project-card .tag {
+  font-size: 8.5pt;
   color: rgba(255, 255, 255, 0.82);
-  margin-top: 1.5mm;
-  line-height: 1.4;
+  line-height: 1.38;
+  margin-top: 0.5mm;
 }
-.callout__industry {
-  display: inline-block;
-  margin-top: 2mm;
-  font-size: 8pt;
-  color: rgba(255, 255, 255, 0.7);
-  padding: 1mm 3mm;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+.project-card .industry {
+  font-size: 7.5pt;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 1mm 2.5mm;
+  border: 1px solid rgba(255, 255, 255, 0.20);
   border-radius: 999px;
-  letter-spacing: 0.03em;
+  align-self: flex-start;
+  margin-top: auto;
+  letter-spacing: 0.02em;
 }
 
 /* ============================= Slide 6 — Why inRange ============================= */

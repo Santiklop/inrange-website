@@ -278,7 +278,7 @@ function SignalMapSection() {
   const arc = arcPath(hq[0], hq[1], current.xy[0], current.xy[1]);
 
   return (
-    <section id="projects" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
+    <section id="projects" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
       <div style={{ maxWidth: 1320, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 20 : (isTablet ? 48 : 72), alignItems: isNarrow ? 'start' : 'end', marginBottom: isMobile ? 32 : 48 }}>
           <div>

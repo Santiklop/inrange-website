@@ -189,7 +189,7 @@ function V2_Modern() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), scrollMarginTop: 80 }}>
+      <section id="about" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 28 : (isTablet ? 48 : 72) }}>
           <div>
             <Eyebrow>About our company</Eyebrow>
@@ -212,7 +212,7 @@ function V2_Modern() {
       </section>
 
       {/* SERVICES — interactive split panel */}
-      <section id="services" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
+      <section id="services" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 16 : (isTablet ? 48 : 72), alignItems: isNarrow ? 'start' : 'end', marginBottom: isMobile ? 32 : 56 }}>
             <div>
@@ -332,7 +332,7 @@ function V2_Modern() {
       </section>
 
       {/* GET YOUR TP DONE — global coverage */}
-      <section id="coverage" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), scrollMarginTop: 80 }}>
+      <section id="coverage" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
           <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 20 : (isTablet ? 48 : 72), alignItems: isNarrow ? 'start' : 'end', marginBottom: isMobile ? 40 : 64 }}>
             <div>
@@ -413,7 +413,7 @@ function V2_Modern() {
       <SignalMapSection />
 
       {/* ADVANTAGES — verbatim from site */}
-      <section id="why" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
+      <section id="why" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
           <div style={{ textAlign: 'center', marginBottom: isMobile ? 40 : 64, maxWidth: 820, marginLeft: 'auto', marginRight: 'auto' }}>
             <Eyebrow>Advantages of working with us</Eyebrow>
@@ -467,7 +467,7 @@ function V2_Modern() {
       </section>
 
       {/* CONTACT CTA */}
-      <section id="contact" style={{ padding: isMobile ? '48px 16px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
+      <section id="contact" style={{ padding: isMobile ? '48px 16px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
         <div style={{
           maxWidth: 1320, margin: '0 auto', background: 'var(--brand-navy-800)',
           borderRadius: isMobile ? 20 : 28, padding: isMobile ? '48px 24px' : (isTablet ? '64px 40px' : '96px 80px'), color: '#fff', position: 'relative', overflow: 'hidden',

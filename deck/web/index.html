@@ -70,23 +70,29 @@
           requirements wherever you operate, faster and at a lower cost.
         </p>
       </div>
-      <div>
+      <div class="at-a-glance">
         <p class="eyebrow">At a glance</p>
-        <div class="pillars">
-          <div class="pillar">
+        <div class="stack">
+          <div class="row">
             <div class="big">15+</div>
-            <div class="unit">yrs</div>
-            <div class="label">Avg. experience per specialist</div>
+            <div>
+              <div class="unit">yrs</div>
+              <div class="label">Average experience per specialist</div>
+            </div>
           </div>
-          <div class="pillar">
+          <div class="row">
             <div class="big">60%</div>
-            <div class="unit">faster</div>
-            <div class="label">AI-enabled turnaround</div>
+            <div>
+              <div class="unit">faster</div>
+              <div class="label">AI-enabled turnaround on documentation and research</div>
+            </div>
           </div>
-          <div class="pillar">
+          <div class="row">
             <div class="big">40%</div>
-            <div class="unit">more value</div>
-            <div class="label">vs. Big Four engagements</div>
+            <div>
+              <div class="unit">more value</div>
+              <div class="label">vs. Big Four engagements</div>
+            </div>
           </div>
         </div>
       </div>
@@ -102,6 +108,9 @@
        SLIDE 3 — SERVICES
        ============================================================ -->
   <section class="slide slide--services">
+    <div class="orb orb--green" style="width:110mm;height:110mm;top:-40mm;right:-30mm;"></div>
+    <div class="orb orb--green" style="width:60mm;height:60mm;bottom:-20mm;left:-20mm;opacity:0.6;"></div>
+
     <div class="head-row">
       <div>
         <p class="eyebrow">Our services</p>
@@ -272,17 +281,46 @@
 
     <div class="map-wrap">
       <svg id="project-map" viewBox="0 0 1000 420" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"></svg>
+
+      <!-- Featured engagement callouts — one per region, positioned at the map corners -->
+      <div class="callout" style="top:2mm;left:2mm;">
+        <p class="callout__meta">Europe</p>
+        <div class="callout__city">London</div>
+        <div class="callout__tag">HMRC audit defence for a mid-size FMCG.</div>
+        <span class="callout__industry">FMCG</span>
+      </div>
+
+      <div class="callout" style="top:2mm;right:2mm;">
+        <p class="callout__meta">Asia</p>
+        <div class="callout__city">Tokyo</div>
+        <div class="callout__tag">Japan Local File for an international travel group.</div>
+        <span class="callout__industry">Travel</span>
+      </div>
+
+      <div class="callout" style="bottom:2mm;left:2mm;">
+        <p class="callout__meta">Americas</p>
+        <div class="callout__city">New York</div>
+        <div class="callout__tag">Benchmarking for a US travel subsidiary.</div>
+        <span class="callout__industry">Travel</span>
+      </div>
+
+      <div class="callout" style="bottom:2mm;right:2mm;">
+        <p class="callout__meta">Oceania</p>
+        <div class="callout__city">Sydney</div>
+        <div class="callout__tag">Interest income attribution — Australia branch.</div>
+        <span class="callout__industry">Fintech</span>
+      </div>
     </div>
 
     <!-- legend -->
-    <div style="position:absolute;bottom:20mm;left:18mm;display:flex;gap:10mm;align-items:center;font-size:9pt;color:var(--brand-navy-100);letter-spacing:0.04em;">
+    <div style="position:absolute;bottom:20mm;left:50%;transform:translateX(-50%);display:flex;gap:10mm;align-items:center;font-size:9pt;color:var(--brand-navy-100);letter-spacing:0.04em;">
       <span style="display:inline-flex;align-items:center;gap:3mm;">
         <span style="width:3mm;height:3mm;border-radius:50%;background:#fff;border:1.5px solid var(--brand-green-500);"></span>
         Amsterdam · HQ
       </span>
       <span style="display:inline-flex;align-items:center;gap:3mm;">
         <span style="width:3mm;height:3mm;border-radius:50%;background:var(--brand-green-400);"></span>
-        Engagement (15 total · 12 cities)
+        10 engagements · 10 cities
       </span>
     </div>
 
@@ -489,30 +527,20 @@
       }
 
       const HQ = { city: 'Amsterdam', country: 'Netherlands', lat: 52.37, lon: 4.90 };
-      const projects = [
-        { city: 'Amsterdam',        tag: 'TP Policy',             lat: 52.37, lon:   4.90 },
-        { city: 'Amsterdam',        tag: 'Financial Transactions',lat: 52.37, lon:   4.90 },
-        { city: 'Amsterdam',        tag: 'TP Diagnostics',        lat: 52.37, lon:   4.90 },
-        { city: 'Tokyo',            tag: 'Local File',            lat: 35.68, lon: 139.69 },
-        { city: 'London',           tag: 'Audit Defence',         lat: 51.51, lon:  -0.13 },
-        { city: 'London',           tag: 'Master File',           lat: 51.51, lon:  -0.13 },
+      // One project per city — same 10 cities as the website, minus Frankfurt. Highlights = shown in the callout cards.
+      const cities = [
+        { city: 'Amsterdam',        tag: 'TP Policy · Financial Transactions · TP Diagnostics', lat: 52.37, lon:   4.90, hq: true },
+        { city: 'Tokyo',            tag: 'Local File',            lat: 35.68, lon: 139.69, featured: true },
+        { city: 'London',           tag: 'Audit Defence',         lat: 51.51, lon:  -0.13, featured: true },
         { city: 'Mexico City',      tag: 'Local File',            lat: 19.43, lon: -99.13 },
-        { city: 'Frankfurt',        tag: 'Audit Support',         lat: 50.11, lon:   8.68 },
         { city: 'Stockholm',        tag: 'Master File Review',    lat: 59.33, lon:  18.07 },
-        { city: 'New York',         tag: 'Benchmarking',          lat: 40.71, lon: -74.01 },
+        { city: 'New York',         tag: 'Benchmarking',          lat: 40.71, lon: -74.01, featured: true },
         { city: 'Ho Chi Minh City', tag: 'Profit Attribution',    lat: 10.82, lon: 106.63 },
-        { city: 'Sydney',           tag: 'Profit Attribution',    lat:-33.87, lon: 151.21 },
+        { city: 'Sydney',           tag: 'Profit Attribution',    lat:-33.87, lon: 151.21, featured: true },
         { city: 'Copenhagen',       tag: 'Audit Defence',         lat: 55.68, lon:  12.57 },
         { city: 'San Jose',         tag: 'APA Support',           lat: 37.34, lon:-121.89 },
         { city: 'Dubai',            tag: 'Valuation',             lat: 25.20, lon:  55.27 },
       ];
-
-      // Group projects by city for single markers
-      const byCity = new Map();
-      for (const p of projects) {
-        if (!byCity.has(p.city)) byCity.set(p.city, { city: p.city, lat: p.lat, lon: p.lon, tags: [] });
-        byCity.get(p.city).tags.push(p.tag);
-      }
 
       const svg = document.getElementById('project-map');
       const W = 1000, H = 420;
@@ -540,38 +568,35 @@
         }
       }
 
-      // --- spokes from HQ to each project city ---
+      // --- city markers (dots only; cards above the map carry the labels) ---
       const [hqX, hqY] = project(HQ.lat, HQ.lon);
-      let spokesSvg = '';
-      let dotsMarkers = '';
-      let labels = '';
-      for (const [city, c] of byCity.entries()) {
-        if (Math.abs(c.lat - HQ.lat) < 0.1 && Math.abs(c.lon - HQ.lon) < 0.1) continue;
+      let markers = '';
+      for (const c of cities) {
+        if (c.hq) continue;
         const [x, y] = project(c.lat, c.lon);
-        spokesSvg += `<line x1="${hqX}" y1="${hqY}" x2="${x}" y2="${y}" stroke="rgba(31,168,74,0.5)" stroke-width="0.8" stroke-dasharray="3 3"/>`;
-        dotsMarkers += `<circle cx="${x}" cy="${y}" r="4.5" fill="#3FBB65" stroke="#fff" stroke-width="1"/>`;
-        // Label: choose side based on hemisphere (right half label goes right of dot, left half left)
-        const onRight = x >= hqX;
-        const anchor = onRight ? 'start' : 'end';
-        const dx = onRight ? 8 : -8;
-        const display = c.city + (c.tags.length > 1 ? ` ×${c.tags.length}` : '');
-        labels += `
-          <text x="${x + dx}" y="${y - 6}" fill="#fff" font-size="11" font-weight="700" text-anchor="${anchor}" style="letter-spacing:0.02em;">${display.toUpperCase()}</text>
-          <text x="${x + dx}" y="${y + 8}" fill="#6CCE89" font-size="9" text-anchor="${anchor}">${c.tags.join(' · ')}</text>
-        `;
+        if (c.featured) {
+          // Pulsing green glow to signal "this one is called out"
+          markers += `
+            <circle cx="${x}" cy="${y}" r="11" fill="rgba(63,187,101,0.18)"/>
+            <circle cx="${x}" cy="${y}" r="7" fill="rgba(63,187,101,0.35)"/>
+            <circle cx="${x}" cy="${y}" r="4" fill="#3FBB65" stroke="#fff" stroke-width="1.2"/>
+          `;
+        } else {
+          markers += `<circle cx="${x}" cy="${y}" r="4" fill="#3FBB65" stroke="#fff" stroke-width="1"/>`;
+        }
       }
 
       // --- HQ marker + label ---
-      const amsTags = (byCity.get('Amsterdam') || { tags: [] }).tags;
+      const ams = cities.find(c => c.hq);
       const hqMarker = `
-        <circle cx="${hqX}" cy="${hqY}" r="16" fill="rgba(31,168,74,0.18)"/>
-        <circle cx="${hqX}" cy="${hqY}" r="10" fill="rgba(31,168,74,0.32)"/>
-        <circle cx="${hqX}" cy="${hqY}" r="5.5" fill="#fff" stroke="#1FA84A" stroke-width="2"/>
-        <text x="${hqX}" y="${hqY + 28}" fill="#fff" font-size="12" font-weight="700" text-anchor="middle" style="letter-spacing:0.06em;">AMSTERDAM · HQ</text>
-        <text x="${hqX}" y="${hqY + 44}" fill="#6CCE89" font-size="9" text-anchor="middle" font-style="italic">${amsTags.length} engagements · ${amsTags.join(' · ')}</text>
+        <circle cx="${hqX}" cy="${hqY}" r="18" fill="rgba(31,168,74,0.18)"/>
+        <circle cx="${hqX}" cy="${hqY}" r="11" fill="rgba(31,168,74,0.35)"/>
+        <circle cx="${hqX}" cy="${hqY}" r="6" fill="#fff" stroke="#1FA84A" stroke-width="2"/>
+        <text x="${hqX}" y="${hqY + 26}" fill="#fff" font-size="12" font-weight="700" text-anchor="middle" style="letter-spacing:0.08em;">AMSTERDAM · HQ</text>
+        <text x="${hqX}" y="${hqY + 40}" fill="#6CCE89" font-size="8.5" text-anchor="middle" font-style="italic">3 engagements · ${ams.tag}</text>
       `;
 
-      svg.innerHTML = dotsSvg + spokesSvg + dotsMarkers + hqMarker + labels;
+      svg.innerHTML = dotsSvg + markers + hqMarker;
     })();
   </script>
 </body>

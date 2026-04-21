@@ -560,7 +560,7 @@ h2.title {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr 1fr;
-  height: 68mm;
+  height: 72mm;
   gap: 3.5mm;
   margin-bottom: 4mm;
 }
@@ -593,6 +593,7 @@ h2.title {
   color: rgba(255, 255, 255, 0.82);
   line-height: 1.38;
   margin-top: 0.5mm;
+  margin-bottom: 2.5mm;
 }
 .project-card .industry {
   display: inline-flex;

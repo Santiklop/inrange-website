@@ -1,0 +1,568 @@
+/* inRange capability deck — print-ready HTML.
+   Page = A4 landscape. One .slide per printed page, hard page breaks between.
+   Brand tokens mirror colors_and_type.css on the website so copy and visuals stay consistent. */
+
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+
+:root {
+  --brand-green-50:  #EBF8EE;
+  --brand-green-100: #CFEFD8;
+  --brand-green-200: #9FDFB1;
+  --brand-green-300: #6CCE89;
+  --brand-green-400: #3FBB65;
+  --brand-green-500: #1FA84A;
+  --brand-green-600: #15893B;
+  --brand-green-700: #0F6B2E;
+
+  --brand-navy-50:   #EEF2F7;
+  --brand-navy-100:  #D6DEE9;
+  --brand-navy-200:  #ADBCCE;
+  --brand-navy-300:  #7E93AE;
+  --brand-navy-500:  #2C4868;
+  --brand-navy-600:  #1E3551;
+  --brand-navy-700:  #14273F;
+  --brand-navy-800:  #0D1B2D;
+
+  --neutral-0:   #FFFFFF;
+  --neutral-50:  #F7F8FA;
+  --neutral-100: #EEF0F3;
+  --neutral-200: #DEE2E8;
+  --neutral-400: #9BA5B1;
+  --neutral-500: #6E7887;
+  --neutral-700: #343D4C;
+  --neutral-800: #1F2733;
+
+  --font: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+
+@page {
+  size: A4 landscape;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font);
+  color: var(--brand-navy-800);
+  background: var(--neutral-100);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "ss01", "kern";
+}
+
+/* When viewed in a browser, stack slides with a subtle gap; when printed, hide the gap */
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  padding: 24px 0;
+}
+
+.slide {
+  width: 297mm;
+  height: 210mm;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  box-shadow: 0 12px 40px rgba(13, 27, 45, 0.10);
+}
+.slide:last-child { page-break-after: auto; break-after: auto; }
+
+@media print {
+  body { padding: 0; gap: 0; background: #fff; }
+  .slide { box-shadow: none; margin: 0; }
+}
+
+/* ============================= Shared primitives ============================= */
+
+.eyebrow {
+  font-size: 10.5pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--brand-green-600);
+  margin: 0;
+}
+.eyebrow--on-dark { color: var(--brand-green-300); }
+
+h1.display {
+  font-family: var(--font);
+  font-size: 54pt;
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 0;
+  color: var(--brand-navy-800);
+}
+
+h2.title {
+  font-family: var(--font);
+  font-size: 36pt;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: var(--brand-navy-800);
+}
+
+.lede {
+  font-size: 13pt;
+  line-height: 1.5;
+  color: var(--neutral-700);
+  font-weight: 400;
+  margin: 0;
+}
+
+.body-text {
+  font-size: 10.5pt;
+  line-height: 1.55;
+  color: var(--neutral-700);
+  margin: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 11px;
+  font-size: 8.5pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: 999px;
+  background: var(--brand-green-50);
+  color: var(--brand-green-700);
+  border: 1px solid rgba(15, 107, 46, 0.1);
+  white-space: nowrap;
+}
+.chip--dark {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.88);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.chip--green-solid {
+  background: var(--brand-green-500);
+  color: #fff;
+  border-color: transparent;
+}
+
+.divider {
+  width: 48px;
+  height: 3px;
+  background: var(--brand-green-500);
+  border-radius: 2px;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(0.5px);
+}
+.orb--green {
+  background: radial-gradient(closest-side, rgba(31, 168, 74, 0.22), rgba(31, 168, 74, 0) 72%);
+}
+.orb--green-dark {
+  background: radial-gradient(closest-side, rgba(31, 168, 74, 0.55), rgba(31, 168, 74, 0) 72%);
+}
+
+.footer-mark {
+  position: absolute;
+  bottom: 10mm;
+  left: 15mm;
+  right: 15mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 8pt;
+  color: var(--neutral-500);
+  letter-spacing: 0.04em;
+}
+.footer-mark--on-dark { color: var(--brand-navy-100); }
+
+/* ============================= Slide 1 — Cover ============================= */
+
+.slide--cover {
+  background: var(--brand-navy-800);
+  color: #fff;
+  padding: 24mm 18mm;
+}
+.slide--cover .cover-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--brand-green-300);
+}
+.slide--cover .pulse {
+  width: 8px; height: 8px; border-radius: 999px; background: var(--brand-green-400);
+}
+.slide--cover h1 {
+  margin: 18mm 0 0;
+  font-size: 72pt;
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  max-width: 240mm;
+}
+.slide--cover h1 .accent { color: var(--brand-green-400); }
+.slide--cover .cover-footer {
+  position: absolute;
+  bottom: 18mm; left: 18mm; right: 18mm;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12mm;
+  align-items: end;
+}
+.slide--cover .firm-name {
+  font-size: 11pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+.slide--cover .firm-addr {
+  font-size: 10pt;
+  color: var(--brand-navy-100);
+  margin: 6px 0 0;
+}
+.slide--cover .subtitle {
+  position: absolute;
+  bottom: 44mm; left: 18mm;
+  font-size: 12pt;
+  color: var(--brand-navy-100);
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+.slide--cover .divider { margin-top: 6mm; background: var(--brand-green-400); }
+.slide--cover .qr-block {
+  text-align: center;
+  color: var(--brand-navy-100);
+  font-size: 8pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.slide--cover .qr-block img {
+  width: 24mm; height: 24mm;
+  display: block;
+  border: 4px solid #fff;
+  border-radius: 3mm;
+  margin: 0 0 5mm;
+  background: #fff;
+}
+.slide--cover .logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  margin: 0;
+}
+.slide--cover .logo-wrap img { height: 12mm; width: auto; }
+
+/* ============================= Slide 2 — About us ============================= */
+
+.slide--about { padding: 22mm 18mm; background: var(--neutral-0); }
+.slide--about .head { max-width: 210mm; }
+.slide--about h2 { margin-top: 4mm; max-width: 220mm; }
+.slide--about .body-grid {
+  margin-top: 14mm;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 16mm;
+  align-items: start;
+}
+.slide--about .lede { font-size: 14pt; font-weight: 500; color: var(--brand-navy-800); }
+.slide--about .body-text + .body-text { margin-top: 3.5mm; }
+.slide--about .pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6mm;
+  margin-top: 5mm;
+}
+.slide--about .pillar {
+  padding: 6mm;
+  background: var(--neutral-50);
+  border-radius: 4mm;
+  border: 1px solid var(--neutral-200);
+}
+.slide--about .pillar .big {
+  font-size: 32pt;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--brand-navy-800);
+  line-height: 1;
+}
+.slide--about .pillar .unit {
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-green-600);
+  margin-top: 3mm;
+}
+.slide--about .pillar .label {
+  font-size: 10pt;
+  color: var(--neutral-500);
+  margin-top: 2mm;
+  line-height: 1.35;
+}
+
+/* ============================= Slide 3 — Services ============================= */
+
+.slide--services { padding: 22mm 18mm; background: var(--neutral-0); }
+.slide--services .head-row {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 16mm;
+  align-items: end;
+  margin-bottom: 12mm;
+}
+.slide--services .grid-6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6mm;
+}
+.service-card {
+  padding: 7mm;
+  border: 1px solid var(--neutral-200);
+  border-radius: 4mm;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5mm;
+}
+.service-card .num {
+  display: inline-flex;
+  align-items: center;
+  gap: 3mm;
+}
+.service-card .badge {
+  width: 9mm; height: 9mm;
+  border-radius: 999px;
+  background: var(--brand-green-500);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 11pt;
+  letter-spacing: -0.02em;
+}
+.service-card .sub {
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-green-700);
+}
+.service-card h3 {
+  margin: 0;
+  font-size: 14pt;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  color: var(--brand-navy-800);
+}
+.service-card p { margin: 0; font-size: 9.5pt; line-height: 1.55; color: var(--neutral-700); }
+
+/* ============================= Slide 4 — How we work ============================= */
+
+.slide--process { padding: 22mm 18mm; background: var(--neutral-0); }
+.slide--process .head-row {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 16mm;
+  align-items: end;
+  margin-bottom: 14mm;
+}
+.slide--process .timeline {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7mm;
+}
+.slide--process .connector {
+  position: absolute;
+  top: 9mm; left: 6%; right: 6%;
+  height: 1.5pt;
+  background: var(--neutral-200);
+}
+.stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+}
+.stage .circle {
+  width: 18mm; height: 18mm;
+  border-radius: 999px;
+  background: var(--brand-navy-800);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  font-size: 14pt;
+  letter-spacing: -0.02em;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px var(--neutral-200);
+  z-index: 1;
+}
+.stage .timing {
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-green-600);
+}
+.stage h3 {
+  margin: 0;
+  font-size: 18pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--brand-navy-800);
+}
+.stage p { margin: 0; font-size: 9.5pt; line-height: 1.55; color: var(--neutral-700); }
+.stage .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3mm;
+  margin-top: auto;
+}
+
+/* ============================= Slide 5 — Recent projects (map) ============================= */
+
+.slide--projects {
+  background: var(--brand-navy-800);
+  color: #fff;
+  padding: 20mm 18mm 18mm;
+}
+.slide--projects .head-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16mm;
+  align-items: end;
+  margin-bottom: 10mm;
+}
+.slide--projects h2 {
+  color: #fff;
+  font-size: 32pt;
+}
+.slide--projects .lede { color: var(--brand-navy-100); }
+.slide--projects .map-wrap {
+  position: relative;
+  height: calc(210mm - 20mm - 18mm - 42mm);
+}
+.slide--projects .map-wrap svg { width: 100%; height: 100%; display: block; }
+
+/* ============================= Slide 6 — Why inRange ============================= */
+
+.slide--why { padding: 22mm 18mm; background: var(--neutral-0); }
+.slide--why .head { text-align: center; max-width: 200mm; margin: 0 auto 12mm; }
+.slide--why h2 { margin-top: 4mm; }
+.slide--why .head .lede { margin-top: 5mm; }
+.slide--why .cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6mm;
+}
+.advantage {
+  padding: 9mm;
+  background: #fff;
+  border: 1px solid var(--neutral-200);
+  border-radius: 5mm;
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+  box-shadow: 0 1px 3px rgba(20, 39, 63, 0.05);
+}
+.advantage .tag-row {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+}
+.advantage .idx {
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--brand-green-600);
+}
+.advantage h3 {
+  margin: 0;
+  font-size: 16pt;
+  font-weight: 700;
+  letter-spacing: -0.018em;
+  line-height: 1.2;
+  color: var(--brand-navy-800);
+}
+.advantage p { margin: 0; font-size: 10pt; line-height: 1.6; color: var(--neutral-700); }
+
+/* ============================= Slide 7 — Get in touch ============================= */
+
+.slide--contact {
+  background: var(--brand-navy-800);
+  color: #fff;
+  padding: 24mm 20mm;
+}
+.slide--contact h2 {
+  color: #fff;
+  font-size: 52pt;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 8mm 0 10mm;
+}
+.slide--contact h2 .accent { color: var(--brand-green-400); }
+.slide--contact .grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 18mm;
+  align-items: end;
+  margin-top: 14mm;
+}
+.slide--contact .lede { color: var(--brand-navy-100); font-size: 12pt; max-width: 160mm; }
+.slide--contact .contact-card {
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  padding-left: 10mm;
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 11pt;
+  line-height: 1.5;
+}
+.slide--contact .contact-card .line {
+  display: flex;
+  align-items: flex-start;
+  gap: 4mm;
+}
+.slide--contact .contact-card .icon {
+  color: var(--brand-green-300);
+  width: 5mm;
+  height: 5mm;
+  flex-shrink: 0;
+  margin-top: 0.5mm;
+}
+.slide--contact .contact-card a { color: #fff; text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+.slide--contact .contact-card .divider-line { height: 1px; background: rgba(255, 255, 255, 0.12); margin: 0; }
+.slide--contact .qr-row {
+  margin-top: 10mm;
+  display: flex;
+  align-items: center;
+  gap: 8mm;
+}
+.slide--contact .qr-row img { width: 28mm; height: 28mm; border: 4px solid #fff; border-radius: 3mm; }
+.slide--contact .qr-row .label-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2mm;
+}
+.slide--contact .qr-row .label-stack .big {
+  font-size: 12pt;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.slide--contact .qr-row .label-stack .small {
+  font-size: 9pt;
+  color: var(--brand-navy-100);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}

@@ -5,4 +5,5 @@ Thumbs.db
 node_modules/
 deck/node_modules/
 deck/package-lock.json
-deck/*.pdf
+deck/slide-*.png
+deck/web/_build.html

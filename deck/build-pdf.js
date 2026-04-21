@@ -16,7 +16,10 @@ const DEFAULT_OUT = VARIANT === 'founder'
 const OUT_PATH = path.join(__dirname, process.env.OUT_PDF || DEFAULT_OUT);
 
 const SITE_URL = 'https://www.inrange.nl';
-const MAILTO   = 'mailto:info@inrange.nl?subject=inRange%20—%20Hello';
+// Founder deck uses the founder's direct email for the QR; default deck uses the general inbox.
+const MAILTO = VARIANT === 'founder'
+  ? 'mailto:aleks@inrange.nl?subject=inRange%20—%20Hello'
+  : 'mailto:info@inrange.nl?subject=inRange%20—%20Hello';
 
 async function qrDataUrl(url, dark = '#0D1B2D', light = '#FFFFFF') {
   return QRCode.toDataURL(url, {

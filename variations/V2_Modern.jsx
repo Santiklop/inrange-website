@@ -213,7 +213,7 @@ function V2_Modern() {
               <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: 12 }}>Industries we serve</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {['Construction', 'Consumer & Retail', 'FMCG', 'Food Delivery', 'Industrial', 'Payments', 'SaaS & Technology', 'Travel'].map(t => (
+                  {['SaaS & Technology', 'Consumer & Retail', 'Travel', 'Food Delivery', 'Industrial', 'Payments', 'Construction', 'FMCG'].map(t => (
                     <span key={t} style={{ fontSize: 11.5, fontWeight: 600, padding: '6px 10px', borderRadius: 999, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.9)' }}>{t}</span>
                   ))}
                 </div>
@@ -600,6 +600,12 @@ function V2_Modern() {
                 <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
                 <div>+31 648 44 6063</div>
                 <a href="mailto:info@inrange.nl" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.3)', alignSelf: 'flex-start' }}>info@inrange.nl</a>
+                <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
+                <a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer"
+                   style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10, alignSelf: 'flex-start', padding: '8px 14px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)', fontSize: 13, fontWeight: 600 }}>
+                  <Icon name="linkedin" size={16} />
+                  Follow us on LinkedIn
+                </a>
               </div>
             </div>
           </div>
@@ -639,6 +645,9 @@ function V2_Modern() {
             <a href="#top" onClick={scrollTo('top')} style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>Back to top</a>
             <a href="mailto:info@inrange.nl" style={{ color: 'inherit', textDecoration: 'none' }}>Email us</a>
             <a href="tel:+31648446063" style={{ color: 'inherit', textDecoration: 'none' }}>Call us</a>
+            <a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+              <Icon name="linkedin" size={12} />LinkedIn
+            </a>
           </div>
         </div>
       </footer>

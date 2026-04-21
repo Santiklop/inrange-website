@@ -3,3 +3,6 @@ _design/
 .DS_Store
 Thumbs.db
 node_modules/
+deck/node_modules/
+deck/package-lock.json
+deck/*.pdf

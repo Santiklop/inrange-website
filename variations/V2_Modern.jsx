@@ -596,10 +596,19 @@ function V2_Modern() {
             <div style={{ borderLeft: isNarrow ? 'none' : '1px solid rgba(255,255,255,0.18)', borderTop: isNarrow ? '1px solid rgba(255,255,255,0.18)' : 'none', paddingLeft: isNarrow ? 0 : 40, paddingTop: isNarrow ? 24 : 0 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--brand-green-300)', textTransform: 'uppercase', marginBottom: 18 }}>inRange Solutions</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, color: 'rgba(255,255,255,0.85)', fontSize: 15, lineHeight: 1.55 }}>
-                <div>Saskia van Uijlenburgkade 104<br/>Amsterdam, Netherlands</div>
+                <div style={{ display: 'flex', alignItems: 'flex-start', gap: 12 }}>
+                  <Icon name="map-pin" size={16} style={{ color: 'var(--brand-green-300)', marginTop: 4, flexShrink: 0 }} />
+                  <div>Saskia van Uijlenburgkade 104<br/>Amsterdam, Netherlands</div>
+                </div>
                 <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
-                <div>+31 648 44 6063</div>
-                <a href="mailto:info@inrange.nl" style={{ color: '#fff', borderBottom: '1px solid rgba(255,255,255,0.3)', alignSelf: 'flex-start' }}>info@inrange.nl</a>
+                <a href="tel:+31648446063" style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 12, alignSelf: 'flex-start' }}>
+                  <Icon name="phone" size={16} style={{ color: 'var(--brand-green-300)', flexShrink: 0 }} />
+                  +31 648 44 6063
+                </a>
+                <a href="mailto:info@inrange.nl" style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 12, alignSelf: 'flex-start', borderBottom: '1px solid rgba(255,255,255,0.3)' }}>
+                  <Icon name="mail" size={16} style={{ color: 'var(--brand-green-300)', flexShrink: 0 }} />
+                  info@inrange.nl
+                </a>
                 <div style={{ height: 1, background: 'rgba(255,255,255,0.12)' }} />
                 <a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer"
                    style={{ color: '#fff', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10, alignSelf: 'flex-start', padding: '8px 14px', borderRadius: 999, background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)', fontSize: 13, fontWeight: 600 }}>
@@ -641,13 +650,29 @@ function V2_Modern() {
         </div>
         <div style={{ maxWidth: 1320, margin: isMobile ? '36px auto 0' : '56px auto 0', paddingTop: 24, borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 12 : 0, justifyContent: 'space-between', fontSize: 12, color: 'var(--fg-3)' }}>
           <div>© 2026 inRange Solutions B.V.</div>
-          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center' }}>
             <a href="#top" onClick={scrollTo('top')} style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>Back to top</a>
-            <a href="mailto:info@inrange.nl" style={{ color: 'inherit', textDecoration: 'none' }}>Email us</a>
-            <a href="tel:+31648446063" style={{ color: 'inherit', textDecoration: 'none' }}>Call us</a>
-            <a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
-              <Icon name="linkedin" size={12} />LinkedIn
-            </a>
+            {[
+              { href: 'mailto:info@inrange.nl', icon: 'mail', label: 'Email us' },
+              { href: 'tel:+31648446063', icon: 'phone', label: 'Call us' },
+              { href: 'https://www.linkedin.com/company/inrange-solutions/', icon: 'linkedin', label: 'LinkedIn', external: true },
+            ].map(({ href, icon, label, external }) => (
+              <a
+                key={label}
+                href={href}
+                aria-label={label}
+                title={label}
+                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                style={{
+                  width: 32, height: 32, borderRadius: 999,
+                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                  color: 'var(--fg-2)', background: 'var(--neutral-50)', border: '1px solid var(--border-subtle)',
+                  textDecoration: 'none',
+                }}
+              >
+                <Icon name={icon} size={14} />
+              </a>
+            ))}
           </div>
         </div>
       </footer>

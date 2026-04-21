@@ -275,7 +275,7 @@ function V2_Modern() {
                           <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
                           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                             <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
-                            <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
+                            <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>
                           </div>
                         </div>
                       </div>
@@ -325,7 +325,7 @@ function V2_Modern() {
                 ); })()}
                 <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
                   <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
-                  <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
+                  <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>
                 </div>
               </div>
             </div>

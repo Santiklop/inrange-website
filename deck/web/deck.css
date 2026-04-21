@@ -467,14 +467,14 @@ h2.title {
 .slide--projects {
   background: var(--brand-navy-800);
   color: #fff;
-  padding: 15mm 18mm 14mm;
+  padding: 13mm 18mm 14mm;
 }
 .slide--projects .header {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 10mm;
   align-items: end;
-  margin-bottom: 5mm;
+  margin-bottom: 4mm;
 }
 .slide--projects h2 {
   color: #fff;
@@ -492,12 +492,12 @@ h2.title {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 8mm;
-  margin-bottom: 5mm;
+  margin-bottom: 4mm;
 }
 
 .slide--projects .map-panel {
   position: relative;
-  height: 62mm;
+  height: 58mm;
   border-radius: 4mm;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.02);
@@ -513,7 +513,7 @@ h2.title {
   display: flex;
   flex-direction: column;
   gap: 1mm;
-  height: 62mm;
+  height: 58mm;
   position: relative;
   overflow: hidden;
 }
@@ -558,8 +558,9 @@ h2.title {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 1fr 1fr;
-  height: 66mm;
+  height: 72mm;
   gap: 3.5mm;
+  margin-bottom: 4mm;
 }
 .project-card {
   padding: 4mm 4.5mm;
@@ -592,14 +593,22 @@ h2.title {
   margin-top: 0.5mm;
 }
 .project-card .industry {
-  font-size: 7.5pt;
-  color: rgba(255, 255, 255, 0.72);
-  padding: 1mm 2.5mm;
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  border-radius: 999px;
-  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 1.8mm;
   margin-top: auto;
-  letter-spacing: 0.02em;
+  align-self: flex-start;
+  font-size: 8pt;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+.project-card .industry svg {
+  width: 3.6mm;
+  height: 3.6mm;
+  color: var(--brand-green-400);
+  flex-shrink: 0;
 }
 
 /* ============================= Slide 6 — Why inRange ============================= */

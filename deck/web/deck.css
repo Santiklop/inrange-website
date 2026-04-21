@@ -535,14 +535,15 @@ h2.title {
 }
 .footprint .stat {
   display: grid;
-  grid-template-columns: 18mm 1fr;
-  align-items: baseline;
+  grid-template-columns: 16mm 1fr;
+  align-items: center;
   gap: 3mm;
-  padding: 3mm 0;
+  padding: 2.2mm 0;
   border-top: 1px solid rgba(255, 255, 255, 0.10);
   position: relative;
 }
 .footprint .stat:first-of-type { border-top: none; padding-top: 0; }
+.footprint .stat:last-of-type { padding-bottom: 0; }
 .footprint .stat .n {
   font-size: 26pt;
   font-weight: 700;

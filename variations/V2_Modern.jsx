@@ -18,9 +18,12 @@ function V2_Modern() {
       const el = document.getElementById(id);
       if (!el) return;
       const nav = document.querySelector('nav');
-      const offset = (nav ? nav.getBoundingClientRect().height : 72) + 8;
-      const y = el.getBoundingClientRect().top + window.scrollY - offset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      const navH = nav ? nav.getBoundingClientRect().height : 72;
+      // Land just above the section's content (past its padding-top), not at the section's edge.
+      const paddingTop = parseFloat(window.getComputedStyle(el).paddingTop) || 0;
+      const breathingRoom = 32;
+      const y = el.getBoundingClientRect().top + window.scrollY + paddingTop - navH - breathingRoom;
+      window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
     };
     // Double-rAF lets pending state (e.g. mobile menu closing) settle before we measure.
     requestAnimationFrame(() => requestAnimationFrame(doScroll));

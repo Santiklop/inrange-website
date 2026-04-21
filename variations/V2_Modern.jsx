@@ -160,7 +160,7 @@ function V2_Modern() {
                 display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14,
               }}>
                 {[
-                  { big: '15+', unit: 'yrs', label: 'Avg. experience per specialist' },
+                  { big: '15+', unit: 'years', label: 'Avg. experience per specialist' },
                   { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
                   { big: '40%', unit: 'more value', label: 'vs. Big Four' },
                 ].map((s, i) => (
@@ -194,7 +194,7 @@ function V2_Modern() {
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)' }}>At a glance</div>
               <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 4 }}>
                 {[
-                  { big: '15+', unit: 'yrs', label: 'Average experience per specialist' },
+                  { big: '15+', unit: 'years', label: 'Average experience per specialist' },
                   { big: '60%', unit: 'faster', label: 'Turnaround, AI-enabled' },
                   { big: '40%', unit: 'more', label: 'Value for money vs. Big Four engagements' },
                 ].map((s, i) => (
@@ -204,7 +204,7 @@ function V2_Modern() {
                   }}>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 38 : 48, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 0.9, color: '#fff', minWidth: isMobile ? 82 : 100 }}>{s.big}</div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--brand-green-300)', letterSpacing: '0.02em' }}>{s.unit}</div>
+                      <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--brand-green-300)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{s.unit}</div>
                       <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 2, lineHeight: 1.4 }}>{s.label}</div>
                     </div>
                   </div>

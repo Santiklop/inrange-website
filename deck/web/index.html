@@ -274,7 +274,7 @@
         <h2 class="title">Amsterdam-based.<br>Working internationally.</h2>
       </div>
       <p class="lede">
-        A rolling view of recent engagements — scoped out of Amsterdam,
+        A selection of recent engagements — scoped out of Amsterdam,
         delivered wherever they are needed.
       </p>
     </div>
@@ -619,12 +619,11 @@
         `;
       }
 
-      // --- HQ marker + compact label ---
+      // --- HQ marker (no label — Amsterdam appears as a card in the grid below) ---
       const hqMarker = `
         <circle cx="${hqX}" cy="${hqY}" r="16" fill="rgba(31,168,74,0.18)"/>
         <circle cx="${hqX}" cy="${hqY}" r="10" fill="rgba(31,168,74,0.35)"/>
         <circle cx="${hqX}" cy="${hqY}" r="5.5" fill="#fff" stroke="#1FA84A" stroke-width="2"/>
-        <text x="${hqX}" y="${hqY + 22}" fill="#fff" font-size="11" font-weight="700" text-anchor="middle" style="letter-spacing:0.08em;">AMSTERDAM · HQ</text>
       `;
 
       svg.innerHTML = dotsSvg + markers + hqMarker;

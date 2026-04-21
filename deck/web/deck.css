@@ -268,7 +268,7 @@ h2.title {
 .slide--about .body-grid {
   margin-top: 10mm;
   display: grid;
-  grid-template-columns: 1.15fr 1fr;
+  grid-template-columns: 1.35fr 1fr;
   gap: 14mm;
   align-items: start;
 }
@@ -280,62 +280,63 @@ h2.title {
   position: relative;
   background: var(--brand-navy-800);
   color: #fff;
-  border-radius: 6mm;
-  padding: 9mm 9mm 8mm;
+  border-radius: 5mm;
+  padding: 7mm 7mm 6mm;
   overflow: hidden;
   box-shadow: 0 6px 16px rgba(13, 27, 45, 0.18);
 }
 .at-a-glance::after {
   content: '';
   position: absolute;
-  top: -26mm; right: -26mm;
-  width: 70mm; height: 70mm;
+  top: -22mm; right: -22mm;
+  width: 56mm; height: 56mm;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(31, 168, 74, 0.42), transparent 72%);
+  background: radial-gradient(closest-side, rgba(31, 168, 74, 0.40), transparent 72%);
   pointer-events: none;
 }
 .at-a-glance .eyebrow {
   color: var(--brand-green-300);
   position: relative;
+  font-size: 9.5pt;
 }
 .at-a-glance .stack {
-  margin-top: 6mm;
+  margin-top: 4mm;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 .at-a-glance .row {
   display: grid;
-  grid-template-columns: 30mm 1fr;
-  gap: 5mm;
+  grid-template-columns: 22mm 1fr;
+  gap: 4mm;
   align-items: baseline;
-  padding: 4mm 0;
+  padding: 3mm 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 .at-a-glance .row:first-of-type {
   border-top: none;
-  padding-top: 1mm;
+  padding-top: 0;
 }
 .at-a-glance .big {
-  font-size: 34pt;
+  font-size: 26pt;
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.03em;
   line-height: 0.9;
   color: #fff;
   font-variant-numeric: tabular-nums;
 }
 .at-a-glance .unit {
-  font-size: 9.5pt;
+  font-size: 8.5pt;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--brand-green-300);
 }
 .at-a-glance .label {
-  font-size: 10pt;
+  font-size: 9pt;
   color: rgba(255, 255, 255, 0.78);
-  line-height: 1.4;
-  margin-top: 1.5mm;
+  line-height: 1.35;
+  margin-top: 1mm;
   font-weight: 400;
 }
 

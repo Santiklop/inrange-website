@@ -475,9 +475,10 @@ h2.title {
   display: grid;
   grid-template-columns: 1.1fr 1fr;
   gap: 10mm;
-  align-items: end;
+  align-items: center;
   margin-bottom: 4mm;
 }
+.slide--projects .header > p { padding-top: 6mm; }
 .slide--projects h2 {
   color: #fff;
   font-size: 28pt;

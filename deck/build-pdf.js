@@ -7,8 +7,13 @@ const QRCode = require('qrcode');
 const fs = require('fs');
 const path = require('path');
 
-const HTML_PATH = path.join(__dirname, 'web', 'index.html');
-const OUT_PATH = path.join(__dirname, process.env.OUT_PDF || 'inRange_Capability_Deck.pdf');
+// Set VARIANT=founder to build the deck with the founder photo in the cover + contact circles.
+const VARIANT = process.env.VARIANT || 'default';
+const HTML_PATH = path.join(__dirname, 'web', VARIANT === 'founder' ? 'index-founder.html' : 'index.html');
+const DEFAULT_OUT = VARIANT === 'founder'
+  ? 'inRange_Capability_Deck_Founder.pdf'
+  : 'inRange_Capability_Deck.pdf';
+const OUT_PATH = path.join(__dirname, process.env.OUT_PDF || DEFAULT_OUT);
 
 const SITE_URL = 'https://www.inrange.nl';
 const MAILTO   = 'mailto:info@inrange.nl?subject=inRange%20—%20Hello';

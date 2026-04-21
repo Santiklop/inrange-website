@@ -147,15 +147,46 @@ function V2_Modern() {
             <p style={{ fontSize: isMobile ? 16 : 20, lineHeight: 1.5, color: 'var(--fg-2)', margin: isMobile ? '20px 0 28px' : '28px 0 36px', maxWidth: 560 }}>
               High-quality Transfer Pricing services for multinational companies.
             </p>
-            <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Button variant="primary" size={isMobile ? 'md' : 'lg'} iconRight="download" onClick={downloadDeck}>Download capability deck</Button>
-              <Button variant="secondary" size={isMobile ? 'md' : 'lg'} iconRight="arrow-right" onClick={scrollTo('services')}>Our services</Button>
+            <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 10 : 12, flexWrap: 'wrap' }}>
+              <Button variant="primary" size={isMobile ? 'md' : 'lg'} iconRight="download" onClick={downloadDeck} style={isMobile ? { width: '100%', justifyContent: 'center' } : {}}>Download capability deck</Button>
+              <Button variant="secondary" size={isMobile ? 'md' : 'lg'} iconRight="arrow-right" onClick={scrollTo('services')} style={isMobile ? { width: '100%', justifyContent: 'center' } : {}}>Our services</Button>
             </div>
+
+            {/* Mobile-only compact proof strip (replaces the at-a-glance card) */}
+            {isMobile && (
+              <div style={{
+                marginTop: 36, paddingTop: 28,
+                borderTop: '1px solid var(--border-subtle)',
+                display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14,
+              }}>
+                {[
+                  { big: '15+', unit: 'yrs', label: 'Avg. experience' },
+                  { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
+                  { big: '40%', unit: 'less', label: 'vs. Big Four' },
+                ].map((s, i) => (
+                  <div key={s.big} style={{
+                    paddingLeft: i === 0 ? 0 : 14,
+                    borderLeft: i === 0 ? 'none' : '1px solid var(--border-subtle)',
+                  }}>
+                    <div style={{
+                      fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 700,
+                      letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--brand-navy-800)',
+                    }}>{s.big}</div>
+                    <div style={{
+                      fontSize: 10.5, fontWeight: 700, letterSpacing: '0.1em',
+                      textTransform: 'uppercase', color: 'var(--fg-brand)', marginTop: 6,
+                    }}>{s.unit}</div>
+                    <div style={{ fontSize: 11.5, color: 'var(--fg-3)', marginTop: 4, lineHeight: 1.35 }}>{s.label}</div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
-          {/* RIGHT: at-a-glance card */}
+          {/* RIGHT: at-a-glance card (desktop + tablet only) */}
+          {!isMobile && (
           <div style={{
-            background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 20, padding: isMobile ? 24 : 32,
+            background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 20, padding: isTablet ? 24 : 32,
             position: 'relative', overflow: 'hidden',
           }}>
             <div style={{ position: 'absolute', top: -80, right: -80, width: 220, height: 220, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.1 }} />
@@ -189,6 +220,7 @@ function V2_Modern() {
               </div>
             </div>
           </div>
+          )}
         </div>
 
       </section>

@@ -161,6 +161,9 @@ function arcPath(x1, y1, x2, y2) {
 }
 
 function SignalMapSection() {
+  const isMobile = window.useMediaQuery('(max-width: 767px)');
+  const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
+  const isNarrow = isMobile || isTablet;
   const HQ = { name: 'Amsterdam', country: 'Netherlands', lat: 52.37, lon: 4.90 };
   const projects = [
     {
@@ -275,23 +278,23 @@ function SignalMapSection() {
   const arc = arcPath(hq[0], hq[1], current.xy[0], current.xy[1]);
 
   return (
-    <section id="projects" style={{ padding: '112px 40px', background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
+    <section id="projects" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
       <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: 72, alignItems: 'end', marginBottom: 48 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 20 : (isTablet ? 48 : 72), alignItems: isNarrow ? 'start' : 'end', marginBottom: isMobile ? 32 : 48 }}>
           <div>
             <Eyebrow>Recent projects</Eyebrow>
-            <h2 style={{ margin: '16px 0 0', fontSize: 52, letterSpacing: '-0.03em', lineHeight: 1 }}>
+            <h2 style={{ margin: '16px 0 0', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
               Amsterdam-based.<br/>Working internationally.
             </h2>
           </div>
-          <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>
+          <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>
             A rolling view of recent engagements. Every pulse is a project — scoped out of Amsterdam, delivered wherever it's needed.
           </p>
         </div>
 
         <div style={{
-          position: 'relative', background: 'var(--brand-navy-800)', borderRadius: 24, overflow: 'hidden',
-          padding: 32, display: 'grid', gridTemplateColumns: '1.65fr 1fr', gap: 32, alignItems: 'stretch',
+          position: 'relative', background: 'var(--brand-navy-800)', borderRadius: isMobile ? 20 : 24, overflow: 'hidden',
+          padding: isMobile ? 16 : 32, display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.65fr 1fr', gap: isMobile ? 20 : 32, alignItems: 'stretch',
         }}
           onMouseEnter={() => setPaused(true)}
           onMouseLeave={() => setPaused(false)}

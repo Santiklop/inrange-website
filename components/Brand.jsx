@@ -85,4 +85,17 @@ function Badge({ children, tone = 'neutral', dot = true }) {
   );
 }
 
-Object.assign(window, { Icon, Logo, Button, Eyebrow, Badge });
+function useMediaQuery(query) {
+  const get = () => (typeof window !== 'undefined' && window.matchMedia) ? window.matchMedia(query).matches : false;
+  const [matches, setMatches] = useState(get);
+  React.useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = (e) => setMatches(e.matches);
+    setMatches(mql.matches);
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, [query]);
+  return matches;
+}
+
+Object.assign(window, { Icon, Logo, Button, Eyebrow, Badge, useMediaQuery });

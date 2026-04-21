@@ -3,6 +3,10 @@
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
   const [activeService, setActiveService] = React.useState(0);
+  const isMobile = window.useMediaQuery('(max-width: 767px)');
+  const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
+  const isNarrow = isMobile || isTablet;
+  const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
 
   const scrollTo = (id) => (e) => {
     if (e) e.preventDefault();
@@ -71,49 +75,73 @@ function V2_Modern() {
         position: 'sticky', top: 0, zIndex: 40, background: 'rgba(255,255,255,0.9)',
         backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--border-subtle)',
       }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto', padding: '14px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <Logo height={40} />
-          <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: 4, borderRadius: 999 }}>
-            {navLinks.map(([label, id]) => (
-              <a key={id} href={`#${id}`} onClick={scrollTo(id)} style={{ padding: '8px 16px', fontSize: 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer' }}>{label}</a>
-            ))}
-          </div>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>
-            <Button variant="primary" size="sm" iconRight="download" onClick={downloadDeck}>Capability deck</Button>
+        <div style={{ maxWidth: 1320, margin: '0 auto', padding: isMobile ? '12px 20px' : '14px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+          <Logo height={isMobile ? 32 : 40} />
+          {!isMobile && (
+            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: 4, borderRadius: 999 }}>
+              {navLinks.map(([label, id]) => (
+                <a key={id} href={`#${id}`} onClick={scrollTo(id)} style={{ padding: isTablet ? '6px 12px' : '8px 16px', fontSize: isTablet ? 12.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>{label}</a>
+              ))}
+            </div>
+          )}
+          <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
+            {!isMobile && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
+            {!isMobile && <Button variant="primary" size="sm" iconRight="download" onClick={downloadDeck}>Capability deck</Button>}
+            {isMobile && (
+              <button
+                aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
+                onClick={() => setMobileNavOpen(o => !o)}
+                style={{ background: 'var(--neutral-50)', border: '1px solid var(--border-subtle)', borderRadius: 10, width: 40, height: 40, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', padding: 0 }}
+              >
+                <Icon name={mobileNavOpen ? 'x' : 'menu'} size={20} />
+              </button>
+            )}
           </div>
         </div>
+        {isMobile && mobileNavOpen && (
+          <div style={{ borderTop: '1px solid var(--border-subtle)', background: '#fff', padding: '12px 20px 20px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 16 }}>
+              {navLinks.map(([label, id]) => (
+                <a key={id} href={`#${id}`} onClick={(e) => { scrollTo(id)(e); setMobileNavOpen(false); }} style={{ padding: '12px 14px', fontSize: 15, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 10, textDecoration: 'none', cursor: 'pointer' }}>{label}</a>
+              ))}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+              <Button variant="primary" size="md" iconRight="download" onClick={(e) => { downloadDeck(e); setMobileNavOpen(false); }} style={{ width: '100%', justifyContent: 'center' }}>Capability deck</Button>
+              <Button variant="secondary" size="md" onClick={(e) => { scrollTo('contact')(e); setMobileNavOpen(false); }} style={{ width: '100%', justifyContent: 'center' }}>Let's connect</Button>
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* HERO */}
-      <section id="top" style={{ padding: '72px 40px 56px', maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1.35fr 1fr', gap: 64, alignItems: 'start' }}>
+      <section id="top" style={{ padding: isMobile ? '40px 20px 32px' : (isTablet ? '56px 32px 48px' : '72px 40px 56px'), maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.35fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: 'start' }}>
           {/* LEFT: headline */}
           <div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 16 : 24 }}>
               <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--brand-green-500)', animation: 'pulse 2s ease-in-out infinite' }} />
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-brand)' }}>Transfer pricing · Amsterdam</span>
             </div>
             <h1 style={{
-              margin: 0, fontSize: 76, lineHeight: 0.95, letterSpacing: '-0.035em', fontWeight: 700,
+              margin: 0, fontSize: isMobile ? 42 : (isTablet ? 58 : 76), lineHeight: 0.95, letterSpacing: '-0.035em', fontWeight: 700,
             }}>
               Your trusted<br/>transfer pricing <span style={{
                 background: 'linear-gradient(105deg, var(--brand-green-500), var(--brand-green-700))',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>partner.</span>
             </h1>
-            <p style={{ fontSize: 20, lineHeight: 1.5, color: 'var(--fg-2)', margin: '28px 0 36px', maxWidth: 560 }}>
+            <p style={{ fontSize: isMobile ? 16 : 20, lineHeight: 1.5, color: 'var(--fg-2)', margin: isMobile ? '20px 0 28px' : '28px 0 36px', maxWidth: 560 }}>
               High-quality Transfer Pricing services for multinational companies.
             </p>
             <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-              <Button variant="primary" size="lg" iconRight="download" onClick={downloadDeck}>Download capability deck</Button>
-              <Button variant="secondary" size="lg" iconRight="arrow-right" onClick={scrollTo('services')}>Our services</Button>
+              <Button variant="primary" size={isMobile ? 'md' : 'lg'} iconRight="download" onClick={downloadDeck}>Download capability deck</Button>
+              <Button variant="secondary" size={isMobile ? 'md' : 'lg'} iconRight="arrow-right" onClick={scrollTo('services')}>Our services</Button>
             </div>
           </div>
 
           {/* RIGHT: at-a-glance card */}
           <div style={{
-            background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 20, padding: 32,
+            background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 20, padding: isMobile ? 24 : 32,
             position: 'relative', overflow: 'hidden',
           }}>
             <div style={{ position: 'absolute', top: -80, right: -80, width: 220, height: 220, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.1 }} />
@@ -129,7 +157,7 @@ function V2_Modern() {
                     display: 'flex', alignItems: 'baseline', gap: 12, padding: '18px 0',
                     borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)',
                   }}>
-                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 48, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 0.9, color: '#fff', minWidth: 100 }}>{s.big}</div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 38 : 48, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 0.9, color: '#fff', minWidth: isMobile ? 82 : 100 }}>{s.big}</div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--brand-green-300)', letterSpacing: '0.02em' }}>{s.unit}</div>
                       <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 2, lineHeight: 1.4 }}>{s.label}</div>
@@ -150,7 +178,7 @@ function V2_Modern() {
         </div>
 
         {/* Ticker — TP topics we cover */}
-        <div style={{ marginTop: 80, borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', padding: '18px 0', overflow: 'hidden' }}>
+        <div style={{ marginTop: isMobile ? 48 : 80, borderTop: '1px solid var(--border-subtle)', borderBottom: '1px solid var(--border-subtle)', padding: '18px 0', overflow: 'hidden' }}>
           <div style={{ display: 'flex', gap: 40, whiteSpace: 'nowrap', animation: 'scroll 40s linear infinite' }}>
             {[...Array(2)].flatMap((_, i) => ['Master file', 'Local file', 'Country-by-Country Reporting', 'Benchmarking study', 'Intercompany agreements', 'Financial transactions', 'Business restructuring', 'Tax audit support', 'Economic analyses', 'Interim TP specialists'].map((t, j) => (
               <span key={`${i}-${j}`} style={{ fontSize: 14, fontWeight: 500, color: 'var(--fg-3)', display: 'flex', alignItems: 'center', gap: 40 }}>
@@ -162,16 +190,16 @@ function V2_Modern() {
       </section>
 
       {/* ABOUT */}
-      <section id="about" style={{ padding: '112px 40px', scrollMarginTop: 80 }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: '5fr 7fr', gap: 72 }}>
+      <section id="about" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), scrollMarginTop: 80 }}>
+        <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 28 : (isTablet ? 48 : 72) }}>
           <div>
             <Eyebrow>About our company</Eyebrow>
-            <h2 style={{ margin: '16px 0 0', fontSize: 52, letterSpacing: '-0.03em', lineHeight: 1 }}>
+            <h2 style={{ margin: '16px 0 0', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
               Transfer pricing expertise, combined with market-leading technology.
             </h2>
           </div>
           <div style={{ paddingTop: 8 }}>
-            <p style={{ fontSize: 20, lineHeight: 1.55, color: 'var(--fg-1)', fontWeight: 500, margin: '0 0 24px' }}>
+            <p style={{ fontSize: isMobile ? 17 : 20, lineHeight: 1.55, color: 'var(--fg-1)', fontWeight: 500, margin: '0 0 24px' }}>
               At inRange, we combine Transfer Pricing expertise with market leading technology and passion for serving clients.
             </p>
             <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--fg-2)', margin: '0 0 20px' }}>
@@ -185,19 +213,19 @@ function V2_Modern() {
       </section>
 
       {/* SERVICES — interactive split panel */}
-      <section id="services" style={{ padding: '112px 40px', background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
+      <section id="services" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'end', marginBottom: 56 }}>
+          <div style={{ display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 16 : 32, justifyContent: 'space-between', alignItems: isMobile ? 'flex-start' : 'end', marginBottom: isMobile ? 32 : 56 }}>
             <div>
               <Eyebrow>Our services</Eyebrow>
-              <h2 style={{ margin: '16px 0 0', fontSize: 56, letterSpacing: '-0.03em', lineHeight: 1 }}>Six ways we help.</h2>
+              <h2 style={{ margin: '16px 0 0', fontSize: isMobile ? 34 : (isTablet ? 44 : 56), letterSpacing: '-0.03em', lineHeight: 1 }}>Six ways we help.</h2>
             </div>
             <p style={{ maxWidth: 420, fontSize: 16, color: 'var(--fg-2)', margin: 0, lineHeight: 1.55 }}>
               A focused Transfer Pricing practice. Every engagement led by a senior specialist; every deliverable reviewed at partner level.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 40, background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1fr 1.3fr', gap: isNarrow ? 0 : 40, background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
             <div style={{ padding: 16 }}>
               {services.map((s, i) => (
                 <div key={s.title}
@@ -226,14 +254,14 @@ function V2_Modern() {
                 </div>
               ))}
             </div>
-            <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
+            <div style={{ background: 'var(--brand-navy-800)', padding: isMobile ? 28 : 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
               <div style={{ position: 'absolute', top: -80, right: -80, width: 280, height: 280, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
               <div style={{ position: 'relative' }}>
                 <Eyebrow color="var(--brand-green-300)">{services[activeService].sub}</Eyebrow>
-                <h3 style={{ color: '#fff', fontSize: 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{services[activeService].title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{services[activeService].body}</p>
+                <h3 style={{ color: '#fff', fontSize: isMobile ? 28 : 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{services[activeService].title}</h3>
+                <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: isMobile ? 15 : 17, lineHeight: 1.6, margin: 0 }}>{services[activeService].body}</p>
               </div>
-              <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative' }}>
+              <div style={{ marginTop: isMobile ? 28 : 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
                 <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
                 <Button variant="outlineInverted" onClick={scrollTo('why')}>All services</Button>
               </div>
@@ -243,23 +271,23 @@ function V2_Modern() {
       </section>
 
       {/* GET YOUR TP DONE — global coverage */}
-      <section id="coverage" style={{ padding: '112px 40px', scrollMarginTop: 80 }}>
+      <section id="coverage" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '5fr 7fr', gap: 72, alignItems: 'end', marginBottom: 64 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '5fr 7fr', gap: isMobile ? 20 : (isTablet ? 48 : 72), alignItems: isNarrow ? 'start' : 'end', marginBottom: isMobile ? 40 : 64 }}>
             <div>
               <Eyebrow>How we work</Eyebrow>
-              <h2 style={{ margin: '16px 0 0', fontSize: 52, letterSpacing: '-0.03em', lineHeight: 1 }}>
+              <h2 style={{ margin: '16px 0 0', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
                 A predictable path from scope to sign-off.
               </h2>
             </div>
-            <p style={{ fontSize: 17, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>
+            <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.6, color: 'var(--fg-2)', margin: 0 }}>
               Every engagement runs on the same four-stage cadence — led end-to-end by a senior specialist, with AI-enabled tooling handling the mechanical work so yours gets the considered thought.
             </p>
           </div>
 
           {/* PROCESS TIMELINE */}
-          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 20 }}>
-            <div style={{ position: 'absolute', top: 36, left: '6%', right: '6%', height: 2, background: 'var(--border-subtle)', zIndex: 0 }} />
+          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : (isTablet ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)'), gap: isMobile ? 28 : 20 }}>
+            {!isNarrow && <div style={{ position: 'absolute', top: 36, left: '6%', right: '6%', height: 2, background: 'var(--border-subtle)', zIndex: 0 }} />}
             {[
               {
                 step: '01', title: 'Scope', timing: 'Week 1',
@@ -324,18 +352,18 @@ function V2_Modern() {
       <SignalMapSection />
 
       {/* ADVANTAGES — verbatim from site */}
-      <section id="why" style={{ padding: '112px 40px', background: '#fff', scrollMarginTop: 80 }}>
+      <section id="why" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: 64, maxWidth: 820, marginLeft: 'auto', marginRight: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: isMobile ? 40 : 64, maxWidth: 820, marginLeft: 'auto', marginRight: 'auto' }}>
             <Eyebrow>Advantages of working with us</Eyebrow>
-            <h2 style={{ margin: '16px 0 20px', fontSize: 52, letterSpacing: '-0.03em', lineHeight: 1 }}>
+            <h2 style={{ margin: '16px 0 20px', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
               Expertise, technology, and a passion for serving clients.
             </h2>
-            <p style={{ fontSize: 17, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 }}>
+            <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 }}>
               At inRange, we combine Transfer Pricing expertise with market-leading technology and passion for serving clients.
             </p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 24 }}>
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : (isTablet ? 'repeat(2, 1fr)' : 'repeat(3, 1fr)'), gap: isMobile ? 16 : 24 }}>
             {[
               {
                 tag: 'High Quality',
@@ -357,7 +385,7 @@ function V2_Modern() {
               },
             ].map((x, i) => (
               <div key={x.tag} style={{
-                background: '#fff', borderRadius: 20, padding: 36, border: '1px solid var(--border-subtle)',
+                background: '#fff', borderRadius: 20, padding: isMobile ? 24 : 36, border: '1px solid var(--border-subtle)',
                 transition: 'all 220ms var(--ease-standard)', display: 'flex', flexDirection: 'column',
                 position: 'relative', overflow: 'hidden',
               }}
@@ -377,28 +405,28 @@ function V2_Modern() {
       </section>
 
       {/* CONTACT CTA */}
-      <section id="contact" style={{ padding: '112px 40px', background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
+      <section id="contact" style={{ padding: isMobile ? '48px 16px' : (isTablet ? '88px 32px' : '112px 40px'), background: 'var(--neutral-50)', scrollMarginTop: 80 }}>
         <div style={{
           maxWidth: 1320, margin: '0 auto', background: 'var(--brand-navy-800)',
-          borderRadius: 28, padding: '96px 80px', color: '#fff', position: 'relative', overflow: 'hidden',
+          borderRadius: isMobile ? 20 : 28, padding: isMobile ? '48px 24px' : (isTablet ? '64px 40px' : '96px 80px'), color: '#fff', position: 'relative', overflow: 'hidden',
         }}>
           <div style={{ position: 'absolute', top: -120, right: -120, width: 400, height: 400, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.14 }} />
-          <div style={{ position: 'absolute', top: 80, right: 160, width: 180, height: 180, borderRadius: 999, border: '1px solid rgba(255,255,255,0.15)' }} />
-          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: 64, alignItems: 'end' }}>
+          {!isNarrow && <div style={{ position: 'absolute', top: 80, right: 160, width: 180, height: 180, borderRadius: 999, border: '1px solid rgba(255,255,255,0.15)' }} />}
+          <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.2fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: isNarrow ? 'start' : 'end' }}>
             <div>
               <Eyebrow color="var(--brand-green-300)">We'd love to hear from you</Eyebrow>
-              <h2 style={{ color: '#fff', fontSize: 64, margin: '20px 0 24px', letterSpacing: '-0.035em', lineHeight: 1 }}>
+              <h2 style={{ color: '#fff', fontSize: isMobile ? 36 : (isTablet ? 48 : 64), margin: '20px 0 24px', letterSpacing: '-0.035em', lineHeight: 1.02 }}>
                 Get your Transfer Pricing done.
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: 18, lineHeight: 1.55, margin: '0 0 36px', maxWidth: 560 }}>
+              <p style={{ color: 'rgba(255,255,255,0.78)', fontSize: isMobile ? 15.5 : 18, lineHeight: 1.55, margin: '0 0 36px', maxWidth: 560 }}>
                 A short note is usually enough to start. Tell us what you're working on: a new structure, a documentation cycle, a question from a tax authority,  and we'll come back with a clear next step, typically within a working day.
               </p>
-              <div style={{ display: 'flex', gap: 12 }}>
-                <Button variant="primary" size="lg" iconRight="download" onClick={downloadDeck}>Download capability deck</Button>
-                <Button variant="outlineInverted" size="lg" onClick={() => window.location.href = 'mailto:info@inrange.nl'}>Let's connect</Button>
+              <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+                <Button variant="primary" size={isMobile ? 'md' : 'lg'} iconRight="download" onClick={downloadDeck}>Download capability deck</Button>
+                <Button variant="outlineInverted" size={isMobile ? 'md' : 'lg'} onClick={() => window.location.href = 'mailto:info@inrange.nl'}>Let's connect</Button>
               </div>
             </div>
-            <div style={{ borderLeft: '1px solid rgba(255,255,255,0.18)', paddingLeft: 40 }}>
+            <div style={{ borderLeft: isNarrow ? 'none' : '1px solid rgba(255,255,255,0.18)', borderTop: isNarrow ? '1px solid rgba(255,255,255,0.18)' : 'none', paddingLeft: isNarrow ? 0 : 40, paddingTop: isNarrow ? 24 : 0 }}>
               <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.14em', color: 'var(--brand-green-300)', textTransform: 'uppercase', marginBottom: 18 }}>inRange Solutions</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 14, color: 'rgba(255,255,255,0.85)', fontSize: 15, lineHeight: 1.55 }}>
                 <div>Saskia van Uijlenburgkade 104<br/>Amsterdam, Netherlands</div>
@@ -412,8 +440,8 @@ function V2_Modern() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ background: '#fff', borderTop: '1px solid var(--border-subtle)', padding: '64px 40px 40px' }}>
-        <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 48 }}>
+      <footer style={{ background: '#fff', borderTop: '1px solid var(--border-subtle)', padding: isMobile ? '48px 20px 32px' : (isTablet ? '56px 32px 36px' : '64px 40px 40px') }}>
+        <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : (isTablet ? 'repeat(2, 1fr)' : '2fr 1fr 1fr 1fr'), gap: isMobile ? 32 : 48 }}>
           <div>
             <Logo height={34} />
             <p style={{ marginTop: 16, fontSize: 14, maxWidth: 320, lineHeight: 1.65, color: 'var(--fg-3)' }}>
@@ -438,9 +466,9 @@ function V2_Modern() {
             </div>
           ))}
         </div>
-        <div style={{ maxWidth: 1320, margin: '56px auto 0', paddingTop: 24, borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', fontSize: 12, color: 'var(--fg-3)' }}>
+        <div style={{ maxWidth: 1320, margin: isMobile ? '36px auto 0' : '56px auto 0', paddingTop: 24, borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 12 : 0, justifyContent: 'space-between', fontSize: 12, color: 'var(--fg-3)' }}>
           <div>© 2026 inRange Solutions B.V.</div>
-          <div style={{ display: 'flex', gap: 24 }}>
+          <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
             <a href="#top" onClick={scrollTo('top')} style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>Back to top</a>
             <a href="mailto:info@inrange.nl" style={{ color: 'inherit', textDecoration: 'none' }}>Email us</a>
             <a href="tel:+31648446063" style={{ color: 'inherit', textDecoration: 'none' }}>Call us</a>

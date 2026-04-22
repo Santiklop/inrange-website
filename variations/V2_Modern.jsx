@@ -421,13 +421,13 @@ function V2_Modern() {
                   {steps.map((p, i) => {
                     const active = activeStep === i;
                     return (
-                      <React.Fragment key={p.step}>
+                      <div key={p.step} style={{ borderRadius: 14, overflow: 'hidden' }}>
                         <div
                           onClick={(ev) => {
                             const nextIdx = active ? -1 : i;
                             setActiveStep(nextIdx);
                             if (nextIdx !== -1) {
-                              const row = ev.currentTarget;
+                              const row = ev.currentTarget.parentElement;
                               requestAnimationFrame(() => {
                                 const nav = document.querySelector('nav');
                                 const offset = (nav ? nav.getBoundingClientRect().height : 72) + 12;
@@ -437,10 +437,10 @@ function V2_Modern() {
                             }
                           }}
                           style={{
-                            padding: '14px 16px', borderRadius: active ? '14px 14px 0 0' : 14, cursor: 'pointer',
+                            padding: '14px 16px', cursor: 'pointer',
                             background: active ? 'var(--brand-navy-800)' : 'transparent',
                             color: active ? '#fff' : 'var(--fg-1)',
-                            transition: 'all 180ms var(--ease-standard)',
+                            transition: 'background 180ms var(--ease-standard), color 180ms var(--ease-standard)',
                             display: 'flex', alignItems: 'center', gap: 14,
                           }}
                         >
@@ -459,7 +459,7 @@ function V2_Modern() {
                           <Icon name={active ? 'chevron-up' : 'chevron-down'} size={18} style={{ opacity: active ? 1 : 0.5, flexShrink: 0 }} />
                         </div>
                         {active && (
-                          <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '4px 20px 20px', borderRadius: '0 0 14px 14px' }}>
+                          <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '4px 20px 20px' }}>
                             <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 14.5, lineHeight: 1.6, margin: '0 0 14px' }}>{p.body}</p>
                             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                               {p.tags.map(t => (
@@ -472,7 +472,7 @@ function V2_Modern() {
                             </div>
                           </div>
                         )}
-                      </React.Fragment>
+                      </div>
                     );
                   })}
                 </div>

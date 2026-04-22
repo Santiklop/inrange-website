@@ -31,13 +31,13 @@ async function qrDataUrl(url, dark = '#0D1B2D', light = '#FFFFFF') {
 }
 
 async function main() {
-  console.log('Generating QR codes…');
+  console.log('Generating QR code…');
   const qrSite = await qrDataUrl(SITE_URL);
-  const qrMailto = await qrDataUrl(MAILTO);
 
   console.log('Reading HTML source…');
   let html = fs.readFileSync(HTML_PATH, 'utf8');
-  html = html.replace('__QR_SITE__', qrSite).replace('__QR_MAILTO__', qrMailto);
+  // Both QR slots now point at the site URL; MAILTO kept for backwards compatibility if reintroduced.
+  html = html.replace(/__QR_SITE__/g, qrSite).replace(/__QR_MAILTO__/g, qrSite);
 
   console.log('Launching headless Chrome…');
   const browser = await puppeteer.launch({ headless: 'new' });

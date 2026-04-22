@@ -4,7 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node build-pdf.js",
+    "build:founder": "node -e \"process.env.VARIANT='founder';require('./build-pdf.js')\"",
+    "build:all": "npm run build && npm run build:founder",
+    "sync-site": "node -e \"require('fs').copyFileSync('inRange_Capability_Deck.pdf','../assets/inRange_Capability_Deck.pdf'); console.log('✓ Synced to ../assets/inRange_Capability_Deck.pdf')\"",
+    "sync-deck": "npm run build:all && npm run sync-site"
   },
   "keywords": [],
   "author": "",

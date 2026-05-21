@@ -335,7 +335,7 @@ function V2_Modern() {
                               : { label: 'Recent projects', onClick: scrollTo('projects') };
                             return (
                               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                                <Button variant="primary" iconRight="arrow-right" onClick={primary.onClick}>{primary.label}</Button>
+                                <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
                                 <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
                               </div>
                             );
@@ -396,7 +396,7 @@ function V2_Modern() {
                     : { label: 'Recent projects', onClick: scrollTo('projects') };
                   return (
                     <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
-                      <Button variant="primary" iconRight="arrow-right" onClick={primary.onClick}>{primary.label}</Button>
+                      <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
                       <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
                     </div>
                   );

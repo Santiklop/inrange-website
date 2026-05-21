@@ -8,10 +8,28 @@ function Icon({ name, size = 20, className = '', style = {} }) {
   return <i data-lucide={name} className={className} style={{ width: size, height: size, display: 'inline-flex', alignItems: 'center', ...style }} />;
 }
 
-function Logo({ variant = 'color', height = 32 }) {
-  const src = (window.INRANGE_LOGO_SRC || 'assets/logo-inrange-transparent.png');
-  const filter = variant === 'inverted' ? 'brightness(0) invert(1)' : 'none';
-  return <img src={src} alt="inRange" style={{ height, width: 'auto', filter }} />;
+function Logo({ variant = 'color', height = 28 }) {
+  // SVG bar-chart mark + wordmark — matches the TP Documentation page exactly.
+  // `height` controls the bar-mark side; text scales proportionally (~65%).
+  const markSize = height;
+  const textSize = Math.round(height * 0.65);
+  const inverted = variant === 'inverted';
+  const inkColor = inverted ? '#fff' : 'var(--fg-1)';
+  return (
+    <span aria-label="inRange" style={{ display: 'inline-flex', alignItems: 'center', gap: 10, lineHeight: 1 }}>
+      <svg viewBox="0 0 32 32" width={markSize} height={markSize} aria-hidden="true" style={{ flexShrink: 0 }}>
+        <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A" />
+        <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A" />
+        <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A" />
+      </svg>
+      <span style={{
+        fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: textSize,
+        color: inkColor, letterSpacing: '-0.02em', lineHeight: 1,
+      }}>
+        in<span style={{ color: 'var(--brand-green-600)' }}>Range</span>
+      </span>
+    </span>
+  );
 }
 
 function Button({ children, variant = 'primary', size = 'md', icon, iconRight, onClick, style = {} }) {

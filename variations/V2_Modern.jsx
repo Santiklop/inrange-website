@@ -102,7 +102,7 @@ function V2_Modern() {
         backdropFilter: 'blur(16px)', borderBottom: '1px solid var(--border-subtle)',
       }}>
         <div style={{ maxWidth: 1320, margin: '0 auto', padding: isMobile ? '12px 20px' : '14px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-          <Logo height={isMobile ? 32 : 40} />
+          <Logo height={isMobile ? 24 : 28} />
           {!isMobile && (
             <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: isTablet ? 3 : 4, borderRadius: 999 }}>
               {navLinks.map(([label, target]) => {
@@ -663,7 +663,7 @@ function V2_Modern() {
       <footer style={{ background: '#fff', borderTop: '1px solid var(--border-subtle)', padding: isMobile ? '48px 20px 32px' : (isTablet ? '56px 32px 36px' : '64px 40px 40px') }}>
         <div style={{ maxWidth: 1320, margin: '0 auto', display: 'grid', gridTemplateColumns: isMobile ? '1fr' : (isTablet ? 'repeat(2, 1fr)' : '2fr 1fr 1fr 1fr'), gap: isMobile ? 32 : 48 }}>
           <div>
-            <Logo height={34} />
+            <Logo height={22} />
             <p style={{ marginTop: 16, fontSize: 14, maxWidth: 320, lineHeight: 1.65, color: 'var(--fg-3)' }}>
               inRange Solutions — independent transfer pricing specialists. Amsterdam-based, working internationally.
             </p>

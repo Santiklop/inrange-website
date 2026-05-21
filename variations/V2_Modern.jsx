@@ -326,13 +326,20 @@ function V2_Modern() {
                         <div style={{ position: 'absolute', top: -60, right: -60, width: 180, height: 180, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
                         <div style={{ position: 'relative' }}>
                           <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
-                          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                            {s.link && (
-                              <Button variant="primary" iconRight="arrow-right" onClick={() => { window.location.href = s.link; }}>See our method</Button>
-                            )}
-                            <Button variant={s.link ? 'outlineInverted' : 'primary'} iconRight={s.link ? null : 'arrow-right'} onClick={scrollTo('contact')}>Let's connect</Button>
-                            {!s.link && <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>}
-                          </div>
+                          {(() => {
+                            const primary = s.link
+                              ? { label: 'See our method', onClick: () => { window.location.href = s.link; } }
+                              : { label: "Let's connect", onClick: scrollTo('contact') };
+                            const secondary = s.link
+                              ? { label: "Let's connect", onClick: scrollTo('contact') }
+                              : { label: 'Recent projects', onClick: scrollTo('projects') };
+                            return (
+                              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                                <Button variant="primary" iconRight="arrow-right" onClick={primary.onClick}>{primary.label}</Button>
+                                <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
+                              </div>
+                            );
+                          })()}
                         </div>
                       </div>
                     )}
@@ -379,15 +386,21 @@ function V2_Modern() {
                   <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{svc.body}</p>
                 </div>
                 ); })()}
-                {(() => { const svc = services[activeService < 0 ? 0 : activeService]; return (
-                <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
-                  {svc.link && (
-                    <Button variant="primary" iconRight="arrow-right" onClick={() => { window.location.href = svc.link; }}>See our method</Button>
-                  )}
-                  <Button variant={svc.link ? 'outlineInverted' : 'primary'} iconRight={svc.link ? null : 'arrow-right'} onClick={scrollTo('contact')}>Let's connect</Button>
-                  {!svc.link && <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>}
-                </div>
-                ); })()}
+                {(() => {
+                  const svc = services[activeService < 0 ? 0 : activeService];
+                  const primary = svc.link
+                    ? { label: 'See our method', onClick: () => { window.location.href = svc.link; } }
+                    : { label: "Let's connect", onClick: scrollTo('contact') };
+                  const secondary = svc.link
+                    ? { label: "Let's connect", onClick: scrollTo('contact') }
+                    : { label: 'Recent projects', onClick: scrollTo('projects') };
+                  return (
+                    <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
+                      <Button variant="primary" iconRight="arrow-right" onClick={primary.onClick}>{primary.label}</Button>
+                      <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
           )}

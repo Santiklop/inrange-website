@@ -45,10 +45,13 @@ function V2_Modern() {
   const navLinks = [
     ['About us', 'about'],
     ['Services', 'services'],
+    ['TP Documentation', 'tp-documentation.html'],
     ['Recent projects', 'projects'],
     ['Why inRange', 'why'],
     ['Contact', 'contact'],
   ];
+  // Target ending in '.html' is an external page; anything else is an in-page anchor.
+  const isExternalLink = (target) => typeof target === 'string' && target.endsWith('.html');
 
   // Service copy lifted directly from inrange.nl
   const services = [
@@ -63,6 +66,7 @@ function V2_Modern() {
       title: 'Transfer Pricing Documentation',
       sub: 'Master file · Local files · CbCR',
       body: 'Stay compliant with Transfer Pricing requirements across the world by letting us prepare, update, or review your TP Master file, Local files, and Country-by-Country Reporting.',
+      link: 'tp-documentation.html',
     },
     {
       icon: 'shield-check',
@@ -101,9 +105,12 @@ function V2_Modern() {
           <Logo height={isMobile ? 32 : 40} />
           {!isMobile && (
             <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: isTablet ? 3 : 4, borderRadius: 999 }}>
-              {navLinks.map(([label, id]) => (
-                <a key={id} href={`#${id}`} onClick={scrollTo(id)} style={{ padding: isTablet ? '5px 9px' : '8px 16px', fontSize: isTablet ? 11.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' }}>{label}</a>
-              ))}
+              {navLinks.map(([label, target]) => {
+                const linkStyle = { padding: isTablet ? '5px 9px' : '8px 16px', fontSize: isTablet ? 11.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' };
+                return isExternalLink(target)
+                  ? <a key={target} href={target} style={linkStyle}>{label}</a>
+                  : <a key={target} href={`#${target}`} onClick={scrollTo(target)} style={linkStyle}>{label}</a>;
+              })}
             </div>
           )}
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
@@ -123,9 +130,12 @@ function V2_Modern() {
         {isMobile && mobileNavOpen && (
           <div style={{ borderTop: '1px solid var(--border-subtle)', background: '#fff', padding: '12px 20px 20px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 16 }}>
-              {navLinks.map(([label, id]) => (
-                <a key={id} href={`#${id}`} onClick={(e) => { scrollTo(id)(e); setMobileNavOpen(false); }} style={{ padding: '12px 14px', fontSize: 15, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 10, textDecoration: 'none', cursor: 'pointer' }}>{label}</a>
-              ))}
+              {navLinks.map(([label, target]) => {
+                const linkStyle = { padding: '12px 14px', fontSize: 15, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 10, textDecoration: 'none', cursor: 'pointer' };
+                return isExternalLink(target)
+                  ? <a key={target} href={target} onClick={() => setMobileNavOpen(false)} style={linkStyle}>{label}</a>
+                  : <a key={target} href={`#${target}`} onClick={(e) => { scrollTo(target)(e); setMobileNavOpen(false); }} style={linkStyle}>{label}</a>;
+              })}
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               <Button variant="primary" size="md" iconRight="download" onClick={(e) => { downloadDeck(e); setMobileNavOpen(false); }} style={{ width: '100%', justifyContent: 'center' }}>Capability deck</Button>
@@ -317,8 +327,11 @@ function V2_Modern() {
                         <div style={{ position: 'relative' }}>
                           <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
                           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                            <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
-                            <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>
+                            {s.link && (
+                              <Button variant="primary" iconRight="arrow-right" onClick={() => { window.location.href = s.link; }}>See our method</Button>
+                            )}
+                            <Button variant={s.link ? 'outlineInverted' : 'primary'} iconRight={s.link ? null : 'arrow-right'} onClick={scrollTo('contact')}>Let's connect</Button>
+                            {!s.link && <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>}
                           </div>
                         </div>
                       </div>
@@ -366,10 +379,15 @@ function V2_Modern() {
                   <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{svc.body}</p>
                 </div>
                 ); })()}
+                {(() => { const svc = services[activeService < 0 ? 0 : activeService]; return (
                 <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
-                  <Button variant="primary" iconRight="arrow-right" onClick={scrollTo('contact')}>Let's connect</Button>
-                  <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>
+                  {svc.link && (
+                    <Button variant="primary" iconRight="arrow-right" onClick={() => { window.location.href = svc.link; }}>See our method</Button>
+                  )}
+                  <Button variant={svc.link ? 'outlineInverted' : 'primary'} iconRight={svc.link ? null : 'arrow-right'} onClick={scrollTo('contact')}>Let's connect</Button>
+                  {!svc.link && <Button variant="outlineInverted" onClick={scrollTo('projects')}>Recent projects</Button>}
                 </div>
+                ); })()}
               </div>
             </div>
           )}
@@ -638,7 +656,7 @@ function V2_Modern() {
             </p>
           </div>
           {[
-            ['Services', [['Transfer Pricing Advice', 'services'], ['Transfer Pricing Documentation', 'services'], ['Audit Support', 'services'], ['Interim Placement Solutions', 'services'], ['Economic Analyses', 'services'], ['Legal Agreements', 'services']]],
+            ['Services', [['Transfer Pricing Advice', 'services'], ['Transfer Pricing Documentation', 'tp-documentation.html'], ['Audit Support', 'services'], ['Interim Placement Solutions', 'services'], ['Economic Analyses', 'services'], ['Legal Agreements', 'services']]],
             ['Company', [['About us', 'about'], ['How we work', 'coverage'], ['Recent projects', 'projects'], ['Advantages', 'why'], ['Contact', 'contact']]],
             ...(isMobile ? [] : [['Contact', [['Saskia van Uijlenburgkade 104', null], ['Amsterdam, Netherlands', null], ['info@inrange.nl', 'mailto:info@inrange.nl'], ['+31 648 44 6063', 'tel:+31648446063']]]]),
           ].map(([h, items]) => (
@@ -648,6 +666,8 @@ function V2_Modern() {
                 {items.map(([label, target]) => {
                   if (!target) return <li key={label}>{label}</li>;
                   if (target.startsWith('mailto:') || target.startsWith('tel:'))
+                    return <li key={label}><a href={target} style={{ color: 'inherit', textDecoration: 'none' }}>{label}</a></li>;
+                  if (isExternalLink(target))
                     return <li key={label}><a href={target} style={{ color: 'inherit', textDecoration: 'none' }}>{label}</a></li>;
                   return <li key={label}><a href={`#${target}`} onClick={scrollTo(target)} style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>{label}</a></li>;
                 })}

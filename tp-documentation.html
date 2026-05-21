@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transfer pricing documentation — Our approach | inRange</title>
+<meta name="description" content="Three credible ways to produce transfer pricing documentation at scale — and how inRange does it: senior expertise, AI-enabled workflow, with the toolchain handed over to your team.">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="icon" type="image/png" sizes="96x96" href="assets/favicon-96.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="stylesheet" href="colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --shadow-xs:0 1px 2px rgba(20,39,63,.05);
+  --shadow-sm:0 1px 3px rgba(20,39,63,.06);
+  --shadow-md:0 4px 12px -4px rgba(20,39,63,.08),0 1px 3px rgba(20,39,63,.04);
+  --shadow-lg:0 16px 32px -8px rgba(20,39,63,.14),0 4px 8px rgba(20,39,63,.05);
+
+  --radius-sm:6px; --radius-md:10px; --radius-lg:14px; --radius-xl:20px; --radius-pill:999px;
+  --ease:cubic-bezier(.2,.8,.2,1);
+  --dur-fast:140ms; --dur-base:220ms;
+  --container:1200px;
+
+  --fg-1:var(--brand-navy-800); --fg-2:var(--neutral-700); --fg-3:var(--neutral-500);
+  --fg-brand:var(--brand-green-600);
+  --bg:var(--neutral-0); --bg-muted:var(--neutral-50); --bg-sunken:var(--neutral-100);
+  --surface:var(--neutral-0);
+  --border-subtle:var(--neutral-200); --border-default:var(--neutral-300);
+  --font-sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{font-family:var(--font-sans);color:var(--fg-1);background:var(--bg);scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color:var(--fg-2);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;background:var(--bg)}
+
+h1,h2,h3,h4,h5{font-family:var(--font-sans);color:var(--fg-1);margin:0;letter-spacing:-.02em}
+h1{font-size:46px;font-weight:800;line-height:1.08;letter-spacing:-.03em}
+h2{font-size:28px;font-weight:700;line-height:1.18}
+h3{font-size:20px;font-weight:700;line-height:1.25}
+h4{font-size:16px;font-weight:600;line-height:1.3}
+p{margin:0 0 12px;text-wrap:pretty}
+small{font-size:12px;color:var(--fg-3)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand)}
+@media (max-width:760px){h1{font-size:34px}h2{font-size:24px}}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 28px}
+@media (max-width:760px){.container{padding:0 20px}}
+section{padding:64px 0;border-top:1px solid var(--border-subtle)}
+section:first-of-type{border-top:none}
+.section-head{margin-bottom:32px;max-width:820px}
+.section-head .eyebrow{display:block;margin-bottom:6px}
+.section-head h2{margin-top:0}
+.section-head p{color:var(--fg-2);font-size:15.5px;margin-top:10px;line-height:1.55}
+
+/* Header — mirrors home page (V2_Modern.jsx nav) */
+.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border-subtle)}
+.header-inner{max-width:1320px;margin:0 auto;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+@media (max-width:767px){.header-inner{padding:12px 20px}}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;line-height:1;transition:opacity var(--dur-fast) var(--ease);flex-shrink:0}
+.brand:hover{opacity:.75}
+.brand-mark{width:40px;height:40px;flex-shrink:0}
+@media (max-width:767px){.brand-mark{width:32px;height:32px}}
+.brand-text{font-family:var(--font-sans);font-weight:800;font-size:22px;color:var(--fg-1);letter-spacing:-.02em;line-height:1}
+.brand-text .accent{color:var(--brand-green-600)}
+@media (max-width:767px){.brand-text{font-size:18px}}
+
+.nav-pill{display:flex;gap:2px;background:var(--neutral-50);padding:4px;border-radius:999px}
+.nav-pill a{font-size:13px;font-weight:600;color:var(--fg-1);padding:8px 16px;border-radius:999px;text-decoration:none;white-space:nowrap;transition:background var(--dur-fast) var(--ease)}
+.nav-pill a:hover{background:rgba(255,255,255,.7)}
+.nav-pill a.active{background:#fff;color:var(--brand-navy-800);box-shadow:var(--shadow-xs)}
+@media (min-width:768px) and (max-width:1023px){.nav-pill{padding:3px}.nav-pill a{padding:5px 9px;font-size:11.5px}}
+@media (max-width:767px){.nav-pill{display:none}}
+
+.header-actions{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.header-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;transition:all var(--dur-fast) var(--ease);cursor:pointer;white-space:nowrap}
+.header-btn.primary{background:var(--brand-green-500);color:#fff}
+.header-btn.primary:hover{background:var(--brand-green-600);box-shadow:var(--shadow-sm)}
+.header-btn.ghost{color:var(--fg-1);background:transparent}
+.header-btn.ghost:hover{background:var(--bg-sunken)}
+.header-btn svg{width:14px;height:14px}
+@media (max-width:1023px){.header-btn.ghost{display:none}}
+@media (max-width:767px){.header-btn.primary{display:none}}
+
+.mobile-toggle{display:none;background:var(--neutral-50);border:1px solid var(--border-subtle);border-radius:10px;width:40px;height:40px;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.mobile-toggle svg{width:20px;height:20px;color:var(--fg-1)}
+@media (max-width:767px){.mobile-toggle{display:inline-flex}}
+
+.mobile-nav{display:none;border-top:1px solid var(--border-subtle);background:#fff;padding:12px 20px 20px;flex-direction:column;gap:2px}
+.mobile-nav a{font-size:15px;font-weight:600;color:var(--fg-1);padding:12px 14px;border-radius:10px;text-decoration:none}
+.mobile-nav a:hover{background:var(--bg-sunken)}
+.mobile-nav .mobile-cta-group{display:flex;flex-direction:column;gap:8px;margin-top:16px}
+.mobile-nav .header-btn{justify-content:center;display:inline-flex;padding:12px 18px;font-size:15px}
+.site-header.menu-open .mobile-nav{display:flex}
+
+/* Hero */
+.hero{padding:64px 0 48px;border-top:none}
+.hero .eyebrow{display:block;margin-bottom:18px;color:var(--fg-3);font-size:11.5px;font-weight:600;letter-spacing:.12em}
+.hero h1{max-width:920px;margin-bottom:18px}
+.hero h1 .accent{color:var(--brand-green-600);font-weight:700}
+.hero .lede{font-size:18px;line-height:1.55;color:var(--fg-2);max-width:780px;font-weight:400;margin-bottom:28px}
+
+.approach-callout{background:var(--surface);border:1px solid var(--border-subtle);border-left:3px solid var(--brand-green-500);border-radius:var(--radius-md);padding:20px 24px;max-width:860px}
+.approach-callout .label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:8px}
+.approach-callout p{font-size:15px;line-height:1.6;color:var(--fg-2);margin:0}
+.approach-callout strong{color:var(--fg-1);font-weight:600}
+
+/* Three approaches grid */
+.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+@media (max-width:900px){.approach-grid{grid-template-columns:1fr;gap:14px}}
+.approach-card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);padding:24px 22px 18px;display:flex;flex-direction:column;gap:14px;transition:all var(--dur-base) var(--ease);position:relative;overflow:hidden;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%}
+.approach-card:hover{border-color:var(--border-default);box-shadow:var(--shadow-md);transform:translateY(-2px)}
+.approach-card:focus-visible{outline:none;border-color:var(--brand-green-500);box-shadow:0 0 0 3px rgba(31,168,74,.28)}
+.approach-card.recommended{border-color:var(--brand-green-500);box-shadow:0 0 0 1px var(--brand-green-500),var(--shadow-md)}
+.approach-card.recommended:hover{box-shadow:0 0 0 1px var(--brand-green-500),var(--shadow-lg)}
+.rec-badge{position:absolute;top:14px;right:14px;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brand-green-700);background:var(--brand-green-50);padding:4px 9px;border-radius:var(--radius-pill);border:1px solid var(--brand-green-200)}
+.approach-illu{width:84px;height:84px;display:flex;align-items:center;justify-content:center;background:var(--bg-muted);border-radius:var(--radius-md);border:1px solid var(--border-subtle)}
+.approach-card.recommended .approach-illu{background:var(--brand-green-50);border-color:var(--brand-green-100)}
+.approach-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-3)}
+.approach-card.recommended .approach-label{color:var(--fg-brand)}
+.approach-card h3{font-size:22px;margin:-4px 0 0}
+.approach-sub{font-size:14px;color:var(--fg-2);line-height:1.5;margin:0;min-height:42px}
+.approach-attrs{list-style:none;margin:6px 0 0;padding:0;border-top:1px solid var(--border-subtle);font-size:13px}
+.approach-attrs li{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--border-subtle)}
+.approach-attrs li:last-child{border-bottom:none}
+.approach-attrs span{color:var(--fg-3);font-weight:500;flex-shrink:0;letter-spacing:.01em}
+.approach-attrs strong{color:var(--fg-1);font-weight:600;text-align:right;font-size:13px;line-height:1.4}
+.approach-cta{margin-top:auto;padding-top:10px;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--fg-brand)}
+.approach-cta svg{width:14px;height:14px;transition:transform var(--dur-fast) var(--ease)}
+.approach-card:hover .approach-cta svg{transform:translateX(3px)}
+
+/* Slide-out drawer */
+.slideout{position:fixed;top:0;right:0;height:100vh;width:min(560px,92vw);background:var(--surface);border-left:1px solid var(--border-subtle);box-shadow:var(--shadow-lg);transform:translateX(100%);transition:transform var(--dur-base) var(--ease);z-index:60;overflow-y:auto;padding:28px 32px 40px}
+.slideout.open{transform:translateX(0)}
+.slideout-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;margin-bottom:6px}
+.slideout-head .meta-tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:var(--radius-pill);background:var(--bg-sunken);color:var(--fg-2);border:1px solid var(--border-subtle);margin-bottom:8px}
+.slideout-head .meta-tag.rec{background:var(--brand-green-50);color:var(--brand-green-700);border-color:var(--brand-green-200)}
+.slideout h3{font-size:24px;margin:0 0 4px}
+.slideout .close{background:transparent;border:none;color:var(--fg-3);cursor:pointer;font-size:24px;line-height:1;padding:4px 8px;border-radius:var(--radius-sm);flex-shrink:0}
+.slideout .close:hover{background:var(--bg-sunken);color:var(--fg-1)}
+.slideout-body{padding:14px 0 0;font-size:14.5px;line-height:1.6;color:var(--fg-2)}
+.slideout-body p{margin:0 0 12px}
+.slideout-body h4{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-brand);margin:20px 0 8px}
+.slideout-body ul{margin:0 0 12px;padding-left:18px}
+.slideout-body ul li{margin:4px 0}
+.backdrop{position:fixed;inset:0;background:rgba(13,27,45,.32);opacity:0;pointer-events:none;transition:opacity var(--dur-base) var(--ease);z-index:55}
+.backdrop.open{opacity:1;pointer-events:auto}
+
+/* Scorecard */
+.scorecard-wrap{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;margin-top:4px}
+.scorecard{width:100%;border-collapse:collapse;font-size:14px}
+.scorecard th,.scorecard td{padding:18px 20px;text-align:left;vertical-align:middle;border-bottom:1px solid var(--border-subtle)}
+.scorecard thead th{background:var(--bg-muted);font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-3);padding:14px 20px}
+.scorecard thead th:not(:first-child){text-align:center}
+.scorecard tbody tr:last-child td{border-bottom:none}
+.scorecard tbody tr:hover td{background:var(--bg-muted)}
+.scorecard .dim{font-weight:600;color:var(--fg-1);font-size:14px;width:30%;min-width:180px}
+.scorecard .dim small{display:block;font-weight:500;color:var(--fg-3);font-size:12px;margin-top:2px;letter-spacing:0;text-transform:none}
+.scorecard td.score{text-align:center;width:23%}
+.dots{display:inline-flex;gap:5px;align-items:center;justify-content:center}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+.dot.solid{background:var(--brand-green-500)}
+.dot.range{background:var(--brand-green-200)}
+.dot.empty{background:var(--neutral-200)}
+.score-note{display:block;font-size:11px;font-weight:600;color:var(--fg-3);margin-top:5px;letter-spacing:.04em}
+.score-note sup{color:var(--brand-green-600);font-weight:700}
+.footnote{font-size:12.5px;color:var(--fg-3);line-height:1.55;margin-top:18px;padding-left:18px;border-left:2px solid var(--border-subtle);max-width:880px}
+.footnote sup{color:var(--brand-green-600);font-weight:700;margin-right:2px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:12px;color:var(--fg-3);margin-top:14px;padding-left:2px}
+.legend-item{display:inline-flex;align-items:center;gap:7px}
+
+/* Workflow */
+.sub-h{font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-brand);margin:32px 0 16px}
+.sub-h:first-of-type{margin-top:8px}
+
+.workflow{display:grid;grid-template-columns:repeat(6,1fr);gap:0;background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-lg);overflow:hidden;position:relative}
+.workflow-loop{grid-column:1/-1;width:100%;aspect-ratio:20/1;pointer-events:none;display:block;background:var(--bg-muted)}
+.workflow > .workflow-loop:first-child{border-bottom:1px solid var(--border-subtle)}
+.workflow > .workflow-loop:last-child{border-top:1px solid var(--border-subtle)}
+.workflow-loop .loop-label-bg{fill:var(--bg-muted)}
+.workflow-loop .loop-label-text{fill:var(--brand-green-700);font-family:"Plus Jakarta Sans","Segoe UI",sans-serif}
+@media (max-width:900px){.workflow{grid-template-columns:repeat(1,1fr)}.workflow-loop{display:none}}
+.stage{padding:20px 18px;position:relative;border-right:1px solid var(--border-subtle)}
+.stage:last-child{border-right:none}
+@media (max-width:900px){.stage{border-right:none;border-bottom:1px solid var(--border-subtle)}.stage:last-child{border-bottom:none}}
+.stage-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--brand-green-50);color:var(--brand-green-700);font-weight:800;font-size:13px;border:1px solid var(--brand-green-200);margin-bottom:10px;letter-spacing:0}
+.stage h4{font-size:14.5px;font-weight:700;color:var(--fg-1);margin:0 0 6px}
+.stage p{font-size:12.5px;color:var(--fg-2);line-height:1.5;margin:0}
+.stage::after{content:"";position:absolute;top:50%;right:-7px;width:14px;height:14px;background:var(--surface);border-top:1px solid var(--border-subtle);border-right:1px solid var(--border-subtle);transform:translateY(-50%) rotate(45deg);z-index:1}
+.stage:last-child::after{display:none}
+@media (max-width:900px){.stage::after{display:none}}
+
+.who-row{display:flex;gap:6px;font-size:10.5px;margin-top:12px;letter-spacing:.03em;text-transform:uppercase;font-weight:700;flex-wrap:wrap}
+.who{padding:2px 7px;border-radius:var(--radius-pill);border:1px solid var(--border-subtle);color:var(--fg-3);background:var(--bg-muted)}
+.who.ai{color:var(--brand-green-700);background:var(--brand-green-50);border-color:var(--brand-green-100)}
+.who.me{color:var(--brand-navy-700);background:var(--brand-navy-50);border-color:var(--brand-navy-100)}
+
+.knowledge-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media (max-width:900px){.knowledge-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.knowledge-grid{grid-template-columns:1fr}}
+.know-card{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:16px 18px;border-left:3px solid var(--brand-green-500)}
+.know-card h4{font-size:13.5px;font-weight:700;color:var(--fg-1);margin:0 0 4px}
+.know-card p{font-size:12.5px;color:var(--fg-2);line-height:1.5;margin:0}
+
+.ownership{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;position:relative}
+@media (max-width:760px){.ownership{grid-template-columns:1fr}}
+.own-step{background:var(--surface);border:1px solid var(--border-subtle);border-radius:var(--radius-md);padding:18px 18px 16px;position:relative}
+.own-step .own-yr{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:6px}
+.own-step h4{font-size:15px;font-weight:700;color:var(--fg-1);margin:0 0 8px}
+.own-step p{font-size:13px;color:var(--fg-2);line-height:1.55;margin:0}
+.own-step .ratio{display:flex;height:6px;border-radius:var(--radius-pill);overflow:hidden;margin-bottom:14px;background:var(--bg-muted);border:1px solid var(--border-subtle)}
+.own-step .ratio .me{background:var(--brand-navy-600)}
+.own-step .ratio .you{background:var(--brand-green-500)}
+.own-step .ratio-legend{display:flex;justify-content:space-between;font-size:10.5px;color:var(--fg-3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-top:-8px;margin-bottom:10px}
+
+/* CTA */
+.cta{background:var(--brand-navy-800);color:#fff;border-radius:var(--radius-xl);padding:48px 56px;margin-top:8px;display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;top:-100px;right:-100px;width:280px;height:280px;border-radius:50%;background:var(--brand-green-500);opacity:.12}
+@media (max-width:760px){.cta{grid-template-columns:1fr;padding:36px 28px;gap:28px}}
+.cta-body{position:relative}
+.cta .eyebrow{color:var(--brand-green-300);display:block;margin-bottom:14px}
+.cta h2{color:#fff;font-size:34px;margin:0 0 14px;letter-spacing:-.025em;line-height:1.08}
+.cta p{font-size:15.5px;color:rgba(255,255,255,.78);line-height:1.55;margin:0 0 22px;max-width:520px}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:14px;font-weight:600;padding:11px 20px;border-radius:var(--radius-pill);text-decoration:none;border:1px solid transparent;transition:all var(--dur-fast) var(--ease);cursor:pointer}
+.btn-primary{background:var(--brand-green-500);color:#fff}
+.btn-primary:hover{background:var(--brand-green-600)}
+.btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+.cta-meta{position:relative;border-left:1px solid rgba(255,255,255,.18);padding-left:36px}
+@media (max-width:760px){.cta-meta{border-left:none;border-top:1px solid rgba(255,255,255,.18);padding-left:0;padding-top:24px}}
+.cta-meta .label{font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--brand-green-300);text-transform:uppercase;margin-bottom:14px}
+.cta-meta .row{display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.85);font-size:14.5px;margin-bottom:10px}
+.cta-meta a{color:#fff;text-decoration:none}
+.cta-meta a:hover{border-bottom:1px solid rgba(255,255,255,.3)}
+.cta-meta .row .dot{background:var(--brand-green-300);width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* Footer */
+.site-footer{margin-top:24px;padding:28px 0 40px;border-top:1px solid var(--border-subtle);color:var(--fg-3);font-size:12.5px}
+.footer-inner{max-width:var(--container);margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-left{display:flex;align-items:center;gap:10px}
+.footer-left .brand-mark{width:20px;height:20px}
+.footer-links{display:flex;gap:18px}
+.footer-links a{color:var(--fg-3);text-decoration:none}
+.footer-links a:hover{color:var(--fg-1)}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="brand" aria-label="inRange home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+        <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+        <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+      </svg>
+      <span class="brand-text">in<span class="accent">Range</span></span>
+    </a>
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="index.html#about">About us</a>
+      <a href="index.html#services">Services</a>
+      <a href="tp-documentation.html" class="active">TP Documentation</a>
+      <a href="index.html#projects">Recent projects</a>
+      <a href="index.html#why">Why inRange</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <a href="index.html#contact" class="header-btn ghost">Let's connect</a>
+      <a href="assets/inRange_Capability_Deck.pdf" download class="header-btn primary">
+        Capability deck
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="mobile-nav" aria-label="Mobile menu">
+    <a href="index.html#about">About us</a>
+    <a href="index.html#services">Services</a>
+    <a href="tp-documentation.html">TP Documentation</a>
+    <a href="index.html#projects">Recent projects</a>
+    <a href="index.html#why">Why inRange</a>
+    <a href="index.html#contact">Contact</a>
+    <div class="mobile-cta-group">
+      <a href="assets/inRange_Capability_Deck.pdf" download class="header-btn primary">
+        Capability deck
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      </a>
+      <a href="index.html#contact" class="header-btn ghost" style="border:1px solid var(--border-subtle)">Let's connect</a>
+    </div>
+  </nav>
+</header>
+
+<a id="top"></a>
+<main class="container">
+
+  <section class="hero">
+    <span class="eyebrow">Transfer pricing documentation · Our approach</span>
+    <h1>Three ways to produce your <span class="accent">transfer pricing documentation</span>.</h1>
+    <p class="lede">Multinational groups producing TP documentation across many entities, jurisdictions and years have three credible paths to get the work done. This page compares them — and sets out how we deliver the one we recommend.</p>
+
+    <div class="approach-callout">
+      <div class="label">What this page is about</div>
+      <p>How the work is actually done, how the team is shaped, what it costs in time and effort, and — importantly — what stays in your hands after the engagement ends.</p>
+    </div>
+  </section>
+
+  <section id="approaches">
+    <div class="section-head">
+      <span class="eyebrow">Section 01</span>
+      <h2>The three approaches</h2>
+      <p>The differences come down to who does the work, how it scales with volume, and what is left in your team's hands when the engagement ends.</p>
+    </div>
+
+    <div class="approach-grid">
+
+      <button class="approach-card" data-approach="pyramid" type="button" aria-haspopup="dialog">
+        <div class="approach-illu" aria-hidden="true">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <polygon points="40,14 58,33 22,33" fill="#1FA84A"/>
+            <polygon points="22,33 58,33 68,52 12,52" fill="#14273F" opacity="0.62"/>
+            <polygon points="12,52 68,52 76,70 4,70" fill="#14273F" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="approach-label">Approach 01</div>
+        <h3>The Pyramid</h3>
+        <p class="approach-sub">A Big Four engagement. A Partner leads a team of managers and associates who produce documentation by hand.</p>
+        <ul class="approach-attrs">
+          <li><span>Output</span><strong>Hand-made, high quality</strong></li>
+          <li><span>Team shape</span><strong>1 Partner · 2 Managers · 4 Associates</strong></li>
+          <li><span>Cost shape</span><strong>Hourly, scales with volume</strong></li>
+          <li><span>Speed at volume</span><strong>Slow — review is the bottleneck</strong></li>
+          <li><span>Your lift</span><strong>Low — they run it</strong></li>
+        </ul>
+        <div class="approach-cta">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></div>
+      </button>
+
+      <button class="approach-card" data-approach="software" type="button" aria-haspopup="dialog">
+        <div class="approach-illu" aria-hidden="true">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <rect x="12" y="16" width="56" height="14" rx="2.5" fill="#14273F" opacity="0.32"/>
+            <rect x="12" y="34" width="56" height="14" rx="2.5" fill="#14273F" opacity="0.55"/>
+            <rect x="12" y="52" width="56" height="14" rx="2.5" fill="#14273F" opacity="0.78"/>
+            <circle cx="20" cy="23" r="2" fill="#1FA84A"/>
+            <line x1="28" y1="23" x2="60" y2="23" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65" stroke-linecap="round"/>
+            <circle cx="20" cy="41" r="2" fill="#1FA84A"/>
+            <line x1="28" y1="41" x2="60" y2="41" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65" stroke-linecap="round"/>
+            <circle cx="20" cy="59" r="2" fill="#1FA84A"/>
+            <line x1="28" y1="59" x2="60" y2="59" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="approach-label">Approach 02</div>
+        <h3>The Software</h3>
+        <p class="approach-sub">Dedicated TP documentation software — licensed, implemented, and operated by your team in-house.</p>
+        <ul class="approach-attrs">
+          <li><span>Output</span><strong>Template-driven, quality varies</strong></li>
+          <li><span>Team shape</span><strong>~0.3–0.5 FTE on your side</strong></li>
+          <li><span>Cost shape</span><strong>Annual licence + implementation</strong></li>
+          <li><span>Speed at volume</span><strong>Fast once running</strong></li>
+          <li><span>Your lift</span><strong>High — you run it</strong></li>
+        </ul>
+        <div class="approach-cta">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></div>
+      </button>
+
+      <button class="approach-card recommended" data-approach="exoskeleton" type="button" aria-haspopup="dialog">
+        <div class="rec-badge">Recommended</div>
+        <div class="approach-illu" aria-hidden="true">
+          <svg viewBox="0 0 80 80" width="56" height="56">
+            <circle cx="40" cy="22" r="7" fill="#14273F"/>
+            <rect x="34" y="30" width="12" height="22" rx="2.5" fill="#14273F"/>
+            <rect x="35.5" y="50" width="3" height="18" rx="1.2" fill="#14273F"/>
+            <rect x="41.5" y="50" width="3" height="18" rx="1.2" fill="#14273F"/>
+            <path d="M 16 32 L 30 32 L 30 60 L 16 60" stroke="#1FA84A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 64 32 L 50 32 L 50 60 L 64 60" stroke="#1FA84A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="32" x2="64" y2="32" stroke="#1FA84A" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="16" cy="32" r="2.6" fill="#1FA84A"/>
+            <circle cx="64" cy="32" r="2.6" fill="#1FA84A"/>
+            <circle cx="16" cy="60" r="2.6" fill="#1FA84A"/>
+            <circle cx="64" cy="60" r="2.6" fill="#1FA84A"/>
+            <circle cx="30" cy="46" r="2.4" fill="#1FA84A"/>
+            <circle cx="50" cy="46" r="2.4" fill="#1FA84A"/>
+          </svg>
+        </div>
+        <div class="approach-label">Approach 03</div>
+        <h3>The Exoskeleton</h3>
+        <p class="approach-sub">A senior TP professional, working with AI agents and a workflow tailored to your group, with automated checks layered in.</p>
+        <ul class="approach-attrs">
+          <li><span>Output</span><strong>Senior-reviewed, AI-drafted</strong></li>
+          <li><span>Team shape</span><strong>Senior specialist + agent stack</strong></li>
+          <li><span>Cost shape</span><strong>Hourly, sub-linear with volume</strong></li>
+          <li><span>Speed at volume</span><strong>Fast, gets faster over time</strong></li>
+          <li><span>Your lift</span><strong>Low — we run it</strong></li>
+        </ul>
+        <div class="approach-cta">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></div>
+      </button>
+
+    </div>
+  </section>
+
+  <section id="scorecard">
+    <div class="section-head">
+      <span class="eyebrow">Section 02</span>
+      <h2>Scorecard</h2>
+      <p>Four dimensions, three approaches. Where the Software row shows a range, it reflects how much the score depends on which product you pick and how much you invest in implementation and ongoing upkeep.</p>
+    </div>
+
+    <div class="scorecard-wrap">
+      <table class="scorecard">
+        <thead>
+          <tr>
+            <th>Dimension</th>
+            <th>The Pyramid</th>
+            <th>The Software</th>
+            <th>The Exoskeleton</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="dim">Quality<small>Of the final documentation</small></td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span></span></td>
+            <td class="score">
+              <span class="dots"><span class="dot solid"></span><span class="dot range"></span><span class="dot range"></span><span class="dot range"></span><span class="dot range"></span></span>
+              <span class="score-note">1–5 <sup>¹</sup></span>
+            </td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span></span></td>
+          </tr>
+          <tr>
+            <td class="dim">Affordability<small>Total cost over the engagement</small></td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot empty"></span><span class="dot empty"></span><span class="dot empty"></span><span class="dot empty"></span></span></td>
+            <td class="score">
+              <span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot range"></span><span class="dot empty"></span></span>
+              <span class="score-note">3–4 <sup>¹</sup></span>
+            </td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot empty"></span></span></td>
+          </tr>
+          <tr>
+            <td class="dim">Speed<small>From kickoff to delivered files</small></td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot empty"></span><span class="dot empty"></span><span class="dot empty"></span></span></td>
+            <td class="score">
+              <span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span></span>
+              <span class="score-note">Once running <sup>²</sup></span>
+            </td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot empty"></span></span></td>
+          </tr>
+          <tr>
+            <td class="dim">Ease for your team<small>How hands-off the model is for you</small></td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span></span></td>
+            <td class="score">
+              <span class="dots"><span class="dot solid"></span><span class="dot range"></span><span class="dot range"></span><span class="dot empty"></span><span class="dot empty"></span></span>
+              <span class="score-note">1–3 <sup>¹</sup></span>
+            </td>
+            <td class="score"><span class="dots"><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span><span class="dot solid"></span></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="footnote"><sup>¹</sup> Software scores vary widely depending on the product chosen, the business, and the amount of effort put into implementation and ongoing upkeep. The range shown reflects what is realistic across mid-sized in-house TP teams — with heavy investment the Software can reach the upper bound, without it, drift toward the lower.</p>
+    <p class="footnote"><sup>²</sup> The Software speed score excludes the time to implement the tool, which is a separate up-front investment.</p>
+
+    <div class="legend">
+      <span class="legend-item"><span class="dot solid"></span> Score</span>
+      <span class="legend-item"><span class="dot range"></span> Possible range</span>
+      <span class="legend-item"><span class="dot empty"></span> Not reached</span>
+    </div>
+  </section>
+
+  <section id="how-we-do-it">
+    <div class="section-head">
+      <span class="eyebrow">Section 03</span>
+      <h2>The Exoskeleton, in practice</h2>
+      <p>How the workflow runs across a typical portfolio, how the agents are tailored to your group, and how ownership of the toolchain transfers to your team over time.</p>
+    </div>
+
+    <h3 class="sub-h">From input to delivered file — per entity-year</h3>
+    <div class="workflow">
+      <svg class="workflow-loop" viewBox="0 0 1000 50" aria-hidden="true" focusable="false">
+        <defs>
+          <marker id="loopArrow" viewBox="-1 -5 12 10" refX="10" refY="0" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M 0 -5 L 10 0 L 0 5 Z" fill="#1FA84A"/>
+          </marker>
+        </defs>
+        <path d="M 750 50 V 24 Q 750 18 744 18 H 423 Q 417 18 417 24 V 36" stroke="#1FA84A" stroke-width="2" fill="none" stroke-dasharray="5,4" stroke-linecap="round" marker-end="url(#loopArrow)"/>
+        <rect class="loop-label-bg" x="444" y="9" width="280" height="18"/>
+        <text class="loop-label-text" x="584" y="23" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.4">AI IMPROVES WITH EVERY REVIEW</text>
+      </svg>
+      <div class="stage">
+        <div class="stage-num">01</div>
+        <h4>Inputs</h4>
+        <p>Financial data, headcount, intercompany flows, CbCR, prior local files.</p>
+        <div class="who-row"><span class="who">You</span></div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">02</div>
+        <h4>Anonymisation</h4>
+        <p>Sensitive data is anonymised or removed before any AI processing.</p>
+        <div class="who-row"><span class="who ai">Auto</span><span class="who me">inRange</span></div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">03</div>
+        <h4>AI draft</h4>
+        <p>Agents produce the economic analysis and a complete local file in your preferred format.</p>
+        <div class="who-row"><span class="who ai">Agents</span></div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">04</div>
+        <h4>Auto checks</h4>
+        <p>Functional ↔ headcount, financial reconciliation, plus checks tailored to your group.</p>
+        <div class="who-row"><span class="who ai">Agents</span></div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">05</div>
+        <h4>Senior review</h4>
+        <p>A senior TP specialist reviews every output, owns the judgment calls, and signs off as the responsible advisor.</p>
+        <div class="who-row"><span class="who me">inRange</span></div>
+      </div>
+      <div class="stage">
+        <div class="stage-num">06</div>
+        <h4>Delivery</h4>
+        <p>Final file, audit-ready, with methodology and assumptions documented.</p>
+        <div class="who-row"><span class="who me">inRange</span><span class="who">You</span></div>
+      </div>
+      <svg class="workflow-loop" viewBox="0 0 1000 50" aria-hidden="true" focusable="false">
+        <defs>
+          <marker id="loopArrowUp" viewBox="-1 -5 12 10" refX="10" refY="0" markerWidth="12" markerHeight="12" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M 0 -5 L 10 0 L 0 5 Z" fill="#1FA84A"/>
+          </marker>
+        </defs>
+        <path d="M 417 0 V 26 Q 417 32 423 32 H 744 Q 750 32 750 26 V 14" stroke="#1FA84A" stroke-width="2" fill="none" stroke-dasharray="5,4" stroke-linecap="round" marker-end="url(#loopArrowUp)"/>
+        <rect class="loop-label-bg" x="444" y="23" width="280" height="18"/>
+        <text class="loop-label-text" x="584" y="36" text-anchor="middle" font-size="12" font-weight="700" letter-spacing="1.4">AI LEARNS TO REVIEW ITSELF</text>
+      </svg>
+    </div>
+
+    <h3 class="sub-h">Tailored for your group — your context, not anyone else's</h3>
+    <div class="knowledge-grid">
+      <div class="know-card">
+        <h4>TP policies</h4>
+        <p>Your group TP policy, intercompany agreements, and the methodology behind each pricing position.</p>
+      </div>
+      <div class="know-card">
+        <h4>Entity tree</h4>
+        <p>Your legal entities, jurisdictions, regulated/unregulated status, and functional roles in the group.</p>
+      </div>
+      <div class="know-card">
+        <h4>Transaction map</h4>
+        <p>Intercompany flows — services, financing, IP, support functions — by entity pair and year.</p>
+      </div>
+      <div class="know-card">
+        <h4>Master File &amp; CbCR</h4>
+        <p>Master File structure, CbCR data, prior-year local files, and benchmarking history.</p>
+      </div>
+      <div class="know-card">
+        <h4>Headcount &amp; interviews</h4>
+        <p>Detailed headcount data that informs the analysis, plus functional analysis interviews to fill the gaps.</p>
+      </div>
+      <div class="know-card">
+        <h4>Audit posture</h4>
+        <p>Risk ranking by entity-year so high-priority files can be produced first or accelerated on request.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="handover">
+    <div class="section-head">
+      <span class="eyebrow">Section 04</span>
+      <h2>How ownership transfers</h2>
+      <p>The exoskeleton is built to be handed over. Over the course of the engagement, your team takes on more of the work, and we step back to review, edge cases, and controversy.</p>
+    </div>
+
+    <div class="ownership">
+      <div class="own-step">
+        <div class="own-yr">Year 1</div>
+        <h4>We run the exoskeleton</h4>
+        <div class="ratio" aria-hidden="true"><div class="me" style="width:80%"></div><div class="you" style="width:20%"></div></div>
+        <div class="ratio-legend"><span>inRange</span><span>You</span></div>
+        <p>We operate the agents end-to-end. Your team provides inputs, reviews milestones, and receives finished documentation. The backlog comes down; the workflow gets sharper with every file produced.</p>
+      </div>
+      <div class="own-step">
+        <div class="own-yr">Year 2</div>
+        <h4>Co-pilot</h4>
+        <div class="ratio" aria-hidden="true"><div class="me" style="width:50%"></div><div class="you" style="width:50%"></div></div>
+        <div class="ratio-legend"><span>inRange</span><span>You</span></div>
+        <p>Whoever you nominate starts operating the agents alongside us. We shift to review, edge cases, and policy work. The toolchain documentation gets formalised.</p>
+      </div>
+      <div class="own-step">
+        <div class="own-yr">Year 3 +</div>
+        <h4>You wear the exoskeleton</h4>
+        <div class="ratio" aria-hidden="true"><div class="me" style="width:15%"></div><div class="you" style="width:85%"></div></div>
+        <div class="ratio-legend"><span>inRange</span><span>You</span></div>
+        <p>Your team runs the workflow in-house, using a simple AI subscription (whatever is best-in-class at the time). We remain on call for review, refinements, and any controversy work. Human involvement keeps decreasing as the agents improve.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="next">
+    <div class="cta">
+      <div class="cta-body">
+        <span class="eyebrow">Get your TP documentation done</span>
+        <h2>Let's talk about your documentation cycle.</h2>
+        <p>A short note is usually enough to start. Tell us what you're working on — a backlog to clear, a fresh cycle to run, or a tax-authority question — and we'll come back with a clear next step, typically within a working day.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="mailto:info@inrange.nl">Email us</a>
+          <a class="btn btn-outline" href="index.html#services">All services</a>
+        </div>
+      </div>
+      <div class="cta-meta">
+        <div class="label">inRange Solutions</div>
+        <div class="row"><span class="dot"></span>Saskia van Uijlenburgkade 104, Amsterdam</div>
+        <div class="row"><span class="dot"></span><a href="tel:+31648446063">+31 648 44 6063</a></div>
+        <div class="row"><span class="dot"></span><a href="mailto:info@inrange.nl">info@inrange.nl</a></div>
+        <div class="row"><span class="dot"></span><a href="https://www.linkedin.com/company/inrange-solutions/" target="_blank" rel="noopener noreferrer">LinkedIn</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+        <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+        <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+      </svg>
+      <span>© inRange Solutions B.V. · Amsterdam</span>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#services">Services</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="#top">Back to top</a>
+    </div>
+  </div>
+</footer>
+
+<aside class="slideout" id="slideout" aria-hidden="true" role="dialog" aria-labelledby="slideoutTitle">
+  <div class="slideout-head">
+    <div>
+      <span class="meta-tag" id="slideoutTag">Approach</span>
+      <h3 id="slideoutTitle">—</h3>
+    </div>
+    <button class="close" id="slideoutClose" aria-label="Close">×</button>
+  </div>
+  <div class="slideout-body" id="slideoutBody"></div>
+</aside>
+<div class="backdrop" id="backdrop"></div>
+
+<script>
+(function(){
+  var approachData = {
+    pyramid: {
+      tag: "Approach 01 · The Pyramid",
+      tagClass: "",
+      title: "The Pyramid",
+      body:
+        "<p>This is the gold standard for one-off, high-stakes documentation: an experienced Partner sets the position, managers run the workstreams, associates produce the local files. Every output is hand-crafted and reviewed by seniors.</p>" +
+        "<p>The constraint is volume and turnaround. Multiple reports across many entities and several years takes a team of 3 people or more, working for months, and the bill compounds quickly. Our senior team spent fifteen-plus years inside this model — it remains the right answer when the question is bespoke advice, but documentation at scale is a different problem.</p>" +
+        "<h4>Where the Pyramid still fits</h4>" +
+        "<p>Bespoke advisory, controversy work, novel transactions, IPO support. Anywhere the value of a Big Four name on the cover outweighs the cost premium.</p>"
+    },
+    software: {
+      tag: "Approach 02 · The Software",
+      tagClass: "",
+      title: "The Software",
+      body:
+        "<p>Dedicated TP documentation software is built precisely for the volume problem. Once templates are dialled in, the marginal cost per report is low and turnaround is fast.</p>" +
+        "<p>The trade-off is implementation and upkeep — selecting a tool, configuring templates, integrating data feeds, training the team, and maintaining the platform year on year. Output quality is a direct function of how much effort you put in: well-tended templates produce excellent files, neglected ones produce thin ones. Most of this lift sits with your team, not the vendor.</p>" +
+        "<h4>When the Software fits</h4>" +
+        "<p>Large in-house TP functions with the bandwidth (and appetite) to own a platform end-to-end, and stable enough intercompany flows that templates pay back the up-front investment.</p>"
+    },
+    exoskeleton: {
+      tag: "Approach 03 · Recommended",
+      tagClass: "rec",
+      title: "The Exoskeleton",
+      body:
+        "<p>This is the approach we built after years inside the Pyramid. It is designed to combine the two things Big Four and software each give up. A senior specialist is the reviewer on every output — that is the quality side. The agents handle the volume work: data analysis and presentation, first-draft generation, cross-checks against headcount and CbCR data, and tailoring to each specific entity's circumstances.</p>" +
+        "<p>The agents and workflow are tailored for your group — configured around your policies, entities, transaction types, and prior documentation. Your data is not used to train any underlying AI model; the workflow itself improves over time, getting sharper at handling your kind of work. Once the workflow is mature, the toolchain transfers to your team so documentation can be produced in-house using a simple AI subscription.</p>" +
+        "<h4>Why the wearer matters</h4>" +
+        "<p>An exoskeleton is only as good as its wearer. The agents handle the volume work, but the senior reviewer makes the judgment calls — picking the right TP method for a non-standard transaction, scoping the comparables set, framing a position that will hold up under audit.</p>" +
+        "<p>In the first one to two years, while the agents and the workflow improve with every file produced, expert judgment is doing most of the work on quality. By the time the handover completes, the agents handle more of it — but the wearer remains a senior-level TP professional.</p>" +
+        "<h4>Senior expertise alongside the technology</h4>" +
+        "<p>Every engagement is led by a senior TP professional with fifteen-plus years on the largest and most complex transfer-pricing projects in the market. You get partner-level judgment alongside the technology — at a materially lower rate than the Pyramid.</p>"
+    }
+  };
+
+  var slideout = document.getElementById('slideout');
+  var backdrop = document.getElementById('backdrop');
+  var tagEl = document.getElementById('slideoutTag');
+  var titleEl = document.getElementById('slideoutTitle');
+  var bodyEl = document.getElementById('slideoutBody');
+  var closeBtn = document.getElementById('slideoutClose');
+
+  function openSlideout(key){
+    var d = approachData[key];
+    if (!d) return;
+    tagEl.textContent = d.tag;
+    tagEl.className = 'meta-tag ' + (d.tagClass || '');
+    titleEl.textContent = d.title;
+    bodyEl.innerHTML = d.body;
+    slideout.classList.add('open');
+    slideout.setAttribute('aria-hidden','false');
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function(){ closeBtn.focus(); }, 180);
+  }
+  function closeSlideout(){
+    slideout.classList.remove('open');
+    slideout.setAttribute('aria-hidden','true');
+    backdrop.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.approach-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      openSlideout(card.dataset.approach);
+    });
+  });
+  closeBtn.addEventListener('click', closeSlideout);
+  backdrop.addEventListener('click', closeSlideout);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && slideout.classList.contains('open')) closeSlideout();
+  });
+
+  // Mobile menu toggle
+  var header = document.getElementById('siteHeader');
+  var toggle = document.getElementById('mobileToggle');
+  if (toggle) {
+    toggle.addEventListener('click', function(){
+      var open = header.classList.toggle('menu-open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    document.querySelectorAll('.mobile-nav a').forEach(function(a){
+      a.addEventListener('click', function(){
+        header.classList.remove('menu-open');
+        toggle.setAttribute('aria-expanded','false');
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>

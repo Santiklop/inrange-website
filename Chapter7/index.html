@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OECD Chapter VII Examples — Intra-group services | inRange</title>
+<meta name="description" content="Interactive walkthrough of all 21 Annex I examples from the OECD WP6 discussion draft on intra-group services (1 June – 22 July 2026).">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color:var(--fg-2);background:var(--bg)}
+
+/* ---------- site header ---------- */
+.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border-bottom:1px solid var(--border-subtle)}
+.header-inner{max-width:1320px;margin:0 auto;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+@media (max-width:767px){.header-inner{padding:12px 20px}}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;line-height:1;flex-shrink:0;transition:opacity 140ms ease}
+.brand:hover{opacity:.75}
+.brand-mark{width:28px;height:28px;flex-shrink:0}
+@media (max-width:767px){.brand-mark{width:24px;height:24px}}
+.brand-text{font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--fg-1);letter-spacing:-.02em}
+.brand-text .accent{color:var(--brand-green-600)}
+@media (max-width:767px){.brand-text{font-size:16px}}
+.header-actions{display:flex;align-items:center;gap:10px}
+.header-btn{font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background 140ms,color 140ms,border-color 140ms}
+.header-btn.ghost{color:var(--fg-1);border-color:var(--border-default)}
+.header-btn.ghost:hover{background:var(--bg-muted)}
+
+/* ---------- page grid ---------- */
+.page{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:260px minmax(0,1fr);gap:48px;padding:0 40px}
+@media (max-width:1023px){.page{grid-template-columns:1fr;padding:0 24px;gap:0}}
+
+.sidebar{position:sticky;top:80px;align-self:start;max-height:calc(100vh - 100px);overflow:auto;padding:32px 0;font-size:14px}
+@media (max-width:1023px){
+  .sidebar{position:static;display:block;max-height:0;overflow:hidden;padding:0;transition:max-height 280ms ease,padding 280ms ease}
+  .sidebar[data-open="true"]{max-height:80vh;padding:16px 0 8px;overflow:auto;border:1px solid var(--border-subtle);border-radius:10px;margin-bottom:8px;background:var(--bg)}
+}
+
+.main{padding:40px 0 96px;max-width:820px}
+@media (max-width:1023px){.main{padding:20px 0 64px}}
+
+/* ---------- hero ---------- */
+.hero{padding:32px 0 24px;border-bottom:1px solid var(--border-subtle);margin-bottom:40px}
+.hero .eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:10px}
+.hero h1{margin:0 0 10px;font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-.025em;color:var(--fg-1)}
+@media (max-width:760px){.hero h1{font-size:26px}}
+.hero .lead{font-size:15px;line-height:1.55;color:var(--fg-3);max-width:680px;margin:0}
+.disclaimer{margin:18px 0 0;padding:12px 16px;background:var(--accent-sand);border-left:3px solid var(--accent-ochre);border-radius:6px;font-size:12.5px;line-height:1.5;color:var(--fg-1)}
+.disclaimer strong{color:var(--accent-terra)}
+details.how-to{margin-top:24px;border:1px solid var(--border-subtle);border-radius:8px;background:var(--bg-muted)}
+details.how-to summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--fg-1);font-size:14px;list-style:none;display:flex;align-items:center;justify-content:space-between}
+details.how-to summary::-webkit-details-marker{display:none}
+details.how-to summary::after{content:"▾";color:var(--fg-3);transition:transform 200ms}
+details.how-to[open] summary::after{transform:rotate(180deg)}
+details.how-to .how-to-body{padding:0 16px 16px;font-size:14px;color:var(--fg-2);line-height:1.6}
+details.how-to .how-to-body ul{margin:8px 0 0;padding-left:20px}
+details.how-to .how-to-body li{margin-bottom:4px}
+
+/* ---------- mobile sidebar toggle ---------- */
+.toc-toggle{display:none;width:100%;text-align:left;padding:12px 16px;background:var(--bg-muted);border:1px solid var(--border-subtle);border-radius:8px;font:600 14px/1 var(--font-sans);color:var(--fg-1);cursor:pointer;margin:16px 0 0}
+.toc-toggle::after{content:"▾";float:right;color:var(--fg-3);transition:transform 200ms}
+.toc-toggle[aria-expanded="true"]::after{transform:rotate(180deg)}
+@media (max-width:1023px){.toc-toggle{display:block}}
+
+/* ---------- case section ---------- */
+.oecd-case{padding:48px 0;border-top:1px solid var(--border-subtle)}
+.oecd-case:first-of-type{border-top:none;padding-top:0}
+.oecd-case__theme{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:8px}
+.oecd-case__title{margin:0 0 6px;font-size:28px;font-weight:700;line-height:1.18;letter-spacing:-.02em;color:var(--fg-1)}
+@media (max-width:760px){.oecd-case__title{font-size:24px}}
+.oecd-case__refs{font-size:13px;color:var(--fg-3);margin:0 0 24px}
+
+.oecd-glance{background:var(--brand-green-50);border-left:3px solid var(--brand-green-500);padding:14px 18px;border-radius:6px;margin:0 0 28px}
+.oecd-glance__label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green-700);margin-bottom:4px}
+.oecd-glance__body{font-size:15px;line-height:1.55;color:var(--fg-1)}
+
+.oecd-section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin:0 0 12px}
+
+.oecd-timeline{margin:0 0 28px;padding-left:24px;font-size:15px;line-height:1.65;color:var(--fg-2)}
+.oecd-timeline li{margin-bottom:6px}
+.oecd-timeline li::marker{color:var(--brand-green-600);font-weight:700}
+
+/* ---------- parties diagram ---------- */
+.oecd-parties{background:var(--bg-muted);border:1px solid var(--border-subtle);border-radius:10px;padding:24px;margin:0 0 28px}
+.oecd-parties__row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px}
+.oecd-party{background:#fff;border:1px solid var(--border-default);border-radius:8px;padding:14px 18px;min-width:160px;max-width:220px;text-align:center;box-shadow:var(--shadow-xs)}
+.oecd-party--primary{border:2px solid var(--brand-green-500)}
+.oecd-party--shareholder{border-style:dashed;color:var(--fg-3)}
+.oecd-party__name{font-weight:700;font-size:14px;color:var(--fg-1)}
+.oecd-party__role{display:block;font-size:11px;color:var(--fg-3);margin-top:3px;line-height:1.4}
+.oecd-party__sub{margin-top:8px;font-size:11px;color:var(--fg-3);border-top:1px dashed var(--border-default);padding-top:6px}
+.oecd-arrow{display:flex;flex-direction:column;align-items:center;color:var(--fg-3);font-size:11px;min-width:80px}
+.oecd-arrow svg{width:60px;height:18px;color:var(--brand-green-600)}
+.oecd-arrow--double svg{height:32px}
+.oecd-arrow__label{margin-top:4px;font-weight:600;letter-spacing:.04em;text-align:center;max-width:120px;line-height:1.3}
+.oecd-parties__note{margin:14px 0 0;text-align:center;font-size:12px;color:var(--fg-3);font-style:italic}
+@media (max-width:760px){.oecd-parties__row{flex-direction:column} .oecd-arrow svg{transform:rotate(90deg)}}
+
+/* ---------- scenarios ---------- */
+.oecd-scenarios{margin:0 0 28px;display:flex;flex-direction:column;gap:14px}
+.oecd-scenario{border:1px solid var(--border-default);border-radius:10px;overflow:hidden;background:#fff;transition:box-shadow 200ms}
+.oecd-scenario:hover{box-shadow:var(--shadow-sm)}
+.oecd-scenario__head{background:var(--bg-muted);padding:14px 18px;display:flex;gap:14px;align-items:flex-start;border-bottom:1px solid var(--border-subtle)}
+.oecd-scenario__letter{flex:0 0 28px;height:28px;border-radius:50%;background:var(--brand-green-500);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.oecd-scenario__facts{font-size:14px;line-height:1.55;color:var(--fg-1);flex:1;margin:2px 0 0}
+.oecd-scenario__body{padding:20px 18px}
+.oecd-scenario__question{margin:0 0 14px;text-align:center;font-size:14px;color:var(--fg-2);font-weight:500}
+.oecd-scenario__buttons{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.oecd-btn{font-family:inherit;font-size:13px;font-weight:600;padding:10px 18px;border-radius:6px;cursor:pointer;border:1px solid var(--fg-1);background:#fff;color:var(--fg-1);transition:background 140ms,color 140ms;display:inline-flex;align-items:center;gap:6px}
+.oecd-btn:hover{background:var(--fg-1);color:#fff}
+.oecd-btn--primary{background:var(--fg-1);color:#fff}
+.oecd-btn--primary:hover{background:var(--brand-navy-800)}
+@media (max-width:600px){.oecd-scenario__buttons{flex-direction:column} .oecd-btn{width:100%;justify-content:center}}
+
+/* ---------- MCQ ---------- */
+.oecd-mcq{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+.oecd-mcq__option{border:1px solid var(--border-default);background:#fff;border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.5;text-align:left;cursor:pointer;font-family:inherit;color:var(--fg-1);transition:border-color 140ms,background 140ms,opacity 200ms}
+.oecd-mcq__option:hover{border-color:var(--fg-1);background:var(--bg-muted)}
+.oecd-mcq__option[data-result="correct"]{background:var(--success-bg);border-color:var(--success);color:var(--brand-green-700);font-weight:600}
+.oecd-mcq__option[data-result="correct"]::before{content:"✓  "}
+.oecd-mcq__option[data-result="wrong"]{background:var(--danger-bg);border-color:var(--danger);color:var(--danger);font-weight:600}
+.oecd-mcq__option[data-result="wrong"]::before{content:"✗  "}
+.oecd-mcq__option[data-result="dim"]{opacity:.35}
+.oecd-mcq__option:disabled{cursor:default}
+.oecd-mcq__hint{font-size:12px;color:var(--fg-3);margin:4px 0 0;font-style:italic}
+
+/* ---------- reveal & state transitions ---------- */
+.oecd-reveal{background:var(--brand-green-50);border-left:3px solid var(--brand-green-500);padding:14px 18px;border-radius:6px;margin-top:12px}
+.oecd-reveal__label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green-700);margin-bottom:6px}
+.oecd-reveal__verdict{display:inline;margin-left:6px;color:var(--brand-green-700);font-weight:500}
+.oecd-reveal__body{font-size:14px;line-height:1.6;color:var(--fg-1)}
+.oecd-reset{margin:10px 0 0;text-align:right}
+.oecd-reset button{background:none;color:var(--brand-green-700);border:0;font-size:12px;font-weight:600;cursor:pointer;padding:4px 6px;font-family:inherit}
+.oecd-reset button:hover{text-decoration:underline}
+
+.oecd-scenario[data-state="idle"]     .oecd-mcq,
+.oecd-scenario[data-state="idle"]     .oecd-mcq__hint,
+.oecd-scenario[data-state="idle"]     .oecd-reveal,
+.oecd-scenario[data-state="idle"]     .oecd-reset,
+.oecd-scenario[data-state="quiz"]     .oecd-scenario__buttons,
+.oecd-scenario[data-state="quiz"]     .oecd-reveal,
+.oecd-scenario[data-state="quiz"]     .oecd-reset,
+.oecd-scenario[data-state="revealed"] .oecd-scenario__buttons,
+.oecd-scenario[data-state="revealed"] .oecd-scenario__question,
+.oecd-scenario[data-state="revealed"] .oecd-mcq__hint{display:none}
+.oecd-scenario[data-state="revealed"] .oecd-mcq{display:flex}
+.oecd-scenario[data-state="revealed"] .oecd-mcq:empty,
+.oecd-scenario[data-state="revealed"] .oecd-mcq:not(:has([data-result])){display:none}
+
+/* ---------- takeaway + cross-refs ---------- */
+.oecd-takeaway{background:var(--brand-navy-800);color:#fff;border-radius:10px;padding:18px 22px;margin:0 0 14px}
+.oecd-takeaway__label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green-300);margin-bottom:6px}
+.oecd-takeaway__body{font-size:15px;line-height:1.55;color:#fff}
+.oecd-xrefs{font-size:12px;color:var(--fg-3);line-height:1.6}
+.oecd-xrefs strong{color:var(--fg-2);font-weight:600;margin-right:4px}
+
+/* ---------- sidebar ToC ---------- */
+.sidebar h2.toc__title{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-1);margin:0 0 16px;padding:0 8px}
+.toc__group{margin:0 0 18px}
+.toc__group-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin:0 0 6px;padding:0 8px}
+.toc__list{list-style:none;margin:0;padding:0}
+.toc__item a{display:block;padding:6px 10px 6px 12px;border-left:2px solid transparent;font-size:13px;color:var(--fg-2);text-decoration:none;border-radius:0 4px 4px 0;line-height:1.35;transition:background 120ms,color 120ms,border-color 120ms}
+.toc__item a:hover{background:var(--bg-muted);color:var(--fg-1)}
+.toc__item--active a{background:var(--brand-green-50);color:var(--brand-green-700);font-weight:600;border-left-color:var(--brand-green-500)}
+.toc__footer{margin-top:20px;padding:16px 12px;border-top:1px solid var(--border-subtle);font-size:12px;color:var(--fg-3)}
+.toc__stat{margin-bottom:14px}
+.toc__stat:last-of-type{margin-bottom:0}
+.toc__stat-label{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin-bottom:4px}
+.toc__progress{font-weight:700;color:var(--fg-1);font-size:13px}
+.toc__progress-bar{margin-top:6px;height:4px;background:var(--bg-sunken);border-radius:2px;overflow:hidden}
+.toc__progress-bar > div{height:100%;background:var(--brand-green-500);width:0;transition:width 220ms}
+.toc__score{font-weight:700;font-size:13px;color:var(--fg-1)}
+.toc__score--empty{color:var(--fg-3);font-weight:500}
+.toc__score-meta{display:block;color:var(--fg-3);font-size:11px;margin-top:2px}
+.toc__reset-all{margin-top:14px;background:none;border:0;color:var(--brand-green-700);font-weight:600;font-size:12px;padding:0;cursor:pointer;font-family:inherit}
+.toc__reset-all:hover{text-decoration:underline}
+
+/* ---------- share button + toast ---------- */
+.share-btn{display:inline-flex;align-items:center;gap:6px}
+.share-btn svg{width:14px;height:14px}
+.toast{position:fixed;left:50%;bottom:32px;transform:translateX(-50%) translateY(20px);background:var(--brand-navy-800);color:#fff;padding:10px 18px;border-radius:999px;font-size:13px;font-weight:600;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity 220ms,transform 220ms;z-index:60}
+.toast[data-show="true"]{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ---------- focus ---------- */
+.oecd-btn:focus-visible,.oecd-mcq__option:focus-visible,.toc__item a:focus-visible,.toc-toggle:focus-visible,.header-btn:focus-visible,.oecd-reset button:focus-visible,.toc__reset-all:focus-visible{outline:none;box-shadow:var(--shadow-focus)}
+
+/* ---------- footer ---------- */
+.page-footer{border-top:1px solid var(--border-subtle);padding:32px 0;margin-top:48px;font-size:12px;color:var(--fg-3);text-align:center;line-height:1.6}
+.page-footer a{color:var(--brand-green-700);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
+.page-footer a:hover{border-bottom-color:currentColor}
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="../index.html" aria-label="inRange home">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+        <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+        <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+      </svg>
+      <span class="brand-text">in<span class="accent">Range</span></span>
+    </a>
+    <div class="header-actions">
+      <a class="header-btn ghost" href="oecd-discussion-draft-2026.pdf" target="_blank" rel="noreferrer">📄 OECD discussion draft</a>
+      <button class="header-btn ghost share-btn" type="button" id="share-btn" aria-label="Share this page">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        Share
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="page" id="top">
+  <aside class="sidebar" id="sidebar">
+    <h2 class="toc__title">Examples</h2>
+  </aside>
+
+  <main class="main">
+    <button class="toc-toggle" type="button" aria-controls="sidebar" aria-expanded="false">
+      Contents
+    </button>
+
+    <section class="hero">
+      <span class="eyebrow">OECD Chapter VII · WP6 discussion draft</span>
+      <h1>Intra-group services — the 21 Annex I examples.</h1>
+      <p class="lead">An interactive walkthrough of the 1 June 2026 draft (comments due 22 July). Test your instinct, then read OECD's reasoning.</p>
+
+      <details class="how-to">
+        <summary>How to use this page</summary>
+        <div class="how-to-body">
+          <p>Each example breaks down into facts, the parties involved, and one or more scenarios.</p>
+          <ul>
+            <li><strong>🧠 Test yourself</strong> — pick from three answers; instant feedback, then OECD's reasoning.</li>
+            <li><strong>👀 Show OECD answer</strong> — jump straight to OECD's reasoning.</li>
+            <li>Use the sidebar to navigate; your progress is tracked at the bottom.</li>
+          </ul>
+        </div>
+      </details>
+
+      <div class="disclaimer">
+        <strong>Discussion draft only.</strong> The OECD's publication of this draft does not, at this stage, represent the consensus views of the CFA or its subsidiary bodies. Taxpayers and tax administrations should not rely on the approaches discussed.
+      </div>
+    </section>
+
+    <div id="cases-root"></div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <footer class="page-footer">
+      <p>This walkthrough is an inRange production based on the OECD WP6 public consultation document of 1 June 2026.<br>Source: <a href="https://www.oecd.org/" rel="noreferrer">OECD Centre for Tax Policy and Administration</a>.</p>
+    </footer>
+  </main>
+</div>
+
+<script src="cases.js"></script>
+<script>
+(function () {
+  const root = document.getElementById("cases-root");
+  if (!root || !Array.isArray(globalThis.CASES)) {
+    console.error("cases.js not loaded or CASES not an array");
+    return;
+  }
+
+  // ---------- DOM helpers ----------
+  function el(tag, opts = {}, ...children) {
+    const e = document.createElement(tag);
+    if (opts.class) e.className = opts.class;
+    if (opts.id) e.id = opts.id;
+    if (opts.html) e.innerHTML = opts.html;
+    if (opts.attrs) for (const [k, v] of Object.entries(opts.attrs)) e.setAttribute(k, v);
+    for (const c of children) {
+      if (c == null) continue;
+      e.appendChild(typeof c === "string" ? document.createTextNode(c) : c);
+    }
+    return e;
+  }
+
+  // ---------- progress + score state ----------
+  const PROGRESS = {
+    explored: new Set(),
+    mcqAttempted: new Set(),
+    mcqCorrect: new Set(),
+    total: 0
+  };
+  function progressKey(caseId, letter) { return `${caseId}:${letter}`; }
+  function totalScenarios() { return globalThis.CASES.reduce((n, c) => n + c.scenarios.length, 0); }
+  function updateProgress() {
+    const exploredNode = document.getElementById("progress-counter");
+    const bar = document.getElementById("progress-bar");
+    if (exploredNode) exploredNode.textContent = `${PROGRESS.explored.size} of ${PROGRESS.total}`;
+    if (bar) bar.style.width = `${PROGRESS.total ? (PROGRESS.explored.size / PROGRESS.total) * 100 : 0}%`;
+
+    const scoreNode = document.getElementById("score-counter");
+    if (scoreNode) {
+      const attempted = PROGRESS.mcqAttempted.size;
+      const correct = PROGRESS.mcqCorrect.size;
+      if (attempted === 0) {
+        scoreNode.textContent = "— no attempts yet";
+        scoreNode.classList.add("toc__score--empty");
+      } else {
+        scoreNode.textContent = `${correct} / ${attempted}`;
+        scoreNode.classList.remove("toc__score--empty");
+      }
+    }
+  }
+
+  // ---------- renderers ----------
+  function renderHeader(c) {
+    return el(
+      "header",
+      {},
+      el("div", { class: "oecd-case__theme" }, c.themeLabel),
+      el("h2", { class: "oecd-case__title" }, `Example ${c.id} — ${c.title}`),
+      el("p", { class: "oecd-case__refs" }, c.refs + (c.group ? ` · ${c.group}` : ""))
+    );
+  }
+
+  function renderGlance(c) {
+    return el(
+      "div",
+      { class: "oecd-glance" },
+      el("div", { class: "oecd-glance__label" }, "At a glance"),
+      el("div", { class: "oecd-glance__body" }, c.atGlance)
+    );
+  }
+
+  function renderTimeline(c) {
+    const ol = el("ol", { class: "oecd-timeline" });
+    for (const item of c.timeline) ol.appendChild(el("li", {}, item));
+    return el(
+      "section",
+      {},
+      el("p", { class: "oecd-section-label" }, "What happens"),
+      ol
+    );
+  }
+
+  // ---------- parties diagram ----------
+  function partyBox(p, mod = "") {
+    return el(
+      "div",
+      { class: "oecd-party" + (mod ? " " + mod : "") },
+      el("div", { class: "oecd-party__name" }, p.name),
+      p.role ? el("span", { class: "oecd-party__role" }, p.role) : null,
+      p.sub ? el("div", { class: "oecd-party__sub" }, p.sub) : null
+    );
+  }
+
+  function arrow(label, double = false) {
+    const single = '<svg viewBox="0 0 60 18" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="9" x2="50" y2="9"/><polyline points="46,4 56,9 46,14" fill="none"/></svg>';
+    const dbl    = '<svg viewBox="0 0 60 32" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="9" x2="50" y2="9"/><polyline points="46,4 56,9 46,14" fill="none"/><line x1="58" y1="23" x2="10" y2="23"/><polyline points="14,18 4,23 14,28" fill="none"/></svg>';
+    return el(
+      "div",
+      { class: "oecd-arrow" + (double ? " oecd-arrow--double" : "") },
+      el("div", { html: double ? dbl : single }),
+      label ? el("span", { class: "oecd-arrow__label" }, label) : null
+    );
+  }
+
+  function renderParties(c) {
+    const p = c.parties;
+    if (!p) return null;
+    let row;
+
+    if (p.kind === "provider-to-recipients") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.provider, "oecd-party--primary"),
+        arrow(p.arrowLabel || "services →"),
+        ...p.recipients.map(r => partyBox(r))
+      );
+    } else if (p.kind === "provider-with-internal-capability") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.provider, "oecd-party--primary"),
+        arrow("services →"),
+        partyBox({ ...p.recipient, sub: p.recipient.sub || "+ internal capability" })
+      );
+    } else if (p.kind === "franchise") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.franchisor, "oecd-party--primary"),
+        arrow("brand → ← franchise fee", true),
+        partyBox(p.franchisee)
+      );
+    } else if (p.kind === "parent-and-subsidiaries") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.parent, "oecd-party--primary"),
+        arrow(p.arrowLabel || "data ↑ · advice ↓", true),
+        partyBox(p.subsidiaries)
+      );
+    } else if (p.kind === "shareholder-activity") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.parent, "oecd-party--shareholder"),
+        arrow(p.arrowLabel || "activity (no service flow)"),
+        partyBox(p.target)
+      );
+    } else if (p.kind === "supplier-association") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.supplier, "oecd-party--primary"),
+        arrow(p.arrowLabel || "discounted price →"),
+        partyBox(p.buyer),
+        p.group ? arrow("(group affiliation)") : null,
+        p.group ? partyBox(p.group, "oecd-party--shareholder") : null
+      );
+    } else if (p.kind === "three-party-flow") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.first, "oecd-party--primary"),
+        arrow(p.label1 || "→"),
+        partyBox(p.second),
+        arrow(p.label2 || "→"),
+        partyBox(p.third)
+      );
+    } else if (p.kind === "tested-party") {
+      row = el(
+        "div",
+        { class: "oecd-parties__row" },
+        partyBox(p.left, "oecd-party--primary"),
+        arrow(p.arrowLabel || "services →"),
+        partyBox(p.right)
+      );
+    }
+
+    if (!row) return null;
+
+    return el(
+      "section",
+      {},
+      el("p", { class: "oecd-section-label" }, "The parties"),
+      el(
+        "div",
+        { class: "oecd-parties" },
+        row,
+        p.note ? el("p", { class: "oecd-parties__note" }, p.note) : null
+      )
+    );
+  }
+
+  // ---------- scenarios ----------
+  function renderScenarios(c) {
+    if (!c.scenarios?.length) return null;
+    const list = el("div", { class: "oecd-scenarios" });
+    for (const s of c.scenarios) list.appendChild(renderScenarioCard(c.id, s));
+    const isSingle = c.scenarios.length === 1 && (c.scenarios[0].letter === "—" || !c.scenarios[0].letter);
+    return el(
+      "section",
+      {},
+      el("p", { class: "oecd-section-label" }, isSingle ? "Analysis" : "Stress-test the conclusion"),
+      list
+    );
+  }
+
+  function renderScenarioCard(caseId, s) {
+    const letterEl =
+      s.letter && s.letter !== "—"
+        ? el("div", { class: "oecd-scenario__letter" }, s.letter)
+        : null;
+
+    const mcq = el("div", { class: "oecd-mcq" });
+    s.mcq.forEach((text, i) => {
+      mcq.appendChild(
+        el(
+          "button",
+          {
+            class: "oecd-mcq__option",
+            attrs: { "data-mcq-idx": String(i), "data-action": "answer", type: "button" }
+          },
+          text
+        )
+      );
+    });
+    const mcqHint = el(
+      "p",
+      { class: "oecd-mcq__hint" },
+      "Pick an option to reveal OECD's reasoning."
+    );
+
+    const reveal = el(
+      "div",
+      { class: "oecd-reveal" },
+      el(
+        "div",
+        { class: "oecd-reveal__label" },
+        "OECD analysis",
+        s.verdict ? el("span", { class: "oecd-reveal__verdict" }, " · " + s.verdict) : null
+      ),
+      el("div", { class: "oecd-reveal__body" }, s.analysis)
+    );
+
+    const resetWrap = el(
+      "div",
+      { class: "oecd-reset" },
+      el("button", { attrs: { "data-action": "reset", type: "button" } }, "↺ Reset")
+    );
+
+    const head = letterEl
+      ? el(
+          "div",
+          { class: "oecd-scenario__head" },
+          letterEl,
+          el("p", { class: "oecd-scenario__facts" }, s.facts)
+        )
+      : el(
+          "div",
+          { class: "oecd-scenario__head" },
+          el("p", { class: "oecd-scenario__facts" }, s.facts)
+        );
+
+    const card = el(
+      "article",
+      {
+        class: "oecd-scenario",
+        id: `scenario-${caseId}-${s.letter || "x"}`,
+        attrs: { "data-state": "idle" }
+      },
+      head,
+      el(
+        "div",
+        { class: "oecd-scenario__body" },
+        el("p", { class: "oecd-scenario__question" }, s.question || "Was an intra-group service rendered?"),
+        el(
+          "div",
+          { class: "oecd-scenario__buttons" },
+          el(
+            "button",
+            { class: "oecd-btn", attrs: { "data-action": "test", type: "button" } },
+            "🧠 Test yourself"
+          ),
+          el(
+            "button",
+            { class: "oecd-btn oecd-btn--primary", attrs: { "data-action": "show", type: "button" } },
+            "👀 Show OECD answer"
+          )
+        ),
+        mcq,
+        mcqHint,
+        reveal,
+        resetWrap
+      )
+    );
+
+    const markRevealed = () => {
+      if (card.dataset.state === "revealed") return;
+      card.dataset.state = "revealed";
+      PROGRESS.explored.add(progressKey(caseId, s.letter || "x"));
+      updateProgress();
+    };
+
+    card.addEventListener("click", e => {
+      const target = e.target.closest("[data-action]");
+      if (!target) return;
+      const action = target.dataset.action;
+
+      if (action === "show") {
+        markRevealed();
+      } else if (action === "test") {
+        card.dataset.state = "quiz";
+      } else if (action === "answer") {
+        const idx = Number(target.dataset.mcqIdx);
+        const options = mcq.querySelectorAll(".oecd-mcq__option");
+        options.forEach((opt, i) => {
+          opt.disabled = true;
+          if (i === s.correctIdx) opt.dataset.result = "correct";
+          else if (i === idx)      opt.dataset.result = "wrong";
+          else                     opt.dataset.result = "dim";
+        });
+        mcqHint.textContent = "";
+        const key = progressKey(caseId, s.letter || "x");
+        PROGRESS.mcqAttempted.add(key);
+        if (idx === s.correctIdx) PROGRESS.mcqCorrect.add(key);
+        else                      PROGRESS.mcqCorrect.delete(key);
+        updateProgress();
+        setTimeout(markRevealed, 400);
+      } else if (action === "reset") {
+        card.dataset.state = "idle";
+        mcq.querySelectorAll(".oecd-mcq__option").forEach(opt => {
+          opt.disabled = false;
+          delete opt.dataset.result;
+        });
+        mcqHint.textContent = "Pick an option to reveal OECD's reasoning.";
+        const key = progressKey(caseId, s.letter || "x");
+        PROGRESS.mcqAttempted.delete(key);
+        PROGRESS.mcqCorrect.delete(key);
+        updateProgress();
+      }
+    });
+
+    return card;
+  }
+
+  function renderTakeaway(c) {
+    if (!c.takeaway) return null;
+    return el(
+      "div",
+      { class: "oecd-takeaway" },
+      el("div", { class: "oecd-takeaway__label" }, "Key takeaway"),
+      el("div", { class: "oecd-takeaway__body" }, c.takeaway)
+    );
+  }
+
+  function renderXrefs(c) {
+    if (!c.crossRefs?.length) return null;
+    return el(
+      "p",
+      { class: "oecd-xrefs" },
+      el("strong", {}, "Related:"),
+      " " + c.crossRefs.join(" · ")
+    );
+  }
+
+  function renderCase(c) {
+    return el(
+      "article",
+      { class: "oecd-case", id: `case-${c.id}`, attrs: { "data-theme": c.theme } },
+      renderHeader(c),
+      renderGlance(c),
+      renderParties(c),
+      renderTimeline(c),
+      renderScenarios(c),
+      renderTakeaway(c),
+      renderXrefs(c)
+    );
+  }
+
+  // ---------- sidebar ----------
+  function renderSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    if (!sidebar) return;
+
+    const groups = new Map();
+    for (const c of globalThis.CASES) {
+      if (!groups.has(c.theme)) groups.set(c.theme, { label: c.themeLabel, cases: [] });
+      groups.get(c.theme).cases.push(c);
+    }
+    for (const [, g] of groups) {
+      const list = el("ul", { class: "toc__list" });
+      for (const c of g.cases) {
+        list.appendChild(
+          el(
+            "li",
+            { class: "toc__item", attrs: { "data-case-id": String(c.id) } },
+            el(
+              "a",
+              { attrs: { href: `#case-${c.id}` } },
+              `${c.id}. ${c.title}`
+            )
+          )
+        );
+      }
+      sidebar.appendChild(
+        el(
+          "div",
+          { class: "toc__group" },
+          el("div", { class: "toc__group-label" }, g.label),
+          list
+        )
+      );
+    }
+
+    const progressCounter = el("span", { class: "toc__progress", id: "progress-counter" }, "0 of 0");
+    const progressBar = el("div", { class: "toc__progress-bar" }, el("div", { id: "progress-bar" }));
+    const scoreCounter = el(
+      "span",
+      { class: "toc__score toc__score--empty", id: "score-counter" },
+      "— no attempts yet"
+    );
+    const resetAll = el(
+      "button",
+      { class: "toc__reset-all", attrs: { type: "button" } },
+      "↺ Reset all answers"
+    );
+
+    sidebar.appendChild(
+      el(
+        "div",
+        { class: "toc__footer" },
+        el(
+          "div",
+          { class: "toc__stat" },
+          el("span", { class: "toc__stat-label" }, "Progress"),
+          progressCounter,
+          el("span", {}, " explored"),
+          progressBar
+        ),
+        el(
+          "div",
+          { class: "toc__stat" },
+          el("span", { class: "toc__stat-label" }, "Score"),
+          scoreCounter,
+          el("span", { class: "toc__score-meta" }, "correct on Test yourself attempts")
+        ),
+        resetAll
+      )
+    );
+
+    resetAll.addEventListener("click", () => {
+      document.querySelectorAll(".oecd-scenario").forEach(card => {
+        card.dataset.state = "idle";
+        card.querySelectorAll(".oecd-mcq__option").forEach(opt => {
+          opt.disabled = false;
+          delete opt.dataset.result;
+        });
+        const hint = card.querySelector(".oecd-mcq__hint");
+        if (hint) hint.textContent = "Pick an option to reveal OECD's reasoning.";
+      });
+      PROGRESS.explored.clear();
+      PROGRESS.mcqAttempted.clear();
+      PROGRESS.mcqCorrect.clear();
+      updateProgress();
+    });
+  }
+
+  function setupScrollSpy() {
+    const items = document.querySelectorAll(".toc__item");
+    const map = new Map();
+    for (const item of items) map.set(item.dataset.caseId, item);
+    const sections = document.querySelectorAll(".oecd-case");
+
+    const io = new IntersectionObserver(
+      entries => {
+        for (const e of entries) {
+          if (!e.isIntersecting) continue;
+          const id = e.target.id.replace("case-", "");
+          for (const it of items) it.classList.remove("toc__item--active");
+          map.get(id)?.classList.add("toc__item--active");
+        }
+      },
+      { rootMargin: "-25% 0px -65% 0px", threshold: 0 }
+    );
+    for (const s of sections) io.observe(s);
+  }
+
+  function setupShare() {
+    const btn = document.getElementById("share-btn");
+    const toast = document.getElementById("toast");
+    if (!btn) return;
+    const SHARE_URL = "https://www.inrange.nl/Chapter7";
+    const SHARE_TITLE = "OECD Chapter VII — Intra-group services examples";
+    const SHARE_TEXT = "An interactive walkthrough of the 21 Annex I examples in the OECD WP6 discussion draft on intra-group services.";
+
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.dataset.show = "true";
+      clearTimeout(showToast._t);
+      showToast._t = setTimeout(() => { toast.dataset.show = "false"; }, 1800);
+    }
+
+    btn.addEventListener("click", async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({ title: SHARE_TITLE, text: SHARE_TEXT, url: SHARE_URL });
+          return;
+        }
+      } catch (e) { /* user cancelled or share failed — fall through to copy */ }
+      try {
+        await navigator.clipboard.writeText(SHARE_URL);
+        showToast("Link copied to clipboard");
+      } catch {
+        showToast(SHARE_URL);
+      }
+    });
+  }
+
+  function setupMobileToggle() {
+    const tocToggle = document.querySelector(".toc-toggle");
+    const sidebarEl = document.getElementById("sidebar");
+    if (!tocToggle || !sidebarEl) return;
+    tocToggle.addEventListener("click", () => {
+      const open = sidebarEl.dataset.open === "true";
+      sidebarEl.dataset.open = String(!open);
+      tocToggle.setAttribute("aria-expanded", String(!open));
+    });
+    sidebarEl.addEventListener("click", e => {
+      if (e.target.tagName === "A" && matchMedia("(max-width: 1023px)").matches) {
+        sidebarEl.dataset.open = "false";
+        tocToggle.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+
+  // ---------- boot ----------
+  for (const c of globalThis.CASES) root.appendChild(renderCase(c));
+  renderSidebar();
+  setupScrollSpy();
+  setupMobileToggle();
+  setupShare();
+  PROGRESS.total = totalScenarios();
+  updateProgress();
+})();
+</script>
+</body>
+</html>

@@ -171,6 +171,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
 .toc__item a{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:6px 10px 6px 12px;border-left:2px solid transparent;font-size:13px;color:var(--fg-2);text-decoration:none;border-radius:0 4px 4px 0;line-height:1.35;transition:background 120ms,color 120ms,border-color 120ms}
 .toc__item a:hover{background:var(--bg-muted);color:var(--fg-1)}
 .toc__item--active a{background:var(--brand-green-50);color:var(--brand-green-700);font-weight:600;border-left-color:var(--brand-green-500)}
+.toc__item--jump a{color:var(--brand-green-700);font-weight:600}
 .toc__item-title{flex:1;min-width:0}
 .toc__badges{display:inline-flex;gap:3px;flex-shrink:0}
 .toc__badge{display:inline-flex;align-items:center;justify-content:center;width:16px;height:16px;border-radius:50%;font-size:10px;font-weight:700;line-height:1;font-family:-apple-system,BlinkMacSystemFont,system-ui,sans-serif}
@@ -189,6 +190,13 @@ details.how-to .how-to-body li{margin-bottom:4px}
 .toc__score-meta{display:block;color:var(--fg-3);font-size:11px;margin-top:2px}
 .toc__reset-all{margin-top:14px;background:none;border:0;color:var(--brand-green-700);font-weight:600;font-size:12px;padding:0;cursor:pointer;font-family:inherit}
 .toc__reset-all:hover{text-decoration:underline}
+
+/* ---------- floating score shortcut ---------- */
+.fab-score{position:fixed;bottom:24px;right:24px;background:var(--brand-green-500);color:#fff;border:0;border-radius:999px;padding:12px 18px;font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 10px 24px -4px rgba(31,168,74,.4),0 4px 8px rgba(20,39,63,.08);align-items:center;gap:8px;z-index:45;text-decoration:none;display:none;transition:background 140ms,box-shadow 140ms,transform 220ms,opacity 220ms;opacity:0;transform:translateY(8px)}
+.fab-score:hover{background:var(--brand-green-600);box-shadow:0 14px 28px -4px rgba(31,168,74,.5),0 6px 12px rgba(20,39,63,.1)}
+.fab-score[data-show="true"]{display:inline-flex;opacity:1;transform:translateY(0)}
+.fab-score svg{width:14px;height:14px}
+@media (max-width:600px){.fab-score{bottom:16px;right:16px;padding:10px 16px;font-size:12px}}
 
 /* ---------- share button + toast ---------- */
 .share-btn{display:inline-flex;align-items:center;gap:6px}
@@ -304,7 +312,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
 
     <div id="cases-root"></div>
 
-    <section class="progress-card" aria-label="Your progress">
+    <section class="progress-card" id="progress" aria-label="Your progress">
       <div class="progress-card__head">
         <span class="progress-card__icon" aria-hidden="true">🎯</span>
         <span class="progress-card__label">Your progress</span>
@@ -321,7 +329,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
         </div>
       </div>
       <div class="progress-card__share">
-        <p class="progress-card__share-msg">Enjoying the walkthrough? Share it with your transfer-pricing peers.</p>
+        <p class="progress-card__share-msg">Enjoying the walkthrough? Share it with your transfer pricing colleagues.</p>
         <button class="progress-card__share-btn share-action" type="button" aria-label="Share this page">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
@@ -335,7 +343,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
     <section class="closing" aria-label="Call to action">
       <div class="closing__cta-eyebrow">Work together</div>
       <h2 class="closing__cta-title">Help shape the OECD submission</h2>
-      <p class="closing__cta-body">I'm preparing inRange's formal comments to OECD WP6 on this discussion draft — deadline 22 July 2026. If any of these 21 examples sparked a thought (a practical edge case, a question for OECD, an alternative reading), let's fold it in. Add to my LinkedIn post or get in touch directly.</p>
+      <p class="closing__cta-body">I'm submitting inRange's comments on this draft to the OECD by 22 July 2026. If any of these examples raised a question, an edge case, or a different reading for you, send it my way — I'll consider it for the submission. Message me on LinkedIn or get in touch by email.</p>
       <div class="closing__cta-buttons">
         <a class="closing__btn closing__btn--primary" href="https://www.linkedin.com/posts/aleks-davydov-912a4160_oecd-public-consultation-chapter-vii-oecd-activity-7467281792027389952-Q94I" target="_blank" rel="noreferrer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
@@ -348,6 +356,13 @@ details.how-to .how-to-body li{margin-bottom:4px}
     </section>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<a class="fab-score" id="fab-score" href="#progress" data-show="false" aria-label="Jump to your progress">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="6 9 12 15 18 9"></polyline>
+  </svg>
+  Your score
+</a>
 
     <footer class="page-footer">
       <p>This walkthrough is based on the OECD WP6 public consultation document of 1 June 2026.<br>Source: <a href="https://www.oecd.org/en/events/public-consultations/2026/06/public-consultation-on-taxation-revisions-to-chapter-vii-of-the-oecd-transfer-pricing-guidelines.html" target="_blank" rel="noreferrer">OECD public consultation — Revisions to Chapter VII of the OECD Transfer Pricing Guidelines</a>.</p>
@@ -472,16 +487,19 @@ details.how-to .how-to-body li{margin-bottom:4px}
       if (explored === 0) {
         intro.textContent = "Start exploring the cases above — your score will appear here as you go.";
       } else if (explored === PROGRESS.total) {
-        const allRight = attempted > 0 && correct === attempted;
-        intro.textContent = allRight
-          ? "You've walked through every scenario and got every Test-yourself attempt right. 🎉"
-          : "You've walked through every scenario. Nicely done.";
+        if (attempted === 0) {
+          intro.textContent = "You've walked through every scenario via Show OECD answer — a solid skim. Try Test yourself on a few to put your instinct on the line.";
+        } else if (correct === attempted) {
+          intro.textContent = "You've walked through every scenario and got every attempt right. 🎉";
+        } else {
+          intro.textContent = `All 28 explored — ${correct} of ${attempted} right. The misses are the bits worth a second look; that's where the draft has the most to say.`;
+        }
       } else if (attempted === 0) {
         intro.textContent = "Off to a good start. Try Test yourself on the next one to start scoring.";
       } else if (correct === attempted) {
         intro.textContent = "Perfect score so far — keep going.";
       } else {
-        intro.textContent = "Keep going — each scenario is independent, so a wrong answer doesn't ripple into the next one.";
+        intro.textContent = "Keep going — we won't report this to your boss!";
       }
     }
 
@@ -865,6 +883,23 @@ details.how-to .how-to-body li{margin-bottom:4px}
       );
     }
 
+    // "Your progress" jump-to entry — sits below the themed groups
+    const progressJumpList = el(
+      "ul",
+      { class: "toc__list" },
+      el(
+        "li",
+        { class: "toc__item toc__item--jump", attrs: { "data-case-id": "progress" } },
+        el(
+          "a",
+          { attrs: { href: "#progress" } },
+          el("span", { class: "toc__item-title" }, "↓ Your progress"),
+          el("span", { class: "toc__badges" })
+        )
+      )
+    );
+    sidebar.appendChild(el("div", { class: "toc__group" }, progressJumpList));
+
     const progressCounter = el("span", { class: "toc__progress", id: "progress-counter" }, "0 of 0");
     const progressBar = el("div", { class: "toc__progress-bar" }, el("div", { id: "progress-bar" }));
     const scoreCounter = el(
@@ -895,7 +930,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
           { class: "toc__stat" },
           el("span", { class: "toc__stat-label" }, "Score"),
           scoreCounter,
-          el("span", { class: "toc__score-meta" }, "correct on Test yourself attempts")
+          el("span", { class: "toc__score-meta" }, "correct on attempts")
         ),
         resetAll
       )
@@ -925,14 +960,18 @@ details.how-to .how-to-body li{margin-bottom:4px}
 
     const sections = [
       ...document.querySelectorAll("#intro"),
-      ...document.querySelectorAll(".oecd-case")
+      ...document.querySelectorAll(".oecd-case"),
+      ...document.querySelectorAll("#progress")
     ];
 
     const io = new IntersectionObserver(
       entries => {
         for (const e of entries) {
           if (!e.isIntersecting) continue;
-          const id = e.target.id === "intro" ? "intro" : e.target.id.replace("case-", "");
+          let id;
+          if (e.target.id === "intro") id = "intro";
+          else if (e.target.id === "progress") id = "progress";
+          else id = e.target.id.replace("case-", "");
           for (const it of items) it.classList.remove("toc__item--active");
           map.get(id)?.classList.add("toc__item--active");
         }
@@ -974,6 +1013,29 @@ details.how-to .how-to-body li{margin-bottom:4px}
     document.querySelectorAll("#share-btn, .share-action").forEach(btn => {
       btn.addEventListener("click", doShare);
     });
+  }
+
+  function setupFab() {
+    const fab = document.getElementById("fab-score");
+    const progressCard = document.getElementById("progress");
+    if (!fab || !progressCard) return;
+
+    let pending = false;
+    const update = () => {
+      pending = false;
+      const scrolled = window.scrollY > 240;
+      const rect = progressCard.getBoundingClientRect();
+      const progressVisible = rect.top < window.innerHeight - 80 && rect.bottom > 0;
+      fab.dataset.show = scrolled && !progressVisible ? "true" : "false";
+    };
+    const schedule = () => {
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(update);
+    };
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule, { passive: true });
+    update();
   }
 
   function setupScrollProgress() {
@@ -1019,6 +1081,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
   renderSidebar();
   setupScrollSpy();
   setupScrollProgress();
+  setupFab();
   setupMobileToggle();
   setupShare();
   PROGRESS.total = totalScenarios();

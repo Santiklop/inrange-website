@@ -10,8 +10,102 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color:var(--fg-2);background:var(--bg)}
+html{scroll-behavior:smooth;scroll-padding-top:80px;transition:background 200ms ease}
+body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color:var(--fg-2);background:var(--bg);transition:background 200ms ease,color 200ms ease}
+
+/* ---------- DARK THEME ---------- */
+[data-theme="dark"]{
+  --bg:#0A1018;
+  --bg-muted:#131B27;
+  --bg-sunken:#1D2532;
+  --fg-1:#EBEFF5;
+  --fg-2:#B6BFCB;
+  --fg-3:#818B98;
+  --fg-4:#5B6573;
+  --fg-brand:var(--brand-green-300);
+  --fg-link:var(--brand-green-300);
+  --border-subtle:rgba(255,255,255,.08);
+  --border-default:rgba(255,255,255,.14);
+  --border-strong:rgba(255,255,255,.22);
+}
+[data-theme="dark"] .site-header{background:rgba(10,16,24,.78);border-bottom-color:rgba(255,255,255,.08)}
+[data-theme="dark"] .brand-text{color:#EBEFF5}
+[data-theme="dark"] .brand-text .accent{color:var(--brand-green-300)}
+[data-theme="dark"] .header-btn.ghost{color:var(--fg-1);border-color:var(--border-default)}
+[data-theme="dark"] .header-btn.ghost:hover{background:var(--bg-muted)}
+[data-theme="dark"] .header-btn.primary{background:var(--brand-green-500);border-color:var(--brand-green-500);color:#fff}
+[data-theme="dark"] .header-btn.primary:hover{background:var(--brand-green-400);border-color:var(--brand-green-400)}
+
+[data-theme="dark"] .hero{border-bottom-color:var(--border-subtle)}
+[data-theme="dark"] .hero h1,[data-theme="dark"] .oecd-case__title,[data-theme="dark"] .closing__cta-title,[data-theme="dark"] .progress-card__intro{color:var(--fg-1)}
+[data-theme="dark"] .hero .lead{color:var(--fg-2)}
+[data-theme="dark"] details.how-to{background:var(--bg-muted);border-color:var(--border-subtle)}
+[data-theme="dark"] details.how-to summary{color:var(--fg-1)}
+[data-theme="dark"] .disclaimer{background:rgba(201,138,43,.10);border-left-color:var(--accent-ochre);color:var(--fg-1)}
+[data-theme="dark"] .disclaimer strong{color:#E8A85A}
+
+[data-theme="dark"] .oecd-case{border-top-color:var(--border-subtle)}
+[data-theme="dark"] .oecd-glance,[data-theme="dark"] .oecd-reveal{background:rgba(31,168,74,.10);border-left-color:var(--brand-green-400)}
+[data-theme="dark"] .oecd-glance__label,[data-theme="dark"] .oecd-reveal__label,[data-theme="dark"] .oecd-reveal__verdict{color:var(--brand-green-300)}
+[data-theme="dark"] .oecd-glance__body,[data-theme="dark"] .oecd-reveal__body{color:var(--fg-1)}
+
+[data-theme="dark"] .oecd-parties{background:var(--bg-muted);border-color:var(--border-subtle)}
+[data-theme="dark"] .oecd-party{background:var(--bg);border-color:var(--border-default);box-shadow:none}
+[data-theme="dark"] .oecd-party--primary{border-color:var(--brand-green-400)}
+[data-theme="dark"] .oecd-party__name{color:var(--fg-1)}
+[data-theme="dark"] .oecd-arrow svg{color:var(--brand-green-300)}
+
+[data-theme="dark"] .oecd-scenario{background:var(--bg-muted);border-color:var(--border-default)}
+[data-theme="dark"] .oecd-scenario__head{background:var(--bg-sunken);border-bottom-color:var(--border-subtle)}
+[data-theme="dark"] .oecd-scenario__facts{color:var(--fg-1)}
+[data-theme="dark"] .oecd-scenario__question{color:var(--fg-2)}
+[data-theme="dark"] .oecd-btn{background:transparent;color:var(--fg-1);border-color:var(--border-default)}
+[data-theme="dark"] .oecd-btn:hover{background:var(--fg-1);color:var(--bg)}
+[data-theme="dark"] .oecd-btn--primary{background:var(--brand-green-500);color:#fff;border-color:var(--brand-green-500)}
+[data-theme="dark"] .oecd-btn--primary:hover{background:var(--brand-green-400);border-color:var(--brand-green-400);color:#fff}
+[data-theme="dark"] .oecd-mcq__option{background:var(--bg);border-color:var(--border-default);color:var(--fg-1)}
+[data-theme="dark"] .oecd-mcq__option:hover{background:var(--bg-sunken)}
+[data-theme="dark"] .oecd-mcq__option[data-result="correct"]{background:rgba(31,168,74,.18);color:#84E2A2;border-color:var(--brand-green-400)}
+[data-theme="dark"] .oecd-mcq__option[data-result="wrong"]{background:rgba(200,65,47,.18);color:#FA8276;border-color:#E5614F}
+[data-theme="dark"] .oecd-reset button{color:var(--brand-green-300)}
+
+[data-theme="dark"] .oecd-takeaway{background:#03080F;box-shadow:0 4px 14px rgba(0,0,0,.5)}
+[data-theme="dark"] .oecd-takeaway__label{color:var(--brand-green-300)}
+
+[data-theme="dark"] .toc__item a:hover{background:var(--bg-muted)}
+[data-theme="dark"] .toc__item--active a{background:rgba(31,168,74,.14);color:#84E2A2;border-left-color:var(--brand-green-400)}
+[data-theme="dark"] .toc__item--jump a{color:var(--brand-green-300)}
+[data-theme="dark"] .toc__badge--correct{background:var(--brand-green-400);color:#0A1018}
+[data-theme="dark"] .toc__progress-bar{background:var(--bg-sunken)}
+[data-theme="dark"] .toc__reset-all,[data-theme="dark"] .toc__score-meta{color:var(--brand-green-300)}
+[data-theme="dark"] .toc__footer{border-top-color:var(--border-subtle)}
+
+[data-theme="dark"] .progress-card{background:linear-gradient(135deg,rgba(31,168,74,.14) 0%,var(--bg-muted) 75%);border-color:rgba(31,168,74,.3);box-shadow:0 12px 32px -12px rgba(0,0,0,.6)}
+[data-theme="dark"] .progress-card__label{color:var(--brand-green-300)}
+[data-theme="dark"] .progress-card__stat{background:var(--bg);border-color:rgba(31,168,74,.2)}
+[data-theme="dark"] .progress-card__stat-value{color:#84E2A2}
+[data-theme="dark"] .progress-card__stat-value--empty{color:var(--fg-4)}
+[data-theme="dark"] .progress-card__stat-label,[data-theme="dark"] .progress-card__share-msg{color:var(--fg-2)}
+[data-theme="dark"] .progress-card__share{border-top-color:rgba(255,255,255,.08)}
+
+[data-theme="dark"] .closing{background:#03080F;box-shadow:0 8px 24px rgba(0,0,0,.5)}
+[data-theme="dark"] .closing__btn--ghost{color:#fff;border-color:rgba(255,255,255,.3)}
+[data-theme="dark"] .closing__btn--ghost:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+
+[data-theme="dark"] .page-footer{border-top-color:var(--border-subtle);color:var(--fg-3)}
+[data-theme="dark"] .page-footer a{color:var(--brand-green-300)}
+
+[data-theme="dark"] .toc-toggle{background:var(--bg-muted);border-color:var(--border-subtle);color:var(--fg-1)}
+[data-theme="dark"] .sidebar[data-open="true"]{background:var(--bg-muted)}
+
+/* Theme toggle button */
+.theme-toggle{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;background:transparent;color:var(--fg-1);border:1px solid var(--border-default);border-radius:999px;cursor:pointer;font-family:inherit;padding:0;transition:background 140ms,color 140ms,border-color 140ms}
+.theme-toggle:hover{background:var(--bg-muted)}
+.theme-toggle svg{width:16px;height:16px}
+.theme-toggle__sun{display:none}
+[data-theme="dark"] .theme-toggle__moon{display:none}
+[data-theme="dark"] .theme-toggle__sun{display:block}
+[data-theme="dark"] .theme-toggle{color:var(--fg-1);border-color:var(--border-default)}
 
 /* ---------- scroll progress bar ---------- */
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:50;pointer-events:none}
@@ -29,7 +123,15 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 .brand-text .accent{color:var(--brand-green-600)}
 @media (max-width:767px){.brand-text{font-size:16px}}
 .header-actions{display:flex;align-items:center;gap:10px}
-.header-btn{font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background 140ms,color 140ms,border-color 140ms,box-shadow 140ms}
+.header-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background 140ms,color 140ms,border-color 140ms,box-shadow 140ms}
+.header-btn__icon{font-size:14px;line-height:1}
+.header-btn svg{width:14px;height:14px}
+@media (max-width:600px){
+  .header-btn{padding:0;width:38px;height:38px;justify-content:center;gap:0}
+  .header-btn__label{display:none}
+  .header-btn__icon{font-size:16px}
+  .header-btn svg{width:16px;height:16px}
+}
 .header-btn.ghost{color:var(--fg-1);border-color:var(--border-default)}
 .header-btn.ghost:hover{background:var(--bg-muted)}
 .header-btn.primary{background:var(--brand-green-500);color:#fff;border-color:var(--brand-green-500);box-shadow:var(--shadow-xs)}
@@ -266,13 +368,28 @@ details.how-to .how-to-body li{margin-bottom:4px}
       <span class="brand-text">in<span class="accent">Range</span></span>
     </a>
     <div class="header-actions">
-      <a class="header-btn ghost" href="oecd-discussion-draft-2026.pdf" target="_blank" rel="noreferrer">📄 OECD discussion draft</a>
-      <button class="header-btn primary share-btn" type="button" id="share-btn" aria-label="Share this page">
+      <a class="header-btn ghost" href="oecd-discussion-draft-2026.pdf" target="_blank" rel="noreferrer" aria-label="Open the OECD discussion draft (PDF)" title="OECD discussion draft (PDF)">
+        <span class="header-btn__icon" aria-hidden="true">📄</span>
+        <span class="header-btn__label">OECD discussion draft</span>
+      </a>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
+        <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+        <svg class="theme-toggle__sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.5"/>
+          <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+          <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+          <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+          <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+        </svg>
+      </button>
+      <button class="header-btn primary share-btn" type="button" id="share-btn" aria-label="Share this page" title="Share this page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
           <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
         </svg>
-        Share
+        <span class="header-btn__label">Share</span>
       </button>
     </div>
   </div>
@@ -1015,6 +1132,26 @@ details.how-to .how-to-body li{margin-bottom:4px}
     });
   }
 
+  function setupTheme() {
+    const STORAGE_KEY = "oecd-ch7-theme";
+    const root = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+
+    const stored = (() => { try { return localStorage.getItem(STORAGE_KEY); } catch { return null; } })();
+    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initial = stored === "dark" || stored === "light" ? stored : (prefersDark ? "dark" : "light");
+    root.setAttribute("data-theme", initial);
+    if (toggle) toggle.setAttribute("aria-label", initial === "dark" ? "Switch to light mode" : "Switch to dark mode");
+
+    if (!toggle) return;
+    toggle.addEventListener("click", () => {
+      const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      toggle.setAttribute("aria-label", next === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      try { localStorage.setItem(STORAGE_KEY, next); } catch {}
+    });
+  }
+
   function setupFab() {
     const fab = document.getElementById("fab-score");
     const progressCard = document.getElementById("progress");
@@ -1081,6 +1218,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
   renderSidebar();
   setupScrollSpy();
   setupScrollProgress();
+  setupTheme();
   setupFab();
   setupMobileToggle();
   setupShare();

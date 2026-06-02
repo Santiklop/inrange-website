@@ -48,7 +48,7 @@ function V2_Modern() {
     ['TP Documentation', 'tp-documentation.html'],
     ['Recent projects', 'projects'],
     ['Why inRange', 'why'],
-    ['Contact', 'contact'],
+    ['Open Practice', 'open-practice'],
   ];
   // Target ending in '.html' is an external page; anything else is an in-page anchor.
   const isExternalLink = (target) => typeof target === 'string' && target.endsWith('.html');
@@ -610,6 +610,66 @@ function V2_Modern() {
         </div>
       </section>
 
+      {/* OPEN PRACTICE — free TP resources we publish for the community */}
+      <section id="open-practice" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
+        <div style={{ maxWidth: 1320, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: isMobile ? 40 : 56, maxWidth: 820, marginLeft: 'auto', marginRight: 'auto' }}>
+            <Eyebrow>Open Practice</Eyebrow>
+            <h2 style={{ margin: '16px 0 20px', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+              Free tools for the transfer-pricing community.
+            </h2>
+            <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 }}>
+              A portal where we publish free-to-use materials &mdash; interactive walkthroughs, dashboards, and analytics &mdash; for transfer-pricing practitioners.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr', gap: isMobile ? 16 : 24, maxWidth: 880, margin: '0 auto' }}>
+            <a
+              href="/Chapter6/"
+              style={{
+                display: 'block',
+                background: 'var(--neutral-50)',
+                border: '1px solid var(--border-subtle)',
+                borderLeft: '4px solid var(--brand-green-500)',
+                borderRadius: 20,
+                padding: isMobile ? 24 : 36,
+                textDecoration: 'none',
+                color: 'inherit',
+                transition: 'all 220ms var(--ease-standard)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+              onMouseEnter={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; e.currentTarget.style.background = '#fff'; } }}
+              onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'var(--neutral-50)'; } }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
+                <Badge tone="success" dot={false}>Interactive walkthrough</Badge>
+                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', color: 'var(--fg-3)', textTransform: 'uppercase' }}>Live</span>
+              </div>
+              <h3 style={{ fontSize: isMobile ? 22 : 26, margin: '0 0 14px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>
+                OECD Transfer Pricing Guidelines &mdash; worked examples
+              </h3>
+              <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
+                This project aims to provide an interactive walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations, and ultimately reduce tax controversy.
+              </p>
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                background: 'var(--brand-green-500)', color: '#fff',
+                fontWeight: 600, fontSize: 14,
+                padding: '10px 18px', borderRadius: 999,
+                transition: 'background 140ms var(--ease)',
+              }}>
+                Open the walkthrough
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="3" y1="8" x2="13" y2="8" />
+                  <polyline points="9 4 13 8 9 12" />
+                </svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
       {/* CONTACT CTA */}
       <section id="contact" style={{ padding: isMobile ? '48px 16px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
         <div style={{
@@ -670,7 +730,7 @@ function V2_Modern() {
           </div>
           {[
             ['Services', [['Transfer Pricing Advice', 'services'], ['Transfer Pricing Documentation', 'tp-documentation.html'], ['Audit Support', 'services'], ['Interim Placement Solutions', 'services'], ['Economic Analyses', 'services'], ['Legal Agreements', 'services']]],
-            ['Company', [['About us', 'about'], ['How we work', 'coverage'], ['Recent projects', 'projects'], ['Advantages', 'why'], ['Contact', 'contact']]],
+            ['Company', [['About us', 'about'], ['How we work', 'coverage'], ['Recent projects', 'projects'], ['Advantages', 'why'], ['Open Practice', 'open-practice'], ['Contact', 'contact']]],
             ...(isMobile ? [] : [['Contact', [['Saskia van Uijlenburgkade 104', null], ['Amsterdam, Netherlands', null], ['info@inrange.nl', 'mailto:info@inrange.nl'], ['+31 648 44 6063', 'tel:+31648446063']]]]),
           ].map(([h, items]) => (
             <div key={h}>

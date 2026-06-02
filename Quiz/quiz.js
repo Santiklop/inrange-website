@@ -46,7 +46,7 @@
       hero.innerHTML =
         '<h1>Ready to play?</h1>' +
         '<p class="lead">Test your knowledge by answering questions based on the OECD TP Guidelines ' +
-        '(incl. the latest draft Chapter VII).</p>';
+        '(including the latest draft Chapter VII).</p>';
     } else if (mode === "sprint") {
       hero.innerHTML = '<h1><span class="hero--quiz__emoji">🏃</span> Sprint</h1>';
     } else if (mode === "deathrun") {

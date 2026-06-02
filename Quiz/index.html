@@ -211,6 +211,10 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 .hero .lead{font-size:15px;line-height:1.55;color:var(--fg-3);max-width:680px;margin:0}
 .disclaimer{margin:18px 0 0;padding:12px 16px;background:var(--accent-sand);border-left:3px solid var(--accent-ochre);border-radius:6px;font-size:12.5px;line-height:1.5;color:var(--fg-1)}
 .disclaimer strong{color:var(--accent-terra)}
+.hero--quiz{padding:48px 0 24px;border-bottom:0;margin-bottom:8px}
+.hero--quiz h1{font-size:48px;letter-spacing:-.03em;margin-bottom:14px}
+@media (max-width:760px){.hero--quiz h1{font-size:34px}}
+.hero--quiz .lead{font-size:17px;max-width:620px}
 details.how-to{margin-top:24px;border:1px solid var(--border-subtle);border-radius:8px;background:var(--bg-muted)}
 details.how-to--top{margin-top:0;margin-bottom:32px}
 details.how-to summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--fg-1);font-size:14px;list-style:none;display:flex;align-items:center;justify-content:space-between}
@@ -726,88 +730,14 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 
 <div class="page" id="top">
   <main class="main">
-    <header class="project-banner">
-      <h2 class="project-banner__title">OECD TP Guidelines: Interactive Learning Experience</h2>
-    </header>
-    <details class="how-to how-to--top" id="about" open>
-      <summary>About this project</summary>
-      <div class="how-to-body">
-        <p>This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations.</p>
-        <nav class="chapter-pills" aria-label="Available chapters">
-          <a class="chapter-pill" href="/Chapter6/" data-pill-num="VI">
-            <span class="chapter-pill__num">VI</span>
-            <span class="chapter-pill__title">Intangibles</span>
-          </a>
-          <a class="chapter-pill" href="/Chapter7/" data-pill-num="VII">
-            <span class="chapter-pill__num">VII</span>
-            <span class="chapter-pill__title">Intra-group services</span>
-          </a>
-          <a class="chapter-pill" href="/Chapter9/" data-pill-num="IX">
-            <span class="chapter-pill__num">IX</span>
-            <span class="chapter-pill__title">Business restructurings</span>
-          </a>
-          <a class="chapter-pill" href="/Chapter10/" data-pill-num="X">
-            <span class="chapter-pill__num">X</span>
-            <span class="chapter-pill__title">Financial transactions</span>
-          </a>
-          <a class="chapter-pill" href="/ProfitSplit/" data-pill-num="PS">
-            <span class="chapter-pill__num">PS</span>
-            <span class="chapter-pill__title">Profit split</span>
-          </a>
-          <a class="chapter-pill" href="/OtherExamples/" data-pill-num="+">
-            <span class="chapter-pill__num">+</span>
-            <span class="chapter-pill__title">Other examples</span>
-          </a>
-          <a class="chapter-pill chapter-pill--quiz" href="/Quiz/" aria-current="page" data-pill-num="🎯">
-            <span class="chapter-pill__num">🎯</span>
-            <span class="chapter-pill__title">Quiz</span>
-          </a>
-        </nav>
-        <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test.</p>
-      </div>
-    </details>
-
-    <section class="hero" id="intro">
-  <span class="eyebrow">inRange Open Practice · TP quiz</span>
-  <h1>Quiz.</h1>
-  <p class="lead">Two modes — a 5-question Sprint or a Death Run that ends the moment you get one wrong. Questions are drawn at random from the ~100 worked examples on the chapter pages.</p>
-
-  <div class="disclaimer">
-    <strong>Teaching summary.</strong> The questions and answers come straight from the chapter walkthroughs; the analysis you see in the reveal is the OECD's own framing, paraphrased for learning. For any binding interpretation, consult the OECD Transfer Pricing Guidelines themselves.
-  </div>
+    <section class="hero hero--quiz" id="intro">
+  <h1>Ready to play?</h1>
+  <p class="lead">Sprint through five random questions for a quick gut-check — or push your luck on a Death Run streak that ends the second you miss one. Pick your poison.</p>
 </section>
 
     <div id="quiz-banner"></div>
 <div id="quiz-root"></div>
 <div id="quiz-modal-root"></div>
-
-    <section class="progress-card" id="progress" aria-label="Your progress">
-      <div class="progress-card__head">
-        <span class="progress-card__icon" aria-hidden="true">🎯</span>
-        <span class="progress-card__label">Your progress</span>
-      </div>
-      <p class="progress-card__intro" id="progress-intro">Start exploring the cases above — your score will appear here as you go.</p>
-      <div class="progress-card__stats">
-        <div class="progress-card__stat">
-          <div class="progress-card__stat-value progress-card__stat-value--empty" id="stat-explored">— / 28</div>
-          <div class="progress-card__stat-label">scenarios explored</div>
-        </div>
-        <div class="progress-card__stat">
-          <div class="progress-card__stat-value progress-card__stat-value--empty" id="stat-correct">— / —</div>
-          <div class="progress-card__stat-label">correct on attempts</div>
-        </div>
-      </div>
-      <div class="progress-card__share">
-        <p class="progress-card__share-msg">Enjoying the walkthrough? Share it with your transfer pricing colleagues.</p>
-        <button class="progress-card__share-btn share-action" type="button" aria-label="Share this page">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-          </svg>
-          Share this page
-        </button>
-      </div>
-    </section>
 
     <section class="closing" aria-label="Call to action">
   <div class="closing__cta-eyebrow">Work together</div>
@@ -825,13 +755,6 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 </section>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<a class="fab-score" id="fab-score" href="#progress" data-show="false" aria-label="Jump to your progress">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <polyline points="6 9 12 15 18 9"></polyline>
-  </svg>
-  Your score
-</a>
 
     <footer class="page-footer">
       <p>Questions are drawn from the worked examples on the inRange Open Practice walkthrough of the OECD Transfer Pricing Guidelines (2022 edition).<br>Source: <a href="https://www.oecd.org/en/publications/oecd-transfer-pricing-guidelines-for-multinational-enterprises-and-tax-administrations-2022_0e655865-en.html" target="_blank" rel="noreferrer">OECD Transfer Pricing Guidelines (2022)</a>.</p>

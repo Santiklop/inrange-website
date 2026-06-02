@@ -225,7 +225,12 @@ details.how-to .how-to-body li{margin-bottom:4px}
 .oecd-arrow--double svg{height:32px}
 .oecd-arrow__label{margin-top:4px;font-weight:600;letter-spacing:.04em;text-align:center;max-width:120px;line-height:1.3}
 .oecd-parties__note{margin:14px 0 0;text-align:center;font-size:12px;color:var(--fg-3);font-style:italic}
-@media (max-width:760px){.oecd-parties__row{flex-direction:column} .oecd-arrow svg{transform:rotate(90deg)}}
+@media (max-width:760px){
+  .oecd-parties__row{flex-direction:column}
+  /* Square the SVG box so the rotated arrow doesn't paint over the label below */
+  .oecd-arrow svg, .oecd-arrow--double svg{width:48px;height:48px;transform:rotate(90deg)}
+  .oecd-arrow__label{margin-top:6px}
+}
 
 /* ---------- scenarios ---------- */
 .oecd-scenarios{margin:0 0 28px;display:flex;flex-direction:column;gap:14px}
@@ -288,7 +293,30 @@ details.how-to .how-to-body li{margin-bottom:4px}
 /* ---------- sidebar ToC ---------- */
 .sidebar h2.toc__title{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-1);margin:0 0 16px;padding:0 8px}
 .toc__group{margin:0 0 18px}
-.toc__group-label{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin:0 0 6px;padding:0 8px}
+.toc__group-label{display:block;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin:0 0 6px;padding:0 8px;text-decoration:none;line-height:1.4}
+a.toc__group-label{cursor:pointer}
+a.toc__group-label:hover{color:var(--brand-green-700)}
+
+/* Mobile: collapse each theme group to a single tappable link; hide the per-case entries */
+@media (max-width:1023px){
+  .toc__group--themed .toc__list{display:none}
+  .toc__group--themed{margin:0 0 8px}
+  a.toc__group-label{
+    padding:12px 14px;
+    background:var(--bg-muted);
+    border:1px solid var(--border-subtle);
+    border-radius:8px;
+    font-size:13px;
+    color:var(--fg-1);
+    font-weight:600;
+    letter-spacing:.04em;
+    text-transform:none;
+    line-height:1.3;
+  }
+  a.toc__group-label:hover{background:var(--brand-green-50);color:var(--brand-green-700);border-color:var(--brand-green-200)}
+  [data-theme="dark"] a.toc__group-label{background:var(--bg-sunken);color:var(--fg-1);border-color:var(--border-subtle)}
+  [data-theme="dark"] a.toc__group-label:hover{background:rgba(31,168,74,0.12);color:var(--brand-green-300);border-color:rgba(31,168,74,0.3)}
+}
 .toc__list{list-style:none;margin:0;padding:0}
 .toc__item a{display:flex;align-items:center;gap:8px;justify-content:space-between;padding:6px 10px 6px 12px;border-left:2px solid transparent;font-size:13px;color:var(--fg-2);text-decoration:none;border-radius:0 4px 4px 0;line-height:1.35;transition:background 120ms,color 120ms,border-color 120ms}
 .toc__item a:hover{background:var(--bg-muted);color:var(--fg-1)}
@@ -701,12 +729,16 @@ details.how-to .how-to-body li{margin-bottom:4px}
     if (!p) return null;
     let row;
 
+    // Strip a redundant trailing → (the SVG arrow already conveys direction).
+    // Keep arrows that carry independent meaning (e.g. "data ↑ · advice ↓").
+    const cleanArrow = s => (s == null ? s : s.replace(/\s*→\s*$/, ""));
+
     if (p.kind === "provider-to-recipients") {
       row = el(
         "div",
         { class: "oecd-parties__row" },
         partyBox(p.provider, "oecd-party--primary"),
-        arrow(p.arrowLabel || "services →"),
+        arrow(cleanArrow(p.arrowLabel) || "services"),
         ...p.recipients.map(r => partyBox(r))
       );
     } else if (p.kind === "provider-with-internal-capability") {
@@ -714,7 +746,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
         "div",
         { class: "oecd-parties__row" },
         partyBox(p.provider, "oecd-party--primary"),
-        arrow("services →"),
+        arrow("services"),
         partyBox({ ...p.recipient, sub: p.recipient.sub || "+ internal capability" })
       );
     } else if (p.kind === "franchise") {
@@ -746,7 +778,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
         "div",
         { class: "oecd-parties__row" },
         partyBox(p.supplier, "oecd-party--primary"),
-        arrow(p.arrowLabel || "discounted price →"),
+        arrow(cleanArrow(p.arrowLabel) || "discounted price"),
         partyBox(p.buyer),
         p.group ? arrow("(group affiliation)") : null,
         p.group ? partyBox(p.group, "oecd-party--shareholder") : null
@@ -756,9 +788,9 @@ details.how-to .how-to-body li{margin-bottom:4px}
         "div",
         { class: "oecd-parties__row" },
         partyBox(p.first, "oecd-party--primary"),
-        arrow(p.label1 || "→"),
+        arrow(cleanArrow(p.label1) || ""),
         partyBox(p.second),
-        arrow(p.label2 || "→"),
+        arrow(cleanArrow(p.label2) || ""),
         partyBox(p.third)
       );
     } else if (p.kind === "tested-party") {
@@ -766,7 +798,7 @@ details.how-to .how-to-body li{margin-bottom:4px}
         "div",
         { class: "oecd-parties__row" },
         partyBox(p.left, "oecd-party--primary"),
-        arrow(p.arrowLabel || "services →"),
+        arrow(cleanArrow(p.arrowLabel) || "services"),
         partyBox(p.right)
       );
     }
@@ -806,16 +838,25 @@ details.how-to .how-to-body li{margin-bottom:4px}
         ? el("div", { class: "oecd-scenario__letter" }, s.letter)
         : null;
 
+    // Shuffle the MCQ options at render time so the correct answer isn't always first.
+    // `displayedOrder[displayIdx] = originalIdx`; we use this to map back when checking.
+    const displayedOrder = s.mcq.map((_, i) => i);
+    for (let i = displayedOrder.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [displayedOrder[i], displayedOrder[j]] = [displayedOrder[j], displayedOrder[i]];
+    }
+    const displayedCorrectIdx = displayedOrder.indexOf(s.correctIdx);
+
     const mcq = el("div", { class: "oecd-mcq" });
-    s.mcq.forEach((text, i) => {
+    displayedOrder.forEach((originalIdx, displayIdx) => {
       mcq.appendChild(
         el(
           "button",
           {
             class: "oecd-mcq__option",
-            attrs: { "data-mcq-idx": String(i), "data-action": "answer", type: "button" }
+            attrs: { "data-mcq-idx": String(displayIdx), "data-action": "answer", type: "button" }
           },
-          text
+          s.mcq[originalIdx]
         )
       );
     });
@@ -910,15 +951,15 @@ details.how-to .how-to-body li{margin-bottom:4px}
         const options = mcq.querySelectorAll(".oecd-mcq__option");
         options.forEach((opt, i) => {
           opt.disabled = true;
-          if (i === s.correctIdx) opt.dataset.result = "correct";
-          else if (i === idx)      opt.dataset.result = "wrong";
-          else                     opt.dataset.result = "dim";
+          if (i === displayedCorrectIdx) opt.dataset.result = "correct";
+          else if (i === idx)            opt.dataset.result = "wrong";
+          else                           opt.dataset.result = "dim";
         });
         mcqHint.textContent = "";
         const key = progressKey(caseId, s.letter || "x");
         PROGRESS.mcqAttempted.add(key);
-        if (idx === s.correctIdx) PROGRESS.mcqCorrect.add(key);
-        else                      PROGRESS.mcqCorrect.delete(key);
+        if (idx === displayedCorrectIdx) PROGRESS.mcqCorrect.add(key);
+        else                             PROGRESS.mcqCorrect.delete(key);
         updateProgress();
         setTimeout(markRevealed, 400);
       } else if (action === "reset") {
@@ -1010,11 +1051,16 @@ details.how-to .how-to-body li{margin-bottom:4px}
           )
         );
       }
+      const firstCaseId = g.cases[0]?.id;
       sidebar.appendChild(
         el(
           "div",
-          { class: "toc__group" },
-          el("div", { class: "toc__group-label" }, g.label),
+          { class: "toc__group toc__group--themed" },
+          el(
+            "a",
+            { class: "toc__group-label", attrs: { href: firstCaseId != null ? `#case-${firstCaseId}` : "#" } },
+            g.label
+          ),
           list
         )
       );

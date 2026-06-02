@@ -557,6 +557,28 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   .quiz-mode-card--deathrun .quiz-mode-card__body{color:#fff}
 }
 
+/* Desktop: emoji peeks out on hover — 🏃 for Sprint, 💀 for Death Run */
+@media (min-width:768px){
+  .quiz-mode-card{position:relative;overflow:hidden}
+  .quiz-mode-card::after{
+    content:"🏃";
+    position:absolute;
+    top:50%;
+    right:24px;
+    font-size:88px;
+    line-height:1;
+    transform:translateY(-50%) translateX(20px) scale(0.6) rotate(-8deg);
+    opacity:0;
+    transition:opacity 180ms ease-out, transform 220ms cubic-bezier(.34,1.56,.64,1);
+    pointer-events:none;
+  }
+  .quiz-mode-card--deathrun::after{content:"💀"}
+  .quiz-mode-card:hover::after{
+    opacity:1;
+    transform:translateY(-50%) translateX(0) scale(1) rotate(0);
+  }
+}
+
 /* Personal bests */
 .quiz-bests{margin-top:18px;font-size:13px;color:var(--fg-3);text-align:center}
 .quiz-bests strong{color:var(--fg-1);font-weight:600}

@@ -4,95 +4,55 @@
   <!-- WHITE CANVAS -->
   <rect width="1200" height="630" fill="#FFFFFF"/>
 
-  <!-- TOP ACCENT BAR: brand green sliver -->
-  <rect x="0" y="0" width="1200" height="6" fill="#1FA84A"/>
+  <!-- Thin brand-green top accent -->
+  <rect x="0" y="0" width="1200" height="5" fill="#1FA84A"/>
 
-  <!-- inRange brand: top-left -->
-  <g transform="translate(80, 80)">
-    <rect x="0"  y="22" width="11" height="20" rx="2" fill="#1FA84A"/>
-    <rect x="16" y="10" width="11" height="32" rx="2" fill="#1FA84A"/>
-    <rect x="32" y="0"  width="11" height="42" rx="2" fill="#1FA84A"/>
-    <text x="56" y="36" font-weight="800" font-size="30" fill="#0D1B2D" letter-spacing="-0.6">in<tspan fill="#1FA84A">Range</tspan></text>
+  <!-- HERO TITLE -->
+  <text x="80" y="115" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Ready to play?</text>
+
+  <!-- SUBTITLE (2 lines) -->
+  <text x="80" y="160" font-weight="500" font-size="22" fill="#343D4C">Test your knowledge by answering questions based on the OECD TP</text>
+  <text x="80" y="190" font-weight="500" font-size="22" fill="#343D4C">Guidelines (including the latest draft Chapter VII).</text>
+
+  <!-- "Pick a mode" line -->
+  <text x="80" y="250" font-weight="500" font-size="16" fill="#7D8590">Pick a mode. Celebrate victory or suffer defeat.</text>
+
+  <!-- SPRINT CARD (left, at rest = white) -->
+  <g transform="translate(80, 280)">
+    <rect width="510" height="240" rx="12" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5"/>
+    <text x="32" y="60" font-weight="700" font-size="13" fill="#15893B" letter-spacing="3">5 QUESTIONS</text>
+    <text x="32" y="110" font-weight="800" font-size="34" fill="#0D1B2D" letter-spacing="-0.5">Sprint</text>
+    <text x="32" y="155" font-weight="400" font-size="17" fill="#343D4C">Five random questions drawn from across all</text>
+    <text x="32" y="180" font-weight="400" font-size="17" fill="#343D4C">six chapters. Score yourself out of 5; come</text>
+    <text x="32" y="205" font-weight="400" font-size="17" fill="#343D4C">back tomorrow.</text>
   </g>
 
-  <!-- EYEBROW: top-right -->
-  <text x="1120" y="113" font-weight="700" font-size="14" fill="#0F6B2E" letter-spacing="4" text-anchor="end">OPEN PRACTICE · TP QUIZ</text>
+  <!-- DEATH RUN CARD (right, in hover state = red + skull) -->
+  <g transform="translate(610, 280)">
+    <rect width="510" height="240" rx="12" fill="#B91C1C"/>
+    <text x="32" y="60" font-weight="700" font-size="13" fill="#FFFFFF" letter-spacing="3">STREAK UNTIL YOU MISS</text>
+    <text x="32" y="110" font-weight="800" font-size="34" fill="#FFFFFF" letter-spacing="-0.5">Death Run</text>
+    <text x="32" y="155" font-weight="400" font-size="17" fill="#FFFFFF">Random questions, one at a time. The first</text>
+    <text x="32" y="180" font-weight="400" font-size="17" fill="#FFFFFF">wrong answer ends the run. Share your</text>
+    <text x="32" y="205" font-weight="400" font-size="17" fill="#FFFFFF">streak when you're done.</text>
 
-  <!-- DIVIDER LINE under header band -->
-  <line x1="80" y1="170" x2="1120" y2="170" stroke="#E1E4E9" stroke-width="1"/>
-
-  <!-- EDITORIAL TITLE (left column) -->
-  <text x="80" y="278" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Test your TP skills.</text>
-
-  <!-- SUBTITLE (2 lines, left column) -->
-  <text x="80" y="338" font-weight="500" font-size="22" fill="#343D4C">100 case studies from the OECD TP Guidelines,</text>
-  <text x="80" y="368" font-weight="500" font-size="22" fill="#343D4C">including the latest Chapter VII consultation draft.</text>
-
-  <!-- MODE PILLS (left column) -->
-  <g transform="translate(80, 440)">
-    <!-- Sprint: filled green -->
-    <rect x="0" y="0" width="218" height="48" rx="24" fill="#1FA84A"/>
-    <text x="109" y="32" font-weight="700" font-size="16" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.3">Sprint · 5 questions</text>
-
-    <!-- Death Run: navy outline with skull SVG -->
-    <rect x="234" y="0" width="360" height="48" rx="24" fill="#FFFFFF" stroke="#0D1B2D" stroke-width="2"/>
-    <svg x="258" y="13" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0D1B2D" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Skull SVG in top-right corner of card -->
+    <svg x="412" y="20" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"/>
       <circle cx="9" cy="12" r="1"/>
       <circle cx="15" cy="12" r="1"/>
       <path d="M8 20v2h8v-2"/>
       <path d="m12.5 17-.5-1-.5 1h1z"/>
     </svg>
-    <text x="294" y="32" font-weight="700" font-size="16" fill="#0D1B2D" letter-spacing="0.3">Death Run · streak until you miss</text>
   </g>
 
-  <!-- BOTTOM: URL -->
-  <text x="80" y="580" font-weight="600" font-size="17" fill="#343D4C" letter-spacing="0.5">inrange.nl</text>
-
-  <!-- BOTTOM-RIGHT subtle wordmark/credit -->
-  <text x="1120" y="580" font-weight="500" font-size="14" fill="#7D8590" letter-spacing="2" text-anchor="end">TRANSFER PRICING · AMSTERDAM</text>
-
-  <!-- RIGHT COLUMN: chapter case-count list (table of contents feel) -->
-  <g transform="translate(820, 220)">
-    <!-- Eyebrow -->
-    <text x="0" y="0" font-weight="700" font-size="13" fill="#0F6B2E" letter-spacing="4">INSIDE THE QUIZ</text>
-
-    <!-- Divider under eyebrow -->
-    <line x1="0" y1="18" x2="300" y2="18" stroke="#E1E4E9" stroke-width="1"/>
-
-    <!-- Chapter rows -->
-    <g font-size="17" fill="#0D1B2D">
-      <text x="0"   y="52" font-weight="800" letter-spacing="0.5">VI</text>
-      <text x="60"  y="52" font-weight="500" fill="#343D4C">Intangibles</text>
-      <text x="300" y="52" font-weight="800" text-anchor="end">32</text>
-
-      <text x="0"   y="84" font-weight="800" letter-spacing="0.5">VII</text>
-      <text x="60"  y="84" font-weight="500" fill="#343D4C">Intra-group services</text>
-      <text x="300" y="84" font-weight="800" text-anchor="end">28</text>
-
-      <text x="0"   y="116" font-weight="800" letter-spacing="0.5">IX</text>
-      <text x="60"  y="116" font-weight="500" fill="#343D4C">Business restructurings</text>
-      <text x="300" y="116" font-weight="800" text-anchor="end">10</text>
-
-      <text x="0"   y="148" font-weight="800" letter-spacing="0.5">X</text>
-      <text x="60"  y="148" font-weight="500" fill="#343D4C">Financial transactions</text>
-      <text x="300" y="148" font-weight="800" text-anchor="end">4</text>
-
-      <text x="0"   y="180" font-weight="800" letter-spacing="0.5">PS</text>
-      <text x="60"  y="180" font-weight="500" fill="#343D4C">Profit split</text>
-      <text x="300" y="180" font-weight="800" text-anchor="end">18</text>
-
-      <text x="0"   y="212" font-weight="800" letter-spacing="0.5">+</text>
-      <text x="60"  y="212" font-weight="500" fill="#343D4C">Other examples</text>
-      <text x="300" y="212" font-weight="800" text-anchor="end">8</text>
-    </g>
-
-    <!-- Bottom divider before total -->
-    <line x1="0" y1="232" x2="300" y2="232" stroke="#0D1B2D" stroke-width="1.5"/>
-
-    <!-- Total -->
-    <text x="0" y="262" font-weight="700" font-size="13" fill="#343D4C" letter-spacing="3">TOTAL</text>
-    <text x="300" y="262" font-weight="800" font-size="20" fill="#0D1B2D" text-anchor="end">100 case studies</text>
+  <!-- BOTTOM: inRange brand mark + wordmark + URL -->
+  <g transform="translate(80, 565)">
+    <rect x="0"  y="14" width="8" height="14" rx="1.5" fill="#1FA84A"/>
+    <rect x="12" y="6"  width="8" height="22" rx="1.5" fill="#1FA84A"/>
+    <rect x="24" y="0"  width="8" height="28" rx="1.5" fill="#1FA84A"/>
+    <text x="42" y="22" font-weight="800" font-size="18" fill="#0D1B2D" letter-spacing="-0.4">in<tspan fill="#1FA84A">Range</tspan></text>
   </g>
+  <text x="1120" y="588" font-weight="500" font-size="13" fill="#7D8590" letter-spacing="2.5" text-anchor="end">OPEN PRACTICE · TP QUIZ</text>
 
 </svg>

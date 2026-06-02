@@ -22,7 +22,7 @@
   <line x1="80" y1="170" x2="1120" y2="170" stroke="#E1E4E9" stroke-width="1"/>
 
   <!-- EDITORIAL TITLE (left column) -->
-  <text x="80" y="278" font-weight="800" font-size="72" fill="#0D1B2D" letter-spacing="-2">Test your TP skills.</text>
+  <text x="80" y="278" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Test your TP skills.</text>
 
   <!-- SUBTITLE (2 lines, left column) -->
   <text x="80" y="338" font-weight="500" font-size="22" fill="#343D4C">100 case studies from the OECD TP Guidelines,</text>
@@ -53,46 +53,46 @@
   <text x="1120" y="580" font-weight="500" font-size="14" fill="#7D8590" letter-spacing="2" text-anchor="end">TRANSFER PRICING · AMSTERDAM</text>
 
   <!-- RIGHT COLUMN: chapter case-count list (table of contents feel) -->
-  <g transform="translate(740, 220)">
+  <g transform="translate(820, 220)">
     <!-- Eyebrow -->
     <text x="0" y="0" font-weight="700" font-size="13" fill="#0F6B2E" letter-spacing="4">INSIDE THE QUIZ</text>
 
     <!-- Divider under eyebrow -->
-    <line x1="0" y1="18" x2="380" y2="18" stroke="#E1E4E9" stroke-width="1"/>
+    <line x1="0" y1="18" x2="300" y2="18" stroke="#E1E4E9" stroke-width="1"/>
 
     <!-- Chapter rows -->
     <g font-size="17" fill="#0D1B2D">
       <text x="0"   y="52" font-weight="800" letter-spacing="0.5">VI</text>
-      <text x="70"  y="52" font-weight="500" fill="#343D4C">Intangibles</text>
-      <text x="380" y="52" font-weight="800" text-anchor="end">32</text>
+      <text x="60"  y="52" font-weight="500" fill="#343D4C">Intangibles</text>
+      <text x="300" y="52" font-weight="800" text-anchor="end">32</text>
 
       <text x="0"   y="84" font-weight="800" letter-spacing="0.5">VII</text>
-      <text x="70"  y="84" font-weight="500" fill="#343D4C">Intra-group services</text>
-      <text x="380" y="84" font-weight="800" text-anchor="end">28</text>
+      <text x="60"  y="84" font-weight="500" fill="#343D4C">Intra-group services</text>
+      <text x="300" y="84" font-weight="800" text-anchor="end">28</text>
 
       <text x="0"   y="116" font-weight="800" letter-spacing="0.5">IX</text>
-      <text x="70"  y="116" font-weight="500" fill="#343D4C">Business restructurings</text>
-      <text x="380" y="116" font-weight="800" text-anchor="end">10</text>
+      <text x="60"  y="116" font-weight="500" fill="#343D4C">Business restructurings</text>
+      <text x="300" y="116" font-weight="800" text-anchor="end">10</text>
 
       <text x="0"   y="148" font-weight="800" letter-spacing="0.5">X</text>
-      <text x="70"  y="148" font-weight="500" fill="#343D4C">Financial transactions</text>
-      <text x="380" y="148" font-weight="800" text-anchor="end">4</text>
+      <text x="60"  y="148" font-weight="500" fill="#343D4C">Financial transactions</text>
+      <text x="300" y="148" font-weight="800" text-anchor="end">4</text>
 
       <text x="0"   y="180" font-weight="800" letter-spacing="0.5">PS</text>
-      <text x="70"  y="180" font-weight="500" fill="#343D4C">Profit split</text>
-      <text x="380" y="180" font-weight="800" text-anchor="end">18</text>
+      <text x="60"  y="180" font-weight="500" fill="#343D4C">Profit split</text>
+      <text x="300" y="180" font-weight="800" text-anchor="end">18</text>
 
       <text x="0"   y="212" font-weight="800" letter-spacing="0.5">+</text>
-      <text x="70"  y="212" font-weight="500" fill="#343D4C">Other examples</text>
-      <text x="380" y="212" font-weight="800" text-anchor="end">8</text>
+      <text x="60"  y="212" font-weight="500" fill="#343D4C">Other examples</text>
+      <text x="300" y="212" font-weight="800" text-anchor="end">8</text>
     </g>
 
     <!-- Bottom divider before total -->
-    <line x1="0" y1="232" x2="380" y2="232" stroke="#0D1B2D" stroke-width="1.5"/>
+    <line x1="0" y1="232" x2="300" y2="232" stroke="#0D1B2D" stroke-width="1.5"/>
 
     <!-- Total -->
     <text x="0" y="262" font-weight="700" font-size="13" fill="#343D4C" letter-spacing="3">TOTAL</text>
-    <text x="380" y="262" font-weight="800" font-size="20" fill="#0D1B2D" text-anchor="end">100 case studies</text>
+    <text x="300" y="262" font-weight="800" font-size="20" fill="#0D1B2D" text-anchor="end">100 case studies</text>
   </g>
 
 </svg>

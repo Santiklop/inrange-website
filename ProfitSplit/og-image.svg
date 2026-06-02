@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif">
+  <!-- background -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
+
+  <!-- eyebrow -->
+  <text x="80" y="142" font-weight="700" font-size="20" fill="#15893B" letter-spacing="3">ANNEX II TO OECD CHAPTER II · TPG 2022</text>
+
+  <!-- title -->
+  <text x="80" y="224" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Profit split:</text>
+  <text x="80" y="294" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">16 worked examples.</text>
+
+  <!-- lede -->
+  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">When the profit split is the most appropriate method — and how to apply it.</text>
+
+  <!-- bottom chips -->
+  <g transform="translate(80, 432)">
+    <!-- chip 1 -->
+    <rect width="220" height="52" rx="26" fill="#FFFFFF" stroke="#1FA84A" stroke-width="1.5"/>
+    <circle cx="30" cy="26" r="6" fill="#1FA84A"/>
+    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">16 worked examples</text>
+
+    <!-- chip 2 -->
+    <g transform="translate(240, 0)">
+      <rect width="320" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
+      <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">Test yourself · or Show OECD answer</text>
+    </g>
+
+    <!-- chip 3 -->
+    <g transform="translate(580, 0)">
+      <rect width="240" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
+      <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">When · how · what to split</text>
+    </g>
+  </g>
+
+  <!-- right-side decoration: stacked case cards -->
+  <g transform="translate(896, 130)">
+    <!-- back card -->
+    <rect x="40" y="48" width="240" height="180" rx="14" fill="#FFFFFF" stroke="#DEE2E8" stroke-width="1.5" opacity="0.55"/>
+    <!-- middle card -->
+    <rect x="20" y="24" width="240" height="180" rx="14" fill="#FFFFFF" stroke="#DEE2E8" stroke-width="1.5" opacity="0.85"/>
+    <!-- front card with content -->
+    <rect width="240" height="180" rx="14" fill="#FFFFFF" stroke="#1FA84A" stroke-width="2"/>
+
+    <text x="20" y="34" font-weight="700" font-size="11" fill="#15893B" letter-spacing="2">PROFIT SPLIT</text>
+    <text x="20" y="70" font-weight="700" font-size="20" fill="#0D1B2D">Example 1</text>
+    <text x="20" y="94" font-weight="600" font-size="16" fill="#343D4C">When it's most appropriate</text>
+    <line x1="20" y1="112" x2="220" y2="112" stroke="#EEF0F3" stroke-width="1.5"/>
+
+    <!-- buttons -->
+    <g transform="translate(20, 128)">
+      <rect width="92" height="32" rx="6" fill="#FFFFFF" stroke="#0D1B2D" stroke-width="1.5"/>
+      <text x="46" y="21" font-weight="700" font-size="12" fill="#0D1B2D" text-anchor="middle">Test yourself</text>
+      <g transform="translate(102, 0)">
+        <rect width="98" height="32" rx="6" fill="#0D1B2D"/>
+        <text x="49" y="21" font-weight="700" font-size="12" fill="#FFFFFF" text-anchor="middle">Show answer</text>
+      </g>
+    </g>
+  </g>
+</svg>

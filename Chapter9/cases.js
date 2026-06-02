@@ -9,7 +9,7 @@
 globalThis.CASES = [
 
   /* ===================================================================
-     COMPENSATION FOR THE RESTRUCTURING ITSELF (Vignettes 1, 2, 5, 6)
+     COMPENSATION FOR THE RESTRUCTURING ITSELF (Examples 1, 2, 5, 6)
      =================================================================== */
 
   {
@@ -135,7 +135,7 @@ globalThis.CASES = [
       "Chapter VI Sections B.2 (DEMPE), D.1–D.4 (IP valuation)",
       "Section E.2 of Part I (transfer of intangibles)",
       "Section A.4.6 of Chapter VI (ongoing concern)",
-      "Vignette 6 (transfer of ongoing concern)"
+      "Example 6 (transfer of ongoing concern)"
     ]
   },
 
@@ -146,6 +146,8 @@ globalThis.CASES = [
     title: "Recognition or disregard of the restructuring",
     group: "MNE Group · principal in a low-tax jurisdiction",
     refs: "Ch.IX · ¶9.34–9.38, cross-ref Section D.2 of Chapter I (¶1.142)",
+    editorial:
+      "This scenario sits at the boundary between Chapters I and IX. It is included because business restructurings occasionally raise the threshold question of whether the arrangement itself should be respected before any transfer-pricing analysis can be undertaken.",
     atGlance:
       "A restructuring takes a form rarely seen between independent enterprises and the principal sits in a low-tax jurisdiction. A tax administration is tempted to disregard it. What's the test — and how high is the bar?",
     parties: {
@@ -182,7 +184,7 @@ globalThis.CASES = [
     crossRefs: [
       "Section D.2 of Chapter I (non-recognition, ¶1.142)",
       "Section D.1 of Chapter I (accurate delineation)",
-      "Vignette 4 (risk control under the same framework)"
+      "Example 4 (risk control under the same framework)"
     ]
   },
 
@@ -228,8 +230,8 @@ globalThis.CASES = [
       "A bare contractual reallocation of risk doesn't move the profit potential. Under Section D.1.2.1 of Ch.I (echoed in ¶9.20–9.21), the risk — and the associated return — follows the party that actually controls it AND has the financial capacity to bear it.",
     crossRefs: [
       "Section D.1.2.1 of Chapter I (six-step risk framework)",
-      "Vignette 3 (recognition vs disregard)",
-      "Vignette 1 (FF→LRD conversion)"
+      "Example 3 (recognition vs disregard)",
+      "Example 1 (FF→LRD conversion)"
     ]
   },
 
@@ -276,7 +278,7 @@ globalThis.CASES = [
     crossRefs: [
       "Section F of Part I (¶9.75–9.97 indemnification framework)",
       "Section D.1 of Chapter I (accurate delineation)",
-      "Vignette 1 (compensation at conversion)"
+      "Example 1 (compensation at conversion)"
     ]
   },
 
@@ -324,7 +326,7 @@ globalThis.CASES = [
       "Section E.3 of Part I (¶9.68–9.74 ongoing concern)",
       "Section D.7 of Chapter I (assembled workforce)",
       "Section A.4.6 of Chapter VI (goodwill / ongoing concern value)",
-      "Vignette 2 (IP centralisation as ongoing concern)"
+      "Example 2 (IP centralisation as ongoing concern)"
     ]
   },
 
@@ -335,6 +337,8 @@ globalThis.CASES = [
     title: "Loss-making LRD post-conversion",
     group: "MNE Group · post-restructuring review",
     refs: "Ch.IX · ¶9.105, 9.108",
+    editorial:
+      "While this issue is closely connected to comparability and pricing analyses elsewhere in the Guidelines, it is frequently encountered following conversions of entrepreneurial entities into limited-risk entities and therefore provides a useful post-restructuring perspective.",
     atGlance:
       "A freshly-converted LRD records a loss in its first post-restructuring year. The benchmark range for LRDs is firmly positive. What does the loss mean — for the conversion, the post-restructuring TP, or both?",
     parties: {
@@ -371,8 +375,8 @@ globalThis.CASES = [
     crossRefs: [
       "Section D of Part II (¶9.100–9.107 pre/post comparison)",
       "Section B of Part II (¶9.108 post-restructuring method)",
-      "Vignette 1 (compensation at conversion)",
-      "Vignette 4 (substance over contract on risk)"
+      "Example 1 (compensation at conversion)",
+      "Example 4 (substance over contract on risk)"
     ]
   },
 
@@ -421,7 +425,7 @@ globalThis.CASES = [
     crossRefs: [
       "Section E of Part II (¶9.126–9.131 location savings)",
       "Section D.6 of Chapter I (location savings, options realistically available)",
-      "Vignette 6 (transfer of ongoing concern)"
+      "Example 6 (transfer of ongoing concern)"
     ]
   }
 

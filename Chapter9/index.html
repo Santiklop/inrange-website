@@ -150,7 +150,7 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 @media (max-width:767px){.brand-mark{width:24px;height:24px}}
 .brand-text{font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--fg-1);letter-spacing:-.02em}
 .brand-text .accent{color:var(--brand-green-600)}
-@media (max-width:767px){.brand-text{font-size:16px}}
+@media (max-width:767px){.brand-text{display:none}}
 .header-actions{display:flex;align-items:center;gap:10px}
 .header-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background 140ms,color 140ms,border-color 140ms,box-shadow 140ms}
 .header-btn__icon{font-size:14px;line-height:1}
@@ -282,6 +282,7 @@ details.how-to .how-to-body .how-to-mini strong{color:var(--fg-1);font-weight:60
 .menu-toggle{display:none;align-items:center;justify-content:center;width:38px;height:38px;background:transparent;color:var(--fg-1);border:1px solid var(--border-default);border-radius:999px;cursor:pointer;font-family:inherit;padding:0;transition:background 140ms,color 140ms,border-color 140ms}
 .menu-toggle:hover{background:var(--bg-muted)}
 .menu-toggle svg{width:18px;height:18px}
+@media (max-width:767px){.menu-toggle svg{width:16px;height:16px}}
 .menu-toggle__close{display:none}
 .menu-toggle[aria-expanded="true"] .menu-toggle__open{display:none}
 .menu-toggle[aria-expanded="true"] .menu-toggle__close{display:block}
@@ -536,16 +537,6 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
-      <a class="brand" href="../index.html" aria-label="inRange home">
-        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
-          <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
-          <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
-          <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
-        </svg>
-        <span class="brand-text">in<span class="accent">Range</span></span>
-      </a>
-    </div>
-    <div class="header-actions">
       <button class="menu-toggle" type="button" id="contents-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open the list of cases in this chapter" title="Cases in this chapter">
         <svg class="menu-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M12 6v15"/>
@@ -556,6 +547,16 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
         </svg>
       </button>
+      <a class="brand" href="../index.html" aria-label="inRange home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+          <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+          <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+        </svg>
+        <span class="brand-text">in<span class="accent">Range</span></span>
+      </a>
+    </div>
+    <div class="header-actions">
       <div class="chapter-nav" id="chapter-nav">
         <button class="chapter-nav-toggle" type="button" id="chapter-nav-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
           <span class="chapter-nav-toggle__label">Chapters</span>

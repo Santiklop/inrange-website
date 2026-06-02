@@ -616,10 +616,10 @@ function V2_Modern() {
           <div style={{ textAlign: 'center', marginBottom: isMobile ? 40 : 56, maxWidth: 820, marginLeft: 'auto', marginRight: 'auto' }}>
             <Eyebrow>Open Practice</Eyebrow>
             <h2 style={{ margin: '16px 0 20px', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
-              Free tools for the transfer-pricing community.
+              Free tools for the transfer pricing community.
             </h2>
             <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 }}>
-              A portal where we publish free-to-use materials &mdash; interactive walkthroughs, dashboards, and analytics &mdash; for transfer-pricing practitioners.
+              A portal where we publish free-to-use materials &mdash; interactive walkthroughs, dashboards, and analytics.
             </p>
           </div>
 
@@ -647,10 +647,10 @@ function V2_Modern() {
                 <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', color: 'var(--fg-3)', textTransform: 'uppercase' }}>Live</span>
               </div>
               <h3 style={{ fontSize: isMobile ? 22 : 26, margin: '0 0 14px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>
-                OECD Transfer Pricing Guidelines &mdash; worked examples
+                OECD TP Guidelines - Interactive Learning Experience
               </h3>
               <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
-                This project aims to provide an interactive walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations, and ultimately reduce tax controversy.
+                This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations, and ultimately reduce tax controversy.
               </p>
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,

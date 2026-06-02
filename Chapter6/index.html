@@ -593,7 +593,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
       <details class="how-to">
         <summary>About this project</summary>
         <div class="how-to-body">
-          <p>This project aims to provide an interactive walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations, and ultimately reduce tax controversy.</p>
+          <p>This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations, and ultimately reduce tax controversy.</p>
           <nav class="chapter-pills" aria-label="Available chapters">
             <a class="chapter-pill chapter-pill--active" href="/Chapter6/" aria-current="page" data-pill-num="VI">
               <span class="chapter-pill__num">VI</span>
@@ -1474,11 +1474,8 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   PROGRESS.total = totalScenarios();
   updateProgress();
 
-  // Land on Example 1 by default; honour explicit deep links (#case-5, #intro, etc.)
-  if (!location.hash) {
-    const target = document.getElementById("case-1");
-    if (target) window.scrollTo({ top: target.offsetTop - 80, left: 0, behavior: "instant" });
-  }
+  // Chapter VI is the entry point from Open Practice — land at the top by default;
+  // honour explicit deep links (#case-5, #intro, etc.) when present.
 })();
 </script>
 </body>

@@ -650,7 +650,7 @@ function V2_Modern() {
                 OECD TP Guidelines - Interactive Learning Experience
               </h3>
               <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
-                This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations, and ultimately reduce tax controversy.
+                This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations.
               </p>
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,

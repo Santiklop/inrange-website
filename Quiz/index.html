@@ -514,13 +514,15 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .quiz-mode-card__eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:6px}
 .quiz-mode-card__title{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px;color:var(--fg-1)}
 .quiz-mode-card__body{font-size:14px;line-height:1.5;color:var(--fg-3);margin:0}
-.quiz-mode-card--deathrun{background:var(--fg-1);border-color:var(--fg-1);color:#fff}
-.quiz-mode-card--deathrun:hover{border-color:var(--brand-navy-800);background:var(--brand-navy-800)}
-.quiz-mode-card--deathrun .quiz-mode-card__title,.quiz-mode-card--deathrun .quiz-mode-card__eyebrow,.quiz-mode-card--deathrun .quiz-mode-card__body{color:#fff}
-.quiz-mode-card--deathrun .quiz-mode-card__eyebrow{color:rgba(255,255,255,.7)}
-.quiz-mode-card--deathrun .quiz-mode-card__body{color:rgba(255,255,255,.85)}
-[data-theme="dark"] .quiz-mode-card--deathrun{background:var(--brand-navy-800);border-color:var(--brand-navy-800)}
-[data-theme="dark"] .quiz-mode-card--deathrun:hover{background:#1f3151;border-color:#1f3151}
+/* Death Run card looks like Sprint at rest; turns bloody red on hover */
+.quiz-mode-card--deathrun:hover{border-color:#B91C1C;background:#B91C1C;color:#fff;transform:translateY(-1px)}
+.quiz-mode-card--deathrun:hover .quiz-mode-card__eyebrow,
+.quiz-mode-card--deathrun:hover .quiz-mode-card__title,
+.quiz-mode-card--deathrun:hover .quiz-mode-card__body{color:#fff}
+[data-theme="dark"] .quiz-mode-card--deathrun:hover{background:#B91C1C;border-color:#B91C1C;color:#fff}
+[data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__eyebrow,
+[data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__title,
+[data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__body{color:#fff}
 
 /* Personal bests */
 .quiz-bests{margin-top:18px;font-size:13px;color:var(--fg-3);text-align:center}
@@ -746,7 +748,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
     <section class="closing" aria-label="Call to action">
   <div class="closing__cta-eyebrow">Work together</div>
   <h2 class="closing__cta-title">Beat my Death Run</h2>
-  <p class="closing__cta-body">I've spent more hours with these examples than I care to admit. If you out-streak me, I want to hear about it. Message me on LinkedIn or get in touch by email — happy to compare notes.</p>
+  <p class="closing__cta-body">I've spent more hours with these examples than I care to admit. If you out-streak me, I want to hear about it. Message me on LinkedIn or get in touch by email — happy to connect.</p>
   <div class="closing__cta-buttons">
     <a class="closing__btn closing__btn--primary" href="https://www.linkedin.com/in/aleks-davydov-912a4160/" target="_blank" rel="noreferrer">
       <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
@@ -761,7 +763,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <footer class="page-footer">
-      <p>Questions are drawn from the worked examples on the inRange Open Practice walkthrough of the OECD Transfer Pricing Guidelines (2022 edition).<br>Source: <a href="https://www.oecd.org/en/publications/oecd-transfer-pricing-guidelines-for-multinational-enterprises-and-tax-administrations-2022_0e655865-en.html" target="_blank" rel="noreferrer">OECD Transfer Pricing Guidelines (2022)</a>.</p>
+      <p>Questions are drawn from the worked examples on the inRange Open Practice walkthrough of the OECD Transfer Pricing Guidelines (2022 edition).</p>
     </footer>
   </main>
 </div>

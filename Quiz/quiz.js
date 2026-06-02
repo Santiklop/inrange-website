@@ -425,6 +425,13 @@
     const backdrop = el("div", { class: "quiz-modal-backdrop", attrs: { "data-show": "false" } });
     const modal = el("div", { class: "quiz-modal" });
 
+    modal.appendChild(el("button", {
+      class: "quiz-modal__close",
+      type: "button",
+      "aria-label": "Close",
+      onClick: () => { closeModal(); renderLanding({ streakHint: null, modeHint: null }); },
+    }, "×"));
+
     modal.appendChild(el("div", {
       class: "quiz-modal__big-number" + (opts.bigFire ? " quiz-modal__big-number--fire" : ""),
     }, opts.bigNumber));
@@ -453,59 +460,85 @@
     const url = isStreak
       ? "https://www.inrange.nl/Quiz/?streak=" + value
       : "https://www.inrange.nl/Quiz/";
-    const text = isStreak
-      ? "I just got " + value + " OECD TP questions right in a row on the inRange Open Practice quiz. Can you beat me?"
-      : "I scored " + value + "/5 on the inRange Open Practice OECD TP quiz. Take it: ";
 
-    const linkedinHref = "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url);
-    const xHref = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(text + " " + url);
+    const subject = isStreak ? "OECD TP Death Run" : "OECD TP Sprint";
+    const result = isStreak
+      ? value + " right answers in a row"
+      : value + "/5 right answers";
+    const linkedinText =
+      "I'm proud to announce that I've just completed this " + subject + ". " +
+      "My result is " + result + ". " +
+      "Thanks to my parents, spouse and children for supporting my training! " +
+      url;
 
-    return el("div", { class: "quiz-modal__share" },
-      el("a", {
-        class: "quiz-modal__share-btn",
-        href: linkedinHref,
-        target: "_blank",
-        rel: "noreferrer",
+    const linkedinShareHref =
+      "https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url);
+
+    // Build the LinkedIn icon SVG inline so the namespace is correct.
+    const liIcon = (() => {
+      const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute("viewBox", "0 0 24 24");
+      svg.setAttribute("fill", "currentColor");
+      svg.setAttribute("aria-hidden", "true");
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      path.setAttribute("d", "M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z");
+      svg.appendChild(path);
+      return svg;
+    })();
+
+    const linkedinBtn = el("button", {
+      class: "quiz-modal__share-btn",
+      type: "button",
+      onClick: async (e) => {
+        const btn = e.currentTarget;
+        const labelSpan = btn.querySelector(".quiz-modal__share-btn-label");
+        const originalLabel = labelSpan.textContent;
+        try {
+          await navigator.clipboard.writeText(linkedinText);
+          labelSpan.textContent = "Text copied — paste it in LinkedIn";
+        } catch {
+          labelSpan.textContent = "Couldn't copy — paste manually";
+        }
+        window.open(linkedinShareHref, "_blank", "noopener,noreferrer");
+        setTimeout(() => { labelSpan.textContent = originalLabel; }, 2400);
       },
-        (() => {
-          const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-          svg.setAttribute("viewBox", "0 0 24 24");
-          svg.setAttribute("fill", "currentColor");
-          svg.setAttribute("aria-hidden", "true");
-          const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-          path.setAttribute("d", "M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z");
-          svg.appendChild(path);
-          return svg;
-        })(),
-        "Share on LinkedIn"
-      ),
-      el("a", {
-        class: "quiz-modal__share-btn",
-        href: xHref,
-        target: "_blank",
-        rel: "noreferrer",
-      }, "✕  Share on X"),
-      el("button", {
-        class: "quiz-modal__share-btn",
-        type: "button",
-        onClick: async (e) => {
-          const btn = e.currentTarget;
-          try {
-            if (navigator.share) {
-              await navigator.share({ title: "OECD TP Quiz", text, url });
-              return;
-            }
-          } catch (err) {
-            if (err && err.name !== "AbortError") console.warn("share failed", err);
-          }
-          try {
-            await navigator.clipboard.writeText(text + " " + url);
-            btn.textContent = "🔗  Copied!";
-            setTimeout(() => { btn.textContent = "🔗  Copy link"; }, 1600);
-          } catch {}
-        },
-      }, "🔗  Copy link")
+    },
+      liIcon,
+      el("span", { class: "quiz-modal__share-btn-label" }, "Share on LinkedIn")
     );
+
+    const copyBtn = el("button", {
+      class: "quiz-modal__share-btn",
+      type: "button",
+      onClick: async (e) => {
+        const btn = e.currentTarget;
+        const labelSpan = btn.querySelector(".quiz-modal__share-btn-label");
+        const originalLabel = labelSpan.textContent;
+        const text = isStreak
+          ? "I just got " + value + " OECD TP questions right in a row on the inRange Open Practice quiz. Can you beat me? " + url
+          : "I scored " + value + "/5 on the inRange Open Practice OECD TP quiz. Take it: " + url;
+        try {
+          if (navigator.share) {
+            await navigator.share({ title: "OECD TP Quiz", text, url });
+            return;
+          }
+        } catch (err) {
+          if (err && err.name !== "AbortError") console.warn("share failed", err);
+        }
+        try {
+          await navigator.clipboard.writeText(text);
+          labelSpan.textContent = "Copied!";
+        } catch {
+          labelSpan.textContent = "Couldn't copy";
+        }
+        setTimeout(() => { labelSpan.textContent = originalLabel; }, 1600);
+      },
+    },
+      "🔗 ",
+      el("span", { class: "quiz-modal__share-btn-label" }, "Copy link")
+    );
+
+    return el("div", { class: "quiz-modal__share" }, linkedinBtn, copyBtn);
   }
 
   // shareResult is now inlined inside showModal — see buildShareButtons.

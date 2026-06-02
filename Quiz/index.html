@@ -521,6 +521,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 /* Landing — mode picker */
 .quiz-landing{margin:32px 0 16px}
 .quiz-landing__intro{font-size:14px;color:var(--fg-3);margin:0 0 18px}
+@media (max-width:767px){
+  .quiz-landing{margin:16px 0}
+  .quiz-landing__intro{display:none}
+}
 .quiz-modes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:600px){.quiz-modes{grid-template-columns:1fr}}
 .quiz-mode-card{display:block;text-align:left;background:var(--bg);border:1px solid var(--border-default);border-radius:12px;padding:20px 22px;cursor:pointer;font-family:inherit;color:var(--fg-1);transition:border-color 140ms,background 140ms,transform 140ms;text-decoration:none}

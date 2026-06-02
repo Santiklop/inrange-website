@@ -557,25 +557,26 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   .quiz-mode-card--deathrun .quiz-mode-card__body{color:#fff}
 }
 
-/* Desktop: emoji peeks out on hover — 🏃 for Sprint, 💀 for Death Run */
+/* Desktop: emoji peeks in at top-right on hover — 🏃 for Sprint, 💀 for Death Run */
 @media (min-width:768px){
-  .quiz-mode-card{position:relative;overflow:hidden}
+  .quiz-mode-card{position:relative}
   .quiz-mode-card::after{
     content:"🏃";
     position:absolute;
-    top:50%;
-    right:24px;
-    font-size:88px;
+    top:14px;
+    right:16px;
+    font-size:36px;
     line-height:1;
-    transform:translateY(-50%) translateX(20px) scale(0.6) rotate(-8deg);
+    transform:scale(0.6) rotate(-8deg);
+    transform-origin:top right;
     opacity:0;
-    transition:opacity 180ms ease-out, transform 220ms cubic-bezier(.34,1.56,.64,1);
+    transition:opacity 160ms ease-out, transform 200ms cubic-bezier(.34,1.56,.64,1);
     pointer-events:none;
   }
   .quiz-mode-card--deathrun::after{content:"💀"}
   .quiz-mode-card:hover::after{
     opacity:1;
-    transform:translateY(-50%) translateX(0) scale(1) rotate(0);
+    transform:scale(1) rotate(0);
   }
 }
 

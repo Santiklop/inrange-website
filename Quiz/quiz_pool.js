@@ -13,8 +13,8 @@ globalThis.QUIZ_POOL = [
       "As a condition of the assignment, Company S grants Premiere a perpetual, royalty-free, exclusive licence with sub-licence rights.",
       "Company S registers and maintains the patents but does not control or fund R&D; key decisions sit with Premiere management."
     ],
-    "facts": "Premiere performs all DEMPE functions, contributes the assets, and assumes the risks. Company S's three lawyers do patent administration; they do not control or share in the R&D risk.",
-    "question": "How should the arrangement be characterised and priced?",
+    "facts": "Premiere does all the R&D — funding, decisions, risk. Company S's three lawyers just register the patents.",
+    "question": "What is the real transaction here — a transfer of patents, or a service?",
     "mcq": [
       "Delineate the nominal assignment plus licence-back together as a patent administration service from Company S to Premiere; Premiere retains the balance of intangible returns.",
       "Respect the legal form — Company S owns the patents and is entitled to the licensing returns once those exist.",
@@ -35,8 +35,8 @@ globalThis.QUIZ_POOL = [
       "Company S, the registered patent owner, licenses patents to associated and independent enterprises under Premiere's direction.",
       "Royalties flow to Company S; its three employees do not control or participate in the licensing decisions."
     ],
-    "facts": "Company S is the legal owner but its contributions are limited to registering and maintaining the patents. Premiere performs all DEMPE.",
-    "question": "How should Company S be remunerated?",
+    "facts": "Company S holds legal title but only registers and maintains the patents. Premiere still runs everything else — R&D, licensing strategy, decisions.",
+    "question": "How much of the royalty income should Company S keep?",
     "mcq": [
       "Only for its patent registration functions; the bulk of the royalty income belongs to Premiere.",
       "It keeps the royalties — third-party rates are arm's-length and Company S is the legal owner.",
@@ -57,8 +57,8 @@ globalThis.QUIZ_POOL = [
       "Acting under Premiere's direction, Company S sells the patents to an independent buyer.",
       "The sale price reflects appreciation in value during the licensing period."
     ],
-    "facts": "Company S's role throughout has been confined to patent registration. The decision to sell, and the structuring of the sale, are controlled by Premiere.",
-    "question": "Is Company S entitled to share in the disposal gain?",
+    "facts": "Company S still only handles patent registration. Premiere decided to sell and structured the deal.",
+    "question": "Should Company S share in the gain when the patents are sold?",
     "mcq": [
       "No — Company S earns only a registration-services return; the appreciation belongs to Premiere as the DEMPE party.",
       "Yes — Company S is the legal owner that contracts the sale, so disposal gains accrue to it.",
@@ -81,8 +81,8 @@ globalThis.QUIZ_POOL = [
       "External circumstances unforeseen at the date of transfer push the patents' value up significantly.",
       "Company S decides, negotiates, and executes the sale of the patents to an unrelated buyer at a gain."
     ],
-    "facts": "Company S has the functions, assets and risk-control capabilities of a real owner of the portfolio. The HtV approach is assumed not to apply.",
-    "question": "Who is entitled to the disposal gain?",
+    "facts": "This time Company S has real substance — its own people, decisions, and the ability to control the risks. Assume the hard-to-value intangible rules don't apply.",
+    "question": "Who keeps the gain on sale?",
     "mcq": [
       "Company S — it controls the licensing and disposal decisions and bears the related risks.",
       "Premiere — it developed the patents, so the upside on disposition reverts to it.",
@@ -104,8 +104,8 @@ globalThis.QUIZ_POOL = [
       "External circumstances unanticipated at the time of transfer push the value down.",
       "Company S sells the patents at a loss."
     ],
-    "facts": "Company S decides, negotiates and executes the sale. The downward move was not foreseeable at the time the patents were acquired.",
-    "question": "Who bears the loss on disposal?",
+    "facts": "Company S runs the sale itself. The price fall was not foreseeable when it bought the patents.",
+    "question": "Who absorbs the loss?",
     "mcq": [
       "Company S — it has the substance to be the owner, so it takes the downside as well as the upside.",
       "Premiere — losses on an intangible should flow back to the original developer.",
@@ -128,8 +128,8 @@ globalThis.QUIZ_POOL = [
       "Under the agreement, Company B licenses the intangible from Company A; contingent payments are calibrated to leave Company B with USD 200m/yr and Company A with USD 350m/yr.",
       "On audit, the Country B authority delineates the actual transaction."
     ],
-    "facts": "Functional analysis shows Company A's only contribution is funding. It contractually assumes the financial risk, has the financial capacity to assume it, and exercises control over that risk in accordance with paragraphs 6.63–6.64. Company B performs and controls all DEMPE.",
-    "question": "What is Company A entitled to?",
+    "facts": "Company A's only contribution is funding. It does have the money to bear the financial risk and actively controls that risk. Company B does all the actual R&D work and controls those risks.",
+    "question": "What return does Company A deserve?",
     "mcq": [
       "A risk-adjusted return on its funding commitment — illustratively USD 110m/yr (11%); Company B keeps the residual USD 440m/yr.",
       "The full USD 350m/yr it bargained for as legal owner of the intangible.",
@@ -152,8 +152,8 @@ globalThis.QUIZ_POOL = [
       "Shuyona continues to design and supervise all R&D; Company T has no technical personnel.",
       "Company T contractually assumes the financial risk and has the financial capacity to do so, but does not exercise control over that risk."
     ],
-    "facts": "All DEMPE and risk-management activities are performed by Shuyona and Company S; Shuyona controls the risks. Company T has the financial capacity to bear financial risk but does not control it.",
-    "question": "What return is Company T entitled to?",
+    "facts": "Shuyona and Company S do all the R&D and manage the risks; Shuyona is in control. Company T has the money to absorb the financial risk, but doesn't actually steer it.",
+    "question": "What return does Company T deserve?",
     "mcq": [
       "A manufacturing reward plus a risk-free return for its funding — it does not control the financial risk.",
       "A risk-adjusted return on its funding plus a manufacturing reward.",
@@ -175,8 +175,8 @@ globalThis.QUIZ_POOL = [
       "Company S has no technical personnel; it contracts the research back to Company A.",
       "Company S agrees to fund the research and assume financial risk, paying Company A cost-plus margins benchmarked to independent CROs."
     ],
-    "facts": "Company A continues to perform and control DEMPE; Company S lacks the capability to control research-related risks.",
-    "question": "Are the CRO comparables an appropriate benchmark for Company A's services to Company S?",
+    "facts": "Company A still runs and controls the R&D. Company S can't actually manage research risk — it has no technical staff.",
+    "question": "Are independent CRO margins really the right benchmark for what Company A does for Company S?",
     "mcq": [
       "No — Company A controls research risks (unlike the CROs); accurately delineated, the transaction is the provision of financing by Company S — entitled at most to a financing return.",
       "Yes — Company A provides research services, so independent CRO margins are an appropriate benchmark.",
@@ -199,8 +199,8 @@ globalThis.QUIZ_POOL = [
       "Three years in, serious side effects emerge and Primero recalls the product.",
       "Company S incurs substantial recall costs; Primero does not reimburse them or product-liability claims."
     ],
-    "facts": "The contractual risk allocation puts recall risk on Primero. The actual course of conduct loaded the recall costs onto Company S, while Primero continues to claim the residual return from exploiting the Product X intangibles.",
-    "question": "What is the appropriate adjustment?",
+    "facts": "The contract says Primero carries recall risk. In practice, Company S ate the recall costs — while Primero still kept the upside on the product.",
+    "question": "How should this be adjusted?",
     "mcq": [
       "Reallocate the recall and product-liability costs from Company S to Primero — the conduct should match the limited-risk distribution arrangement Primero asserts.",
       "Leave the costs with Company S — the conduct shows it has actually accepted recall risk.",
@@ -223,8 +223,8 @@ globalThis.QUIZ_POOL = [
       "Contracts state Shuyona bears all R&D risks and costs; patents are registered by Shuyona.",
       "Shuyona pays Company S a service fee."
     ],
-    "facts": "Shuyona is the legal owner, controls and manages both its own and Company S's R&D, and performs the important functions of budgeting, programme design, funding and expenditure control.",
-    "question": "How should each party be remunerated?",
+    "facts": "Shuyona is the legal owner and runs the show — budgets, programme design, funding, expenditure control — including Company S's research.",
+    "question": "Who keeps the intangible returns, and what does Company S earn?",
     "mcq": [
       "Shuyona keeps the returns from exploiting the intangibles; Company S earns an arm's-length R&D service fee reflecting its skill and efficiency.",
       "Profit-split: both parties contribute to the R&D outcomes and the IP arises from both.",
@@ -247,8 +247,8 @@ globalThis.QUIZ_POOL = [
       "Patents from Company S's research are nonetheless registered by Shuyona, with no or only nominal payment to Company S.",
       "Joint meetings occur, but Company S does not report to Shuyona's R&D centre."
     ],
-    "facts": "Shuyona is the legal owner/registrant of intangibles developed by Company S but neither performs nor controls the underlying research functions.",
-    "question": "Who is entitled to Product Line B intangible returns?",
+    "facts": "Shuyona holds legal title to Product Line B patents — but Company S did all the research, with no real direction from Shuyona.",
+    "question": "Who keeps the Product Line B intangible returns?",
     "mcq": [
       "Company S — confirm legal ownership at Shuyona but route the economic returns to Company S, including by ensuring no royalty flows from Company S to Shuyona for using its own intangibles.",
       "Shuyona — as the registered owner, it should receive a royalty from Company S for the use of the Product Line B intangibles.",
@@ -270,8 +270,8 @@ globalThis.QUIZ_POOL = [
       "Year 2: Company S reimburses distribution affiliates for part of their advertising; affiliate prices adjusted up to keep affiliate margins constant.",
       "Year 3: Första reduces the prices it charges Company S, asserting Company S now 'owns' Product Y marketing intangibles."
     ],
-    "facts": "Company S performs no advertising functions and controls no marketing risk. In substance, it does not bear advertising costs because affiliate prices are simultaneously adjusted up.",
-    "question": "Does Company S have a claim to marketing-intangible income?",
+    "facts": "Company S doesn't actually do any advertising work or control any marketing risk. And the advertising it 'funds' is recouped by raising the prices it charges affiliates.",
+    "question": "Does Company S deserve marketing-intangible income?",
     "mcq": [
       "No — Company S performs no functions, assumes no risk and bears no real cost; adjust Första's income upward from year 3.",
       "Yes — Company S has funded the advertising and is therefore the economic owner of the marketing intangibles.",
@@ -294,8 +294,8 @@ globalThis.QUIZ_POOL = [
       "Company S consults on local issues, executes the plan, and reports back; bears no marketing budget risk.",
       "Primair reimburses Company S's marketing spend and pays an appropriate profit element."
     ],
-    "facts": "Watch purchase price is arm's-length and gives Company S an arm's-length distribution margin. Marketing service fee paid to Company S is at the level paid to comparable independent agents.",
-    "question": "Is Company S entitled to additional compensation tied to the R-brand value in Country Y?",
+    "facts": "Both prices already check out: the watch purchase price gives Company S a normal distribution margin, and its marketing fee matches what independent agents earn.",
+    "question": "Does Company S deserve anything extra for helping build the R brand in Country Y?",
     "mcq": [
       "No — Primair retains the income from exploiting the R name in Country Y; Company S's marketing-services fee already reflects arm's-length comparables.",
       "Yes — Company S helped build the brand in Country Y and is entitled to a marketing-intangible return.",
@@ -318,8 +318,8 @@ globalThis.QUIZ_POOL = [
       "Watch purchase price is set lower than in Example 8 to reflect S's greater functions and risks.",
       "Years 1–3: Company S incurs high marketing spend; brand becomes established by year 2."
     ],
-    "facts": "Comparability analysis identifies independent distributors with similar long-term arrangements and similar levels of marketing spend; Company S's profits track those of the comparables.",
-    "question": "Does Company S need additional compensation for marketing-intangible contribution?",
+    "facts": "Independent distributors in similar long-term deals spend similar amounts on marketing — and Company S's profits track theirs.",
+    "question": "Should Company S get extra compensation for its role in building the brand?",
     "mcq": [
       "No — its returns are in line with comparable independent distributors carrying the same risks; no separate compensation is required.",
       "Yes — building the brand in Country Y entitles Company S to a marketing-intangible return on top of its distribution margin.",
@@ -341,8 +341,8 @@ globalThis.QUIZ_POOL = [
       "Excess spend reflects additional or more intensive functions expected to drive higher margins or volume.",
       "Company S's profit margins are significantly lower than comparables; brand develops successfully."
     ],
-    "facts": "Company S has made a larger functional contribution to development of the market and marketing intangibles, and assumed greater costs and risks than comparable independents.",
-    "question": "Is a transfer pricing adjustment warranted?",
+    "facts": "Company S has done more — and spent and risked more on marketing — than comparable independent distributors.",
+    "question": "Is a transfer-pricing adjustment in Company S's favour warranted?",
     "mcq": [
       "Yes — adjust by reducing the price for the watches, applying a residual profit split, or compensating Company S directly for excess marketing spend (including a profit element).",
       "No — Company S agreed to bear the risk and the margin shortfall is its problem.",
@@ -364,8 +364,8 @@ globalThis.QUIZ_POOL = [
       "End of year 3: contract ends with no renewal.",
       "Independent comparables show short-term distributors only invest where reward is commensurate with within-contract returns."
     ],
-    "facts": "Independents do not invest large sums in marketing infrastructure under short-term contracts at risk of non-renewal without compensation. Company S's efforts may well benefit Primair after the contract ends.",
-    "question": "Is Company S entitled to compensation for its at-risk marketing contribution?",
+    "facts": "Independent distributors wouldn't invest this much in marketing on a short contract without some protection. The brand Company S builds will keep paying Primair after the contract ends.",
+    "question": "Should Company S be compensated for the marketing value it built?",
     "mcq": [
       "Yes — direct compensation from Primair for the value created, or alternatively a reduction in the watch purchase price during years 1–3.",
       "No — Company S accepted a short-term contract; renewal risk is its own.",
@@ -387,8 +387,8 @@ globalThis.QUIZ_POOL = [
       "No adjustment is made to the watch purchase price to reflect the new royalty.",
       "Years 4–5: Company S's marketing spend and activity remain at independent-distributor levels; profit margins fall substantially below comparables."
     ],
-    "facts": "No evidence that independent marketers/distributors in similar arrangements pay royalties when they receive only the right to use trademarks in distributing the principal's branded product. The royalty causes Company S's margins to be consistently lower than comparables.",
-    "question": "Should the royalty be respected?",
+    "facts": "Independent distributors in similar deals don't pay a royalty just for the right to distribute branded product. The new royalty pushes Company S's margins below those of comparables.",
+    "question": "Should the new royalty be respected?",
     "mcq": [
       "No — disallow the royalty payments; in arm's-length distribution arrangements, a royalty would not be paid for the bare right to distribute branded product.",
       "Yes — Company S signed the licence and must honour it; the lower margins reflect that bargain.",
@@ -410,8 +410,8 @@ globalThis.QUIZ_POOL = [
       "Year 4: new 5-year (+5-year option) licence agreement signed; Company S pays a royalty on gross sales of all such watches.",
       "No compensation paid for the renegotiation; the new watch purchase price is assumed to be arm's-length with no R-name component embedded."
     ],
-    "facts": "Audit finds the year 1–3 over-investment as in Example 10; in years 4–5, Company S incurs marketing spend far above comparable long-term licensees and earns significantly lower margins.",
-    "question": "How can the tax administration redress the imbalance?",
+    "facts": "Years 1–3 look like Example 10 (over-investment). In years 4–5, Company S still over-spends on marketing vs. comparable long-term licensees and earns much less.",
+    "question": "How can the tax administration fix the imbalance?",
     "mcq": [
       "Years 1–3: adjust as in Example 10 (price reduction, residual split or direct compensation); years 4–5: reduce the royalty payable to Primair; also consider compensation for the year-3 renegotiation under Chapter IX.",
       "Disregard the new licence and treat Company S as economic owner of the brand from year 3.",
@@ -434,8 +434,8 @@ globalThis.QUIZ_POOL = [
       "Company S manufactures Product X in Country B and sells it both to independent and to associated distributors based across Asia and Africa.",
       "Primarni does not exercise its retained rights to prevent these sales."
     ],
-    "facts": "Conduct shows Primarni allowing Company S to exploit the patents in Asia and Africa as well as Country B.",
-    "question": "How should the licence be characterised for transfer-pricing purposes?",
+    "facts": "In practice, Primarni lets Company S sell across Asia and Africa — not just Country B as the written licence says.",
+    "question": "What is the real scope of the licence for transfer pricing?",
     "mcq": [
       "Treat the licence as extending to Country B plus Asia and Africa; recalculate the royalty by reference to projected sales in all those territories.",
       "Limit the licence to Country B per the written contract and treat Asia/Africa sales as separate unauthorised transactions.",
@@ -457,8 +457,8 @@ globalThis.QUIZ_POOL = [
       "Company P establishes Company S in Country B; Company S operates new department stores using the same know-how and marketing concept.",
       "Company S earns profit margins substantially higher than comparable Country B retailers."
     ],
-    "facts": "Functional analysis shows Company S uses Company P's know-how and marketing concept. Independent parties would have signed a licence for that use.",
-    "question": "What transfer-pricing remedy is available?",
+    "facts": "Company S clearly uses Company P's know-how and marketing concept. Independent parties would have signed a licence to use them.",
+    "question": "What should the tax administration do?",
     "mcq": [
       "Impute a royalty payment from Company S to Company P for the use of the know-how and marketing concept.",
       "Leave the arrangement alone — without a written licence, there is no transaction to price.",
@@ -481,8 +481,8 @@ globalThis.QUIZ_POOL = [
       "Ilcha and Company S1 terminate the agreement granting S1 the Country C Rights (manufacture/distribute, use of patents/trademark, customer relationships, customer lists, goodwill).",
       "Ilcha grants Company S2 new long-term licences for the same Rights."
     ],
-    "facts": "Over time S1 developed substantial business value in Country C; an independent buyer would pay for it in an acquisition. A purchase-price allocation would treat part of that value as goodwill.",
-    "question": "What should the transfer prices in this restructure reflect?",
+    "facts": "S1 built up real business value in Country C over the years. An independent buyer would pay for it — and accounting would call part of that price 'goodwill'.",
+    "question": "What should the transfer prices in this restructuring reflect?",
     "mcq": [
       "Three separate transactions, with prices that reflect tangible assets, the surrender of Rights by S1, and the new licence from Ilcha — including amounts treated as goodwill in accounting terms.",
       "A single transfer at book value of the tangible assets; the Rights are merely terminated and relicensed at no value.",
@@ -505,8 +505,8 @@ globalThis.QUIZ_POOL = [
       "Portions of Zhu's proprietary code are embedded in the software delivered by Company S to Bank B.",
       "The embedded portions are extensive enough to support a copyright-infringement claim against unauthorised use."
     ],
-    "facts": "Company S receives both the time and skill of Zhu's people and rights in Zhu's proprietary code.",
-    "question": "What does Company S owe Zhu?",
+    "facts": "Company S gets two things: Zhu employees' time and skill, plus rights in Zhu's proprietary code that ends up embedded in the deliverable.",
+    "question": "What does Company S owe Zhu — a service fee, a royalty, or both?",
     "mcq": [
       "Compensation for both elements — the services of the employees and the rights in the embedded software.",
       "A service fee covering only the staff hours; the embedded code is incidental.",
@@ -528,8 +528,8 @@ globalThis.QUIZ_POOL = [
       "Two Prathamika lawyers are made available to Company S to manage documents in the Company S litigation.",
       "They use Prathamika's document-management software on this matter only; Company S obtains no rights to use the software in other matters or to make it available to its customers."
     ],
-    "facts": "The software is used as a productivity tool in delivering the service; no separate right to use it is transferred to Company S.",
-    "question": "How should the arrangement be priced?",
+    "facts": "The software is just a tool the lawyers use on this one matter. Company S gets no right to use it elsewhere.",
+    "question": "Should this be priced as a service or as a transfer of IP?",
     "mcq": [
       "As a service fee, with the experience and software treated as comparability factors that may justify a higher fee — not as an IP transfer.",
       "As a service fee plus a separate royalty for the use of the document-management software during the engagement.",
@@ -551,8 +551,8 @@ globalThis.QUIZ_POOL = [
       "Purchase-price allocation: 20 to mining, 10 to railway, 70 to goodwill (synergies between the licences).",
       "Immediately after acquisition, Birincil causes Company A to transfer both licences to Company S, a Birincil subsidiary."
     ],
-    "facts": "The 100 paid by Birincil to acquire Company A is arm's-length and reflects the combined value of the licences plus the synergy goodwill.",
-    "question": "What should the arm's-length price for the Company A → Company S transfer be?",
+    "facts": "Birincil paid 100 for the whole company — and that price reflects both licences plus the goodwill from running them together.",
+    "question": "What price should Company A charge Company S for the licences?",
     "mcq": [
       "It should take account of the mining licence, the railway licence, and the goodwill — value does not disappear in an intra-group restructure; the 100 paid by Birincil is useful evidence.",
       "30 — the sum of the standalone values of the two licences only.",
@@ -575,8 +575,8 @@ globalThis.QUIZ_POOL = [
       "Company T enters a contract-research agreement with Company S at cost-plus; Company T workforce continues to work exclusively on the transferred technologies and future technologies.",
       "Company S has the personnel and management to direct and control Company T's R&D work."
     ],
-    "facts": "Company S now controls research; Company T continues to host the people. The 100 paid for Company T provides useful information on total business value.",
-    "question": "How should the analysis allocate the 80 of accounting goodwill?",
+    "facts": "Company S now controls the research; Company T still houses the people. The 100 Birincil paid is good evidence of total business value.",
+    "question": "How should the 80 of accounting goodwill be split between Company S (the IP buyer) and Company T (the people)?",
     "mcq": [
       "Identify which intangibles are transferred to Company S and which are retained by Company T; price the IP transfer and the ongoing R&D services such that, together, they compensate Company T for the value it gives up — the PPA's goodwill is not determinative.",
       "Transfer the whole 80 of goodwill to Company S as part of the IP sale.",
@@ -599,8 +599,8 @@ globalThis.QUIZ_POOL = [
       "Company T is Osnovni's wholly-owned subsidiary that has historically held arm's-length exclusive licences for Europe and Asia.",
       "Osnovni liquidates Company S, then grants Company T an exclusive perpetual licence covering Company S's products in European and Asian markets."
     ],
-    "facts": "The premium over Company S's trading value reflects synergies. Some of those synergies relate to European and Asian markets (Company T's territory); some do not.",
-    "question": "How should the premium be reflected in Company T's licence price?",
+    "facts": "The 60 premium over Company S's trading value comes from synergies — some in European and Asian markets (Company T's territory), some elsewhere.",
+    "question": "How much of the premium should Company T pay for in its licence?",
     "mcq": [
       "Allocate to Company T an appropriate share of the premium attributable to complementarities in European and Asian markets — and exclude premium that relates to non-T territories. PPA values are not determinative.",
       "Charge Company T the full 90 of accounting goodwill, allocated by territory share.",
@@ -624,8 +624,8 @@ globalThis.QUIZ_POOL = [
       "Patent valuation arrives at NPV of 80 (with adjustments to address material differences vs. industry royalty data).",
       "A DCF of the entire Product M business by Company A arrives at NPV of 100."
     ],
-    "facts": "The 20 difference between the 100 business value and the 80 patent value seems inadequate to reflect both routine functional returns for Company B and the value of trademarks and know-how it retains.",
-    "question": "What should the analysis do next?",
+    "facts": "Only 20 is left over (100 − 80) to cover both Company B's normal functional returns and the trademarks and know-how it keeps. That looks too thin.",
+    "question": "What does this gap tell the analyst?",
     "mcq": [
       "Further review the reliability of the 80 patent value — the cross-check suggests it may be understated.",
       "Use the 80 patent value because it was derived directly from royalty data, which is closer to the patent itself.",
@@ -648,8 +648,8 @@ globalThis.QUIZ_POOL = [
       "Company C has personnel and resources required to manage the acquired business and develop the intangibles further.",
       "The group is unable to identify comparable uncontrolled transactions."
     ],
-    "facts": "Valuation techniques are appropriate; the group cannot reliably segregate cash flows associated with the specific intangibles.",
-    "question": "How should the intangibles be valued?",
+    "facts": "There are no comparables. And the group can't reliably separate out the cash flows of each intangible.",
+    "question": "Should the intangibles be valued one-by-one or as a bundle?",
     "mcq": [
       "Value them in the aggregate — especially where individually identified values sum to materially less than the value of the business as a whole.",
       "Each intangible must be valued separately on its own cash flows, even if that requires arbitrary allocation.",
@@ -672,8 +672,8 @@ globalThis.QUIZ_POOL = [
       "DCF analysis: seller's keeping-as-is residual cash flow has NPV 600; buyer's residual cash flow has NPV 1 100.",
       "Realistic alternative for Pervichnyi: retain IP and use Company S (or alternative supplier) as toll manufacturer in Country Y — NPV 875."
     ],
-    "facts": "Both perspectives must be taken into account along with realistic alternatives. The DCF inputs are oversimplified, but illustrate the principle.",
-    "question": "Where does the arm's-length price fall?",
+    "facts": "An arm's-length price must work for both the seller and the buyer, given the alternatives each has. The DCF figures are simplified but illustrate the point.",
+    "question": "Within what range does the arm's-length price fall?",
     "mcq": [
       "Above 875 (Pervichnyi's best realistic alternative) and below 1 100 (the maximum Company S would pay while still earning a positive return) — with tax effects of the transaction itself part of the negotiation.",
       "At 600 — Pervichnyi's continuation NPV — because that is what Pervichnyi gives up.",
@@ -696,8 +696,8 @@ globalThis.QUIZ_POOL = [
       "Years 3–4: sales correspond to those originally projected for years 6 and 7.",
       "Year 4: Country A tax administration audits years 0–2 and observes the ex-post outcomes."
     ],
-    "facts": "Taxpayer cannot demonstrate that the original valuation took into account the possibility of earlier sales, or that earlier sales were unforeseeable.",
-    "question": "What adjustment is the tax administration entitled to make?",
+    "facts": "The taxpayer can't show that the year-0 valuation considered an earlier-sales scenario, or that the early sales were genuinely unforeseeable.",
+    "question": "What adjustment can the tax administration make?",
     "mcq": [
       "Revise the year-0 NPV from 700 to 1 000 — the risk-adjusted earlier-sales scenario — and assess additional profits of 300 in year 0.",
       "Revise the year-0 NPV to the actual ex-post NPV based on observed sales, with no risk weighting.",
@@ -720,8 +720,8 @@ globalThis.QUIZ_POOL = [
       "Years 3–4: sales correspond to those originally projected for years 6 and 7.",
       "Year 4: Country A tax administration audits years 0–2 and observes the ex-post outcomes."
     ],
-    "facts": "The taxpayer cannot demonstrate that the original year-0 valuation accounted for the possibility of earlier sales. The HtV analysis revises the year-0 NPV, but here the risk-adjusted revised NPV is 800 rather than 1 000 — making the proposed adjustment 100 rather than 300.",
-    "question": "Does the HtV approach apply?",
+    "facts": "Same problem with the year-0 valuation — but the revised NPV is only 800 (not 1 000), so the proposed adjustment is 100 (not 300).",
+    "question": "Does the HtV adjustment still apply at this smaller size?",
     "mcq": [
       "The adjustment is calculated as 100 — but the exemption in paragraph 6.193(iii) applies because the revision is within 20% of the year-0 compensation, so the HtV adjustment is not made.",
       "The adjustment of 100 is made unchanged — the 20% exemption applies only to non-pharma intangibles.",
@@ -744,8 +744,8 @@ globalThis.QUIZ_POOL = [
       "Taxpayer cannot demonstrate that the year-0 valuation considered such sales levels, or that they were unforeseeable.",
       "First market approvals were obtained in year 3."
     ],
-    "facts": "Revising the year-0 valuation to include the risk-adjusted possibility of higher sales gives a year-0 NPV of 1 300 (vs. 700 originally) — a 600 adjustment. None of the paragraph 6.193 exemptions applies.",
-    "question": "How can the adjustment be implemented in an arm's-length way?",
+    "facts": "Re-running the year-0 valuation with the higher sales scenario gives 1 300 (vs. the original 700) — so a 600 adjustment. No HtV exemption applies.",
+    "question": "What's the best way to implement the 600 adjustment?",
     "mcq": [
       "Re-assess the year-0 price by 600 — or, alternatively, restructure as a milestone payment in year 3 (when first market approvals were obtained), which may be more consistent with what independents would have done given the valuation uncertainty.",
       "Apply only the milestone adjustment in year 3 because the HtV approach forbids retroactive adjustments to year 0.",
@@ -767,8 +767,8 @@ globalThis.QUIZ_POOL = [
       "Company A reviews recommendations and implements enhanced security systems.",
       "Company A charges subsidiaries an arm's-length amount for the assessment and implementation."
     ],
-    "facts": "Two years later, several group entities suffer a data breach following a cyberattack. Some entities lose customers or grant commercial advantages to retain them. The breach was not caused by inadequate performance from Company A.",
-    "question": "Was an intra-group service rendered?",
+    "facts": "Two years on, several group entities suffer a cyberattack and lose business. The breach wasn't Company A's fault — its work was sound.",
+    "question": "Was an intra-group service still rendered?",
     "mcq": [
       "Yes — benefit is judged ex ante; a later loss does not negate the service.",
       "No — the breach proves the security work delivered no benefit.",
@@ -790,8 +790,8 @@ globalThis.QUIZ_POOL = [
       "Company A reviews recommendations and implements enhanced security systems.",
       "Company A charges subsidiaries an arm's-length amount for the assessment and implementation."
     ],
-    "facts": "Company B, a recipient of Company A's cybersecurity services, has been operating at a loss in the years under examination.",
-    "question": "Does Company B's loss position mean no service was rendered?",
+    "facts": "Company B, one recipient of the cybersecurity services, has been loss-making throughout the audit years.",
+    "question": "Does Company B's losses mean no service was rendered to it?",
     "mcq": [
       "No — losses at the recipient do not, by themselves, negate the service.",
       "Yes — a loss-making recipient cannot have benefited from the service.",
@@ -813,8 +813,8 @@ globalThis.QUIZ_POOL = [
       "The unit prospects clients, designs packages, runs digital campaigns, bids on global tenders and joins B2B platforms.",
       "Company A continually reviews its plans against evolving market conditions."
     ],
-    "facts": "A year in, hotels in Countries A and B grow their corporate-client portfolios. Trajectory suggests the five-year target will be hit.",
-    "question": "Are the unit's activities intra-group services to hotels in Countries A and B?",
+    "facts": "A year in, hotels in Countries A and B are winning more corporate clients — on track to hit the five-year target.",
+    "question": "Are the unit's activities an intra-group service to the Country A and B hotels?",
     "mcq": [
       "Yes — the activities provide value an independent enterprise would pay for.",
       "No — until the five-year target is actually hit, no service can be recognised.",
@@ -836,8 +836,8 @@ globalThis.QUIZ_POOL = [
       "The unit prospects clients, designs packages, runs digital campaigns, bids on global tenders and joins B2B platforms.",
       "Company A continually reviews its plans against evolving market conditions."
     ],
-    "facts": "New competing hotel chains enter Country B with sharper pricing. By year five, accumulated incremental revenue growth in Country B is only 10%, well below the 30–45% target.",
-    "question": "Does the missed target negate the service rendered to Company B?",
+    "facts": "New competing hotel chains undercut Country B prices. By year five, Country B growth is only 10% — well below the 30–45% target.",
+    "question": "Does missing the target mean no service was rendered to Company B?",
     "mcq": [
       "No — the service stands; outcome was eroded by competition, not by absence of activity.",
       "Yes — without the projected growth, no benefit accrued.",
@@ -859,8 +859,8 @@ globalThis.QUIZ_POOL = [
       "The unit prospects clients, designs packages, runs digital campaigns, bids on global tenders and joins B2B platforms.",
       "Company A continually reviews its plans against evolving market conditions."
     ],
-    "facts": "During the same period, hotels in Country C also see a rise in sales — driven by tourist affluence, improved infrastructure, and Country C's popularity as a film-shoot location. The corporate-clients unit performs no activities targeting Country C.",
-    "question": "Is Country C's uplift attributable to a service from Company A?",
+    "facts": "Country C hotels also see sales rise — but driven by tourism, infrastructure and film shoots. The corporate-clients unit does nothing aimed at Country C.",
+    "question": "Does Country C's growth count as a service from Company A?",
     "mcq": [
       "No — exogenous demand, not Company A's activity, drives the result.",
       "Yes — Company C benefits from group-wide brand efforts.",
@@ -881,8 +881,8 @@ globalThis.QUIZ_POOL = [
       "Company B pays Company A for those activities.",
       "Company B's own accounting and legal personnel perform different work from what Company A provides."
     ],
-    "facts": "Tested question: does Company B's internal accounting/legal capability defeat recognition of an intra-group service from Company A?",
-    "question": "Is Company A's activity an intra-group service to Company B?",
+    "facts": "The question is whether having in-house accountants and lawyers means Company B can't be receiving a service from Company A.",
+    "question": "Is Company A's work still a service to Company B?",
     "mcq": [
       "Yes — internal capability does not preclude recognition where activities differ.",
       "No — Company B already has its own people, so the service is duplicative.",
@@ -903,8 +903,8 @@ globalThis.QUIZ_POOL = [
       "Company A in Country A performs market research connected to the launch.",
       "Company B in Country B is the worldwide distributor and runs the launch campaign."
     ],
-    "facts": "Company A undertakes market research to identify potential brand ambassadors for the new product. Company B designs the launch campaign, decides distribution channels, and develops the marketing for retail.",
-    "question": "Are Company A's activities duplicative of Company B's?",
+    "facts": "Company A researches potential brand ambassadors. Company B designs the launch campaign and decides distribution and retail marketing.",
+    "question": "Does this overlap count as duplication?",
     "mcq": [
       "No — the activities differ in content; no duplication.",
       "Yes — both companies work on marketing for the same product.",
@@ -925,8 +925,8 @@ globalThis.QUIZ_POOL = [
       "Company A in Country A performs market research connected to the launch.",
       "Company B in Country B is the worldwide distributor and runs the launch campaign."
     ],
-    "facts": "Company A identifies brand ambassadors for the new menswear line in regional markets outside Country B. Company B (worldwide distributor) designs the launch campaign, decides distribution channels and develops marketing for retail — and also identifies ambassadors for Country B itself. Cultural, linguistic and demographic factors mean each market's ambassadors do not move the needle elsewhere.",
-    "question": "Does Company B's local ambassador work make Company A's research duplicative?",
+    "facts": "Company A finds ambassadors for markets outside Country B; Company B (the worldwide distributor) finds ambassadors for Country B itself. Cultural and linguistic differences mean ambassadors from one market don't work in another.",
+    "question": "Is Company A's research duplicative of Company B's local ambassador work?",
     "mcq": [
       "No — the geographic scopes differ; Company A's work satisfies the benefit test.",
       "Yes — both companies are identifying ambassadors for the same launch.",
@@ -947,8 +947,8 @@ globalThis.QUIZ_POOL = [
       "Company A in Country A performs market research connected to the launch.",
       "Company B in Country B is the worldwide distributor and runs the launch campaign."
     ],
-    "facts": "Company B (worldwide distributor of the MNE's new menswear line) designs a global marketing campaign for the line. Lacking in-depth local knowledge, Company B outsources to Company A the verification of compliance with local customs, laws and regulations, and the translation of the campaign into local languages. Company A does not design the campaign.",
-    "question": "Are Company A and Company B's activities duplicative because they relate to the same campaign?",
+    "facts": "Company B designs the global campaign. It outsources to Company A two things only: checking compliance with local laws and customs, and translating into local languages. Company A doesn't design any of the campaign itself.",
+    "question": "Are the two roles duplicative because they relate to the same campaign?",
     "mcq": [
       "No — Company A's activities are separate and distinct from Company B's.",
       "Yes — relating to the same initiative makes them duplicative.",
@@ -970,8 +970,8 @@ globalThis.QUIZ_POOL = [
       "Supplier offers Company A a reduced €8/unit even though Company A is not placing larger orders.",
       "No group member performs any activity to produce the discount."
     ],
-    "facts": "The price reduction is attributable to Company A being part of a larger MNE group — passive association — not to deliberate concerted action by group members.",
-    "question": "Has an intra-group service been rendered to Company A?",
+    "facts": "Company A gets the discount purely because it's part of a larger group — no group member actually did anything to obtain it.",
+    "question": "Is this an intra-group service to Company A?",
     "mcq": [
       "No — passive association is not a relevant activity for the benefit test.",
       "Yes — the group's existence creates the discount, so a service is rendered.",
@@ -992,8 +992,8 @@ globalThis.QUIZ_POOL = [
       "The MIS supports Company A's own budgeting, performance control, and consolidated financial statements.",
       "Based on the data, Company A issues quarterly operational recommendations — e.g. reallocate capital from underperforming lines to higher-growth segments."
     ],
-    "facts": "Two strands of activity flow from the same MIS: (i) consolidation and external reporting that Company A is required to do as parent; (ii) operational recommendations directed at subsidiaries that can change how they run their business.",
-    "question": "Are these activities a single intra-group service, two services, or something else?",
+    "facts": "Two things come out of the same system: parent-level consolidation that Company A has to do anyway, and operational advice that subsidiaries actually use to run their business.",
+    "question": "Service, shareholder activity, or a mix?",
     "mcq": [
       "Mixed: consolidation is shareholder activity; operational recommendations can be an intra-group service.",
       "Single intra-group service — the whole MIS is recharged.",
@@ -1015,8 +1015,8 @@ globalThis.QUIZ_POOL = [
       "Parent Co does not advise other subsidiaries as part of the project.",
       "Later, Parent Co reuses learnings to assess other subsidiaries' operations and drives operational improvements at several of them."
     ],
-    "facts": "Two phases: (i) buyer search and divestment work for Company B; (ii) later operational improvements at other subsidiaries using insights from the divestment work.",
-    "question": "Are Parent Co's activities a shareholder activity, an intra-group service, or both?",
+    "facts": "Phase 1: hunting buyers and structuring the sale of Company B. Phase 2: reusing what Parent Co learned to actually improve operations at other subsidiaries.",
+    "question": "Shareholder activity, intra-group service, or both?",
     "mcq": [
       "Both — divestment work is shareholder; later operational improvements are intra-group services.",
       "Shareholder only — both phases relate to Parent Co's ownership interest.",
@@ -1039,8 +1039,8 @@ globalThis.QUIZ_POOL = [
       "Parent Co incurs legal and advisory costs related to the divestment.",
       "On completion, Parent Co receives sale consideration and avoids further funding to Company A; the group's overall cash flow improves."
     ],
-    "facts": "Other group entities derive incidental financial benefits from the divestment (better group cash flow). However, at the time of the divestment those potential benefits to others were indirect or remote.",
-    "question": "How should Parent Co's divestment costs be treated?",
+    "facts": "Other group entities do benefit financially (better group cash flow), but at the time of the sale those benefits were indirect or remote.",
+    "question": "Are Parent Co's divestment costs shareholder costs or recharge-able service costs?",
     "mcq": [
       "Shareholder costs — divestment serves Parent Co's ownership interest; group benefits are incidental.",
       "Service costs — group cash-flow uplift makes this an intra-group service.",
@@ -1062,8 +1062,8 @@ globalThis.QUIZ_POOL = [
       "The acquisition is expected to raise Parent Co shareholder value but is not expected to change the operations of Companies A or B.",
       "Parent Co raises funds, complies with M&A requirements, and takes the actions needed to keep Enterprise Co operationally viable post-acquisition."
     ],
-    "facts": "Companies A and B may derive some benefits from the acquisition (e.g. expanded portfolio), but at the time of the deal those potential benefits were indirect or remote.",
-    "question": "Are Parent Co's acquisition costs shareholder costs or intra-group service costs?",
+    "facts": "Companies A and B may gain something eventually (a broader portfolio), but at the time of the deal those benefits were indirect or remote.",
+    "question": "Are the acquisition costs shareholder costs or service costs to be recharged?",
     "mcq": [
       "Shareholder costs — acquisition serves Parent Co's ownership interest; downstream benefits are incidental.",
       "Service costs — Companies A and B benefit from the larger group portfolio.",
@@ -1085,8 +1085,8 @@ globalThis.QUIZ_POOL = [
       "Under the agreement, Company B must develop and maintain global brand assets and perform global marketing.",
       "Comparable franchise agreements show the same package of rights and obligations."
     ],
-    "facts": "Company B carries out global brand strategy and asset development. Comparable franchise contracts confirm these activities are part of what a franchise fee normally covers.",
-    "question": "Should Company B charge a separate service fee for global brand marketing?",
+    "facts": "Company B does the global brand strategy and asset development. Independent franchise contracts confirm: this is normally bundled into the franchise fee.",
+    "question": "Can Company B charge a separate service fee for the brand work too?",
     "mcq": [
       "No — those activities are already compensated through the franchise fee.",
       "Yes — global marketing is a separate service that warrants its own charge.",
@@ -1107,8 +1107,8 @@ globalThis.QUIZ_POOL = [
       "The fee is benchmarked using the CUP method, with a median from independent contracts across both low- and high-cost markets.",
       "No geographic adjustment is made, and reliable adjustment data is not available."
     ],
-    "facts": "Accurate delineation indicates reliable adjustments would be needed for material market differences. The data needed to make those adjustments does not exist.",
-    "question": "Does this analysis support a reliable application of the CUP method?",
+    "facts": "Market differences between low- and high-cost jurisdictions are material. Adjustments are needed — but the data to make them reliably doesn't exist.",
+    "question": "Is the CUP method reliable here?",
     "mcq": [
       "No — without reliable adjustments for material comparability differences, the CUP application is not reliable.",
       "Yes — using a global median averages out market differences and is reliable.",
@@ -1130,8 +1130,8 @@ globalThis.QUIZ_POOL = [
       "Company S does not interact with suppliers, does not hold title to goods, and does not manage the supply chain.",
       "Company S benchmarks its fee under the CUP method against independent sourcing agents who do the full procurement role."
     ],
-    "facts": "Accurate delineation indicates Company S provides limited support; independent comparable agents perform negotiations, set prices, manage the supply chain, and bear corresponding risks.",
-    "question": "Is the CUP method (against full-service agents) appropriate for Company S?",
+    "facts": "Company S only does analysis and contract review. The independent agents it's being compared to negotiate, set prices, run the supply chain and bear those risks.",
+    "question": "Are full-service agents the right CUP comparable for Company S?",
     "mcq": [
       "No — functions and risks differ materially; Company S is not comparable to those agents.",
       "Yes — both perform procurement-related activities, so the comparison is sufficient.",
@@ -1153,8 +1153,8 @@ globalThis.QUIZ_POOL = [
       "At contract date, the probability that any new drug succeeds is highly uncertain.",
       "Compensation is structured to keep Company B operating on a rolling basis and to incentivise specific clinical milestones."
     ],
-    "facts": "Company A holds drug IP and bears the financial risk of R&D failure. Company B holds analytics IP, designs and executes trials, bears the associated risks, and has a track record of accelerating timelines.",
-    "question": "How should Company B be remunerated for the services?",
+    "facts": "Company A owns the drug IP and bears the risk of R&D failure. Company B brings its own analytics IP, designs and runs the trials, takes the related risks — and has a track record of speeding up timelines.",
+    "question": "What pricing structure fits Company B?",
     "mcq": [
       "A structure that combines a rolling-operations base with milestone-based incentives reflecting its IP and risks.",
       "A simple cost-plus mark-up on its operating costs — it provides routine services.",
@@ -1177,8 +1177,8 @@ globalThis.QUIZ_POOL = [
       "Company B coordinates inputs and trains its personnel; it assumes the risk of failing to competently deliver the manufacturing services.",
       "Economically significant risks associated with generating a return from manufacturing sit with Company A."
     ],
-    "facts": "Company B performs production activities under Company A's extensive instruction. Its risk profile is narrow — failure to perform competently.",
-    "question": "Which TP method is appropriate for pricing Company B's services?",
+    "facts": "Company B just produces — under Company A's detailed instructions. The only real risk it takes is failing to do its job competently.",
+    "question": "Which method prices Company B?",
     "mcq": [
       "Cost-plus or TNMM based on comparable manufacturers.",
       "Profit split — both parties contribute to the manufacturing outcome.",
@@ -1199,8 +1199,8 @@ globalThis.QUIZ_POOL = [
       "Company B performs research exclusively for Company A under a detailed service agreement that defines scope, protocols, reporting, and IP ownership.",
       "Separately, Company C conducts early-stage exploratory research under a broad framework — it chooses areas, assesses feasibility, decides on continuation, and uses its own specialised IP."
     ],
-    "facts": "Company B has little or no discretion. It does not bear the risk of unsuccessful research outcomes. Parties operate in line with the contract.",
-    "question": "How should Company B be priced?",
+    "facts": "Company B has almost no discretion and doesn't bear the risk of research failure. The parties stick to the contract.",
+    "question": "Which method prices Company B?",
     "mcq": [
       "Cost-plus or TNMM on a cost-based PLI — characterised as contract research.",
       "Profit split — both parties contribute to research outcomes.",
@@ -1221,8 +1221,8 @@ globalThis.QUIZ_POOL = [
       "Company B performs research exclusively for Company A under a detailed service agreement that defines scope, protocols, reporting, and IP ownership.",
       "Separately, Company C conducts early-stage exploratory research under a broad framework — it chooses areas, assesses feasibility, decides on continuation, and uses its own specialised IP."
     ],
-    "facts": "Company C autonomously identifies areas of research, assesses feasibility, decides continuation, and uses its own specialised IP. Both Company A and Company C contribute unique and valuable intangibles, and their operations are highly integrated.",
-    "question": "How should Company C be priced?",
+    "facts": "Company C picks its own research areas, assesses feasibility and decides what to continue, using its own specialised IP. Both Company A and C bring unique, valuable IP, and they work in tightly integrated fashion.",
+    "question": "Which method prices Company C?",
     "mcq": [
       "Transactional profit split — both parties make unique and valuable contributions and are highly integrated.",
       "Cost-plus on Company C's R&D spend — it is still a service provider.",
@@ -1244,8 +1244,8 @@ globalThis.QUIZ_POOL = [
       "Company A collects and cleans proprietary datasets using proprietary tools, trains and tests the model on high-performance hardware.",
       "Company A delivers a continuous service of personalised treatment recommendations to X, Y, Z and continuously monitors performance."
     ],
-    "facts": "Company A hosts and maintains the model, bears uptime/security/performance risk, and develops and uses unique and valuable intangibles. Each output is a personalised treatment plan — a transfer of an intangible.",
-    "question": "Can cost-plus or TNMM with Company A as the tested party reliably price the service?",
+    "facts": "Company A built and runs the model, takes uptime/security/performance risk, and uses unique, valuable IP. Every output (a personalised treatment plan) is itself an intangible transferred to a recipient.",
+    "question": "Can you reliably price this using cost-plus or TNMM with Company A as the tested party?",
     "mcq": [
       "Unlikely — non-routine intangibles and risks make suitable comparables hard to find with Company A as the tested party.",
       "Yes — cost-plus on Company A's operating costs is standard for SaaS-type services.",
@@ -1267,8 +1267,8 @@ globalThis.QUIZ_POOL = [
       "Company B's staff use the intangible to provide supply management services to other affiliates.",
       "Company B applies the transactional profit split to remunerate itself for the services."
     ],
-    "facts": "Accurate delineation shows Company B performs routine service functions and does not make any unique and valuable contributions. Company A and Company B do not have highly integrated operations and do not share or separately assume closely related economically significant risks.",
-    "question": "Is the transactional profit split appropriate for Company B?",
+    "facts": "Company B's work is routine — it makes no unique or valuable contribution. The two companies aren't tightly integrated, and they don't share or separately bear closely related significant risks.",
+    "question": "Is profit split the right method for Company B?",
     "mcq": [
       "No — without unique and valuable contributions from both parties, a one-sided method on Company B is more reliable.",
       "Yes — Company B's use of the platform makes it a profit-split party.",
@@ -1290,8 +1290,8 @@ globalThis.QUIZ_POOL = [
       "On each project, Company P oversees progress and gives affiliates access to Core IP without explicit licenses or transfers.",
       "Affiliates price Company P's services using TNMM, treating Company P as the tested party, against service providers that do not develop or provide access to comparable IP."
     ],
-    "facts": "Comparables are functionally similar to Company P only in surface activities; they do not develop or provide access to critical proprietary know-how comparable to Core IP.",
-    "question": "Is selecting Company P as the tested party for TNMM appropriate?",
+    "facts": "The comparables look like Company P on the surface — but none develops or provides anything like the Core IP.",
+    "question": "Can Company P be the tested party here?",
     "mcq": [
       "No — the comparables differ materially in respect of Core IP; choosing Company P as tested party makes the TNMM unreliable.",
       "Yes — Company P performs services, so it can be the tested party.",
@@ -1312,8 +1312,8 @@ globalThis.QUIZ_POOL = [
       "The services do not meet the criteria for low value-adding intra-group services under Section E.",
       "On audit, the local tax administration argues the mark-up should be at least 5% by reference to the LVA safe harbour."
     ],
-    "facts": "Paragraph 7.92 of Chapter VII states the 5% LVA mark-up should not, without further justification, be used as a benchmark for services that don't qualify as LVA.",
-    "question": "Is a 5% floor implied for services that don't qualify as LVA?",
+    "facts": "The OECD's 5% mark-up is a simplified safe harbour designed for genuinely low value-adding services. Outside that scope, the Guidelines say it shouldn't be used as a benchmark without justification.",
+    "question": "Does the 5% safe harbour act as a floor for other services?",
     "mcq": [
       "No — outside the LVA scope, the arm's-length mark-up requires its own transfer pricing analysis and could be above, equal to or below 5%.",
       "Yes — the 5% LVA mark-up is a floor for any intra-group services.",
@@ -1335,8 +1335,8 @@ globalThis.QUIZ_POOL = [
       "Independent agencies place €200m/yr of advertising and charge €240m/yr in strategy fees — €440m total — to Company Z, which contracts with Company Q.",
       "Group G itself does not pay agencies a mark-up on ad spend; industry comparables show ad agencies typically pass through media spend without mark-up."
     ],
-    "facts": "Accurate delineation shows Company Z is an intermediary — coordination only — and does not contribute beyond that. Company Q could have engaged the agencies directly.",
-    "question": "How should Company Z treat the €440m flowing through it?",
+    "facts": "Company Z is just a coordinator — it adds no real value to the ad spend. Company Q could have engaged the agencies directly.",
+    "question": "Should Company Z mark up the €440m that flows through it?",
     "mcq": [
       "Pass through to Company Q without a mark-up; earn arm's length only on Z's own coordination functions.",
       "Mark up the full €440m at a routine cost-plus rate.",
@@ -1356,8 +1356,8 @@ globalThis.QUIZ_POOL = [
       "Company A performs IT support activities for Company B, of a type commonly required by similar businesses.",
       "The arrangement is documented in Company A's master file, Company B's local file, and other local documentation, including a detailed fee calculation."
     ],
-    "facts": "Country B's tax authority considers the documentation insufficient and asks for further proof that the IT activities were performed for Company B. Company B provides a list of IT interventions and incident tickets with dates, descriptions and outcomes.",
-    "question": "What additional evidence can Country B's tax authority reasonably ask for?",
+    "facts": "Country B's tax authority wants more proof that the IT work was actually done for Company B. Company B offers a list of IT tickets — dates, descriptions, outcomes.",
+    "question": "What further evidence can the tax authority reasonably ask for?",
     "mcq": [
       "A representative sample of IT tickets to substantiate the provision of services.",
       "Source code and internal cost ledgers of the entire IT function, regardless of relevance.",
@@ -1377,8 +1377,8 @@ globalThis.QUIZ_POOL = [
       "Company A performs IT support activities for Company B, of a type commonly required by similar businesses.",
       "The arrangement is documented in Company A's master file, Company B's local file, and other local documentation, including a detailed fee calculation."
     ],
-    "facts": "Company A provides IT support to Company B; the arrangement is documented in Company A's master file, Company B's local file and other local documentation, including a detailed fee calculation. The audit additionally reveals that Company B receives IT services from a local independent enterprise under a broadly worded contract. The tax administration cannot conclude from the existing documentation whether there is duplication between the two IT service sources.",
-    "question": "What can Country B's tax authority reasonably request next?",
+    "facts": "The IT services are well documented in master and local files. But the audit reveals Company B also gets IT services from a local independent provider under a vaguely worded contract — and existing files don't show whether the two overlap.",
+    "question": "What can the tax authority reasonably ask for next?",
     "mcq": [
       "Additional relevant evidence — type of IT services actually provided, organisation charts with role descriptions, and interview information.",
       "Nothing further — the audit must rely on the existing master and local files.",
@@ -1400,8 +1400,8 @@ globalThis.QUIZ_POOL = [
       "Post-restructuring, LRD-A earns a stable, modest return (the OECD's ¶9.45 illustration uses ~+2% per year); Principal-B captures residual.",
       "Question turns to whether anything is owed for the conversion itself."
     ],
-    "facts": "The pre-restructuring contract gave FFD-A enforceable rights for several more years, and a functional review shows FFD-A had developed local marketing intangibles still owned by FFD-A at the moment of conversion.",
-    "question": "Is compensation owed at the moment of conversion, and on what basis?",
+    "facts": "FFD-A still had several years of enforceable contract rights, and it owned local marketing intangibles it had built up over time.",
+    "question": "Does the conversion itself need to be priced — and if so, why?",
     "mcq": [
       "Yes — there is a transfer (or substantial renegotiation) of something of value, so compensation is required at arm's length.",
       "No — the arm's length principle never requires compensation when an entity's expected future profits fall.",
@@ -1423,8 +1423,8 @@ globalThis.QUIZ_POOL = [
       "Post-restructuring, LRD-A earns a stable, modest return (the OECD's ¶9.45 illustration uses ~+2% per year); Principal-B captures residual.",
       "Question turns to whether anything is owed for the conversion itself."
     ],
-    "facts": "FFD-A2 is a full-fledged distributor in Country A being converted to a limited-risk distributor for a Principal in Country B. Unlike a distributor with long-term contractual rights and local marketing intangibles, FFD-A2 has no contractual rights beyond a rolling one-year arrangement and the functional review shows it owns no local intangibles. Pre-conversion profits were higher and fluctuating; post-conversion the stable LRD return is lower.",
-    "question": "Does the mere fall in expected future profit trigger arm's-length compensation?",
+    "facts": "Same conversion — but this distributor (FFD-A2) only has a rolling one-year arrangement and owns no local intangibles. Pre-conversion profits were higher, post-conversion they're lower and stable.",
+    "question": "Does the drop in expected profit, on its own, need to be compensated?",
     "mcq": [
       "No — under ¶9.39 the arm's length principle does not require compensation for a mere decrease in the expectation of future profits.",
       "Yes — any reduction in profit potential is, by itself, compensable at arm's length.",
@@ -1446,8 +1446,8 @@ globalThis.QUIZ_POOL = [
       "IPCo licenses the IP back to the operating subs for a royalty; in A's case the relocation also moves an experienced workforce.",
       "Group must now price (a) what was transferred to IPCo and (b) the post-restructuring licence-back."
     ],
-    "facts": "Sub A's transfer included not only the trademarks but the customer contracts and a relocated R&D team — facts that together would, between independent parties, be regarded as the transfer of an integrated business unit.",
-    "question": "How should the transfer from Sub A be priced — element-by-element or as an aggregate?",
+    "facts": "Sub A didn't just transfer trademarks — it also moved customer contracts and a key R&D team. Between independents this looks like the transfer of an integrated business unit.",
+    "question": "Price item-by-item, or as a single ongoing concern?",
     "mcq": [
       "As an ongoing concern, with the valuation reflecting all valuable elements together (including the assembled workforce), per Section E.2 of Part I.",
       "Strictly element-by-element: trademark valuation + workforce valuation + contracts valuation, summed.",
@@ -1469,8 +1469,8 @@ globalThis.QUIZ_POOL = [
       "IPCo licenses the IP back to the operating subs for a royalty; in A's case the relocation also moves an experienced workforce.",
       "Group must now price (a) what was transferred to IPCo and (b) the post-restructuring licence-back."
     ],
-    "facts": "After the transfers, IPCo licenses the IP back to the operating subs. IPCo is a small holding company with limited substance.",
-    "question": "Can IPCo simply set the royalty by reference to a market range without any link to whether it actually controls and bears the IP-related risks?",
+    "facts": "IPCo is a small holding company with limited substance. It now licenses the IP back to the operating subs.",
+    "question": "Can IPCo just pick a market-range royalty, regardless of whether it actually controls the IP risks?",
     "mcq": [
       "No — the licence-back royalty must be set under accurate delineation (Section D.1 of Ch.I): if IPCo doesn't control the DEMPE-style functions and risks, it shouldn't earn the residual associated with them.",
       "Yes — once legal ownership is transferred, the legal owner can always set the royalty at the upper end of any benchmark range.",
@@ -1492,7 +1492,7 @@ globalThis.QUIZ_POOL = [
       "Country A's tax administration considers whether to disregard the restructuring under domestic and treaty rules.",
       "The accurate-delineation framework of Section D.1 of Ch.I has been applied and all relevant facts are known."
     ],
-    "facts": "After accurate delineation, the transactions are commercially rational from each separate entity's perspective (each has options realistically available and is no worse off), even though the structure is unusual; Principal-B has tax motives but the arrangement also has business substance.",
+    "facts": "Each entity is commercially rational given its options — even if the structure is unusual. There's a tax motive, but also real business substance.",
     "question": "Can the tax administration disregard the restructuring?",
     "mcq": [
       "Only if the exceptional circumstances described in ¶1.142 (Section D.2 of Ch.I) are met — non-recognition is a high bar.",
@@ -1515,8 +1515,8 @@ globalThis.QUIZ_POOL = [
       "Functional review: Principal-B has no relevant decision-making staff (credit-line decisions and inventory write-down decisions still happen in A); B has no financial capacity to absorb a write-down of the size at stake.",
       "Tax administration in Country A challenges the post-restructuring TP."
     ],
-    "facts": "Distributor-A's people still make the credit and inventory decisions; Principal-B has neither risk-control functions nor the financial capacity to bear the risk it has contractually assumed.",
-    "question": "Where does the bad-debt and inventory risk sit for transfer pricing purposes?",
+    "facts": "On paper the risks moved to Principal-B. In practice, Distributor-A still makes the credit and inventory calls — and Principal-B can't even afford the losses it has contractually accepted.",
+    "question": "Where do the risks really sit for transfer pricing?",
     "mcq": [
       "It stays with Distributor-A — under accurate delineation a party that does not control the risk and lacks financial capacity cannot be allocated the profit potential associated with it.",
       "It moves to Principal-B — once the contract reallocates the risk in writing, that allocation governs the TP outcome.",
@@ -1538,8 +1538,8 @@ globalThis.QUIZ_POOL = [
       "Distributor-A claims indemnification.",
       "Counsel and TP need to determine whether any indemnification is owed and, if so, how much."
     ],
-    "facts": "The arrangement, accurately delineated, contains no express indemnification clause; commercial law in the jurisdiction would, however, recognise a right to indemnification on these facts; and independent parties in comparable circumstances would normally have negotiated some form of indemnification given the contract's length and economics.",
-    "question": "Is indemnification owed, and how is the test framed?",
+    "facts": "The contract has no indemnification clause. But commercial law would support an indemnification claim — and independent parties in similar deals would normally have negotiated some protection.",
+    "question": "Is indemnification owed at arm's length?",
     "mcq": [
       "Yes — the three-part test in ¶9.79 supports an arm's-length indemnification: (i) commercial-law rights, (ii) whether the arrangement's terms (including the absence of a clause) are arm's length, (iii) which party should ultimately bear the cost.",
       "Yes — every contract termination automatically triggers a right to indemnification at arm's length.",
@@ -1561,8 +1561,8 @@ globalThis.QUIZ_POOL = [
       "Several key M1 employees relocate to M2 to assist with start-up.",
       "Comparable transactions between independent parties would treat this as a single integrated transfer."
     ],
-    "facts": "Between independent parties this would be characterised as a transfer of an ongoing concern. The relocated assembled workforce is a meaningful part of what is being transferred (time and expense savings for M2).",
-    "question": "Which valuation route gives the right answer at arm's length?",
+    "facts": "Between independents this would be the transfer of an ongoing concern. The relocated workforce is a real part of what M2 gets — saving time and money.",
+    "question": "Which valuation route fits at arm's length?",
     "mcq": [
       "Value it as an ongoing-concern transfer — compare with arm's-length transfers of ongoing concerns; account for the assembled workforce in the price.",
       "Value each item in isolation (machinery + patents + inventory + contracts) and sum — assembled workforce has no transfer-pricing value.",
@@ -1584,8 +1584,8 @@ globalThis.QUIZ_POOL = [
       "First post-restructuring year: LRD-A records a loss.",
       "Tax administration audits."
     ],
-    "facts": "Functional review post-conversion shows LRD-A still owns local marketing intangibles and still controls some market risk — facts that diverge from the long-existing LRDs in the comparable set.",
-    "question": "What is the most likely explanation, and what does it imply?",
+    "facts": "A closer look shows LRD-A still owns local marketing intangibles and still controls some market risk — unlike the long-established LRDs in the comparable set.",
+    "question": "What's the most likely explanation for the loss, and what does it imply?",
     "mcq": [
       "The 'LRD' label may understate what LRD-A actually does — the post-restructuring TP, or the conversion itself, needs to reflect the intangibles and risks LRD-A continues to bear.",
       "The loss is automatically arm's length: stripped-risk entities can be loss-making in any given year.",
@@ -1607,8 +1607,8 @@ globalThis.QUIZ_POOL = [
       "Brand-A retains the brand and design IP; Contract Mfr-B holds no significant intangibles and bears no significant risks.",
       "Finished goods flow back to Brand-A, which on-sells to third-party customers; significant location savings emerge."
     ],
-    "facts": "The manufacturing activity is highly competitive: Brand-A has the realistic option of using either Contract Mfr-B or a third-party contract manufacturer in Country B, and reliable comparables exist.",
-    "question": "How are the location savings allocated at arm's length?",
+    "facts": "Manufacturing is a competitive activity — Brand-A could just as easily use a third-party Country B manufacturer, and reliable local comparables exist.",
+    "question": "Who keeps the location savings?",
     "mcq": [
       "Very little, if any, of the location savings is attributed to Contract Mfr-B — an arm's-length contract manufacturer in the same market would be priced from local comparables; the residual stays with Brand-A.",
       "The location savings are always split 50/50 between Brand-A and Contract Mfr-B.",
@@ -1630,8 +1630,8 @@ globalThis.QUIZ_POOL = [
       "Each day, the bank moves cash to or from M's concentration account to hit each participant's target; net surplus is deposited by M, net deficits are met by the bank lending to M.",
       "Members H and J supply surplus; K and L draw funding. Interest on each member balance is charged or paid per the pooling agreement, and M pays less (or receives more) interest to the bank than absent the pool."
     ],
-    "facts": "After the year-end functional analysis, M's role is examined. M signs the cash-management agreement with the bank, executes target-balance sweeps and routes the pooled position. Members keep their own credit and liquidity exposures; the bank takes credit risk over M; X guarantees M's facility.",
-    "question": "How should M's function be characterised?",
+    "facts": "M signs the bank agreement and runs the daily sweeps — but credit risk stays with the pool members, the bank takes credit risk on M, and the parent X guarantees M's facility.",
+    "question": "Is M a co-ordinator, a bank-like intermediary, or a real lender?",
     "mcq": [
       "Co-ordination only — M does not bear credit risk and does not perform bank-like functions.",
       "Bank-like intermediation — M is the legal counterparty to every pool transaction, so it bears the economic risk.",
@@ -1653,8 +1653,8 @@ globalThis.QUIZ_POOL = [
       "Each day, the bank moves cash to or from M's concentration account to hit each participant's target; net surplus is deposited by M, net deficits are met by the bank lending to M.",
       "Members H and J supply surplus; K and L draw funding. Interest on each member balance is charged or paid per the pooling agreement, and M pays less (or receives more) interest to the bank than absent the pool."
     ],
-    "facts": "Functional analysis has shown that M performs co-ordination only — it signs the bank's cash-management agreement and executes daily target-balance sweeps, but credit risk stays with the pool members and M does not perform a bank's functions. X (the parent) guarantees M's facility. The analysis now turns to how M should be remunerated.",
-    "question": "What kind of reward does M earn?",
+    "facts": "M has been characterised as a pure co-ordinator — no credit risk, no bank-like functions. X guarantees its facility. Question now: how should M get paid?",
+    "question": "What's the right reward for M?",
     "mcq": [
       "A service-fee-style reward commensurate with the co-ordination functions M provides.",
       "The interest spread between deposits and loans, since M is the legal counterparty on each leg.",
@@ -1676,8 +1676,8 @@ globalThis.QUIZ_POOL = [
       "T arranges intra-group loans to meet the funding needs of other group members and operates a group-wide cash pool.",
       "T sets the intra-group interest rates and bears credit, liquidity and currency risk on the intra-group leg — and decides on hedging."
     ],
-    "facts": "The functional analysis shows that T performs substantive treasury functions, controls the financial risks contractually allocated to it (credit, liquidity, currency) and has the financial capacity to bear those risks. T sets the intra-group rates and is at risk for the difference between the rates it charges members and the rates it pays external lenders.",
-    "question": "How should T's intra-group activities be delineated and rewarded?",
+    "facts": "Unlike M in Example 1, T does substantive treasury work — it controls credit, liquidity and currency risks, has the money to bear them, sets the intra-group rates, and is on the hook for the spread between what it borrows at and what it lends at.",
+    "question": "How should T's intra-group activities be classified and rewarded?",
     "mcq": [
       "Intra-group loans (not pure cash-pool co-ordination) — T may earn part or all of the spread between its borrowing and lending positions.",
       "Cash-pool co-ordination — T earns a service fee even though it actively manages the risks.",
@@ -1699,8 +1699,8 @@ globalThis.QUIZ_POOL = [
       "T arranges intra-group loans to meet the funding needs of other group members and operates a group-wide cash pool.",
       "T sets the intra-group interest rates and bears credit, liquidity and currency risk on the intra-group leg — and decides on hedging."
     ],
-    "facts": "T claims an arm's-length spread on each intra-group loan. Group subsidiary U argues that its all-in cost on the intra-group loan from T is higher than the cost it could obtain from a long-standing relationship bank in U's market.",
-    "question": "Does T's arm's-length pricing on its side automatically settle U's pricing?",
+    "facts": "T's pricing looks arm's-length from T's side. But borrower U argues it could get cheaper funding from its own relationship bank.",
+    "question": "Does T's arm's-length pricing automatically settle the price for U?",
     "mcq": [
       "No — the other group members would only deal with T at arm's length if doing so left them no worse off than their next best realistic option.",
       "Yes — once T's pricing is shown to be arm's length on T's side, group members must accept it.",
@@ -1722,8 +1722,8 @@ globalThis.QUIZ_POOL = [
       "Company S performs subsequent development and important enhancement functions.",
       "Company S obtains regulatory authorisation and the product is sold in markets worldwide."
     ],
-    "facts": "Accurate delineation indicates that both Company A's early-stage R&D and patent and Company S's subsequent development and enhancement are unique and valuable to the success of the product.",
-    "question": "Which method is likely to be most appropriate for the licence between Company A and Company S?",
+    "facts": "Both sides contribute something unique and valuable: Company A's early-stage R&D and the patent, and Company S's later development and enhancement.",
+    "question": "Which method best prices the licence?",
     "mcq": [
       "Transactional profit split — both parties make unique and valuable contributions to the patent's exploitation.",
       "CUP using third-party patent licences in the pharma sector.",
@@ -1745,8 +1745,8 @@ globalThis.QUIZ_POOL = [
       "B Co repackages and brands the teas for sale in target markets.",
       "B Co's branding features the origin and unique blend; its marketing builds the product range into a market leader commanding premium prices."
     ],
-    "facts": "Accurate delineation determines that both A Co (cultivation, processing, blending know-how) and B Co (trademark, tradename, advertising and marketing) make unique and valuable contributions.",
-    "question": "Which method is likely to be most appropriate for the sale from A Co to B Co?",
+    "facts": "Both sides bring something unique: A Co's growing and blending know-how, B Co's trademark and marketing.",
+    "question": "Which method best prices the tea sale from A Co to B Co?",
     "mcq": [
       "Transactional profit split — both parties make unique and valuable contributions.",
       "CUP using independent bulk-tea prices on commodity exchanges.",
@@ -1768,8 +1768,8 @@ globalThis.QUIZ_POOL = [
       "Company B designs and executes cutting-edge global marketing, building a valuable trademark and goodwill.",
       "Company B runs global distribution using a proprietary algorithm for demand forecasting and 48-hour fulfilment."
     ],
-    "facts": "Accurate delineation indicates that the contributions of both Company A (manufacturing IP) and Company B (marketing trademark plus distribution algorithm) are unique and valuable to the success of the new line.",
-    "question": "Which method is likely to be most appropriate for the sale from A to B?",
+    "facts": "Both sides have unique value drivers: Company A's manufacturing IP, and Company B's trademark plus proprietary distribution algorithm.",
+    "question": "Which method best prices the sale from A to B?",
     "mcq": [
       "Transactional profit split — both parties make unique and valuable contributions.",
       "Resale price minus, using Company B's wholesale margin against comparable distributors.",
@@ -1792,8 +1792,8 @@ globalThis.QUIZ_POOL = [
       "Company B operates a simple customer feedback relay — not a unique and valuable contribution.",
       "Distribution does not provide a particular source of competitive advantage; success depends on the product's technical specs, design and price."
     ],
-    "facts": "Accurate delineation concludes that Company A bears the design/development/manufacturing risks while Company B's marketing and distribution risks are not economically significant and its functions do not generate any unique and valuable contribution.",
-    "question": "Is the transactional profit split appropriate?",
+    "facts": "Company A bears all the meaningful risks (design, development, manufacturing). Company B's marketing and distribution risks aren't economically significant, and its work isn't unique or valuable.",
+    "question": "Is profit split still the right method?",
     "mcq": [
       "No — Company B's contribution can be reliably benchmarked; a one-sided method on Company B is more appropriate.",
       "Yes — both parties earn a share of the value chain, so profit split still applies.",
@@ -1816,8 +1816,8 @@ globalThis.QUIZ_POOL = [
       "WebCo continues developing the underlying base technology; ScaleCo uses these developments in scale-up.",
       "Both WebCo and ScaleCo assume the development risk that the crawler is unsuccessful."
     ],
-    "facts": "The economically significant risk is the development risk, and both parties are determined to assume it under the Chapter I framework. Both contributions are unique and valuable to creating and exploiting the crawler.",
-    "question": "Which method is likely to be most appropriate?",
+    "facts": "Both parties share the development risk (the main economic risk here), and both bring unique and valuable IP.",
+    "question": "Which method best prices the licence?",
     "mcq": [
       "Transactional profit split — unique and valuable contributions plus shared assumption of the economically significant risk.",
       "CUP using independent software licences.",
@@ -1840,8 +1840,8 @@ globalThis.QUIZ_POOL = [
       "A joint investment management committee (equal numbers from A and B) decides composition of the funds.",
       "Risk: retail investors withdrawing from poor-performing funds — Companies A and B share assumption of that risk."
     ],
-    "facts": "Portfolio management services as such are not unique (an active market exists for bundled comparables), but available comparables provide no basis for splitting the fee between A and B. Operations of A and B are highly integrated and they share the assumption of fund-performance risk.",
-    "question": "Which method is most appropriate for compensating Companies A and B?",
+    "facts": "Portfolio management itself isn't unique — there are bundled-fee comparables. But those comparables don't tell you how to split the fee between A and B. A and B's work is tightly integrated, and they share the risk of fund underperformance.",
+    "question": "What's the right method for paying A and B?",
     "mcq": [
       "Transactional profit split of the arm's length fee from FUND Co, with ASSET Co compensated at zero.",
       "Split the AUM fee 50/50 between A and B based on committee composition.",
@@ -1863,8 +1863,8 @@ globalThis.QUIZ_POOL = [
       "They jointly purchased and continue improving an integrated goods-tracking IT system.",
       "Customers pay based on volume and weight. LM's value proposition: competitive pricing through efficiency, scale, scope and seamless cross-border integration."
     ],
-    "facts": "Arm's length pricing for the joint activity is available, but the operations of L and M are so highly integrated and interdependent that a one-sided method cannot determine an arm's length outcome for either of their separate contributions. They may also share the assumption of the economically significant risks.",
-    "question": "Which method is likely to be most appropriate?",
+    "facts": "There are external comparables for the joint service, but L and M are so tightly integrated that a one-sided method can't price either side standalone. They probably also share the main risks.",
+    "question": "Which method best prices L and M?",
     "mcq": [
       "Transactional profit split — high integration and interdependence; if risks are also shared, a split of actual profits is likely appropriate.",
       "Apply TNMM separately to L and to M using independent freight forwarders.",
@@ -1887,8 +1887,8 @@ globalThis.QUIZ_POOL = [
       "Company B has invested in tooling specifically adapted to the devices and has no other customer.",
       "Company B sells the finished goods to Company A, which markets and distributes to unrelated customers."
     ],
-    "facts": "Accurate delineation shows Company B makes no unique and valuable contribution. The risks B assumes are not economically significant. There is some integration and dependence on Company A, but B's contribution can be benchmarked.",
-    "question": "Is the transactional profit split appropriate?",
+    "facts": "Company B brings nothing unique or valuable; its risks aren't economically significant. There's some integration with Company A and B has only one customer — but B can still be benchmarked against comparable contract manufacturers.",
+    "question": "Is profit split the right method for B?",
     "mcq": [
       "No — a one-sided method on Company B can reliably benchmark its contribution; profit split is unlikely to be most appropriate.",
       "Yes — operational integration and B's sole-customer dependence justify profit split.",
@@ -1910,8 +1910,8 @@ globalThis.QUIZ_POOL = [
       "Engineers from both companies, working together, discover that combining Compound A with Enzyme B produces a unique and effective drug.",
       "ACo grants BCo the right to use Compound A; BCo combines the components and markets the resulting drug."
     ],
-    "facts": "The contributions of ACo and BCo are highly integrated and interdependent. Each contribution is unique and valuable only in combination with the other.",
-    "question": "Which method is most appropriate for the right to use Compound A?",
+    "facts": "Each component alone is nearly worthless. They become unique and valuable only when combined.",
+    "question": "Which method best prices the right to use Compound A?",
     "mcq": [
       "Transactional profit split — each contribution is unique and valuable when combined with the other.",
       "CUP using royalty rates for licences of unrelated compounds.",
@@ -1934,8 +1934,8 @@ globalThis.QUIZ_POOL = [
       "Each company performs the control functions and assumes the risks in its own domain — B for the component, A for overall production and sale.",
       "A cannot control (and so does not assume) the risk of how the key component performs."
     ],
-    "facts": "Companies A and B each assume separate economically significant risks, but those risks are highly inter-dependent (the success of the product line turns on the component, which has no other application).",
-    "question": "Which method is most appropriate?",
+    "facts": "A and B each carry their own significant risks — but those risks are tightly linked. The product line lives or dies with the component, and the component has no other use.",
+    "question": "Which method best prices the component sale?",
     "mcq": [
       "Transactional profit split — separately assumed but closely related (interdependent) economically significant risks point to profit split.",
       "Apply TNMM to Company B as a routine component supplier.",
@@ -1958,8 +1958,8 @@ globalThis.QUIZ_POOL = [
       "Combined net profit of A and B (before reallocation) = 10. Residual profit = 10 − (1.5 + 2.0) = 6.5.",
       "Relative R&D expenditure: A = 15, B = 10. Residual split: A = 6.5 × 15/25 = 3.9; B = 6.5 × 10/25 = 2.6."
     ],
-    "facts": "A two-step residual profit split. Step 1: assign each manufacturer a routine return on its manufacturing cost. Step 2: split the residual on the ratio of A's to B's R&D expenditure, which is established as a reliable proxy for the relative value of their unique contributions.",
-    "question": "What are the final net profits of A and B under the residual profit split?",
+    "facts": "Two-step residual split. Step 1: pay each manufacturer a routine return on its manufacturing cost. Step 2: split what's left in proportion to each side's R&D spend (the established proxy for their relative value contribution).",
+    "question": "What net profit does each of A and B end up with?",
     "mcq": [
       "A = 5.4 (1.5 routine + 3.9 residual); B = 4.6 (2.0 routine + 2.6 residual).",
       "A = 3.9; B = 2.6 — only the residual share is paid.",
@@ -1981,8 +1981,8 @@ globalThis.QUIZ_POOL = [
       "Functional analysis: A and B share assumption of the design/manufacturing risks and both make unique and valuable contributions.",
       "Sales in Countries A, B and C all form part of the relevant profits to be split between A and B."
     ],
-    "facts": "Profit split is the most appropriate method for A and B's transactions. Company C's contribution is benchmarkable — its arm's length return is determined by a one-sided method (e.g. resale price or TNMM).",
-    "question": "How is the relevant profit pool defined and allocated?",
+    "facts": "Profit split is right for A and B. Company C is routine — its return can be set with a one-sided method (resale price or TNMM).",
+    "question": "How do you build the profit pool and allocate it?",
     "mcq": [
       "Take Country C's sales revenue, subtract C's arm's length return; combined with sales in Countries A and B that becomes the pool; A and B receive routine returns on their less-complex activities then split the residual on relative contributions.",
       "Split all combined profit (incl. C's) between A, B and C on relative sales.",
@@ -2004,8 +2004,8 @@ globalThis.QUIZ_POOL = [
       "Company B has its own marketing team and a track record of building brand recognition in Country B.",
       "Both parties make unique and valuable contributions; profit split is determined to be the most appropriate method."
     ],
-    "facts": "Scenario 1: accurate delineation shows Company A does NOT share in the assumption of any of the economically significant risks associated with Company B's marketing and exploitation of the licensed intangibles.",
-    "question": "Should the split be applied to anticipated or to actual profits?",
+    "facts": "Scenario 1: Company A does NOT share in the economically significant risks tied to Company B's marketing and exploitation of the licensed IP.",
+    "question": "Split anticipated profits, or actual ones?",
     "mcq": [
       "Anticipated profits — Company A doesn't share Company B's economically significant risks; e.g. a DCF of B's expected profits, with payment as lump sum or sales-based royalty.",
       "Actual profits — any profit split must always look at outcomes once known.",
@@ -2027,8 +2027,8 @@ globalThis.QUIZ_POOL = [
       "Company B has its own marketing team and a track record of building brand recognition in Country B.",
       "Both parties make unique and valuable contributions; profit split is determined to be the most appropriate method."
     ],
-    "facts": "Scenario 2: Companies A and B agree to split actual profits; they jointly perform the marketing and distribution activities; both assume the risks associated with the success of the marketing and commercialisation of the products in Country B.",
-    "question": "Should the split be applied to anticipated or to actual profits?",
+    "facts": "Scenario 2: A and B jointly run marketing and distribution and both bear the risks of how Country B commercialisation goes.",
+    "question": "Split anticipated profits, or actual ones?",
     "mcq": [
       "Actual profits — both parties share the assumption of the economically significant risks, so each shares the upside and downside as outcomes materialise.",
       "Anticipated profits — profit split should always lock in expectations ex ante.",
@@ -2051,8 +2051,8 @@ globalThis.QUIZ_POOL = [
       "Step 2 (a): residual = 85 − 23 = 62, split 30/70 to A (26.57) and 40/70 to B (35.43).",
       "Step 2 (b): if overhead is excluded from the pool, residual rises to 71; A's net stays at allocate-then-deduct outcome 33.43, B's 51.57."
     ],
-    "facts": "Scenario 1 — choice between operating profit and operating-profit-before-overhead as the pool.",
-    "question": "When does the choice of profit measure change the allocation between A and B?",
+    "facts": "Scenario 1: should the residual pool be operating profit, or operating profit before overhead is deducted?",
+    "question": "Does this choice change the split between A and B?",
     "mcq": [
       "It changes the allocation — including/excluding overhead shifts amounts (e.g. 32.57/52.43 vs. 33.43/51.57). The choice must be consistent with the accurate delineation of the transaction.",
       "It never changes the allocation — accounting choices cannot affect arm's length results.",
@@ -2075,8 +2075,8 @@ globalThis.QUIZ_POOL = [
       "Step 2 (a): residual = 85 − 23 = 62, split 30/70 to A (26.57) and 40/70 to B (35.43).",
       "Step 2 (b): if overhead is excluded from the pool, residual rises to 71; A's net stays at allocate-then-deduct outcome 33.43, B's 51.57."
     ],
-    "facts": "Scenario 2 — using operating profit before intangible expenditure as the residual pool when the splitting factor is itself relative intangible expenditure (current-year only).",
-    "question": "Does it matter whether the residual is taken before or after deducting the intangible expenditure?",
+    "facts": "Scenario 2: the splitter is current-year IP spend. Should the residual pool be measured before or after deducting that same IP spend?",
+    "question": "Does this choice affect the split?",
     "mcq": [
       "No — when the splitter relies on the current-year expense, before-or-after-deduction yields the same allocation; outcomes can differ if the splitter is based on accumulated expenditure across years.",
       "Yes — the residual must always be measured after deducting the expense used as splitter.",
@@ -2099,8 +2099,8 @@ globalThis.QUIZ_POOL = [
       "Risk analysis: A and B share assumption of the design/manufacturing risks; both perform relevant control functions.",
       "No comparable uncontrolled transactions exist; no direct evidence of how independents would have split."
     ],
-    "facts": "Profit split is the most appropriate method. In the absence of CUPs or direct evidence of comparable splits, an asset-based splitting factor is being considered. Asset-creation correlates with value creation in the parties' design/manufacturing operations.",
-    "question": "Is an asset-based splitting factor appropriate?",
+    "facts": "Profit split is the right method. With no CUPs and no evidence of how independents would split, the team is considering an asset-based splitting factor. Asset creation appears to track value creation here.",
+    "question": "Can an asset-based splitter be used?",
     "mcq": [
       "Yes — provided the functional analysis concludes that there is a strong correlation between the assets of A and B and value creation in their controlled transactions.",
       "No — splitting factors must always be expense-based to be objective.",
@@ -2122,8 +2122,8 @@ globalThis.QUIZ_POOL = [
       "Each company is responsible for developing and manufacturing one of the three key components.",
       "Functional analysis concludes that relative expenses incurred by each company in component development directly correlate with relative value contributed."
     ],
-    "facts": "Profit split is determined to be the most appropriate method. Relative development expenditure across A, B and C is a reliable proxy for relative value contributed.",
-    "question": "How should the relevant profits (or losses) on the new product be allocated?",
+    "facts": "Profit split is the right method. Relative development spend across A, B and C is a reliable proxy for relative value contributed.",
+    "question": "How should profits (or losses) be allocated between A, B and C?",
     "mcq": [
       "Split based on each company's relative development cost — yielding results similar to an analogous cost contribution arrangement.",
       "Equal three-way split — three parties to a greenfield project.",
@@ -2145,8 +2145,8 @@ globalThis.QUIZ_POOL = [
       "Working-capital levels (R + I − P / Sales) differ materially between TestCo (~25–29%) and CompCo (~20–29%, swinging).",
       "Analyst weighs whether to adjust CompCo's EBIT/Sales before testing TestCo against the range."
     ],
-    "facts": "TestCo and CompCo are otherwise comparable on a TNMM/EBIT-on-sales basis, but TestCo tends to carry more working capital (4 of 5 years, with longer customer credit and inventory days and similar supplier days). Reliable trade-receivables, inventory, and payables data are available for CompCo year-by-year, plus a market-rate interest cost.",
-    "question": "Should a working-capital adjustment be made?",
+    "facts": "TestCo carries more working capital than CompCo (longer customer credit and inventory days). Reliable yearly receivables, inventory and payables data are available for CompCo, plus a market interest rate.",
+    "question": "Should the comparable's result be adjusted for the working-capital gap?",
     "mcq": [
       "Yes — but only because the reliability of the comparable will be improved and reasonably accurate adjustments can be made.",
       "Yes — any difference in receivables, inventory, or payables between tested party and comparable automatically triggers an adjustment.",
@@ -2168,8 +2168,8 @@ globalThis.QUIZ_POOL = [
       "Working-capital levels (R + I − P / Sales) differ materially between TestCo (~25–29%) and CompCo (~20–29%, swinging).",
       "Analyst weighs whether to adjust CompCo's EBIT/Sales before testing TestCo against the range."
     ],
-    "facts": "The analyst is now choosing the interest rate to apply to the (R + I − P)/Sales difference. TestCo borrows in its local market at a rate around 5%. CompCo operates in a different market with notably different borrowing rates. Period-end balances are being used for the working-capital computation.",
-    "question": "Which interest rate is the right reference, and what should the analyst flag?",
+    "facts": "Time to pick the interest rate. TestCo borrows locally at ~5%; CompCo's market has very different rates. The analyst is using period-end balances.",
+    "question": "Whose borrowing rate should be used — and what should the analyst flag?",
     "mcq": [
       "The rate at which the TESTED PARTY (TestCo) can borrow in its local market — typically a commercial loan rate — and flag that period-end balances may not represent the year (consider averages).",
       "The interest rate that maximises the adjustment in the tested party's favour.",
@@ -2191,8 +2191,8 @@ globalThis.QUIZ_POOL = [
       "Each company consumes 50% of total contributions (value 2 850 each).",
       "Need to determine the balancing payment from B to A."
     ],
-    "facts": "Total value of contributions = 5 700; each party should bear 50% = 2 850. A's in-kind contribution at value is 3 600; B's is 2 100. The 'absent the CCA' alternative is a market purchase between A and B at arm's-length values: B would buy 15 units of Service 1 (1 800) and A would buy 10 units of Service 2 (1 050) — net 750 from B to A.",
-    "question": "What balancing payment from B to A makes the CCA produce an arm's-length result?",
+    "facts": "Total value of contributions = 5 700, so each side should bear 2 850. A's contribution at value is 3 600; B's is 2 100. If there were no CCA, A and B buying these services from each other on the open market would result in net 750 flowing from B to A.",
+    "question": "What balancing payment from B to A makes the CCA arm's-length?",
     "mcq": [
       "750 — measure contributions at value (3 600 vs 2 100), so B tops up by 750. This matches the 'absent the CCA' arm's-length result.",
       "500 — measure contributions at cost (3 000 vs 2 000), so each bears 50% of total cost (2 500) and B tops up by 500.",
@@ -2214,8 +2214,8 @@ globalThis.QUIZ_POOL = [
       "Step 2: account for the additional VALUE A contributes above cost.",
       "A consumes 10 units of Service 2 (value-over-cost 50); B consumes 15 units of Service 1 (value-over-cost 300). Net additional value from A = 250."
     ],
-    "facts": "After Step 1 (500 from B to A), Step 2 settles the value differential. A contributes 250 of value above cost beyond what B contributes (300 − 50). B must pay A another 250 in respect of the additional pre-existing/value contributions A has brought to the CCA.",
-    "question": "What's the total transfer under the two-step method, and how does it compare to Example 1?",
+    "facts": "Step 1 transferred 500 from B to A (cost-share). Step 2 settles the value-over-cost differential: A's added value (300 − 50 = 250) means B owes A another 250.",
+    "question": "What's the total flow B → A — and how does it compare with the at-value answer from Example 1?",
     "mcq": [
       "500 + 250 = 750 — identical to Example 1's contributions-at-value answer.",
       "500 — the cost share alone, because Step 2 only applies when pre-existing intangibles are involved.",
@@ -2237,8 +2237,8 @@ globalThis.QUIZ_POOL = [
       "At value: total contributions 5 190, each bears 2 595, B tops up A by 495.",
       "At cost: total cost 5 000, each bears 2 500, B tops up A by 500."
     ],
-    "facts": "The difference between contributions-at-value (495) and contributions-at-cost (500) is small in absolute terms and the services are low-value in nature. The analyst wants a practical shortcut.",
-    "question": "Is it acceptable to value contributions at cost in this scenario?",
+    "facts": "The gap between at-value (495) and at-cost (500) is small, and the services are low-value in nature. The analyst wants a shortcut.",
+    "question": "Can contributions be measured at cost here?",
     "mcq": [
       "Yes — where all contributions to the CCA are LOW-VALUE services, valuing at cost achieves results broadly consistent with the arm's-length principle and is acceptable as a practical matter.",
       "No — Example 1 already established that contributions must be at value, with no exception.",
@@ -2260,8 +2260,8 @@ globalThis.QUIZ_POOL = [
       "At value: total 6 000, each bears 3 000, B tops up A by 600.",
       "At cost: total 5 000, each bears 2 500, B tops up A by 500."
     ],
-    "facts": "Both services carry an identical 20% mark-up on cost. Intuitively the cost-based shortcut might seem to work.",
-    "question": "Does the identical mark-up mean contributions-at-cost gives an arm's-length result?",
+    "facts": "Both services carry the same 20% mark-up. Surely measuring contributions at cost would give the same answer as measuring at value?",
+    "question": "Does the identical mark-up rescue the cost-based shortcut?",
     "mcq": [
       "No — A contributes more VOLUME (30 vs 20 units), so even with identical margins, the value gap (600) differs from the cost gap (500). Contributions must still be at value.",
       "Yes — when mark-ups are identical on both sides, contributions-at-cost is mathematically equivalent.",
@@ -2283,8 +2283,8 @@ globalThis.QUIZ_POOL = [
       "A's arm's-length funding return for that risk level is determined to be USD 110m/yr (years 6–15).",
       "A is anticipated to reap USD 330m/yr — more than 3× its funding return. Where does the excess belong?"
     ],
-    "facts": "A controls the risks it contractually assumes (per ¶8.14–8.18). Its arm's-length anticipated return on the funding investment is USD 110m/yr. The CCA's structure gives A USD 330m/yr — USD 220m/yr more than its funding return justifies. That excess reflects the value of B's pre-existing intangibles + R&D activity.",
-    "question": "What balancing flow restores the arm's-length result?",
+    "facts": "A actually controls the risks it took on. Its arm's-length funding return is 110m/yr — but the CCA structure hands A 330m/yr. The 220m/yr excess reflects the value of B's pre-existing IP and its R&D work.",
+    "question": "What balancing payment fixes the result?",
     "mcq": [
       "A pays B (in present-value terms) the USD 220m/yr excess A is anticipated to receive over and above its arm's-length funding return — a balancing payment for B's pre-existing contributions.",
       "B pays A — A is contributing scarce capital and should keep all USD 330m/yr.",
@@ -2306,8 +2306,8 @@ globalThis.QUIZ_POOL = [
       "Accurate delineation of the transactions associated with the CCA proceeds under Section D.1 of Chapter I and ¶8.15.",
       "Conclusion changes: A is no longer treated as a participant entitled to a share in the CCA output."
     ],
-    "facts": "A's CCA participation looks fine on paper but has no functional substance: no people, no decisions, no capacity to mitigate or assess. B does everything that matters for the risk.",
-    "question": "What does accurate delineation conclude about A's entitlement under the CCA?",
+    "facts": "A is a participant on paper only — no people, no decisions, no ability to mitigate or even assess the risks. B does everything that matters.",
+    "question": "Is A still entitled to a share of the CCA's output?",
     "mcq": [
       "A does not control its specific risks under the CCA per ¶8.15 — consequently A is NOT entitled to a share in the output that is the objective of the CCA.",
       "A is still a CCA participant because it provided the funding, and the funding return alone is enough.",

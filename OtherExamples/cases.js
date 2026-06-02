@@ -36,8 +36,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "TestCo and CompCo are otherwise comparable on a TNMM/EBIT-on-sales basis, but TestCo tends to carry more working capital (4 of 5 years, with longer customer credit and inventory days and similar supplier days). Reliable trade-receivables, inventory, and payables data are available for CompCo year-by-year, plus a market-rate interest cost.",
-        question: "Should a working-capital adjustment be made?",
+          "TestCo carries more working capital than CompCo (longer customer credit and inventory days). Reliable yearly receivables, inventory and payables data are available for CompCo, plus a market interest rate.",
+        question: "Should the comparable's result be adjusted for the working-capital gap?",
         mcq: [
           "Yes — but only because the reliability of the comparable will be improved and reasonably accurate adjustments can be made.",
           "Yes — any difference in receivables, inventory, or payables between tested party and comparable automatically triggers an adjustment.",
@@ -51,8 +51,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "The analyst is now choosing the interest rate to apply to the (R + I − P)/Sales difference. TestCo borrows in its local market at a rate around 5%. CompCo operates in a different market with notably different borrowing rates. Period-end balances are being used for the working-capital computation.",
-        question: "Which interest rate is the right reference, and what should the analyst flag?",
+          "Time to pick the interest rate. TestCo borrows locally at ~5%; CompCo's market has very different rates. The analyst is using period-end balances.",
+        question: "Whose borrowing rate should be used — and what should the analyst flag?",
         mcq: [
           "The rate at which the TESTED PARTY (TestCo) can borrow in its local market — typically a commercial loan rate — and flag that period-end balances may not represent the year (consider averages).",
           "The interest rate that maximises the adjustment in the tested party's favour.",
@@ -102,8 +102,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Total value of contributions = 5 700; each party should bear 50% = 2 850. A's in-kind contribution at value is 3 600; B's is 2 100. The 'absent the CCA' alternative is a market purchase between A and B at arm's-length values: B would buy 15 units of Service 1 (1 800) and A would buy 10 units of Service 2 (1 050) — net 750 from B to A.",
-        question: "What balancing payment from B to A makes the CCA produce an arm's-length result?",
+          "Total value of contributions = 5 700, so each side should bear 2 850. A's contribution at value is 3 600; B's is 2 100. If there were no CCA, A and B buying these services from each other on the open market would result in net 750 flowing from B to A.",
+        question: "What balancing payment from B to A makes the CCA arm's-length?",
         mcq: [
           "750 — measure contributions at value (3 600 vs 2 100), so B tops up by 750. This matches the 'absent the CCA' arm's-length result.",
           "500 — measure contributions at cost (3 000 vs 2 000), so each bears 50% of total cost (2 500) and B tops up by 500.",
@@ -149,8 +149,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "After Step 1 (500 from B to A), Step 2 settles the value differential. A contributes 250 of value above cost beyond what B contributes (300 − 50). B must pay A another 250 in respect of the additional pre-existing/value contributions A has brought to the CCA.",
-        question: "What's the total transfer under the two-step method, and how does it compare to Example 1?",
+          "Step 1 transferred 500 from B to A (cost-share). Step 2 settles the value-over-cost differential: A's added value (300 − 50 = 250) means B owes A another 250.",
+        question: "What's the total flow B → A — and how does it compare with the at-value answer from Example 1?",
         mcq: [
           "500 + 250 = 750 — identical to Example 1's contributions-at-value answer.",
           "500 — the cost share alone, because Step 2 only applies when pre-existing intangibles are involved.",
@@ -196,8 +196,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The difference between contributions-at-value (495) and contributions-at-cost (500) is small in absolute terms and the services are low-value in nature. The analyst wants a practical shortcut.",
-        question: "Is it acceptable to value contributions at cost in this scenario?",
+          "The gap between at-value (495) and at-cost (500) is small, and the services are low-value in nature. The analyst wants a shortcut.",
+        question: "Can contributions be measured at cost here?",
         mcq: [
           "Yes — where all contributions to the CCA are LOW-VALUE services, valuing at cost achieves results broadly consistent with the arm's-length principle and is acceptable as a practical matter.",
           "No — Example 1 already established that contributions must be at value, with no exception.",
@@ -242,8 +242,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Both services carry an identical 20% mark-up on cost. Intuitively the cost-based shortcut might seem to work.",
-        question: "Does the identical mark-up mean contributions-at-cost gives an arm's-length result?",
+          "Both services carry the same 20% mark-up. Surely measuring contributions at cost would give the same answer as measuring at value?",
+        question: "Does the identical mark-up rescue the cost-based shortcut?",
         mcq: [
           "No — A contributes more VOLUME (30 vs 20 units), so even with identical margins, the value gap (600) differs from the cost gap (500). Contributions must still be at value.",
           "Yes — when mark-ups are identical on both sides, contributions-at-cost is mathematically equivalent.",
@@ -288,8 +288,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "A controls the risks it contractually assumes (per ¶8.14–8.18). Its arm's-length anticipated return on the funding investment is USD 110m/yr. The CCA's structure gives A USD 330m/yr — USD 220m/yr more than its funding return justifies. That excess reflects the value of B's pre-existing intangibles + R&D activity.",
-        question: "What balancing flow restores the arm's-length result?",
+          "A actually controls the risks it took on. Its arm's-length funding return is 110m/yr — but the CCA structure hands A 330m/yr. The 220m/yr excess reflects the value of B's pre-existing IP and its R&D work.",
+        question: "What balancing payment fixes the result?",
         mcq: [
           "A pays B (in present-value terms) the USD 220m/yr excess A is anticipated to receive over and above its arm's-length funding return — a balancing payment for B's pre-existing contributions.",
           "B pays A — A is contributing scarce capital and should keep all USD 330m/yr.",
@@ -335,8 +335,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "A's CCA participation looks fine on paper but has no functional substance: no people, no decisions, no capacity to mitigate or assess. B does everything that matters for the risk.",
-        question: "What does accurate delineation conclude about A's entitlement under the CCA?",
+          "A is a participant on paper only — no people, no decisions, no ability to mitigate or even assess the risks. B does everything that matters.",
+        question: "Is A still entitled to a share of the CCA's output?",
         mcq: [
           "A does not control its specific risks under the CCA per ¶8.15 — consequently A is NOT entitled to a share in the output that is the objective of the CCA.",
           "A is still a CCA participant because it provided the funding, and the funding return alone is enough.",

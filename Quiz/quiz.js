@@ -154,7 +154,7 @@
 
     // Timeline
     if (Array.isArray(q.timeline) && q.timeline.length) {
-      card.appendChild(el("p", { class: "quiz-card__section-label" }, "How we got here"));
+      card.appendChild(el("p", { class: "quiz-card__section-label" }, "Background"));
       const ol = el("ol", { class: "quiz-card__timeline" });
       for (const item of q.timeline) ol.appendChild(el("li", {}, item));
       card.appendChild(ol);
@@ -298,16 +298,8 @@
           session.index += 1;
           renderDeathRunQuestion();
         } else {
-          // Audit-complete beat, then result
-          const overlay = el("div", { class: "quiz-gameover", attrs: { "data-show": "false" } },
-            "Audit complete."
-          );
-          document.body.appendChild(overlay);
-          requestAnimationFrame(() => overlay.dataset.show = "true");
-          setTimeout(() => {
-            overlay.remove();
-            showDeathRunResult();
-          }, 700);
+          // Wrong → go straight to result (no overlay)
+          showDeathRunResult();
         }
       },
     });

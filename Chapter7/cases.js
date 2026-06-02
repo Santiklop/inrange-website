@@ -40,8 +40,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Two years later, several group entities suffer a data breach following a cyberattack. Some entities lose customers or grant commercial advantages to retain them. The breach was not caused by inadequate performance from Company A.",
-        question: "Was an intra-group service rendered?",
+          "Two years on, several group entities suffer a cyberattack and lose business. The breach wasn't Company A's fault — its work was sound.",
+        question: "Was an intra-group service still rendered?",
         mcq: [
           "Yes — benefit is judged ex ante; a later loss does not negate the service.",
           "No — the breach proves the security work delivered no benefit.",
@@ -55,8 +55,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Company B, a recipient of Company A's cybersecurity services, has been operating at a loss in the years under examination.",
-        question: "Does Company B's loss position mean no service was rendered?",
+          "Company B, one recipient of the cybersecurity services, has been loss-making throughout the audit years.",
+        question: "Does Company B's losses mean no service was rendered to it?",
         mcq: [
           "No — losses at the recipient do not, by themselves, negate the service.",
           "Yes — a loss-making recipient cannot have benefited from the service.",
@@ -104,8 +104,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "A year in, hotels in Countries A and B grow their corporate-client portfolios. Trajectory suggests the five-year target will be hit.",
-        question: "Are the unit's activities intra-group services to hotels in Countries A and B?",
+          "A year in, hotels in Countries A and B are winning more corporate clients — on track to hit the five-year target.",
+        question: "Are the unit's activities an intra-group service to the Country A and B hotels?",
         mcq: [
           "Yes — the activities provide value an independent enterprise would pay for.",
           "No — until the five-year target is actually hit, no service can be recognised.",
@@ -119,8 +119,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "New competing hotel chains enter Country B with sharper pricing. By year five, accumulated incremental revenue growth in Country B is only 10%, well below the 30–45% target.",
-        question: "Does the missed target negate the service rendered to Company B?",
+          "New competing hotel chains undercut Country B prices. By year five, Country B growth is only 10% — well below the 30–45% target.",
+        question: "Does missing the target mean no service was rendered to Company B?",
         mcq: [
           "No — the service stands; outcome was eroded by competition, not by absence of activity.",
           "Yes — without the projected growth, no benefit accrued.",
@@ -134,8 +134,8 @@ globalThis.CASES = [
       {
         letter: "C",
         facts:
-          "During the same period, hotels in Country C also see a rise in sales — driven by tourist affluence, improved infrastructure, and Country C's popularity as a film-shoot location. The corporate-clients unit performs no activities targeting Country C.",
-        question: "Is Country C's uplift attributable to a service from Company A?",
+          "Country C hotels also see sales rise — but driven by tourism, infrastructure and film shoots. The corporate-clients unit does nothing aimed at Country C.",
+        question: "Does Country C's growth count as a service from Company A?",
         mcq: [
           "No — exogenous demand, not Company A's activity, drives the result.",
           "Yes — Company C benefits from group-wide brand efforts.",
@@ -178,8 +178,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Tested question: does Company B's internal accounting/legal capability defeat recognition of an intra-group service from Company A?",
-        question: "Is Company A's activity an intra-group service to Company B?",
+          "The question is whether having in-house accountants and lawyers means Company B can't be receiving a service from Company A.",
+        question: "Is Company A's work still a service to Company B?",
         mcq: [
           "Yes — internal capability does not preclude recognition where activities differ.",
           "No — Company B already has its own people, so the service is duplicative.",
@@ -223,8 +223,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Company A undertakes market research to identify potential brand ambassadors for the new product. Company B designs the launch campaign, decides distribution channels, and develops the marketing for retail.",
-        question: "Are Company A's activities duplicative of Company B's?",
+          "Company A researches potential brand ambassadors. Company B designs the launch campaign and decides distribution and retail marketing.",
+        question: "Does this overlap count as duplication?",
         mcq: [
           "No — the activities differ in content; no duplication.",
           "Yes — both companies work on marketing for the same product.",
@@ -238,8 +238,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Company A identifies brand ambassadors for the new menswear line in regional markets outside Country B. Company B (worldwide distributor) designs the launch campaign, decides distribution channels and develops marketing for retail — and also identifies ambassadors for Country B itself. Cultural, linguistic and demographic factors mean each market's ambassadors do not move the needle elsewhere.",
-        question: "Does Company B's local ambassador work make Company A's research duplicative?",
+          "Company A finds ambassadors for markets outside Country B; Company B (the worldwide distributor) finds ambassadors for Country B itself. Cultural and linguistic differences mean ambassadors from one market don't work in another.",
+        question: "Is Company A's research duplicative of Company B's local ambassador work?",
         mcq: [
           "No — the geographic scopes differ; Company A's work satisfies the benefit test.",
           "Yes — both companies are identifying ambassadors for the same launch.",
@@ -253,8 +253,8 @@ globalThis.CASES = [
       {
         letter: "C",
         facts:
-          "Company B (worldwide distributor of the MNE's new menswear line) designs a global marketing campaign for the line. Lacking in-depth local knowledge, Company B outsources to Company A the verification of compliance with local customs, laws and regulations, and the translation of the campaign into local languages. Company A does not design the campaign.",
-        question: "Are Company A and Company B's activities duplicative because they relate to the same campaign?",
+          "Company B designs the global campaign. It outsources to Company A two things only: checking compliance with local laws and customs, and translating into local languages. Company A doesn't design any of the campaign itself.",
+        question: "Are the two roles duplicative because they relate to the same campaign?",
         mcq: [
           "No — Company A's activities are separate and distinct from Company B's.",
           "Yes — relating to the same initiative makes them duplicative.",
@@ -300,8 +300,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The price reduction is attributable to Company A being part of a larger MNE group — passive association — not to deliberate concerted action by group members.",
-        question: "Has an intra-group service been rendered to Company A?",
+          "Company A gets the discount purely because it's part of a larger group — no group member actually did anything to obtain it.",
+        question: "Is this an intra-group service to Company A?",
         mcq: [
           "No — passive association is not a relevant activity for the benefit test.",
           "Yes — the group's existence creates the discount, so a service is rendered.",
@@ -349,8 +349,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Two strands of activity flow from the same MIS: (i) consolidation and external reporting that Company A is required to do as parent; (ii) operational recommendations directed at subsidiaries that can change how they run their business.",
-        question: "Are these activities a single intra-group service, two services, or something else?",
+          "Two things come out of the same system: parent-level consolidation that Company A has to do anyway, and operational advice that subsidiaries actually use to run their business.",
+        question: "Service, shareholder activity, or a mix?",
         mcq: [
           "Mixed: consolidation is shareholder activity; operational recommendations can be an intra-group service.",
           "Single intra-group service — the whole MIS is recharged.",
@@ -395,8 +395,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Two phases: (i) buyer search and divestment work for Company B; (ii) later operational improvements at other subsidiaries using insights from the divestment work.",
-        question: "Are Parent Co's activities a shareholder activity, an intra-group service, or both?",
+          "Phase 1: hunting buyers and structuring the sale of Company B. Phase 2: reusing what Parent Co learned to actually improve operations at other subsidiaries.",
+        question: "Shareholder activity, intra-group service, or both?",
         mcq: [
           "Both — divestment work is shareholder; later operational improvements are intra-group services.",
           "Shareholder only — both phases relate to Parent Co's ownership interest.",
@@ -442,8 +442,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Other group entities derive incidental financial benefits from the divestment (better group cash flow). However, at the time of the divestment those potential benefits to others were indirect or remote.",
-        question: "How should Parent Co's divestment costs be treated?",
+          "Other group entities do benefit financially (better group cash flow), but at the time of the sale those benefits were indirect or remote.",
+        question: "Are Parent Co's divestment costs shareholder costs or recharge-able service costs?",
         mcq: [
           "Shareholder costs — divestment serves Parent Co's ownership interest; group benefits are incidental.",
           "Service costs — group cash-flow uplift makes this an intra-group service.",
@@ -488,8 +488,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Companies A and B may derive some benefits from the acquisition (e.g. expanded portfolio), but at the time of the deal those potential benefits were indirect or remote.",
-        question: "Are Parent Co's acquisition costs shareholder costs or intra-group service costs?",
+          "Companies A and B may gain something eventually (a broader portfolio), but at the time of the deal those benefits were indirect or remote.",
+        question: "Are the acquisition costs shareholder costs or service costs to be recharged?",
         mcq: [
           "Shareholder costs — acquisition serves Parent Co's ownership interest; downstream benefits are incidental.",
           "Service costs — Companies A and B benefit from the larger group portfolio.",
@@ -537,8 +537,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company B carries out global brand strategy and asset development. Comparable franchise contracts confirm these activities are part of what a franchise fee normally covers.",
-        question: "Should Company B charge a separate service fee for global brand marketing?",
+          "Company B does the global brand strategy and asset development. Independent franchise contracts confirm: this is normally bundled into the franchise fee.",
+        question: "Can Company B charge a separate service fee for the brand work too?",
         mcq: [
           "No — those activities are already compensated through the franchise fee.",
           "Yes — global marketing is a separate service that warrants its own charge.",
@@ -585,8 +585,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation indicates reliable adjustments would be needed for material market differences. The data needed to make those adjustments does not exist.",
-        question: "Does this analysis support a reliable application of the CUP method?",
+          "Market differences between low- and high-cost jurisdictions are material. Adjustments are needed — but the data to make them reliably doesn't exist.",
+        question: "Is the CUP method reliable here?",
         mcq: [
           "No — without reliable adjustments for material comparability differences, the CUP application is not reliable.",
           "Yes — using a global median averages out market differences and is reliable.",
@@ -633,8 +633,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation indicates Company S provides limited support; independent comparable agents perform negotiations, set prices, manage the supply chain, and bear corresponding risks.",
-        question: "Is the CUP method (against full-service agents) appropriate for Company S?",
+          "Company S only does analysis and contract review. The independent agents it's being compared to negotiate, set prices, run the supply chain and bear those risks.",
+        question: "Are full-service agents the right CUP comparable for Company S?",
         mcq: [
           "No — functions and risks differ materially; Company S is not comparable to those agents.",
           "Yes — both perform procurement-related activities, so the comparison is sufficient.",
@@ -679,8 +679,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company A holds drug IP and bears the financial risk of R&D failure. Company B holds analytics IP, designs and executes trials, bears the associated risks, and has a track record of accelerating timelines.",
-        question: "How should Company B be remunerated for the services?",
+          "Company A owns the drug IP and bears the risk of R&D failure. Company B brings its own analytics IP, designs and runs the trials, takes the related risks — and has a track record of speeding up timelines.",
+        question: "What pricing structure fits Company B?",
         mcq: [
           "A structure that combines a rolling-operations base with milestone-based incentives reflecting its IP and risks.",
           "A simple cost-plus mark-up on its operating costs — it provides routine services.",
@@ -726,8 +726,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company B performs production activities under Company A's extensive instruction. Its risk profile is narrow — failure to perform competently.",
-        question: "Which TP method is appropriate for pricing Company B's services?",
+          "Company B just produces — under Company A's detailed instructions. The only real risk it takes is failing to do its job competently.",
+        question: "Which method prices Company B?",
         mcq: [
           "Cost-plus or TNMM based on comparable manufacturers.",
           "Profit split — both parties contribute to the manufacturing outcome.",
@@ -773,8 +773,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Company B has little or no discretion. It does not bear the risk of unsuccessful research outcomes. Parties operate in line with the contract.",
-        question: "How should Company B be priced?",
+          "Company B has almost no discretion and doesn't bear the risk of research failure. The parties stick to the contract.",
+        question: "Which method prices Company B?",
         mcq: [
           "Cost-plus or TNMM on a cost-based PLI — characterised as contract research.",
           "Profit split — both parties contribute to research outcomes.",
@@ -788,8 +788,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Company C autonomously identifies areas of research, assesses feasibility, decides continuation, and uses its own specialised IP. Both Company A and Company C contribute unique and valuable intangibles, and their operations are highly integrated.",
-        question: "How should Company C be priced?",
+          "Company C picks its own research areas, assesses feasibility and decides what to continue, using its own specialised IP. Both Company A and C bring unique, valuable IP, and they work in tightly integrated fashion.",
+        question: "Which method prices Company C?",
         mcq: [
           "Transactional profit split — both parties make unique and valuable contributions and are highly integrated.",
           "Cost-plus on Company C's R&D spend — it is still a service provider.",
@@ -834,8 +834,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company A hosts and maintains the model, bears uptime/security/performance risk, and develops and uses unique and valuable intangibles. Each output is a personalised treatment plan — a transfer of an intangible.",
-        question: "Can cost-plus or TNMM with Company A as the tested party reliably price the service?",
+          "Company A built and runs the model, takes uptime/security/performance risk, and uses unique, valuable IP. Every output (a personalised treatment plan) is itself an intangible transferred to a recipient.",
+        question: "Can you reliably price this using cost-plus or TNMM with Company A as the tested party?",
         mcq: [
           "Unlikely — non-routine intangibles and risks make suitable comparables hard to find with Company A as the tested party.",
           "Yes — cost-plus on Company A's operating costs is standard for SaaS-type services.",
@@ -882,8 +882,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation shows Company B performs routine service functions and does not make any unique and valuable contributions. Company A and Company B do not have highly integrated operations and do not share or separately assume closely related economically significant risks.",
-        question: "Is the transactional profit split appropriate for Company B?",
+          "Company B's work is routine — it makes no unique or valuable contribution. The two companies aren't tightly integrated, and they don't share or separately bear closely related significant risks.",
+        question: "Is profit split the right method for Company B?",
         mcq: [
           "No — without unique and valuable contributions from both parties, a one-sided method on Company B is more reliable.",
           "Yes — Company B's use of the platform makes it a profit-split party.",
@@ -928,8 +928,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Comparables are functionally similar to Company P only in surface activities; they do not develop or provide access to critical proprietary know-how comparable to Core IP.",
-        question: "Is selecting Company P as the tested party for TNMM appropriate?",
+          "The comparables look like Company P on the surface — but none develops or provides anything like the Core IP.",
+        question: "Can Company P be the tested party here?",
         mcq: [
           "No — the comparables differ materially in respect of Core IP; choosing Company P as tested party makes the TNMM unreliable.",
           "Yes — Company P performs services, so it can be the tested party.",
@@ -977,8 +977,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Paragraph 7.92 of Chapter VII states the 5% LVA mark-up should not, without further justification, be used as a benchmark for services that don't qualify as LVA.",
-        question: "Is a 5% floor implied for services that don't qualify as LVA?",
+          "The OECD's 5% mark-up is a simplified safe harbour designed for genuinely low value-adding services. Outside that scope, the Guidelines say it shouldn't be used as a benchmark without justification.",
+        question: "Does the 5% safe harbour act as a floor for other services?",
         mcq: [
           "No — outside the LVA scope, the arm's-length mark-up requires its own transfer pricing analysis and could be above, equal to or below 5%.",
           "Yes — the 5% LVA mark-up is a floor for any intra-group services.",
@@ -1025,8 +1025,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation shows Company Z is an intermediary — coordination only — and does not contribute beyond that. Company Q could have engaged the agencies directly.",
-        question: "How should Company Z treat the €440m flowing through it?",
+          "Company Z is just a coordinator — it adds no real value to the ad spend. Company Q could have engaged the agencies directly.",
+        question: "Should Company Z mark up the €440m that flows through it?",
         mcq: [
           "Pass through to Company Q without a mark-up; earn arm's length only on Z's own coordination functions.",
           "Mark up the full €440m at a routine cost-plus rate.",
@@ -1073,8 +1073,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Country B's tax authority considers the documentation insufficient and asks for further proof that the IT activities were performed for Company B. Company B provides a list of IT interventions and incident tickets with dates, descriptions and outcomes.",
-        question: "What additional evidence can Country B's tax authority reasonably ask for?",
+          "Country B's tax authority wants more proof that the IT work was actually done for Company B. Company B offers a list of IT tickets — dates, descriptions, outcomes.",
+        question: "What further evidence can the tax authority reasonably ask for?",
         mcq: [
           "A representative sample of IT tickets to substantiate the provision of services.",
           "Source code and internal cost ledgers of the entire IT function, regardless of relevance.",
@@ -1088,8 +1088,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Company A provides IT support to Company B; the arrangement is documented in Company A's master file, Company B's local file and other local documentation, including a detailed fee calculation. The audit additionally reveals that Company B receives IT services from a local independent enterprise under a broadly worded contract. The tax administration cannot conclude from the existing documentation whether there is duplication between the two IT service sources.",
-        question: "What can Country B's tax authority reasonably request next?",
+          "The IT services are well documented in master and local files. But the audit reveals Company B also gets IT services from a local independent provider under a vaguely worded contract — and existing files don't show whether the two overlap.",
+        question: "What can the tax authority reasonably ask for next?",
         mcq: [
           "Additional relevant evidence — type of IT services actually provided, organisation charts with role descriptions, and interview information.",
           "Nothing further — the audit must rely on the existing master and local files.",

@@ -151,6 +151,14 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 .brand-text{font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--fg-1);letter-spacing:-.02em}
 .brand-text .accent{color:var(--brand-green-600)}
 @media (max-width:767px){.brand-text{display:none}}
+.brand-corner{display:none;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 140ms ease}
+.brand-corner:hover{opacity:.75}
+.brand-corner .brand-mark{width:24px;height:24px;flex-shrink:0}
+@media (max-width:767px){
+  .brand-corner{display:flex}
+  .header-left .brand{display:none}
+  .header-actions .share-btn{display:none}
+}
 .header-actions{display:flex;align-items:center;gap:10px}
 .header-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 18px;border-radius:999px;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background 140ms,color 140ms,border-color 140ms,box-shadow 140ms}
 .header-btn__icon{font-size:14px;line-height:1}
@@ -256,8 +264,9 @@ details.how-to .how-to-body .how-to-mini strong{color:var(--fg-1);font-weight:60
 .chapter-nav{position:relative}
 .chapter-nav-toggle{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px 9px 16px;border-radius:999px;text-decoration:none;border:1px solid var(--border-default);background:transparent;color:var(--fg-1);cursor:pointer;white-space:nowrap;transition:background 140ms,border-color 140ms}
 .chapter-nav-toggle:hover{background:var(--bg-muted)}
-.chapter-nav-toggle svg{width:12px;height:12px;transition:transform 200ms}
-.chapter-nav-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.chapter-nav-toggle .chev{width:12px;height:12px;transition:transform 200ms}
+.chapter-nav-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.chapter-nav-toggle__book{width:14px;height:14px;flex-shrink:0}
 .chapter-nav-toggle__icon{display:none}
 @media (max-width:1023px){
   /* On mobile the chapters dropdown is triggered by the left header button (#menu-toggle); hide the desktop "Chapters" text button. */
@@ -628,23 +637,23 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .quiz-modal__badge--wrong{background:var(--danger-bg);color:var(--danger)}
 
 /* Header Quiz button */
-.header-quiz-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;text-decoration:none;border:1px solid var(--fg-1);background:var(--fg-1);color:#fff;cursor:pointer;white-space:nowrap;transition:background 140ms,border-color 140ms}
-.header-quiz-btn:hover{background:var(--brand-navy-800);border-color:var(--brand-navy-800)}
+.header-quiz-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;text-decoration:none;border:1px solid var(--brand-navy-200);background:var(--brand-navy-200);color:var(--brand-navy-700);cursor:pointer;white-space:nowrap;transition:background 140ms,border-color 140ms,color 140ms}
+.header-quiz-btn:hover{background:var(--brand-navy-300);border-color:var(--brand-navy-300);color:var(--brand-navy-900)}
 .header-quiz-btn svg{width:14px;height:14px}
 @media (max-width:1023px){
   .header-quiz-btn{padding:0;width:38px;height:38px;justify-content:center;gap:0}
   .header-quiz-btn__label{display:none}
 }
 
-[data-theme="dark"] .header-quiz-btn{background:var(--brand-navy-800);border-color:var(--brand-navy-800);color:#fff}
-[data-theme="dark"] .header-quiz-btn:hover{background:#1f3151;border-color:#1f3151}
+[data-theme="dark"] .header-quiz-btn{background:var(--brand-navy-200);border-color:var(--brand-navy-200);color:var(--brand-navy-700)}
+[data-theme="dark"] .header-quiz-btn:hover{background:var(--brand-navy-300);border-color:var(--brand-navy-300);color:var(--brand-navy-900)}
 
 /* About-this-project Quiz pill */
-.chapter-pill--quiz{background:var(--fg-1);border-color:var(--fg-1);color:#fff}
-.chapter-pill--quiz:hover{background:var(--brand-navy-800);border-color:var(--brand-navy-800);color:#fff}
+.chapter-pill--quiz{background:var(--brand-navy-200);border-color:var(--brand-navy-200);color:var(--brand-navy-700)}
+.chapter-pill--quiz:hover{background:var(--brand-navy-300);border-color:var(--brand-navy-300);color:var(--brand-navy-900)}
 .chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
-[data-theme="dark"] .chapter-pill--quiz{background:var(--brand-navy-800);border-color:var(--brand-navy-800);color:#fff}
-[data-theme="dark"] .chapter-pill--quiz:hover{background:#1f3151;border-color:#1f3151;color:#fff}
+[data-theme="dark"] .chapter-pill--quiz{background:var(--brand-navy-200);border-color:var(--brand-navy-200);color:var(--brand-navy-700)}
+[data-theme="dark"] .chapter-pill--quiz:hover{background:var(--brand-navy-300);border-color:var(--brand-navy-300);color:var(--brand-navy-900)}
 [data-theme="dark"] .chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
 </style>
 </head>
@@ -656,8 +665,8 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
     <div class="header-left">
       <button class="menu-toggle" type="button" id="menu-toggle" aria-controls="chapter-nav-menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
         <svg class="menu-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="4" cy="6" r="1.4" fill="currentColor"/><circle cx="4" cy="12" r="1.4" fill="currentColor"/><circle cx="4" cy="18" r="1.4" fill="currentColor"/>
-          <line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/>
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
         </svg>
         <svg class="menu-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
@@ -675,6 +684,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
     <div class="header-actions">
       <div class="chapter-nav" id="chapter-nav">
         <button class="chapter-nav-toggle" type="button" id="chapter-nav-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
+          <svg class="chapter-nav-toggle__book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+          </svg>
           <span class="chapter-nav-toggle__label">Chapters</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="6 9 12 15 18 9"/>
@@ -717,7 +730,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
         </svg>
-        <span class="header-quiz-btn__label">Quiz</span>
+        <span class="header-quiz-btn__label">Take the Quiz</span>
       </a>
       <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
         <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -738,6 +751,13 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
         </svg>
         <span class="header-btn__label">Share</span>
       </button>
+      <a class="brand-corner" href="../index.html" aria-label="inRange home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+          <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+          <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+          <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+        </svg>
+      </a>
     </div>
   </div>
 </header>

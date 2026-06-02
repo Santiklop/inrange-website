@@ -41,8 +41,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation indicates that both Company A's early-stage R&D and patent and Company S's subsequent development and enhancement are unique and valuable to the success of the product.",
-        question: "Which method is likely to be most appropriate for the licence between Company A and Company S?",
+          "Both sides contribute something unique and valuable: Company A's early-stage R&D and the patent, and Company S's later development and enhancement.",
+        question: "Which method best prices the licence?",
         mcq: [
           "Transactional profit split — both parties make unique and valuable contributions to the patent's exploitation.",
           "CUP using third-party patent licences in the pharma sector.",
@@ -87,8 +87,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation determines that both A Co (cultivation, processing, blending know-how) and B Co (trademark, tradename, advertising and marketing) make unique and valuable contributions.",
-        question: "Which method is likely to be most appropriate for the sale from A Co to B Co?",
+          "Both sides bring something unique: A Co's growing and blending know-how, B Co's trademark and marketing.",
+        question: "Which method best prices the tea sale from A Co to B Co?",
         mcq: [
           "Transactional profit split — both parties make unique and valuable contributions.",
           "CUP using independent bulk-tea prices on commodity exchanges.",
@@ -133,8 +133,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation indicates that the contributions of both Company A (manufacturing IP) and Company B (marketing trademark plus distribution algorithm) are unique and valuable to the success of the new line.",
-        question: "Which method is likely to be most appropriate for the sale from A to B?",
+          "Both sides have unique value drivers: Company A's manufacturing IP, and Company B's trademark plus proprietary distribution algorithm.",
+        question: "Which method best prices the sale from A to B?",
         mcq: [
           "Transactional profit split — both parties make unique and valuable contributions.",
           "Resale price minus, using Company B's wholesale margin against comparable distributors.",
@@ -180,8 +180,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation concludes that Company A bears the design/development/manufacturing risks while Company B's marketing and distribution risks are not economically significant and its functions do not generate any unique and valuable contribution.",
-        question: "Is the transactional profit split appropriate?",
+          "Company A bears all the meaningful risks (design, development, manufacturing). Company B's marketing and distribution risks aren't economically significant, and its work isn't unique or valuable.",
+        question: "Is profit split still the right method?",
         mcq: [
           "No — Company B's contribution can be reliably benchmarked; a one-sided method on Company B is more appropriate.",
           "Yes — both parties earn a share of the value chain, so profit split still applies.",
@@ -227,8 +227,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The economically significant risk is the development risk, and both parties are determined to assume it under the Chapter I framework. Both contributions are unique and valuable to creating and exploiting the crawler.",
-        question: "Which method is likely to be most appropriate?",
+          "Both parties share the development risk (the main economic risk here), and both bring unique and valuable IP.",
+        question: "Which method best prices the licence?",
         mcq: [
           "Transactional profit split — unique and valuable contributions plus shared assumption of the economically significant risk.",
           "CUP using independent software licences.",
@@ -276,8 +276,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Portfolio management services as such are not unique (an active market exists for bundled comparables), but available comparables provide no basis for splitting the fee between A and B. Operations of A and B are highly integrated and they share the assumption of fund-performance risk.",
-        question: "Which method is most appropriate for compensating Companies A and B?",
+          "Portfolio management itself isn't unique — there are bundled-fee comparables. But those comparables don't tell you how to split the fee between A and B. A and B's work is tightly integrated, and they share the risk of fund underperformance.",
+        question: "What's the right method for paying A and B?",
         mcq: [
           "Transactional profit split of the arm's length fee from FUND Co, with ASSET Co compensated at zero.",
           "Split the AUM fee 50/50 between A and B based on committee composition.",
@@ -322,8 +322,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Arm's length pricing for the joint activity is available, but the operations of L and M are so highly integrated and interdependent that a one-sided method cannot determine an arm's length outcome for either of their separate contributions. They may also share the assumption of the economically significant risks.",
-        question: "Which method is likely to be most appropriate?",
+          "There are external comparables for the joint service, but L and M are so tightly integrated that a one-sided method can't price either side standalone. They probably also share the main risks.",
+        question: "Which method best prices L and M?",
         mcq: [
           "Transactional profit split — high integration and interdependence; if risks are also shared, a split of actual profits is likely appropriate.",
           "Apply TNMM separately to L and to M using independent freight forwarders.",
@@ -369,8 +369,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Accurate delineation shows Company B makes no unique and valuable contribution. The risks B assumes are not economically significant. There is some integration and dependence on Company A, but B's contribution can be benchmarked.",
-        question: "Is the transactional profit split appropriate?",
+          "Company B brings nothing unique or valuable; its risks aren't economically significant. There's some integration with Company A and B has only one customer — but B can still be benchmarked against comparable contract manufacturers.",
+        question: "Is profit split the right method for B?",
         mcq: [
           "No — a one-sided method on Company B can reliably benchmark its contribution; profit split is unlikely to be most appropriate.",
           "Yes — operational integration and B's sole-customer dependence justify profit split.",
@@ -415,8 +415,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The contributions of ACo and BCo are highly integrated and interdependent. Each contribution is unique and valuable only in combination with the other.",
-        question: "Which method is most appropriate for the right to use Compound A?",
+          "Each component alone is nearly worthless. They become unique and valuable only when combined.",
+        question: "Which method best prices the right to use Compound A?",
         mcq: [
           "Transactional profit split — each contribution is unique and valuable when combined with the other.",
           "CUP using royalty rates for licences of unrelated compounds.",
@@ -462,8 +462,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Companies A and B each assume separate economically significant risks, but those risks are highly inter-dependent (the success of the product line turns on the component, which has no other application).",
-        question: "Which method is most appropriate?",
+          "A and B each carry their own significant risks — but those risks are tightly linked. The product line lives or dies with the component, and the component has no other use.",
+        question: "Which method best prices the component sale?",
         mcq: [
           "Transactional profit split — separately assumed but closely related (interdependent) economically significant risks point to profit split.",
           "Apply TNMM to Company B as a routine component supplier.",
@@ -516,8 +516,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "A two-step residual profit split. Step 1: assign each manufacturer a routine return on its manufacturing cost. Step 2: split the residual on the ratio of A's to B's R&D expenditure, which is established as a reliable proxy for the relative value of their unique contributions.",
-        question: "What are the final net profits of A and B under the residual profit split?",
+          "Two-step residual split. Step 1: pay each manufacturer a routine return on its manufacturing cost. Step 2: split what's left in proportion to each side's R&D spend (the established proxy for their relative value contribution).",
+        question: "What net profit does each of A and B end up with?",
         mcq: [
           "A = 5.4 (1.5 routine + 3.9 residual); B = 4.6 (2.0 routine + 2.6 residual).",
           "A = 3.9; B = 2.6 — only the residual share is paid.",
@@ -564,8 +564,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Profit split is the most appropriate method for A and B's transactions. Company C's contribution is benchmarkable — its arm's length return is determined by a one-sided method (e.g. resale price or TNMM).",
-        question: "How is the relevant profit pool defined and allocated?",
+          "Profit split is right for A and B. Company C is routine — its return can be set with a one-sided method (resale price or TNMM).",
+        question: "How do you build the profit pool and allocate it?",
         mcq: [
           "Take Country C's sales revenue, subtract C's arm's length return; combined with sales in Countries A and B that becomes the pool; A and B receive routine returns on their less-complex activities then split the residual on relative contributions.",
           "Split all combined profit (incl. C's) between A, B and C on relative sales.",
@@ -610,8 +610,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Scenario 1: accurate delineation shows Company A does NOT share in the assumption of any of the economically significant risks associated with Company B's marketing and exploitation of the licensed intangibles.",
-        question: "Should the split be applied to anticipated or to actual profits?",
+          "Scenario 1: Company A does NOT share in the economically significant risks tied to Company B's marketing and exploitation of the licensed IP.",
+        question: "Split anticipated profits, or actual ones?",
         mcq: [
           "Anticipated profits — Company A doesn't share Company B's economically significant risks; e.g. a DCF of B's expected profits, with payment as lump sum or sales-based royalty.",
           "Actual profits — any profit split must always look at outcomes once known.",
@@ -625,8 +625,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Scenario 2: Companies A and B agree to split actual profits; they jointly perform the marketing and distribution activities; both assume the risks associated with the success of the marketing and commercialisation of the products in Country B.",
-        question: "Should the split be applied to anticipated or to actual profits?",
+          "Scenario 2: A and B jointly run marketing and distribution and both bear the risks of how Country B commercialisation goes.",
+        question: "Split anticipated profits, or actual ones?",
         mcq: [
           "Actual profits — both parties share the assumption of the economically significant risks, so each shares the upside and downside as outcomes materialise.",
           "Anticipated profits — profit split should always lock in expectations ex ante.",
@@ -672,8 +672,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Scenario 1 — choice between operating profit and operating-profit-before-overhead as the pool.",
-        question: "When does the choice of profit measure change the allocation between A and B?",
+          "Scenario 1: should the residual pool be operating profit, or operating profit before overhead is deducted?",
+        question: "Does this choice change the split between A and B?",
         mcq: [
           "It changes the allocation — including/excluding overhead shifts amounts (e.g. 32.57/52.43 vs. 33.43/51.57). The choice must be consistent with the accurate delineation of the transaction.",
           "It never changes the allocation — accounting choices cannot affect arm's length results.",
@@ -687,8 +687,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Scenario 2 — using operating profit before intangible expenditure as the residual pool when the splitting factor is itself relative intangible expenditure (current-year only).",
-        question: "Does it matter whether the residual is taken before or after deducting the intangible expenditure?",
+          "Scenario 2: the splitter is current-year IP spend. Should the residual pool be measured before or after deducting that same IP spend?",
+        question: "Does this choice affect the split?",
         mcq: [
           "No — when the splitter relies on the current-year expense, before-or-after-deduction yields the same allocation; outcomes can differ if the splitter is based on accumulated expenditure across years.",
           "Yes — the residual must always be measured after deducting the expense used as splitter.",
@@ -734,8 +734,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Profit split is the most appropriate method. In the absence of CUPs or direct evidence of comparable splits, an asset-based splitting factor is being considered. Asset-creation correlates with value creation in the parties' design/manufacturing operations.",
-        question: "Is an asset-based splitting factor appropriate?",
+          "Profit split is the right method. With no CUPs and no evidence of how independents would split, the team is considering an asset-based splitting factor. Asset creation appears to track value creation here.",
+        question: "Can an asset-based splitter be used?",
         mcq: [
           "Yes — provided the functional analysis concludes that there is a strong correlation between the assets of A and B and value creation in their controlled transactions.",
           "No — splitting factors must always be expense-based to be objective.",
@@ -782,8 +782,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Profit split is determined to be the most appropriate method. Relative development expenditure across A, B and C is a reliable proxy for relative value contributed.",
-        question: "How should the relevant profits (or losses) on the new product be allocated?",
+          "Profit split is the right method. Relative development spend across A, B and C is a reliable proxy for relative value contributed.",
+        question: "How should profits (or losses) be allocated between A, B and C?",
         mcq: [
           "Split based on each company's relative development cost — yielding results similar to an analogous cost contribution arrangement.",
           "Equal three-way split — three parties to a greenfield project.",

@@ -42,8 +42,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Premiere performs all DEMPE functions, contributes the assets, and assumes the risks. Company S's three lawyers do patent administration; they do not control or share in the R&D risk.",
-        question: "How should the arrangement be characterised and priced?",
+          "Premiere does all the R&D — funding, decisions, risk. Company S's three lawyers just register the patents.",
+        question: "What is the real transaction here — a transfer of patents, or a service?",
         mcq: [
           "Delineate the nominal assignment plus licence-back together as a patent administration service from Company S to Premiere; Premiere retains the balance of intangible returns.",
           "Respect the legal form — Company S owns the patents and is entitled to the licensing returns once those exist.",
@@ -87,8 +87,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S is the legal owner but its contributions are limited to registering and maintaining the patents. Premiere performs all DEMPE.",
-        question: "How should Company S be remunerated?",
+          "Company S holds legal title but only registers and maintains the patents. Premiere still runs everything else — R&D, licensing strategy, decisions.",
+        question: "How much of the royalty income should Company S keep?",
         mcq: [
           "Only for its patent registration functions; the bulk of the royalty income belongs to Premiere.",
           "It keeps the royalties — third-party rates are arm's-length and Company S is the legal owner.",
@@ -132,8 +132,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S's role throughout has been confined to patent registration. The decision to sell, and the structuring of the sale, are controlled by Premiere.",
-        question: "Is Company S entitled to share in the disposal gain?",
+          "Company S still only handles patent registration. Premiere decided to sell and structured the deal.",
+        question: "Should Company S share in the gain when the patents are sold?",
         mcq: [
           "No — Company S earns only a registration-services return; the appreciation belongs to Premiere as the DEMPE party.",
           "Yes — Company S is the legal owner that contracts the sale, so disposal gains accrue to it.",
@@ -179,8 +179,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S has the functions, assets and risk-control capabilities of a real owner of the portfolio. The HtV approach is assumed not to apply.",
-        question: "Who is entitled to the disposal gain?",
+          "This time Company S has real substance — its own people, decisions, and the ability to control the risks. Assume the hard-to-value intangible rules don't apply.",
+        question: "Who keeps the gain on sale?",
         mcq: [
           "Company S — it controls the licensing and disposal decisions and bears the related risks.",
           "Premiere — it developed the patents, so the upside on disposition reverts to it.",
@@ -225,8 +225,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S decides, negotiates and executes the sale. The downward move was not foreseeable at the time the patents were acquired.",
-        question: "Who bears the loss on disposal?",
+          "Company S runs the sale itself. The price fall was not foreseeable when it bought the patents.",
+        question: "Who absorbs the loss?",
         mcq: [
           "Company S — it has the substance to be the owner, so it takes the downside as well as the upside.",
           "Premiere — losses on an intangible should flow back to the original developer.",
@@ -275,8 +275,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Functional analysis shows Company A's only contribution is funding. It contractually assumes the financial risk, has the financial capacity to assume it, and exercises control over that risk in accordance with paragraphs 6.63–6.64. Company B performs and controls all DEMPE.",
-        question: "What is Company A entitled to?",
+          "Company A's only contribution is funding. It does have the money to bear the financial risk and actively controls that risk. Company B does all the actual R&D work and controls those risks.",
+        question: "What return does Company A deserve?",
         mcq: [
           "A risk-adjusted return on its funding commitment — illustratively USD 110m/yr (11%); Company B keeps the residual USD 440m/yr.",
           "The full USD 350m/yr it bargained for as legal owner of the intangible.",
@@ -324,8 +324,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "All DEMPE and risk-management activities are performed by Shuyona and Company S; Shuyona controls the risks. Company T has the financial capacity to bear financial risk but does not control it.",
-        question: "What return is Company T entitled to?",
+          "Shuyona and Company S do all the R&D and manage the risks; Shuyona is in control. Company T has the money to absorb the financial risk, but doesn't actually steer it.",
+        question: "What return does Company T deserve?",
         mcq: [
           "A manufacturing reward plus a risk-free return for its funding — it does not control the financial risk.",
           "A risk-adjusted return on its funding plus a manufacturing reward.",
@@ -371,8 +371,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company A continues to perform and control DEMPE; Company S lacks the capability to control research-related risks.",
-        question: "Are the CRO comparables an appropriate benchmark for Company A's services to Company S?",
+          "Company A still runs and controls the R&D. Company S can't actually manage research risk — it has no technical staff.",
+        question: "Are independent CRO margins really the right benchmark for what Company A does for Company S?",
         mcq: [
           "No — Company A controls research risks (unlike the CROs); accurately delineated, the transaction is the provision of financing by Company S — entitled at most to a financing return.",
           "Yes — Company A provides research services, so independent CRO margins are an appropriate benchmark.",
@@ -423,8 +423,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The contractual risk allocation puts recall risk on Primero. The actual course of conduct loaded the recall costs onto Company S, while Primero continues to claim the residual return from exploiting the Product X intangibles.",
-        question: "What is the appropriate adjustment?",
+          "The contract says Primero carries recall risk. In practice, Company S ate the recall costs — while Primero still kept the upside on the product.",
+        question: "How should this be adjusted?",
         mcq: [
           "Reallocate the recall and product-liability costs from Company S to Primero — the conduct should match the limited-risk distribution arrangement Primero asserts.",
           "Leave the costs with Company S — the conduct shows it has actually accepted recall risk.",
@@ -470,8 +470,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Shuyona is the legal owner, controls and manages both its own and Company S's R&D, and performs the important functions of budgeting, programme design, funding and expenditure control.",
-        question: "How should each party be remunerated?",
+          "Shuyona is the legal owner and runs the show — budgets, programme design, funding, expenditure control — including Company S's research.",
+        question: "Who keeps the intangible returns, and what does Company S earn?",
         mcq: [
           "Shuyona keeps the returns from exploiting the intangibles; Company S earns an arm's-length R&D service fee reflecting its skill and efficiency.",
           "Profit-split: both parties contribute to the R&D outcomes and the IP arises from both.",
@@ -517,8 +517,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Shuyona is the legal owner/registrant of intangibles developed by Company S but neither performs nor controls the underlying research functions.",
-        question: "Who is entitled to Product Line B intangible returns?",
+          "Shuyona holds legal title to Product Line B patents — but Company S did all the research, with no real direction from Shuyona.",
+        question: "Who keeps the Product Line B intangible returns?",
         mcq: [
           "Company S — confirm legal ownership at Shuyona but route the economic returns to Company S, including by ensuring no royalty flows from Company S to Shuyona for using its own intangibles.",
           "Shuyona — as the registered owner, it should receive a royalty from Company S for the use of the Product Line B intangibles.",
@@ -565,8 +565,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S performs no advertising functions and controls no marketing risk. In substance, it does not bear advertising costs because affiliate prices are simultaneously adjusted up.",
-        question: "Does Company S have a claim to marketing-intangible income?",
+          "Company S doesn't actually do any advertising work or control any marketing risk. And the advertising it 'funds' is recouped by raising the prices it charges affiliates.",
+        question: "Does Company S deserve marketing-intangible income?",
         mcq: [
           "No — Company S performs no functions, assumes no risk and bears no real cost; adjust Första's income upward from year 3.",
           "Yes — Company S has funded the advertising and is therefore the economic owner of the marketing intangibles.",
@@ -616,8 +616,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Watch purchase price is arm's-length and gives Company S an arm's-length distribution margin. Marketing service fee paid to Company S is at the level paid to comparable independent agents.",
-        question: "Is Company S entitled to additional compensation tied to the R-brand value in Country Y?",
+          "Both prices already check out: the watch purchase price gives Company S a normal distribution margin, and its marketing fee matches what independent agents earn.",
+        question: "Does Company S deserve anything extra for helping build the R brand in Country Y?",
         mcq: [
           "No — Primair retains the income from exploiting the R name in Country Y; Company S's marketing-services fee already reflects arm's-length comparables.",
           "Yes — Company S helped build the brand in Country Y and is entitled to a marketing-intangible return.",
@@ -662,8 +662,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Comparability analysis identifies independent distributors with similar long-term arrangements and similar levels of marketing spend; Company S's profits track those of the comparables.",
-        question: "Does Company S need additional compensation for marketing-intangible contribution?",
+          "Independent distributors in similar long-term deals spend similar amounts on marketing — and Company S's profits track theirs.",
+        question: "Should Company S get extra compensation for its role in building the brand?",
         mcq: [
           "No — its returns are in line with comparable independent distributors carrying the same risks; no separate compensation is required.",
           "Yes — building the brand in Country Y entitles Company S to a marketing-intangible return on top of its distribution margin.",
@@ -708,8 +708,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S has made a larger functional contribution to development of the market and marketing intangibles, and assumed greater costs and risks than comparable independents.",
-        question: "Is a transfer pricing adjustment warranted?",
+          "Company S has done more — and spent and risked more on marketing — than comparable independent distributors.",
+        question: "Is a transfer-pricing adjustment in Company S's favour warranted?",
         mcq: [
           "Yes — adjust by reducing the price for the watches, applying a residual profit split, or compensating Company S directly for excess marketing spend (including a profit element).",
           "No — Company S agreed to bear the risk and the margin shortfall is its problem.",
@@ -754,8 +754,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Independents do not invest large sums in marketing infrastructure under short-term contracts at risk of non-renewal without compensation. Company S's efforts may well benefit Primair after the contract ends.",
-        question: "Is Company S entitled to compensation for its at-risk marketing contribution?",
+          "Independent distributors wouldn't invest this much in marketing on a short contract without some protection. The brand Company S builds will keep paying Primair after the contract ends.",
+        question: "Should Company S be compensated for the marketing value it built?",
         mcq: [
           "Yes — direct compensation from Primair for the value created, or alternatively a reduction in the watch purchase price during years 1–3.",
           "No — Company S accepted a short-term contract; renewal risk is its own.",
@@ -800,8 +800,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "No evidence that independent marketers/distributors in similar arrangements pay royalties when they receive only the right to use trademarks in distributing the principal's branded product. The royalty causes Company S's margins to be consistently lower than comparables.",
-        question: "Should the royalty be respected?",
+          "Independent distributors in similar deals don't pay a royalty just for the right to distribute branded product. The new royalty pushes Company S's margins below those of comparables.",
+        question: "Should the new royalty be respected?",
         mcq: [
           "No — disallow the royalty payments; in arm's-length distribution arrangements, a royalty would not be paid for the bare right to distribute branded product.",
           "Yes — Company S signed the licence and must honour it; the lower margins reflect that bargain.",
@@ -848,8 +848,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Audit finds the year 1–3 over-investment as in Example 10; in years 4–5, Company S incurs marketing spend far above comparable long-term licensees and earns significantly lower margins.",
-        question: "How can the tax administration redress the imbalance?",
+          "Years 1–3 look like Example 10 (over-investment). In years 4–5, Company S still over-spends on marketing vs. comparable long-term licensees and earns much less.",
+        question: "How can the tax administration fix the imbalance?",
         mcq: [
           "Years 1–3: adjust as in Example 10 (price reduction, residual split or direct compensation); years 4–5: reduce the royalty payable to Primair; also consider compensation for the year-3 renegotiation under Chapter IX.",
           "Disregard the new licence and treat Company S as economic owner of the brand from year 3.",
@@ -899,8 +899,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Conduct shows Primarni allowing Company S to exploit the patents in Asia and Africa as well as Country B.",
-        question: "How should the licence be characterised for transfer-pricing purposes?",
+          "In practice, Primarni lets Company S sell across Asia and Africa — not just Country B as the written licence says.",
+        question: "What is the real scope of the licence for transfer pricing?",
         mcq: [
           "Treat the licence as extending to Country B plus Asia and Africa; recalculate the royalty by reference to projected sales in all those territories.",
           "Limit the licence to Country B per the written contract and treat Asia/Africa sales as separate unauthorised transactions.",
@@ -945,8 +945,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Functional analysis shows Company S uses Company P's know-how and marketing concept. Independent parties would have signed a licence for that use.",
-        question: "What transfer-pricing remedy is available?",
+          "Company S clearly uses Company P's know-how and marketing concept. Independent parties would have signed a licence to use them.",
+        question: "What should the tax administration do?",
         mcq: [
           "Impute a royalty payment from Company S to Company P for the use of the know-how and marketing concept.",
           "Leave the arrangement alone — without a written licence, there is no transaction to price.",
@@ -998,8 +998,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Over time S1 developed substantial business value in Country C; an independent buyer would pay for it in an acquisition. A purchase-price allocation would treat part of that value as goodwill.",
-        question: "What should the transfer prices in this restructure reflect?",
+          "S1 built up real business value in Country C over the years. An independent buyer would pay for it — and accounting would call part of that price 'goodwill'.",
+        question: "What should the transfer prices in this restructuring reflect?",
         mcq: [
           "Three separate transactions, with prices that reflect tangible assets, the surrender of Rights by S1, and the new licence from Ilcha — including amounts treated as goodwill in accounting terms.",
           "A single transfer at book value of the tangible assets; the Rights are merely terminated and relicensed at no value.",
@@ -1045,8 +1045,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S receives both the time and skill of Zhu's people and rights in Zhu's proprietary code.",
-        question: "What does Company S owe Zhu?",
+          "Company S gets two things: Zhu employees' time and skill, plus rights in Zhu's proprietary code that ends up embedded in the deliverable.",
+        question: "What does Company S owe Zhu — a service fee, a royalty, or both?",
         mcq: [
           "Compensation for both elements — the services of the employees and the rights in the embedded software.",
           "A service fee covering only the staff hours; the embedded code is incidental.",
@@ -1091,8 +1091,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The software is used as a productivity tool in delivering the service; no separate right to use it is transferred to Company S.",
-        question: "How should the arrangement be priced?",
+          "The software is just a tool the lawyers use on this one matter. Company S gets no right to use it elsewhere.",
+        question: "Should this be priced as a service or as a transfer of IP?",
         mcq: [
           "As a service fee, with the experience and software treated as comparability factors that may justify a higher fee — not as an IP transfer.",
           "As a service fee plus a separate royalty for the use of the document-management software during the engagement.",
@@ -1143,8 +1143,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The 100 paid by Birincil to acquire Company A is arm's-length and reflects the combined value of the licences plus the synergy goodwill.",
-        question: "What should the arm's-length price for the Company A → Company S transfer be?",
+          "Birincil paid 100 for the whole company — and that price reflects both licences plus the goodwill from running them together.",
+        question: "What price should Company A charge Company S for the licences?",
         mcq: [
           "It should take account of the mining licence, the railway licence, and the goodwill — value does not disappear in an intra-group restructure; the 100 paid by Birincil is useful evidence.",
           "30 — the sum of the standalone values of the two licences only.",
@@ -1192,8 +1192,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Company S now controls research; Company T continues to host the people. The 100 paid for Company T provides useful information on total business value.",
-        question: "How should the analysis allocate the 80 of accounting goodwill?",
+          "Company S now controls the research; Company T still houses the people. The 100 Birincil paid is good evidence of total business value.",
+        question: "How should the 80 of accounting goodwill be split between Company S (the IP buyer) and Company T (the people)?",
         mcq: [
           "Identify which intangibles are transferred to Company S and which are retained by Company T; price the IP transfer and the ongoing R&D services such that, together, they compensate Company T for the value it gives up — the PPA's goodwill is not determinative.",
           "Transfer the whole 80 of goodwill to Company S as part of the IP sale.",
@@ -1241,8 +1241,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The premium over Company S's trading value reflects synergies. Some of those synergies relate to European and Asian markets (Company T's territory); some do not.",
-        question: "How should the premium be reflected in Company T's licence price?",
+          "The 60 premium over Company S's trading value comes from synergies — some in European and Asian markets (Company T's territory), some elsewhere.",
+        question: "How much of the premium should Company T pay for in its licence?",
         mcq: [
           "Allocate to Company T an appropriate share of the premium attributable to complementarities in European and Asian markets — and exclude premium that relates to non-T territories. PPA values are not determinative.",
           "Charge Company T the full 90 of accounting goodwill, allocated by territory share.",
@@ -1289,8 +1289,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The 20 difference between the 100 business value and the 80 patent value seems inadequate to reflect both routine functional returns for Company B and the value of trademarks and know-how it retains.",
-        question: "What should the analysis do next?",
+          "Only 20 is left over (100 − 80) to cover both Company B's normal functional returns and the trademarks and know-how it keeps. That looks too thin.",
+        question: "What does this gap tell the analyst?",
         mcq: [
           "Further review the reliability of the 80 patent value — the cross-check suggests it may be understated.",
           "Use the 80 patent value because it was derived directly from royalty data, which is closer to the patent itself.",
@@ -1338,8 +1338,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Valuation techniques are appropriate; the group cannot reliably segregate cash flows associated with the specific intangibles.",
-        question: "How should the intangibles be valued?",
+          "There are no comparables. And the group can't reliably separate out the cash flows of each intangible.",
+        question: "Should the intangibles be valued one-by-one or as a bundle?",
         mcq: [
           "Value them in the aggregate — especially where individually identified values sum to materially less than the value of the business as a whole.",
           "Each intangible must be valued separately on its own cash flows, even if that requires arbitrary allocation.",
@@ -1385,8 +1385,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Both perspectives must be taken into account along with realistic alternatives. The DCF inputs are oversimplified, but illustrate the principle.",
-        question: "Where does the arm's-length price fall?",
+          "An arm's-length price must work for both the seller and the buyer, given the alternatives each has. The DCF figures are simplified but illustrate the point.",
+        question: "Within what range does the arm's-length price fall?",
         mcq: [
           "Above 875 (Pervichnyi's best realistic alternative) and below 1 100 (the maximum Company S would pay while still earning a positive return) — with tax effects of the transaction itself part of the negotiation.",
           "At 600 — Pervichnyi's continuation NPV — because that is what Pervichnyi gives up.",
@@ -1436,8 +1436,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Taxpayer cannot demonstrate that the original valuation took into account the possibility of earlier sales, or that earlier sales were unforeseeable.",
-        question: "What adjustment is the tax administration entitled to make?",
+          "The taxpayer can't show that the year-0 valuation considered an earlier-sales scenario, or that the early sales were genuinely unforeseeable.",
+        question: "What adjustment can the tax administration make?",
         mcq: [
           "Revise the year-0 NPV from 700 to 1 000 — the risk-adjusted earlier-sales scenario — and assess additional profits of 300 in year 0.",
           "Revise the year-0 NPV to the actual ex-post NPV based on observed sales, with no risk weighting.",
@@ -1451,8 +1451,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "The taxpayer cannot demonstrate that the original year-0 valuation accounted for the possibility of earlier sales. The HtV analysis revises the year-0 NPV, but here the risk-adjusted revised NPV is 800 rather than 1 000 — making the proposed adjustment 100 rather than 300.",
-        question: "Does the HtV approach apply?",
+          "Same problem with the year-0 valuation — but the revised NPV is only 800 (not 1 000), so the proposed adjustment is 100 (not 300).",
+        question: "Does the HtV adjustment still apply at this smaller size?",
         mcq: [
           "The adjustment is calculated as 100 — but the exemption in paragraph 6.193(iii) applies because the revision is within 20% of the year-0 compensation, so the HtV adjustment is not made.",
           "The adjustment of 100 is made unchanged — the 20% exemption applies only to non-pharma intangibles.",
@@ -1498,8 +1498,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Revising the year-0 valuation to include the risk-adjusted possibility of higher sales gives a year-0 NPV of 1 300 (vs. 700 originally) — a 600 adjustment. None of the paragraph 6.193 exemptions applies.",
-        question: "How can the adjustment be implemented in an arm's-length way?",
+          "Re-running the year-0 valuation with the higher sales scenario gives 1 300 (vs. the original 700) — so a 600 adjustment. No HtV exemption applies.",
+        question: "What's the best way to implement the 600 adjustment?",
         mcq: [
           "Re-assess the year-0 price by 600 — or, alternatively, restructure as a milestone payment in year 3 (when first market approvals were obtained), which may be more consistent with what independents would have done given the valuation uncertainty.",
           "Apply only the milestone adjustment in year 3 because the HtV approach forbids retroactive adjustments to year 0.",

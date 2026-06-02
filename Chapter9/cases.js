@@ -37,8 +37,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "The pre-restructuring contract gave FFD-A enforceable rights for several more years, and a functional review shows FFD-A had developed local marketing intangibles still owned by FFD-A at the moment of conversion.",
-        question: "Is compensation owed at the moment of conversion, and on what basis?",
+          "FFD-A still had several years of enforceable contract rights, and it owned local marketing intangibles it had built up over time.",
+        question: "Does the conversion itself need to be priced — and if so, why?",
         mcq: [
           "Yes — there is a transfer (or substantial renegotiation) of something of value, so compensation is required at arm's length.",
           "No — the arm's length principle never requires compensation when an entity's expected future profits fall.",
@@ -52,8 +52,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "FFD-A2 is a full-fledged distributor in Country A being converted to a limited-risk distributor for a Principal in Country B. Unlike a distributor with long-term contractual rights and local marketing intangibles, FFD-A2 has no contractual rights beyond a rolling one-year arrangement and the functional review shows it owns no local intangibles. Pre-conversion profits were higher and fluctuating; post-conversion the stable LRD return is lower.",
-        question: "Does the mere fall in expected future profit trigger arm's-length compensation?",
+          "Same conversion — but this distributor (FFD-A2) only has a rolling one-year arrangement and owns no local intangibles. Pre-conversion profits were higher, post-conversion they're lower and stable.",
+        question: "Does the drop in expected profit, on its own, need to be compensated?",
         mcq: [
           "No — under ¶9.39 the arm's length principle does not require compensation for a mere decrease in the expectation of future profits.",
           "Yes — any reduction in profit potential is, by itself, compensable at arm's length.",
@@ -101,8 +101,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "Sub A's transfer included not only the trademarks but the customer contracts and a relocated R&D team — facts that together would, between independent parties, be regarded as the transfer of an integrated business unit.",
-        question: "How should the transfer from Sub A be priced — element-by-element or as an aggregate?",
+          "Sub A didn't just transfer trademarks — it also moved customer contracts and a key R&D team. Between independents this looks like the transfer of an integrated business unit.",
+        question: "Price item-by-item, or as a single ongoing concern?",
         mcq: [
           "As an ongoing concern, with the valuation reflecting all valuable elements together (including the assembled workforce), per Section E.2 of Part I.",
           "Strictly element-by-element: trademark valuation + workforce valuation + contracts valuation, summed.",
@@ -116,8 +116,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "After the transfers, IPCo licenses the IP back to the operating subs. IPCo is a small holding company with limited substance.",
-        question: "Can IPCo simply set the royalty by reference to a market range without any link to whether it actually controls and bears the IP-related risks?",
+          "IPCo is a small holding company with limited substance. It now licenses the IP back to the operating subs.",
+        question: "Can IPCo just pick a market-range royalty, regardless of whether it actually controls the IP risks?",
         mcq: [
           "No — the licence-back royalty must be set under accurate delineation (Section D.1 of Ch.I): if IPCo doesn't control the DEMPE-style functions and risks, it shouldn't earn the residual associated with them.",
           "Yes — once legal ownership is transferred, the legal owner can always set the royalty at the upper end of any benchmark range.",
@@ -166,7 +166,7 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "After accurate delineation, the transactions are commercially rational from each separate entity's perspective (each has options realistically available and is no worse off), even though the structure is unusual; Principal-B has tax motives but the arrangement also has business substance.",
+          "Each entity is commercially rational given its options — even if the structure is unusual. There's a tax motive, but also real business substance.",
         question: "Can the tax administration disregard the restructuring?",
         mcq: [
           "Only if the exceptional circumstances described in ¶1.142 (Section D.2 of Ch.I) are met — non-recognition is a high bar.",
@@ -213,8 +213,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Distributor-A's people still make the credit and inventory decisions; Principal-B has neither risk-control functions nor the financial capacity to bear the risk it has contractually assumed.",
-        question: "Where does the bad-debt and inventory risk sit for transfer pricing purposes?",
+          "On paper the risks moved to Principal-B. In practice, Distributor-A still makes the credit and inventory calls — and Principal-B can't even afford the losses it has contractually accepted.",
+        question: "Where do the risks really sit for transfer pricing?",
         mcq: [
           "It stays with Distributor-A — under accurate delineation a party that does not control the risk and lacks financial capacity cannot be allocated the profit potential associated with it.",
           "It moves to Principal-B — once the contract reallocates the risk in writing, that allocation governs the TP outcome.",
@@ -260,8 +260,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The arrangement, accurately delineated, contains no express indemnification clause; commercial law in the jurisdiction would, however, recognise a right to indemnification on these facts; and independent parties in comparable circumstances would normally have negotiated some form of indemnification given the contract's length and economics.",
-        question: "Is indemnification owed, and how is the test framed?",
+          "The contract has no indemnification clause. But commercial law would support an indemnification claim — and independent parties in similar deals would normally have negotiated some protection.",
+        question: "Is indemnification owed at arm's length?",
         mcq: [
           "Yes — the three-part test in ¶9.79 supports an arm's-length indemnification: (i) commercial-law rights, (ii) whether the arrangement's terms (including the absence of a clause) are arm's length, (iii) which party should ultimately bear the cost.",
           "Yes — every contract termination automatically triggers a right to indemnification at arm's length.",
@@ -307,8 +307,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Between independent parties this would be characterised as a transfer of an ongoing concern. The relocated assembled workforce is a meaningful part of what is being transferred (time and expense savings for M2).",
-        question: "Which valuation route gives the right answer at arm's length?",
+          "Between independents this would be the transfer of an ongoing concern. The relocated workforce is a real part of what M2 gets — saving time and money.",
+        question: "Which valuation route fits at arm's length?",
         mcq: [
           "Value it as an ongoing-concern transfer — compare with arm's-length transfers of ongoing concerns; account for the assembled workforce in the price.",
           "Value each item in isolation (machinery + patents + inventory + contracts) and sum — assembled workforce has no transfer-pricing value.",
@@ -357,8 +357,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Functional review post-conversion shows LRD-A still owns local marketing intangibles and still controls some market risk — facts that diverge from the long-existing LRDs in the comparable set.",
-        question: "What is the most likely explanation, and what does it imply?",
+          "A closer look shows LRD-A still owns local marketing intangibles and still controls some market risk — unlike the long-established LRDs in the comparable set.",
+        question: "What's the most likely explanation for the loss, and what does it imply?",
         mcq: [
           "The 'LRD' label may understate what LRD-A actually does — the post-restructuring TP, or the conversion itself, needs to reflect the intangibles and risks LRD-A continues to bear.",
           "The loss is automatically arm's length: stripped-risk entities can be loss-making in any given year.",
@@ -407,8 +407,8 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "The manufacturing activity is highly competitive: Brand-A has the realistic option of using either Contract Mfr-B or a third-party contract manufacturer in Country B, and reliable comparables exist.",
-        question: "How are the location savings allocated at arm's length?",
+          "Manufacturing is a competitive activity — Brand-A could just as easily use a third-party Country B manufacturer, and reliable local comparables exist.",
+        question: "Who keeps the location savings?",
         mcq: [
           "Very little, if any, of the location savings is attributed to Contract Mfr-B — an arm's-length contract manufacturer in the same market would be priced from local comparables; the residual stays with Brand-A.",
           "The location savings are always split 50/50 between Brand-A and Contract Mfr-B.",

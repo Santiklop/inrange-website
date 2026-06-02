@@ -38,8 +38,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "After the year-end functional analysis, M's role is examined. M signs the cash-management agreement with the bank, executes target-balance sweeps and routes the pooled position. Members keep their own credit and liquidity exposures; the bank takes credit risk over M; X guarantees M's facility.",
-        question: "How should M's function be characterised?",
+          "M signs the bank agreement and runs the daily sweeps — but credit risk stays with the pool members, the bank takes credit risk on M, and the parent X guarantees M's facility.",
+        question: "Is M a co-ordinator, a bank-like intermediary, or a real lender?",
         mcq: [
           "Co-ordination only — M does not bear credit risk and does not perform bank-like functions.",
           "Bank-like intermediation — M is the legal counterparty to every pool transaction, so it bears the economic risk.",
@@ -53,8 +53,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Functional analysis has shown that M performs co-ordination only — it signs the bank's cash-management agreement and executes daily target-balance sweeps, but credit risk stays with the pool members and M does not perform a bank's functions. X (the parent) guarantees M's facility. The analysis now turns to how M should be remunerated.",
-        question: "What kind of reward does M earn?",
+          "M has been characterised as a pure co-ordinator — no credit risk, no bank-like functions. X guarantees its facility. Question now: how should M get paid?",
+        question: "What's the right reward for M?",
         mcq: [
           "A service-fee-style reward commensurate with the co-ordination functions M provides.",
           "The interest spread between deposits and loans, since M is the legal counterparty on each leg.",
@@ -103,8 +103,8 @@ globalThis.CASES = [
       {
         letter: "A",
         facts:
-          "The functional analysis shows that T performs substantive treasury functions, controls the financial risks contractually allocated to it (credit, liquidity, currency) and has the financial capacity to bear those risks. T sets the intra-group rates and is at risk for the difference between the rates it charges members and the rates it pays external lenders.",
-        question: "How should T's intra-group activities be delineated and rewarded?",
+          "Unlike M in Example 1, T does substantive treasury work — it controls credit, liquidity and currency risks, has the money to bear them, sets the intra-group rates, and is on the hook for the spread between what it borrows at and what it lends at.",
+        question: "How should T's intra-group activities be classified and rewarded?",
         mcq: [
           "Intra-group loans (not pure cash-pool co-ordination) — T may earn part or all of the spread between its borrowing and lending positions.",
           "Cash-pool co-ordination — T earns a service fee even though it actively manages the risks.",
@@ -118,8 +118,8 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "T claims an arm's-length spread on each intra-group loan. Group subsidiary U argues that its all-in cost on the intra-group loan from T is higher than the cost it could obtain from a long-standing relationship bank in U's market.",
-        question: "Does T's arm's-length pricing on its side automatically settle U's pricing?",
+          "T's pricing looks arm's-length from T's side. But borrower U argues it could get cheaper funding from its own relationship bank.",
+        question: "Does T's arm's-length pricing automatically settle the price for U?",
         mcq: [
           "No — the other group members would only deal with T at arm's length if doing so left them no worse off than their next best realistic option.",
           "Yes — once T's pricing is shown to be arm's length on T's side, group members must accept it.",

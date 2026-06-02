@@ -211,9 +211,32 @@ details.how-to summary{cursor:pointer;padding:12px 16px;font-weight:600;color:va
 details.how-to summary::-webkit-details-marker{display:none}
 details.how-to summary::after{content:"▾";color:var(--fg-3);transition:transform 200ms}
 details.how-to[open] summary::after{transform:rotate(180deg)}
-details.how-to .how-to-body{padding:0 16px 16px;font-size:14px;color:var(--fg-2);line-height:1.6}
-details.how-to .how-to-body ul{margin:8px 0 0;padding-left:20px}
-details.how-to .how-to-body li{margin-bottom:4px}
+details.how-to .how-to-body{padding:0 16px 18px;font-size:14px;color:var(--fg-2);line-height:1.6}
+details.how-to .how-to-body p{margin:0 0 12px}
+details.how-to .how-to-body p:last-child{margin-bottom:0}
+details.how-to .how-to-body .how-to-mini{font-size:13px;color:var(--fg-3);line-height:1.55;margin-top:14px;padding-top:14px;border-top:1px solid var(--border-subtle)}
+details.how-to .how-to-body .how-to-mini strong{color:var(--fg-1);font-weight:600}
+
+/* chapter pills inside the about block */
+.chapter-pills{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.chapter-pill{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;padding:7px 12px 7px 8px;border-radius:999px;text-decoration:none;border:1px solid var(--border-default);background:var(--bg);color:var(--fg-1);transition:background 140ms,border-color 140ms,color 140ms}
+.chapter-pill:hover{background:var(--bg-muted);border-color:var(--brand-green-500);color:var(--brand-green-700)}
+.chapter-pill__num{display:inline-flex;align-items:center;justify-content:center;min-width:24px;height:22px;padding:0 6px;font-size:11px;font-weight:700;letter-spacing:.06em;background:var(--bg-sunken);color:var(--fg-2);border-radius:999px;font-variant-numeric:tabular-nums}
+.chapter-pill__title{line-height:1.2}
+.chapter-pill--active{background:var(--brand-green-500);border-color:var(--brand-green-500);color:#fff}
+.chapter-pill--active:hover{background:var(--brand-green-600);border-color:var(--brand-green-600);color:#fff}
+.chapter-pill--active .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
+.chapter-pill--soon{color:var(--fg-3);cursor:default}
+.chapter-pill--soon:hover{background:var(--bg);border-color:var(--border-default);color:var(--fg-3)}
+.chapter-pill--soon .chapter-pill__num{background:var(--bg-sunken);color:var(--fg-4)}
+.chapter-pill__tag{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-4);padding:2px 6px;border-radius:999px;background:var(--bg-muted)}
+
+[data-theme="dark"] .chapter-pill{background:transparent;border-color:var(--border-default);color:var(--fg-1)}
+[data-theme="dark"] .chapter-pill:hover{background:var(--bg-muted);border-color:var(--brand-green-400);color:var(--brand-green-300)}
+[data-theme="dark"] .chapter-pill__num{background:var(--bg-sunken);color:var(--fg-2)}
+[data-theme="dark"] .chapter-pill--active{background:var(--brand-green-500);border-color:var(--brand-green-500);color:#fff}
+[data-theme="dark"] .chapter-pill--active .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
+[data-theme="dark"] .chapter-pill__tag{background:var(--bg-muted);color:var(--fg-4)}
 
 /* ---------- chapters dropdown ---------- */
 .chapter-nav{position:relative}
@@ -491,17 +514,13 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
       </a>
     </div>
     <div class="header-actions">
-      <a class="header-btn ghost" href="oecd-discussion-draft-2026.pdf" target="_blank" rel="noreferrer" aria-label="Open the OECD discussion draft (PDF)" title="OECD discussion draft (PDF)">
-        <span class="header-btn__icon" aria-hidden="true">📄</span>
-        <span class="header-btn__label">OECD discussion draft</span>
-      </a>
-
       <div class="chapter-nav" id="chapter-nav">
         <button class="chapter-nav-toggle" type="button" id="chapter-nav-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
           <span class="chapter-nav-toggle__icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="4" width="18" height="16" rx="2"/>
-              <path d="M8 4v16M3 9h5M3 14h5"/>
+              <path d="M12 6v15"/>
+              <path d="M12 6c-2-1.5-5-2-9-2v15c4 0 7 .5 9 2"/>
+              <path d="M12 6c2-1.5 5-2 9-2v15c-4 0-7 .5-9 2"/>
             </svg>
           </span>
           <span class="chapter-nav-toggle__label">Chapters</span>
@@ -567,19 +586,40 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 
   <main class="main">
     <section class="hero" id="intro">
-      <span class="eyebrow">OECD Chapter VII · WP6 discussion draft</span>
-      <h1>Interactive walkthrough: 21 practical examples.</h1>
-      <p class="lead">An interactive walkthrough of the 1 June 2026 draft (comments due 22 July). Test your instinct, then read OECD's reasoning.</p>
+      <span class="eyebrow">OECD Chapter VII · 2026 discussion draft</span>
+      <h1>Intra-group services.</h1>
+      <p class="lead">A walkthrough of the examples in Annex I of the WP6 discussion draft (1 June 2026, comments due 22 July). Test your instinct, then read OECD's reasoning.</p>
 
       <details class="how-to">
-        <summary>How to use this page</summary>
+        <summary>About this project</summary>
         <div class="how-to-body">
-          <p>Each example breaks down into facts, the parties involved, and one or more scenarios.</p>
-          <ul>
-            <li><strong>🧠 Test yourself</strong> — pick from three answers; instant feedback, then OECD's reasoning.</li>
-            <li><strong>👀 Show OECD answer</strong> — jump straight to OECD's reasoning.</li>
-            <li>Use the sidebar to navigate; your progress is tracked at the bottom.</li>
-          </ul>
+          <p>A growing set of pages, each one a walkthrough of the examples in a chapter of the OECD Transfer Pricing Guidelines. The aim is to make those examples easier for transfer-pricing practitioners to engage with — facts, parties, OECD's reasoning, and a "test yourself" layer for the question each example is really asking.</p>
+          <nav class="chapter-pills" aria-label="Available chapters">
+            <a class="chapter-pill" href="/Chapter6/" data-pill-num="VI">
+              <span class="chapter-pill__num">VI</span>
+              <span class="chapter-pill__title">Intangibles</span>
+            </a>
+            <a class="chapter-pill chapter-pill--active" href="/Chapter7/" aria-current="page" data-pill-num="VII">
+              <span class="chapter-pill__num">VII</span>
+              <span class="chapter-pill__title">Intra-group services</span>
+            </a>
+            <span class="chapter-pill chapter-pill--soon" data-pill-num="IX" aria-disabled="true">
+              <span class="chapter-pill__num">IX</span>
+              <span class="chapter-pill__title">Business restructurings</span>
+              <span class="chapter-pill__tag">Soon</span>
+            </span>
+            <span class="chapter-pill chapter-pill--soon" data-pill-num="X" aria-disabled="true">
+              <span class="chapter-pill__num">X</span>
+              <span class="chapter-pill__title">Financial transactions</span>
+              <span class="chapter-pill__tag">Soon</span>
+            </span>
+            <span class="chapter-pill chapter-pill--soon" data-pill-num="+" aria-disabled="true">
+              <span class="chapter-pill__num">+</span>
+              <span class="chapter-pill__title">Other examples</span>
+              <span class="chapter-pill__tag">Soon</span>
+            </span>
+          </nav>
+          <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test. Sidebar lists every case; your progress sits at the bottom of the page.</p>
         </div>
       </details>
 

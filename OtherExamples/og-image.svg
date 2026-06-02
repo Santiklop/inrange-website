@@ -10,14 +10,14 @@
   <text x="80" y="294" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">CCAs &amp; working capital.</text>
 
   <!-- lede -->
-  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">Seven worked examples — one TNMM comparability adjustment, six CCAs.</text>
+  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">Seven case studies — one TNMM comparability adjustment, six CCAs.</text>
 
   <!-- bottom chips -->
   <g transform="translate(80, 432)">
     <!-- chip 1 -->
     <rect width="220" height="52" rx="26" fill="#FFFFFF" stroke="#1FA84A" stroke-width="1.5"/>
     <circle cx="30" cy="26" r="6" fill="#1FA84A"/>
-    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">7 worked examples</text>
+    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">7 case studies</text>
 
     <!-- chip 2 -->
     <g transform="translate(240, 0)">

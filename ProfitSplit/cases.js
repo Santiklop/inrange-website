@@ -6,7 +6,7 @@
 //   when-ps         → When the profit split is the most appropriate method
 //   ps-application  → Applying the profit split method
 //
-// Source: 2022 OECD TPG, Annex II to Chapter II — 16 worked examples on the
+// Source: 2022 OECD TPG, Annex II to Chapter II — 16 case studies on the
 // application of the transactional profit split method.
 
 globalThis.CASES = [

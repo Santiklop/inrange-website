@@ -140,6 +140,7 @@ globalThis.CASES = [
       arrowLabel: "two-step CCA settlement"
     },
     timeline: [
+      "Two related companies A and B run a services CCA. A produces Service 1 (cost 100/unit, arm's-length value 120 — 30 units/year); B produces Service 2 (cost 100/unit, arm's-length value 105 — 20 units/year); each consumes 50% of both.",
       "Step 1: contributions measured at COST. Total cost 5 000 → each bears 50% = 2 500.",
       "A's cost contribution = 3 000; B's = 2 000. B pays A 500 (cost-share balancing payment).",
       "Step 2: account for the additional VALUE A contributes above cost.",
@@ -187,6 +188,7 @@ globalThis.CASES = [
       arrowLabel: "low-value services CCA"
     },
     timeline: [
+      "Two related companies A and B run a services CCA: A produces Service 1, B produces Service 2, and each consumes 50% of each.",
       "Both services are low-margin: Service 1 = 103/unit, Service 2 = 105/unit (cost 100 each).",
       "30 units of Service 1 + 20 units of Service 2 produced; each company consumes 50% of each.",
       "At value: total contributions 5 190, each bears 2 595, B tops up A by 495.",
@@ -233,8 +235,8 @@ globalThis.CASES = [
       arrowLabel: "symmetric margins, asymmetric volumes"
     },
     timeline: [
-      "Same architecture as Example 1, but Service 2 now also has cost 100 / value 120 per unit.",
-      "30 units of Service 1 + 20 units of Service 2 produced; each company consumes 50% of each.",
+      "Two related companies A and B run a services CCA: A produces Service 1 (cost 100/unit, value 120 — 30 units), B produces Service 2 (cost 100/unit, value 120 — 20 units). Each consumes 50% of each.",
+      "Both services now carry the same 20% mark-up over cost.",
       "At value: total 6 000, each bears 3 000, B tops up A by 600.",
       "At cost: total 5 000, each bears 2 500, B tops up A by 500."
     ],

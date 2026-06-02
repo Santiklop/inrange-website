@@ -716,6 +716,7 @@ globalThis.CASES = [
       arrowLabel: "instructions ↓ · finished goods ↑"
     },
     timeline: [
+      "Company A is the global product-development and marketing principal for consumer electronics in Group X; its affiliate Company B is the contract manufacturer.",
       "Company B builds and equips its plant to Company A's specifications.",
       "Company B manufactures to the technical requirements and designs provided by Company A.",
       "Company A performs regular quality checks and guarantees off-take of the entire compliant output.",

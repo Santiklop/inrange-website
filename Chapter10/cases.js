@@ -118,7 +118,7 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "T's pricing looks arm's-length from T's side. But borrower U argues it could get cheaper funding from its own relationship bank.",
+          "T's pricing looks arm's-length from T's side. But group member U — one of the borrowers from T — argues it could get cheaper funding directly from its own relationship bank.",
         question: "Does T's arm's-length pricing automatically settle the price for U?",
         mcq: [
           "No — the other group members would only deal with T at arm's length if doing so left them no worse off than their next best realistic option.",

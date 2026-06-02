@@ -124,6 +124,7 @@ globalThis.CASES = [
       arrowLabel: "disposal proceeds →"
     },
     timeline: [
+      "Premiere is the parent and performs all R&D; its affiliate Company S (three patent lawyers, no R&D capability) is the registered owner of the resulting patents.",
       "Company S licenses the patents to associated and independent enterprises for several years.",
       "Acting under Premiere's direction, Company S sells the patents to an independent buyer.",
       "The sale price reflects appreciation in value during the licensing period."
@@ -652,8 +653,8 @@ globalThis.CASES = [
       arrowLabel: "watches (lower purchase price reflects greater S risk)"
     },
     timeline: [
-      "Same long-term exclusive distribution arrangement as Example 8 in Country Y.",
-      "Company S now obligated to develop and execute the marketing plan with best efforts; Primair does not approve detailed plan elements.",
+      "Primair owns the R-brand watch trademark. Its affiliate Company S is the long-term exclusive distributor in Country Y (5 years + 5-year option), where the R name has no existing recognition.",
+      "Company S is obligated to develop and execute the marketing plan with best efforts; Primair does not approve detailed plan elements.",
       "Company S bears marketing costs and risks; no direct reimbursement, no separate marketing fee.",
       "Watch purchase price is set lower than in Example 8 to reflect S's greater functions and risks.",
       "Years 1–3: Company S incurs high marketing spend; brand becomes established by year 2."
@@ -699,7 +700,7 @@ globalThis.CASES = [
       arrowLabel: "watches · margin substantially below comparables"
     },
     timeline: [
-      "Same long-term distribution as Example 9; Company S bears the marketing costs and risks.",
+      "Primair makes R-brand watches; Company S is its long-term exclusive distributor in Country Y (R brand previously unknown there) and bears the marketing costs and risks itself, with the watch purchase price set lower to reflect that.",
       "Years 1–5: Company S incurs marketing spend substantially in excess of comparable independents.",
       "Excess spend reflects additional or more intensive functions expected to drive higher margins or volume.",
       "Company S's profit margins are significantly lower than comparables; brand develops successfully."
@@ -745,6 +746,7 @@ globalThis.CASES = [
       arrowLabel: "short-term marketing investment"
     },
     timeline: [
+      "Primair makes R-brand watches. Its affiliate Company S distributes them in Country Y, where the R name has no existing recognition.",
       "Year 1: 3-year marketing and distribution agreement signed; no renewal option.",
       "Company S incurs marketing and distribution expenses building the market.",
       "End of year 3: contract ends with no renewal.",
@@ -754,7 +756,7 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "Independent distributors wouldn't invest this much in marketing on a short contract without some protection. The brand Company S builds will keep paying Primair after the contract ends.",
+          "Independent distributors wouldn't invest this much in marketing on a short contract without some protection. The R-brand goodwill Company S builds in Country Y will keep paying Primair after the contract ends.",
         question: "Should Company S be compensated for the marketing value it built?",
         mcq: [
           "Yes — direct compensation from Primair for the value created, or alternatively a reduction in the watch purchase price during years 1–3.",
@@ -791,8 +793,9 @@ globalThis.CASES = [
       arrowLabel: "royalty on gross sales → · no purchase-price adjustment"
     },
     timeline: [
+      "Primair owns the R-brand watch trademark; Company S is its long-term exclusive distributor in Country Y, having borne the marketing costs and risks itself.",
       "End of year 3: R brand well established in Country Y due to Company S's efforts.",
-      "New long-term licence agreement signed (5 + 5 year option) under which Company S pays a royalty based on gross sales of all R watches.",
+      "New long-term licence agreement signed (5 + 5 year option) under which Company S pays Primair a royalty based on gross sales of all R watches.",
       "No adjustment is made to the watch purchase price to reflect the new royalty.",
       "Years 4–5: Company S's marketing spend and activity remain at independent-distributor levels; profit margins fall substantially below comparables."
     ],
@@ -839,7 +842,8 @@ globalThis.CASES = [
       label2: "new licence · royalty"
     },
     timeline: [
-      "Years 1–3: as in Example 10 — Company S invests heavily in marketing under a long-term distribution agreement; excess spend, low margins.",
+      "Primair owns the R-brand watch trademark; Company S is its long-term exclusive distributor in Country Y.",
+      "Years 1–3: Company S invests heavily in marketing under the distribution agreement, spending substantially more than comparable independents; margins fall well below comparables.",
       "End of year 3: Primair stops manufacturing and contracts a third-party CM. Company S will now import unbranded watches, brand and package them, and sell.",
       "Year 4: new 5-year (+5-year option) licence agreement signed; Company S pays a royalty on gross sales of all such watches.",
       "No compensation paid for the renegotiation; the new watch purchase price is assumed to be arm's-length with no R-name component embedded."

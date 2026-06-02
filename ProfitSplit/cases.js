@@ -506,6 +506,7 @@ globalThis.CASES = [
       label2: "finished product →"
     },
     timeline: [
+      "Three group affiliates: Company A designs and manufactures a unique key component using its own IP; Company B incorporates that component into the finished product using its own IP; Company C is a routine distributor. No reliable CUP exists for A or B.",
       "A's sales to B = 50; B's sales to C = 100. Routine return on manufacturing cost = 10%.",
       "A's manufacturing cost = 15 → routine manufacturing profit for A = 1.5.",
       "B's manufacturing cost = 20 → routine manufacturing profit for B = 2.0.",
@@ -662,6 +663,7 @@ globalThis.CASES = [
       arrowLabel: "share IP; sell to third parties"
     },
     timeline: [
+      "Companies A and B are two related-party widget manufacturers that each contribute unique and valuable IP and sell to third parties; profit split using a residual approach has been determined as the most appropriate method, with the residual split on relative current-year IP expenditure.",
       "Sales: A = 100, B = 300. COGS: A = 60, B = 170. Overhead: A = 3, B = 6. Other operating: A = 2, B = 4.",
       "IP expenditure: A = 30, B = 40 (combined 70). Combined operating profit = 85.",
       "Step 1: each manufacturer earns COGS + 10% as routine return. A's routine = 6; B's = 17 (total 23).",

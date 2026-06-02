@@ -528,8 +528,9 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .quiz-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;text-decoration:none;background:var(--brand-green-100);color:var(--brand-green-700);border:1px solid var(--brand-green-100);font-family:inherit;font-size:13px;font-weight:700;letter-spacing:.01em;cursor:pointer;white-space:nowrap;box-shadow:0 1px 2px rgba(15,107,46,.10);transition:background 140ms,border-color 140ms,color 140ms,box-shadow 140ms,transform 140ms}
 .quiz-cta:hover{background:var(--brand-green-200);border-color:var(--brand-green-200);color:var(--brand-green-800);box-shadow:0 4px 12px rgba(15,107,46,.18);transform:translateY(-1px)}
 .quiz-cta__icon{font-size:15px;line-height:1}
-.how-to-cta-row{display:flex;justify-content:flex-end;margin-top:14px}
-@media (max-width:767px){.how-to-cta-row{justify-content:flex-start}}
+.chapter-pills{align-items:center}
+.chapter-pills .quiz-cta{margin-left:auto}
+@media (max-width:767px){.chapter-pills .quiz-cta{margin-left:0}}
 [data-theme="dark"] .quiz-cta{background:var(--brand-green-100);border-color:var(--brand-green-100);color:var(--brand-green-700);box-shadow:0 1px 2px rgba(0,0,0,.4)}
 [data-theme="dark"] .quiz-cta:hover{background:var(--brand-green-200);border-color:var(--brand-green-200);color:var(--brand-green-800);box-shadow:0 4px 12px rgba(0,0,0,.5)}
 [data-theme="dark"] .chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
@@ -686,14 +687,12 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
             <span class="chapter-pill__num">+</span>
             <span class="chapter-pill__title">Other examples</span>
           </a>
-        </nav>
-        <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test.</p>
-        <div class="how-to-cta-row">
           <a class="quiz-cta" href="/Quiz/">
             <span class="quiz-cta__icon" aria-hidden="true">🎯</span>
             <span class="quiz-cta__label">Take the Quiz</span>
           </a>
-        </div>
+        </nav>
+        <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test.</p>
       </div>
     </details>
 

@@ -822,7 +822,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
         } else if (correct === attempted) {
           intro.textContent = "You've walked through every scenario and got every attempt right. 🎉";
         } else {
-          intro.textContent = `All 28 explored — ${correct} of ${attempted} right. The misses are the bits worth a second look; that's where the draft has the most to say.`;
+          intro.textContent = `All ${PROGRESS.total} explored — ${correct} of ${attempted} right. The misses are the bits worth a second look — that's where re-reading OECD's analysis pays off.`;
         }
       } else if (attempted === 0) {
         intro.textContent = "Off to a good start. Try Test yourself on the next one to start scoring.";

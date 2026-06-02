@@ -1,52 +1,48 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630"
      font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif">
-  <!-- BACKGROUND: navy fallback under bottom strip -->
-  <rect width="1200" height="630" fill="#0D1B2D"/>
 
-  <!-- LEFT panel: Sprint (green) -->
-  <rect x="0" y="0" width="600" height="540" fill="#1FA84A"/>
+  <!-- WHITE CANVAS -->
+  <rect width="1200" height="630" fill="#FFFFFF"/>
 
-  <!-- RIGHT panel: Death Run (deep red) -->
-  <rect x="600" y="0" width="600" height="540" fill="#B91C1C"/>
+  <!-- TOP ACCENT BAR: brand green sliver -->
+  <rect x="0" y="0" width="1200" height="6" fill="#1FA84A"/>
 
-  <!-- BOTTOM strip: navy -->
-  <rect x="0" y="540" width="1200" height="90" fill="#0D1B2D"/>
-
-  <!-- inRange brand: 3-bar mark + wordmark, top-left of left panel -->
-  <g transform="translate(50, 55)">
-    <rect x="0"  y="22" width="10" height="20" rx="2" fill="#FFFFFF"/>
-    <rect x="14" y="10" width="10" height="32" rx="2" fill="#FFFFFF"/>
-    <rect x="28" y="0"  width="10" height="42" rx="2" fill="#FFFFFF"/>
-    <text x="50" y="34" font-weight="800" font-size="30" fill="#FFFFFF" letter-spacing="-0.5">inRange</text>
+  <!-- inRange brand: top-left -->
+  <g transform="translate(80, 80)">
+    <rect x="0"  y="22" width="11" height="20" rx="2" fill="#1FA84A"/>
+    <rect x="16" y="10" width="11" height="32" rx="2" fill="#1FA84A"/>
+    <rect x="32" y="0"  width="11" height="42" rx="2" fill="#1FA84A"/>
+    <text x="56" y="36" font-weight="800" font-size="30" fill="#0D1B2D" letter-spacing="-0.6">in<tspan fill="#1FA84A">Range</tspan></text>
   </g>
 
-  <!-- LEFT: SPRINT eyebrow -->
-  <text x="50" y="170" font-weight="800" font-size="28" fill="#FFFFFF" letter-spacing="6">SPRINT</text>
+  <!-- EYEBROW: top-right -->
+  <text x="1120" y="113" font-weight="700" font-size="14" fill="#0F6B2E" letter-spacing="4" text-anchor="end">OPEN PRACTICE · TP QUIZ</text>
 
-  <!-- LEFT: big "5" -->
-  <text x="300" y="395" font-weight="900" font-size="240" fill="#FFFFFF" text-anchor="middle">5</text>
+  <!-- DIVIDER LINE under header band -->
+  <line x1="80" y1="170" x2="1120" y2="170" stroke="#E1E4E9" stroke-width="1"/>
 
-  <!-- LEFT: "questions" sublabel -->
-  <text x="300" y="450" font-weight="600" font-size="42" fill="#FFFFFF" text-anchor="middle">questions</text>
+  <!-- EDITORIAL TITLE -->
+  <text x="80" y="288" font-weight="800" font-size="78" fill="#0D1B2D" letter-spacing="-2">Test your TP skills.</text>
 
-  <!-- LEFT: tagline -->
-  <text x="300" y="500" font-weight="500" font-size="22" fill="#FFFFFF" opacity="0.85" text-anchor="middle">Quick gut-check</text>
+  <!-- SUBTITLE (2 lines) -->
+  <text x="80" y="350" font-weight="500" font-size="24" fill="#343D4C">100 worked examples from the OECD TP Guidelines,</text>
+  <text x="80" y="384" font-weight="500" font-size="24" fill="#343D4C">including the latest Chapter VII consultation draft.</text>
 
-  <!-- RIGHT: DEATH RUN eyebrow -->
-  <text x="650" y="170" font-weight="800" font-size="28" fill="#FFFFFF" letter-spacing="6">DEATH RUN</text>
+  <!-- MODE LINE: two restrained pills, side by side -->
+  <g transform="translate(80, 450)">
+    <!-- Sprint: filled green -->
+    <rect x="0" y="0" width="218" height="48" rx="24" fill="#1FA84A"/>
+    <text x="109" y="32" font-weight="700" font-size="16" fill="#FFFFFF" text-anchor="middle" letter-spacing="0.3">Sprint · 5 questions</text>
 
-  <!-- RIGHT: big skull (Lucide-derived paths, scaled via nested svg) -->
-  <svg x="780" y="200" width="240" height="240" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M16 20a2 2 0 0 0 1.56-3.25 8 8 0 1 0-11.12 0A2 2 0 0 0 8 20"/>
-    <circle cx="9" cy="12" r="1"/>
-    <circle cx="15" cy="12" r="1"/>
-    <path d="M8 20v2h8v-2"/>
-    <path d="m12.5 17-.5-1-.5 1h1z"/>
-  </svg>
+    <!-- Death Run: navy outline -->
+    <rect x="234" y="0" width="332" height="48" rx="24" fill="#FFFFFF" stroke="#0D1B2D" stroke-width="2"/>
+    <text x="400" y="32" font-weight="700" font-size="16" fill="#0D1B2D" text-anchor="middle" letter-spacing="0.3">Death Run · streak until you miss</text>
+  </g>
 
-  <!-- RIGHT: tagline -->
-  <text x="900" y="500" font-weight="500" font-size="22" fill="#FFFFFF" opacity="0.85" text-anchor="middle">Until you miss</text>
+  <!-- BOTTOM: URL -->
+  <text x="80" y="580" font-weight="600" font-size="17" fill="#343D4C" letter-spacing="0.5">inrange.nl</text>
 
-  <!-- BOTTOM strip text -->
-  <text x="600" y="592" font-weight="500" font-size="24" fill="#FFFFFF" text-anchor="middle">Test your TP skills in this OECD-based quiz (including the latest draft Chapter VII additions)</text>
+  <!-- BOTTOM-RIGHT subtle wordmark/credit -->
+  <text x="1120" y="580" font-weight="500" font-size="14" fill="#7D8590" letter-spacing="2" text-anchor="end">TRANSFER PRICING · AMSTERDAM</text>
+
 </svg>

@@ -215,6 +215,10 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 .hero--quiz h1{font-size:48px;letter-spacing:-.03em;margin-bottom:14px}
 @media (max-width:760px){.hero--quiz h1{font-size:34px}}
 .hero--quiz .lead{font-size:17px;max-width:620px}
+.hero--quiz[data-mode="sprint"], .hero--quiz[data-mode="deathrun"]{padding:32px 0 12px;margin-bottom:0}
+.hero--quiz[data-mode="sprint"] h1, .hero--quiz[data-mode="deathrun"] h1{font-size:36px;margin:0}
+@media (max-width:760px){.hero--quiz[data-mode="sprint"] h1, .hero--quiz[data-mode="deathrun"] h1{font-size:28px}}
+.hero--quiz__emoji{display:inline-block;margin-right:8px}
 details.how-to{margin-top:24px;border:1px solid var(--border-subtle);border-radius:8px;background:var(--bg-muted)}
 details.how-to--top{margin-top:0;margin-bottom:32px}
 details.how-to summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--fg-1);font-size:14px;list-style:none;display:flex;align-items:center;justify-content:space-between}
@@ -510,7 +514,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .quiz-modes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 @media (max-width:600px){.quiz-modes{grid-template-columns:1fr}}
 .quiz-mode-card{display:block;text-align:left;background:var(--bg);border:1px solid var(--border-default);border-radius:12px;padding:20px 22px;cursor:pointer;font-family:inherit;color:var(--fg-1);transition:border-color 140ms,background 140ms,transform 140ms;text-decoration:none}
-.quiz-mode-card:hover{border-color:var(--brand-green-500);background:var(--bg-muted);transform:translateY(-1px)}
+.quiz-mode-card:not(.quiz-mode-card--deathrun):hover{border-color:var(--brand-green-500);background:var(--brand-green-500);color:#fff;transform:translateY(-1px)}
+.quiz-mode-card:not(.quiz-mode-card--deathrun):hover .quiz-mode-card__eyebrow,
+.quiz-mode-card:not(.quiz-mode-card--deathrun):hover .quiz-mode-card__title,
+.quiz-mode-card:not(.quiz-mode-card--deathrun):hover .quiz-mode-card__body{color:#fff}
 .quiz-mode-card__eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:6px}
 .quiz-mode-card__title{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px;color:var(--fg-1)}
 .quiz-mode-card__body{font-size:14px;line-height:1.5;color:var(--fg-3);margin:0}

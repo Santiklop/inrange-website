@@ -37,6 +37,24 @@
     return node;
   }
 
+  // ---------- Hero mode ----------
+  function setHeroMode(mode) {
+    const hero = document.querySelector(".hero--quiz");
+    if (!hero) return;
+    hero.dataset.mode = mode || "landing";
+    if (!mode) {
+      hero.innerHTML =
+        '<h1>Ready to play?</h1>' +
+        '<p class="lead">Sprint through five random questions for a quick gut-check — ' +
+        'or push your luck on a Death Run streak that ends the second you miss one. ' +
+        'Pick your poison.</p>';
+    } else if (mode === "sprint") {
+      hero.innerHTML = '<h1><span class="hero--quiz__emoji">🏃</span> Sprint</h1>';
+    } else if (mode === "deathrun") {
+      hero.innerHTML = '<h1><span class="hero--quiz__emoji">💀</span> Death Run</h1>';
+    }
+  }
+
   // ---------- localStorage ----------
   function loadStats() {
     try { return JSON.parse(localStorage.getItem(STATS_KEY)) || {}; } catch { return {}; }
@@ -57,6 +75,7 @@
 
   // ---------- renderLanding ----------
   function renderLanding(opts) {
+    setHeroMode(null);
     banner.innerHTML = "";
     root.innerHTML = "";
     modalRoot.innerHTML = "";
@@ -213,6 +232,7 @@
 
   // ---------- Sprint state machine ----------
   function startSprint() {
+    setHeroMode("sprint");
     session = {
       mode: "sprint",
       queue: shuffle(POOL).slice(0, 5),
@@ -242,6 +262,7 @@
 
   // ---------- Death Run state machine ----------
   function startDeathRun() {
+    setHeroMode("deathrun");
     session = {
       mode: "deathrun",
       queue: shuffle(POOL),

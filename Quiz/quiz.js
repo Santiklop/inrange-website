@@ -45,9 +45,8 @@
     if (!mode) {
       hero.innerHTML =
         '<h1>Ready to play?</h1>' +
-        '<p class="lead">Sprint through five random questions for a quick gut-check — ' +
-        'or push your luck on a Death Run streak that ends the second you miss one. ' +
-        'Pick your poison.</p>';
+        '<p class="lead">Test your knowledge by answering questions based on the OECD TP Guidelines ' +
+        '(incl. the latest draft Chapter VII).</p>';
     } else if (mode === "sprint") {
       hero.innerHTML = '<h1><span class="hero--quiz__emoji">🏃</span> Sprint</h1>';
     } else if (mode === "deathrun") {
@@ -118,7 +117,7 @@
 
     root.appendChild(el("section", { class: "quiz-landing" },
       el("p", { class: "quiz-landing__intro" },
-        `Pick a mode. Questions are drawn at random from the ${POOL.length} worked examples on the chapter pages.`
+        "Pick a mode. Celebrate victory or suffer defeat."
       ),
       el("div", { class: "quiz-modes" }, ...order),
       (bestSprint || bestStreak) ? el("p", { class: "quiz-bests" },

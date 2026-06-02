@@ -7,26 +7,26 @@
 
   <!-- title -->
   <text x="80" y="224" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Financial transactions:</text>
-  <text x="80" y="294" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">cash pooling examples.</text>
+  <text x="80" y="294" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">cash pooling case studies.</text>
 
   <!-- lede -->
-  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">Co-ordinator or lender? Test your instinct on each of the two examples.</text>
+  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">Co-ordinator or lender? See how the OECD reasons through each case study.</text>
 
   <!-- bottom chips -->
   <g transform="translate(80, 432)">
     <!-- chip 1 -->
-    <rect width="280" height="52" rx="26" fill="#FFFFFF" stroke="#1FA84A" stroke-width="1.5"/>
+    <rect width="332" height="52" rx="26" fill="#FFFFFF" stroke="#1FA84A" stroke-width="1.5"/>
     <circle cx="30" cy="26" r="6" fill="#1FA84A"/>
-    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">2 examples · Section C.2.3.1</text>
+    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">2 case studies · Section C.2.3.1</text>
 
     <!-- chip 2 -->
-    <g transform="translate(300, 0)">
+    <g transform="translate(352, 0)">
       <rect width="320" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
       <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">Test yourself · or Show OECD answer</text>
     </g>
 
     <!-- chip 3 -->
-    <g transform="translate(640, 0)">
+    <g transform="translate(692, 0)">
       <rect width="220" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
       <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">Co-ordinator vs lender</text>
     </g>

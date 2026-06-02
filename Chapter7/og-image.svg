@@ -3,32 +3,32 @@
   <rect width="1200" height="630" fill="#FFFFFF"/>
 
   <!-- eyebrow -->
-  <text x="80" y="142" font-weight="700" font-size="20" fill="#15893B" letter-spacing="3">OECD CHAPTER IX · TPG 2022</text>
+  <text x="80" y="142" font-weight="700" font-size="20" fill="#15893B" letter-spacing="3">OECD CHAPTER VII · WP6 DISCUSSION DRAFT</text>
 
   <!-- title -->
-  <text x="80" y="224" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Business restructurings:</text>
-  <text x="80" y="294" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">curated walkthrough.</text>
+  <text x="80" y="224" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">Interactive walkthrough:</text>
+  <text x="80" y="294" font-weight="800" font-size="64" fill="#0D1B2D" letter-spacing="-1.8">21 practical case studies.</text>
 
   <!-- lede -->
-  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">Eight curated case studies — recognition, risk, indemnification.</text>
+  <text x="80" y="358" font-weight="500" font-size="24" fill="#343D4C">See how the OECD reasons through each case study.</text>
 
   <!-- bottom chips -->
   <g transform="translate(80, 432)">
     <!-- chip 1 -->
-    <rect width="260" height="52" rx="26" fill="#FFFFFF" stroke="#1FA84A" stroke-width="1.5"/>
+    <rect width="270" height="52" rx="26" fill="#FFFFFF" stroke="#1FA84A" stroke-width="1.5"/>
     <circle cx="30" cy="26" r="6" fill="#1FA84A"/>
-    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">8 curated case studies</text>
+    <text x="50" y="33" font-weight="600" font-size="17" fill="#0F6B2E">21 case studies · Annex I</text>
 
     <!-- chip 2 -->
-    <g transform="translate(280, 0)">
+    <g transform="translate(290, 0)">
       <rect width="320" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
       <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">Test yourself · or Show OECD answer</text>
     </g>
 
     <!-- chip 3 -->
-    <g transform="translate(620, 0)">
-      <rect width="240" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
-      <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">FF→LRD · IP · indemnity</text>
+    <g transform="translate(630, 0)">
+      <rect width="280" height="52" rx="26" fill="#FFFFFF" stroke="#9FDFB1" stroke-width="1.5"/>
+      <text x="22" y="33" font-weight="600" font-size="17" fill="#0F6B2E">Comments due 22 July 2026</text>
     </g>
   </g>
 
@@ -41,9 +41,9 @@
     <!-- front card with content -->
     <rect width="240" height="180" rx="14" fill="#FFFFFF" stroke="#1FA84A" stroke-width="2"/>
 
-    <text x="20" y="34" font-weight="700" font-size="11" fill="#15893B" letter-spacing="2">RESTRUCTURING</text>
+    <text x="20" y="34" font-weight="700" font-size="12" fill="#15893B" letter-spacing="2">BENEFIT TEST</text>
     <text x="20" y="70" font-weight="700" font-size="20" fill="#0D1B2D">Example 1</text>
-    <text x="20" y="94" font-weight="600" font-size="16" fill="#343D4C">FF→LRD conversion</text>
+    <text x="20" y="94" font-weight="600" font-size="16" fill="#343D4C">Cybersecurity</text>
     <line x1="20" y1="112" x2="220" y2="112" stroke="#EEF0F3" stroke-width="1.5"/>
 
     <!-- buttons -->

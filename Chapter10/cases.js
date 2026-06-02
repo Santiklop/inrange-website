@@ -53,7 +53,7 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Building on the conclusion in scenario A, the analysis turns to how M should be remunerated.",
+          "Functional analysis has shown that M performs co-ordination only — it signs the bank's cash-management agreement and executes daily target-balance sweeps, but credit risk stays with the pool members and M does not perform a bank's functions. X (the parent) guarantees M's facility. The analysis now turns to how M should be remunerated.",
         question: "What kind of reward does M earn?",
         mcq: [
           "A service-fee-style reward commensurate with the co-ordination functions M provides.",

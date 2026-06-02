@@ -238,7 +238,7 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Same as Scenario A, except Company B also identifies ambassadors for Country B itself. Company A still identifies ambassadors for other regional markets where Company B distributes. Cultural, linguistic and demographic factors mean each market's ambassadors do not move the needle elsewhere.",
+          "Company A identifies brand ambassadors for the new menswear line in regional markets outside Country B. Company B (worldwide distributor) designs the launch campaign, decides distribution channels and develops marketing for retail — and also identifies ambassadors for Country B itself. Cultural, linguistic and demographic factors mean each market's ambassadors do not move the needle elsewhere.",
         question: "Does Company B's local ambassador work make Company A's research duplicative?",
         mcq: [
           "No — the geographic scopes differ; Company A's work satisfies the benefit test.",
@@ -253,7 +253,7 @@ globalThis.CASES = [
       {
         letter: "C",
         facts:
-          "Same as Scenario A, except Company B designs a global marketing campaign for the new line. Lacking in-depth local knowledge, Company B outsources to Company A the verification of compliance with local customs, laws, regulations, and the translation of the campaign into local languages.",
+          "Company B (worldwide distributor of the MNE's new menswear line) designs a global marketing campaign for the line. Lacking in-depth local knowledge, Company B outsources to Company A the verification of compliance with local customs, laws and regulations, and the translation of the campaign into local languages. Company A does not design the campaign.",
         question: "Are Company A and Company B's activities duplicative because they relate to the same campaign?",
         mcq: [
           "No — Company A's activities are separate and distinct from Company B's.",
@@ -1088,7 +1088,7 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Same facts as A, but the audit reveals Company B also receives IT services from a local independent enterprise under a broadly worded contract. The tax administration cannot conclude on the existing documentation whether there is duplication.",
+          "Company A provides IT support to Company B; the arrangement is documented in Company A's master file, Company B's local file and other local documentation, including a detailed fee calculation. The audit additionally reveals that Company B receives IT services from a local independent enterprise under a broadly worded contract. The tax administration cannot conclude from the existing documentation whether there is duplication between the two IT service sources.",
         question: "What can Country B's tax authority reasonably request next?",
         mcq: [
           "Additional relevant evidence — type of IT services actually provided, organisation charts with role descriptions, and interview information.",

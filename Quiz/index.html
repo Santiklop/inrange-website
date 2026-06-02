@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OECD Chapter X — financial transactions: cash pooling examples | inRange</title>
-<meta name="description" content="An interactive walkthrough of the two cash-pooling examples in Section C.2.3.1 of Chapter X of the OECD Transfer Pricing Guidelines (2022): the co-ordinating cash pool leader and the treasury entity that operates a cash pool.">
-<meta property="og:title" content="OECD Chapter X — financial transactions: cash pooling examples">
-<meta property="og:description" content="The two cash-pooling examples in Chapter X of the OECD TP Guidelines (2022) — co-ordinator vs lender. Test your instinct, then read OECD's reasoning.">
+<title>OECD TP Quiz — Sprint & Death Run | inRange Open Practice</title>
+<meta name="description" content="Two playful quiz modes — a 5-question Sprint or a Death Run that ends when you miss one — drawn from the ~100 worked examples on the inRange Open Practice walkthrough of the OECD Transfer Pricing Guidelines.">
+<meta property="og:title" content="OECD TP Quiz — Sprint & Death Run">
+<meta property="og:description" content="Five questions, or a streak until you miss one. Drawn from the ~100 worked examples on the inRange Open Practice walkthrough of the OECD TP Guidelines.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://www.inrange.nl/Chapter10/">
-<meta property="og:image" content="https://www.inrange.nl/Chapter10/og-image.png">
+<meta property="og:url" content="https://www.inrange.nl/Quiz/">
+<meta property="og:image" content="https://www.inrange.nl/Quiz/og-image.png">
 <meta property="og:image:width" content="2400">
 <meta property="og:image:height" content="1260">
-<meta property="og:image:alt" content="OECD Chapter X — Interactive walkthrough of the cash-pooling examples. An inRange page.">
+<meta property="og:image:alt" content="OECD TP Quiz — Sprint & Death Run. An inRange Open Practice page.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.inrange.nl/Chapter10/og-image.png">
-<meta name="twitter:title" content="OECD Chapter X — financial transactions: cash pooling examples">
-<meta name="twitter:description" content="The two cash-pooling examples in Chapter X of the OECD TP Guidelines (2022) — co-ordinator vs lender.">
+<meta name="twitter:image" content="https://www.inrange.nl/Quiz/og-image.png">
+<meta name="twitter:title" content="OECD TP Quiz — Sprint & Death Run">
+<meta name="twitter:description" content="Five questions, or a streak until you miss one. Drawn from the ~100 OECD TP examples on the inRange Open Practice site.">
 <link rel="stylesheet" href="../colors_and_type.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -495,7 +495,117 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .page-footer a{color:var(--brand-green-700);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
 .page-footer a:hover{border-bottom-color:currentColor}
 
-/* Header Quiz button (Task 6) */
+/* ---------- quiz page: single-column layout ---------- */
+.page { grid-template-columns: minmax(0, 1fr); max-width: 820px; }
+
+/* ---------- Quiz-specific ---------- */
+
+/* Landing — mode picker */
+.quiz-landing{margin:32px 0 16px}
+.quiz-landing__intro{font-size:14px;color:var(--fg-3);margin:0 0 18px}
+.quiz-modes{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:600px){.quiz-modes{grid-template-columns:1fr}}
+.quiz-mode-card{display:block;text-align:left;background:var(--bg);border:1px solid var(--border-default);border-radius:12px;padding:20px 22px;cursor:pointer;font-family:inherit;color:var(--fg-1);transition:border-color 140ms,background 140ms,transform 140ms;text-decoration:none}
+.quiz-mode-card:hover{border-color:var(--brand-green-500);background:var(--bg-muted);transform:translateY(-1px)}
+.quiz-mode-card__eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:6px}
+.quiz-mode-card__title{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:0 0 8px;color:var(--fg-1)}
+.quiz-mode-card__body{font-size:14px;line-height:1.5;color:var(--fg-3);margin:0}
+.quiz-mode-card--deathrun{background:var(--accent-sand);border-color:var(--accent-ochre)}
+.quiz-mode-card--deathrun:hover{border-color:var(--accent-terra);background:#fbeed7}
+[data-theme="dark"] .quiz-mode-card--deathrun{background:rgba(212,160,98,.12);border-color:var(--accent-ochre)}
+[data-theme="dark"] .quiz-mode-card--deathrun:hover{background:rgba(212,160,98,.20)}
+
+/* Personal bests */
+.quiz-bests{margin-top:18px;font-size:13px;color:var(--fg-3);text-align:center}
+.quiz-bests strong{color:var(--fg-1);font-weight:600}
+
+/* Streak banner from ?streak=N */
+.quiz-banner-msg{background:var(--accent-sand);border-left:3px solid var(--accent-ochre);padding:12px 16px;border-radius:6px;margin:20px 0 0;font-size:14px;color:var(--fg-1)}
+.quiz-banner-msg strong{color:var(--accent-terra);font-weight:700}
+[data-theme="dark"] .quiz-banner-msg{background:rgba(212,160,98,.10)}
+
+/* Question card */
+.quiz-card{margin:24px 0;padding:0}
+.quiz-card__meta{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:8px}
+.quiz-card__title{margin:0 0 24px;font-size:24px;font-weight:800;line-height:1.2;letter-spacing:-.02em;color:var(--fg-1)}
+@media (max-width:600px){.quiz-card__title{font-size:20px}}
+.quiz-card__section-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-3);margin:0 0 8px}
+.quiz-card__timeline{margin:0 0 20px;padding-left:24px;font-size:14px;line-height:1.6;color:var(--fg-2)}
+.quiz-card__timeline li{margin-bottom:4px}
+.quiz-card__timeline li::marker{color:var(--brand-green-600);font-weight:700}
+.quiz-card__facts{margin:0 0 22px;font-size:15px;line-height:1.6;color:var(--fg-1);background:var(--bg-muted);border-left:3px solid var(--brand-green-500);padding:12px 16px;border-radius:6px}
+.quiz-card__question{margin:0 0 14px;font-size:16px;font-weight:600;color:var(--fg-1)}
+.quiz-card__chip{position:fixed;top:80px;right:24px;background:var(--brand-green-500);color:#fff;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:600;z-index:30;box-shadow:var(--shadow-sm)}
+.quiz-card__chip--streak{background:var(--accent-ochre);color:#fff}
+@media (max-width:600px){.quiz-card__chip{top:auto;bottom:24px;right:16px}}
+
+/* MCQ — reuse the chapter pattern */
+.quiz-card .oecd-mcq{display:flex;flex-direction:column;gap:8px;margin-bottom:8px}
+.quiz-card .oecd-mcq__option{border:1px solid var(--border-default);background:#fff;border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.5;text-align:left;cursor:pointer;font-family:inherit;color:var(--fg-1);transition:border-color 140ms,background 140ms,opacity 200ms}
+.quiz-card .oecd-mcq__option:hover{border-color:var(--fg-1);background:var(--bg-muted)}
+.quiz-card .oecd-mcq__option[data-result="correct"]{background:var(--success-bg);border-color:var(--success);color:var(--brand-green-700);font-weight:600}
+.quiz-card .oecd-mcq__option[data-result="correct"]::before{content:"✓  "}
+.quiz-card .oecd-mcq__option[data-result="wrong"]{background:var(--danger-bg);border-color:var(--danger);color:var(--danger);font-weight:600}
+.quiz-card .oecd-mcq__option[data-result="wrong"]::before{content:"✗  "}
+.quiz-card .oecd-mcq__option[data-result="dim"]{opacity:.45}
+.quiz-card .oecd-mcq__option:disabled{cursor:default}
+[data-theme="dark"] .quiz-card .oecd-mcq__option{background:var(--bg);border-color:var(--border-default);color:var(--fg-1)}
+[data-theme="dark"] .quiz-card .oecd-mcq__option:hover{background:var(--bg-sunken)}
+
+/* Reveal */
+.quiz-card__reveal{background:var(--brand-green-50);border-left:3px solid var(--brand-green-500);padding:14px 18px;border-radius:6px;margin-top:14px}
+.quiz-card__reveal-label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green-700);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.quiz-card__reveal-verdict{display:inline-flex;align-items:center;padding:2px 10px;border-radius:999px;background:rgba(31,168,74,.18);color:var(--brand-green-700);font-size:11px;font-weight:700;letter-spacing:.04em;margin-left:4px}
+.quiz-card__reveal-body{font-size:14px;line-height:1.6;color:var(--fg-1)}
+[data-theme="dark"] .quiz-card__reveal{background:rgba(31,168,74,.10);border-left-color:var(--brand-green-400)}
+[data-theme="dark"] .quiz-card__reveal-label,[data-theme="dark"] .quiz-card__reveal-verdict{color:var(--brand-green-300)}
+[data-theme="dark"] .quiz-card__reveal-body{color:var(--fg-1)}
+
+/* Next button */
+.quiz-card__next{margin-top:16px;text-align:right}
+.quiz-card__next button{background:var(--fg-1);color:#fff;border:0;border-radius:8px;font-family:inherit;font-size:14px;font-weight:600;padding:10px 18px;cursor:pointer;transition:background 140ms}
+.quiz-card__next button:hover{background:var(--brand-navy-800)}
+[data-theme="dark"] .quiz-card__next button{background:var(--brand-green-500)}
+[data-theme="dark"] .quiz-card__next button:hover{background:var(--brand-green-400)}
+
+/* Audit complete beat */
+.quiz-gameover{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(10,16,24,.85);color:#fff;font-family:inherit;font-size:48px;font-weight:800;letter-spacing:-.02em;z-index:80;opacity:0;transition:opacity 200ms}
+.quiz-gameover[data-show="true"]{opacity:1}
+@media (max-width:600px){.quiz-gameover{font-size:32px;text-align:center;padding:0 24px}}
+
+/* Result modal */
+.quiz-modal-backdrop{position:fixed;inset:0;background:rgba(10,16,24,.55);display:flex;align-items:center;justify-content:center;padding:24px;z-index:70;opacity:0;transition:opacity 200ms}
+.quiz-modal-backdrop[data-show="true"]{opacity:1}
+.quiz-modal{background:var(--bg);border-radius:14px;padding:32px;max-width:480px;width:100%;box-shadow:0 24px 64px -16px rgba(20,39,63,.4);transform:translateY(20px);transition:transform 220ms cubic-bezier(.2,.8,.2,1)}
+.quiz-modal-backdrop[data-show="true"] .quiz-modal{transform:translateY(0)}
+[data-theme="dark"] .quiz-modal{background:var(--bg-muted);box-shadow:0 24px 64px -16px rgba(0,0,0,.7)}
+
+.quiz-modal__big-number{font-size:64px;font-weight:800;letter-spacing:-.03em;text-align:center;color:var(--fg-1);margin:0 0 8px;line-height:1}
+.quiz-modal__big-number--fire{color:var(--accent-terra)}
+.quiz-modal__sub{text-align:center;color:var(--fg-3);font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin-bottom:20px}
+.quiz-modal__message{text-align:center;font-size:16px;line-height:1.5;color:var(--fg-1);margin:0 0 24px;font-style:italic}
+.quiz-modal__share{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+.quiz-modal__share-btn{background:#fff;color:var(--fg-1);border:1px solid var(--border-default);border-radius:8px;padding:12px 16px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background 140ms,border-color 140ms}
+.quiz-modal__share-btn:hover{background:var(--bg-muted);border-color:var(--fg-1)}
+.quiz-modal__share-btn svg{width:18px;height:18px;flex-shrink:0}
+[data-theme="dark"] .quiz-modal__share-btn{background:var(--bg-sunken);color:var(--fg-1);border-color:var(--border-default)}
+[data-theme="dark"] .quiz-modal__share-btn:hover{background:var(--bg)}
+
+.quiz-modal__actions{display:flex;flex-direction:column;gap:8px}
+.quiz-modal__btn{font-family:inherit;font-size:14px;font-weight:600;padding:12px 18px;border-radius:8px;border:1px solid var(--fg-1);background:#fff;color:var(--fg-1);cursor:pointer;transition:background 140ms,color 140ms}
+.quiz-modal__btn:hover{background:var(--fg-1);color:#fff}
+.quiz-modal__btn--primary{background:var(--accent-ochre);color:#fff;border-color:var(--accent-ochre)}
+.quiz-modal__btn--primary:hover{background:var(--accent-terra);border-color:var(--accent-terra)}
+[data-theme="dark"] .quiz-modal__btn{background:transparent;color:var(--fg-1);border-color:var(--border-default)}
+[data-theme="dark"] .quiz-modal__btn:hover{background:var(--fg-1);color:var(--bg)}
+
+/* Sprint chapter-badge breakdown */
+.quiz-modal__breakdown{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 0 20px}
+.quiz-modal__badge{display:inline-flex;align-items:center;gap:4px;background:var(--bg-muted);border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:var(--fg-2)}
+.quiz-modal__badge--right{background:var(--success-bg);color:var(--brand-green-700)}
+.quiz-modal__badge--wrong{background:var(--danger-bg);color:var(--danger)}
+
+/* Header Quiz button */
 .header-quiz-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;text-decoration:none;border:1px solid var(--accent-ochre);background:var(--accent-ochre);color:#fff;cursor:pointer;white-space:nowrap;transition:background 140ms,border-color 140ms}
 .header-quiz-btn:hover{background:var(--accent-terra);border-color:var(--accent-terra)}
 .header-quiz-btn svg{width:14px;height:14px}
@@ -503,10 +613,11 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   .header-quiz-btn{padding:0;width:38px;height:38px;justify-content:center;gap:0}
   .header-quiz-btn__label{display:none}
 }
+
 [data-theme="dark"] .header-quiz-btn{background:var(--accent-ochre);border-color:var(--accent-ochre);color:#fff}
 [data-theme="dark"] .header-quiz-btn:hover{background:var(--accent-terra);border-color:var(--accent-terra)}
 
-/* About-this-project Quiz pill (Task 6) */
+/* About-this-project Quiz pill */
 .chapter-pill--quiz{background:var(--accent-ochre);border-color:var(--accent-ochre);color:#fff}
 .chapter-pill--quiz:hover{background:var(--accent-terra);border-color:var(--accent-terra);color:#fff}
 .chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
@@ -540,16 +651,6 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
       </a>
     </div>
     <div class="header-actions">
-      <button class="menu-toggle" type="button" id="contents-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open the list of cases in this chapter" title="Cases in this chapter">
-        <svg class="menu-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 6v15"/>
-          <path d="M12 6c-2-1.5-5-2-9-2v15c4 0 7 .5 9 2"/>
-          <path d="M12 6c2-1.5 5-2 9-2v15c-4 0-7 .5-9 2"/>
-        </svg>
-        <svg class="menu-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-        </svg>
-      </button>
       <div class="chapter-nav" id="chapter-nav">
         <button class="chapter-nav-toggle" type="button" id="chapter-nav-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
           <span class="chapter-nav-toggle__label">Chapters</span>
@@ -573,7 +674,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
             <span class="chapter-nav-item__title">Business restructurings</span>
             <span class="chapter-nav-item__count">8</span>
           </a>
-          <a class="chapter-nav-item chapter-nav-item--active" href="/Chapter10/" role="menuitem" aria-current="page">
+          <a class="chapter-nav-item" href="/Chapter10/" role="menuitem">
             <span class="chapter-nav-item__num">X</span>
             <span class="chapter-nav-item__title">Financial transactions</span>
             <span class="chapter-nav-item__count">2</span>
@@ -590,7 +691,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
           </a>
         </div>
       </div>
-      <a class="header-quiz-btn" href="/Quiz/" title="Take the quiz">
+      <a class="header-quiz-btn" href="/Quiz/" title="Take the quiz" aria-current="page">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
         </svg>
@@ -620,10 +721,6 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 </header>
 
 <div class="page" id="top">
-  <aside class="sidebar" id="sidebar">
-    <h2 class="toc__title">Examples</h2>
-  </aside>
-
   <main class="main">
     <header class="project-banner">
       <h2 class="project-banner__title">OECD TP Guidelines: Interactive Learning Experience</h2>
@@ -645,7 +742,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
             <span class="chapter-pill__num">IX</span>
             <span class="chapter-pill__title">Business restructurings</span>
           </a>
-          <a class="chapter-pill chapter-pill--active" href="/Chapter10/" aria-current="page" data-pill-num="X">
+          <a class="chapter-pill" href="/Chapter10/" data-pill-num="X">
             <span class="chapter-pill__num">X</span>
             <span class="chapter-pill__title">Financial transactions</span>
           </a>
@@ -657,7 +754,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
             <span class="chapter-pill__num">+</span>
             <span class="chapter-pill__title">Other examples</span>
           </a>
-          <a class="chapter-pill chapter-pill--quiz" href="/Quiz/" data-pill-num="🎯">
+          <a class="chapter-pill chapter-pill--quiz" href="/Quiz/" aria-current="page" data-pill-num="🎯">
             <span class="chapter-pill__num">🎯</span>
             <span class="chapter-pill__title">Quiz</span>
           </a>
@@ -667,16 +764,18 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
     </details>
 
     <section class="hero" id="intro">
-      <span class="eyebrow">OECD Chapter X · TPG 2022</span>
-      <h1>Financial transactions.</h1>
-      <p class="lead">A walkthrough of the two cash-pooling examples in Section C.2.3.1 of Chapter X of the OECD Transfer Pricing Guidelines (2022 edition).</p>
+  <span class="eyebrow">inRange Open Practice · TP quiz</span>
+  <h1>Quiz.</h1>
+  <p class="lead">Two modes — a 5-question Sprint or a Death Run that ends the moment you get one wrong. Questions are drawn at random from the ~100 worked examples on the chapter pages.</p>
 
-      <div class="disclaimer">
-        <strong>Teaching summary.</strong> This walkthrough is a paraphrase of the OECD examples for learning purposes. For any binding interpretation, consult the OECD Transfer Pricing Guidelines themselves.
-      </div>
-    </section>
+  <div class="disclaimer">
+    <strong>Teaching summary.</strong> The questions and answers come straight from the chapter walkthroughs; the analysis you see in the reveal is the OECD's own framing, paraphrased for learning. For any binding interpretation, consult the OECD Transfer Pricing Guidelines themselves.
+  </div>
+</section>
 
-    <div id="cases-root"></div>
+    <div id="quiz-banner"></div>
+<div id="quiz-root"></div>
+<div id="quiz-modal-root"></div>
 
     <section class="progress-card" id="progress" aria-label="Your progress">
       <div class="progress-card__head">
@@ -707,19 +806,19 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
     </section>
 
     <section class="closing" aria-label="Call to action">
-      <div class="closing__cta-eyebrow">Work together</div>
-      <h2 class="closing__cta-title">Compare notes on cash-pooling cases</h2>
-      <p class="closing__cta-body">If any of these examples raised a question, an edge case, or a different reading from how you'd apply it in practice, I'd like to hear. Message me on LinkedIn or get in touch by email — happy to compare notes.</p>
-      <div class="closing__cta-buttons">
-        <a class="closing__btn closing__btn--primary" href="https://www.linkedin.com/in/aleks-davydov-912a4160/" target="_blank" rel="noreferrer">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          Connect on LinkedIn
-        </a>
-        <a class="closing__btn closing__btn--ghost" href="mailto:aleks@inrange.nl?subject=OECD%20Chapter%20X%20cash%20pooling">
-          ✉ Email aleks@inrange.nl
-        </a>
-      </div>
-    </section>
+  <div class="closing__cta-eyebrow">Work together</div>
+  <h2 class="closing__cta-title">Beat my Death Run</h2>
+  <p class="closing__cta-body">I've spent more hours with these examples than I care to admit. If you out-streak me, I want to hear about it. Message me on LinkedIn or get in touch by email — happy to compare notes.</p>
+  <div class="closing__cta-buttons">
+    <a class="closing__btn closing__btn--primary" href="https://www.linkedin.com/in/aleks-davydov-912a4160/" target="_blank" rel="noreferrer">
+      <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.13 1.45-2.13 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+      Connect on LinkedIn
+    </a>
+    <a class="closing__btn closing__btn--ghost" href="mailto:aleks@inrange.nl?subject=OECD%20Quiz">
+      ✉ Email aleks@inrange.nl
+    </a>
+  </div>
+</section>
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -731,19 +830,15 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 </a>
 
     <footer class="page-footer">
-      <p>This walkthrough is based on Chapter X (Financial transactions) of the OECD Transfer Pricing Guidelines for Multinational Enterprises and Tax Administrations (2022 edition).<br>Source: <a href="https://www.oecd.org/en/publications/oecd-transfer-pricing-guidelines-for-multinational-enterprises-and-tax-administrations-2022_0e655865-en.html" target="_blank" rel="noreferrer">OECD Transfer Pricing Guidelines (2022)</a>.</p>
+      <p>Questions are drawn from the worked examples on the inRange Open Practice walkthrough of the OECD Transfer Pricing Guidelines (2022 edition).<br>Source: <a href="https://www.oecd.org/en/publications/oecd-transfer-pricing-guidelines-for-multinational-enterprises-and-tax-administrations-2022_0e655865-en.html" target="_blank" rel="noreferrer">OECD Transfer Pricing Guidelines (2022)</a>.</p>
     </footer>
   </main>
 </div>
 
-<script src="cases.js"></script>
+<script src="quiz_pool.js"></script>
+<script src="quiz.js"></script>
 <script>
 (function () {
-  const root = document.getElementById("cases-root");
-  if (!root || !Array.isArray(globalThis.CASES)) {
-    console.error("cases.js not loaded or CASES not an array");
-    return;
-  }
 
   // ---------- DOM helpers ----------
   function el(tag, opts = {}, ...children) {
@@ -1400,9 +1495,9 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 
   function setupShare() {
     const toast = document.getElementById("toast");
-    const SHARE_URL = "https://www.inrange.nl/Chapter10";
-    const SHARE_TITLE = "OECD Chapter X — Financial transactions: cash pooling examples";
-    const SHARE_TEXT = "An interactive walkthrough of the two cash-pooling examples in Section C.2.3.1 of Chapter X of the OECD Transfer Pricing Guidelines (2022).";
+    const SHARE_URL = "https://www.inrange.nl/Quiz";
+    const SHARE_TITLE = "OECD TP Quiz — Sprint & Death Run";
+    const SHARE_TEXT = "Take the inRange Open Practice quiz — Sprint (5 questions) or Death Run (streak until you miss). Drawn from the ~100 worked OECD TP examples.";
 
     function showToast(message) {
       if (!toast) return;
@@ -1433,7 +1528,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   }
 
   function setupTheme() {
-    const STORAGE_KEY = "oecd-ch10-theme";
+    const STORAGE_KEY = "oecd-quiz-theme";
     const root = document.documentElement;
     const toggle = document.getElementById("theme-toggle");
 
@@ -1518,20 +1613,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 
   // ---------- boot ----------
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-  for (const c of globalThis.CASES) root.appendChild(renderCase(c));
-  renderSidebar();
-  setupScrollSpy();
   setupScrollProgress();
   setupTheme();
-  setupFab();
-  setupMobileToggle();
   setupChapterNav();
   setupShare();
-  PROGRESS.total = totalScenarios();
-  updateProgress();
-
-  // Land at the top by default (so the About-this-project block is visible on load);
-  // honour explicit deep links (#case-5, #intro, etc.) when present.
 })();
 </script>
 </body>

@@ -494,6 +494,25 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .page-footer{border-top:1px solid var(--border-subtle);padding:32px 0;margin-top:48px;font-size:12px;color:var(--fg-3);text-align:center;line-height:1.6}
 .page-footer a{color:var(--brand-green-700);font-weight:600;text-decoration:none;border-bottom:1px solid transparent}
 .page-footer a:hover{border-bottom-color:currentColor}
+
+/* Header Quiz button (Task 6) */
+.header-quiz-btn{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:9px 14px;border-radius:999px;text-decoration:none;border:1px solid var(--accent-ochre);background:var(--accent-ochre);color:#fff;cursor:pointer;white-space:nowrap;transition:background 140ms,border-color 140ms}
+.header-quiz-btn:hover{background:var(--accent-terra);border-color:var(--accent-terra)}
+.header-quiz-btn svg{width:14px;height:14px}
+@media (max-width:1023px){
+  .header-quiz-btn{padding:0;width:38px;height:38px;justify-content:center;gap:0}
+  .header-quiz-btn__label{display:none}
+}
+[data-theme="dark"] .header-quiz-btn{background:var(--accent-ochre);border-color:var(--accent-ochre);color:#fff}
+[data-theme="dark"] .header-quiz-btn:hover{background:var(--accent-terra);border-color:var(--accent-terra)}
+
+/* About-this-project Quiz pill (Task 6) */
+.chapter-pill--quiz{background:var(--accent-ochre);border-color:var(--accent-ochre);color:#fff}
+.chapter-pill--quiz:hover{background:var(--accent-terra);border-color:var(--accent-terra);color:#fff}
+.chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
+[data-theme="dark"] .chapter-pill--quiz{background:var(--accent-ochre);border-color:var(--accent-ochre);color:#fff}
+[data-theme="dark"] .chapter-pill--quiz:hover{background:var(--accent-terra);border-color:var(--accent-terra);color:#fff}
+[data-theme="dark"] .chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
 </style>
 </head>
 <body>
@@ -571,6 +590,12 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
           </a>
         </div>
       </div>
+      <a class="header-quiz-btn" href="/Quiz/" title="Take the quiz">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/>
+        </svg>
+        <span class="header-quiz-btn__label">Quiz</span>
+      </a>
       <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to dark mode" title="Toggle dark mode">
         <svg class="theme-toggle__moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -631,6 +656,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
           <a class="chapter-pill chapter-pill--active" href="/OtherExamples/" aria-current="page" data-pill-num="+">
             <span class="chapter-pill__num">+</span>
             <span class="chapter-pill__title">Other examples</span>
+          </a>
+          <a class="chapter-pill chapter-pill--quiz" href="/Quiz/" data-pill-num="🎯">
+            <span class="chapter-pill__num">🎯</span>
+            <span class="chapter-pill__title">Quiz</span>
           </a>
         </nav>
         <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test.</p>

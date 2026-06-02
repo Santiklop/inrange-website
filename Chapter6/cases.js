@@ -1451,7 +1451,7 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Same facts as Scenario A, except the risk-adjusted revised NPV is 800 (not 1 000). The proposed adjustment is therefore 100.",
+          "The taxpayer cannot demonstrate that the original year-0 valuation accounted for the possibility of earlier sales. The HtV analysis revises the year-0 NPV, but here the risk-adjusted revised NPV is 800 rather than 1 000 — making the proposed adjustment 100 rather than 300.",
         question: "Does the HtV approach apply?",
         mcq: [
           "The adjustment is calculated as 100 — but the exemption in paragraph 6.193(iii) applies because the revision is within 20% of the year-0 compensation, so the HtV adjustment is not made.",

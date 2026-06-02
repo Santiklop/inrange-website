@@ -52,7 +52,7 @@ globalThis.CASES = [
       {
         letter: "B",
         facts:
-          "Same group, different distributor: FFD-A2 has no contractual rights beyond a rolling one-year arrangement, and the functional review shows it owns no local intangibles. Pre-conversion fluctuating profits were higher; post-conversion the stable LRD return is lower.",
+          "FFD-A2 is a full-fledged distributor in Country A being converted to a limited-risk distributor for a Principal in Country B. Unlike a distributor with long-term contractual rights and local marketing intangibles, FFD-A2 has no contractual rights beyond a rolling one-year arrangement and the functional review shows it owns no local intangibles. Pre-conversion profits were higher and fluctuating; post-conversion the stable LRD return is lower.",
         question: "Does the mere fall in expected future profit trigger arm's-length compensation?",
         mcq: [
           "No — under ¶9.39 the arm's length principle does not require compensation for a mere decrease in the expectation of future profits.",

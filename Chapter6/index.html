@@ -199,6 +199,11 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 @media (max-width:1023px){.main{padding:20px 0 64px}}
 
 /* ---------- hero ---------- */
+/* ---------- project banner (common across all chapters) ---------- */
+.project-banner{padding:8px 0 4px;margin:0 0 18px}
+.project-banner__title{margin:0;font-size:22px;font-weight:800;letter-spacing:-.015em;color:var(--fg-1);line-height:1.25}
+@media (min-width:760px){.project-banner__title{font-size:26px}}
+
 .hero{padding:32px 0 24px;border-bottom:1px solid var(--border-subtle);margin-bottom:40px}
 .hero .eyebrow{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg-brand);margin-bottom:10px}
 .hero h1{margin:0 0 10px;font-size:34px;font-weight:800;line-height:1.1;letter-spacing:-.025em;color:var(--fg-1)}
@@ -207,6 +212,7 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 .disclaimer{margin:18px 0 0;padding:12px 16px;background:var(--accent-sand);border-left:3px solid var(--accent-ochre);border-radius:6px;font-size:12.5px;line-height:1.5;color:var(--fg-1)}
 .disclaimer strong{color:var(--accent-terra)}
 details.how-to{margin-top:24px;border:1px solid var(--border-subtle);border-radius:8px;background:var(--bg-muted)}
+details.how-to--top{margin-top:0;margin-bottom:32px}
 details.how-to summary{cursor:pointer;padding:12px 16px;font-weight:600;color:var(--fg-1);font-size:14px;list-style:none;display:flex;align-items:center;justify-content:space-between}
 details.how-to summary::-webkit-details-marker{display:none}
 details.how-to summary::after{content:"▾";color:var(--fg-3);transition:transform 200ms}
@@ -245,13 +251,14 @@ details.how-to .how-to-body .how-to-mini strong{color:var(--fg-1);font-weight:60
 .chapter-nav-toggle svg{width:12px;height:12px;transition:transform 200ms}
 .chapter-nav-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
 .chapter-nav-toggle__icon{display:none}
-@media (max-width:600px){
-  .chapter-nav-toggle{padding:0;width:38px;height:38px;justify-content:center;gap:0}
-  .chapter-nav-toggle__label{display:none}
-  .chapter-nav-toggle__icon{display:inline-flex}
-  .chapter-nav-toggle svg.chev{display:none}
+@media (max-width:1023px){
+  /* On mobile the chapters dropdown is triggered by the left header button (#menu-toggle); hide the desktop "Chapters" text button. */
+  .chapter-nav-toggle{display:none}
 }
 .chapter-nav-menu{position:absolute;top:calc(100% + 8px);right:0;background:var(--bg);border:1px solid var(--border-subtle);border-radius:12px;box-shadow:0 14px 32px -8px rgba(20,39,63,.18),0 4px 8px rgba(20,39,63,.06);padding:6px;min-width:280px;display:none;z-index:50}
+@media (max-width:1023px){
+  .chapter-nav-menu{position:fixed;top:64px;left:16px;right:auto;width:calc(100vw - 32px);max-width:340px}
+}
 .chapter-nav-menu[data-open="true"]{display:block}
 .chapter-nav-item{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:10px;padding:10px 12px;border-radius:8px;text-decoration:none;color:var(--fg-1);font-size:13px;transition:background 120ms,color 120ms}
 .chapter-nav-item:hover{background:var(--bg-muted)}
@@ -495,7 +502,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 <header class="site-header">
   <div class="header-inner">
     <div class="header-left">
-      <button class="menu-toggle" type="button" id="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open the list of cases in this chapter" title="Cases in this chapter">
+      <button class="menu-toggle" type="button" id="menu-toggle" aria-controls="chapter-nav-menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
         <svg class="menu-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="4" cy="6" r="1.4" fill="currentColor"/><circle cx="4" cy="12" r="1.4" fill="currentColor"/><circle cx="4" cy="18" r="1.4" fill="currentColor"/>
           <line x1="9" y1="6" x2="20" y2="6"/><line x1="9" y1="12" x2="20" y2="12"/><line x1="9" y1="18" x2="20" y2="18"/>
@@ -514,15 +521,18 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
       </a>
     </div>
     <div class="header-actions">
+      <button class="menu-toggle" type="button" id="contents-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Open the list of cases in this chapter" title="Cases in this chapter">
+        <svg class="menu-toggle__open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 6v15"/>
+          <path d="M12 6c-2-1.5-5-2-9-2v15c4 0 7 .5 9 2"/>
+          <path d="M12 6c2-1.5 5-2 9-2v15c-4 0-7 .5-9 2"/>
+        </svg>
+        <svg class="menu-toggle__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
       <div class="chapter-nav" id="chapter-nav">
         <button class="chapter-nav-toggle" type="button" id="chapter-nav-toggle" aria-haspopup="menu" aria-expanded="false" aria-label="Choose a chapter" title="Choose a chapter">
-          <span class="chapter-nav-toggle__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 6v15"/>
-              <path d="M12 6c-2-1.5-5-2-9-2v15c4 0 7 .5 9 2"/>
-              <path d="M12 6c2-1.5 5-2 9-2v15c-4 0-7 .5-9 2"/>
-            </svg>
-          </span>
           <span class="chapter-nav-toggle__label">Chapters</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polyline points="6 9 12 15 18 9"/>
@@ -585,43 +595,46 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   </aside>
 
   <main class="main">
+    <header class="project-banner">
+      <h2 class="project-banner__title">OECD TP Guidelines: Interactive Learning Experience</h2>
+    </header>
+    <details class="how-to how-to--top" id="about">
+      <summary>About this project</summary>
+      <div class="how-to-body">
+        <p>This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations.</p>
+        <nav class="chapter-pills" aria-label="Available chapters">
+          <a class="chapter-pill chapter-pill--active" href="/Chapter6/" aria-current="page" data-pill-num="VI">
+            <span class="chapter-pill__num">VI</span>
+            <span class="chapter-pill__title">Intangibles</span>
+          </a>
+          <a class="chapter-pill" href="/Chapter7/" data-pill-num="VII">
+            <span class="chapter-pill__num">VII</span>
+            <span class="chapter-pill__title">Intra-group services</span>
+          </a>
+          <span class="chapter-pill chapter-pill--soon" data-pill-num="IX" aria-disabled="true">
+            <span class="chapter-pill__num">IX</span>
+            <span class="chapter-pill__title">Business restructurings</span>
+            <span class="chapter-pill__tag">Soon</span>
+          </span>
+          <span class="chapter-pill chapter-pill--soon" data-pill-num="X" aria-disabled="true">
+            <span class="chapter-pill__num">X</span>
+            <span class="chapter-pill__title">Financial transactions</span>
+            <span class="chapter-pill__tag">Soon</span>
+          </span>
+          <span class="chapter-pill chapter-pill--soon" data-pill-num="+" aria-disabled="true">
+            <span class="chapter-pill__num">+</span>
+            <span class="chapter-pill__title">Other examples</span>
+            <span class="chapter-pill__tag">Soon</span>
+          </span>
+        </nav>
+        <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test. Sidebar lists every case; your progress sits at the bottom of the page.</p>
+      </div>
+    </details>
+
     <section class="hero" id="intro">
       <span class="eyebrow">OECD Chapter VI · TPG 2022</span>
       <h1>Intangibles.</h1>
-      <p class="lead">A walkthrough of the examples in Annexes I and II to Chapter VI of the OECD Transfer Pricing Guidelines (2022 edition). Test your instinct, then read OECD's reasoning.</p>
-
-      <details class="how-to">
-        <summary>About this project</summary>
-        <div class="how-to-body">
-          <p>This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations.</p>
-          <nav class="chapter-pills" aria-label="Available chapters">
-            <a class="chapter-pill chapter-pill--active" href="/Chapter6/" aria-current="page" data-pill-num="VI">
-              <span class="chapter-pill__num">VI</span>
-              <span class="chapter-pill__title">Intangibles</span>
-            </a>
-            <a class="chapter-pill" href="/Chapter7/" data-pill-num="VII">
-              <span class="chapter-pill__num">VII</span>
-              <span class="chapter-pill__title">Intra-group services</span>
-            </a>
-            <span class="chapter-pill chapter-pill--soon" data-pill-num="IX" aria-disabled="true">
-              <span class="chapter-pill__num">IX</span>
-              <span class="chapter-pill__title">Business restructurings</span>
-              <span class="chapter-pill__tag">Soon</span>
-            </span>
-            <span class="chapter-pill chapter-pill--soon" data-pill-num="X" aria-disabled="true">
-              <span class="chapter-pill__num">X</span>
-              <span class="chapter-pill__title">Financial transactions</span>
-              <span class="chapter-pill__tag">Soon</span>
-            </span>
-            <span class="chapter-pill chapter-pill--soon" data-pill-num="+" aria-disabled="true">
-              <span class="chapter-pill__num">+</span>
-              <span class="chapter-pill__title">Other examples</span>
-              <span class="chapter-pill__tag">Soon</span>
-            </span>
-          </nav>
-          <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test. Sidebar lists every case; your progress sits at the bottom of the page.</p>
-        </div>
-      </details>
+      <p class="lead">A walkthrough of the examples in Annexes I and II to Chapter VI of the OECD Transfer Pricing Guidelines (2022 edition).</p>
 
       <div class="disclaimer">
         <strong>Teaching summary.</strong> This walkthrough is a paraphrase of the OECD examples for learning purposes. For any binding interpretation, consult the OECD Transfer Pricing Guidelines themselves.
@@ -1319,25 +1332,33 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 
   function setupChapterNav() {
     const wrap = document.getElementById("chapter-nav");
-    const toggle = document.getElementById("chapter-nav-toggle");
+    const desktopToggle = document.getElementById("chapter-nav-toggle");
+    const mobileToggle = document.getElementById("menu-toggle");
     const menu = document.getElementById("chapter-nav-menu");
-    if (!wrap || !toggle || !menu) return;
+    if (!menu) return;
 
     const setOpen = open => {
       menu.dataset.open = String(open);
-      toggle.setAttribute("aria-expanded", String(open));
+      if (desktopToggle) desktopToggle.setAttribute("aria-expanded", String(open));
+      if (mobileToggle) mobileToggle.setAttribute("aria-expanded", String(open));
     };
-    toggle.addEventListener("click", e => {
+    const onToggle = e => {
       e.stopPropagation();
       setOpen(menu.dataset.open !== "true");
-    });
+    };
+    if (desktopToggle) desktopToggle.addEventListener("click", onToggle);
+    if (mobileToggle) mobileToggle.addEventListener("click", onToggle);
     document.addEventListener("click", e => {
-      if (menu.dataset.open === "true" && !wrap.contains(e.target)) setOpen(false);
+      if (menu.dataset.open !== "true") return;
+      if (wrap && wrap.contains(e.target)) return;
+      if (mobileToggle && mobileToggle.contains(e.target)) return;
+      if (menu.contains(e.target)) return;
+      setOpen(false);
     });
     document.addEventListener("keydown", e => {
       if (e.key === "Escape" && menu.dataset.open === "true") {
         setOpen(false);
-        toggle.focus();
+        (desktopToggle || mobileToggle)?.focus();
       }
     });
   }
@@ -1440,16 +1461,16 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   }
 
   function setupMobileToggle() {
-    const menuToggle = document.getElementById("menu-toggle");
+    const contentsToggle = document.getElementById("contents-toggle");
     const sidebarEl = document.getElementById("sidebar");
-    if (!menuToggle || !sidebarEl) return;
+    if (!contentsToggle || !sidebarEl) return;
     const isMobile = () => matchMedia("(max-width: 1023px)").matches;
     const setOpen = open => {
       sidebarEl.dataset.open = String(open);
-      menuToggle.setAttribute("aria-expanded", String(open));
-      menuToggle.setAttribute("aria-label", open ? "Close contents" : "Open contents");
+      contentsToggle.setAttribute("aria-expanded", String(open));
+      contentsToggle.setAttribute("aria-label", open ? "Close contents" : "Open the list of cases in this chapter");
     };
-    menuToggle.addEventListener("click", () => {
+    contentsToggle.addEventListener("click", () => {
       setOpen(sidebarEl.dataset.open !== "true");
     });
     sidebarEl.addEventListener("click", e => {

@@ -541,6 +541,18 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 [data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__title,
 [data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__body{color:#fff}
 
+/* Mobile: no hover, so render the cards in their "hover" colours by default */
+@media (max-width:767px){
+  .quiz-mode-card:not(.quiz-mode-card--deathrun){border-color:var(--brand-green-500);background:var(--brand-green-500);color:#fff}
+  .quiz-mode-card:not(.quiz-mode-card--deathrun) .quiz-mode-card__eyebrow,
+  .quiz-mode-card:not(.quiz-mode-card--deathrun) .quiz-mode-card__title,
+  .quiz-mode-card:not(.quiz-mode-card--deathrun) .quiz-mode-card__body{color:#fff}
+  .quiz-mode-card--deathrun{border-color:#B91C1C;background:#B91C1C;color:#fff}
+  .quiz-mode-card--deathrun .quiz-mode-card__eyebrow,
+  .quiz-mode-card--deathrun .quiz-mode-card__title,
+  .quiz-mode-card--deathrun .quiz-mode-card__body{color:#fff}
+}
+
 /* Personal bests */
 .quiz-bests{margin-top:18px;font-size:13px;color:var(--fg-3);text-align:center}
 .quiz-bests strong{color:var(--fg-1);font-weight:600}

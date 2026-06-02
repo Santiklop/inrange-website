@@ -527,20 +527,24 @@
         const btn = e.currentTarget;
         const labelSpan = btn.querySelector(".quiz-modal__share-btn-label");
         const originalLabel = labelSpan.textContent;
-        const text = isStreak
+        // Web Share gets the rich marketing text; clipboard gets just the URL,
+        // matching the "Copy link" label.
+        const shareText = isStreak
           ? "I just got " + value + " OECD TP questions right in a row on the inRange Open Practice quiz. Can you beat me? " + url
           : "I scored " + value + "/5 on the inRange Open Practice OECD TP quiz. Take it: " + url;
-        try {
-          if (navigator.share) {
-            await navigator.share({ title: "OECD TP Quiz", text, url });
+        if (navigator.share) {
+          try {
+            await navigator.share({ title: "OECD TP Quiz", text: shareText, url });
             return;
+          } catch (err) {
+            if (err && err.name === "AbortError") return;  // user cancelled — don't fall through
+            console.warn("share failed", err);
+            // other failure → fall through to clipboard
           }
-        } catch (err) {
-          if (err && err.name !== "AbortError") console.warn("share failed", err);
         }
         try {
-          await navigator.clipboard.writeText(text);
-          labelSpan.textContent = "Copied!";
+          await navigator.clipboard.writeText(url);  // just the URL
+          labelSpan.textContent = "Link copied!";
         } catch {
           labelSpan.textContent = "Couldn't copy";
         }

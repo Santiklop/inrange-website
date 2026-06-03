@@ -156,7 +156,7 @@ document.getElementById("picker").addEventListener("click", (e) => {
 
 closeBtn.addEventListener("click", () => sheet.close());
 
-const ENDPOINT = "https://formsubmit.co/ajax/aleks@inrange.nl";
+const ENDPOINT = "https://formsubmit.co/ajax/92ff96a867d2b97bee73c7b50f43f788";
 
 function readChips(id) {
   return [...document.querySelectorAll(`#${id} .chip[aria-pressed="true"]`)].map(c => c.textContent);

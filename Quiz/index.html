@@ -662,7 +662,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 [data-theme="dark"] .quiz-modal__share-btn:hover{background:var(--bg)}
 
 .quiz-modal__actions{display:flex;flex-direction:column;gap:8px}
-.quiz-modal__btn{font-family:inherit;font-size:14px;font-weight:600;padding:12px 18px;border-radius:8px;border:1px solid var(--fg-1);background:#fff;color:var(--fg-1);cursor:pointer;transition:background 140ms,color 140ms}
+.quiz-modal__btn{display:block;text-align:center;text-decoration:none;font-family:inherit;font-size:14px;font-weight:600;padding:12px 18px;border-radius:8px;border:1px solid var(--fg-1);background:#fff;color:var(--fg-1);cursor:pointer;transition:background 140ms,color 140ms}
 .quiz-modal__btn:hover{background:var(--fg-1);color:#fff}
 .quiz-modal__btn--primary{background:var(--fg-1);color:#fff;border-color:var(--fg-1)}
 .quiz-modal__btn--primary:hover{background:var(--brand-navy-800);border-color:var(--brand-navy-800)}
@@ -680,9 +680,11 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .header-quiz-btn:hover{background:var(--brand-green-200);border-color:var(--brand-green-200);color:var(--brand-green-800)}
 .header-quiz-btn__icon{font-size:14px;line-height:1}
 @media (max-width:1023px){
-  .header-quiz-btn{padding:0;width:38px;height:38px;justify-content:center;gap:0}
+  .header-quiz-btn{padding:0 12px;width:auto;height:38px;justify-content:center;gap:2px;border-radius:24px}
   .header-quiz-btn__label{display:none}
   .header-quiz-btn__icon{font-size:18px}
+  .header-quiz-btn__icon::before{content:"🏃 "}
+  .header-quiz-btn__icon::after{content:" 💀"}
 }
 
 [data-theme="dark"] .header-quiz-btn{background:var(--brand-green-100);border-color:var(--brand-green-100);color:var(--brand-green-700)}

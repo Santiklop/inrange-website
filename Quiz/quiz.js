@@ -304,6 +304,39 @@
     });
   }
 
+  // ---------- Chapter suggestion (for low scores) ----------
+  const CHAPTERS = {
+    "Chapter VI":     { url: "/Chapter6/",       topic: "Intangibles" },
+    "Chapter VII":    { url: "/Chapter7/",       topic: "Intra-group services" },
+    "Chapter IX":     { url: "/Chapter9/",       topic: "Business restructurings" },
+    "Chapter X":      { url: "/Chapter10/",      topic: "Financial transactions" },
+    "Profit split":   { url: "/ProfitSplit/",    topic: "Profit split" },
+    "Other examples": { url: "/OtherExamples/",  topic: "Other examples" },
+  };
+
+  // From an array of {chapterShort, isCorrect}, return the chapter with the
+  // most wrong answers (ties broken by first appearance). Returns null if no wrongs.
+  function suggestChapter(answers) {
+    const wrongs = {};
+    for (const a of answers) {
+      if (!a.isCorrect) wrongs[a.chapterShort] = (wrongs[a.chapterShort] || 0) + 1;
+    }
+    let best = null, bestCount = 0;
+    for (const ch of Object.keys(wrongs)) {
+      if (wrongs[ch] > bestCount) { best = ch; bestCount = wrongs[ch]; }
+    }
+    return best;
+  }
+
+  function makeChapterBtn(chapterShort) {
+    const info = CHAPTERS[chapterShort];
+    if (!info) return null;
+    return el("a", {
+      class: "quiz-modal__btn quiz-modal__btn--primary",
+      href: info.url,
+    }, "Brush up · " + info.topic + " →");
+  }
+
   // ---------- Sprint result ----------
   const SPRINT_MESSAGES = {
     0: [
@@ -349,10 +382,12 @@
       class: "quiz-modal__badge quiz-modal__badge--" + (a.isCorrect ? "right" : "wrong"),
     }, a.chapterShort.replace("Chapter ", ""), a.isCorrect ? " ✓" : " ✗"));
 
+    const isLow = score <= 3;
     const tryDeathRunPrimary = score >= 4;
+    const chapterBtn = isLow ? makeChapterBtn(suggestChapter(session.answers)) : null;
 
     const playAgainBtn = el("button", {
-      class: "quiz-modal__btn" + (tryDeathRunPrimary ? "" : " quiz-modal__btn--primary"),
+      class: "quiz-modal__btn" + ((isLow || tryDeathRunPrimary) ? "" : " quiz-modal__btn--primary"),
       type: "button",
       onClick: () => { closeModal(); startSprint(); },
     }, "Play again");
@@ -363,7 +398,12 @@
       onClick: () => { closeModal(); startDeathRun(); },
     }, "Try Death Run");
 
-    const actionsOrder = tryDeathRunPrimary ? [deathRunBtn, playAgainBtn] : [playAgainBtn, deathRunBtn];
+    // Low scores: read-the-chapter is the helpful exit, not "try another mode".
+    const actionsOrder = chapterBtn
+      ? [chapterBtn, playAgainBtn]
+      : tryDeathRunPrimary
+        ? [deathRunBtn, playAgainBtn]
+        : [playAgainBtn, deathRunBtn];
 
     showModal({
       bigNumber: score + " / 5",
@@ -401,20 +441,29 @@
     }
 
     const lowStreak = streak <= 2;
+    const isLow = streak < 5;
+    // The question that ended the run is whatever's at the current queue index
+    // (we don't advance the index on a wrong answer).
+    const wrongQ = session.queue[session.index];
+    const chapterBtn = isLow && wrongQ ? makeChapterBtn(wrongQ.chapterShort) : null;
 
     const playAgainBtn = el("button", {
-      class: "quiz-modal__btn" + (lowStreak ? "" : " quiz-modal__btn--primary"),
+      class: "quiz-modal__btn" + ((isLow || lowStreak) ? "" : " quiz-modal__btn--primary"),
       type: "button",
       onClick: () => { closeModal(); startDeathRun(); },
     }, "Play again");
 
     const sprintBtn = el("button", {
-      class: "quiz-modal__btn" + (lowStreak ? " quiz-modal__btn--primary" : ""),
+      class: "quiz-modal__btn" + (lowStreak && !isLow ? " quiz-modal__btn--primary" : ""),
       type: "button",
       onClick: () => { closeModal(); startSprint(); },
     }, lowStreak ? "Go warm up with Sprint" : "Switch to Sprint");
 
-    const actionsOrder = lowStreak ? [sprintBtn, playAgainBtn] : [playAgainBtn, sprintBtn];
+    const actionsOrder = chapterBtn
+      ? [chapterBtn, playAgainBtn]
+      : lowStreak
+        ? [sprintBtn, playAgainBtn]
+        : [playAgainBtn, sprintBtn];
 
     showModal({
       bigNumber: "🔥 " + streak + " 🔥",

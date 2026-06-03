@@ -101,11 +101,9 @@ function renderPairedBars(container, rows, namesByLabel) {
 
 // ---------- Companies chip cloud ----------
 function renderCompanies(container, counts, namesByCompany) {
-  const max = Math.max(1, ...Object.values(counts));
   container.innerHTML = `<div class="chip-cloud">` +
-    Object.entries(counts).sort((a,b) => a[0].localeCompare(b[0])).map(([co, n]) => {
-      const fs = 14 + Math.round((n / max) * 14);
-      return `<span class="cloud-chip" data-company="${co}" style="font-size:${fs}px">${co}</span>`;
+    Object.entries(counts).sort((a,b) => a[0].localeCompare(b[0])).map(([co]) => {
+      return `<span class="cloud-chip" data-company="${co}">${co}</span>`;
     }).join("") + `</div>`;
   container.querySelectorAll(".cloud-chip").forEach(el => {
     el.addEventListener("mousemove", (e) => {

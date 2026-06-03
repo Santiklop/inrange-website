@@ -133,6 +133,7 @@ function openSheet(attendee, isNew) {
   updateCounters();
   sheet.dataset.cardId = attendee.id;
   sheet.dataset.isNew = isNew ? "1" : "0";
+  document.body.classList.add("sheet-open");
   sheet.showModal();
 }
 
@@ -155,6 +156,9 @@ document.getElementById("picker").addEventListener("click", (e) => {
 });
 
 closeBtn.addEventListener("click", () => sheet.close());
+sheet.addEventListener("close", () => {
+  document.body.classList.remove("sheet-open");
+});
 
 const ENDPOINT = "https://formsubmit.co/ajax/92ff96a867d2b97bee73c7b50f43f788";
 

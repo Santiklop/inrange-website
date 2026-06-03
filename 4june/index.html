@@ -56,10 +56,17 @@
     .sheet { width: 100%; max-width: 560px; padding: 0; border: none;
              border-radius: 16px 16px 0 0;
              margin: auto auto 0; background: var(--surface-card);
-             transform: translateY(100%); transition: transform 240ms var(--ease-out); }
+             height: 92vh; max-height: 92vh;
+             transform: translateY(100%); transition: transform 240ms var(--ease-out);
+             display: flex; flex-direction: column; overflow: hidden; }
     .sheet[open] { transform: translateY(0); }
     @media (prefers-reduced-motion: reduce) { .sheet { transition: none; } }
-    .sheet::backdrop { background: rgba(15,20,28,.45); }
+    .sheet::backdrop { background: rgba(7, 17, 29, 0.78); }
+
+    /* When the sheet is open, freeze the body so the picker behind doesn't scroll. */
+    body.sheet-open { overflow: hidden; position: fixed; width: 100%; }
+
+    .sheet form { display: flex; flex-direction: column; flex: 1; min-height: 0; overflow-y: auto; }
 
     .sheet-head { padding: 16px 16px 8px; border-bottom: 1px solid var(--border-subtle); position: relative; }
     .sheet-close { position: absolute; right: 8px; top: 8px;

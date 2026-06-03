@@ -334,7 +334,7 @@
     return el("a", {
       class: "quiz-modal__btn quiz-modal__btn--primary",
       href: info.url,
-    }, "Brush up · " + info.topic + " →");
+    }, "Refresh " + info.topic + " →");
   }
 
   // ---------- Sprint result ----------

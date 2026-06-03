@@ -2,7 +2,20 @@
 import { aggregateBy, donutSegments, topN, hashHue } from "./viz.js";
 import { getIndustry } from "./industries.js";
 
-const PALETTE = ["#1FA84A","#14273F","#6FA3C0","#C98A2B","#5B3A63","#0F6B2E","#6CCE89","#818B98"];
+const PALETTE = [
+  "#1FA84A", // brand green
+  "#6FA3C0", // sky
+  "#C98A2B", // ochre
+  "#5B3A63", // plum
+  "#3FBB65", // green 400
+  "#4F6B8A", // navy 400
+  "#B25838", // terra
+  "#6B8F3D", // moss
+  "#9FDFB1", // green 200
+  "#ADBCCE", // navy 200
+  "#F1E6D2", // sand
+  "#818B98", // neutral-500
+];
 
 const tooltipEl = document.getElementById("tooltip");
 function showTooltip(html, x, y) {
@@ -32,7 +45,7 @@ function renderDonut(container, segments, namesByLabel) {
     const x0 = cx + radius * Math.cos(a0), y0 = cy + radius * Math.sin(a0);
     const x1 = cx + radius * Math.cos(a1), y1 = cy + radius * Math.sin(a1);
     const color = PALETTE[i % PALETTE.length];
-    return `<path d="M ${x0} ${y0} A ${radius} ${radius} 0 ${large} 1 ${x1} ${y1}"
+    return `<path class="donut-slice" d="M ${x0} ${y0} A ${radius} ${radius} 0 ${large} 1 ${x1} ${y1}"
                    fill="none" stroke="${color}" stroke-width="${thick}"
                    data-label="${seg.label}" data-count="${seg.count}"></path>`;
   }).join("");
@@ -51,7 +64,7 @@ function renderDonut(container, segments, namesByLabel) {
       const label = p.dataset.label;
       const count = p.dataset.count;
       const names = (namesByLabel?.[label] || []).slice(0, 12).join(", ");
-      showTooltip(`<b>${label}</b> · ${count}<br><span style="opacity:.8">${names}</span>`, e.clientX, e.clientY);
+      showTooltip(`<div class="t-title">${label} · ${count}</div>${names}`, e.clientX, e.clientY);
     });
     p.addEventListener("mouseleave", hideTooltip);
   });
@@ -92,13 +105,13 @@ function renderCompanies(container, counts, namesByCompany) {
   container.innerHTML = `<div class="chip-cloud">` +
     Object.entries(counts).sort((a,b) => a[0].localeCompare(b[0])).map(([co, n]) => {
       const fs = 14 + Math.round((n / max) * 14);
-      return `<span class="cloud-chip" data-company="${co}" style="font-size:${fs}px">${co} · ${n}</span>`;
+      return `<span class="cloud-chip" data-company="${co}" style="font-size:${fs}px">${co}</span>`;
     }).join("") + `</div>`;
   container.querySelectorAll(".cloud-chip").forEach(el => {
     el.addEventListener("mousemove", (e) => {
       const co = el.dataset.company;
-      const names = (namesByCompany[co] || []).join(", ");
-      showTooltip(`<b>${co}</b><br>${names}`, e.clientX, e.clientY);
+      const list = namesByCompany[co] || [];
+      showTooltip(`<div class="t-title">${co} · ${list.length}</div>${list.join(", ")}`, e.clientX, e.clientY);
     });
     el.addEventListener("mouseleave", hideTooltip);
   });
@@ -107,13 +120,27 @@ function renderCompanies(container, counts, namesByCompany) {
 // ---------- Clustered themes ----------
 function renderThemes(container, items) {
   container.innerHTML = `<div class="themes">` + items.map((t, i) => `
-    <details class="theme" data-i="${i}">
-      <summary><span>${t.theme}</span><span class="theme-count">${t.count}</span></summary>
-      <ul class="theme-quotes" style="display:block">
-        ${(t.quotes || []).map(q => `<li>"${q}"</li>`).join("")}
-      </ul>
-    </details>`).join("") + `</div>`;
-  // Native <details> handles open/close without extra JS
+    <div class="theme" data-i="${i}">${t.theme}</div>
+  `).join("") + `</div>`;
+  container.querySelectorAll(".theme").forEach(row => {
+    const t = items[parseInt(row.dataset.i, 10)];
+    row.addEventListener("mousemove", (e) => {
+      const quotes = (t.quotes || []).map(q => `<li>${q}</li>`).join("");
+      showTooltip(
+        `<div class="t-title">${t.theme} · ${t.count}</div>${quotes ? `<ul>${quotes}</ul>` : ""}`,
+        e.clientX, e.clientY
+      );
+    });
+    row.addEventListener("mouseleave", hideTooltip);
+    // Touch fallback for post-event phone visitors
+    row.addEventListener("click", (e) => {
+      const quotes = (t.quotes || []).map(q => `<li>${q}</li>`).join("");
+      showTooltip(
+        `<div class="t-title">${t.theme} · ${t.count}</div>${quotes ? `<ul>${quotes}</ul>` : ""}`,
+        e.clientX, e.clientY
+      );
+    });
+  });
 }
 
 // ---------- Main entry ----------

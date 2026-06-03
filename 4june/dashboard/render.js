@@ -1,5 +1,6 @@
 // 4june/dashboard/render.js
 import { aggregateBy, donutSegments, topN, hashHue } from "./viz.js";
+import { getIndustry } from "./industries.js";
 
 const PALETTE = ["#1FA84A","#14273F","#6FA3C0","#C98A2B","#5B3A63","#0F6B2E","#6CCE89","#818B98"];
 
@@ -124,10 +125,11 @@ async function main() {
 
   const total = responses.length;
   const firstTimers = responses.filter(r => r.previousEvents === "First time").length;
+  const returnees = responses.filter(r => ["3–5", "5+"].includes(r.previousEvents)).length;
   const ts = (clusters.generatedAt || new Date().toISOString()).slice(11, 16);
 
   document.getElementById("status").innerHTML =
-    `${total} <span class="dim">of 35 checked in</span> · ${firstTimers} <span class="dim">first-timers</span> · <span class="dim">updated ${ts}</span>`;
+    `${total} <span class="dim">of 35 checked in</span> · ${firstTimers} <span class="dim">first-timers</span> · ${returnees} <span class="dim">regulars</span> · <span class="dim">updated ${ts}</span>`;
 
   // Tax areas
   const taxCounts = aggregateBy(responses, r => r.taxAreas);
@@ -154,11 +156,11 @@ async function main() {
   renderThemes(document.querySelector("#p-wishes .panel-body"), clusters.wishes || []);
   renderThemes(document.querySelector("#p-exp .panel-body"), clusters.expectations || []);
 
-  // Prev attendance
-  const prevCounts = aggregateBy(responses, r => [r.previousEvents]);
-  const prevSegs = donutSegments(prevCounts);
-  const namesByPrev = {};
-  for (const r of responses) (namesByPrev[r.previousEvents] ||= []).push(r.name.split(" ")[0]);
-  renderDonut(document.querySelector("#p-prev .panel-body"), prevSegs, namesByPrev);
+  // Industries
+  const industryCounts = aggregateBy(responses, r => [getIndustry(r.company)]);
+  const industrySegs = donutSegments(industryCounts).sort((a,b) => b.count - a.count);
+  const namesByIndustry = {};
+  for (const r of responses) (namesByIndustry[getIndustry(r.company)] ||= []).push(r.name.split(" ")[0]);
+  renderDonut(document.querySelector("#p-industries .panel-body"), industrySegs, namesByIndustry);
 }
 main();

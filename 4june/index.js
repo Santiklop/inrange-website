@@ -155,3 +155,106 @@ document.getElementById("picker").addEventListener("click", (e) => {
 });
 
 closeBtn.addEventListener("click", () => sheet.close());
+
+const ENDPOINT = "https://formsubmit.co/ajax/aleks@inrange.nl";
+
+function readChips(id) {
+  return [...document.querySelectorAll(`#${id} .chip[aria-pressed="true"]`)].map(c => c.textContent);
+}
+function readSingle(id) {
+  const c = document.querySelector(`#${id} .chip[aria-pressed="true"]`);
+  return c ? c.textContent : "";
+}
+
+function buildPayload() {
+  const isNew = sheet.dataset.isNew === "1";
+  const name = document.getElementById("f-name").value.trim();
+  const company = document.getElementById("f-company").value.trim();
+
+  let id = sheet.dataset.cardId;
+  if (isNew) {
+    const cached = JSON.parse(localStorage.getItem("4june.walkinId") || "null");
+    if (cached && cached.name === name) id = cached.id;
+    else id = `${slugify(name) || "guest"}-${randomSuffix()}`;
+    localStorage.setItem("4june.walkinId", JSON.stringify({ name, id }));
+  }
+
+  const payload = {
+    id, name, company,
+    taxAreas: readChips("g-tax"),
+    taxAreaOther: document.getElementById("f-tax-other").value.trim(),
+    previousEvents: readSingle("g-prev"),
+    yearsInTax: readSingle("g-years"),
+    aiToolsWork: readChips("g-work"),
+    aiToolsWorkOther: document.getElementById("f-work-other").value.trim(),
+    aiToolsHome: readChips("g-home"),
+    aiToolsHomeOther: document.getElementById("f-home-other").value.trim(),
+    wishToTry: document.getElementById("f-wish").value.trim(),
+    expectationToday: document.getElementById("f-exp").value.trim(),
+    submittedAt: new Date().toISOString(),
+    isNewParticipant: isNew
+  };
+
+  const subjectTag = isNew ? "[Tax Expats Check-in NEW]" : "[Tax Expats Check-in]";
+  return {
+    _subject: `${subjectTag} ${name}`,
+    _template: "box",
+    _honey: "",
+    ...payload,
+    JSON: JSON.stringify(payload)
+  };
+}
+
+function showToast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.hidden = false;
+  setTimeout(() => { t.hidden = true; }, 3500);
+}
+
+function showConfirmation(name) {
+  sheet.close();
+  const main = document.querySelector("main.page");
+  main.innerHTML = `
+    <header class="brand">
+      <div class="brand-wordmark">TAX EXPATS CLUB</div>
+      <div class="event-line">4 June 2026 · Nutanix Hoofddorp</div>
+    </header>
+    <div class="confirm">
+      <h1 class="confirm-thanks">Thanks, ${name.split(" ")[0] || "you"} —<br>see you at 16:00.</h1>
+      <p class="confirm-edit">Reload the page and tap your card to edit your answers.</p>
+      <button type="button" class="sheet-submit" onclick="location.reload()">Back to the list</button>
+    </div>
+    <footer>Powered by inRange · <a href="https://www.inrange.nl">www.inrange.nl</a></footer>
+  `;
+}
+
+document.getElementById("sheet-form").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const btn = document.getElementById("sheet-submit");
+  btn.disabled = true;
+  btn.textContent = "Sending…";
+
+  const payload = buildPayload();
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    if (data.success !== "true") throw new Error("Formsubmit said: " + JSON.stringify(data));
+
+    submittedIds.add(payload.id);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...submittedIds]));
+    showConfirmation(payload.name);
+  } catch (err) {
+    console.error(err);
+    showToast("Could not send. Check connection and try again.");
+    localStorage.setItem("4june.pending", JSON.stringify(payload));
+    btn.disabled = false;
+    btn.textContent = "Submit";
+  }
+});

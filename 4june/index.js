@@ -75,6 +75,24 @@ const TOOLS = [
 ];
 const PREV_EVENTS = ["First time", "1–2", "3–5", "5+"];
 const YEARS = ["0–5", "5–15", "15+"];
+const WINS = [
+  "Drafting memos / first-draft writing",
+  "Summarising long documents",
+  "Research and explanation",
+  "Excel formulas and macros",
+  "Brainstorming / second opinion",
+  "Building small tools or apps",
+  "Other"
+];
+const FRUSTRATIONS = [
+  "Hallucinations / wrong answers",
+  "Privacy — can't share client data",
+  "Doesn't understand tax context",
+  "Inconsistent output quality",
+  "Hard to integrate with my workflow",
+  "Compliance / audit defensibility",
+  "Other"
+];
 
 function renderChips(containerId, options) {
   const el = document.getElementById(containerId);
@@ -126,9 +144,9 @@ function openSheet(attendee, isNew) {
   document.getElementById("sheet-title").textContent = isNew ? "Tell us who you are" : attendee.name;
   document.getElementById("sheet-subtitle").textContent = isNew ? "" : attendee.company;
 
-  for (const id of ["g-tax","g-prev","g-years","g-work","g-home"]) clearChips(id);
+  for (const id of ["g-tax","g-prev","g-years","g-work","g-home","g-win","g-frust"]) clearChips(id);
   preselectChips("g-tax", attendee.taxAreas);
-  for (const id of ["f-tax-other","f-work-other","f-home-other","f-wish","f-exp"]) document.getElementById(id).value = "";
+  for (const id of ["f-tax-other","f-work-other","f-home-other","f-win-other","f-frust-other","f-wish","f-exp"]) document.getElementById(id).value = "";
 
   updateCounters();
   sheet.dataset.cardId = attendee.id;
@@ -142,6 +160,8 @@ renderChips("g-prev", PREV_EVENTS);
 renderChips("g-years", YEARS);
 renderChips("g-work", TOOLS);
 renderChips("g-home", TOOLS);
+renderChips("g-win", WINS);
+renderChips("g-frust", FRUSTRATIONS);
 
 document.getElementById("picker").addEventListener("click", (e) => {
   const card = e.target.closest(".card");
@@ -194,6 +214,10 @@ function buildPayload() {
     aiToolsHome: readChips("g-home"),
     aiToolsHomeOther: document.getElementById("f-home-other").value.trim(),
     wishToTry: document.getElementById("f-wish").value.trim(),
+    biggestWin: readSingle("g-win"),
+    biggestWinOther: document.getElementById("f-win-other").value.trim(),
+    biggestFrustration: readSingle("g-frust"),
+    biggestFrustrationOther: document.getElementById("f-frust-other").value.trim(),
     expectationToday: document.getElementById("f-exp").value.trim(),
     submittedAt: new Date().toISOString(),
     isNewParticipant: isNew

@@ -141,6 +141,27 @@ function renderThemes(container, items) {
   });
 }
 
+// ---------- Horizontal bars (single-colour, for wins / frustrations) ----------
+function renderHBars(container, rows, kind, namesByLabel) {
+  const max = Math.max(1, ...rows.map(r => r.count));
+  container.innerHTML = `<div class="hbars">` + rows.map(r => `
+    <div class="hbars-row" data-label="${r.label}">
+      <div class="hbars-head">
+        <span class="hbars-text">${r.label}</span>
+        <span class="hbars-count">${r.count}</span>
+      </div>
+      <div class="hbars-track"><div class="hbars-fill ${kind}" style="width:${(r.count / max) * 100}%"></div></div>
+    </div>`).join("") + `</div>`;
+  container.querySelectorAll(".hbars-row").forEach(row => {
+    const label = row.dataset.label;
+    const names = (namesByLabel?.[label] || []).slice(0, 20).join(", ");
+    row.addEventListener("mousemove", (e) => {
+      showTooltip(`<div class="t-title">${label}</div>${names}`, e.clientX, e.clientY);
+    });
+    row.addEventListener("mouseleave", hideTooltip);
+  });
+}
+
 // ---------- Main entry ----------
 async function main() {
   const [responses, clusters] = await Promise.all([

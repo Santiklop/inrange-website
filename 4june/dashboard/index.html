@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Tax Expats Club — Room dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-green-300: #6CCE89; --brand-green-500: #1FA84A; --brand-green-700: #0F6B2E;
+      --brand-navy-700: #14273F; --brand-navy-800: #0D1B2D;
+      --accent-sky: #6FA3C0; --accent-ochre: #C98A2B; --accent-plum: #5B3A63;
+      --bg: #0A1018; --bg-card: #131B27; --bg-sunken: #1D2532;
+      --fg-1: #EBEFF5; --fg-2: #B6BFCB; --fg-3: #818B98;
+      --border: rgba(255,255,255,.10);
+      --radius: 14px;
+      --font: "Plus Jakarta Sans", system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg-1); font-family: var(--font); }
+    a { color: var(--brand-green-300); }
+
+    .root { display: grid; grid-template-rows: auto 1fr auto;
+            min-height: 100vh; padding: 24px 32px; gap: 16px; }
+
+    .hero { display: flex; flex-direction: column; gap: 10px; padding: 8px 0; }
+    .hero-line { display: flex; justify-content: space-between; align-items: baseline; }
+    .wordmark { font-weight: 800; font-size: 28px; color: var(--brand-green-500); letter-spacing: -0.02em; }
+    .chyron { color: var(--fg-2); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; }
+    .status { font-size: 36px; font-weight: 700; color: var(--fg-1); text-align: center; padding: 6px 0; }
+    .status .dim { color: var(--fg-3); font-weight: 500; }
+
+    .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; }
+    .panel { background: var(--bg-card); border: 1px solid var(--border);
+             border-radius: var(--radius); padding: 18px 20px;
+             display: flex; flex-direction: column; min-height: 0; }
+    .panel-title { font-size: 12px; letter-spacing: 0.14em;
+                   text-transform: uppercase; color: var(--brand-green-300);
+                   font-weight: 700; margin: 0 0 14px; }
+
+    .legend { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; font-size: 14px; }
+    .legend-row { display: contents; }
+    .legend-swatch { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 6px; }
+    .legend-count { color: var(--fg-3); }
+
+    .bars-row { display: grid; grid-template-columns: 140px 1fr 60px; gap: 8px; align-items: center; padding: 4px 0; font-size: 14px; }
+    .bar-track { background: var(--bg-sunken); height: 14px; border-radius: 4px; position: relative; overflow: hidden; }
+    .bar-work { background: var(--brand-green-500); position: absolute; left: 0; top: 0; height: 7px; }
+    .bar-home { background: var(--accent-sky); position: absolute; left: 0; bottom: 0; height: 7px; }
+
+    .chip-cloud { display: flex; flex-wrap: wrap; gap: 6px; align-content: flex-start; }
+    .cloud-chip { padding: 6px 10px; border-radius: 999px; background: var(--bg-sunken); color: var(--fg-1); cursor: default; }
+
+    .themes { display: flex; flex-direction: column; gap: 6px; }
+    .theme { background: var(--bg-sunken); border-radius: 8px; padding: 10px 12px;
+             display: flex; justify-content: space-between; align-items: center;
+             font-size: 15px; cursor: pointer; }
+    .theme-count { color: var(--brand-green-300); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .theme-quotes { padding: 8px 12px 12px; font-size: 13px; color: var(--fg-2); display: none; }
+    .theme.open .theme-quotes { display: block; }
+    .theme-quotes li { margin: 4px 0; font-style: italic; }
+
+    footer { text-align: center; color: var(--fg-3); font-size: 12px; padding: 8px 0; }
+
+    .tooltip { position: fixed; background: var(--brand-navy-800); color: white;
+               padding: 8px 12px; border-radius: 6px; font-size: 13px;
+               box-shadow: 0 4px 12px rgba(0,0,0,.4); max-width: 320px;
+               pointer-events: none; z-index: 100; }
+  </style>
+</head>
+<body>
+  <div class="root">
+    <header class="hero">
+      <div class="hero-line">
+        <span class="wordmark">TAX EXPATS CLUB</span>
+        <span class="chyron">4 June 2026 · Hoofddorp</span>
+      </div>
+      <div class="status" id="status">—</div>
+    </header>
+
+    <main class="grid">
+      <section class="panel" id="p-tax">       <h2 class="panel-title">Tax areas we work in</h2><div class="panel-body"></div></section>
+      <section class="panel" id="p-tools">     <h2 class="panel-title">Tools we use (work vs home)</h2><div class="panel-body"></div></section>
+      <section class="panel" id="p-companies"> <h2 class="panel-title">Companies in the room</h2><div class="panel-body"></div></section>
+      <section class="panel" id="p-wishes">    <h2 class="panel-title">What we wish we could do</h2><div class="panel-body"></div></section>
+      <section class="panel" id="p-exp">       <h2 class="panel-title">What we hope to get today</h2><div class="panel-body"></div></section>
+      <section class="panel" id="p-prev">      <h2 class="panel-title">Who's in the room</h2><div class="panel-body"></div></section>
+    </main>
+
+    <footer>Powered by inRange · <a href="https://www.inrange.nl">www.inrange.nl</a></footer>
+  </div>
+
+  <div id="tooltip" class="tooltip" hidden></div>
+  <script type="module" src="./render.js"></script>
+</body>
+</html>

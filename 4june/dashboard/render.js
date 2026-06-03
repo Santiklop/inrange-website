@@ -51,13 +51,13 @@ function renderDonut(container, segments, namesByLabel) {
   }).join("");
   const legend = segments.map((seg, i) => `
     <div class="legend-row">
-      <span><span class="legend-swatch" style="background:${PALETTE[i % PALETTE.length]}"></span>${seg.label}</span>
+      <span><span class="legend-swatch" style="background:${PALETTE[i % PALETTE.length]}"></span><span class="legend-label">${seg.label}</span></span>
       <span class="legend-count">${seg.count}</span>
     </div>`).join("");
   container.innerHTML = `
-    <div style="display:flex;gap:16px;align-items:center;flex:1;min-height:0;">
-      <svg viewBox="0 0 ${size} ${size}" style="width:180px;height:180px;flex:0 0 auto">${arcs}</svg>
-      <div class="legend" style="flex:1;align-self:center">${legend}</div>
+    <div class="donut-wrap">
+      <svg viewBox="0 0 ${size} ${size}" style="width:140px;height:140px;flex:0 0 auto">${arcs}</svg>
+      <div class="legend">${legend}</div>
     </div>`;
   container.querySelectorAll("path").forEach(p => {
     p.addEventListener("mousemove", (e) => {

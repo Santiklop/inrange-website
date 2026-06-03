@@ -151,6 +151,7 @@ function openSheet(attendee, isNew) {
   updateCounters();
   sheet.dataset.cardId = attendee.id;
   sheet.dataset.isNew = isNew ? "1" : "0";
+  document.documentElement.classList.add("sheet-open");
   document.body.classList.add("sheet-open");
   sheet.showModal();
 }
@@ -177,8 +178,34 @@ document.getElementById("picker").addEventListener("click", (e) => {
 
 closeBtn.addEventListener("click", () => sheet.close());
 sheet.addEventListener("close", () => {
+  document.documentElement.classList.remove("sheet-open");
   document.body.classList.remove("sheet-open");
 });
+
+// iOS Safari touch-boundary lock: prevent rubber-band bounce when the form
+// is at the top or bottom of its scroll range. overscroll-behavior alone
+// is not always enough on iOS, so we also intercept touchmove and only
+// preventDefault when a scroll past the boundary would otherwise bleed
+// through to the page behind the dialog.
+(function lockSheetTouchBoundaries() {
+  const scroller = document.getElementById("sheet-form");
+  let startY = 0;
+  scroller.addEventListener("touchstart", (e) => {
+    if (e.touches.length !== 1) return;
+    startY = e.touches[0].clientY;
+  }, { passive: true });
+  scroller.addEventListener("touchmove", (e) => {
+    if (e.touches.length !== 1) return;
+    const y = e.touches[0].clientY;
+    const goingDown = y > startY;
+    const goingUp = y < startY;
+    const atTop = scroller.scrollTop <= 0;
+    const atBottom = scroller.scrollTop + scroller.clientHeight >= scroller.scrollHeight - 1;
+    if ((goingDown && atTop) || (goingUp && atBottom)) {
+      e.preventDefault();
+    }
+  }, { passive: false });
+})();
 
 const ENDPOINT = "https://formsubmit.co/ajax/92ff96a867d2b97bee73c7b50f43f788";
 

@@ -72,8 +72,10 @@
     @media (prefers-reduced-motion: reduce) { .sheet { transition: none; } }
     .sheet::backdrop { background: rgba(7, 17, 29, 0.78); }
 
-    /* When the sheet is open, freeze the body so the picker behind doesn't scroll. */
-    body.sheet-open { overflow: hidden; position: fixed; width: 100%; }
+    /* When the sheet is open, freeze the whole page so the picker behind doesn't scroll. */
+    html.sheet-open, body.sheet-open { overflow: hidden; position: fixed;
+                                       width: 100%; height: 100%;
+                                       overscroll-behavior: none; }
 
     .sheet form { display: flex; flex-direction: column; flex: 1; min-height: 0;
                   overflow-y: auto; overscroll-behavior: contain;

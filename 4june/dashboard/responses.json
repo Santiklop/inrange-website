@@ -19,9 +19,15 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "agent to draft TP memos from comparables",
-    "biggestWin": "Drafting memos / first-draft writing",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Research and explanation"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Privacy — can't share internal company data",
+    "biggestFrustrations": [
+      "Privacy — can't share internal company data",
+      "Hallucinations / wrong answers"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Find collaborators for an AI-driven benchmarking workflow.",
     "submittedAt": "2026-06-04T15:30:00+02:00",
@@ -49,9 +55,15 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "real-time TP benchmark refresh",
-    "biggestWin": "Building small tools or apps",
+    "biggestWins": [
+      "Building small tools or apps",
+      "Brainstorming / second opinion"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Inconsistent output quality",
+    "biggestFrustrations": [
+      "Inconsistent output quality",
+      "Doesn't understand tax context"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "See AI use cases I can apply tomorrow.",
     "submittedAt": "2026-06-04T15:31:00+02:00",
@@ -78,9 +90,14 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "automated Pillar 2 country-by-country reconciliation",
-    "biggestWin": "Research and explanation",
+    "biggestWins": [
+      "Research and explanation"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Doesn't understand tax context",
+    "biggestFrustrations": [
+      "Doesn't understand tax context",
+      "Compliance / audit defensibility"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Learn how peers are handling Pillar 2 data gaps.",
     "submittedAt": "2026-06-04T15:32:00+02:00",
@@ -106,9 +123,14 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "VAT return anomaly detection across jurisdictions",
-    "biggestWin": "Summarising long documents",
+    "biggestWins": [
+      "Summarising long documents",
+      "Drafting memos / first-draft writing"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Hallucinations / wrong answers",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Find tooling ideas for our indirect tax compliance backlog.",
     "submittedAt": "2026-06-04T15:33:00+02:00",
@@ -134,9 +156,16 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "HS code classification assistant for new SKUs",
-    "biggestWin": "Excel formulas and macros",
+    "biggestWins": [
+      "Excel formulas and macros",
+      "Brainstorming / second opinion",
+      "Drafting memos / first-draft writing"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Hard to integrate with my workflow",
+    "biggestFrustrations": [
+      "Hard to integrate with my workflow",
+      "Compliance / audit defensibility"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Hear concrete examples of AI in customs workflows.",
     "submittedAt": "2026-06-04T15:34:00+02:00",
@@ -164,9 +193,15 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "custom agent that reconciles ledger to VAT return",
-    "biggestWin": "Brainstorming / second opinion",
+    "biggestWins": [
+      "Brainstorming / second opinion"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Compliance / audit defensibility",
+    "biggestFrustrations": [
+      "Compliance / audit defensibility",
+      "Inconsistent output quality",
+      "Hard to integrate with my workflow"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Meet builders who've shipped tax automations to production.",
     "submittedAt": "2026-06-04T15:35:00+02:00",
@@ -192,9 +227,14 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "agent to draft TP memos from comparables",
-    "biggestWin": "Other",
+    "biggestWins": [
+      "Other",
+      "Summarising long documents"
+    ],
     "biggestWinOther": "Drafting tricky client emails in a calmer tone",
-    "biggestFrustration": "Other",
+    "biggestFrustrations": [
+      "Other"
+    ],
     "biggestFrustrationOther": "Slows down badly on long PDF contexts",
     "expectationToday": "Stories of what hasn't worked when deploying AI in tax.",
     "submittedAt": "2026-06-04T15:36:00+02:00",
@@ -219,9 +259,16 @@
     "aiToolsHome": [],
     "aiToolsHomeOther": "",
     "wishToTry": "summarising audit correspondence into action items",
-    "biggestWin": "Drafting memos / first-draft writing",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Excel formulas and macros",
+      "Brainstorming / second opinion"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Privacy — can't share internal company data",
+    "biggestFrustrations": [
+      "Privacy — can't share internal company data",
+      "Inconsistent output quality"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Practical ideas for handling our growing audit caseload.",
     "submittedAt": "2026-06-04T15:37:00+02:00",
@@ -247,9 +294,15 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "extracting numbers from tax authority PDFs into Excel",
-    "biggestWin": "Summarising long documents",
+    "biggestWins": [
+      "Summarising long documents",
+      "Drafting memos / first-draft writing"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Doesn't understand tax context",
+    "biggestFrustrations": [
+      "Doesn't understand tax context",
+      "Hallucinations / wrong answers"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Network with peers who've automated repetitive compliance work.",
     "submittedAt": "2026-06-04T15:38:00+02:00",
@@ -276,9 +329,14 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "drafting first-pass TP memos from a comparables set",
-    "biggestWin": "Excel formulas and macros",
+    "biggestWins": [
+      "Excel formulas and macros"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Inconsistent output quality",
+    "biggestFrustrations": [
+      "Inconsistent output quality",
+      "Privacy — can't share internal company data"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Compare notes on AI adoption with other tax heads.",
     "submittedAt": "2026-06-04T15:39:00+02:00",
@@ -304,9 +362,16 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "summarising the latest OECD guidance into a brief",
-    "biggestWin": "Research and explanation",
+    "biggestWins": [
+      "Research and explanation",
+      "Summarising long documents"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Privacy — can't share internal company data",
+    "biggestFrustrations": [
+      "Privacy — can't share internal company data",
+      "Doesn't understand tax context",
+      "Inconsistent output quality"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Find a sparring partner on Pillar 2 implementation.",
     "submittedAt": "2026-06-04T15:40:00+02:00",
@@ -333,9 +398,14 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "custom agent that reconciles ledger to VAT return",
-    "biggestWin": "Brainstorming / second opinion",
+    "biggestWins": [
+      "Brainstorming / second opinion",
+      "Research and explanation"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Hallucinations / wrong answers",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Meet builders who've shipped tax automations to production.",
     "submittedAt": "2026-06-04T15:41:00+02:00",
@@ -362,9 +432,16 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "live benchmarking dashboard that updates as filings drop",
-    "biggestWin": "Building small tools or apps",
+    "biggestWins": [
+      "Building small tools or apps",
+      "Research and explanation",
+      "Drafting memos / first-draft writing"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Hard to integrate with my workflow",
+    "biggestFrustrations": [
+      "Hard to integrate with my workflow",
+      "Compliance / audit defensibility"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Learn which tax-specific tools are actually being used.",
     "submittedAt": "2026-06-04T15:42:00+02:00",
@@ -390,9 +467,14 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "extracting numbers from tax authority PDFs into Excel",
-    "biggestWin": "Summarising long documents",
+    "biggestWins": [
+      "Summarising long documents"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Compliance / audit defensibility",
+    "biggestFrustrations": [
+      "Compliance / audit defensibility",
+      "Hallucinations / wrong answers"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Practical ideas for handling our growing audit caseload.",
     "submittedAt": "2026-06-04T15:43:00+02:00",
@@ -418,9 +500,15 @@
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "turning long audit letters into a short list of next steps",
-    "biggestWin": "Drafting memos / first-draft writing",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Building small tools or apps"
+    ],
     "biggestWinOther": "",
-    "biggestFrustration": "Hallucinations / wrong answers",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Privacy — can't share internal company data"
+    ],
     "biggestFrustrationOther": "",
     "expectationToday": "Stories of what hasn't worked when deploying AI in tax.",
     "submittedAt": "2026-06-04T15:44:00+02:00",

@@ -116,7 +116,7 @@ function renderChips(containerId, options) {
 }
 
 function updateCounters() {
-  for (const [groupId, counterId] of [["g-work","c-work"],["g-home","c-home"]]) {
+  for (const [groupId, counterId] of [["g-work","c-work"],["g-home","c-home"],["g-win","c-win"],["g-frust","c-frust"]]) {
     const sel = document.querySelectorAll(`#${groupId} .chip[aria-pressed="true"]`).length;
     const cap = document.getElementById(groupId).dataset.cap;
     document.getElementById(counterId).textContent = `${sel} / ${cap}`;
@@ -214,9 +214,9 @@ function buildPayload() {
     aiToolsHome: readChips("g-home"),
     aiToolsHomeOther: document.getElementById("f-home-other").value.trim(),
     wishToTry: document.getElementById("f-wish").value.trim(),
-    biggestWin: readSingle("g-win"),
+    biggestWins: readChips("g-win"),
     biggestWinOther: document.getElementById("f-win-other").value.trim(),
-    biggestFrustration: readSingle("g-frust"),
+    biggestFrustrations: readChips("g-frust"),
     biggestFrustrationOther: document.getElementById("f-frust-other").value.trim(),
     expectationToday: document.getElementById("f-exp").value.trim(),
     submittedAt: new Date().toISOString(),

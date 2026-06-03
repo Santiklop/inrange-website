@@ -208,5 +208,23 @@ async function main() {
   const namesByIndustry = {};
   for (const r of responses) (namesByIndustry[getIndustry(r.company)] ||= []).push(r.name.split(" ")[0]);
   renderDonut(document.querySelector("#p-industries .panel-body"), industrySegs, namesByIndustry);
+
+  // Biggest wins
+  const winCounts = aggregateBy(responses, r => r.biggestWins);
+  const winRows = Object.entries(winCounts)
+    .sort((a,b) => b[1] - a[1])
+    .map(([label, count]) => ({ label, count }));
+  const namesByWin = {};
+  for (const r of responses) for (const w of (r.biggestWins || [])) (namesByWin[w] ||= []).push(r.name.split(" ")[0]);
+  renderHBars(document.querySelector("#p-wins .panel-body"), winRows, "win", namesByWin);
+
+  // Biggest frustrations
+  const frustCounts = aggregateBy(responses, r => r.biggestFrustrations);
+  const frustRows = Object.entries(frustCounts)
+    .sort((a,b) => b[1] - a[1])
+    .map(([label, count]) => ({ label, count }));
+  const namesByFrust = {};
+  for (const r of responses) for (const f of (r.biggestFrustrations || [])) (namesByFrust[f] ||= []).push(r.name.split(" ")[0]);
+  renderHBars(document.querySelector("#p-frust .panel-body"), frustRows, "frust", namesByFrust);
 }
 main();

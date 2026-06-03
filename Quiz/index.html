@@ -545,7 +545,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 [data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__title,
 [data-theme="dark"] .quiz-mode-card--deathrun:hover .quiz-mode-card__body{color:#fff}
 
-/* Mobile: no hover, so render the cards in their "hover" colours by default */
+/* Mobile: no hover, so render the cards in their "hover" colours + emoji by default */
 @media (max-width:767px){
   .quiz-mode-card:not(.quiz-mode-card--deathrun){border-color:var(--brand-green-500);background:var(--brand-green-500);color:#fff}
   .quiz-mode-card:not(.quiz-mode-card--deathrun) .quiz-mode-card__eyebrow,
@@ -555,6 +555,17 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   .quiz-mode-card--deathrun .quiz-mode-card__eyebrow,
   .quiz-mode-card--deathrun .quiz-mode-card__title,
   .quiz-mode-card--deathrun .quiz-mode-card__body{color:#fff}
+  .quiz-mode-card{position:relative}
+  .quiz-mode-card::after{
+    content:"🏃";
+    position:absolute;
+    top:14px;
+    right:14px;
+    font-size:42px;
+    line-height:1;
+    pointer-events:none;
+  }
+  .quiz-mode-card--deathrun::after{content:"💀"}
 }
 
 /* Desktop: emoji peeks in at top-right on hover — 🏃 for Sprint, 💀 for Death Run */
@@ -680,11 +691,9 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .header-quiz-btn:hover{background:var(--brand-green-200);border-color:var(--brand-green-200);color:var(--brand-green-800)}
 .header-quiz-btn__icon{font-size:14px;line-height:1}
 @media (max-width:1023px){
-  .header-quiz-btn{padding:0 12px;width:auto;height:38px;justify-content:center;gap:2px;border-radius:24px}
+  .header-quiz-btn{padding:0;width:38px;height:38px;justify-content:center;gap:0}
   .header-quiz-btn__label{display:none}
   .header-quiz-btn__icon{font-size:18px}
-  .header-quiz-btn__icon::before{content:"🏃 "}
-  .header-quiz-btn__icon::after{content:" 💀"}
 }
 
 [data-theme="dark"] .header-quiz-btn{background:var(--brand-green-100);border-color:var(--brand-green-100);color:var(--brand-green-700)}

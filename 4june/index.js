@@ -86,7 +86,7 @@ const WINS = [
 ];
 const FRUSTRATIONS = [
   "Hallucinations / wrong answers",
-  "Privacy — can't share client data",
+  "Privacy — can't share internal company data",
   "Doesn't understand tax context",
   "Inconsistent output quality",
   "Hard to integrate with my workflow",

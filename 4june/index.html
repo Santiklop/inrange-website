@@ -52,6 +52,56 @@
                  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .card-tick { position: absolute; right: 14px; top: 14px;
                  color: var(--brand-green-500); font-weight: 800; font-size: 16px; }
+
+    .sheet { width: 100%; max-width: 560px; padding: 0; border: none;
+             border-radius: 16px 16px 0 0;
+             margin: auto auto 0; background: var(--surface-card);
+             transform: translateY(100%); transition: transform 240ms var(--ease-out); }
+    .sheet[open] { transform: translateY(0); }
+    @media (prefers-reduced-motion: reduce) { .sheet { transition: none; } }
+    .sheet::backdrop { background: rgba(15,20,28,.45); }
+
+    .sheet-head { padding: 16px 16px 8px; border-bottom: 1px solid var(--border-subtle); position: relative; }
+    .sheet-close { position: absolute; right: 8px; top: 8px;
+                   width: 40px; height: 40px; font-size: 22px;
+                   background: none; border: none; cursor: pointer; color: var(--fg-2); }
+    .sheet-title { margin: 0; font-size: 18px; font-weight: 700; }
+    .sheet-subtitle { font-size: 13px; color: var(--fg-3); margin-top: 2px; }
+
+    .sheet-section { padding: 14px 16px; border-bottom: 1px solid var(--border-subtle); }
+    .sheet-section h3 { font-size: var(--text-xs); letter-spacing: var(--tracking-caps);
+                        text-transform: uppercase; color: var(--fg-brand);
+                        font-weight: 700; margin: 0 0 12px; }
+
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; border: none; padding: 0; }
+    .field-label { font-size: 13px; font-weight: 600; color: var(--fg-1); display: flex; align-items: center; gap: 8px; }
+    .field input[type=text], .field textarea {
+      padding: 10px 12px; border-radius: var(--radius-sm);
+      border: 1px solid var(--border-default); font-size: 16px;
+      background: var(--bg); color: var(--fg-1); font-family: inherit;
+    }
+    .hint { font-weight: 400; color: var(--fg-3); font-size: 12px; }
+    .counter { color: var(--fg-3); font-size: 12px; font-weight: 400; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .chip { padding: 8px 12px; min-height: 36px; border-radius: 999px;
+            border: 1px solid var(--border-default); background: var(--bg);
+            font-size: 14px; cursor: pointer; }
+    .chip[aria-pressed=true] { background: var(--brand-green-100); border-color: var(--brand-green-500); color: var(--brand-green-700); font-weight: 600; }
+    .chip:disabled { opacity: .4; cursor: not-allowed; }
+    .chip-other { margin-top: 8px; }
+
+    .sheet-foot { position: sticky; bottom: 0; padding: 12px 16px;
+                  background: var(--surface-card); border-top: 1px solid var(--border-subtle); }
+    .sheet-submit { width: 100%; padding: 14px; border-radius: var(--radius-md);
+                    background: var(--brand-green-500); color: white; font-weight: 700;
+                    border: none; font-size: 16px; cursor: pointer; }
+    .sheet-submit:disabled { opacity: .6; }
+
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%);
+             background: var(--brand-navy-800); color: white;
+             padding: 12px 18px; border-radius: var(--radius-md);
+             font-size: 14px; box-shadow: var(--shadow-lg); }
   </style>
 </head>
 <body>
@@ -72,6 +122,80 @@
     </div>
 
     <ul id="picker" class="picker" role="list"></ul>
+
+    <dialog id="sheet" class="sheet" aria-labelledby="sheet-title">
+  <form id="sheet-form" method="dialog">
+    <header class="sheet-head">
+      <button type="button" id="sheet-close" class="sheet-close" aria-label="Close">×</button>
+      <h2 id="sheet-title" class="sheet-title"></h2>
+      <div id="sheet-subtitle" class="sheet-subtitle"></div>
+    </header>
+
+    <section class="sheet-section">
+      <h3>§ 1 — Your background</h3>
+
+      <label class="field">
+        <span class="field-label">Name</span>
+        <input type="text" id="f-name" autocapitalize="words" autocomplete="off" />
+      </label>
+      <label class="field">
+        <span class="field-label">Company</span>
+        <input type="text" id="f-company" autocapitalize="words" autocomplete="off" />
+      </label>
+
+      <fieldset class="field">
+        <legend class="field-label">Tax area(s) — multi-select <span class="counter" id="c-tax"></span></legend>
+        <div class="chips" id="g-tax" data-multi></div>
+        <input type="text" id="f-tax-other" placeholder="Other (free text)" class="chip-other" />
+      </fieldset>
+
+      <fieldset class="field">
+        <legend class="field-label">How many of our events have you joined before?</legend>
+        <div class="chips chips-single" id="g-prev"></div>
+      </fieldset>
+
+      <fieldset class="field">
+        <legend class="field-label">Years in tax (optional)</legend>
+        <div class="chips chips-single" id="g-years"></div>
+      </fieldset>
+    </section>
+
+    <section class="sheet-section">
+      <h3>§ 2 — AI in your day</h3>
+
+      <fieldset class="field">
+        <legend class="field-label">AI tools at work <span class="counter" id="c-work">0 / 5</span></legend>
+        <div class="chips" id="g-work" data-multi data-cap="5"></div>
+        <input type="text" id="f-work-other" placeholder="Other (free text)" class="chip-other" />
+      </fieldset>
+
+      <fieldset class="field">
+        <legend class="field-label">AI tools at home / personal <span class="counter" id="c-home">0 / 5</span></legend>
+        <div class="chips" id="g-home" data-multi data-cap="5"></div>
+        <input type="text" id="f-home-other" placeholder="Other (free text)" class="chip-other" />
+      </fieldset>
+
+      <label class="field">
+        <span class="field-label">One AI tool you wish you could use <span class="hint">(heard someone else use it, haven't tried)</span></span>
+        <input type="text" id="f-wish" maxlength="200" />
+      </label>
+    </section>
+
+    <section class="sheet-section">
+      <h3>§ 3 — Today</h3>
+      <label class="field">
+        <span class="field-label">What do you most want to walk away with today?</span>
+        <textarea id="f-exp" rows="3" maxlength="400"></textarea>
+      </label>
+    </section>
+
+    <footer class="sheet-foot">
+      <button type="submit" id="sheet-submit" class="sheet-submit">Submit</button>
+    </footer>
+  </form>
+</dialog>
+
+<div id="toast" class="toast" hidden></div>
 
     <footer>
       Powered by inRange · <a href="https://www.inrange.nl">www.inrange.nl</a>

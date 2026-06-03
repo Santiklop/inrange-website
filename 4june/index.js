@@ -63,3 +63,95 @@ document.getElementById("search").addEventListener("input", (e) => {
 
 render();
 document.getElementById("search").focus();
+
+const TAX_AREAS = [
+  "Transfer Pricing", "Direct / CIT", "Indirect / VAT", "Customs & Trade",
+  "Compliance & Reporting", "Tax Tech / Data", "Tax Controversy / Audit",
+  "International / Pillar 2 / BEPS"
+];
+const TOOLS = [
+  "ChatGPT", "Claude", "Gemini", "M365 Copilot", "GitHub Copilot / Cursor",
+  "Perplexity", "Tax-specific tool", "Custom in-house agent", "None yet"
+];
+const PREV_EVENTS = ["First time", "1–2", "3–5", "5+"];
+const YEARS = ["0–5", "5–15", "15+"];
+
+function renderChips(containerId, options) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = options.map(o => `<button type="button" class="chip" aria-pressed="false">${o}</button>`).join("");
+  const isSingle = el.classList.contains("chips-single");
+  const cap = parseInt(el.dataset.cap || "0", 10);
+  el.addEventListener("click", (e) => {
+    const chip = e.target.closest(".chip");
+    if (!chip) return;
+    const pressed = chip.getAttribute("aria-pressed") === "true";
+    if (isSingle) {
+      for (const c of el.querySelectorAll(".chip")) c.setAttribute("aria-pressed", "false");
+      chip.setAttribute("aria-pressed", !pressed);
+    } else {
+      const count = el.querySelectorAll('.chip[aria-pressed="true"]').length;
+      if (!pressed && cap > 0 && count >= cap) return; // cap enforced
+      chip.setAttribute("aria-pressed", !pressed);
+    }
+    updateCounters();
+  });
+}
+
+function updateCounters() {
+  for (const [groupId, counterId] of [["g-work","c-work"],["g-home","c-home"]]) {
+    const sel = document.querySelectorAll(`#${groupId} .chip[aria-pressed="true"]`).length;
+    const cap = document.getElementById(groupId).dataset.cap;
+    document.getElementById(counterId).textContent = `${sel} / ${cap}`;
+  }
+}
+
+function clearChips(containerId) {
+  for (const c of document.querySelectorAll(`#${containerId} .chip`)) c.setAttribute("aria-pressed", "false");
+}
+function preselectChips(containerId, values) {
+  if (!values) return;
+  for (const c of document.querySelectorAll(`#${containerId} .chip`)) {
+    if (values.includes(c.textContent)) c.setAttribute("aria-pressed", "true");
+  }
+}
+
+const sheet = document.getElementById("sheet");
+const closeBtn = document.getElementById("sheet-close");
+
+function openSheet(attendee, isNew) {
+  document.getElementById("f-name").value = attendee.name || "";
+  document.getElementById("f-name").readOnly = !isNew;
+  document.getElementById("f-company").value = attendee.company || "";
+  document.getElementById("f-company").readOnly = !isNew;
+  document.getElementById("sheet-title").textContent = isNew ? "Tell us who you are" : attendee.name;
+  document.getElementById("sheet-subtitle").textContent = isNew ? "" : attendee.company;
+
+  for (const id of ["g-tax","g-prev","g-years","g-work","g-home"]) clearChips(id);
+  preselectChips("g-tax", attendee.taxAreas);
+  for (const id of ["f-tax-other","f-work-other","f-home-other","f-wish","f-exp"]) document.getElementById(id).value = "";
+
+  updateCounters();
+  sheet.dataset.cardId = attendee.id;
+  sheet.dataset.isNew = isNew ? "1" : "0";
+  sheet.showModal();
+}
+
+renderChips("g-tax", TAX_AREAS);
+renderChips("g-prev", PREV_EVENTS);
+renderChips("g-years", YEARS);
+renderChips("g-work", TOOLS);
+renderChips("g-home", TOOLS);
+
+document.getElementById("picker").addEventListener("click", (e) => {
+  const card = e.target.closest(".card");
+  if (!card) return;
+  const id = card.dataset.id;
+  if (id === "__add__") {
+    openSheet({ id: "_new", name: "", company: "", taxAreas: [] }, true);
+  } else {
+    const a = ATTENDEES.find(x => x.id === id);
+    if (a) openSheet(a, false);
+  }
+});
+
+closeBtn.addEventListener("click", () => sheet.close());

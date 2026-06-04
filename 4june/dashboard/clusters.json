@@ -1,41 +1,42 @@
 {
-  "generatedAt": "2026-06-04T16:09:29+02:00",
+  "generatedAt": "2026-06-04T17:35:00+02:00",
   "wishes": [
-    {
-      "theme": "Try ChatGPT more",
-      "count": 1,
-      "quotes": [
-        "Chatgpt"
-      ]
-    },
     {
       "theme": "Try Claude",
       "count": 1,
       "quotes": [
         "Claude"
       ]
+    },
+    {
+      "theme": "Try ChatGPT more",
+      "count": 1,
+      "quotes": [
+        "Chatgpt"
+      ]
     }
   ],
   "expectations": [
     {
       "theme": "Learn from peers' AI use cases",
-      "count": 15,
+      "count": 16,
       "quotes": [
         "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)",
         "I am curious to see what others Tax team have implemented and AI use cases",
-        "To know where to look for to learn more about this next",
-        "See how peers are and what they do with it , hopefully get some new ideas and network a bit",
-        "Insight on what other companies are using AI",
-        "Use cases and practical application (data security),business case for AI spend",
-        "New ideas",
-        "AI practical experiences",
-        "Use case experience and barriers to auditability",
-        "More use cases to use",
         "Learn from other",
-        "AI Tool options",
-        "The real practice for using AI in tax field",
+        "More use cases to use",
+        "Use case experience and barriers to auditability",
+        "AI practical experiences",
+        "New ideas",
+        "Use cases and practical application (data security),business case for AI spend",
+        "Insight on what other companies are using AI",
+        "See how peers are and what they do with it , hopefully get some new ideas and network a bit",
+        "To know where to look for to learn more about this next",
+        "Learn something new",
         "Experience of others in AI usage",
-        "Learn something new"
+        "The real practice for using AI in tax field",
+        "AI Tool options",
+        "How other people apply AI at work and how useful it can be."
       ]
     },
     {

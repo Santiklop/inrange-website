@@ -717,34 +717,6 @@
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T13:57:13Z"
   },
-  "alexei-sorokin": {
-    "id": "alexei-sorokin",
-    "name": "Alexei Sorokin",
-    "company": "DTEK",
-    "taxAreas": [
-      "Transfer Pricing"
-    ],
-    "taxAreaOther": "",
-    "previousEvents": "",
-    "yearsInTax": "",
-    "aiToolsWork": [],
-    "aiToolsWorkOther": "",
-    "aiToolsHome": [],
-    "aiToolsHomeOther": "",
-    "wishToTry": "",
-    "biggestWins": [],
-    "biggestWinOther": "",
-    "biggestFrustrations": [],
-    "biggestFrustrationOther": "",
-    "expectationToday": "",
-    "selfAdoption": 3,
-    "selfApplication": 3,
-    "selfCraft": 3,
-    "selfTrust": 3,
-    "submittedAt": "2026-06-04T13:58:01.909Z",
-    "isNewParticipant": false,
-    "receivedAt": "2026-06-04T13:57:30Z"
-  },
   "hans-topril": {
     "id": "hans-topril",
     "name": "Hans Topril",
@@ -1002,5 +974,171 @@
     "submittedAt": "2026-06-04T14:06:49.362Z",
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T14:06:55Z"
+  },
+  "arlene-tsai": {
+    "id": "arlene-tsai",
+    "name": "Arlene Tsai",
+    "company": "INGKA",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Claude",
+      "Gemini",
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Research and explanation",
+      "Building small tools or apps"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Privacy — can’t share internal company data"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 9,
+    "selfApplication": 7,
+    "selfCraft": 5,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T14:07:49.673Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:07:50Z"
+  },
+  "min-shi": {
+    "id": "min-shi",
+    "name": "Min Shi",
+    "company": "IBFD",
+    "taxAreas": [
+      "Transfer Pricing",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Privacy — can’t share internal company data"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "How other people apply AI at work and how useful it can be.",
+    "selfAdoption": 8,
+    "selfApplication": 3,
+    "selfCraft": 7,
+    "selfTrust": 6,
+    "submittedAt": "2026-06-04T14:08:08.342Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:08:09Z"
+  },
+  "alexei-sorokin": {
+    "id": "alexei-sorokin",
+    "name": "Alexei Sorokin",
+    "company": "DTEK",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Claude",
+      "M365 Copilot",
+      "Custom in-house agent"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T14:09:22.309Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:08:55Z"
+  },
+  "marcos-moreira-teixeira": {
+    "id": "marcos-moreira-teixeira",
+    "name": "Marcos Moreira Teixeira",
+    "company": "Seagate",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "5+",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "M365 Copilot",
+      "Custom in-house agent"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude",
+      "Gemini"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Summarising long documents",
+      "Excel formulas and macros",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "Making call notes",
+    "biggestFrustrations": [
+      "Doesn’t understand tax context",
+      "Hard to integrate with my workflow",
+      "Compliance / audit defensibility"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 6,
+    "selfApplication": 5,
+    "selfCraft": 3,
+    "selfTrust": 4,
+    "submittedAt": "2026-06-04T14:10:05.988Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:10:06Z"
   }
 }

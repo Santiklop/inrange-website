@@ -273,7 +273,7 @@ function showConfirmation(name) {
   main.innerHTML = `
     <header class="brand">
       <div class="brand-wordmark">TAX EXPATS CLUB</div>
-      <div class="event-line">4 June 2026 · Nutanix Hoofddorp</div>
+      <div class="event-line">4 June 2026 · Nutanix</div>
     </header>
     <div class="confirm">
       <h1 class="confirm-thanks">Thanks, ${name.split(" ")[0] || "you"} —<br>see you at 16:00.</h1>

@@ -783,3 +783,24 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "l" || e.key === "L") setView("live");
   if (e.key === "o" || e.key === "O") setView("overview");
 });
+
+// ════════════════════════════════════════════════════════════════════════════
+// THEME TOGGLE — light ↔ dark, persisted (matches /Chapter7/ pattern)
+// ════════════════════════════════════════════════════════════════════════════
+(function setupTheme() {
+  const STORAGE_KEY = "dashboard.theme";
+  const root = document.documentElement;
+  const toggle = document.getElementById("theme-toggle");
+  if (!toggle) return;
+  const updateLabel = () => {
+    const cur = root.getAttribute("data-theme");
+    toggle.setAttribute("aria-label", cur === "dark" ? "Switch to light mode" : "Switch to dark mode");
+  };
+  updateLabel();
+  toggle.addEventListener("click", () => {
+    const next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem(STORAGE_KEY, next); } catch {}
+    updateLabel();
+  });
+})();

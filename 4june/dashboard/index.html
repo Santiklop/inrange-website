@@ -1,27 +1,76 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,nofollow">
   <title>Tax Expats Club — Room dashboard</title>
+  <script>
+    // Resolve the theme before paint to avoid a flash of the wrong colours
+    (function () {
+      try {
+        var stored = localStorage.getItem("dashboard.theme");
+        var theme = (stored === "light" || stored === "dark") ? stored : "dark";
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) { /* default dark stays */ }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Brand colours — same in both themes */
       --brand-green-300: #6CCE89; --brand-green-500: #1FA84A; --brand-green-700: #0F6B2E;
       --brand-navy-700: #14273F; --brand-navy-800: #0D1B2D;
       --accent-sky: #6FA3C0; --accent-ochre: #C98A2B; --accent-plum: #5B3A63;
+
+      /* DARK theme (default — best for projector) */
       --bg: #0A1018; --bg-card: #131B27; --bg-sunken: #1D2532;
       --fg-1: #EBEFF5; --fg-2: #B6BFCB; --fg-3: #818B98;
       --border: rgba(255,255,255,.10);
+      --track-bg: rgba(255,255,255,.05);
+      --grid-line: rgba(255,255,255,.06);
+      --scrollbar-thumb: rgba(255,255,255,.15);
+      --scrollbar-thumb-hover: rgba(255,255,255,.30);
+      --tooltip-bg: var(--brand-navy-800);
+      --tooltip-fg: #FFFFFF;
+
       --radius: 14px;
       --font: "Plus Jakarta Sans", system-ui, sans-serif;
     }
+    /* LIGHT theme — invoked via <html data-theme="light"> */
+    [data-theme="light"] {
+      --bg: #FAFBFC; --bg-card: #FFFFFF; --bg-sunken: #F1F4F8;
+      --fg-1: #0D1B2D; --fg-2: #3C4858; --fg-3: #6E7785;
+      --border: rgba(13,27,45,.12);
+      --track-bg: rgba(13,27,45,.06);
+      --grid-line: rgba(13,27,45,.08);
+      --scrollbar-thumb: rgba(13,27,45,.22);
+      --scrollbar-thumb-hover: rgba(13,27,45,.40);
+      --tooltip-bg: #14273F;
+      --tooltip-fg: #FFFFFF;
+      color-scheme: light;
+    }
+    [data-theme="dark"] { color-scheme: dark; }
     * { box-sizing: border-box; }
-    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg-1); font-family: var(--font); }
-    a { color: var(--brand-green-300); }
+    html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg-1); font-family: var(--font);
+                 transition: background 220ms ease, color 220ms ease; }
+    a { color: var(--brand-green-500); }
+    [data-theme="dark"] a { color: var(--brand-green-300); }
+
+    /* Theme toggle button (sun/moon, mirrors the OECD Chapter 7 pattern) */
+    .theme-toggle { display: inline-flex; align-items: center; justify-content: center;
+                    width: 36px; height: 36px; padding: 0;
+                    background: var(--bg-sunken); color: var(--fg-1);
+                    border: 1px solid var(--border); border-radius: 999px;
+                    cursor: pointer; font-family: inherit;
+                    transition: background 140ms, color 140ms, border-color 140ms; }
+    .theme-toggle:hover { background: rgba(31,168,74,0.12); border-color: var(--brand-green-500); }
+    .theme-toggle svg { width: 16px; height: 16px; }
+    .theme-toggle .sun { display: none; }
+    [data-theme="dark"] .theme-toggle .moon { display: none; }
+    [data-theme="dark"] .theme-toggle .sun  { display: block; }
 
     .root { display: grid; grid-template-rows: auto 1fr auto;
             min-height: 100vh; padding: 18px 22px; gap: 14px; }
@@ -49,10 +98,10 @@
        so wide content (long theme labels, etc.) wraps instead of side-scrolling. */
     .panel-body { flex: 1 1 auto; min-height: 0;
                   overflow-y: auto; overflow-x: hidden;
-                  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent; }
+                  scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent; }
     .panel-body::-webkit-scrollbar { width: 6px; }
-    .panel-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 3px; }
-    .panel-body::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.3); }
+    .panel-body::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+    .panel-body::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
     .panel-body::-webkit-scrollbar-track { background: transparent; }
 
     .where-strip { display: grid; grid-template-columns: repeat(4, 1fr);
@@ -121,11 +170,11 @@
 
     footer { text-align: center; color: var(--fg-3); font-size: 12px; padding: 8px 0; }
 
-    .tooltip { position: fixed; background: var(--brand-navy-800); color: white;
+    .tooltip { position: fixed; background: var(--tooltip-bg); color: var(--tooltip-fg);
                padding: 10px 14px; border-radius: 8px; font-size: 13px;
                box-shadow: 0 8px 24px rgba(0,0,0,.5); max-width: 420px;
                line-height: 1.45; pointer-events: none; z-index: 100; }
-    .tooltip .t-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: #fff; }
+    .tooltip .t-title { font-weight: 700; font-size: 14px; margin-bottom: 4px; color: var(--tooltip-fg); }
     .tooltip ul { margin: 6px 0 0; padding-left: 18px; }
     .tooltip li { margin: 3px 0; font-style: italic; opacity: 0.92; }
 
@@ -152,7 +201,7 @@
                    color: var(--fg-2); font-weight: 700; }
 
     .scatter-svg { width: 100%; height: auto; display: block; }
-    .scatter-grid line { stroke: rgba(255,255,255,.06); stroke-width: 1; }
+    .scatter-grid line { stroke: var(--grid-line); stroke-width: 1; }
     .scatter-median { stroke: var(--brand-green-500); stroke-dasharray: 4 3; stroke-width: 1.5; }
     .scatter-axis { fill: var(--fg-3); font-size: 10px; font-family: var(--font); }
     .scatter-tick { fill: var(--fg-3); font-size: 9px; font-family: var(--font); }
@@ -172,7 +221,7 @@
     .ranked-rank { color: var(--fg-3); font-weight: 700; text-align: right;
                    font-variant-numeric: tabular-nums; }
     .ranked-bar-track { position: relative; height: 10px;
-                        background: rgba(255,255,255,.05); border-radius: 5px; }
+                        background: var(--track-bg); border-radius: 5px; }
     .ranked-bar-fill { position: absolute; left: 0; top: 0; bottom: 0;
                        background: var(--brand-green-500); border-radius: 5px; }
     .ranked-bar-dot { position: absolute; top: -2px; width: 14px; height: 14px;
@@ -199,7 +248,7 @@
     .grouped-n     { color: var(--fg-3); font-size: 11px;
                      font-variant-numeric: tabular-nums; text-align: right; }
     .grouped-bar-track { position: relative; height: 10px;
-                         background: rgba(255,255,255,.05); border-radius: 5px; }
+                         background: var(--track-bg); border-radius: 5px; }
     .grouped-bar-fill  { position: absolute; left: 0; top: 0; bottom: 0;
                          background: var(--brand-green-500); border-radius: 5px; }
     .grouped-avg   { font-variant-numeric: tabular-nums; text-align: right;
@@ -326,6 +375,18 @@
           <button type="button" data-view="live" role="tab" aria-selected="false">Live notes</button>
         </span>
         <span class="chyron">4 June 2026 · Nutanix</span>
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to light mode" title="Toggle light / dark">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4.93" y1="4.93" x2="6.34" y2="6.34"/><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"/>
+            <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
+            <line x1="4.93" y1="19.07" x2="6.34" y2="17.66"/><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"/>
+          </svg>
+        </button>
       </div>
       <div class="status view-overview" id="status">—</div>
     </header>

@@ -132,7 +132,10 @@ function renderCompanies(container, counts, namesByCompany) {
 // ---------- Clustered themes ----------
 function renderThemes(container, items) {
   container.innerHTML = `<div class="themes">` + items.map((t, i) => `
-    <div class="theme" data-i="${i}">${t.theme}</div>
+    <div class="theme" data-i="${i}">
+      <span class="theme-label">${t.theme}</span>
+      <span class="theme-count">${t.count}</span>
+    </div>
   `).join("") + `</div>`;
   container.querySelectorAll(".theme").forEach(row => {
     const t = items[parseInt(row.dataset.i, 10)];

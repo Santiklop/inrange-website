@@ -39,10 +39,20 @@
              display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
     .panel-title { font-size: 12px; letter-spacing: 0.14em;
                    text-transform: uppercase; color: var(--brand-green-300);
-                   font-weight: 700; margin: 0 0 14px; }
+                   font-weight: 700; margin: 0 0 14px; flex: 0 0 auto; }
     .panel-sub { font-size: 11px; letter-spacing: 0.04em; text-transform: none;
                  color: var(--fg-3); font-weight: 400; margin-left: 8px; }
     .panel-wide { /* breaks out of the grid; sits below the grid */ }
+
+    /* Panel body fills remaining space and scrolls internally if it overflows
+       (used to silently clip). Dark custom scrollbar for both themes lists and
+       horizontal-bar panels. */
+    .panel-body { flex: 1 1 auto; min-height: 0; overflow-y: auto;
+                  scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent; }
+    .panel-body::-webkit-scrollbar { width: 6px; }
+    .panel-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 3px; }
+    .panel-body::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,.3); }
+    .panel-body::-webkit-scrollbar-track { background: transparent; }
 
     .where-strip { display: grid; grid-template-columns: repeat(4, 1fr);
                    gap: 18px; padding: 4px 4px 0; }
@@ -99,8 +109,13 @@
 
     .themes { display: flex; flex-direction: column; gap: 6px; }
     .theme { background: var(--bg-sunken); border-radius: 8px; padding: 10px 14px;
-             font-size: 15px; cursor: pointer; transition: background 120ms ease; }
+             font-size: 15px; cursor: pointer; transition: background 120ms ease;
+             display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .theme-label { flex: 1 1 auto; min-width: 0; line-height: 1.35; }
+    .theme-count { flex: 0 0 auto; color: var(--brand-green-300); font-weight: 800;
+                   font-variant-numeric: tabular-nums; font-size: 14px; }
     .theme:hover, .theme.is-hovered { background: rgba(31,168,74,0.18); color: #fff; }
+    .theme:hover .theme-count, .theme.is-hovered .theme-count { color: #fff; }
 
     footer { text-align: center; color: var(--fg-3); font-size: 12px; padding: 8px 0; }
 

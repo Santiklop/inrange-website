@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:18:16+02:00",
+  "generatedAt": "2026-06-04T15:22:04+02:00",
   "useCases": [
     {
       "text": "Used Claude Code to build this whole dashboard last night.",
@@ -18,6 +18,10 @@
     {
       "text": "I'd want AI to do the dishes at home",
       "attribution": "Valon"
+    },
+    {
+      "text": "AI-generated Instagram captions aren't human enough.",
+      "attribution": "Roza"
     }
   ]
 }

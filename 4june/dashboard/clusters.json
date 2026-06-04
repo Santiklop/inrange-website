@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:09:43+02:00",
+  "generatedAt": "2026-06-04T15:22:04+02:00",
   "wishes": [
     {
       "theme": "Try ChatGPT more",
@@ -11,18 +11,19 @@
   ],
   "expectations": [
     {
+      "theme": "Learn from others' AI use cases",
+      "count": 2,
+      "quotes": [
+        "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)",
+        "I am curious to see what others Tax team have implemented and AI use cases"
+      ]
+    },
+    {
       "theme": "Connect & socialise",
       "count": 2,
       "quotes": [
         "Network",
         "Drinks"
-      ]
-    },
-    {
-      "theme": "AI ideas for ERP-heavy tax work",
-      "count": 1,
-      "quotes": [
-        "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)"
       ]
     }
   ]

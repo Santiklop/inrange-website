@@ -141,23 +141,30 @@
     "yearsInTax": "15+",
     "aiToolsWork": [
       "Gemini",
-      "M365 Copilot"
+      "M365 Copilot",
+      "Custom in-house agent"
     ],
-    "aiToolsWorkOther": "Glean",
+    "aiToolsWorkOther": "Glean , Notebooklm",
     "aiToolsHome": [],
     "aiToolsHomeOther": "",
     "wishToTry": "",
-    "biggestWins": [],
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Research and explanation",
+      "Brainstorming / second opinion"
+    ],
     "biggestWinOther": "",
-    "biggestFrustrations": [],
+    "biggestFrustrations": [
+      "Doesn't understand tax context"
+    ],
     "biggestFrustrationOther": "",
-    "expectationToday": "",
-    "selfAdoption": 3,
+    "expectationToday": "I am curious to see what others Tax team have implemented and AI use cases",
+    "selfAdoption": 4,
     "selfApplication": 3,
     "selfCraft": 3,
     "selfTrust": 3,
-    "submittedAt": "2026-06-04T12:58:51.589Z",
+    "submittedAt": "2026-06-04T13:18:53.732Z",
     "isNewParticipant": false,
-    "receivedAt": "2026-06-04T12:58:54Z"
+    "receivedAt": "2026-06-04T13:18:56Z"
   }
 }

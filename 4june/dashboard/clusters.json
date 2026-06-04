@@ -1,12 +1,27 @@
 {
-  "generatedAt": "2026-06-04T13:14:08+02:00",
-  "wishes": [],
+  "generatedAt": "2026-06-04T13:15:58+02:00",
+  "wishes": [
+    {
+      "theme": "Use ChatGPT more",
+      "count": 1,
+      "quotes": [
+        "Chatgpt"
+      ]
+    }
+  ],
   "expectations": [
     {
       "theme": "Networking",
       "count": 1,
       "quotes": [
         "Network"
+      ]
+    },
+    {
+      "theme": "Drinks",
+      "count": 1,
+      "quotes": [
+        "Drinks"
       ]
     },
     {

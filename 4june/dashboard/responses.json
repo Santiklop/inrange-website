@@ -39,34 +39,6 @@
     "receivedAt": "2026-06-04T09:15:50Z"
   },
   {
-    "id": "valon-bytyci",
-    "name": "Valon Bytyci",
-    "company": "Magnum Ice Cream",
-    "taxAreas": [
-      "Transfer Pricing"
-    ],
-    "taxAreaOther": "",
-    "previousEvents": "",
-    "yearsInTax": "",
-    "aiToolsWork": [],
-    "aiToolsWorkOther": "",
-    "aiToolsHome": [],
-    "aiToolsHomeOther": "",
-    "wishToTry": "",
-    "biggestWins": [],
-    "biggestWinOther": "",
-    "biggestFrustrations": [],
-    "biggestFrustrationOther": "",
-    "expectationToday": "",
-    "selfAdoption": 8,
-    "selfApplication": 5,
-    "selfCraft": 6,
-    "selfTrust": 6,
-    "submittedAt": "2026-06-04T10:39:09.318Z",
-    "isNewParticipant": false,
-    "receivedAt": "2026-06-04T10:39:09Z"
-  },
-  {
     "id": "roza-chour",
     "name": "Roza Chour",
     "company": "Ecco",
@@ -112,5 +84,44 @@
     "submittedAt": "2026-06-04T11:04:33.659Z",
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T11:04:36Z"
+  },
+  {
+    "id": "valon-bytyci",
+    "name": "Valon Bytyci",
+    "company": "Magnum Ice Cream",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "5+",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "Chatgpt",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hard to integrate with my workflow"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Drinks",
+    "selfAdoption": 8,
+    "selfApplication": 5,
+    "selfCraft": 6,
+    "selfTrust": 6,
+    "submittedAt": "2026-06-04T10:39:09.318Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T11:15:58Z"
   }
 ]

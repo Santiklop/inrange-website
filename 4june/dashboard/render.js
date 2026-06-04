@@ -758,7 +758,7 @@ setInterval(updateLiveStatus, 1000); // tick the "Xs ago" counter every second
 const VIEW_KEY = "dashboard.view";
 
 function setView(view) {
-  if (view !== "overview" && view !== "live") view = "overview";
+  if (view !== "overview" && view !== "live" && view !== "welcome") view = "overview";
   document.querySelector(".root").dataset.view = view;
   for (const btn of document.querySelectorAll(".view-toggle button")) {
     const isActive = btn.dataset.view === view;
@@ -777,11 +777,12 @@ for (const btn of document.querySelectorAll(".view-toggle button")) {
 try { setView(localStorage.getItem(VIEW_KEY) || "overview"); }
 catch { setView("overview"); }
 
-// Keyboard shortcut: press "L" to jump to live, "O" to jump to overview
+// Keyboard shortcuts: W = welcome · O = overview · L = live
 document.addEventListener("keydown", (e) => {
   if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
-  if (e.key === "l" || e.key === "L") setView("live");
+  if (e.key === "w" || e.key === "W") setView("welcome");
   if (e.key === "o" || e.key === "O") setView("overview");
+  if (e.key === "l" || e.key === "L") setView("live");
 });
 
 // ════════════════════════════════════════════════════════════════════════════

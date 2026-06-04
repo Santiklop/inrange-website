@@ -6,6 +6,15 @@ const STORAGE_KEY = "4june.submittedIds";
 
 const submittedIds = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"));
 
+// Submissions cache populated by the 16:00 aggregation. May be empty if the
+// aggregation hasn't run yet (or fetch fails). Used to pre-fill the form on
+// card tap so people returning after the session see their prior answers.
+let SUBMISSIONS = {};
+fetch("./submissions.json", { cache: "no-store" })
+  .then(r => r.ok ? r.json() : {})
+  .then(data => { SUBMISSIONS = data || {}; })
+  .catch(() => { SUBMISSIONS = {}; });
+
 const hueFromName = (name) => {
   let h = 0;
   for (const c of name) h = (h * 31 + c.charCodeAt(0)) >>> 0;
@@ -148,6 +157,28 @@ function openSheet(attendee, isNew) {
   preselectChips("g-tax", attendee.taxAreas);
   for (const id of ["f-tax-other","f-work-other","f-home-other","f-win-other","f-frust-other","f-wish","f-exp"]) document.getElementById(id).value = "";
 
+  // If a prior submission exists for this card, pre-fill from it.
+  const prior = SUBMISSIONS[attendee.id];
+  if (prior && !isNew) {
+    preselectChips("g-tax",   prior.taxAreas || []);
+    preselectChips("g-prev",  prior.previousEvents ? [prior.previousEvents] : []);
+    preselectChips("g-years", prior.yearsInTax ? [prior.yearsInTax] : []);
+    preselectChips("g-work",  prior.aiToolsWork || []);
+    preselectChips("g-home",  prior.aiToolsHome || []);
+    preselectChips("g-win",   prior.biggestWins || []);
+    preselectChips("g-frust", prior.biggestFrustrations || []);
+    document.getElementById("f-tax-other").value   = prior.taxAreaOther || "";
+    document.getElementById("f-work-other").value  = prior.aiToolsWorkOther || "";
+    document.getElementById("f-home-other").value  = prior.aiToolsHomeOther || "";
+    document.getElementById("f-win-other").value   = prior.biggestWinOther || "";
+    document.getElementById("f-frust-other").value = prior.biggestFrustrationOther || "";
+    document.getElementById("f-wish").value        = prior.wishToTry || "";
+    document.getElementById("f-exp").value         = prior.expectationToday || "";
+    setSliders(prior);
+  } else {
+    setSliders(null); // defaults to 5
+  }
+
   updateCounters();
   sheet.dataset.cardId = attendee.id;
   sheet.dataset.isNew = isNew ? "1" : "0";
@@ -163,6 +194,22 @@ renderChips("g-work", TOOLS);
 renderChips("g-home", TOOLS);
 renderChips("g-win", WINS);
 renderChips("g-frust", FRUSTRATIONS);
+
+// Live value display for the 4 self-assessment sliders.
+for (const axis of ["adoption", "application", "craft", "trust"]) {
+  const slider = document.getElementById(`s-${axis}`);
+  const display = document.getElementById(`v-${axis}`);
+  slider.addEventListener("input", () => { display.textContent = slider.value; });
+}
+
+function setSliders(values) {
+  for (const axis of ["adoption", "application", "craft", "trust"]) {
+    const key = "self" + axis.charAt(0).toUpperCase() + axis.slice(1);
+    const v = values && Number.isFinite(values[key]) ? values[key] : 5;
+    document.getElementById(`s-${axis}`).value = v;
+    document.getElementById(`v-${axis}`).textContent = v;
+  }
+}
 
 document.getElementById("picker").addEventListener("click", (e) => {
   const card = e.target.closest(".card");
@@ -246,6 +293,10 @@ function buildPayload() {
     biggestFrustrations: readChips("g-frust"),
     biggestFrustrationOther: document.getElementById("f-frust-other").value.trim(),
     expectationToday: document.getElementById("f-exp").value.trim(),
+    selfAdoption: parseInt(document.getElementById("s-adoption").value, 10),
+    selfApplication: parseInt(document.getElementById("s-application").value, 10),
+    selfCraft: parseInt(document.getElementById("s-craft").value, 10),
+    selfTrust: parseInt(document.getElementById("s-trust").value, 10),
     submittedAt: new Date().toISOString(),
     isNewParticipant: isNew
   };

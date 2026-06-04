@@ -29,6 +29,10 @@
       "Hallucinations / wrong answers"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 9,
+    "selfApplication": 8,
+    "selfCraft": 8,
+    "selfTrust": 7,
     "expectationToday": "Find collaborators for an AI-driven benchmarking workflow.",
     "submittedAt": "2026-06-04T15:30:00+02:00",
     "isNewParticipant": false
@@ -65,6 +69,10 @@
       "Doesn't understand tax context"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 7,
+    "selfApplication": 7,
+    "selfCraft": 6,
+    "selfTrust": 6,
     "expectationToday": "See AI use cases I can apply tomorrow.",
     "submittedAt": "2026-06-04T15:31:00+02:00",
     "isNewParticipant": false
@@ -99,6 +107,10 @@
       "Compliance / audit defensibility"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 6,
+    "selfApplication": 5,
+    "selfCraft": 5,
+    "selfTrust": 5,
     "expectationToday": "Learn how peers are handling Pillar 2 data gaps.",
     "submittedAt": "2026-06-04T15:32:00+02:00",
     "isNewParticipant": false
@@ -132,6 +144,10 @@
       "Hallucinations / wrong answers"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 5,
+    "selfApplication": 4,
+    "selfCraft": 4,
+    "selfTrust": 5,
     "expectationToday": "Find tooling ideas for our indirect tax compliance backlog.",
     "submittedAt": "2026-06-04T15:33:00+02:00",
     "isNewParticipant": false
@@ -167,6 +183,10 @@
       "Compliance / audit defensibility"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 4,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 4,
     "expectationToday": "Hear concrete examples of AI in customs workflows.",
     "submittedAt": "2026-06-04T15:34:00+02:00",
     "isNewParticipant": false
@@ -203,6 +223,10 @@
       "Hard to integrate with my workflow"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 9,
+    "selfApplication": 9,
+    "selfCraft": 7,
+    "selfTrust": 6,
     "expectationToday": "Meet builders who've shipped tax automations to production.",
     "submittedAt": "2026-06-04T15:35:00+02:00",
     "isNewParticipant": false
@@ -236,6 +260,10 @@
       "Other"
     ],
     "biggestFrustrationOther": "Slows down badly on long PDF contexts",
+    "selfAdoption": 8,
+    "selfApplication": 7,
+    "selfCraft": 7,
+    "selfTrust": 5,
     "expectationToday": "Stories of what hasn't worked when deploying AI in tax.",
     "submittedAt": "2026-06-04T15:36:00+02:00",
     "isNewParticipant": false
@@ -270,6 +298,10 @@
       "Inconsistent output quality"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 6,
+    "selfApplication": 5,
+    "selfCraft": 5,
+    "selfTrust": 6,
     "expectationToday": "Practical ideas for handling our growing audit caseload.",
     "submittedAt": "2026-06-04T15:37:00+02:00",
     "isNewParticipant": false
@@ -304,6 +336,10 @@
       "Hallucinations / wrong answers"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 4,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
     "expectationToday": "Network with peers who've automated repetitive compliance work.",
     "submittedAt": "2026-06-04T15:38:00+02:00",
     "isNewParticipant": false
@@ -338,6 +374,10 @@
       "Privacy — can't share internal company data"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 7,
+    "selfApplication": 6,
+    "selfCraft": 7,
+    "selfTrust": 5,
     "expectationToday": "Compare notes on AI adoption with other tax heads.",
     "submittedAt": "2026-06-04T15:39:00+02:00",
     "isNewParticipant": false
@@ -373,6 +413,10 @@
       "Inconsistent output quality"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 6,
+    "selfApplication": 5,
+    "selfCraft": 4,
+    "selfTrust": 5,
     "expectationToday": "Find a sparring partner on Pillar 2 implementation.",
     "submittedAt": "2026-06-04T15:40:00+02:00",
     "isNewParticipant": false
@@ -407,6 +451,10 @@
       "Hallucinations / wrong answers"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 8,
+    "selfApplication": 8,
+    "selfCraft": 9,
+    "selfTrust": 7,
     "expectationToday": "Meet builders who've shipped tax automations to production.",
     "submittedAt": "2026-06-04T15:41:00+02:00",
     "isNewParticipant": false
@@ -443,6 +491,10 @@
       "Compliance / audit defensibility"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 7,
+    "selfApplication": 7,
+    "selfCraft": 7,
+    "selfTrust": 4,
     "expectationToday": "Learn which tax-specific tools are actually being used.",
     "submittedAt": "2026-06-04T15:42:00+02:00",
     "isNewParticipant": false
@@ -476,6 +528,10 @@
       "Hallucinations / wrong answers"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 5,
+    "selfApplication": 4,
+    "selfCraft": 4,
+    "selfTrust": 4,
     "expectationToday": "Practical ideas for handling our growing audit caseload.",
     "submittedAt": "2026-06-04T15:43:00+02:00",
     "isNewParticipant": false
@@ -510,6 +566,10 @@
       "Privacy — can't share internal company data"
     ],
     "biggestFrustrationOther": "",
+    "selfAdoption": 2,
+    "selfApplication": 3,
+    "selfCraft": 2,
+    "selfTrust": 3,
     "expectationToday": "Stories of what hasn't worked when deploying AI in tax.",
     "submittedAt": "2026-06-04T15:44:00+02:00",
     "isNewParticipant": false

@@ -40,6 +40,20 @@
     .panel-title { font-size: 12px; letter-spacing: 0.14em;
                    text-transform: uppercase; color: var(--brand-green-300);
                    font-weight: 700; margin: 0 0 14px; }
+    .panel-sub { font-size: 11px; letter-spacing: 0.04em; text-transform: none;
+                 color: var(--fg-3); font-weight: 400; margin-left: 8px; }
+    .panel-wide { /* breaks out of the grid; sits below the grid */ }
+
+    .where-strip { display: grid; grid-template-columns: repeat(4, 1fr);
+                   gap: 18px; padding: 4px 4px 0; }
+    .where-cell { display: flex; flex-direction: column; gap: 6px; }
+    .where-name { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+                  color: var(--fg-3); font-weight: 700; }
+    .where-value { font-size: 32px; font-weight: 800; color: var(--fg-1);
+                   font-variant-numeric: tabular-nums; line-height: 1; }
+    .where-value .out-of { color: var(--fg-3); font-weight: 500; font-size: 18px; margin-left: 2px; }
+    .where-bar { height: 8px; background: var(--bg-sunken); border-radius: 4px; overflow: hidden; }
+    .where-fill { height: 100%; background: var(--brand-green-500); border-radius: 4px; }
 
     .donut-wrap { display: flex; flex-direction: column; gap: 12px;
                   align-items: center; flex: 1; min-height: 0; width: 100%; }
@@ -122,6 +136,11 @@
       <section class="panel" id="p-exp">          <h2 class="panel-title">What we hope to get today</h2><div class="panel-body"></div></section>
       <section class="panel" id="p-frust">        <h2 class="panel-title">Biggest frustrations</h2><div class="panel-body"></div></section>
     </main>
+
+    <section class="panel panel-wide" id="p-where">
+      <h2 class="panel-title">Where we stand <span class="panel-sub">— room average, 1–10 self-assessed</span></h2>
+      <div class="panel-body"></div>
+    </section>
 
     <footer>Powered by inRange · <a href="https://www.inrange.nl">www.inrange.nl</a></footer>
   </div>

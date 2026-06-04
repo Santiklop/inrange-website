@@ -162,6 +162,34 @@ function renderHBars(container, rows, kind, namesByLabel) {
   });
 }
 
+// ---------- Where we stand (room self-assessment averages) ----------
+function renderWhereWeStand(container, responses) {
+  const axes = [
+    { key: "selfAdoption",   label: "Adoption" },
+    { key: "selfApplication", label: "Application" },
+    { key: "selfCraft",       label: "Craft" },
+    { key: "selfTrust",       label: "Trust" },
+  ];
+  const cells = axes.map(a => {
+    const vals = responses.map(r => r[a.key]).filter(v => Number.isFinite(v));
+    if (vals.length === 0) {
+      return `<div class="where-cell">
+        <span class="where-name">${a.label}</span>
+        <span class="where-value">—</span>
+        <div class="where-bar"></div>
+      </div>`;
+    }
+    const avg = vals.reduce((s, v) => s + v, 0) / vals.length;
+    const pct = (avg / 10) * 100;
+    return `<div class="where-cell">
+      <span class="where-name">${a.label}</span>
+      <span class="where-value">${avg.toFixed(1)}<span class="out-of">/10</span></span>
+      <div class="where-bar"><div class="where-fill" style="width:${pct}%"></div></div>
+    </div>`;
+  }).join("");
+  container.innerHTML = `<div class="where-strip">${cells}</div>`;
+}
+
 // ---------- Main entry ----------
 async function main() {
   const [responses, clusters] = await Promise.all([
@@ -226,5 +254,8 @@ async function main() {
   const namesByFrust = {};
   for (const r of responses) for (const f of (r.biggestFrustrations || [])) (namesByFrust[f] ||= []).push(r.name.split(" ")[0]);
   renderHBars(document.querySelector("#p-frust .panel-body"), frustRows, "frust", namesByFrust);
+
+  // Where we stand (room self-assessment averages)
+  renderWhereWeStand(document.querySelector("#p-where .panel-body"), responses);
 }
 main();

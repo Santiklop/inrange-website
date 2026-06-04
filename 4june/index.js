@@ -195,11 +195,61 @@ renderChips("g-home", TOOLS);
 renderChips("g-win", WINS);
 renderChips("g-frust", FRUSTRATIONS);
 
-// Live value display for the 4 self-assessment sliders.
+// Dynamic band labels for the 4 self-assessment sliders.
+// Score 1–3 = "low", 4–7 = "mid", 8–10 = "high". The band text changes as the
+// user drags; the .changed CSS class fires a brief flash when the band crosses
+// a threshold so the change is visible.
+const SLIDER_BANDS = {
+  adoption: {
+    low:  "Rare or no use",
+    mid:  "Weekly with 1–2 tools",
+    high: "Daily across many tools, integrated into your habits",
+  },
+  application: {
+    low:  "Mostly emails or summaries",
+    mid:  "A few workflows — research, drafts",
+    high: "Many workflows, including specialised (TP, VAT, audit, controversy)",
+  },
+  craft: {
+    low:  "Single-shot prompts, accept the output",
+    mid:  "Reusable prompts, you verify the output",
+    high: "Custom agents / workflows, systematic evaluation",
+  },
+  trust: {
+    low:  "No team policy, unsure what's safe",
+    mid:  "Ad-hoc judgement per case",
+    high: "Written policy and documented review",
+  },
+};
+
+function bandFor(value) {
+  if (value <= 3) return "low";
+  if (value <= 7) return "mid";
+  return "high";
+}
+
+function applyBand(axis, value, animate) {
+  const bandEl = document.getElementById(`b-${axis}`);
+  const newBand = bandFor(value);
+  const oldBand = bandEl.dataset.band;
+  bandEl.textContent = SLIDER_BANDS[axis][newBand];
+  if (animate && newBand !== oldBand) {
+    bandEl.classList.remove("changed");
+    void bandEl.offsetWidth;        // force reflow so the animation restarts
+    bandEl.classList.add("changed");
+  }
+  bandEl.dataset.band = newBand;
+}
+
+// Live value display + dynamic band for the 4 self-assessment sliders.
 for (const axis of ["adoption", "application", "craft", "trust"]) {
   const slider = document.getElementById(`s-${axis}`);
   const display = document.getElementById(`v-${axis}`);
-  slider.addEventListener("input", () => { display.textContent = slider.value; });
+  slider.addEventListener("input", () => {
+    const v = parseInt(slider.value, 10);
+    display.textContent = v;
+    applyBand(axis, v, true);
+  });
 }
 
 function setSliders(values) {
@@ -208,6 +258,7 @@ function setSliders(values) {
     const v = values && Number.isFinite(values[key]) ? values[key] : 5;
     document.getElementById(`s-${axis}`).value = v;
     document.getElementById(`v-${axis}`).textContent = v;
+    applyBand(axis, v, false);     // initial band, no flash
   }
 }
 

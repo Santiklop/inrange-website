@@ -130,8 +130,20 @@
               background: var(--brand-green-500); cursor: pointer; border: none;
               box-shadow: 0 1px 3px rgba(20,39,63,0.15); }
     .slider-hint { font-size: 12.5px; color: var(--fg-2); line-height: 1.35; }
-    .slider-spectrum { font-size: 11.5px; color: var(--fg-3); line-height: 1.35;
-                       font-style: italic; }
+    .slider-band { display: inline-block; align-self: flex-start;
+                   margin-top: 6px; padding: 6px 12px;
+                   background: var(--brand-green-50, #EBF8EE);
+                   border-left: 3px solid var(--brand-green-500);
+                   border-radius: 4px;
+                   color: var(--brand-green-700, #0F6B2E);
+                   font-size: 13px; font-weight: 600; line-height: 1.35;
+                   transition: background 200ms ease; }
+    @keyframes band-flash {
+      0%   { transform: scale(0.97); background: var(--brand-green-200, #9FDFB1); }
+      55%  { transform: scale(1.02); background: var(--brand-green-100, #CFEFD8); }
+      100% { transform: scale(1);    background: var(--brand-green-50, #EBF8EE); }
+    }
+    .slider-band.changed { animation: band-flash 380ms ease; }
 
     .sheet-foot { position: sticky; bottom: 0; padding: 12px 16px;
                   background: var(--surface-card); border-top: 1px solid var(--border-subtle); }
@@ -246,35 +258,34 @@
 
     <section class="sheet-section">
       <h3>§ 3 — Where you stand</h3>
-      <p class="self-guidance">Drag each slider where you think you sit today. 5 ≈ industry average for tax pros. 10 = clear leader. 1 = just starting.</p>
+      <p class="self-guidance">Drag each slider where you think you sit today.</p>
 
       <div class="slider-field">
         <div class="slider-row"><span class="slider-name">Adoption</span><span class="slider-value" id="v-adoption">5</span></div>
         <input type="range" min="1" max="10" step="1" value="5" id="s-adoption" class="slider" aria-label="Adoption self-assessment">
         <div class="slider-hint">What AI tools you use, and how often.</div>
-        <div class="slider-spectrum">Rare or no use → weekly with 1–2 tools → daily across many tools, integrated into your habits</div>
+        <div class="slider-band" id="b-adoption"></div>
       </div>
 
       <div class="slider-field">
         <div class="slider-row"><span class="slider-name">Application</span><span class="slider-value" id="v-application">5</span></div>
         <input type="range" min="1" max="10" step="1" value="5" id="s-application" class="slider" aria-label="Application self-assessment">
         <div class="slider-hint">Which tax workflows you've augmented with AI.</div>
-        <div class="slider-spectrum">Mostly emails/summaries → a few workflows (research, drafts) → many workflows including specialised (TP, VAT, audit, controversy)</div>
+        <div class="slider-band" id="b-application"></div>
       </div>
 
       <div class="slider-field">
         <div class="slider-row"><span class="slider-name">Craft</span><span class="slider-value" id="v-craft">5</span></div>
         <input type="range" min="1" max="10" step="1" value="5" id="s-craft" class="slider" aria-label="Craft self-assessment">
         <div class="slider-hint">How skilfully you wield it.</div>
-        <div class="slider-spectrum">Single-shot prompts, accept output → reusable prompts, you verify output → custom agents/workflows, systematic evaluation</div>
+        <div class="slider-band" id="b-craft"></div>
       </div>
 
       <div class="slider-field">
         <div class="slider-row"><span class="slider-name">Trust</span><span class="slider-value" id="v-trust">5</span></div>
         <input type="range" min="1" max="10" step="1" value="5" id="s-trust" class="slider" aria-label="Trust self-assessment">
         <div class="slider-hint">Governance — privacy, audit defensibility, professional responsibility.</div>
-        <div class="slider-spectrum">No team policy, unsure what's safe → ad-hoc judgement per case → written policy + documented review</div>
-      </div>
+        <div class="slider-band" id="b-trust"></div>
     </section>
 
     <section class="sheet-section">

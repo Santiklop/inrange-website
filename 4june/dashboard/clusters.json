@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:22:04+02:00",
+  "generatedAt": "2026-06-04T15:49:40+02:00",
   "wishes": [
     {
       "theme": "Try ChatGPT more",
@@ -11,11 +11,20 @@
   ],
   "expectations": [
     {
-      "theme": "Learn from others' AI use cases",
-      "count": 2,
+      "theme": "Learn from peers' AI use cases",
+      "count": 11,
       "quotes": [
         "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)",
-        "I am curious to see what others Tax team have implemented and AI use cases"
+        "I am curious to see what others Tax team have implemented and AI use cases",
+        "To know where to look for to learn more about this next",
+        "See how peers are and what they do with it , hopefully get some new ideas and network a bit",
+        "Insight on what other companies are using AI",
+        "Use cases and practical application (data security),business case for AI spend",
+        "New ideas",
+        "AI practical experiences",
+        "Use case experience and barriers to auditability",
+        "More use cases to use",
+        "Learn from other"
       ]
     },
     {

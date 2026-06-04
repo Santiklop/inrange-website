@@ -166,5 +166,516 @@
     "submittedAt": "2026-06-04T13:18:53.732Z",
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T13:18:56Z"
+  },
+  "mays-tnjm": {
+    "id": "mays-tnjm",
+    "name": "Mays",
+    "company": "Danone",
+    "taxAreas": [
+      "Indirect / VAT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [],
+    "biggestWinOther": "",
+    "biggestFrustrations": [],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T13:27:38.830Z",
+    "isNewParticipant": true,
+    "receivedAt": "2026-06-04T13:27:39Z"
+  },
+  "vito-mastrorocco": {
+    "id": "vito-mastrorocco",
+    "name": "Vito Mastrorocco",
+    "company": "Ecco",
+    "taxAreas": [
+      "Indirect / VAT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "1–2",
+    "yearsInTax": "15+",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude",
+      "Gemini"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Doesn’t understand tax context"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Learn from other",
+    "selfAdoption": 8,
+    "selfApplication": 8,
+    "selfCraft": 8,
+    "selfTrust": 5,
+    "submittedAt": "2026-06-04T13:28:22.813Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:28:23Z"
+  },
+  "marina-strakhal": {
+    "id": "marina-strakhal",
+    "name": "Marina Strakhal",
+    "company": "Coty",
+    "taxAreas": [
+      "Direct / CIT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "5+",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Claude",
+      "M365 Copilot",
+      "Tax-specific tool"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 7,
+    "selfApplication": 7,
+    "selfCraft": 3,
+    "selfTrust": 5,
+    "submittedAt": "2026-06-04T13:30:51.382Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:30:55Z"
+  },
+  "armand-y9hq": {
+    "id": "armand-y9hq",
+    "name": "Armand",
+    "company": "Danone",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "15+",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Claude",
+      "M365 Copilot",
+      "Tax-specific tool"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Inconsistent output quality",
+      "Hard to integrate with my workflow"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T13:31:58.648Z",
+    "isNewParticipant": true,
+    "receivedAt": "2026-06-04T13:32:00Z"
+  },
+  "anna-sherlaw": {
+    "id": "anna-sherlaw",
+    "name": "Anna Sherlaw",
+    "company": "Coty",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "ChatGPT",
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Research and explanation",
+      "Excel formulas and macros",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Hard to integrate with my workflow"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "More use cases to use",
+    "selfAdoption": 4,
+    "selfApplication": 4,
+    "selfCraft": 3,
+    "selfTrust": 4,
+    "submittedAt": "2026-06-04T13:32:55.359Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:32:55Z"
+  },
+  "navita-parwanda": {
+    "id": "navita-parwanda",
+    "name": "Navita Parwanda",
+    "company": "Danone",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "5+",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "M365 Copilot"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Other"
+    ],
+    "biggestWinOther": "Data safety",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Privacy — can’t share internal company data",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Use case experience and barriers to auditability",
+    "selfAdoption": 10,
+    "selfApplication": 7,
+    "selfCraft": 8,
+    "selfTrust": 4,
+    "submittedAt": "2026-06-04T13:33:47.094Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:33:48Z"
+  },
+  "hector-castro-zapata": {
+    "id": "hector-castro-zapata",
+    "name": "Hector Castro Zapata",
+    "company": "Coty",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "0–5",
+    "aiToolsWork": [
+      "ChatGPT",
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Excel formulas and macros"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Privacy — can’t share internal company data",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "AI practical experiences",
+    "selfAdoption": 5,
+    "selfApplication": 5,
+    "selfCraft": 3,
+    "selfTrust": 4,
+    "submittedAt": "2026-06-04T13:37:11.814Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:37:13Z"
+  },
+  "heidi-pohl": {
+    "id": "heidi-pohl",
+    "name": "Heidi Pohl",
+    "company": "SGS Group",
+    "taxAreas": [
+      "Indirect / VAT"
+    ],
+    "taxAreaOther": "Business partnering",
+    "previousEvents": "First time",
+    "yearsInTax": "15+",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "M365 Copilot"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [],
+    "biggestFrustrationOther": "",
+    "expectationToday": "New ideas",
+    "selfAdoption": 6,
+    "selfApplication": 6,
+    "selfCraft": 6,
+    "selfTrust": 8,
+    "submittedAt": "2026-06-04T13:37:39.418Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:37:40Z"
+  },
+  "niall-cogan": {
+    "id": "niall-cogan",
+    "name": "Niall Cogan",
+    "company": "Digital Realty",
+    "taxAreas": [],
+    "taxAreaOther": "All",
+    "previousEvents": "1–2",
+    "yearsInTax": "15+",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Use cases and practical application (data security),business case for AI spend",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T13:37:57.216Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:37:58Z"
+  },
+  "kanshi-ram": {
+    "id": "kanshi-ram",
+    "name": "Kanshi Ram",
+    "company": "Digital Realty",
+    "taxAreas": [
+      "Direct / CIT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Research and explanation",
+      "Excel formulas and macros"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Compliance / audit defensibility"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Insight on what other companies are using AI",
+    "selfAdoption": 6,
+    "selfApplication": 3,
+    "selfCraft": 6,
+    "selfTrust": 4,
+    "submittedAt": "2026-06-04T13:39:07.489Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:38:37Z"
+  },
+  "nikhil-krishnan": {
+    "id": "nikhil-krishnan",
+    "name": "Nikhil Krishnan",
+    "company": "HelloFresh",
+    "taxAreas": [
+      "Transfer Pricing",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "Claude",
+      "Gemini",
+      "Custom in-house agent"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude",
+      "Gemini"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Research and explanation",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Doesn’t understand tax context",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "See how peers are and what they do with it , hopefully get some new ideas and network a bit",
+    "selfAdoption": 6,
+    "selfApplication": 6,
+    "selfCraft": 7,
+    "selfTrust": 7,
+    "submittedAt": "2026-06-04T13:41:37.443Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:41:39Z"
+  },
+  "raymond-van-der-velde": {
+    "id": "raymond-van-der-velde",
+    "name": "Raymond Van-Der-Velde",
+    "company": "Hitachi Energy",
+    "taxAreas": [
+      "Indirect / VAT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "1–2",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "Claude",
+      "M365 Copilot",
+      "GitHub Copilot / Cursor"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Summarising long documents",
+      "Excel formulas and macros",
+      "Building small tools or apps"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Hard to integrate with my workflow",
+      "Compliance / audit defensibility"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "To know where to look for to learn more about this next",
+    "selfAdoption": 6,
+    "selfApplication": 5,
+    "selfCraft": 4,
+    "selfTrust": 9,
+    "submittedAt": "2026-06-04T13:41:54.505Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:41:55Z"
+  },
+  "tatiana-kvardakova": {
+    "id": "tatiana-kvardakova",
+    "name": "Tatiana Kvardakova",
+    "company": "IKEA (Inter IKEA)",
+    "taxAreas": [
+      "Direct / CIT",
+      "Tax Tech / Data",
+      "Tax Controversy / Audit",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Gemini"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Gemini"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Research and explanation",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Privacy — can’t share internal company data"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T13:44:45.419Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:44:46Z"
   }
 }

@@ -123,5 +123,41 @@
     "submittedAt": "2026-06-04T10:39:09.318Z",
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T11:15:58Z"
+  },
+  {
+    "id": "servais-willie-ngabo",
+    "name": "Servais Willie Ngabo",
+    "company": "Nutanix",
+    "taxAreas": [
+      "Transfer Pricing",
+      "Direct / CIT",
+      "Indirect / VAT",
+      "Compliance & Reporting",
+      "Tax Tech / Data",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "1–2",
+    "yearsInTax": "15+",
+    "aiToolsWork": [
+      "Gemini",
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "Glean",
+    "aiToolsHome": [],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [],
+    "biggestWinOther": "",
+    "biggestFrustrations": [],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T12:58:51.589Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T12:58:54Z"
   }
 ]

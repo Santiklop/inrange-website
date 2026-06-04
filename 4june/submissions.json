@@ -1,5 +1,5 @@
-[
-  {
+{
+  "aleks-davydov": {
     "id": "aleks-davydov",
     "name": "Aleks Davydov",
     "company": "inRange Solutions",
@@ -38,7 +38,7 @@
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T09:15:50Z"
   },
-  {
+  "valon-bytyci": {
     "id": "valon-bytyci",
     "name": "Valon Bytyci",
     "company": "Magnum Ice Cream",
@@ -77,4 +77,4 @@
     "isNewParticipant": false,
     "receivedAt": "2026-06-04T09:19:47Z"
   }
-]
+}

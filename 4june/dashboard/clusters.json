@@ -1,102 +1,27 @@
 {
-  "generatedAt": "2026-06-04T15:50:00+02:00",
+  "generatedAt": "2026-06-04T11:51:12+02:00",
   "wishes": [
     {
-      "theme": "Drafting TP memos",
-      "count": 3,
+      "theme": "Use ChatGPT more",
+      "count": 1,
       "quotes": [
-        "agent to draft TP memos from comparables",
-        "agent to draft TP memos from comparables",
-        "drafting first-pass TP memos from a comparables set"
-      ]
-    },
-    {
-      "theme": "Real-time benchmarking",
-      "count": 2,
-      "quotes": [
-        "real-time TP benchmark refresh",
-        "live benchmarking dashboard that updates as filings drop"
-      ]
-    },
-    {
-      "theme": "VAT reconciliation and anomaly detection",
-      "count": 3,
-      "quotes": [
-        "VAT return anomaly detection across jurisdictions",
-        "custom agent that reconciles ledger to VAT return",
-        "custom agent that reconciles ledger to VAT return"
-      ]
-    },
-    {
-      "theme": "Summarising tax documents",
-      "count": 3,
-      "quotes": [
-        "summarising audit correspondence into action items",
-        "summarising the latest OECD guidance into a brief",
-        "turning long audit letters into a short list of next steps"
-      ]
-    },
-    {
-      "theme": "Extracting data from tax PDFs",
-      "count": 2,
-      "quotes": [
-        "extracting numbers from tax authority PDFs into Excel",
-        "extracting numbers from tax authority PDFs into Excel"
-      ]
-    },
-    {
-      "theme": "Other",
-      "count": 2,
-      "quotes": [
-        "automated Pillar 2 country-by-country reconciliation",
-        "HS code classification assistant for new SKUs"
+        "Chatgpt"
       ]
     }
   ],
   "expectations": [
     {
-      "theme": "Practical AI use cases",
-      "count": 3,
+      "theme": "Networking",
+      "count": 1,
       "quotes": [
-        "See AI use cases I can apply tomorrow.",
-        "Practical ideas for handling our growing audit caseload.",
-        "Practical ideas for handling our growing audit caseload."
+        "Network"
       ]
     },
     {
-      "theme": "Meet AI builders and collaborators",
-      "count": 4,
+      "theme": "Drinks",
+      "count": 1,
       "quotes": [
-        "Find collaborators for an AI-driven benchmarking workflow.",
-        "Meet builders who've shipped tax automations to production.",
-        "Meet builders who've shipped tax automations to production.",
-        "Network with peers who've automated repetitive compliance work."
-      ]
-    },
-    {
-      "theme": "Stories of what hasn't worked",
-      "count": 2,
-      "quotes": [
-        "Stories of what hasn't worked when deploying AI in tax.",
-        "Stories of what hasn't worked when deploying AI in tax."
-      ]
-    },
-    {
-      "theme": "Pillar 2 peer exchange",
-      "count": 2,
-      "quotes": [
-        "Learn how peers are handling Pillar 2 data gaps.",
-        "Find a sparring partner on Pillar 2 implementation."
-      ]
-    },
-    {
-      "theme": "Other",
-      "count": 4,
-      "quotes": [
-        "Find tooling ideas for our indirect tax compliance backlog.",
-        "Hear concrete examples of AI in customs workflows.",
-        "Compare notes on AI adoption with other tax heads.",
-        "Learn which tax-specific tools are actually being used."
+        "Drinks"
       ]
     }
   ]

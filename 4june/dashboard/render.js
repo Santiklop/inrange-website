@@ -772,13 +772,81 @@ setInterval(pollLiveNotes, POLL_INTERVAL_MS);
 setInterval(updateLiveStatus, 1000); // tick the "Xs ago" counter every second
 
 // ════════════════════════════════════════════════════════════════════════════
-// VIEW TOGGLE — Overview ↔ Live notes, persisted in localStorage
+// KEY TOPICS VIEW — clustered themes from live-themes.json
+// ════════════════════════════════════════════════════════════════════════════
+
+const LIVE_THEMES_URL = "./live-themes.json";
+const TOPICS_POLL_INTERVAL_MS = 15000; // refresh slower than live-notes; this is curated
+
+let lastTopicsGeneratedAt = null;
+
+function renderTopicCards(container, topics) {
+  if (!container) return 0;
+  container.innerHTML = (topics || []).map((t, i) => `
+    <div class="topic-card" data-i="${i}" data-title="${t.title.replace(/"/g, "&quot;")}">
+      <div class="topic-head">
+        <span class="topic-title">${t.title}</span>
+        <span class="topic-count">${(t.examples || []).length}</span>
+      </div>
+      <p class="topic-summary">${t.summary || ""}</p>
+    </div>
+  `).join("");
+  // Hover/click → show examples in the shared tooltip
+  container.querySelectorAll(".topic-card").forEach(card => {
+    const t = topics[parseInt(card.dataset.i, 10)];
+    const showExamples = (e) => {
+      const examples = (t.examples || []).map(q => `<li>${q}</li>`).join("");
+      showTooltip(
+        `<div class="t-title">${t.title} · ${(t.examples || []).length}</div>` +
+        `${t.summary ? `<div style="margin:4px 0 2px">${t.summary}</div>` : ""}` +
+        `${examples ? `<ul>${examples}</ul>` : ""}`,
+        e.clientX, e.clientY
+      );
+    };
+    card.addEventListener("mousemove", showExamples);
+    card.addEventListener("mouseleave", hideTooltip);
+    card.addEventListener("click", showExamples); // touch fallback
+  });
+  return (topics || []).length;
+}
+
+async function pollKeyTopics() {
+  try {
+    const res = await fetch(`${LIVE_THEMES_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const wins     = Array.isArray(data.wins)     ? data.wins     : [];
+    const risks    = Array.isArray(data.risks)    ? data.risks    : [];
+    const insights = Array.isArray(data.insights) ? data.insights : [];
+    renderTopicCards(document.getElementById("t-wins"),     wins);
+    renderTopicCards(document.getElementById("t-risks"),    risks);
+    renderTopicCards(document.getElementById("t-insights"), insights);
+    lastTopicsGeneratedAt = data.generatedAt || null;
+    const total = wins.length + risks.length + insights.length;
+    const el = document.getElementById("topics-status-text");
+    if (el) {
+      const updatedAt = fmtTime(lastTopicsGeneratedAt);
+      const head = updatedAt ? `updated at ${updatedAt}` : "loaded";
+      el.textContent = `${head}  ·  ${wins.length} wins  ·  ${risks.length} risks  ·  ${insights.length} takeaways  ·  ${total} themes`;
+    }
+  } catch (err) {
+    console.error("[key-topics] poll failed:", err);
+    const el = document.getElementById("topics-status-text");
+    if (el) el.textContent = "could not load live-themes.json";
+  }
+}
+pollKeyTopics();
+setInterval(pollKeyTopics, TOPICS_POLL_INTERVAL_MS);
+
+// ════════════════════════════════════════════════════════════════════════════
+// VIEW TOGGLE — Welcome ↔ Overview ↔ Live notes ↔ Key topics, persisted
 // ════════════════════════════════════════════════════════════════════════════
 
 const VIEW_KEY = "dashboard.view";
+const VALID_VIEWS = new Set(["welcome", "overview", "live", "topics"]);
 
 function setView(view) {
-  if (view !== "overview" && view !== "live" && view !== "welcome") view = "overview";
+  if (!VALID_VIEWS.has(view)) view = "overview";
   document.querySelector(".root").dataset.view = view;
   for (const btn of document.querySelectorAll(".view-toggle button")) {
     const isActive = btn.dataset.view === view;
@@ -797,12 +865,13 @@ for (const btn of document.querySelectorAll(".view-toggle button")) {
 try { setView(localStorage.getItem(VIEW_KEY) || "overview"); }
 catch { setView("overview"); }
 
-// Keyboard shortcuts: W = welcome · O = overview · L = live
+// Keyboard shortcuts: W = welcome · O = overview · L = live · T = topics
 document.addEventListener("keydown", (e) => {
   if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
   if (e.key === "w" || e.key === "W") setView("welcome");
   if (e.key === "o" || e.key === "O") setView("overview");
   if (e.key === "l" || e.key === "L") setView("live");
+  if (e.key === "t" || e.key === "T") setView("topics");
 });
 
 // ════════════════════════════════════════════════════════════════════════════

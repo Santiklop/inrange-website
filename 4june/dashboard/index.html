@@ -269,11 +269,17 @@
 
     /* Show/hide views based on data-view */
     .root[data-view="overview"] .view-live,
-    .root[data-view="overview"] .view-welcome { display: none !important; }
+    .root[data-view="overview"] .view-welcome,
+    .root[data-view="overview"] .view-topics { display: none !important; }
     .root[data-view="live"] .view-overview,
-    .root[data-view="live"] .view-welcome { display: none !important; }
+    .root[data-view="live"] .view-welcome,
+    .root[data-view="live"] .view-topics { display: none !important; }
     .root[data-view="welcome"] .view-overview,
-    .root[data-view="welcome"] .view-live { display: none !important; }
+    .root[data-view="welcome"] .view-live,
+    .root[data-view="welcome"] .view-topics { display: none !important; }
+    .root[data-view="topics"] .view-overview,
+    .root[data-view="topics"] .view-live,
+    .root[data-view="topics"] .view-welcome { display: none !important; }
 
     /* ─── Welcome view (full-screen QR + welcome note) ───────────────────── */
     .welcome-view { flex: 1; display: flex; flex-direction: column;
@@ -384,6 +390,40 @@
                   padding: 24px 12px 0; opacity: 0.7; }
     .live-empty[hidden] { display: none; }
 
+    /* ─── Key topics view (clustered themes from live notes) ──────────────── */
+    .topics-view { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px;
+                   min-height: 0; padding: 4px 0 0; align-items: start; }
+    @media (max-width: 1400px) { .topics-view { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 900px)  { .topics-view { grid-template-columns: 1fr;   } }
+    .topics-column { display: flex; flex-direction: column; min-height: 0;
+                     background: var(--bg-card); border: 1px solid var(--border);
+                     border-radius: var(--radius); padding: 22px 24px 24px; }
+    .topics-column h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+                        margin: 0 0 6px; color: var(--fg-1); }
+    .topics-column .topics-sub { font-size: 12px; color: var(--fg-3);
+                                  letter-spacing: 0.08em; text-transform: uppercase;
+                                  font-weight: 700; margin: 0 0 16px; }
+    .topic-card-list { display: flex; flex-direction: column; gap: 10px;
+                       overflow-y: auto; overflow-x: hidden;
+                       scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent; }
+    .topic-card-list::-webkit-scrollbar { width: 6px; }
+    .topic-card-list::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
+    .topic-card { background: var(--bg-sunken); border: 1px solid var(--border);
+                  border-radius: 10px; padding: 14px 16px;
+                  cursor: help; transition: background 140ms ease, border-color 140ms ease, transform 140ms ease; }
+    .topic-card:hover { background: rgba(31,168,74,0.10); border-color: var(--brand-green-500);
+                        transform: translateY(-1px); }
+    .topic-head { display: flex; justify-content: space-between; align-items: baseline;
+                  gap: 10px; margin: 0 0 6px; }
+    .topic-title { font-size: 15.5px; font-weight: 700; color: var(--fg-1);
+                   letter-spacing: -0.01em; line-height: 1.25; min-width: 0;
+                   overflow-wrap: anywhere; }
+    .topic-count { font-size: 12px; font-weight: 800; color: var(--brand-green-300);
+                   background: rgba(31,168,74,0.12); border-radius: 999px;
+                   padding: 2px 8px; flex: 0 0 auto;
+                   font-variant-numeric: tabular-nums; }
+    .topic-summary { margin: 0; font-size: 13.5px; color: var(--fg-2); line-height: 1.45; }
+
     .live-status { text-align: center; padding: 14px 0 4px;
                    font-size: 12px; color: var(--fg-3); letter-spacing: 0.06em;
                    text-transform: uppercase; font-weight: 600; }
@@ -406,6 +446,7 @@
           <button type="button" data-view="welcome" role="tab" aria-selected="false">Welcome</button>
           <button type="button" data-view="overview" class="active" role="tab" aria-selected="true">Overview</button>
           <button type="button" data-view="live" role="tab" aria-selected="false">Live notes</button>
+          <button type="button" data-view="topics" role="tab" aria-selected="false">Key topics</button>
         </span>
         <span class="chyron">4 June 2026 · Nutanix</span>
         <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Switch to light mode" title="Toggle light / dark">
@@ -505,6 +546,26 @@
     </main>
 
     <div class="live-status view-live" id="live-status"><span class="dot"></span><span id="live-status-text">connecting…</span></div>
+
+    <main class="topics-view view-topics">
+      <section class="topics-column">
+        <h2>What's working</h2>
+        <p class="topics-sub">Use case clusters</p>
+        <div class="topic-card-list" id="t-wins"></div>
+      </section>
+      <section class="topics-column">
+        <h2>Where we're stuck</h2>
+        <p class="topics-sub">Risk &amp; friction clusters</p>
+        <div class="topic-card-list" id="t-risks"></div>
+      </section>
+      <section class="topics-column">
+        <h2>Room takeaways</h2>
+        <p class="topics-sub">How we should approach it</p>
+        <div class="topic-card-list" id="t-insights"></div>
+      </section>
+    </main>
+
+    <div class="live-status view-topics" id="topics-status"><span class="dot"></span><span id="topics-status-text">loading…</span></div>
 
     <footer>Powered by inRange · <a href="https://www.inrange.nl">www.inrange.nl</a></footer>
   </div>

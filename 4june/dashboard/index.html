@@ -115,6 +115,59 @@
     .donut-slice { transition: stroke-width 120ms ease, filter 120ms ease; }
     .donut-slice:hover { stroke-width: 28; filter: brightness(1.18); }
 
+    /* ─── Collapsible "Detailed metrics" section ─────────────────────────── */
+    #p-detail { padding: 0; }
+    #p-detail .detail-summary { padding: 14px 16px; cursor: pointer;
+                                list-style: none; display: flex;
+                                justify-content: space-between; align-items: center; }
+    #p-detail .detail-summary::-webkit-details-marker { display: none; }
+    #p-detail .detail-arrow { color: var(--brand-green-300); font-size: 14px;
+                              transition: transform 200ms ease;
+                              transform: rotate(0deg); }
+    #p-detail[open] .detail-arrow { transform: rotate(180deg); }
+    #p-detail .detail-body { padding: 4px 16px 16px; }
+
+    .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .chart-panel { background: var(--bg-sunken); border-radius: 10px; padding: 14px 16px; }
+    .chart-panel-wide { grid-column: 1 / -1; }
+    .chart-title { margin: 0 0 12px; font-size: 12px;
+                   letter-spacing: 0.10em; text-transform: uppercase;
+                   color: var(--fg-2); font-weight: 700; }
+
+    .scatter-svg { width: 100%; height: auto; display: block; }
+    .scatter-grid line { stroke: rgba(255,255,255,.06); stroke-width: 1; }
+    .scatter-median { stroke: var(--brand-green-500); stroke-dasharray: 4 3; stroke-width: 1.5; }
+    .scatter-axis { fill: var(--fg-3); font-size: 10px; font-family: var(--font); }
+    .scatter-tick { fill: var(--fg-3); font-size: 9px; font-family: var(--font); }
+    .scatter-dot { fill: var(--accent-sky); stroke: white; stroke-width: 1.5;
+                   cursor: pointer; transition: r 120ms ease, fill 120ms ease; }
+    .scatter-dot:hover { fill: var(--brand-green-300); }
+    .chart-meta { margin-top: 10px; font-size: 11px; color: var(--fg-3); text-align: center; }
+    .empty-chart { padding: 28px 0; text-align: center; color: var(--fg-3);
+                   font-size: 13px; font-style: italic; }
+
+    .ranked-list { display: flex; flex-direction: column; gap: 4px; }
+    .ranked-row { display: grid; grid-template-columns: 28px 1fr 72px;
+                  gap: 12px; align-items: center; padding: 5px 4px;
+                  border-radius: 4px; font-size: 13px; cursor: default;
+                  transition: background 120ms ease; }
+    .ranked-row:hover { background: rgba(31,168,74,0.08); }
+    .ranked-rank { color: var(--fg-3); font-weight: 700; text-align: right;
+                   font-variant-numeric: tabular-nums; }
+    .ranked-bar-track { position: relative; height: 10px;
+                        background: rgba(255,255,255,.05); border-radius: 5px; }
+    .ranked-bar-fill { position: absolute; left: 0; top: 0; bottom: 0;
+                       background: var(--brand-green-500); border-radius: 5px; }
+    .ranked-bar-dot { position: absolute; top: -2px; width: 14px; height: 14px;
+                      border-radius: 50%; background: white;
+                      border: 2.5px solid var(--brand-green-500); box-shadow: 0 1px 3px rgba(0,0,0,.4); }
+    .ranked-total { font-variant-numeric: tabular-nums; text-align: right;
+                    font-weight: 600; color: var(--fg-1); }
+    .ranked-total .of { color: var(--fg-3); font-weight: 400; }
+    .ranked-median-line { color: var(--brand-green-300); font-weight: 700;
+                          font-size: 11px; padding: 4px 0; text-align: center;
+                          border-top: 1px dashed var(--brand-green-500); margin: 8px 0; }
+
     /* ─── View toggle ─────────────────────────────────────────────────────── */
     .view-toggle { display: inline-flex; gap: 4px; padding: 4px;
                    background: var(--bg-sunken); border-radius: 999px;
@@ -252,6 +305,29 @@
       <h2 class="panel-title">Where we stand <span class="panel-sub">— room average, 1–10 self-assessed</span></h2>
       <div class="panel-body"></div>
     </section>
+
+    <details class="panel panel-wide view-overview" id="p-detail">
+      <summary class="detail-summary">
+        <span class="panel-title" style="margin:0">Detailed metrics — by person <span class="panel-sub">click to expand</span></span>
+        <span class="detail-arrow">▾</span>
+      </summary>
+      <div class="detail-body">
+        <div class="chart-grid">
+          <div class="chart-panel">
+            <h3 class="chart-title">Adoption × Application</h3>
+            <div id="scatter-aa"></div>
+          </div>
+          <div class="chart-panel">
+            <h3 class="chart-title">Craft × Trust</h3>
+            <div id="scatter-ct"></div>
+          </div>
+          <div class="chart-panel chart-panel-wide">
+            <h3 class="chart-title">Total score · sum of all four · ranked</h3>
+            <div id="ranked-total"></div>
+          </div>
+        </div>
+      </div>
+    </details>
 
     <main class="live-view view-live">
       <section class="live-column">

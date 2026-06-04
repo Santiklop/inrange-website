@@ -176,6 +176,148 @@ function renderHBars(container, rows, kind, namesByLabel) {
   });
 }
 
+// ---------- Median helper ----------
+function median(values) {
+  const v = values.filter(Number.isFinite).slice().sort((a, b) => a - b);
+  if (v.length === 0) return null;
+  const n = v.length;
+  return n % 2 ? v[(n - 1) / 2] : (v[n / 2 - 1] + v[n / 2]) / 2;
+}
+
+// ---------- Scatter plot (one point per person + median lines) ----------
+function renderScatter(container, data, xKey, yKey, xLabel, yLabel) {
+  const points = data
+    .filter(d => Number.isFinite(d[xKey]) && Number.isFinite(d[yKey]))
+    .map(d => ({ x: d[xKey], y: d[yKey], role: roleFor(d.id), id: d.id }));
+
+  if (points.length === 0) {
+    container.innerHTML = `<div class="empty-chart">Waiting for check-in data…</div>`;
+    return;
+  }
+
+  const W = 420, H = 320, PAD_L = 32, PAD_R = 12, PAD_T = 14, PAD_B = 28;
+  const innerW = W - PAD_L - PAD_R, innerH = H - PAD_T - PAD_B;
+  const xPx = v => PAD_L + (v / 10) * innerW;
+  const yPx = v => H - PAD_B - (v / 10) * innerH;  // 0 at bottom
+
+  const xMed = median(points.map(p => p.x));
+  const yMed = median(points.map(p => p.y));
+
+  // Grid + tick labels at 0, 5, 10
+  const ticks = [0, 5, 10];
+  const grid = ticks.map(t => `
+    <line x1="${xPx(t)}" y1="${PAD_T}" x2="${xPx(t)}" y2="${H - PAD_B}" />
+    <line x1="${PAD_L}" y1="${yPx(t)}" x2="${W - PAD_R}" y2="${yPx(t)}" />
+  `).join("");
+  const xTickLabels = ticks.map(t =>
+    `<text class="scatter-tick" x="${xPx(t)}" y="${H - PAD_B + 14}" text-anchor="middle">${t}</text>`
+  ).join("");
+  const yTickLabels = ticks.map(t =>
+    `<text class="scatter-tick" x="${PAD_L - 6}" y="${yPx(t) + 3}" text-anchor="end">${t}</text>`
+  ).join("");
+
+  // Median dashed lines
+  const medLines = `
+    <line class="scatter-median" x1="${xPx(xMed)}" y1="${PAD_T}" x2="${xPx(xMed)}" y2="${H - PAD_B}" />
+    <line class="scatter-median" x1="${PAD_L}" y1="${yPx(yMed)}" x2="${W - PAD_R}" y2="${yPx(yMed)}" />
+  `;
+
+  // Dots — jitter slightly when multiple people share the same coords so they
+  // don't overlap exactly. Deterministic jitter from index.
+  const seenAt = new Map();
+  const dots = points.map((p, i) => {
+    const key = `${p.x},${p.y}`;
+    const k = seenAt.get(key) || 0;
+    seenAt.set(key, k + 1);
+    const dx = k === 0 ? 0 : (((k * 137) % 9) - 4);
+    const dy = k === 0 ? 0 : (((k * 211) % 9) - 4);
+    return `<circle class="scatter-dot" cx="${xPx(p.x) + dx}" cy="${yPx(p.y) + dy}" r="6"
+                    data-role="${p.role}" data-x="${p.x}" data-y="${p.y}"></circle>`;
+  }).join("");
+
+  // Axis labels
+  const labels = `
+    <text class="scatter-axis" x="${W - PAD_R}" y="${H - 4}" text-anchor="end">${xLabel} →</text>
+    <text class="scatter-axis" x="${PAD_L}" y="${PAD_T - 4}" text-anchor="start">↑ ${yLabel}</text>
+  `;
+
+  container.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" class="scatter-svg">
+      <g class="scatter-grid">${grid}</g>
+      ${medLines}
+      ${xTickLabels}
+      ${yTickLabels}
+      ${dots}
+      ${labels}
+    </svg>
+    <div class="chart-meta">N = ${points.length} · median: ${xLabel.toLowerCase()} ${xMed.toFixed(1)}, ${yLabel.toLowerCase()} ${yMed.toFixed(1)}</div>
+  `;
+
+  container.querySelectorAll(".scatter-dot").forEach(dot => {
+    dot.addEventListener("mousemove", (e) => {
+      showTooltip(
+        `<div class="t-title">${dot.dataset.role}</div>` +
+        `${xLabel}: ${dot.dataset.x}<br>${yLabel}: ${dot.dataset.y}`,
+        e.clientX, e.clientY
+      );
+    });
+    dot.addEventListener("mouseleave", hideTooltip);
+  });
+}
+
+// ---------- Ranked total (horizontal lollipop, one row per person) ----------
+function renderRankedTotal(container, data) {
+  const enriched = data
+    .map(d => {
+      const a = Number.isFinite(d.selfAdoption)    ? d.selfAdoption    : null;
+      const p = Number.isFinite(d.selfApplication) ? d.selfApplication : null;
+      const c = Number.isFinite(d.selfCraft)       ? d.selfCraft       : null;
+      const t = Number.isFinite(d.selfTrust)       ? d.selfTrust       : null;
+      if (a == null || p == null || c == null || t == null) return null;
+      return { id: d.id, role: roleFor(d.id), a, p, c, t, total: a + p + c + t };
+    })
+    .filter(Boolean);
+
+  if (enriched.length === 0) {
+    container.innerHTML = `<div class="empty-chart">Waiting for check-in data…</div>`;
+    return;
+  }
+
+  const ranked = enriched.slice().sort((x, y) => y.total - x.total);
+  const med = median(ranked.map(r => r.total));
+  const MAX = 40;
+
+  const rows = ranked.map((r, i) => `
+    <div class="ranked-row" data-role="${r.role}" data-total="${r.total}"
+         data-a="${r.a}" data-p="${r.p}" data-c="${r.c}" data-t="${r.t}">
+      <span class="ranked-rank">${i + 1}</span>
+      <div class="ranked-bar-track">
+        <div class="ranked-bar-fill" style="width: ${(r.total / MAX) * 100}%"></div>
+        <div class="ranked-bar-dot" style="left: calc(${(r.total / MAX) * 100}% - 7px)"></div>
+      </div>
+      <span class="ranked-total">${r.total} <span class="of">/ ${MAX}</span></span>
+    </div>
+  `).join("");
+
+  container.innerHTML = `
+    <div class="ranked-list">${rows}</div>
+    <div class="chart-meta">N = ${ranked.length} · median ${med.toFixed(1)} / ${MAX}</div>
+  `;
+
+  container.querySelectorAll(".ranked-row").forEach(row => {
+    row.addEventListener("mousemove", (e) => {
+      showTooltip(
+        `<div class="t-title">${row.dataset.role}</div>` +
+        `Total: <b>${row.dataset.total} / ${MAX}</b><br>` +
+        `Adoption ${row.dataset.a} · Application ${row.dataset.p}<br>` +
+        `Craft ${row.dataset.c} · Trust ${row.dataset.t}`,
+        e.clientX, e.clientY
+      );
+    });
+    row.addEventListener("mouseleave", hideTooltip);
+  });
+}
+
 // ---------- Where we stand (room self-assessment averages) ----------
 function renderWhereWeStand(container, responses) {
   const axes = [
@@ -271,6 +413,11 @@ async function main() {
 
   // Where we stand (room self-assessment averages)
   renderWhereWeStand(document.querySelector("#p-where .panel-body"), responses);
+
+  // Detailed metrics — collapsible section at the bottom of Overview
+  renderScatter(document.getElementById("scatter-aa"), responses, "selfAdoption",    "selfApplication", "Adoption", "Application");
+  renderScatter(document.getElementById("scatter-ct"), responses, "selfCraft",       "selfTrust",       "Craft",    "Trust");
+  renderRankedTotal(document.getElementById("ranked-total"), responses);
 }
 main();
 

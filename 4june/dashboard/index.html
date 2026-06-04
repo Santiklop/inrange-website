@@ -45,9 +45,10 @@
     .panel-wide { /* breaks out of the grid; sits below the grid */ }
 
     /* Panel body fills remaining space and scrolls internally if it overflows
-       (used to silently clip). Dark custom scrollbar for both themes lists and
-       horizontal-bar panels. */
-    .panel-body { flex: 1 1 auto; min-height: 0; overflow-y: auto;
+       (used to silently clip). Vertical scroll only — horizontal is clipped
+       so wide content (long theme labels, etc.) wraps instead of side-scrolling. */
+    .panel-body { flex: 1 1 auto; min-height: 0;
+                  overflow-y: auto; overflow-x: hidden;
                   scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent; }
     .panel-body::-webkit-scrollbar { width: 6px; }
     .panel-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 3px; }
@@ -111,7 +112,8 @@
     .theme { background: var(--bg-sunken); border-radius: 8px; padding: 10px 14px;
              font-size: 15px; cursor: pointer; transition: background 120ms ease;
              display: flex; align-items: center; gap: 12px; min-width: 0; }
-    .theme-label { flex: 1 1 auto; min-width: 0; line-height: 1.35; }
+    .theme-label { flex: 1 1 auto; min-width: 0; line-height: 1.35;
+                   overflow-wrap: anywhere; word-break: break-word; }
     .theme-count { flex: 0 0 auto; color: var(--brand-green-300); font-weight: 800;
                    font-variant-numeric: tabular-nums; font-size: 14px; }
     .theme:hover, .theme.is-hovered { background: rgba(31,168,74,0.18); color: #fff; }
@@ -212,10 +214,11 @@
 
     /* Responsive columns — browser fits as many ~220 px columns as the panel allows.
        On a typical 1920-wide projector this gives 3 cols per panel; on narrow
-       phones it falls back to 1. Internal scroll only if we still overflow. */
+       phones it falls back to 1. Vertical scroll only if we overflow; horizontal
+       is hard-clipped so we never get a side-scrollbar. */
     .sticker-grid { columns: 220px; column-gap: 14px;
                     margin: 0; padding: 4px 4px; flex: 1; min-height: 0;
-                    overflow-y: auto; }
+                    overflow-y: auto; overflow-x: hidden; }
     @media (max-width: 700px) { .sticker-grid { columns: 1; } }
 
     /* Density modes — JS toggles .dense / .very-dense on .sticker-grid

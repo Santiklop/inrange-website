@@ -321,6 +321,82 @@ function renderRankedTotal(container, data) {
   });
 }
 
+// ---------- Grouped averages (experience bucket / tax area) ----------
+function totalScore(r) {
+  const v = r.selfAdoption + r.selfApplication + r.selfCraft + r.selfTrust;
+  return Number.isFinite(v) ? v : null;
+}
+
+function aggregateByYears(responses) {
+  // Keep the ordinal sequence so the chart reads bottom-of-career → top-of-career
+  const order = ["0–5", "5–15", "15+"];
+  return order.map(label => {
+    const totals = responses
+      .filter(r => r.yearsInTax === label)
+      .map(totalScore)
+      .filter(v => v != null);
+    if (totals.length === 0) return null;
+    return {
+      label: label + " years",
+      count: totals.length,
+      average: totals.reduce((a, b) => a + b, 0) / totals.length
+    };
+  }).filter(Boolean);
+}
+
+function aggregateByTaxArea(responses) {
+  const buckets = new Map();
+  for (const r of responses) {
+    const tot = totalScore(r);
+    if (tot == null) continue;
+    for (const area of (r.taxAreas || [])) {
+      if (!area) continue;
+      if (!buckets.has(area)) buckets.set(area, []);
+      buckets.get(area).push(tot);
+    }
+  }
+  return [...buckets.entries()]
+    .map(([label, totals]) => ({
+      label,
+      count: totals.length,
+      average: totals.reduce((a, b) => a + b, 0) / totals.length
+    }))
+    .sort((a, b) => b.average - a.average); // descending by average
+}
+
+function renderGroupedAverages(container, items) {
+  if (!items || items.length === 0) {
+    container.innerHTML = `<div class="empty-chart">Waiting for check-in data…</div>`;
+    return;
+  }
+  const MAX = 40;
+  container.innerHTML = `
+    <div class="grouped-list">
+      ${items.map(it => `
+        <div class="grouped-row" data-label="${it.label}" data-count="${it.count}" data-avg="${it.average.toFixed(1)}">
+          <span class="grouped-label">${it.label}</span>
+          <span class="grouped-n">N = ${it.count}</span>
+          <div class="grouped-bar-track"><div class="grouped-bar-fill" style="width:${(it.average / MAX) * 100}%"></div></div>
+          <span class="grouped-avg">${it.average.toFixed(1)} <span class="of">/ ${MAX}</span></span>
+        </div>
+      `).join("")}
+    </div>
+    <div class="chart-meta">Average of (Adoption + Application + Craft + Trust), 0–40 scale</div>
+  `;
+
+  container.querySelectorAll(".grouped-row").forEach(row => {
+    row.addEventListener("mousemove", (e) => {
+      showTooltip(
+        `<div class="t-title">${row.dataset.label}</div>` +
+        `${row.dataset.count} ${row.dataset.count === "1" ? "person" : "people"} · ` +
+        `average total ${row.dataset.avg} / ${MAX}`,
+        e.clientX, e.clientY
+      );
+    });
+    row.addEventListener("mouseleave", hideTooltip);
+  });
+}
+
 // ---------- Where we stand (room self-assessment averages) ----------
 function renderWhereWeStand(container, responses) {
   const axes = [
@@ -421,6 +497,8 @@ async function main() {
   renderScatter(document.getElementById("scatter-aa"), responses, "selfAdoption",    "selfApplication", "Adoption", "Application");
   renderScatter(document.getElementById("scatter-ct"), responses, "selfCraft",       "selfTrust",       "Craft",    "Trust");
   renderRankedTotal(document.getElementById("ranked-total"), responses);
+  renderGroupedAverages(document.getElementById("avg-by-years"), aggregateByYears(responses));
+  renderGroupedAverages(document.getElementById("avg-by-area"),  aggregateByTaxArea(responses));
 }
 main();
 

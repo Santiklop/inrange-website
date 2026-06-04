@@ -185,6 +185,28 @@
                           font-size: 11px; padding: 4px 0; text-align: center;
                           border-top: 1px dashed var(--brand-green-500); margin: 8px 0; }
 
+    /* Grouped averages — one row per group (experience bucket / tax area), shows
+       N + a 0–40 bar of the average total score for that group. */
+    .grouped-list { display: flex; flex-direction: column; gap: 6px; }
+    .grouped-row { display: grid; grid-template-columns: minmax(120px, 1.4fr) 48px 2fr 76px;
+                   gap: 10px; align-items: center; padding: 6px 4px;
+                   border-radius: 4px; font-size: 13px; cursor: default;
+                   transition: background 120ms ease; }
+    .grouped-row:hover { background: rgba(31,168,74,0.08); }
+    .grouped-label { color: var(--fg-1); font-weight: 600;
+                     overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+                     min-width: 0; }
+    .grouped-n     { color: var(--fg-3); font-size: 11px;
+                     font-variant-numeric: tabular-nums; text-align: right; }
+    .grouped-bar-track { position: relative; height: 10px;
+                         background: rgba(255,255,255,.05); border-radius: 5px; }
+    .grouped-bar-fill  { position: absolute; left: 0; top: 0; bottom: 0;
+                         background: var(--brand-green-500); border-radius: 5px; }
+    .grouped-avg   { font-variant-numeric: tabular-nums; text-align: right;
+                     font-weight: 600; color: var(--fg-1); }
+    .grouped-avg .of { color: var(--fg-3); font-weight: 400; }
+    @media (max-width: 900px) { .chart-grid { grid-template-columns: 1fr; } }
+
     /* ─── View toggle ─────────────────────────────────────────────────────── */
     .view-toggle { display: inline-flex; gap: 4px; padding: 4px;
                    background: var(--bg-sunken); border-radius: 999px;
@@ -342,6 +364,14 @@
           <div class="chart-panel chart-panel-wide">
             <h3 class="chart-title">Total score · sum of all four · ranked</h3>
             <div id="ranked-total"></div>
+          </div>
+          <div class="chart-panel">
+            <h3 class="chart-title">Average total · by experience</h3>
+            <div id="avg-by-years"></div>
+          </div>
+          <div class="chart-panel">
+            <h3 class="chart-title">Average total · by tax area</h3>
+            <div id="avg-by-area"></div>
           </div>
         </div>
       </div>

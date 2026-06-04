@@ -1,8 +1,10 @@
 {
-  "generatedAt": "2026-06-04T11:57:53+02:00",
+  "generatedAt": "2026-06-04T11:59:30+02:00",
   "useCases": [
     "Used Claude Code to build this whole dashboard last night.",
     "Used Chat GPT to select the best ice cream to eat for breakfast today."
   ],
-  "frustrations": []
+  "frustrations": [
+    "I'd want AI to do the dishes at home"
+  ]
 }

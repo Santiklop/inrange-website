@@ -255,7 +255,7 @@ for (const axis of ["adoption", "application", "craft", "trust"]) {
 function setSliders(values) {
   for (const axis of ["adoption", "application", "craft", "trust"]) {
     const key = "self" + axis.charAt(0).toUpperCase() + axis.slice(1);
-    const v = values && Number.isFinite(values[key]) ? values[key] : 5;
+    const v = values && Number.isFinite(values[key]) ? values[key] : 3;
     document.getElementById(`s-${axis}`).value = v;
     document.getElementById(`v-${axis}`).textContent = v;
     applyBand(axis, v, false);     // initial band, no flash

@@ -148,23 +148,23 @@ function renderThemes(container, items) {
       <span class="theme-count">${t.count}</span>
     </div>
   `).join("") + `</div>`;
+  // Tooltip content: title + optional editorial "detail" gloss + verbatim quotes.
+  // Detail (if present in the cluster) is editorial context — useful when a
+  // cluster label needs more than a few words to convey what it really means.
+  const tooltipFor = (t) => {
+    const detail = t.detail ? `<div style="margin: 4px 0 6px; opacity: 0.92;">${t.detail}</div>` : "";
+    const quotes = (t.quotes || []).map(q => `<li>${q}</li>`).join("");
+    return `<div class="t-title">${t.theme} · ${t.count}</div>${detail}${quotes ? `<ul>${quotes}</ul>` : ""}`;
+  };
   container.querySelectorAll(".theme").forEach(row => {
     const t = items[parseInt(row.dataset.i, 10)];
     row.addEventListener("mousemove", (e) => {
-      const quotes = (t.quotes || []).map(q => `<li>${q}</li>`).join("");
-      showTooltip(
-        `<div class="t-title">${t.theme} · ${t.count}</div>${quotes ? `<ul>${quotes}</ul>` : ""}`,
-        e.clientX, e.clientY
-      );
+      showTooltip(tooltipFor(t), e.clientX, e.clientY);
     });
     row.addEventListener("mouseleave", hideTooltip);
     // Touch fallback for post-event phone visitors
     row.addEventListener("click", (e) => {
-      const quotes = (t.quotes || []).map(q => `<li>${q}</li>`).join("");
-      showTooltip(
-        `<div class="t-title">${t.theme} · ${t.count}</div>${quotes ? `<ul>${quotes}</ul>` : ""}`,
-        e.clientX, e.clientY
-      );
+      showTooltip(tooltipFor(t), e.clientX, e.clientY);
     });
   });
 }

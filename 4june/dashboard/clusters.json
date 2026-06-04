@@ -2,16 +2,11 @@
   "generatedAt": "2026-06-04T17:50:00+02:00",
   "wishes": [
     {
-      "theme": "Try Claude",
-      "count": 1,
+      "theme": "Use ChatGPT and Claude at work",
+      "count": 2,
+      "detail": "Including with internal company data — bridging the privacy gap several people flagged in the frustrations.",
       "quotes": [
-        "Claude"
-      ]
-    },
-    {
-      "theme": "Try ChatGPT more",
-      "count": 1,
-      "quotes": [
+        "Claude",
         "Chatgpt"
       ]
     }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T16:33:42+02:00",
+  "generatedAt": "2026-06-04T17:14:17+02:00",
   "useCases": [
     {
       "text": "Used Claude Code to build this whole dashboard last night.",
@@ -18,11 +18,11 @@
       "attribution": "Valon"
     },
     {
-      "text": "Premium Co-Pilot filters the IBFD newsletter and only surfaces what's relevant. Used it to draft a memo for India — the local expert confirmed it was correct. Also generated a PowerPoint from it.",
+      "text": "Premium Co-Pilot filters the IBFD newsletter and surfaces only what's relevant. Drafted a memo for India — the local expert confirmed it was correct. Also generated a PowerPoint from it.",
       "attribution": ""
     },
     {
-      "text": "Used AI to draft constructive feedback on a colleague's presentation — peers praised the quality of the comments.",
+      "text": "Used AI to draft constructive feedback on a colleague's presentation — peers praised the quality.",
       "attribution": ""
     },
     {
@@ -30,8 +30,68 @@
       "attribution": "Min (IBFD)"
     },
     {
-      "text": "Uses LocTax — an LLM tax agent on top of the IBFD database — to dig into complex technical tax setups.",
+      "text": "Uses LocTax for complex tax setups globally — gives advice with IBFD references by jurisdiction. Claude takes a more risk-heavy approach; LocTax stays more neutral. Recommends it.",
       "attribution": "Raymond"
+    },
+    {
+      "text": "Used an AI agent to analyse a 2025 transfer-pricing court case — full answers + notices in 2 minutes once the company data was shared. Agent matures with every prompt.",
+      "attribution": ""
+    },
+    {
+      "text": "Uses Co-Pilot to summarise his hundreds of daily email chains and pull out the key highlights.",
+      "attribution": "Vito"
+    },
+    {
+      "text": "Used AI to crunch complex financial computations.",
+      "attribution": ""
+    },
+    {
+      "text": "Grok is linked to her Gmail, prior tax returns, payslips and passport. Voice-prompts country-specific returns; Grok scans, summarises, sends to the receiver — saves her half a day.",
+      "attribution": "Navida"
+    },
+    {
+      "text": "Voice translation at an NOB meeting (Dutch ↔ English) — phone records voice + translation so she can contribute live.",
+      "attribution": "Navida"
+    },
+    {
+      "text": "Used Claude to translate while travelling in Japan.",
+      "attribution": ""
+    },
+    {
+      "text": "Co-Pilot's prompt function to capture argumental relationships and details during meetings.",
+      "attribution": ""
+    },
+    {
+      "text": "Financial modelling with AI as a base — change a variable, AI adjusts the rest. Surprisingly accurate across markets.",
+      "attribution": "Navida"
+    },
+    {
+      "text": "Built one- and two-pager financial models from scratch via prompt, data pulled from Google. Change the tax rate and the agent adjusts entry/exit multiples automatically.",
+      "attribution": ""
+    },
+    {
+      "text": "Ask AI for ERP t-codes to look up data fast instead of hunting through the system.",
+      "attribution": ""
+    },
+    {
+      "text": "Built a ChatBot that takes user prompts, suggests t-codes, extracts data and builds dashboards for the centralised finance function in WorkDay.",
+      "attribution": "JET"
+    },
+    {
+      "text": "Uses Slack to extract WorkDay ERP data — works for generic data, not salary fields.",
+      "attribution": ""
+    },
+    {
+      "text": "PwC presented an AI that does SAP data extraction & analysis — figures out the output you'll need before you even specify the data requirements.",
+      "attribution": ""
+    },
+    {
+      "text": "Uses Alteryx for data analysis and recognising patterns in tax data.",
+      "attribution": "Servais"
+    },
+    {
+      "text": "Used AI agents to file tax returns.",
+      "attribution": ""
     }
   ],
   "frustrations": [
@@ -46,6 +106,54 @@
     {
       "text": "Co-Pilot's answers can sometimes feel less analytical than expected.",
       "attribution": "Valon"
+    },
+    {
+      "text": "LocTax is ~3,000 EUR / month for 5 users — a big investment for many tax teams.",
+      "attribution": ""
+    },
+    {
+      "text": "If an agent does the technical advisory better, what is the in-house tax advisor's value-add now?",
+      "attribution": ""
+    },
+    {
+      "text": "Communication stops feeling genuine when AI is replying to your colleagues on your behalf.",
+      "attribution": ""
+    },
+    {
+      "text": "AI replies can sound superficial — people can tell it wasn't the in-house advisor speaking.",
+      "attribution": ""
+    },
+    {
+      "text": "Leadership will blame the in-house practitioner if an AI mistake slips through unchecked.",
+      "attribution": ""
+    },
+    {
+      "text": "AI calculations aren't always accurate, and the methodology can be questionable. It isn't always smart enough to compute the full thing.",
+      "attribution": ""
+    },
+    {
+      "text": "Group IT calls to ask if we're \"maxing out\" the AI licence — and threatens to pull it if usage doesn't justify the cost. Feels intrusive.",
+      "attribution": ""
+    },
+    {
+      "text": "Some companies won't even approve a 300 EUR AI budget for the tax team.",
+      "attribution": ""
+    },
+    {
+      "text": "Co-Pilot's meeting capture invented \"data\" from a conversation that never happened — couldn't trust the output without re-reading it line by line.",
+      "attribution": ""
+    },
+    {
+      "text": "AI-generated data-model formulas can quietly break.",
+      "attribution": ""
+    },
+    {
+      "text": "Every call burns tokens. A human is still cheaper, and the KPIs don't always justify the data-centre cost.",
+      "attribution": ""
+    },
+    {
+      "text": "Company cyber-security policies can throttle Co-Pilot/ChatGPT and reduce the analytical depth of the answers.",
+      "attribution": ""
     }
   ],
   "observations": [
@@ -54,11 +162,51 @@
       "attribution": ""
     },
     {
-      "text": "Co-Pilot has different licenses — the more your company pays, the more sophisticated the model.",
+      "text": "Co-Pilot has different licences — the more your company pays, the more sophisticated the model.",
       "attribution": ""
     },
     {
       "text": "We still need to learn to write very precise prompts to get good memos out of AI.",
+      "attribution": ""
+    },
+    {
+      "text": "There could (and maybe should) be an audit standard for how AI is used in tax computation.",
+      "attribution": ""
+    },
+    {
+      "text": "Some companies are starting to publish internal AI standards for responsible use.",
+      "attribution": ""
+    },
+    {
+      "text": "Don't expect AI to be perfect — that's a bias we wouldn't apply to a human advisor. It's a tool, not an oracle.",
+      "attribution": ""
+    },
+    {
+      "text": "Take small wins first — don't try to use AI in the most elaborate way from day one.",
+      "attribution": ""
+    },
+    {
+      "text": "If AI is trained on human input, how will we keep advancing it once humans plateau?",
+      "attribution": ""
+    },
+    {
+      "text": "Nothing wrong with criticising AI — disclaimers should be put on the output.",
+      "attribution": ""
+    },
+    {
+      "text": "\"We have to be human to use AI.\"",
+      "attribution": ""
+    },
+    {
+      "text": "AI is developing fast — one day the mistakes it makes will be fewer than the ones humans make.",
+      "attribution": ""
+    },
+    {
+      "text": "AI agents can train your talents — and your talents can train the agents — inside the organisation.",
+      "attribution": ""
+    },
+    {
+      "text": "You can ask AI to write a prompt for you, then feed that prompt back in to get the best result.",
       "attribution": ""
     }
   ]

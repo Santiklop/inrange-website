@@ -426,6 +426,11 @@ function renderStickers(container, items, restoreBtn) {
     }
   }
 
+  // Density mode — shrink stickers when there are many, so they all stay visible
+  // without forcing a scroll. Thresholds tuned for a 1920×1080 projector.
+  container.classList.toggle("dense", incoming.length >= 12 && incoming.length < 22);
+  container.classList.toggle("very-dense", incoming.length >= 22);
+
   return incoming.length;
 }
 

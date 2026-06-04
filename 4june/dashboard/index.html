@@ -142,11 +142,19 @@
                              letter-spacing: 0.08em; text-transform: uppercase;
                              font-weight: 700; margin: 0 0 18px; }
 
-    .sticker-grid { column-count: 2; column-gap: 16px;
+    /* Responsive columns — browser fits as many ~220 px columns as the panel allows.
+       On a typical 1920-wide projector this gives 3 cols per panel; on narrow
+       phones it falls back to 1. Internal scroll only if we still overflow. */
+    .sticker-grid { columns: 220px; column-gap: 14px;
                     margin: 0; padding: 4px 4px; flex: 1; min-height: 0;
                     overflow-y: auto; }
-    @media (min-width: 1600px) { .sticker-grid { column-count: 2; } }
-    @media (max-width: 1100px) { .sticker-grid { column-count: 1; } }
+    @media (max-width: 700px) { .sticker-grid { columns: 1; } }
+
+    /* Density modes — JS toggles .dense / .very-dense on .sticker-grid
+       based on item count, so more stickers shrink to stay legible. */
+    .sticker-grid.dense .sticker      { font-size: 14px; padding: 12px 14px 14px; margin-bottom: 12px; }
+    .sticker-grid.very-dense .sticker { font-size: 12.5px; padding: 10px 12px 12px; margin-bottom: 10px; line-height: 1.35; }
+    .sticker-grid.very-dense .sticker-x { width: 18px; height: 18px; font-size: 13px; }
 
     .sticker {
       display: block; break-inside: avoid; width: 100%;

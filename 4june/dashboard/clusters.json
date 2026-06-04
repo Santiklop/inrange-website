@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T17:35:00+02:00",
+  "generatedAt": "2026-06-04T17:50:00+02:00",
   "wishes": [
     {
       "theme": "Try Claude",
@@ -18,25 +18,43 @@
   ],
   "expectations": [
     {
-      "theme": "Learn from peers' AI use cases",
-      "count": 16,
+      "theme": "Tools & peer use cases",
+      "count": 6,
       "quotes": [
-        "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)",
-        "I am curious to see what others Tax team have implemented and AI use cases",
-        "Learn from other",
+        "AI Tool options",
         "More use cases to use",
-        "Use case experience and barriers to auditability",
-        "AI practical experiences",
-        "New ideas",
-        "Use cases and practical application (data security),business case for AI spend",
+        "I am curious to see what others Tax team have implemented and AI use cases",
+        "How other people apply AI at work and how useful it can be.",
         "Insight on what other companies are using AI",
-        "See how peers are and what they do with it , hopefully get some new ideas and network a bit",
-        "To know where to look for to learn more about this next",
+        "See how peers are and what they do with it , hopefully get some new ideas and network a bit"
+      ]
+    },
+    {
+      "theme": "New ideas & peer inspiration",
+      "count": 5,
+      "quotes": [
+        "New ideas",
         "Learn something new",
         "Experience of others in AI usage",
-        "The real practice for using AI in tax field",
-        "AI Tool options",
-        "How other people apply AI at work and how useful it can be."
+        "AI practical experiences",
+        "Learn from other"
+      ]
+    },
+    {
+      "theme": "Implementation reality — audit, security, spend",
+      "count": 3,
+      "quotes": [
+        "Use case experience and barriers to auditability",
+        "Use cases and practical application (data security),business case for AI spend",
+        "To know where to look for to learn more about this next"
+      ]
+    },
+    {
+      "theme": "Tax-specific AI applications",
+      "count": 2,
+      "quotes": [
+        "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)",
+        "The real practice for using AI in tax field"
       ]
     },
     {

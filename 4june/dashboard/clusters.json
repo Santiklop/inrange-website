@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-04T13:15:58+02:00",
+  "generatedAt": "2026-06-04T13:24:14+02:00",
   "wishes": [
     {
-      "theme": "Use ChatGPT more",
+      "theme": "Try ChatGPT more",
       "count": 1,
       "quotes": [
         "Chatgpt"
@@ -11,21 +11,15 @@
   ],
   "expectations": [
     {
-      "theme": "Networking",
-      "count": 1,
+      "theme": "Connect & socialise",
+      "count": 2,
       "quotes": [
-        "Network"
-      ]
-    },
-    {
-      "theme": "Drinks",
-      "count": 1,
-      "quotes": [
+        "Network",
         "Drinks"
       ]
     },
     {
-      "theme": "AI for mass ERP data handling (SAP O2C, FICO, MM)",
+      "theme": "AI ideas for ERP-heavy tax work",
       "count": 1,
       "quotes": [
         "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)"

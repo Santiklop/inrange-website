@@ -78,9 +78,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "mateo-fernandez",
-    "name": "Mateo Fernandez",
-    "company": "Coty",
+    "id": "navita-parwanda",
+    "name": "Navita Parwanda",
+    "company": "Danone",
     "taxAreas": [
       "Direct / CIT",
       "International / Pillar 2 / BEPS"
@@ -116,9 +116,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "priya-ramachandran",
-    "name": "Priya Ramachandran",
-    "company": "JET",
+    "id": "roza-chour",
+    "name": "Roza Chour",
+    "company": "Ecco",
     "taxAreas": [
       "Indirect / VAT",
       "Compliance & Reporting"
@@ -153,9 +153,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "luca-bianchi",
-    "name": "Luca Bianchi",
-    "company": "Ecco",
+    "id": "niall-cogan",
+    "name": "Niall Cogan",
+    "company": "Digital Realty",
     "taxAreas": [
       "Customs & Trade"
     ],
@@ -192,9 +192,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "sofia-novak",
-    "name": "Sofia Novak",
-    "company": "Adyen",
+    "id": "ravid-barzilay",
+    "name": "Ravid Barzilay",
+    "company": "Teva",
     "taxAreas": [
       "Tax Tech / Data",
       "Indirect / VAT"
@@ -232,9 +232,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "yusuke-tanaka",
-    "name": "Yusuke Tanaka",
-    "company": "Shopify",
+    "id": "min-shi",
+    "name": "Min Shi",
+    "company": "IBFD",
     "taxAreas": [
       "Tax Tech / Data"
     ],
@@ -269,9 +269,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "amelia-okafor",
-    "name": "Amelia Okafor",
-    "company": "Sabic",
+    "id": "dalton-hirata",
+    "name": "Dalton Hirata",
+    "company": "RHI Magnesita",
     "taxAreas": [
       "Tax Controversy / Audit",
       "Direct / CIT"
@@ -307,9 +307,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "rafael-costa",
-    "name": "Rafael Costa",
-    "company": "ACT Group",
+    "id": "hans-topril",
+    "name": "Hans Topril",
+    "company": "Rabobank",
     "taxAreas": [
       "Compliance & Reporting"
     ],
@@ -345,9 +345,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "ingrid-larsen",
-    "name": "Ingrid Larsen",
-    "company": "RHI Magnesita",
+    "id": "marina-strakhal",
+    "name": "Marina Strakhal",
+    "company": "Coty",
     "taxAreas": [
       "Transfer Pricing",
       "Direct / CIT"
@@ -383,9 +383,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "diego-morales",
-    "name": "Diego Morales",
-    "company": "Danone",
+    "id": "arlene-tsai",
+    "name": "Arlene Tsai",
+    "company": "INGKA",
     "taxAreas": [
       "International / Pillar 2 / BEPS"
     ],
@@ -422,9 +422,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "hana-kim",
-    "name": "Hana Kim",
-    "company": "Booking.com",
+    "id": "heidi-pohl",
+    "name": "Heidi Pohl",
+    "company": "SGS Group",
     "taxAreas": [
       "Indirect / VAT",
       "Tax Tech / Data"
@@ -460,9 +460,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "elena-petrova",
-    "name": "Elena Petrova",
-    "company": "inRange",
+    "id": "zosia-mika",
+    "name": "Zosia Mika",
+    "company": "Lipton",
     "taxAreas": [
       "Tax Tech / Data",
       "Transfer Pricing"
@@ -500,9 +500,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "tomasz-kowalski",
-    "name": "Tomasz Kowalski",
-    "company": "Coty",
+    "id": "natasha-chen",
+    "name": "Natasha Chen",
+    "company": "Delta Electronics",
     "taxAreas": [
       "Compliance & Reporting",
       "Indirect / VAT"
@@ -537,9 +537,9 @@
     "isNewParticipant": false
   },
   {
-    "id": "fatima-haidari",
-    "name": "Fatima Haidari",
-    "company": "JET",
+    "id": "satoko-nishihara",
+    "name": "Satoko Nishihara",
+    "company": "Kubota",
     "taxAreas": [
       "Tax Controversy / Audit",
       "Customs & Trade"

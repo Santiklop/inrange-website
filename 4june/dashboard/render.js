@@ -1,6 +1,12 @@
 // 4june/dashboard/render.js
 import { aggregateBy, donutSegments, topN, hashHue } from "./viz.js";
 import { getIndustry } from "./industries.js";
+import { ATTENDEES } from "../attendees.js";
+
+// Role lookup — dashboard never shows names, only roles. Falls back to
+// "Tax professional" for any id we don't have in the curated list (walk-ins).
+const ROLE_BY_ID = Object.fromEntries(ATTENDEES.map(a => [a.id, a.role || "Tax professional"]));
+function roleFor(id) { return ROLE_BY_ID[id] || "Tax professional"; }
 
 const PALETTE = [
   "#1FA84A", // brand green
@@ -209,7 +215,7 @@ async function main() {
   const taxCounts = aggregateBy(responses, r => r.taxAreas);
   const taxSegs = donutSegments(taxCounts).sort((a,b) => b.count - a.count);
   const namesByTax = {};
-  for (const r of responses) for (const t of (r.taxAreas || [])) (namesByTax[t] ||= []).push(r.name.split(" ")[0]);
+  for (const r of responses) for (const t of (r.taxAreas || [])) (namesByTax[t] ||= []).push(roleFor(r.id));
   renderDonut(document.querySelector("#p-tax .panel-body"), taxSegs, namesByTax);
 
   // Tools
@@ -223,7 +229,7 @@ async function main() {
   // Companies
   const companies = aggregateBy(responses, r => [r.company]);
   const namesByCo = {};
-  for (const r of responses) (namesByCo[r.company] ||= []).push(r.name.split(" ")[0]);
+  for (const r of responses) (namesByCo[r.company] ||= []).push(roleFor(r.id));
   renderCompanies(document.querySelector("#p-companies .panel-body"), companies, namesByCo);
 
   // Wishes + Expectations
@@ -234,7 +240,7 @@ async function main() {
   const industryCounts = aggregateBy(responses, r => [getIndustry(r.company)]);
   const industrySegs = donutSegments(industryCounts).sort((a,b) => b.count - a.count);
   const namesByIndustry = {};
-  for (const r of responses) (namesByIndustry[getIndustry(r.company)] ||= []).push(r.name.split(" ")[0]);
+  for (const r of responses) (namesByIndustry[getIndustry(r.company)] ||= []).push(roleFor(r.id));
   renderDonut(document.querySelector("#p-industries .panel-body"), industrySegs, namesByIndustry);
 
   // Biggest wins
@@ -243,7 +249,7 @@ async function main() {
     .sort((a,b) => b[1] - a[1])
     .map(([label, count]) => ({ label, count }));
   const namesByWin = {};
-  for (const r of responses) for (const w of (r.biggestWins || [])) (namesByWin[w] ||= []).push(r.name.split(" ")[0]);
+  for (const r of responses) for (const w of (r.biggestWins || [])) (namesByWin[w] ||= []).push(roleFor(r.id));
   renderHBars(document.querySelector("#p-wins .panel-body"), winRows, "win", namesByWin);
 
   // Biggest frustrations
@@ -252,7 +258,7 @@ async function main() {
     .sort((a,b) => b[1] - a[1])
     .map(([label, count]) => ({ label, count }));
   const namesByFrust = {};
-  for (const r of responses) for (const f of (r.biggestFrustrations || [])) (namesByFrust[f] ||= []).push(r.name.split(" ")[0]);
+  for (const r of responses) for (const f of (r.biggestFrustrations || [])) (namesByFrust[f] ||= []).push(roleFor(r.id));
   renderHBars(document.querySelector("#p-frust .panel-body"), frustRows, "frust", namesByFrust);
 
   // Where we stand (room self-assessment averages)

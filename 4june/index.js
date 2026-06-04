@@ -195,11 +195,30 @@ renderChips("g-home", TOOLS);
 renderChips("g-win", WINS);
 renderChips("g-frust", FRUSTRATIONS);
 
-// Live value display for the 4 self-assessment sliders.
+// Spectrum band: 1–3 = low, 4–7 = mid, 8–10 = high. Highlights the matching
+// stage text below each slider so the user sees which descriptor they sit at.
+function spectrumStage(value) {
+  if (value <= 3) return 0;
+  if (value <= 7) return 1;
+  return 2;
+}
+
+function highlightSpectrum(axis, value) {
+  const container = document.querySelector(`.slider-spectrum[data-axis="${axis}"]`);
+  if (!container) return;
+  const stages = container.querySelectorAll(".spectrum-stage");
+  const idx = spectrumStage(value);
+  stages.forEach((s, i) => s.classList.toggle("active", i === idx));
+}
+
+// Live value display + spectrum highlight for the 4 self-assessment sliders.
 for (const axis of ["adoption", "application", "craft", "trust"]) {
   const slider = document.getElementById(`s-${axis}`);
   const display = document.getElementById(`v-${axis}`);
-  slider.addEventListener("input", () => { display.textContent = slider.value; });
+  slider.addEventListener("input", () => {
+    display.textContent = slider.value;
+    highlightSpectrum(axis, parseInt(slider.value, 10));
+  });
 }
 
 function setSliders(values) {
@@ -208,6 +227,7 @@ function setSliders(values) {
     const v = values && Number.isFinite(values[key]) ? values[key] : 3;
     document.getElementById(`s-${axis}`).value = v;
     document.getElementById(`v-${axis}`).textContent = v;
+    highlightSpectrum(axis, v);
   }
 }
 

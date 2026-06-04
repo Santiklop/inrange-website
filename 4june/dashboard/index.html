@@ -114,19 +114,101 @@
 
     .donut-slice { transition: stroke-width 120ms ease, filter 120ms ease; }
     .donut-slice:hover { stroke-width: 28; filter: brightness(1.18); }
+
+    /* ─── View toggle ─────────────────────────────────────────────────────── */
+    .view-toggle { display: inline-flex; gap: 4px; padding: 4px;
+                   background: var(--bg-sunken); border-radius: 999px;
+                   border: 1px solid var(--border); margin-left: auto; margin-right: 16px; }
+    .view-toggle button { background: transparent; border: none; color: var(--fg-2);
+                          font-family: inherit; font-size: 13px; font-weight: 600;
+                          padding: 6px 16px; border-radius: 999px; cursor: pointer;
+                          letter-spacing: 0.04em; transition: all 140ms ease; }
+    .view-toggle button:hover { color: var(--fg-1); }
+    .view-toggle button.active { background: var(--brand-green-500); color: #fff; }
+
+    /* Show/hide views based on data-view */
+    .root[data-view="overview"] .view-live { display: none !important; }
+    .root[data-view="live"] .view-overview { display: none !important; }
+
+    /* ─── Live notes view ─────────────────────────────────────────────────── */
+    .live-view { display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+                 min-height: 0; padding: 4px 0 0; }
+    .live-column { display: flex; flex-direction: column; min-height: 0;
+                   background: var(--bg-card); border: 1px solid var(--border);
+                   border-radius: var(--radius); padding: 22px 24px 28px; }
+    .live-column h2 { font-size: 22px; font-weight: 800; letter-spacing: -0.01em;
+                      margin: 0 0 6px; color: var(--fg-1); }
+    .live-column .live-sub { font-size: 12px; color: var(--fg-3);
+                             letter-spacing: 0.08em; text-transform: uppercase;
+                             font-weight: 700; margin: 0 0 18px; }
+
+    .sticker-grid { column-count: 2; column-gap: 16px;
+                    margin: 0; padding: 4px 4px; flex: 1; min-height: 0;
+                    overflow-y: auto; }
+    @media (min-width: 1600px) { .sticker-grid { column-count: 2; } }
+    @media (max-width: 1100px) { .sticker-grid { column-count: 1; } }
+
+    .sticker {
+      display: block; break-inside: avoid; width: 100%;
+      margin: 0 0 16px;
+      padding: 16px 18px 18px;
+      border-radius: 5px;
+      font-size: 15.5px; line-height: 1.42;
+      color: #1A1F2A;
+      box-shadow: 0 6px 14px rgba(0,0,0,.32),
+                  inset 0 -2px 0 rgba(0,0,0,.05);
+      transform-origin: center top;
+      will-change: transform, opacity;
+      animation: stickerIn 420ms cubic-bezier(.2,.8,.2,1) both;
+    }
+    .sticker.color-0 { background: linear-gradient(180deg, #FFF6B0 0%, #FFEC8E 100%); }
+    .sticker.color-1 { background: linear-gradient(180deg, #FFD3DF 0%, #FFB9CA 100%); }
+    .sticker.color-2 { background: linear-gradient(180deg, #CFEFCF 0%, #B0E2B2 100%); }
+    .sticker.color-3 { background: linear-gradient(180deg, #C9E4F2 0%, #ABD2E8 100%); }
+    .sticker.color-4 { background: linear-gradient(180deg, #FFE2B6 0%, #FFCC85 100%); }
+    .sticker.leaving { animation: stickerOut 260ms ease both; }
+
+    @keyframes stickerIn {
+      0%   { opacity: 0; transform: scale(0.6) rotate(0deg) translateY(-12px); }
+      60%  { opacity: 1; transform: scale(1.06) rotate(var(--rot)) translateY(0); }
+      100% { opacity: 1; transform: scale(1) rotate(var(--rot)) translateY(0); }
+    }
+    @keyframes stickerOut {
+      to { opacity: 0; transform: scale(0.85) rotate(var(--rot)); }
+    }
+
+    .live-empty { color: var(--fg-3); font-size: 14px; font-style: italic;
+                  padding: 24px 12px 0; opacity: 0.7; }
+    .live-empty[hidden] { display: none; }
+
+    .live-status { text-align: center; padding: 14px 0 4px;
+                   font-size: 12px; color: var(--fg-3); letter-spacing: 0.06em;
+                   text-transform: uppercase; font-weight: 600; }
+    .live-status .dot { display: inline-block; width: 8px; height: 8px;
+                        border-radius: 50%; background: var(--brand-green-500);
+                        margin-right: 8px; vertical-align: middle;
+                        animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; transform: scale(0.85); }
+      50%      { opacity: 1;   transform: scale(1.1); }
+    }
   </style>
 </head>
 <body>
-  <div class="root">
+  <div class="root" data-view="overview">
     <header class="hero">
       <div class="hero-line">
         <span class="wordmark">TAX EXPATS CLUB</span>
+        <span class="view-toggle" role="tablist" aria-label="Dashboard view">
+          <button type="button" data-view="overview" class="active" role="tab" aria-selected="true">Overview</button>
+          <button type="button" data-view="live" role="tab" aria-selected="false">Live notes</button>
+        </span>
         <span class="chyron">4 June 2026 · Nutanix</span>
       </div>
-      <div class="status" id="status">—</div>
+      <div class="status view-overview" id="status">—</div>
     </header>
 
-    <main class="grid">
+    <main class="grid view-overview">
       <section class="panel" id="p-tax">          <h2 class="panel-title">Tax areas we work in</h2><div class="panel-body"></div></section>
       <section class="panel" id="p-tools">        <h2 class="panel-title">Tools we use (work vs home)</h2><div class="panel-body"></div></section>
       <section class="panel" id="p-companies">    <h2 class="panel-title">Companies in the room</h2><div class="panel-body"></div></section>
@@ -137,10 +219,27 @@
       <section class="panel" id="p-frust">        <h2 class="panel-title">Biggest frustrations</h2><div class="panel-body"></div></section>
     </main>
 
-    <section class="panel panel-wide" id="p-where">
+    <section class="panel panel-wide view-overview" id="p-where">
       <h2 class="panel-title">Where we stand <span class="panel-sub">— room average, 1–10 self-assessed</span></h2>
       <div class="panel-body"></div>
     </section>
+
+    <main class="live-view view-live">
+      <section class="live-column">
+        <h2>What we're using AI for</h2>
+        <p class="live-sub">As people share live</p>
+        <div class="sticker-grid" id="g-usecases"></div>
+        <div class="live-empty" id="empty-usecases">Waiting for the round-the-room to start…</div>
+      </section>
+      <section class="live-column">
+        <h2>Where we're stuck</h2>
+        <p class="live-sub">As people share live</p>
+        <div class="sticker-grid" id="g-frustrations"></div>
+        <div class="live-empty" id="empty-frustrations">Waiting for "where are you stuck?"…</div>
+      </section>
+    </main>
+
+    <div class="live-status view-live" id="live-status"><span class="dot"></span><span id="live-status-text">connecting…</span></div>
 
     <footer>Powered by inRange · <a href="https://www.inrange.nl">www.inrange.nl</a></footer>
   </div>

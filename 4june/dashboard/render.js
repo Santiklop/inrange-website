@@ -265,3 +265,150 @@ async function main() {
   renderWhereWeStand(document.querySelector("#p-where .panel-body"), responses);
 }
 main();
+
+// ════════════════════════════════════════════════════════════════════════════
+// LIVE NOTES VIEW — sticker cards driven by ./live-notes.json
+// ════════════════════════════════════════════════════════════════════════════
+
+const STICKER_COLORS = 5;        // matches .color-0 .. .color-4 in CSS
+const ROTATION_RANGE = 3;        // ±degrees
+const POLL_INTERVAL_MS = 5000;
+const LIVE_NOTES_URL = "./live-notes.json";
+
+// Deterministic hash so a card's color + rotation stay stable across renders.
+function hashCode(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  return h;
+}
+
+function rotationFor(text) {
+  // map hash → [-ROTATION_RANGE .. +ROTATION_RANGE], avoiding 0 for liveliness
+  const h = hashCode(text);
+  const r = ((Math.abs(h) % (ROTATION_RANGE * 200 + 1)) / 100) - ROTATION_RANGE;
+  return r.toFixed(2);
+}
+
+function colorFor(text) {
+  return Math.abs(hashCode(text)) % STICKER_COLORS;
+}
+
+/**
+ * Diff-render a list of texts into a sticker container.
+ * - Existing cards whose text matches stay in place (no re-animation)
+ * - New texts get added with the stickerIn animation
+ * - Removed texts get the .leaving class then are removed after 260ms
+ * - Preserves rotation/color for unchanged cards
+ */
+function renderStickers(container, texts) {
+  const incoming = Array.from(new Set(texts.filter(t => typeof t === "string" && t.trim())));
+  const have = new Map();
+  for (const el of container.querySelectorAll(".sticker:not(.leaving)")) {
+    have.set(el.dataset.text, el);
+  }
+
+  // Remove cards no longer present
+  for (const [text, el] of have) {
+    if (!incoming.includes(text)) {
+      el.classList.add("leaving");
+      setTimeout(() => el.remove(), 280);
+    }
+  }
+
+  // Append new cards (we don't try to re-order; CSS columns layout handles it)
+  for (const text of incoming) {
+    if (have.has(text)) continue;
+    const el = document.createElement("div");
+    el.className = `sticker color-${colorFor(text)}`;
+    el.style.setProperty("--rot", `${rotationFor(text)}deg`);
+    el.dataset.text = text;
+    el.textContent = text;
+    container.appendChild(el);
+  }
+
+  return incoming.length;
+}
+
+function setEmptyState(emptyEl, count) {
+  if (!emptyEl) return;
+  emptyEl.hidden = count > 0;
+}
+
+let lastPollAt = null;
+let lastUseCaseCount = 0;
+let lastFrustrationCount = 0;
+
+async function pollLiveNotes() {
+  try {
+    const res = await fetch(`${LIVE_NOTES_URL}?t=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const useCases = Array.isArray(data.useCases) ? data.useCases : [];
+    const frustrations = Array.isArray(data.frustrations) ? data.frustrations : [];
+
+    lastUseCaseCount = renderStickers(document.getElementById("g-usecases"), useCases);
+    lastFrustrationCount = renderStickers(document.getElementById("g-frustrations"), frustrations);
+    setEmptyState(document.getElementById("empty-usecases"), lastUseCaseCount);
+    setEmptyState(document.getElementById("empty-frustrations"), lastFrustrationCount);
+
+    lastPollAt = Date.now();
+    updateLiveStatus();
+  } catch (err) {
+    console.error("[live-notes] poll failed:", err);
+    // Don't update lastPollAt — the "Xs ago" counter will reflect the staleness
+  }
+}
+
+function updateLiveStatus() {
+  const el = document.getElementById("live-status-text");
+  if (!el) return;
+  const parts = [];
+  parts.push(`${lastUseCaseCount} use case${lastUseCaseCount === 1 ? "" : "s"}`);
+  parts.push(`${lastFrustrationCount} frustration${lastFrustrationCount === 1 ? "" : "s"}`);
+  if (lastPollAt) {
+    const ageS = Math.max(0, Math.round((Date.now() - lastPollAt) / 1000));
+    parts.push(`updated ${ageS}s ago`);
+  } else {
+    parts.push("connecting…");
+  }
+  el.textContent = parts.join("  ·  ");
+}
+
+// Poll on a steady cadence regardless of view — when the user toggles,
+// the cards are already in the DOM and ready.
+pollLiveNotes();
+setInterval(pollLiveNotes, POLL_INTERVAL_MS);
+setInterval(updateLiveStatus, 1000); // tick the "Xs ago" counter every second
+
+// ════════════════════════════════════════════════════════════════════════════
+// VIEW TOGGLE — Overview ↔ Live notes, persisted in localStorage
+// ════════════════════════════════════════════════════════════════════════════
+
+const VIEW_KEY = "dashboard.view";
+
+function setView(view) {
+  if (view !== "overview" && view !== "live") view = "overview";
+  document.querySelector(".root").dataset.view = view;
+  for (const btn of document.querySelectorAll(".view-toggle button")) {
+    const isActive = btn.dataset.view === view;
+    btn.classList.toggle("active", isActive);
+    btn.setAttribute("aria-selected", isActive ? "true" : "false");
+  }
+  try { localStorage.setItem(VIEW_KEY, view); } catch {}
+}
+
+// Wire toggle buttons
+for (const btn of document.querySelectorAll(".view-toggle button")) {
+  btn.addEventListener("click", () => setView(btn.dataset.view));
+}
+
+// Restore last view (default: overview)
+try { setView(localStorage.getItem(VIEW_KEY) || "overview"); }
+catch { setView("overview"); }
+
+// Keyboard shortcut: press "L" to jump to live, "O" to jump to overview
+document.addEventListener("keydown", (e) => {
+  if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
+  if (e.key === "l" || e.key === "L") setView("live");
+  if (e.key === "o" || e.key === "O") setView("overview");
+});

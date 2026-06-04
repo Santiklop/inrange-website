@@ -72,8 +72,12 @@
     [data-theme="dark"] .theme-toggle .moon { display: none; }
     [data-theme="dark"] .theme-toggle .sun  { display: block; }
 
-    .root { display: grid; grid-template-rows: auto 1fr auto;
+    /* Flex column lets every section size to its own content height
+       (instead of stretching to fill a 1fr middle row). Footer is pushed
+       to the viewport bottom via margin-top: auto. */
+    .root { display: flex; flex-direction: column;
             min-height: 100vh; padding: 20px 24px; gap: 14px; }
+    footer { margin-top: auto; }
 
     .hero { display: flex; flex-direction: column; gap: 14px; padding: 4px 0 2px; }
     .hero-line { display: flex; justify-content: space-between; align-items: center;
@@ -85,7 +89,11 @@
               padding: 4px 0 8px; letter-spacing: -0.01em; }
     .status .dim { color: var(--fg-3); font-weight: 500; }
 
-    .grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1fr 1fr; gap: 16px; }
+    /* Rows size to their tallest panel's content rather than each grabbing
+       50% of the viewport. Combined with the centering rules below this
+       removes the dead-air strip we were getting under the donuts/chips. */
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: auto auto; gap: 16px; }
     .panel { background: var(--bg-card); border: 1px solid var(--border);
              border-radius: var(--radius); padding: 16px 18px;
              display: flex; flex-direction: column; min-height: 0; overflow: hidden; }
@@ -98,14 +106,26 @@
 
     /* Panel body fills remaining space and scrolls internally if it overflows
        (used to silently clip). Vertical scroll only — horizontal is clipped
-       so wide content (long theme labels, etc.) wraps instead of side-scrolling. */
+       so wide content (long theme labels, etc.) wraps instead of side-scrolling.
+       Becomes a flex column so we can vertically centre compact content
+       (donuts, chip clouds, theme lists) when its panel is taller than them. */
     .panel-body { flex: 1 1 auto; min-height: 0;
+                  display: flex; flex-direction: column;
                   overflow-y: auto; overflow-x: hidden;
                   scrollbar-width: thin; scrollbar-color: var(--scrollbar-thumb) transparent; }
     .panel-body::-webkit-scrollbar { width: 6px; }
     .panel-body::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 3px; }
     .panel-body::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
     .panel-body::-webkit-scrollbar-track { background: transparent; }
+
+    /* Vertically centre the compact content types within their panel-body.
+       Auto margins on a flex item resolve to 0 when content overflows, so
+       scrolling still works correctly. Lists (paired bars, hbars, ranked
+       totals) keep their top alignment because they're meant to read
+       top-down. */
+    .panel-body > .donut-wrap,
+    .panel-body > .chip-cloud,
+    .panel-body > .themes { margin-top: auto; margin-bottom: auto; }
 
     .where-strip { display: grid; grid-template-columns: repeat(4, 1fr);
                    gap: 22px; padding: 6px 6px 2px; }
@@ -119,7 +139,8 @@
     .where-fill { height: 100%; background: var(--brand-green-500); border-radius: 3px; }
 
     .donut-wrap { display: flex; flex-direction: column; gap: 12px;
-                  align-items: center; flex: 1; min-height: 0; width: 100%; }
+                  align-items: center; justify-content: center;
+                  flex: 1; min-height: 0; width: 100%; }
     .legend { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 14px;
               font-size: 12.5px; min-width: 0; width: 100%; line-height: 1.3; }
     .legend-row { display: grid; grid-template-columns: 1fr auto; gap: 6px;

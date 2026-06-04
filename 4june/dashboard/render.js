@@ -294,14 +294,34 @@ function colorFor(text) {
 }
 
 /**
- * Diff-render a list of texts into a sticker container.
+ * Diff-render a list of items into a sticker container.
+ * Items can be:
+ *   - a string (legacy shape): "the use case"
+ *   - an object: { text: "...", attribution: "Aleks" }
+ * If attribution is non-empty, hovering the sticker shows "Shared by <name>".
+ *
  * - Existing cards whose text matches stay in place (no re-animation)
  * - New texts get added with the stickerIn animation
  * - Removed texts get the .leaving class then are removed after 260ms
  * - Preserves rotation/color for unchanged cards
+ * - Attribution updates in place without re-animating
  */
-function renderStickers(container, texts) {
-  const incoming = Array.from(new Set(texts.filter(t => typeof t === "string" && t.trim())));
+function renderStickers(container, items) {
+  // Normalise to {text, attribution} and dedupe by text, preserving first-seen order
+  const seen = new Set();
+  const incoming = [];
+  for (const raw of items) {
+    let text, attribution;
+    if (typeof raw === "string") { text = raw; attribution = ""; }
+    else if (raw && typeof raw.text === "string") { text = raw.text; attribution = (raw.attribution || "").toString(); }
+    else continue;
+    text = text.trim();
+    if (!text || seen.has(text)) continue;
+    seen.add(text);
+    incoming.push({ text, attribution: attribution.trim() });
+  }
+  const incomingTexts = new Set(incoming.map(it => it.text));
+
   const have = new Map();
   for (const el of container.querySelectorAll(".sticker:not(.leaving)")) {
     have.set(el.dataset.text, el);
@@ -309,20 +329,44 @@ function renderStickers(container, texts) {
 
   // Remove cards no longer present
   for (const [text, el] of have) {
-    if (!incoming.includes(text)) {
+    if (!incomingTexts.has(text)) {
       el.classList.add("leaving");
       setTimeout(() => el.remove(), 280);
     }
   }
 
-  // Append new cards (we don't try to re-order; CSS columns layout handles it)
-  for (const text of incoming) {
-    if (have.has(text)) continue;
-    const el = document.createElement("div");
-    el.className = `sticker color-${colorFor(text)}`;
-    el.style.setProperty("--rot", `${rotationFor(text)}deg`);
-    el.dataset.text = text;
-    el.textContent = text;
+  // Append new cards / update attribution on existing ones
+  for (const it of incoming) {
+    let el = have.get(it.text);
+    if (el) {
+      // Update attribution silently (no re-animation)
+      if (el.dataset.attribution !== it.attribution) {
+        el.dataset.attribution = it.attribution;
+        el.classList.toggle("has-attribution", !!it.attribution);
+      }
+      continue;
+    }
+    el = document.createElement("div");
+    el.className = `sticker color-${colorFor(it.text)}${it.attribution ? " has-attribution" : ""}`;
+    el.style.setProperty("--rot", `${rotationFor(it.text)}deg`);
+    el.dataset.text = it.text;
+    el.dataset.attribution = it.attribution;
+    el.textContent = it.text;
+
+    // Hover tooltip — shows "Shared by <name>". No-op if no attribution.
+    el.addEventListener("mousemove", (e) => {
+      const attr = el.dataset.attribution;
+      if (!attr) return;
+      showTooltip(`<div class="t-title">Shared by ${attr}</div>`, e.clientX, e.clientY);
+    });
+    el.addEventListener("mouseleave", hideTooltip);
+    // Touch support: tap toggles tooltip; second tap (or tap elsewhere) hides
+    el.addEventListener("click", (e) => {
+      const attr = el.dataset.attribution;
+      if (!attr) return;
+      showTooltip(`<div class="t-title">Shared by ${attr}</div>`, e.clientX, e.clientY);
+    });
+
     container.appendChild(el);
   }
 

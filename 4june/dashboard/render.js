@@ -502,10 +502,6 @@ function updateLiveStatus() {
   }
   parts.push(`${lastUseCaseCount} use case${lastUseCaseCount === 1 ? "" : "s"}`);
   parts.push(`${lastFrustrationCount} frustration${lastFrustrationCount === 1 ? "" : "s"}`);
-  if (lastPollAt) {
-    const ageS = Math.max(0, Math.round((Date.now() - lastPollAt) / 1000));
-    parts.push(`last check ${ageS}s ago`);
-  }
   el.textContent = parts.join("  ·  ");
 }
 

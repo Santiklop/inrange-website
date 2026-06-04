@@ -44,13 +44,21 @@ function renderDonut(container, segments, namesByLabel) {
   const cx = size / 2, cy = size / 2;
   let acc = 0;
   const arcs = segments.map((seg, i) => {
+    const color = PALETTE[i % PALETTE.length];
+    // Edge case: a single segment at 100% (or near-100%) renders an arc
+    // whose start and end coordinates are the same — SVG draws nothing.
+    // Fall back to a full <circle>.
+    if (seg.frac >= 0.9999) {
+      return `<circle class="donut-slice" cx="${cx}" cy="${cy}" r="${radius}"
+                       fill="none" stroke="${color}" stroke-width="${thick}"
+                       data-label="${seg.label}" data-count="${seg.count}"></circle>`;
+    }
     const a0 = acc * 2 * Math.PI - Math.PI / 2;
     const a1 = (acc + seg.frac) * 2 * Math.PI - Math.PI / 2;
     acc += seg.frac;
     const large = seg.frac > 0.5 ? 1 : 0;
     const x0 = cx + radius * Math.cos(a0), y0 = cy + radius * Math.sin(a0);
     const x1 = cx + radius * Math.cos(a1), y1 = cy + radius * Math.sin(a1);
-    const color = PALETTE[i % PALETTE.length];
     return `<path class="donut-slice" d="M ${x0} ${y0} A ${radius} ${radius} 0 ${large} 1 ${x1} ${y1}"
                    fill="none" stroke="${color}" stroke-width="${thick}"
                    data-label="${seg.label}" data-count="${seg.count}"></path>`;
@@ -65,7 +73,7 @@ function renderDonut(container, segments, namesByLabel) {
       <svg viewBox="0 0 ${size} ${size}" style="width:140px;height:140px;flex:0 0 auto">${arcs}</svg>
       <div class="legend">${legend}</div>
     </div>`;
-  container.querySelectorAll("path").forEach(p => {
+  container.querySelectorAll(".donut-slice").forEach(p => {
     p.addEventListener("mousemove", (e) => {
       const label = p.dataset.label;
       const count = p.dataset.count;
@@ -274,6 +282,20 @@ const STICKER_COLORS = 5;        // matches .color-0 .. .color-4 in CSS
 const ROTATION_RANGE = 3;        // ±degrees
 const POLL_INTERVAL_MS = 5000;
 const LIVE_NOTES_URL = "./live-notes.json";
+const HIDDEN_KEY = "dashboard.hiddenStickers"; // localStorage key — Set of texts hidden via the × button
+
+// Per-projector hide list — clicking × on a sticker adds its text here. The doc and
+// the JSON file are untouched (other viewers still see the sticker). Persisted in
+// localStorage so a tab refresh keeps the hide. Restore via the panel's "↺ Restore N hidden" button.
+function getHidden() {
+  try { return new Set(JSON.parse(localStorage.getItem(HIDDEN_KEY) || "[]")); }
+  catch { return new Set(); }
+}
+function setHidden(set) {
+  try { localStorage.setItem(HIDDEN_KEY, JSON.stringify([...set])); } catch {}
+}
+function hideText(text) { const h = getHidden(); h.add(text); setHidden(h); }
+function unhideAll()    { setHidden(new Set()); }
 
 // Deterministic hash so a card's color + rotation stay stable across renders.
 function hashCode(s) {
@@ -306,10 +328,13 @@ function colorFor(text) {
  * - Preserves rotation/color for unchanged cards
  * - Attribution updates in place without re-animating
  */
-function renderStickers(container, items) {
+function renderStickers(container, items, restoreBtn) {
+  const hidden = getHidden();
   // Normalise to {text, attribution} and dedupe by text, preserving first-seen order
   const seen = new Set();
-  const incoming = [];
+  const incomingAll = [];     // everything we'd show
+  const incoming = [];        // filtered: not hidden
+  let hiddenCount = 0;
   for (const raw of items) {
     let text, attribution;
     if (typeof raw === "string") { text = raw; attribution = ""; }
@@ -318,7 +343,10 @@ function renderStickers(container, items) {
     text = text.trim();
     if (!text || seen.has(text)) continue;
     seen.add(text);
-    incoming.push({ text, attribution: attribution.trim() });
+    const entry = { text, attribution: attribution.trim() };
+    incomingAll.push(entry);
+    if (hidden.has(text)) { hiddenCount++; continue; }
+    incoming.push(entry);
   }
   const incomingTexts = new Set(incoming.map(it => it.text));
 
@@ -327,7 +355,7 @@ function renderStickers(container, items) {
     have.set(el.dataset.text, el);
   }
 
-  // Remove cards no longer present
+  // Remove cards no longer present (either gone from data OR newly hidden)
   for (const [text, el] of have) {
     if (!incomingTexts.has(text)) {
       el.classList.add("leaving");
@@ -339,7 +367,6 @@ function renderStickers(container, items) {
   for (const it of incoming) {
     let el = have.get(it.text);
     if (el) {
-      // Update attribution silently (no re-animation)
       if (el.dataset.attribution !== it.attribution) {
         el.dataset.attribution = it.attribution;
         el.classList.toggle("has-attribution", !!it.attribution);
@@ -351,17 +378,35 @@ function renderStickers(container, items) {
     el.style.setProperty("--rot", `${rotationFor(it.text)}deg`);
     el.dataset.text = it.text;
     el.dataset.attribution = it.attribution;
-    el.textContent = it.text;
+    // Body text + × button
+    const body = document.createElement("span");
+    body.textContent = it.text;
+    el.appendChild(body);
+    const xBtn = document.createElement("button");
+    xBtn.type = "button";
+    xBtn.className = "sticker-x";
+    xBtn.setAttribute("aria-label", "Hide this sticker");
+    xBtn.title = "Hide this sticker (this device only)";
+    xBtn.textContent = "×";
+    xBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      hideText(it.text);
+      hideTooltip();
+      el.classList.add("leaving");
+      setTimeout(() => el.remove(), 280);
+      updateRestoreButton(container, restoreBtn);
+    });
+    el.appendChild(xBtn);
 
-    // Hover tooltip — shows "Shared by <name>". No-op if no attribution.
+    // Hover/touch tooltip — shows "Shared by <name>". No-op if no attribution.
     el.addEventListener("mousemove", (e) => {
       const attr = el.dataset.attribution;
       if (!attr) return;
       showTooltip(`<div class="t-title">Shared by ${attr}</div>`, e.clientX, e.clientY);
     });
     el.addEventListener("mouseleave", hideTooltip);
-    // Touch support: tap toggles tooltip; second tap (or tap elsewhere) hides
     el.addEventListener("click", (e) => {
+      if (e.target.classList.contains("sticker-x")) return;
       const attr = el.dataset.attribution;
       if (!attr) return;
       showTooltip(`<div class="t-title">Shared by ${attr}</div>`, e.clientX, e.clientY);
@@ -370,7 +415,27 @@ function renderStickers(container, items) {
     container.appendChild(el);
   }
 
+  // Sync the restore button
+  if (restoreBtn) {
+    if (hiddenCount > 0) {
+      restoreBtn.hidden = false;
+      restoreBtn.textContent = `↺ Restore ${hiddenCount} hidden`;
+      restoreBtn.dataset.hiddenCount = String(hiddenCount);
+    } else {
+      restoreBtn.hidden = true;
+    }
+  }
+
   return incoming.length;
+}
+
+function updateRestoreButton(container, btn) {
+  // Called when a sticker is X-ed out mid-poll. Recount from the current data state.
+  if (!btn) return;
+  const stored = parseInt(btn.dataset.hiddenCount || "0", 10);
+  btn.dataset.hiddenCount = String(stored + 1);
+  btn.textContent = `↺ Restore ${stored + 1} hidden`;
+  btn.hidden = false;
 }
 
 function setEmptyState(emptyEl, count) {
@@ -379,6 +444,7 @@ function setEmptyState(emptyEl, count) {
 }
 
 let lastPollAt = null;
+let lastGeneratedAt = null;
 let lastUseCaseCount = 0;
 let lastFrustrationCount = 0;
 
@@ -390,32 +456,64 @@ async function pollLiveNotes() {
     const useCases = Array.isArray(data.useCases) ? data.useCases : [];
     const frustrations = Array.isArray(data.frustrations) ? data.frustrations : [];
 
-    lastUseCaseCount = renderStickers(document.getElementById("g-usecases"), useCases);
-    lastFrustrationCount = renderStickers(document.getElementById("g-frustrations"), frustrations);
+    lastUseCaseCount = renderStickers(
+      document.getElementById("g-usecases"),
+      useCases,
+      document.getElementById("restore-usecases")
+    );
+    lastFrustrationCount = renderStickers(
+      document.getElementById("g-frustrations"),
+      frustrations,
+      document.getElementById("restore-frustrations")
+    );
     setEmptyState(document.getElementById("empty-usecases"), lastUseCaseCount);
     setEmptyState(document.getElementById("empty-frustrations"), lastFrustrationCount);
 
     lastPollAt = Date.now();
+    lastGeneratedAt = data.generatedAt || null;
     updateLiveStatus();
   } catch (err) {
     console.error("[live-notes] poll failed:", err);
-    // Don't update lastPollAt — the "Xs ago" counter will reflect the staleness
   }
+}
+
+function fmtTime(iso) {
+  if (!iso) return null;
+  // Parse ISO and format as local HH:MM. Falls back to raw substring if Date can't parse.
+  const d = new Date(iso);
+  if (isNaN(d.getTime())) return iso.slice(11, 16) || null;
+  return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
 }
 
 function updateLiveStatus() {
   const el = document.getElementById("live-status-text");
   if (!el) return;
   const parts = [];
+  const updatedAt = fmtTime(lastGeneratedAt);
+  if (updatedAt) {
+    parts.push(`updated at ${updatedAt}`);
+  } else if (!lastPollAt) {
+    parts.push("connecting…");
+  }
   parts.push(`${lastUseCaseCount} use case${lastUseCaseCount === 1 ? "" : "s"}`);
   parts.push(`${lastFrustrationCount} frustration${lastFrustrationCount === 1 ? "" : "s"}`);
   if (lastPollAt) {
     const ageS = Math.max(0, Math.round((Date.now() - lastPollAt) / 1000));
-    parts.push(`updated ${ageS}s ago`);
-  } else {
-    parts.push("connecting…");
+    parts.push(`last check ${ageS}s ago`);
   }
   el.textContent = parts.join("  ·  ");
+}
+
+// Wire the restore buttons (clears hidden stickers and re-renders on next poll)
+for (const id of ["restore-usecases", "restore-frustrations"]) {
+  const btn = document.getElementById(id);
+  if (!btn) continue;
+  btn.addEventListener("click", () => {
+    unhideAll();
+    btn.hidden = true;
+    btn.dataset.hiddenCount = "0";
+    pollLiveNotes(); // immediate re-render to bring hidden cards back
+  });
 }
 
 // Poll on a steady cadence regardless of view — when the user toggles,

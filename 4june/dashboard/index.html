@@ -161,8 +161,27 @@
       will-change: transform, opacity;
       animation: stickerIn 420ms cubic-bezier(.2,.8,.2,1) both;
     }
+    .sticker { position: relative; }
     .sticker.has-attribution { cursor: help; }
     .sticker.has-attribution:hover { filter: brightness(1.05); }
+    .sticker-x {
+      position: absolute; top: 4px; right: 6px;
+      width: 22px; height: 22px; padding: 0;
+      border: none; border-radius: 50%;
+      background: rgba(0,0,0,0.08); color: rgba(0,0,0,0.55);
+      font-family: inherit; font-size: 15px; font-weight: 700;
+      line-height: 1; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 200ms ease, background 150ms ease;
+    }
+    .sticker:hover .sticker-x { opacity: 1; }
+    .sticker-x:hover { background: rgba(0,0,0,0.22); color: rgba(0,0,0,0.85); }
+    .live-restore { margin-top: 10px; padding: 6px 4px; font-size: 12px;
+                    color: var(--fg-3); cursor: pointer; text-align: center;
+                    background: none; border: none; font-family: inherit;
+                    width: 100%; }
+    .live-restore:hover { color: var(--brand-green-300); }
+    .live-restore[hidden] { display: none; }
     .sticker.color-0 { background: linear-gradient(180deg, #FFF6B0 0%, #FFEC8E 100%); }
     .sticker.color-1 { background: linear-gradient(180deg, #FFD3DF 0%, #FFB9CA 100%); }
     .sticker.color-2 { background: linear-gradient(180deg, #CFEFCF 0%, #B0E2B2 100%); }
@@ -232,12 +251,14 @@
         <p class="live-sub">As people share live</p>
         <div class="sticker-grid" id="g-usecases"></div>
         <div class="live-empty" id="empty-usecases">Waiting for the round-the-room to start…</div>
+        <button type="button" class="live-restore" id="restore-usecases" hidden>↺ Restore 0 hidden</button>
       </section>
       <section class="live-column">
         <h2>Where we're stuck</h2>
         <p class="live-sub">As people share live</p>
         <div class="sticker-grid" id="g-frustrations"></div>
         <div class="live-empty" id="empty-frustrations">Waiting for "where are you stuck?"…</div>
+        <button type="button" class="live-restore" id="restore-frustrations" hidden>↺ Restore 0 hidden</button>
       </section>
     </main>
 

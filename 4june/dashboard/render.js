@@ -843,7 +843,7 @@ setInterval(pollKeyTopics, TOPICS_POLL_INTERVAL_MS);
 // ════════════════════════════════════════════════════════════════════════════
 
 const VIEW_KEY = "dashboard.view";
-const VALID_VIEWS = new Set(["welcome", "overview", "live", "topics"]);
+const VALID_VIEWS = new Set(["overview", "live", "topics"]);
 
 function setView(view) {
   if (!VALID_VIEWS.has(view)) view = "overview";
@@ -861,14 +861,16 @@ for (const btn of document.querySelectorAll(".view-toggle button")) {
   btn.addEventListener("click", () => setView(btn.dataset.view));
 }
 
-// Restore last view (default: overview)
-try { setView(localStorage.getItem(VIEW_KEY) || "overview"); }
-catch { setView("overview"); }
+// Restore last view (default: overview). Migrate any legacy "welcome" preference
+// from before the tab was removed → fall through to overview.
+try {
+  const stored = localStorage.getItem(VIEW_KEY);
+  setView(VALID_VIEWS.has(stored) ? stored : "overview");
+} catch { setView("overview"); }
 
-// Keyboard shortcuts: W = welcome · O = overview · L = live · T = topics
+// Keyboard shortcuts: O = overview · L = live · T = topics
 document.addEventListener("keydown", (e) => {
   if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
-  if (e.key === "w" || e.key === "W") setView("welcome");
   if (e.key === "o" || e.key === "O") setView("overview");
   if (e.key === "l" || e.key === "L") setView("live");
   if (e.key === "t" || e.key === "T") setView("topics");

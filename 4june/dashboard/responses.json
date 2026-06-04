@@ -46,35 +46,71 @@
       "Transfer Pricing"
     ],
     "taxAreaOther": "",
-    "previousEvents": "5+",
-    "yearsInTax": "5–15",
+    "previousEvents": "",
+    "yearsInTax": "",
+    "aiToolsWork": [],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [],
+    "biggestWinOther": "",
+    "biggestFrustrations": [],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 8,
+    "selfApplication": 5,
+    "selfCraft": 6,
+    "selfTrust": 6,
+    "submittedAt": "2026-06-04T10:39:09.318Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T10:39:09Z"
+  },
+  {
+    "id": "roza-chour",
+    "name": "Roza Chour",
+    "company": "Ecco",
+    "taxAreas": [
+      "Indirect / VAT",
+      "Tax Tech / Data"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "0–5",
     "aiToolsWork": [
-      "M365 Copilot"
+      "ChatGPT",
+      "Claude",
+      "M365 Copilot",
+      "Perplexity"
     ],
     "aiToolsWorkOther": "",
     "aiToolsHome": [
       "ChatGPT",
-      "Claude"
+      "Claude",
+      "M365 Copilot",
+      "Perplexity"
     ],
     "aiToolsHomeOther": "",
-    "wishToTry": "Chatgpt",
+    "wishToTry": "",
     "biggestWins": [
       "Drafting memos / first-draft writing",
       "Summarising long documents",
-      "Brainstorming / second opinion"
+      "Research and explanation"
     ],
     "biggestWinOther": "",
     "biggestFrustrations": [
-      "Hard to integrate with my workflow"
+      "Hallucinations / wrong answers",
+      "Privacy — can't share internal company data",
+      "Compliance / audit defensibility"
     ],
     "biggestFrustrationOther": "",
-    "expectationToday": "Drinks",
-    "selfAdoption": 3,
-    "selfApplication": 3,
-    "selfCraft": 3,
-    "selfTrust": 3,
-    "submittedAt": "2026-06-04T09:19:46.407Z",
+    "expectationToday": "Inspiration on AI in mass ERP data handling across the full ERP life cycle (SAP O2C, FICO, MM)",
+    "selfAdoption": 9,
+    "selfApplication": 10,
+    "selfCraft": 7,
+    "selfTrust": 4,
+    "submittedAt": "2026-06-04T11:04:33.659Z",
     "isNewParticipant": false,
-    "receivedAt": "2026-06-04T09:19:47Z"
+    "receivedAt": "2026-06-04T11:04:36Z"
   }
 ]

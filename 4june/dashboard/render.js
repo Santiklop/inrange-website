@@ -3,6 +3,17 @@ import { aggregateBy, donutSegments, topN, hashHue } from "./viz.js";
 import { getIndustry } from "./industries.js";
 import { ATTENDEES } from "../attendees.js";
 
+// People who selected this many tax areas or more are "tax generalists" —
+// collapsed under a single "General Tax" label rather than counted in
+// every individual area. Raw taxAreas in responses.json stay untouched.
+const GENERAL_TAX_THRESHOLD = 3;
+const GENERAL_TAX_LABEL = "General Tax";
+function effectiveTaxAreas(r) {
+  const areas = (r && r.taxAreas) || [];
+  if (areas.length >= GENERAL_TAX_THRESHOLD) return [GENERAL_TAX_LABEL];
+  return areas;
+}
+
 // Role lookup — dashboard never shows names, only roles. Falls back to
 // "Tax professional" for any id we don't have in the curated list (walk-ins).
 const ROLE_BY_ID = Object.fromEntries(ATTENDEES.map(a => [a.id, a.role || "Tax professional"]));
@@ -349,7 +360,7 @@ function aggregateByTaxArea(responses) {
   for (const r of responses) {
     const tot = totalScore(r);
     if (tot == null) continue;
-    for (const area of (r.taxAreas || [])) {
+    for (const area of effectiveTaxAreas(r)) {  // collapse multi-area → "General Tax"
       if (!area) continue;
       if (!buckets.has(area)) buckets.set(area, []);
       buckets.get(area).push(tot);
@@ -440,11 +451,11 @@ async function main() {
   document.getElementById("status").innerHTML =
     `${total} <span class="dim">of 35 checked in</span> · ${firstTimers} <span class="dim">first-timers</span> · ${returnees} <span class="dim">regulars</span>`;
 
-  // Tax areas
-  const taxCounts = aggregateBy(responses, r => r.taxAreas);
+  // Tax areas — multi-area attendees (≥ GENERAL_TAX_THRESHOLD) collapse into "General Tax"
+  const taxCounts = aggregateBy(responses, effectiveTaxAreas);
   const taxSegs = donutSegments(taxCounts).sort((a,b) => b.count - a.count);
   const namesByTax = {};
-  for (const r of responses) for (const t of (r.taxAreas || [])) (namesByTax[t] ||= []).push(roleFor(r.id));
+  for (const r of responses) for (const t of effectiveTaxAreas(r)) (namesByTax[t] ||= []).push(roleFor(r.id));
   renderDonut(document.querySelector("#p-tax .panel-body"), taxSegs, namesByTax);
 
   // Tools

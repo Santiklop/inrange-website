@@ -449,7 +449,7 @@ async function main() {
   const ts = (clusters.generatedAt || new Date().toISOString()).slice(11, 16);
 
   document.getElementById("status").innerHTML =
-    `${total} <span class="dim">of 35 checked in</span> · ${firstTimers} <span class="dim">first-timers</span> · ${returnees} <span class="dim">regulars</span>`;
+    `${total} <span class="dim">of 35 checked in</span> · ${firstTimers} <span class="dim">first-timers</span>`;
 
   // Tax areas — multi-area attendees (≥ GENERAL_TAX_THRESHOLD) collapse into "General Tax"
   const taxCounts = aggregateBy(responses, effectiveTaxAreas);

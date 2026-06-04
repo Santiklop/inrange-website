@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-04T15:22:04+02:00",
+  "generatedAt": "2026-06-04T16:33:42+02:00",
   "useCases": [
     {
       "text": "Used Claude Code to build this whole dashboard last night.",
@@ -12,6 +12,26 @@
     {
       "text": "Used Claude to create Instagram captions.",
       "attribution": "Roza"
+    },
+    {
+      "text": "Drafted a function-conversion tax memo in 30 minutes with AI — replaced a 50K EUR advisor quote, even covered GDPR.",
+      "attribution": "Valon"
+    },
+    {
+      "text": "Premium Co-Pilot filters the IBFD newsletter and only surfaces what's relevant. Used it to draft a memo for India — the local expert confirmed it was correct. Also generated a PowerPoint from it.",
+      "attribution": ""
+    },
+    {
+      "text": "Used AI to draft constructive feedback on a colleague's presentation — peers praised the quality of the comments.",
+      "attribution": ""
+    },
+    {
+      "text": "Built a 30-day study plan with AI as her trainer — daily readings + quizzes, AI decides when to go deeper.",
+      "attribution": "Min (IBFD)"
+    },
+    {
+      "text": "Uses LocTax — an LLM tax agent on top of the IBFD database — to dig into complex technical tax setups.",
+      "attribution": "Raymond"
     }
   ],
   "frustrations": [
@@ -22,6 +42,24 @@
     {
       "text": "AI-generated Instagram captions aren't human enough.",
       "attribution": "Roza"
+    },
+    {
+      "text": "Co-Pilot's answers can sometimes feel less analytical than expected.",
+      "attribution": "Valon"
+    }
+  ],
+  "observations": [
+    {
+      "text": "Multinationals are looking to embed the IBFD database directly into their own systems instead of going through advisors.",
+      "attribution": ""
+    },
+    {
+      "text": "Co-Pilot has different licenses — the more your company pays, the more sophisticated the model.",
+      "attribution": ""
+    },
+    {
+      "text": "We still need to learn to write very precise prompts to get good memos out of AI.",
+      "attribution": ""
     }
   ]
 }

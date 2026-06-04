@@ -691,6 +691,7 @@ let lastPollAt = null;
 let lastGeneratedAt = null;
 let lastUseCaseCount = 0;
 let lastFrustrationCount = 0;
+let lastObservationCount = 0;
 
 async function pollLiveNotes() {
   try {
@@ -699,6 +700,7 @@ async function pollLiveNotes() {
     const data = await res.json();
     const useCases = Array.isArray(data.useCases) ? data.useCases : [];
     const frustrations = Array.isArray(data.frustrations) ? data.frustrations : [];
+    const observations = Array.isArray(data.observations) ? data.observations : [];
 
     lastUseCaseCount = renderStickers(
       document.getElementById("g-usecases"),
@@ -710,8 +712,14 @@ async function pollLiveNotes() {
       frustrations,
       document.getElementById("restore-frustrations")
     );
+    lastObservationCount = renderStickers(
+      document.getElementById("g-observations"),
+      observations,
+      document.getElementById("restore-observations")
+    );
     setEmptyState(document.getElementById("empty-usecases"), lastUseCaseCount);
     setEmptyState(document.getElementById("empty-frustrations"), lastFrustrationCount);
+    setEmptyState(document.getElementById("empty-observations"), lastObservationCount);
 
     lastPollAt = Date.now();
     lastGeneratedAt = data.generatedAt || null;
@@ -741,11 +749,12 @@ function updateLiveStatus() {
   }
   parts.push(`${lastUseCaseCount} use case${lastUseCaseCount === 1 ? "" : "s"}`);
   parts.push(`${lastFrustrationCount} frustration${lastFrustrationCount === 1 ? "" : "s"}`);
+  parts.push(`${lastObservationCount} observation${lastObservationCount === 1 ? "" : "s"}`);
   el.textContent = parts.join("  ·  ");
 }
 
 // Wire the restore buttons (clears hidden stickers and re-renders on next poll)
-for (const id of ["restore-usecases", "restore-frustrations"]) {
+for (const id of ["restore-usecases", "restore-frustrations", "restore-observations"]) {
   const btn = document.getElementById(id);
   if (!btn) continue;
   btn.addEventListener("click", () => {

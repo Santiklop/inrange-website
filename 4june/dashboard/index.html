@@ -302,8 +302,10 @@
                     font-weight: 600; margin-top: 8px; }
 
     /* ─── Live notes view ─────────────────────────────────────────────────── */
-    .live-view { display: grid; grid-template-columns: 1fr 1fr; gap: 22px;
+    .live-view { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px;
                  min-height: 0; padding: 4px 0 0; }
+    @media (max-width: 1400px) { .live-view { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 900px)  { .live-view { grid-template-columns: 1fr;   } }
     .live-column { display: flex; flex-direction: column; min-height: 0;
                    background: var(--bg-card); border: 1px solid var(--border);
                    border-radius: var(--radius); padding: 22px 24px 28px; }
@@ -492,6 +494,13 @@
         <div class="sticker-grid" id="g-frustrations"></div>
         <div class="live-empty" id="empty-frustrations">Waiting for "where are you stuck?"…</div>
         <button type="button" class="live-restore" id="restore-frustrations" hidden>↺ Restore 0 hidden</button>
+      </section>
+      <section class="live-column">
+        <h2>From the room</h2>
+        <p class="live-sub">Observations &amp; takeaways</p>
+        <div class="sticker-grid" id="g-observations"></div>
+        <div class="live-empty" id="empty-observations">Waiting for the discussion to open up…</div>
+        <button type="button" class="live-restore" id="restore-observations" hidden>↺ Restore 0 hidden</button>
       </section>
     </main>
 

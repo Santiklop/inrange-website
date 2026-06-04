@@ -635,6 +635,46 @@
     "receivedAt": "2026-06-04T13:41:55Z"
   },
   {
+    "id": "satoko-nishihara",
+    "name": "Satoko Nishihara",
+    "company": "Kubota",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "0–5",
+    "aiToolsWork": [
+      "ChatGPT",
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Gemini"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T13:54:09.518Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:54:10Z"
+  },
+  {
     "id": "tatiana-kvardakova",
     "name": "Tatiana Kvardakova",
     "company": "IKEA (Inter IKEA)",
@@ -648,13 +688,203 @@
     "previousEvents": "3–5",
     "yearsInTax": "5–15",
     "aiToolsWork": [
-      "ChatGPT",
-      "Gemini"
+      "Custom in-house agent"
     ],
     "aiToolsWorkOther": "",
     "aiToolsHome": [
       "ChatGPT",
       "Gemini"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Privacy — can’t share internal company data"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 6,
+    "selfApplication": 7,
+    "selfCraft": 7,
+    "selfTrust": 6,
+    "submittedAt": "2026-06-04T13:57:12.740Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:57:13Z"
+  },
+  {
+    "id": "alexei-sorokin",
+    "name": "Alexei Sorokin",
+    "company": "DTEK",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "",
+    "yearsInTax": "",
+    "aiToolsWork": [],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [],
+    "biggestWinOther": "",
+    "biggestFrustrations": [],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T13:58:01.909Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:57:30Z"
+  },
+  {
+    "id": "hans-topril",
+    "name": "Hans Topril",
+    "company": "Rabobank",
+    "taxAreas": [
+      "Transfer Pricing"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Research and explanation",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "",
+    "selfAdoption": 8,
+    "selfApplication": 7,
+    "selfCraft": 7,
+    "selfTrust": 7,
+    "submittedAt": "2026-06-04T13:59:19.522Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T13:59:22Z"
+  },
+  {
+    "id": "hannah-saleem",
+    "name": "Hannah Saleem",
+    "company": "ACT Group",
+    "taxAreas": [
+      "Transfer Pricing",
+      "Direct / CIT",
+      "Compliance & Reporting",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "5+",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "ChatGPT"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Gemini",
+      "Perplexity"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "Claude",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Doesn’t understand tax context",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Learn something new",
+    "selfAdoption": 10,
+    "selfApplication": 7,
+    "selfCraft": 3,
+    "selfTrust": 10,
+    "submittedAt": "2026-06-04T14:02:38.424Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:01:31Z"
+  },
+  {
+    "id": "ekaterina-shakhvorostova",
+    "name": "Ekaterina Shakhvorostova",
+    "company": "Delta Electronics",
+    "taxAreas": [
+      "Indirect / VAT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "",
+    "aiToolsWork": [
+      "ChatGPT"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Summarising long documents",
+      "Brainstorming / second opinion"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "Experience of others in AI usage",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 3,
+    "submittedAt": "2026-06-04T14:04:15.900Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:04:16Z"
+  },
+  {
+    "id": "natasha-chen",
+    "name": "Natasha Chen",
+    "company": "Delta Electronics",
+    "taxAreas": [
+      "Transfer Pricing",
+      "Direct / CIT"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "3–5",
+    "yearsInTax": "5–15",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Gemini"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
     ],
     "aiToolsHomeOther": "",
     "wishToTry": "",
@@ -669,13 +899,108 @@
       "Privacy — can’t share internal company data"
     ],
     "biggestFrustrationOther": "",
+    "expectationToday": "The real practice for using AI in tax field",
+    "selfAdoption": 3,
+    "selfApplication": 3,
+    "selfCraft": 3,
+    "selfTrust": 2,
+    "submittedAt": "2026-06-04T14:05:45.190Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:05:46Z"
+  },
+  {
+    "id": "charlotte-chen",
+    "name": "Charlotte Chen",
+    "company": "MGA Entertainment",
+    "taxAreas": [
+      "Transfer Pricing",
+      "Direct / CIT",
+      "Indirect / VAT",
+      "Customs & Trade",
+      "Compliance & Reporting",
+      "Tax Tech / Data",
+      "Tax Controversy / Audit",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "5+",
+    "yearsInTax": "15+",
+    "aiToolsWork": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Drafting memos / first-draft writing",
+      "Summarising long documents",
+      "Research and explanation"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Inconsistent output quality"
+    ],
+    "biggestFrustrationOther": "",
     "expectationToday": "",
     "selfAdoption": 3,
     "selfApplication": 3,
     "selfCraft": 3,
     "selfTrust": 3,
-    "submittedAt": "2026-06-04T13:44:45.419Z",
+    "submittedAt": "2026-06-04T14:06:24.253Z",
     "isNewParticipant": false,
-    "receivedAt": "2026-06-04T13:44:46Z"
+    "receivedAt": "2026-06-04T14:06:25Z"
+  },
+  {
+    "id": "tarkeshwar-upmanyu",
+    "name": "Tarkeshwar Upmanyu",
+    "company": "ACT Commodities",
+    "taxAreas": [
+      "Transfer Pricing",
+      "Direct / CIT",
+      "Indirect / VAT",
+      "Compliance & Reporting",
+      "Tax Tech / Data",
+      "Tax Controversy / Audit",
+      "International / Pillar 2 / BEPS"
+    ],
+    "taxAreaOther": "",
+    "previousEvents": "First time",
+    "yearsInTax": "0–5",
+    "aiToolsWork": [
+      "ChatGPT",
+      "M365 Copilot"
+    ],
+    "aiToolsWorkOther": "",
+    "aiToolsHome": [
+      "ChatGPT",
+      "Claude"
+    ],
+    "aiToolsHomeOther": "",
+    "wishToTry": "",
+    "biggestWins": [
+      "Research and explanation",
+      "Brainstorming / second opinion",
+      "Building small tools or apps"
+    ],
+    "biggestWinOther": "",
+    "biggestFrustrations": [
+      "Hallucinations / wrong answers",
+      "Inconsistent output quality",
+      "Hard to integrate with my workflow"
+    ],
+    "biggestFrustrationOther": "",
+    "expectationToday": "AI Tool options",
+    "selfAdoption": 10,
+    "selfApplication": 9,
+    "selfCraft": 9,
+    "selfTrust": 6,
+    "submittedAt": "2026-06-04T14:06:49.362Z",
+    "isNewParticipant": false,
+    "receivedAt": "2026-06-04T14:06:55Z"
   }
 ]

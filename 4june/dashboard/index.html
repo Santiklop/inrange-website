@@ -268,12 +268,8 @@
     .view-toggle button.active { background: var(--brand-green-500); color: #fff; }
 
     /* Show/hide views based on data-view */
-    .root[data-view="overview"] .view-live,
     .root[data-view="overview"] .view-topics { display: none !important; }
-    .root[data-view="live"] .view-overview,
-    .root[data-view="live"] .view-topics { display: none !important; }
-    .root[data-view="topics"] .view-overview,
-    .root[data-view="topics"] .view-live { display: none !important; }
+    .root[data-view="topics"] .view-overview { display: none !important; }
 
     /* ─── Live notes view ─────────────────────────────────────────────────── */
     .live-view { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 22px;
@@ -412,7 +408,6 @@
         <span class="wordmark">TAX EXPATS CLUB</span>
         <span class="view-toggle" role="tablist" aria-label="Dashboard view">
           <button type="button" data-view="overview" class="active" role="tab" aria-selected="true">Overview</button>
-          <button type="button" data-view="live" role="tab" aria-selected="false">Live notes</button>
           <button type="button" data-view="topics" role="tab" aria-selected="false">Key topics</button>
         </span>
         <span class="chyron">4 June 2026 · Nutanix</span>
@@ -478,32 +473,6 @@
         </div>
       </div>
     </details>
-
-    <main class="live-view view-live">
-      <section class="live-column">
-        <h2>What we're using AI for</h2>
-        <p class="live-sub">As people share live</p>
-        <div class="sticker-grid" id="g-usecases"></div>
-        <div class="live-empty" id="empty-usecases">Waiting for the round-the-room to start…</div>
-        <button type="button" class="live-restore" id="restore-usecases" hidden>↺ Restore 0 hidden</button>
-      </section>
-      <section class="live-column">
-        <h2>Where we're stuck</h2>
-        <p class="live-sub">As people share live</p>
-        <div class="sticker-grid" id="g-frustrations"></div>
-        <div class="live-empty" id="empty-frustrations">Waiting for "where are you stuck?"…</div>
-        <button type="button" class="live-restore" id="restore-frustrations" hidden>↺ Restore 0 hidden</button>
-      </section>
-      <section class="live-column">
-        <h2>From the room</h2>
-        <p class="live-sub">Observations &amp; takeaways</p>
-        <div class="sticker-grid" id="g-observations"></div>
-        <div class="live-empty" id="empty-observations">Waiting for the discussion to open up…</div>
-        <button type="button" class="live-restore" id="restore-observations" hidden>↺ Restore 0 hidden</button>
-      </section>
-    </main>
-
-    <div class="live-status view-live" id="live-status"><span class="dot"></span><span id="live-status-text">connecting…</span></div>
 
     <main class="topics-view view-topics">
       <section class="topics-column">

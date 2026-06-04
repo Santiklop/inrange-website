@@ -515,12 +515,14 @@ main();
 
 // ════════════════════════════════════════════════════════════════════════════
 // LIVE NOTES VIEW — sticker cards driven by ./live-notes.json
+//
+// The view itself was removed post-meeting (the room dashboard is now Overview
+// + Key topics only). The helpers below are kept because Key-topics' tooltip
+// styling reuses the .sticker CSS classes; the polling code is short-circuited.
 // ════════════════════════════════════════════════════════════════════════════
 
 const STICKER_COLORS = 5;        // matches .color-0 .. .color-4 in CSS
 const ROTATION_RANGE = 3;        // ±degrees
-const POLL_INTERVAL_MS = 5000;
-const LIVE_NOTES_URL = "./live-notes.json";
 const HIDDEN_KEY = "dashboard.hiddenStickers"; // localStorage key — Set of texts hidden via the × button
 
 // Per-projector hide list — clicking × on a sticker adds its text here. The doc and
@@ -687,48 +689,6 @@ function setEmptyState(emptyEl, count) {
   emptyEl.hidden = count > 0;
 }
 
-let lastPollAt = null;
-let lastGeneratedAt = null;
-let lastUseCaseCount = 0;
-let lastFrustrationCount = 0;
-let lastObservationCount = 0;
-
-async function pollLiveNotes() {
-  try {
-    const res = await fetch(`${LIVE_NOTES_URL}?t=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    const data = await res.json();
-    const useCases = Array.isArray(data.useCases) ? data.useCases : [];
-    const frustrations = Array.isArray(data.frustrations) ? data.frustrations : [];
-    const observations = Array.isArray(data.observations) ? data.observations : [];
-
-    lastUseCaseCount = renderStickers(
-      document.getElementById("g-usecases"),
-      useCases,
-      document.getElementById("restore-usecases")
-    );
-    lastFrustrationCount = renderStickers(
-      document.getElementById("g-frustrations"),
-      frustrations,
-      document.getElementById("restore-frustrations")
-    );
-    lastObservationCount = renderStickers(
-      document.getElementById("g-observations"),
-      observations,
-      document.getElementById("restore-observations")
-    );
-    setEmptyState(document.getElementById("empty-usecases"), lastUseCaseCount);
-    setEmptyState(document.getElementById("empty-frustrations"), lastFrustrationCount);
-    setEmptyState(document.getElementById("empty-observations"), lastObservationCount);
-
-    lastPollAt = Date.now();
-    lastGeneratedAt = data.generatedAt || null;
-    updateLiveStatus();
-  } catch (err) {
-    console.error("[live-notes] poll failed:", err);
-  }
-}
-
 function fmtTime(iso) {
   if (!iso) return null;
   // Parse ISO and format as local HH:MM. Falls back to raw substring if Date can't parse.
@@ -736,40 +696,6 @@ function fmtTime(iso) {
   if (isNaN(d.getTime())) return iso.slice(11, 16) || null;
   return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
 }
-
-function updateLiveStatus() {
-  const el = document.getElementById("live-status-text");
-  if (!el) return;
-  const parts = [];
-  const updatedAt = fmtTime(lastGeneratedAt);
-  if (updatedAt) {
-    parts.push(`updated at ${updatedAt}`);
-  } else if (!lastPollAt) {
-    parts.push("connecting…");
-  }
-  parts.push(`${lastUseCaseCount} use case${lastUseCaseCount === 1 ? "" : "s"}`);
-  parts.push(`${lastFrustrationCount} frustration${lastFrustrationCount === 1 ? "" : "s"}`);
-  parts.push(`${lastObservationCount} observation${lastObservationCount === 1 ? "" : "s"}`);
-  el.textContent = parts.join("  ·  ");
-}
-
-// Wire the restore buttons (clears hidden stickers and re-renders on next poll)
-for (const id of ["restore-usecases", "restore-frustrations", "restore-observations"]) {
-  const btn = document.getElementById(id);
-  if (!btn) continue;
-  btn.addEventListener("click", () => {
-    unhideAll();
-    btn.hidden = true;
-    btn.dataset.hiddenCount = "0";
-    pollLiveNotes(); // immediate re-render to bring hidden cards back
-  });
-}
-
-// Poll on a steady cadence regardless of view — when the user toggles,
-// the cards are already in the DOM and ready.
-pollLiveNotes();
-setInterval(pollLiveNotes, POLL_INTERVAL_MS);
-setInterval(updateLiveStatus, 1000); // tick the "Xs ago" counter every second
 
 // ════════════════════════════════════════════════════════════════════════════
 // KEY TOPICS VIEW — clustered themes from live-themes.json
@@ -843,7 +769,7 @@ setInterval(pollKeyTopics, TOPICS_POLL_INTERVAL_MS);
 // ════════════════════════════════════════════════════════════════════════════
 
 const VIEW_KEY = "dashboard.view";
-const VALID_VIEWS = new Set(["overview", "live", "topics"]);
+const VALID_VIEWS = new Set(["overview", "topics"]);
 
 function setView(view) {
   if (!VALID_VIEWS.has(view)) view = "overview";
@@ -861,18 +787,17 @@ for (const btn of document.querySelectorAll(".view-toggle button")) {
   btn.addEventListener("click", () => setView(btn.dataset.view));
 }
 
-// Restore last view (default: overview). Migrate any legacy "welcome" preference
-// from before the tab was removed → fall through to overview.
+// Restore last view (default: overview). Migrate any legacy preference
+// from removed tabs (welcome, live) → fall through to overview.
 try {
   const stored = localStorage.getItem(VIEW_KEY);
   setView(VALID_VIEWS.has(stored) ? stored : "overview");
 } catch { setView("overview"); }
 
-// Keyboard shortcuts: O = overview · L = live · T = topics
+// Keyboard shortcuts: O = overview · T = topics
 document.addEventListener("keydown", (e) => {
   if (e.target && (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA")) return;
   if (e.key === "o" || e.key === "O") setView("overview");
-  if (e.key === "l" || e.key === "L") setView("live");
   if (e.key === "t" || e.key === "T") setView("topics");
 });
 

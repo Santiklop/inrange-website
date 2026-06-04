@@ -5,20 +5,19 @@
       "title": "Drafting tax memos in minutes",
       "summary": "From function conversions to India-jurisdiction analysis — AI is replacing days-of-advisor turnaround with same-session output, often verified clean.",
       "examples": [
-        "Valon — function-conversion memo in 30 min (50K EUR advisor replaced, GDPR covered)",
+        "Function-conversion memo drafted in 30 min (50K EUR advisor replaced, GDPR covered)",
         "Premium Co-Pilot drafted an India memo; local expert confirmed it correct",
         "AI drafted constructive feedback on a colleague's presentation",
-        "Agent answered a 2025 transfer-pricing court case in 2 minutes once company data was shared",
-        "Raymond — LocTax for complex global setups with IBFD references (neutral vs Claude's risk-heavy take)"
+        "Agent answered a 2025 transfer-pricing court case in 2 minutes once company data was shared"
       ]
     },
     {
       "title": "Financial modelling on autopilot",
       "summary": "Models built from a prompt — change one variable and the agent reflows the rest, including entry/exit multiples.",
       "examples": [
-        "Navida — change a variable, AI adjusts the rest; accurate across markets",
+        "Change a variable, AI adjusts the rest; accurate across markets",
         "One- and two-pager models from scratch via prompt; tax-rate change → multiples adjust automatically",
-        "Anon — used AI to crunch complex financial computations"
+        "Used AI to crunch complex financial computations"
       ]
     },
     {
@@ -26,17 +25,17 @@
       "summary": "Tax teams hooking AI into WorkDay, SAP, Slack and Alteryx to surface data without hunting through screens.",
       "examples": [
         "Ask AI for ERP t-codes to look data up fast",
-        "JET — built a WorkDay ChatBot for t-codes, data extraction and dashboards",
+        "Custom-built WorkDay ChatBot for t-codes, data extraction and dashboards",
         "Slack → WorkDay generic data extraction (no salary fields)",
-        "PwC — SAP-extraction AI that infers the output before you specify requirements",
-        "Servais — Alteryx for data analysis and pattern recognition"
+        "SAP-extraction AI that infers the output before you specify requirements",
+        "Alteryx for data analysis and pattern recognition"
       ]
     },
     {
       "title": "Catching up on emails & meetings",
       "summary": "Co-Pilot triaging the inbox and capturing meeting argument structure we've been losing hours to.",
       "examples": [
-        "Vito — Co-Pilot summarises hundreds of daily email chains and pulls highlights",
+        "Co-Pilot summarises hundreds of daily email chains and pulls highlights",
         "Co-Pilot prompt to capture argumental relationships and details in meetings"
       ]
     },
@@ -44,20 +43,20 @@
       "title": "Personal AI as productivity multiplier",
       "summary": "Outside work licences, people are running AI on their own data — tax returns, translation, day-to-day decisions.",
       "examples": [
-        "Navida — Grok linked to her Gmail/payslips/passport files her country-specific tax returns end-to-end (saves half a day)",
-        "Navida — Dutch ↔ English voice translation live at an NOB meeting",
-        "Anon — Claude as translator on a trip in Japan",
-        "Anon — used AI agents to file tax returns",
-        "Roza — Claude for Instagram captions",
-        "Valon — ChatGPT picked the best ice cream for breakfast",
-        "Aleks D — Claude Code built this whole dashboard last night"
+        "Grok linked to Gmail/payslips/passport files country-specific tax returns end-to-end (saves half a day)",
+        "Dutch ↔ English voice translation live at an NOB meeting",
+        "Claude as translator on a trip in Japan",
+        "AI agents used to file personal tax returns",
+        "Claude for Instagram captions",
+        "ChatGPT to pick the best ice cream for breakfast",
+        "Claude Code built this whole dashboard last night"
       ]
     },
     {
       "title": "AI as personal trainer",
       "summary": "Letting the agent set your learning curriculum and decide when to dive deeper.",
       "examples": [
-        "Min (IBFD) — 30-day study plan; daily readings + quizzes; AI decides when to go deeper"
+        "30-day study plan; daily readings + quizzes; AI decides when to go deeper"
       ]
     }
   ],
@@ -73,9 +72,9 @@
     },
     {
       "title": "Cost & licence economics",
-      "summary": "Tokens add up. LocTax is 3K EUR / month. Small shops can't get 300 EUR approved. The KPI doesn't always justify the spend — and Group IT is policing usage.",
+      "summary": "Tokens add up. External knowledge license is 3K EUR / month. Inhouse teams struggle to get 300 EUR fees approved. The KPI doesn't always justify the spend — and Group IT is policing usage.",
       "examples": [
-        "LocTax — ~3,000 EUR / month for 5 users",
+        "External knowledge licence — ~3,000 EUR / month for 5 users",
         "Some companies won't even approve a 300 EUR AI budget",
         "Every call burns tokens; humans still cheaper, KPIs don't always justify the data-centre cost",
         "Group IT calls to police licence usage and threatens to pull the licence if not \"maxed out\""
@@ -85,10 +84,10 @@
       "title": "Quality ceiling on output",
       "summary": "Cyber-security policies, mid-tier licences and conservative defaults are throttling how deep the AI is allowed to go.",
       "examples": [
-        "Valon — Co-Pilot's answers can sometimes feel less analytical than expected",
+        "Co-Pilot's answers can sometimes feel less analytical than expected",
         "Company cyber-security policies throttle Co-Pilot/ChatGPT analytical depth",
         "AI replies can sound superficial — people can tell it wasn't the in-house advisor",
-        "Roza — AI-generated Instagram captions aren't human enough"
+        "AI-generated Instagram captions aren't human enough"
       ]
     },
     {
@@ -140,7 +139,7 @@
       "title": "Market shifts in AI procurement",
       "summary": "Multinationals are bypassing advisors by embedding tax databases directly — and Co-Pilot's price tiers determine how capable your team gets.",
       "examples": [
-        "Multinationals are looking to embed the IBFD database directly into their own systems",
+        "Multinationals are looking to embed external tax databases directly into their own systems",
         "Co-Pilot has different licences — the more you pay, the more sophisticated the model",
         "AI is developing fast — one day mistakes will be fewer than humans'"
       ]

@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>inRange — TP Documentation Exoskeleton (LinkedIn carousel · 2 slides)</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+/* === Carousel page setup ===========================================
+   Each .slide is a single LinkedIn-carousel page, sized 4:5 portrait
+   (200mm × 250mm). Print via Chrome → "Save as PDF" with margins set
+   to NONE and background graphics enabled.
+==================================================================== */
+
+@page {
+  size: 200mm 250mm;
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: var(--brand-navy-800);
+  background: var(--neutral-100);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.slide {
+  width: 200mm;
+  height: 250mm;
+  padding: 16mm 16mm 14mm;
+  position: relative;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  page-break-after: always;
+  page-break-inside: avoid;
+  break-after: page;
+}
+.slide:last-child { page-break-after: auto; }
+
+@media screen {
+  body {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+  .slide {
+    box-shadow: 0 10px 40px rgba(20,39,63,0.12), 0 2px 8px rgba(20,39,63,0.08);
+    border-radius: 8px;
+  }
+}
+
+/* === Brand chrome ================================================== */
+.brand-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+.brand-row .mark svg { display: block; }
+.brand-row .wordmark {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 14pt;
+  color: var(--brand-navy-800);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.brand-row .wordmark .accent { color: var(--brand-green-600); }
+
+.slide-footer {
+  position: absolute;
+  left: 16mm; right: 16mm; bottom: 12mm;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9.5pt;
+  color: var(--neutral-500);
+  font-weight: 500;
+}
+.slide-footer .nav-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--brand-green-600);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 9pt;
+}
+.slide-footer .nav-hint svg { width: 14px; height: 14px; }
+.slide-footer .pagenum {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--brand-navy-700);
+}
+
+/* === Typography ==================================================== */
+.eyebrow {
+  font-size: 10pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-green-600);
+}
+h1, h2 {
+  margin: 0;
+  color: var(--brand-navy-800);
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+.slide-title {
+  font-size: 32pt;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+}
+.slide-title .accent { color: var(--brand-green-600); }
+.slide-sub {
+  font-size: 13pt;
+  font-weight: 500;
+  color: var(--neutral-700);
+  margin-top: 10pt;
+  line-height: 1.45;
+  letter-spacing: -0.005em;
+  max-width: 95%;
+}
+
+/* === Slide 1 — Three paths ========================================= */
+.slide-1 .head-block { flex-shrink: 0; }
+.slide-1 .head-block .title-row {
+  margin-top: 14mm;
+}
+.slide-1 .approach-stack {
+  margin-top: 12mm;
+  display: flex;
+  flex-direction: column;
+  gap: 5mm;
+  flex: 1;
+}
+.approach-card {
+  border: 1.5px solid var(--neutral-200);
+  border-radius: 14px;
+  padding: 12pt 16pt;
+  background: #fff;
+  position: relative;
+}
+.approach-card.recommended {
+  border-color: var(--brand-green-500);
+  box-shadow: 0 0 0 1px var(--brand-green-500);
+  background: linear-gradient(180deg, var(--brand-green-50) 0%, #fff 70%);
+}
+.approach-card .rec-badge {
+  position: absolute;
+  top: -10px;
+  right: 14px;
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--brand-green-500);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+.approach-card .header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 6pt;
+}
+.approach-card .ill {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--neutral-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--neutral-200);
+  flex-shrink: 0;
+}
+.approach-card .ill svg { width: 40px; height: 40px; }
+.approach-card.recommended .ill {
+  background: var(--brand-green-100);
+  border-color: var(--brand-green-200);
+}
+.approach-card .heading {
+  display: flex;
+  flex-direction: column;
+  gap: 2pt;
+}
+.approach-card .heading .label {
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--neutral-500);
+}
+.approach-card.recommended .heading .label { color: var(--brand-green-700); }
+.approach-card .heading h3 {
+  font-size: 17pt;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--brand-navy-800);
+}
+.approach-card .body {
+  font-size: 10.5pt;
+  color: var(--neutral-700);
+  line-height: 1.45;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+.approach-card .verdict-row {
+  margin-top: 8pt;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.verdict-chip {
+  font-size: 8.5pt;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid;
+}
+.verdict-chip.warn  { background: #FCF2EE; color: #B25838; border-color: #F1D89F; }
+.verdict-chip.good  { background: var(--brand-green-50); color: var(--brand-green-700); border-color: var(--brand-green-200); }
+
+/* === Slide 2 — The Exoskeleton + CTA =============================== */
+.slide-2 {
+  background: linear-gradient(180deg, #fff 0%, #fff 50%, var(--brand-green-50) 100%);
+}
+.slide-2 .head-block { flex-shrink: 0; }
+.slide-2 .head-block .title-row { margin-top: 12mm; }
+.slide-2 .hero-illu {
+  margin: 8mm auto 0;
+  width: 70mm;
+  height: 50mm;
+  background: var(--brand-green-100);
+  border: 1.5px solid var(--brand-green-200);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.slide-2 .hero-illu svg { width: 50mm; height: 38mm; }
+
+.slide-2 .pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4mm;
+  margin-top: 8mm;
+}
+.pillar {
+  padding: 11pt 12pt;
+  border: 1.5px solid var(--brand-green-200);
+  border-left: 4px solid var(--brand-green-500);
+  border-radius: 10px;
+  background: #fff;
+}
+.pillar h4 {
+  font-size: 11pt;
+  font-weight: 800;
+  margin: 0 0 4pt;
+  color: var(--brand-navy-800);
+  letter-spacing: -0.01em;
+}
+.pillar p {
+  font-size: 9.5pt;
+  color: var(--neutral-600);
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+
+.handover-strip {
+  margin-top: auto;
+  margin-bottom: 12mm;
+  padding: 12pt 14pt;
+  background: var(--brand-navy-800);
+  color: #fff;
+  border-radius: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.handover-strip::before {
+  content: "";
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 130px; height: 130px;
+  border-radius: 50%;
+  background: var(--brand-green-500);
+  opacity: 0.14;
+}
+.handover-strip .row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+.handover-strip h4 {
+  font-size: 13pt;
+  font-weight: 800;
+  margin: 0 0 2pt;
+  letter-spacing: -0.015em;
+  color: #fff;
+}
+.handover-strip p {
+  font-size: 10.5pt;
+  color: rgba(255,255,255,0.78);
+  margin: 0;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.handover-strip .cta-block {
+  margin-left: auto;
+  text-align: right;
+  flex-shrink: 0;
+}
+.handover-strip .cta-block .label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brand-green-300);
+  margin-bottom: 2pt;
+}
+.handover-strip .cta-block .email {
+  font-size: 12pt;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.005em;
+}
+.handover-strip .cta-block .dm {
+  font-size: 9.5pt;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  margin-top: 2pt;
+}
+
+</style>
+</head>
+<body>
+
+<!-- =========================================================
+     SLIDE 1 — Three paths
+============================================================ -->
+<section class="slide slide-1">
+  <div class="head-block">
+    <div class="brand-row">
+      <span class="mark">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+          <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+          <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+          <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+        </svg>
+      </span>
+      <span class="wordmark">in<span class="accent">Range</span></span>
+    </div>
+    <div class="title-row">
+      <span class="eyebrow">For in-house tax & TP teams</span>
+      <h1 class="slide-title" style="margin-top:8pt;">Producing TP documentation <span class="accent">at scale</span>?</h1>
+      <p class="slide-sub">Three credible paths. Same job, very different team shapes, costs, and what stays in your hands afterwards.</p>
+    </div>
+  </div>
+
+  <div class="approach-stack">
+    <div class="approach-card">
+      <div class="header">
+        <div class="ill">
+          <svg viewBox="0 0 80 80">
+            <polygon points="40,14 58,33 22,33" fill="#1FA84A"/>
+            <polygon points="22,33 58,33 68,52 12,52" fill="#14273F" opacity="0.62"/>
+            <polygon points="12,52 68,52 76,70 4,70" fill="#14273F" opacity="0.35"/>
+          </svg>
+        </div>
+        <div class="heading">
+          <span class="label">Approach 01</span>
+          <h3>The Pyramid (Big Four)</h3>
+        </div>
+      </div>
+      <p class="body">Gold-standard quality. Hand-crafted local files. But the bill compounds at volume — review is the bottleneck.</p>
+      <div class="verdict-row">
+        <span class="verdict-chip warn">Slow at volume</span>
+        <span class="verdict-chip warn">Expensive</span>
+      </div>
+    </div>
+
+    <div class="approach-card">
+      <div class="header">
+        <div class="ill">
+          <svg viewBox="0 0 80 80">
+            <rect x="12" y="16" width="56" height="14" rx="2.5" fill="#14273F" opacity="0.32"/>
+            <rect x="12" y="34" width="56" height="14" rx="2.5" fill="#14273F" opacity="0.55"/>
+            <rect x="12" y="52" width="56" height="14" rx="2.5" fill="#14273F" opacity="0.78"/>
+            <circle cx="20" cy="23" r="2" fill="#1FA84A"/>
+            <line x1="28" y1="23" x2="60" y2="23" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65" stroke-linecap="round"/>
+            <circle cx="20" cy="41" r="2" fill="#1FA84A"/>
+            <line x1="28" y1="41" x2="60" y2="41" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65" stroke-linecap="round"/>
+            <circle cx="20" cy="59" r="2" fill="#1FA84A"/>
+            <line x1="28" y1="59" x2="60" y2="59" stroke="#FFFFFF" stroke-width="1.5" opacity="0.65" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="heading">
+          <span class="label">Approach 02</span>
+          <h3>Dedicated TP software</h3>
+        </div>
+      </div>
+      <p class="body">Cheap per file once running. Fast at volume. But your team owns the licence, the implementation, the templates — and the upkeep.</p>
+      <div class="verdict-row">
+        <span class="verdict-chip warn">Heavy implementation</span>
+        <span class="verdict-chip warn">Lift sits with you</span>
+      </div>
+    </div>
+
+    <div class="approach-card recommended">
+      <span class="rec-badge">Recommended</span>
+      <div class="header">
+        <div class="ill">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="22" r="7" fill="#14273F"/>
+            <rect x="34" y="30" width="12" height="22" rx="2.5" fill="#14273F"/>
+            <rect x="35.5" y="50" width="3" height="18" rx="1.2" fill="#14273F"/>
+            <rect x="41.5" y="50" width="3" height="18" rx="1.2" fill="#14273F"/>
+            <path d="M 16 32 L 30 32 L 30 60 L 16 60" stroke="#1FA84A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 64 32 L 50 32 L 50 60 L 64 60" stroke="#1FA84A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="16" y1="32" x2="64" y2="32" stroke="#1FA84A" stroke-width="2.6" stroke-linecap="round"/>
+            <circle cx="16" cy="32" r="2.6" fill="#1FA84A"/>
+            <circle cx="64" cy="32" r="2.6" fill="#1FA84A"/>
+            <circle cx="16" cy="60" r="2.6" fill="#1FA84A"/>
+            <circle cx="64" cy="60" r="2.6" fill="#1FA84A"/>
+            <circle cx="30" cy="46" r="2.4" fill="#1FA84A"/>
+            <circle cx="50" cy="46" r="2.4" fill="#1FA84A"/>
+          </svg>
+        </div>
+        <div class="heading">
+          <span class="label">Approach 03</span>
+          <h3>The Exoskeleton</h3>
+        </div>
+      </div>
+      <p class="body">A senior TP professional + AI agents + workflow tailored to your group. Quality of the Pyramid. Speed of the Software. Lower lift for your team than either.</p>
+      <div class="verdict-row">
+        <span class="verdict-chip good">High quality</span>
+        <span class="verdict-chip good">Fast at volume</span>
+        <span class="verdict-chip good">Yours afterwards</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="nav-hint">
+      What is "the Exoskeleton"?
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </span>
+    <span class="pagenum">01 / 02</span>
+  </div>
+</section>
+
+<!-- =========================================================
+     SLIDE 2 — The Exoskeleton + CTA
+============================================================ -->
+<section class="slide slide-2">
+  <div class="head-block">
+    <div class="brand-row">
+      <span class="mark">
+        <svg viewBox="0 0 32 32" width="22" height="22" aria-hidden="true">
+          <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+          <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+          <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+        </svg>
+      </span>
+      <span class="wordmark">in<span class="accent">Range</span></span>
+    </div>
+    <div class="title-row">
+      <span class="eyebrow">The recommendation</span>
+      <h2 class="slide-title" style="margin-top:8pt;">The <span class="accent">Exoskeleton.</span></h2>
+      <p class="slide-sub">A senior TP professional, working with AI agents and a workflow tailored to your group — with automated checks layered in.</p>
+    </div>
+  </div>
+
+  <div class="hero-illu">
+    <svg viewBox="0 0 80 80" aria-hidden="true">
+      <circle cx="40" cy="22" r="7" fill="#14273F"/>
+      <rect x="34" y="30" width="12" height="22" rx="2.5" fill="#14273F"/>
+      <rect x="35.5" y="50" width="3" height="18" rx="1.2" fill="#14273F"/>
+      <rect x="41.5" y="50" width="3" height="18" rx="1.2" fill="#14273F"/>
+      <path d="M 16 32 L 30 32 L 30 60 L 16 60" stroke="#1FA84A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 64 32 L 50 32 L 50 60 L 64 60" stroke="#1FA84A" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="16" y1="32" x2="64" y2="32" stroke="#1FA84A" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="16" cy="32" r="2.6" fill="#1FA84A"/>
+      <circle cx="64" cy="32" r="2.6" fill="#1FA84A"/>
+      <circle cx="16" cy="60" r="2.6" fill="#1FA84A"/>
+      <circle cx="64" cy="60" r="2.6" fill="#1FA84A"/>
+      <circle cx="30" cy="46" r="2.4" fill="#1FA84A"/>
+      <circle cx="50" cy="46" r="2.4" fill="#1FA84A"/>
+    </svg>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <h4>Senior judgment</h4>
+      <p>Method, comparables, audit-defensible positions — owned by a senior TP specialist on every file.</p>
+    </div>
+    <div class="pillar">
+      <h4>AI does the volume</h4>
+      <p>Analysis, first drafts, cross-checks against headcount &amp; CbCR, entity-by-entity tailoring.</p>
+    </div>
+    <div class="pillar">
+      <h4>Yours afterwards</h4>
+      <p>After year 1–2 the toolchain transfers. Your tax function "wears" the exoskeleton next.</p>
+    </div>
+  </div>
+
+  <div class="handover-strip">
+    <div class="row">
+      <div>
+        <h4>Want to compare notes?</h4>
+        <p>A 15-minute conversation is usually enough to know if the Exoskeleton fits your TP cycle.</p>
+      </div>
+      <div class="cta-block">
+        <div class="label">Get in touch</div>
+        <div class="email">info@inrange.nl</div>
+        <div class="dm">or DM on LinkedIn</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span style="color:var(--neutral-500);font-weight:500;">inRange Solutions · Amsterdam</span>
+    <span class="pagenum">02 / 02</span>
+  </div>
+</section>
+
+</body>
+</html>

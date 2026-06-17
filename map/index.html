@@ -115,6 +115,99 @@ small { font-size:12px; color:var(--fg-3); }
 /* ---- Empty-state placeholder ---- */
 .view-placeholder { padding:60px 0; text-align:center; color:var(--fg-3); font-size:14px; }
 
+/* ============================================================
+   Data-viz views (MAP & APA) — charts, chips, callouts, tiles
+   ============================================================ */
+
+/* View header */
+.view-head { margin-bottom:20px; }
+.view-head h2 { margin-bottom:6px; }
+.view-head .lede { font-size:15px; line-height:1.5; color:var(--fg-2); max-width:780px; margin:0; }
+
+/* Chip / toggle row */
+.chip-row { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.chip-row .chip-label { align-self:center; font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3); margin-right:2px; }
+.chip { --chip:var(--brand-navy-400); display:inline-flex; align-items:center; gap:7px; background:var(--surface); border:1px solid var(--border-default); color:var(--fg-2); font-family:var(--font-sans); font-size:12.5px; font-weight:600; padding:6px 13px; border-radius:var(--radius-pill); cursor:pointer; transition:all var(--dur-fast) var(--ease); white-space:nowrap; }
+.chip::before { content:""; width:9px; height:9px; border-radius:50%; background:var(--chip); opacity:.32; transition:opacity var(--dur-fast) var(--ease); flex-shrink:0; }
+.chip:hover { border-color:var(--chip); color:var(--fg-1); }
+.chip.on { border-color:var(--chip); color:var(--fg-1); background:color-mix(in srgb,var(--chip) 12%,var(--surface)); }
+.chip.on::before { opacity:1; }
+/* Plain chips (years/streams without a colour dot) */
+.chip.plain::before { display:none; }
+.chip.plain.on { background:var(--brand-green-500); color:#fff; border-color:var(--brand-green-500); }
+[data-theme="dark"] .chip.plain.on { background:var(--brand-green-600); border-color:var(--brand-green-600); }
+
+/* Chart card + svg */
+.chart-card { background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.chart-wrap { position:relative; width:100%; }
+.chart { display:block; width:100%; height:auto; overflow:visible; }
+.chart .grid { stroke:var(--border-subtle); stroke-width:1; stroke-dasharray:2 3; }
+.chart .axis { stroke:var(--border-default); stroke-width:1; }
+.chart .ytick { font-size:11px; fill:var(--fg-3); font-weight:600; text-anchor:end; font-variant-numeric:tabular-nums; }
+.chart .xtick { font-size:11px; fill:var(--fg-3); font-weight:600; text-anchor:middle; }
+.chart .barval { font-size:11px; fill:var(--fg-1); font-weight:700; text-anchor:middle; font-variant-numeric:tabular-nums; }
+.chart .dot { transition:r var(--dur-fast) var(--ease); }
+.chart .hit { cursor:pointer; }
+.chart .norm { stroke:var(--warning); stroke-width:1.5; stroke-dasharray:5 4; }
+.chart .normlbl { font-size:10.5px; fill:var(--accent-ochre); font-weight:700; text-anchor:end; }
+
+/* Chart legend */
+.chart-legend { display:flex; gap:18px; flex-wrap:wrap; font-size:12px; color:var(--fg-3); margin-top:12px; }
+.chart-legend .lg { display:inline-flex; align-items:center; gap:7px; }
+.chart-legend .sw { width:16px; height:3px; border-radius:2px; background:currentColor; flex-shrink:0; }
+.chart-legend .sw.dashed { background:repeating-linear-gradient(to right,currentColor 0,currentColor 4px,transparent 4px,transparent 8px); }
+
+/* Tooltip (positioned inside .chart-wrap) */
+.tooltip { position:absolute; background:var(--brand-navy-800); color:#fff; padding:8px 11px; border-radius:var(--radius-sm); font-size:12px; line-height:1.45; pointer-events:none; opacity:0; transition:opacity var(--dur-fast) var(--ease); box-shadow:var(--shadow-md); z-index:10; font-variant-numeric:tabular-nums; white-space:nowrap; transform:translate(-50%,-110%); }
+.tooltip.show { opacity:1; }
+.tooltip b { color:#fff; font-weight:700; }
+[data-theme="dark"] .tooltip { background:var(--brand-navy-600); border:1px solid var(--border-default); }
+
+/* Generic panel (used by timing / TP views) */
+.panel { background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
+.panel > h4 { font-size:13px; font-weight:700; color:var(--fg-1); margin-bottom:14px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
+.panel > h4 small { font-size:11px; font-weight:500; color:var(--fg-3); letter-spacing:0; text-transform:none; }
+
+/* Outcomes — horizontal bars grouped by phase */
+.outcols h4 { font-size:13px; font-weight:700; color:var(--fg-1); margin:18px 0 10px; display:flex; align-items:baseline; gap:8px; }
+.outcols h4:first-child { margin-top:0; }
+.outcols h4 .osub { font-size:12px; font-weight:700; color:var(--fg-brand); background:var(--brand-green-50); padding:1px 9px; border-radius:var(--radius-pill); font-variant-numeric:tabular-nums; }
+[data-theme="dark"] .outcols h4 .osub { background:rgba(31,168,74,.16); color:var(--brand-green-300); }
+.obar { display:grid; grid-template-columns:minmax(180px,260px) 1fr 44px; align-items:center; gap:12px; padding:4px 0; }
+.olabel { font-size:13px; color:var(--fg-2); line-height:1.35; }
+.otrack { position:relative; height:18px; background:var(--bg-sunken); border-radius:var(--radius-sm); overflow:hidden; }
+.ofill { display:block; height:100%; border-radius:var(--radius-sm); min-width:2px; transition:width var(--dur-base) var(--ease); }
+.oval { font-size:13px; font-weight:700; color:var(--fg-1); text-align:right; font-variant-numeric:tabular-nums; }
+.out-readout { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+.out-readout .ror { background:var(--surface); border:1px solid var(--border-subtle); border-left:3px solid var(--brand-green-500); border-radius:var(--radius-sm); padding:10px 14px; box-shadow:var(--shadow-xs); }
+.out-readout .ror small { display:block; font-size:11px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--fg-3); margin-bottom:3px; }
+.out-readout .ror strong { font-size:18px; font-weight:800; color:var(--fg-1); font-variant-numeric:tabular-nums; }
+
+/* Treaty-partner horizontal bars */
+.pbars { display:flex; flex-direction:column; gap:9px; }
+.pbar { display:grid; grid-template-columns:150px 1fr 48px; align-items:center; gap:12px; }
+.plabel { font-size:13px; color:var(--fg-2); font-weight:600; }
+.ptrack { position:relative; height:20px; background:var(--bg-sunken); border-radius:var(--radius-sm); overflow:hidden; }
+.pfill { display:block; height:100%; background:linear-gradient(90deg,var(--brand-navy-400),var(--brand-navy-500)); border-radius:var(--radius-sm); min-width:2px; transition:width var(--dur-base) var(--ease); }
+.pval { font-size:13px; font-weight:700; color:var(--fg-1); text-align:right; font-variant-numeric:tabular-nums; }
+.partner-foot { font-size:12px; color:var(--fg-3); margin:12px 0 0; }
+
+/* Takeaway callout (Source-Serif, inRange voice) */
+.takeaway { background:var(--surface); border:1px solid var(--border-subtle); border-left:4px solid var(--brand-green-500); border-radius:var(--radius-md); padding:14px 18px; margin:16px 0 0; box-shadow:var(--shadow-xs); font-family:var(--font-serif); font-size:15px; line-height:1.5; color:var(--fg-1); }
+
+/* Stat tiles (TP deep-dive) */
+.statgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
+.stat { background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:18px 20px; box-shadow:var(--shadow-xs); text-align:center; transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease); }
+.stat:hover { transform:translateY(-2px); border-color:var(--border-default); }
+.stat strong { display:block; font-size:30px; font-weight:800; color:var(--fg-1); line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+.stat small { display:block; font-size:12px; color:var(--fg-3); margin-top:6px; line-height:1.4; }
+
+/* Method explainer (clearly-labelled inRange commentary) */
+.explainer { background:linear-gradient(135deg,var(--brand-navy-50) 0%,var(--surface) 70%); border:1px solid var(--border-subtle); border-left:4px solid var(--accent-ochre); border-radius:var(--radius-md); padding:18px 22px; margin:0 0 8px; box-shadow:var(--shadow-xs); }
+[data-theme="dark"] .explainer { background:linear-gradient(135deg,rgba(78,107,138,.16) 0%,var(--surface) 70%); }
+.explainer .eyebrow { color:var(--accent-ochre); margin-bottom:8px; }
+.explainer p:not(.eyebrow) { font-family:var(--font-serif); font-size:15px; line-height:1.55; color:var(--fg-1); margin:0; }
+
 /* ---- Responsive ---- */
 @media (max-width:720px) {
   h1 { font-size:28px; }
@@ -123,13 +216,19 @@ small { font-size:12px; color:var(--fg-3); }
   .key-facts { grid-template-columns:1fr 1fr; }
   .tabbar-inner { padding:0 14px; }
   .area-switch { flex-wrap:wrap; border-radius:var(--radius-lg); }
+  .statgrid { grid-template-columns:1fr; }
+  .obar { grid-template-columns:1fr 40px; }
+  .obar .otrack { grid-column:1 / -1; order:3; }
+  .pbar { grid-template-columns:110px 1fr 42px; gap:8px; }
+  .chart-card, .panel { padding:16px 16px; }
 }
 
 /* ---- Print ---- */
 @media print {
-  .site-header, .scroll-progress, .tabbar { display:none!important; }
+  .site-header, .scroll-progress, .tabbar, .chip-row { display:none!important; }
   body { font-size:11pt; background:#fff; }
   #views { padding:0; }
+  .chart-card, .panel, .stat, .explainer, .takeaway { break-inside:avoid; box-shadow:none; }
 }
 </style>
 </head>
@@ -238,6 +337,296 @@ small { font-size:12px; color:var(--fg-3); }
   var area   = 'map';
   var active = AREAS.map.tabs[0].id;
 
+  // ===========================================================
+  //  Shared chart toolkit (hand-built inline SVG, brand tokens)
+  // ===========================================================
+  var D = MAP_DATA;
+  var STREAMS = [
+    { key: 'INT',   label: 'Interpretation',   c: 'var(--brand-navy-500)' },
+    { key: 'TP',    label: 'Transfer pricing',  c: 'var(--brand-green-600)' },
+    { key: 'TB',    label: 'Tie-breaker',       c: 'var(--accent-ochre)' },
+    { key: 'MLMAP', label: 'Multilateral',      c: 'var(--brand-navy-300)' },
+    { key: 'BAPA',  label: 'BAPA',              c: 'var(--brand-green-400)' },
+    { key: 'MAPA',  label: 'MAPA',              c: 'var(--accent-terra)' }
+  ];
+  function streamOf(key) {
+    for (var i = 0; i < STREAMS.length; i++) if (STREAMS[i].key === key) return STREAMS[i];
+    return null;
+  }
+  function svgEl(w, h, body) {
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="chart" role="img" preserveAspectRatio="xMidYMid meet">' + body + '</svg>';
+  }
+  function linePath(pts) { // pts: [[x,y],...] -> SVG path "d"
+    return pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
+  }
+  function yScale(plotH, padTop, max) { return function (v) { return padTop + (1 - v / max) * plotH; }; }
+
+  // Tooltip: wire every [data-tip] inside #id to the .tooltip in its .chart-wrap.
+  function wireTips(id) {
+    var wrap = document.getElementById(id);
+    if (!wrap) return;
+    var tp = wrap.querySelector('.tooltip');
+    if (!tp) return;
+    wrap.querySelectorAll('[data-tip]').forEach(function (el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = wrap.getBoundingClientRect();
+        tp.innerHTML = el.getAttribute('data-tip');
+        tp.style.left = (e.clientX - r.left) + 'px';
+        tp.style.top = (e.clientY - r.top - 6) + 'px';
+        tp.classList.add('show');
+      });
+      el.addEventListener('mouseleave', function () { tp.classList.remove('show'); });
+    });
+  }
+
+  // Multi-series line builder (received solid + closed dashed) shared by
+  // Caseload and TP deep-dive. `keys` = array of stream keys to draw.
+  function lineChart(keys, opts) {
+    opts = opts || {};
+    var W = opts.W || 900, H = opts.H || 380, padL = 48, padB = 28, padTop = 16;
+    var plotW = W - padL - 16, plotH = H - padB - padTop;
+    var series = keys.map(streamOf).filter(Boolean);
+    var vals = [1];
+    series.forEach(function (s) {
+      vals = vals.concat(D.caseload[s.key].received, D.caseload[s.key].closed);
+    });
+    var max = niceMax(Math.max.apply(null, vals));
+    var ys = yScale(plotH, padTop, max);
+    var xs = function (i) { return padL + (i / (D.years.length - 1)) * plotW; };
+    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+    }).join('');
+    var lines = series.map(function (s) {
+      var rPts = D.caseload[s.key].received.map(function (v, i) { return [xs(i), ys(v)]; });
+      var cPts = D.caseload[s.key].closed.map(function (v, i) { return [xs(i), ys(v)]; });
+      var rDots = rPts.map(function (p, i) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + s.label + ' ' + D.years[i] + '</b><br>Received: ' + D.caseload[s.key].received[i] + '"/>' +
+          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + s.c + '"/>';
+      }).join('');
+      var cDots = cPts.map(function (p, i) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + s.label + ' ' + D.years[i] + '</b><br>Closed: ' + D.caseload[s.key].closed[i] + '"/>';
+      }).join('');
+      return '<path d="' + linePath(rPts) + '" fill="none" stroke="' + s.c + '" stroke-width="2.5" stroke-linejoin="round"/>' +
+        '<path d="' + linePath(cPts) + '" fill="none" stroke="' + s.c + '" stroke-width="2" stroke-dasharray="4 4" stroke-linejoin="round"/>' +
+        rDots + cDots;
+    }).join('');
+    var xlabels = D.years.map(function (y, i) {
+      return '<text x="' + xs(i) + '" y="' + (H - 8) + '" class="xtick">' + y + '</text>';
+    }).join('');
+    return svgEl(W, H, grid + lines + xlabels);
+  }
+
+  function legendRow(keys) {
+    var items = keys.map(streamOf).filter(Boolean).map(function (s) {
+      return '<span class="lg" style="color:' + s.c + '"><span class="sw"></span>' + s.label + '</span>';
+    }).join('');
+    return '<div class="chart-legend">' + items +
+      '<span class="lg" style="color:var(--fg-3)"><span class="sw"></span>Received</span>' +
+      '<span class="lg" style="color:var(--fg-3)"><span class="sw dashed"></span>Closed</span></div>';
+  }
+
+  // ===========================================================
+  //  Per-view control state
+  // ===========================================================
+  var caseloadOn = { INT: true, TP: true, TB: false, MLMAP: false, BAPA: false, MAPA: false };
+  var invYear = 2025, invStream = 'INT';
+  var outYear = 2025;
+
+  // ===========================================================
+  //  View: Caseload trends (Task 6)
+  // ===========================================================
+  function viewCaseload() {
+    var keys = STREAMS.filter(function (s) { return caseloadOn[s.key]; }).map(function (s) { return s.key; });
+    var toggles = STREAMS.map(function (s) {
+      return '<button class="chip' + (caseloadOn[s.key] ? ' on' : '') + '" data-cl="' + s.key +
+        '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '">' + s.label + '</button>';
+    }).join('');
+    var chart = keys.length
+      ? '<div class="chart-wrap">' + lineChart(keys) + '<div class="tooltip"></div></div>' + legendRow(keys)
+      : '<p class="partner-foot">Select at least one workstream to plot.</p>';
+    return '<div class="view-head"><h2>Caseload trends</h2>' +
+      '<p class="lede">New requests (solid) vs. cases closed (dashed), 2019–2025.</p></div>' +
+      '<div class="chip-row" id="clToggles"><span class="chip-label">Workstreams</span>' + toggles + '</div>' +
+      '<div class="chart-card">' + chart + '</div>';
+  }
+
+  // ===========================================================
+  //  View: Inventory flow waterfall (Task 7)
+  // ===========================================================
+  function viewInventory() {
+    var d = D.inventory[invYear][invStream];
+    var steps = [
+      { label: 'Begin',    v: d.begin,    base: 0,                  kind: 'tot' },
+      { label: 'Received', v: d.received, base: d.begin,            kind: 'up' },
+      { label: 'Closed',   v: -d.closed,  base: d.begin + d.received, kind: 'down' },
+      { label: 'End',      v: d.end,      base: 0,                  kind: 'tot' }
+    ];
+    var W = 720, H = 340, padL = 44, padB = 28, padTop = 22;
+    var plotW = W - padL - 16, plotH = H - padB - padTop;
+    var max = niceMax(d.begin + d.received);
+    var ys = yScale(plotH, padTop, max);
+    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+    }).join('');
+    var bw = plotW / steps.length * 0.5;
+    var connectors = '';
+    var bars = steps.map(function (s, i) {
+      var x = padL + (i + 0.25) * (plotW / steps.length);
+      var top = s.kind === 'down' ? ys(s.base) : ys(s.base + Math.max(s.v, 0));
+      var bot = s.kind === 'down' ? ys(s.base + s.v) : ys(s.base);
+      var fill = s.kind === 'tot' ? 'var(--brand-navy-500)' : s.kind === 'up' ? 'var(--brand-green-500)' : 'var(--danger)';
+      var y0 = Math.min(top, bot), hgt = Math.abs(bot - top);
+      // connector line from previous running level to this bar
+      if (i > 0 && i < steps.length) {
+        var prevX = padL + (i - 1 + 0.25) * (plotW / steps.length) + bw;
+        var lvl = steps[i].kind === 'down' ? ys(steps[i].base) : (steps[i].kind === 'up' ? ys(steps[i].base) : ys(steps[i].base + steps[i].v));
+        var connY = steps[i].kind === 'tot' ? ys(steps[i].v) : ys(steps[i].base);
+        connectors += '<line x1="' + prevX.toFixed(1) + '" y1="' + connY.toFixed(1) + '" x2="' + x.toFixed(1) + '" y2="' + connY.toFixed(1) +
+          '" stroke="var(--border-default)" stroke-width="1" stroke-dasharray="3 3"/>';
+      }
+      var sign = s.kind === 'up' ? '+' : s.kind === 'down' ? '−' : '';
+      return '<rect class="hit" x="' + x.toFixed(1) + '" y="' + y0.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + hgt.toFixed(1) +
+        '" rx="3" fill="' + fill + '" data-tip="<b>' + s.label + '</b><br>' + sign + Math.abs(s.v) + '"/>' +
+        '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (H - 8) + '" class="xtick">' + s.label + '</text>' +
+        '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (y0 - 6).toFixed(1) + '" class="barval">' + sign + Math.abs(s.v) + '</text>';
+    }).join('');
+    var years = [2023, 2024, 2025].map(function (y) {
+      return '<button class="chip plain' + (y === invYear ? ' on' : '') + '" data-invy="' + y + '">' + y + '</button>';
+    }).join('');
+    var streams = ['INT', 'TP', 'MLMAP', 'TB', 'BAPA', 'MAPA'].map(function (k) {
+      var s = streamOf(k);
+      return '<button class="chip' + (k === invStream ? ' on' : '') + '" data-invs="' + k + '" style="--chip:' + s.c + '">' + s.label + '</button>';
+    }).join('');
+    var reconciles = (d.begin + d.received - d.closed) === d.end;
+    return '<div class="view-head"><h2>Inventory flow</h2>' +
+      '<p class="lede">How the case stock moved: begin + received − closed = end.</p></div>' +
+      '<div class="chip-row" id="invYears"><span class="chip-label">Year</span>' + years + '</div>' +
+      '<div class="chip-row" id="invStreams"><span class="chip-label">Workstream</span>' + streams + '</div>' +
+      '<div class="chart-card"><div class="chart-wrap">' + svgEl(W, H, grid + connectors + bars) + '<div class="tooltip"></div></div>' +
+      '<p class="partner-foot">' + d.begin + ' + ' + d.received + ' − ' + d.closed + ' = <strong style="color:var(--fg-1)">' + d.end + '</strong>' +
+      (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>';
+  }
+
+  // ===========================================================
+  //  View: Outcomes & resolution (Task 8)
+  // ===========================================================
+  function viewOutcomes() {
+    var g = outcomeGroups(outYear);
+    var total = g.uni.subtotal + g.bi.subtotal + g.oth.subtotal;
+    var maxCount = 0;
+    [g.uni, g.bi, g.oth].forEach(function (grp) {
+      grp.items.forEach(function (o) { if (o.count > maxCount) maxCount = o.count; });
+    });
+    function rowBars(grp, color, title) {
+      var rows = grp.items.map(function (o) {
+        var w = (o.count / maxCount * 100).toFixed(1);
+        var pct = (o.count / total * 100).toFixed(1);
+        return '<div class="obar"><span class="olabel">' + o.cat + '. ' + o.label + '</span>' +
+          '<span class="otrack" title="' + pct + '% of closed cases"><span class="ofill" style="width:' + w + '%;background:' + color + '"></span></span>' +
+          '<span class="oval">' + o.count + '</span></div>';
+      }).join('');
+      return '<h4>' + title + ' <span class="osub">' + grp.subtotal + '</span></h4>' + rows;
+    }
+    var years = [2024, 2025].map(function (y) {
+      return '<button class="chip plain' + (y === outYear ? ' on' : '') + '" data-outy="' + y + '">' + y + '</button>';
+    }).join('');
+    var fullElim = g.bi.items.filter(function (o) { return o.cat === 4; })[0];
+    var fullElimPct = fullElim ? (fullElim.count / total * 100).toFixed(1) : '0';
+    var readout = '<div class="out-readout">' +
+      '<div class="ror"><small>Cases closed</small><strong>' + total + '</strong></div>' +
+      '<div class="ror"><small>Bilateral subtotal</small><strong>' + g.bi.subtotal + '</strong></div>' +
+      '<div class="ror"><small>Full elimination</small><strong>' + (fullElim ? fullElim.count : 0) + ' · ' + fullElimPct + '%</strong></div>' +
+      '</div>';
+    return '<div class="view-head"><h2>Outcomes &amp; resolution</h2>' +
+      '<p class="lede">The ten OECD outcome categories for cases the Dutch authority closed in ' + outYear + '. Bar width is share of all closed cases.</p></div>' +
+      '<div class="chip-row" id="outYears"><span class="chip-label">Year</span>' + years + '</div>' +
+      readout +
+      '<div class="chart-card outcols">' +
+        rowBars(g.bi, 'var(--brand-green-500)', 'Bilateral phase') +
+        rowBars(g.uni, 'var(--brand-navy-400)', 'Unilateral phase') +
+        rowBars(g.oth, 'var(--neutral-400)', 'Other') +
+      '</div>';
+  }
+
+  // ===========================================================
+  //  View: Timing · countries · APAs (Task 9)
+  // ===========================================================
+  function viewTiming() {
+    var ct = D.cycleTimes, W = 760, H = 320, padL = 40, padTop = 16, padB = 26;
+    var plotW = W - padL - 16, plotH = H - padTop - padB, max = 30;
+    var ys = yScale(plotH, padTop, max);
+    var xs = function (i) { return padL + (i / (ct.years.length - 1)) * plotW; };
+    var grid = [0, 6, 12, 18, 24, 30].map(function (v) {
+      var y = ys(v);
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+    }).join('');
+    var norm = '<line x1="' + padL + '" y1="' + ys(ct.norm) + '" x2="' + (padL + plotW) + '" y2="' + ys(ct.norm) +
+      '" class="norm"/><text x="' + (padL + plotW) + '" y="' + (ys(ct.norm) - 5) + '" class="normlbl">24-mo norm</text>';
+    var series = [
+      ['TP', 'var(--brand-green-600)', 'Transfer pricing'],
+      ['INT', 'var(--brand-navy-500)', 'Interpretation'],
+      ['Total', 'var(--brand-navy-300)', 'All cases']
+    ];
+    var lines = series.map(function (s) {
+      var pts = ct[s[0]].map(function (v, i) { return [xs(i), ys(v)]; });
+      var dots = pts.map(function (p, i) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + s[2] + ' ' + ct.years[i] + '</b><br>~' + ct[s[0]][i] + ' months"/>' +
+          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + s[1] + '"/>';
+      }).join('');
+      return '<path d="' + linePath(pts) + '" fill="none" stroke="' + s[1] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
+    }).join('');
+    var xl = ct.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 6) + '" class="xtick">' + y + '</text>'; }).join('');
+    var legend = '<div class="chart-legend">' + series.map(function (s) {
+      return '<span class="lg" style="color:' + s[1] + '"><span class="sw"></span>' + s[2] + '</span>';
+    }).join('') + '<span class="lg" style="color:var(--accent-ochre)"><span class="sw dashed"></span>24-mo norm</span></div>';
+
+    var maxP = D.partners[2025][0].count;
+    var partnerBars = D.partners[2025].map(function (p) {
+      return '<div class="pbar"><span class="plabel">' + p.name + '</span>' +
+        '<span class="ptrack"><span class="pfill" style="width:' + (p.count / maxP * 100).toFixed(1) + '%"></span></span>' +
+        '<span class="pval">' + p.count + '</span></div>';
+    }).join('');
+    var pc = D.partners.partnerCounts;
+
+    var takeaway = '<aside class="takeaway">Transfer-pricing cases are the only stream that runs past the 24-month ' +
+      'norm — which is part of why advance certainty (a BAPA/MAPA) is increasingly preferred over after-the-fact MAP.</aside>';
+
+    return '<div class="view-head"><h2>Timing · countries · APAs</h2>' +
+      '<p class="lede">How long cases take, who the Netherlands resolves them with, and why advance pricing agreements matter.</p></div>' +
+      '<div class="panel"><h4>Average cycle time (months) <small>approximate, read from the report chart (±~0.5 mo)</small></h4>' +
+      '<div class="chart-wrap">' + svgEl(W, H, grid + norm + lines + xl) + '<div class="tooltip"></div></div>' + legend + takeaway + '</div>' +
+      '<div class="panel"><h4>Top treaty partners, 2025 <small>cases per partner; named top-5 + Overig</small></h4>' +
+      '<div class="pbars">' + partnerBars + '</div>' +
+      '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p></div>';
+  }
+
+  // ===========================================================
+  //  View: TP deep-dive + method explainer (Task 10)
+  // ===========================================================
+  function viewTp() {
+    var pc = D.partners.partnerCounts;
+    return '<div class="view-head"><h2>Transfer pricing — deep dive</h2>' +
+      '<p class="lede">The transfer-pricing workstream on its own: volumes, timing, and how much of it is now advance pricing.</p></div>' +
+      '<div class="panel"><h4>TP cases received vs. closed <small>2019–2025</small></h4>' +
+      '<div class="chart-wrap">' + lineChart(['TP'], { H: 320 }) + '<div class="tooltip"></div></div>' + legendRow(['TP']) + '</div>' +
+      '<div class="statgrid">' +
+        '<div class="stat"><strong>' + pc.TP + '</strong><small>treaty partners with TP cases</small></div>' +
+        '<div class="stat"><strong>~half</strong><small>of TP inventory is now APA requests</small></div>' +
+        '<div class="stat"><strong>&gt;24 mo</strong><small>only stream over the BEPS Action 14 norm</small></div>' +
+      '</div>' +
+      '<aside class="explainer"><p class="eyebrow">inRange view · not in the data</p>' +
+      '<p>' + D.facts.methodNote + ' In practice, Dutch TP MAP/APA cases most often turn on the TNMM and, for ' +
+      'integrated or IP-heavy structures, the profit-split method — but the official statistics do not break this out.</p></aside>';
+  }
+
   // ---- Render functions ----
 
   function renderHero() {
@@ -264,9 +653,32 @@ small { font-size:12px; color:var(--fg-3); }
   }
 
   function renderView() {
-    /* dispatch filled in Tasks 6-10 (map) and 13-15 (rulings) */
-    document.getElementById('views').innerHTML =
-      '<div class="view-placeholder">Views coming in Tasks 6–10 and 13–15.</div>';
+    var views = document.getElementById('views');
+    var html;
+    switch (active) {
+      // ---- MAP & APA views ----
+      case 'caseload':  html = viewCaseload();  break;
+      case 'inventory': html = viewInventory(); break;
+      case 'outcomes':  html = viewOutcomes();  break;
+      case 'timing':    html = viewTiming();    break;
+      case 'tp':        html = viewTp();        break;
+      // ---- Rulings views (Tasks 13-15, not yet built) ----
+      case 'rOverview':
+      case 'rFlow':
+      case 'rTiming':
+      case 'rPositions':
+        html = '<div class="view-placeholder">International Rulings views are coming next.</div>';
+        break;
+      default:
+        html = '<div class="view-placeholder">Unknown view.</div>';
+    }
+    views.innerHTML = html;
+
+    // Re-wire tooltips: each .chart-wrap owns its own .tooltip, so wire per-wrap.
+    views.querySelectorAll('.chart-wrap').forEach(function (wrap, i) {
+      if (!wrap.id) wrap.id = '__cw' + i;
+      wireTips(wrap.id);
+    });
   }
 
   function renderFooter() {
@@ -290,6 +702,15 @@ small { font-size:12px; color:var(--fg-3); }
     if (!b) return;
     active = b.getAttribute('data-tab');
     render();
+  });
+
+  // ---- Event: per-view controls (delegated once on the stable #views) ----
+  document.getElementById('views').addEventListener('click', function (e) {
+    var b;
+    if ((b = e.target.closest('[data-cl]')))   { var k = b.getAttribute('data-cl'); caseloadOn[k] = !caseloadOn[k]; render(); return; }
+    if ((b = e.target.closest('[data-invy]')))  { invYear = +b.getAttribute('data-invy'); render(); return; }
+    if ((b = e.target.closest('[data-invs]')))  { invStream = b.getAttribute('data-invs'); render(); return; }
+    if ((b = e.target.closest('[data-outy]')))  { outYear = +b.getAttribute('data-outy'); render(); return; }
   });
 
   // ---- Init ----

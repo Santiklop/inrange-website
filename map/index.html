@@ -616,9 +616,10 @@ small { font-size:12px; color:var(--fg-3); }
   // Overview tab
   var ovYear = 2025;                                 // by-type snapshot year (2023–2025)
   var ovTrendMetric = 'received';                    // 'received' | 'closed'
-  var ovOn = { MAP: true, ATR: true, APA: true, BAPA: true, MAPA: false, INNO: false, OTHER: false };
+  var ovOn = { MAP: true, ATR: true, APA: true, BAPA: true, MAPA: true, INNO: true, OTHER: true };
   // Timing tab
   var outYear = 2025;                                // MAP outcome-breakdown year (2024/2025)
+  var monthsYear = 2025;                             // "typical months by instrument" year
   // Advance-pricing tab
   var apType = 'APA';                                // 'APA' | 'BAPA' | 'MAPA'
   var apTrendMetric = 'received';                    // 'received' | 'closed'
@@ -738,13 +739,14 @@ small { font-size:12px; color:var(--fg-3); }
   // Ranked "typical months by type" horizontal bar: MAP cycle time (TP/INT/Total
   // 2025) alongside ruling gross time-to-granted (ATR/APA/BAPA/INNO/OTHER 2025).
   // Two different metrics — clearly labelled + footnoted by the caller.
-  function monthsByTypeBar() {
-    var ct = D.cycleTimes, last = ct.years.length - 1;
-    var pg = R.processingTime[2025];
+  function monthsByTypeBar(year) {
+    var ct = D.cycleTimes, idx = ct.years.indexOf(year);
+    if (idx < 0) idx = ct.years.length - 1;
+    var pg = R.processingTime[year] || R.processingTime[2025];
     var rows = [
-      { label: 'MAP · transfer pricing', short: 'MAP TP',  v: ct.TP[last],    kind: 'map', c: 'var(--brand-green-600)' },
-      { label: 'MAP · interpretation',   short: 'MAP INT', v: ct.INT[last],   kind: 'map', c: 'var(--brand-navy-500)' },
-      { label: 'MAP · all cases',        short: 'MAP all', v: ct.Total[last], kind: 'map', c: 'var(--brand-navy-300)' },
+      { label: 'MAP · transfer pricing', short: 'MAP TP',  v: ct.TP[idx],    kind: 'map', c: 'var(--brand-green-600)' },
+      { label: 'MAP · interpretation',   short: 'MAP INT', v: ct.INT[idx],   kind: 'map', c: 'var(--brand-navy-500)' },
+      { label: 'MAP · all cases',        short: 'MAP all', v: ct.Total[idx], kind: 'map', c: 'var(--brand-navy-300)' },
       { label: 'BAPA · time to granted', short: 'BAPA',    v: pg.BAPA.granted, kind: 'ruling', c: 'var(--brand-green-400)' },
       { label: 'Innovation box · to granted', short: 'Innovation box', v: pg.Innovatiebox.granted, kind: 'ruling', c: 'var(--accent-ochre)' },
       { label: 'APA · time to granted',  short: 'APA',     v: pg.APA.granted,  kind: 'ruling', c: 'var(--brand-green-600)' },
@@ -833,15 +835,15 @@ small { font-size:12px; color:var(--fg-3); }
       '<p class="lede">Every Dutch instrument in one frame: disputes (' + gloss('MAP', 'MAP') + '), advance pricing (' +
       gloss('APA', 'APA') + ' / ' + gloss('BAPA', 'BAPA') + ' / ' + gloss('MAPA', 'MAPA') + ') and the wider ruling practice (' +
       gloss('ATR', 'ATR') + ', ' + gloss('innovation box', 'Innovatiebox') + ', ' + gloss('other', 'Overige') + ').</p></div>' +
-      '<div class="chip-row" id="ovYears"><span class="chip-label">Snapshot year</span>' + years + '</div>' +
-      '<div class="chart-card">' + byTypeBars(ovYear) + '</div>' +
       '<div class="chart-card">' +
         '<h4 class="stack-h">Requests over time, by instrument <span class="osub">2019–2025</span></h4>' +
         '<div class="chip-row" id="ovTrendToggle"><span class="chip-label">Metric</span>' + metricToggle + '</div>' +
         '<div class="chip-row" id="ovToggles"><span class="chip-label">Instruments</span>' + toggles + '</div>' +
         trend +
         '<p class="partner-foot">Rulings types (ATR, APA, innovation box, other) are reported only from 2023, so their lines start mid-axis. ' + SOT_FOOTNOTE + '</p>' +
-      '</div>';
+      '</div>' +
+      '<div class="chip-row" id="ovYears"><span class="chip-label">Snapshot year</span>' + years + '</div>' +
+      '<div class="chart-card">' + byTypeBars(ovYear) + '</div>';
   }
 
   // ===========================================================
@@ -854,8 +856,13 @@ small { font-size:12px; color:var(--fg-3); }
     return '<div class="view-head"><h2>Timing &amp; resolution</h2>' +
       '<p class="lede">How long each instrument takes, how Dutch ' + gloss('MAP', 'MAP') + ' cases resolve, and who the Netherlands resolves them with.</p></div>' +
       '<p class="note" style="margin-bottom:16px">' + D.facts.awards + '</p>' +
-      '<div class="panel"><h4>Typical months by instrument, 2025 <small>ranked; longest at the top</small></h4>' +
-        monthsByTypeBar() +
+      '<div class="panel"><h4>Typical months by instrument, ' + monthsYear + ' <small>ranked; longest at the top</small></h4>' +
+        '<div class="chip-row" id="mtyYears"><span class="chip-label">Year</span>' +
+          D.cycleTimes.years.filter(function (y) { return R.processingTime[y]; }).map(function (y) {
+            return '<button class="chip plain' + (y === monthsYear ? ' on' : '') + '" data-mty="' + y + '">' + y + '</button>';
+          }).join('') +
+        '</div>' +
+        monthsByTypeBar(monthsYear) +
         '<p class="partner-foot">Two different metrics shown side by side: ' + gloss('MAP', 'MAP') + ' bars are the <strong>average cycle time</strong> ' +
         '(approximate, ±~0.5 mo); ruling bars are the <strong>' + gloss('gross time to a granted ruling', 'GROSS') + '</strong> from the international-rulings report. They are not directly comparable.</p>' +
       '</div>' +
@@ -1115,6 +1122,7 @@ small { font-size:12px; color:var(--fg-3); }
     if ((b = e.target.closest('[data-ovm]')))  { ovTrendMetric = b.getAttribute('data-ovm'); render(); return; }
     if ((b = e.target.closest('[data-ovt]')))  { var k = b.getAttribute('data-ovt'); ovOn[k] = !ovOn[k]; render(); return; }
     // Timing
+    if ((b = e.target.closest('[data-mty]')))  { monthsYear = +b.getAttribute('data-mty'); render(); return; }
     if ((b = e.target.closest('[data-outy]'))) { outYear = +b.getAttribute('data-outy'); render(); return; }
     // Advance pricing
     if ((b = e.target.closest('[data-apt]')))  { apType = b.getAttribute('data-apt'); render(); return; }

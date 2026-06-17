@@ -108,9 +108,9 @@ var MAP_DATA = {
   },
 
   sources: [
-    { year: 2023, title: 'MAP Annual Report 2023 (Dutch Tax Administration MAP team)', file: 'sources/map-annual-report-2023.pdf', bytes: 320670 },
-    { year: 2024, title: 'MAP Annual Report 2024 (publ. 26 May 2025)', file: 'sources/map-annual-report-2024.pdf', bytes: 505206 },
-    { year: 2025, title: 'MAP Annual Report 2025 (publ. June 2026)', file: 'sources/map-annual-report-2025.pdf', bytes: 543928 }
+    { year: 2023, title: 'MAP Annual Report 2023', file: 'sources/map-annual-report-2023.pdf', bytes: 320670 },
+    { year: 2024, title: 'MAP Annual Report 2024', file: 'sources/map-annual-report-2024.pdf', bytes: 505206 },
+    { year: 2025, title: 'MAP Annual Report 2025', file: 'sources/map-annual-report-2025.pdf', bytes: 543928 }
   ],
 
   methodologyNote: "Figures are the MAP team's own stock-administration counts and can differ from later OECD-published MAP statistics (different start-date counting and treatment of cases awaiting taxpayer acceptance)."
@@ -170,6 +170,13 @@ var RULINGS_DATA = {
       BAPA:         { granted: 32, rejected: 46,   withdrawn: 39, outOfTreatment: 37 },
       Innovatiebox: { granted: 17, rejected: null, withdrawn: 27, outOfTreatment: 35 },
       Overige:      { granted: 8,  rejected: 8,    withdrawn: 13, outOfTreatment: 8  }
+    },
+    2023: {
+      ATR:          { granted: 7,  rejected: 5,    withdrawn: 11,   outOfTreatment: 12 },
+      APA:          { granted: 14, rejected: 12,   withdrawn: 36,   outOfTreatment: 19 },
+      BAPA:         { granted: 40, rejected: 6,    withdrawn: null, outOfTreatment: 53 },
+      Innovatiebox: { granted: 18, rejected: null, withdrawn: 33,   outOfTreatment: 41 },
+      Overige:      { granted: 9,  rejected: 9,    withdrawn: 12,   outOfTreatment: 12 }
     }
   },
 
@@ -241,7 +248,7 @@ var RULINGS_DATA = {
 
   sources: [
     { year: 2023, title: 'International Rulings Annual Report 2023', file: 'sources/international-rulings-2023.pdf', bytes: 1090743 },
-    { year: 2024, title: 'Summary of Dutch International Tax Ruling Practice 2024', file: 'sources/international-rulings-2024.pdf', bytes: 1303351 },
+    { year: 2024, title: 'International Rulings Annual Report 2024', file: 'sources/international-rulings-2024.pdf', bytes: 1303351 },
     { year: 2025, title: 'International Rulings Annual Report 2025', file: 'sources/international-rulings-2025.pdf', bytes: 958454 }
   ],
 

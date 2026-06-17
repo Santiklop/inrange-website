@@ -263,6 +263,19 @@ small { font-size:12px; color:var(--fg-3); }
 [data-theme="dark"] .position .eyebrow { color:var(--brand-green-400); }
 .position h3 { font-size:17px; margin-bottom:8px; line-height:1.3; }
 .position p:not(.eyebrow) { font-family:var(--font-serif); font-size:14.5px; line-height:1.55; color:var(--fg-1); margin:0; }
+/* Year colour-coding: newest = green, then navy, then ochre (left border + eyebrow) */
+.position.yr-2025 { border-left-color:var(--brand-green-500); }
+.position.yr-2025 .eyebrow { color:var(--brand-green-600); }
+[data-theme="dark"] .position.yr-2025 .eyebrow { color:var(--brand-green-400); }
+.position.yr-2024 { border-left-color:var(--brand-navy-400); }
+.position.yr-2024 .eyebrow { color:var(--brand-navy-500); }
+[data-theme="dark"] .position.yr-2024 .eyebrow { color:var(--brand-navy-200); }
+.position.yr-2023 { border-left-color:var(--accent-ochre); }
+.position.yr-2023 .eyebrow { color:var(--accent-ochre); }
+/* Year legend for the cards */
+.yr-legend { display:flex; flex-wrap:wrap; gap:16px; margin:12px 0 0; font-size:12px; font-weight:600; color:var(--fg-3); }
+.yr-legend .yl { display:inline-flex; align-items:center; gap:7px; }
+.yr-legend .yl i { width:20px; height:4px; border-radius:2px; display:inline-block; }
 
 /* ---- Responsive ---- */
 @media (max-width:720px) {
@@ -1075,12 +1088,18 @@ small { font-size:12px; color:var(--fg-3); }
       return R.positions.filter(function (p) { return p.group === group; })
         .slice().sort(function (a, b) { return yearOf(b.source) - yearOf(a.source); })
         .map(function (p) {
-          return '<article class="position"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
+          return '<article class="position yr-' + yearOf(p.source) + '"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
             '<h3>' + p.icon + ' ' + p.title + '</h3><p>' + p.body + '</p></article>';
         }).join('');
     }
+    var yrLegend = '<div class="yr-legend">' +
+      '<span class="yl"><i style="background:var(--brand-green-500)"></i>2025</span>' +
+      '<span class="yl"><i style="background:var(--brand-navy-400)"></i>2024</span>' +
+      '<span class="yl"><i style="background:var(--accent-ochre)"></i>2023</span>' +
+      '</div>';
     return '<div class="view-head"><h2>APA case studies</h2>' +
-      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary. Newest first.</p></div>' +
+      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary. Newest first, colour-coded by report year.</p>' +
+      yrLegend + '</div>' +
       '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
       '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>' +
       '<aside class="explainer"><p class="eyebrow">inRange view · not in the data</p>' +

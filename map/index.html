@@ -155,6 +155,11 @@ small { font-size:12px; color:var(--fg-3); }
 .chart .hit { cursor:pointer; }
 .chart .norm { stroke:var(--warning); stroke-width:1.5; stroke-dasharray:5 4; }
 .chart .normlbl { font-size:10.5px; fill:var(--accent-ochre); font-weight:700; text-anchor:end; }
+.chart .db-lbl { font-size:12.5px; fill:var(--fg-1); font-weight:600; text-anchor:end; }
+.chart .db-delta { font-size:12px; font-weight:800; text-anchor:start; font-variant-numeric:tabular-nums; }
+.chart-legend .db-sw { width:11px; height:11px; border-radius:50%; flex-shrink:0; }
+.chart-legend .db-sw.open { background:var(--surface); border:2px solid var(--neutral-400); }
+.chart-legend .db-sw.filled { background:currentColor; }
 
 /* Chart legend */
 .chart-legend { display:flex; gap:18px; flex-wrap:wrap; font-size:12px; color:var(--fg-3); margin-top:12px; }
@@ -958,6 +963,44 @@ small { font-size:12px; color:var(--fg-3); }
   }
 
   // ---- View: Rulings processing times (Task 15) ----
+  // Dumbbell: time-to-a-granted-ruling per type, 2024 dot → 2025 dot, line
+  // coloured by direction (green = faster in 2025, red = slower). The 'granted'
+  // outcome is the headline metric and the only one with complete 2024+2025 data.
+  function rulingTimingDelta() {
+    var metric = 'granted';
+    var rows = R.types.map(function (t) {
+      return { t: t, a: R.processingTime[2024][t][metric], b: R.processingTime[2025][t][metric] };
+    }).filter(function (r) { return r.a != null && r.b != null; });
+    var W = 720, rowH = 44, padTop = 14, padB = 30, padL = 150, padR = 88;
+    var H = padTop + rows.length * rowH + padB;
+    var plotW = W - padL - padR;
+    var maxV = 1;
+    rows.forEach(function (r) { maxV = Math.max(maxV, r.a, r.b); });
+    var max = niceMax(maxV);
+    var xs = function (v) { return padL + (v / max) * plotW; };
+    var ticks = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var v = Math.round(max * f), x = xs(v);
+      return '<line x1="' + x.toFixed(1) + '" y1="' + padTop + '" x2="' + x.toFixed(1) + '" y2="' + (H - padB) + '" class="grid"/>' +
+        '<text x="' + x.toFixed(1) + '" y="' + (H - padB + 16) + '" class="xtick">' + v + '</text>';
+    }).join('');
+    var body = rows.map(function (r, i) {
+      var y = padTop + i * rowH + rowH / 2;
+      var d = r.b - r.a;
+      var col = d < 0 ? 'var(--brand-green-500)' : d > 0 ? 'var(--danger)' : 'var(--neutral-400)';
+      var dlabel = (d > 0 ? '+' : d < 0 ? '−' : '±') + Math.abs(d) + ' mo';
+      var xa = xs(r.a), xb = xs(r.b);
+      var tip = '<b>' + R.typeLabels[r.t] + '</b><br>2024: ' + r.a + ' mo → 2025: ' + r.b + ' mo<br>' +
+        (d === 0 ? 'no change' : (d < 0 ? Math.abs(d) + ' mo faster' : d + ' mo slower'));
+      return '<text x="' + (padL - 12) + '" y="' + (y + 4).toFixed(1) + '" class="db-lbl">' + RTYPE_SHORT[r.t] + '</text>' +
+        '<line x1="' + xa.toFixed(1) + '" y1="' + y.toFixed(1) + '" x2="' + xb.toFixed(1) + '" y2="' + y.toFixed(1) + '" stroke="' + col + '" stroke-width="3" stroke-linecap="round"/>' +
+        '<circle cx="' + xa.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5.5" fill="var(--surface)" stroke="var(--neutral-400)" stroke-width="2"/>' +
+        '<circle cx="' + xb.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5.5" fill="var(--brand-navy-600)"/>' +
+        '<rect class="hit" x="' + padL + '" y="' + (y - rowH / 2).toFixed(1) + '" width="' + plotW + '" height="' + rowH + '" fill="transparent" data-tip="' + tip + '"/>' +
+        '<text x="' + (W - padR + 10) + '" y="' + (y + 4).toFixed(1) + '" class="db-delta" fill="' + col + '">' + dlabel + '</text>';
+    }).join('');
+    return svgEl(W, H, ticks + body, 'Time to a granted ruling by type, 2024 versus 2025');
+  }
+
   function viewRTiming() {
     var pt = R.processingTime[rtYear];
     var outs = [
@@ -991,7 +1034,15 @@ small { font-size:12px; color:var(--fg-3); }
       '<div class="chip-row" id="rtYears"><span class="chip-label">Year</span>' + years + '</div>' +
       '<div class="chart-card"><div class="heat-wrap"><table class="heat"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>' +
       '<p class="note">' + psLine + '</p>' +
-      '<p class="note">' + R.processingNote + '</p></div>';
+      '<p class="note">' + R.processingNote + '</p></div>' +
+      '<div class="panel"><h4>How timing shifted — 2024 → 2025 <small>time to a granted ruling, gross months; the dot moves from 2024 to 2025</small></h4>' +
+      '<div class="chart-wrap">' + rulingTimingDelta() + '<div class="tooltip"></div></div>' +
+      '<div class="chart-legend">' +
+        '<span class="lg" style="color:var(--fg-3)"><span class="db-sw open"></span>2024</span>' +
+        '<span class="lg" style="color:var(--brand-navy-600)"><span class="db-sw filled"></span>2025</span>' +
+        '<span class="lg" style="color:var(--brand-green-600)"><span class="sw"></span>faster in 2025</span>' +
+        '<span class="lg" style="color:var(--danger)"><span class="sw"></span>slower in 2025</span>' +
+      '</div></div>';
   }
 
   // ---- View: Rulings defining positions (Task 15) ----

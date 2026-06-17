@@ -106,11 +106,15 @@ small { font-size:12px; color:var(--fg-3); }
 #views { padding:40px 0; min-height:400px; }
 
 /* ---- Footer ---- */
-.site-footer { margin-top:24px; padding:24px 0 40px; border-top:1px solid var(--border-subtle); color:var(--fg-3); font-size:12px; }
-.site-footer h4 { font-size:13px; font-weight:700; color:var(--fg-2); margin-bottom:10px; }
-.srclist { margin:0 0 14px; padding-left:18px; }
-.srclist li { margin-bottom:4px; line-height:1.5; }
-.note { font-size:12px; color:var(--fg-3); line-height:1.6; margin-bottom:8px; }
+.site-footer { margin-top:24px; padding:28px 0 48px; border-top:1px solid var(--border-subtle); color:var(--fg-3); font-size:12px; }
+.site-footer h4 { font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-3); margin-bottom:12px; }
+.footer-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:32px 48px; align-items:start; }
+.footer-sources, .footer-notes { min-width:0; }
+.srclist { margin:0; padding-left:18px; }
+.srclist li { margin-bottom:5px; line-height:1.5; color:var(--fg-2); }
+.note { font-size:12px; color:var(--fg-3); line-height:1.6; margin-bottom:10px; }
+.footer-notes .note:last-child { margin-bottom:0; }
+.footer-stamp { font-weight:600; color:var(--fg-2); padding-top:4px; border-top:1px solid var(--border-subtle); }
 
 /* ---- Empty-state placeholder ---- */
 .view-placeholder { padding:60px 0; text-align:center; color:var(--fg-3); font-size:14px; }
@@ -265,16 +269,45 @@ small { font-size:12px; color:var(--fg-3); }
   .chart-card, .panel { padding:16px 16px; }
   .positions { grid-template-columns:1fr; }
   .stackbar { height:30px; }
+  .footer-grid { grid-template-columns:1fr; gap:24px; }
+}
+@media (max-width:420px) {
+  h1 { font-size:25px; }
+  .container { padding:0 14px; }
+  .key-facts { grid-template-columns:1fr; gap:10px; }
+  /* Treaty-partner long labels (e.g. "Verenigd Koninkrijk") get more room. */
+  .pbar { grid-template-columns:1fr 40px; gap:6px 10px; }
+  .pbar .ptrack { grid-column:1 / -1; order:3; height:16px; }
+  .chart-card, .panel { padding:14px 13px; }
+  .heat { border-spacing:3px; }
+  .heat td.cell, .heat td.na { padding:9px 5px; font-size:13px; }
 }
 
-/* ---- Print ---- */
+/* ---- Print ----
+   A tab SPA can't honestly print "all nine views" — only the active one is in
+   the DOM. So we print the CURRENTLY-ACTIVE view cleanly: hide all interactive
+   chrome (header/theme button, scroll bar, area switch, sub-tab bar, chips),
+   keep the hero title + lede + KPIs for context, and keep the data footer.
+   Charts scale via viewBox and the heat matrix is allowed to overflow naturally
+   (no inner scrollbar) so nothing clips. */
 @media print {
-  .site-header, .scroll-progress, .tabbar, .chip-row { display:none!important; }
-  body { font-size:11pt; background:#fff; }
-  #views { padding:0; }
-  .chart-card, .panel, .stat, .explainer, .takeaway, .position { break-inside:avoid; box-shadow:none; }
-  .heat td.cell { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
-  .stackbar .seg { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .site-header, .scroll-progress, .tabbar, .chip-row, .area-switch { display:none!important; }
+  html, body { background:#fff!important; color:#000; }
+  body { font-size:11pt; }
+  .hero { padding:0 0 16px; background:none; }
+  .hero h1 { font-size:24pt; }
+  .hero .lede { font-size:12pt; margin-bottom:16px; }
+  #views { padding:16px 0 0; min-height:0; }
+  .chart-card, .panel, .stat, .explainer, .takeaway, .position, .out-readout .ror, .obar, .pbar
+    { break-inside:avoid; box-shadow:none; }
+  .chart-card, .panel { border-color:var(--border-default); }
+  /* Let the heat matrix print in full instead of clipping behind a scrollbar. */
+  .heat-wrap { overflow-x:visible; }
+  .heat { min-width:0; width:100%; }
+  /* Force chart/cell fills to render in print (browsers strip backgrounds by default). */
+  .chart, .heat td.cell, .stackbar, .stackbar .seg, .ofill, .pfill, .delta:not(:empty), .osub
+    { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .site-footer { margin-top:16px; padding-top:16px; break-inside:avoid; }
 }
 </style>
 </head>
@@ -927,8 +960,32 @@ small { font-size:12px; color:var(--fg-3); }
     });
   }
 
+  // Area-aware footer: the active area's published sources + the shared
+  // methodology caveat(s) + a "data through FY2025" stamp. For the rulings
+  // area we also surface the gross-vs-net processing caveat here (the rTiming
+  // view shows its own copy inline; the footer carries the methodology stamp).
   function renderFooter() {
-    /* filled in Task 11 */
+    var A = AREAS[area];
+    var data = area === 'map' ? MAP_DATA : RULINGS_DATA;
+    var src = data.sources.map(function (s) {
+      return '<li>' + s.title + '</li>';
+    }).join('');
+    var notes = '<p class="note">' +
+      (area === 'map' ? MAP_DATA.methodologyNote : RULINGS_DATA.processingNote) +
+      '</p>';
+    var stamp = 'Data through FY2025 · figures are the authorities’ published counts.';
+    document.getElementById('footer').innerHTML =
+      '<div class="footer-grid">' +
+        '<div class="footer-sources">' +
+          '<h4>Sources · ' + A.label + '</h4>' +
+          '<ul class="srclist">' + src + '</ul>' +
+        '</div>' +
+        '<div class="footer-notes">' +
+          '<h4>Methodology</h4>' +
+          notes +
+          '<p class="note footer-stamp">' + stamp + '</p>' +
+        '</div>' +
+      '</div>';
   }
 
   function render() { renderHero(); renderTabs(); renderView(); renderFooter(); }

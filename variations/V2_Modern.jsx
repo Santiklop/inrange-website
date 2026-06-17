@@ -666,6 +666,49 @@ function V2_Modern() {
                 </svg>
               </div>
             </a>
+
+            <a
+              href="/map/"
+              style={{
+                display: 'block',
+                background: 'var(--neutral-50)',
+                border: '1px solid var(--border-subtle)',
+                borderLeft: '4px solid var(--brand-green-500)',
+                borderRadius: 20,
+                padding: isMobile ? 24 : 36,
+                textDecoration: 'none',
+                color: 'inherit',
+                transition: 'all 220ms var(--ease-standard)',
+                position: 'relative',
+                overflow: 'hidden',
+              }}
+              onMouseEnter={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; e.currentTarget.style.background = '#fff'; } }}
+              onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'var(--neutral-50)'; } }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
+                <Badge tone="success" dot={false}>Interactive analytics</Badge>
+                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', color: 'var(--fg-3)', textTransform: 'uppercase' }}>Live</span>
+              </div>
+              <h3 style={{ fontSize: isMobile ? 22 : 26, margin: '0 0 14px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>
+                Dutch MAP, APA &amp; Rulings Explorer
+              </h3>
+              <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
+                An interactive read of the Dutch tax authority&rsquo;s annual reports (2019&ndash;2025): mutual agreement (MAP) and advance-pricing (APA / BAPA / MAPA) caseloads, resolution timing, head-to-head comparisons, and transfer-pricing case studies &mdash; with downloadable source documents.
+              </p>
+              <div style={{
+                display: 'inline-flex', alignItems: 'center', gap: 8,
+                background: 'var(--brand-green-500)', color: '#fff',
+                fontWeight: 600, fontSize: 14,
+                padding: '10px 18px', borderRadius: 999,
+                transition: 'background 140ms var(--ease)',
+              }}>
+                Open the explorer
+                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <line x1="3" y1="8" x2="13" y2="8" />
+                  <polyline points="9 4 13 8 9 12" />
+                </svg>
+              </div>
+            </a>
           </div>
         </div>
       </section>

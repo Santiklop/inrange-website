@@ -706,9 +706,14 @@ small { font-size:12px; color:var(--fg-3); }
       if (!pts.length) return '';
       var path = pts.length > 1 ? '<path d="' + linePath(pts.map(function (p) { return [p[0], p[1]]; })) +
         '" fill="none" stroke="' + t.c + '" stroke-width="2.5" stroke-linejoin="round"/>' : '';
+      var WS_LABEL = { INT: 'Interpretation', TP: 'Transfer pricing', TB: 'Tie-breaker', MLMAP: 'Multilateral' };
       var dots = pts.map(function (p) {
+        // For the aggregate MAP line, break the total down by workstream for that year.
+        var extra = (k === 'MAP') ? MAP_DISPUTE_STREAMS.map(function (s) {
+          return '<br>· ' + WS_LABEL[s] + ': ' + MAP_DATA.caseload[s][metric][p[2]];
+        }).join('') : '';
         return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + t.label + ' ' + MAP_DATA.years[p[2]] + '</b><br>' + mLabel + ': ' + ser[p[2]] + '"/>' +
+          'data-tip="<b>' + t.label + ' ' + MAP_DATA.years[p[2]] + '</b><br>' + mLabel + ': ' + ser[p[2]] + extra + '"/>' +
           '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + t.c + '"/>';
       }).join('');
       return path + dots;

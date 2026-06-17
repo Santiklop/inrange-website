@@ -219,13 +219,6 @@ small { font-size:12px; color:var(--fg-3); }
 /* Takeaway callout (Source-Serif, inRange voice) */
 .takeaway { background:var(--surface); border:1px solid var(--border-subtle); border-left:4px solid var(--brand-green-500); border-radius:var(--radius-md); padding:14px 18px; margin:16px 0 0; box-shadow:var(--shadow-xs); font-family:var(--font-serif); font-size:15px; line-height:1.5; color:var(--fg-1); }
 
-/* Stat tiles (TP deep-dive) */
-.statgrid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:20px; }
-.stat { background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:18px 20px; box-shadow:var(--shadow-xs); text-align:center; transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease); }
-.stat:hover { transform:translateY(-2px); border-color:var(--border-default); }
-.stat strong { display:block; font-size:30px; font-weight:800; color:var(--fg-1); line-height:1.1; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
-.stat small { display:block; font-size:12px; color:var(--fg-3); margin-top:6px; line-height:1.4; }
-
 /* Method explainer (clearly-labelled inRange commentary) */
 .explainer { background:linear-gradient(135deg,var(--brand-navy-50) 0%,var(--surface) 70%); border:1px solid var(--border-subtle); border-left:4px solid var(--accent-ochre); border-radius:var(--radius-md); padding:18px 22px; margin:0 0 8px; box-shadow:var(--shadow-xs); }
 [data-theme="dark"] .explainer { background:linear-gradient(135deg,rgba(78,107,138,.16) 0%,var(--surface) 70%); }
@@ -233,34 +226,14 @@ small { font-size:12px; color:var(--fg-3); }
 .explainer p:not(.eyebrow) { font-family:var(--font-serif); font-size:15px; line-height:1.55; color:var(--fg-1); margin:0; }
 
 /* ============================================================
-   International Rulings views — stacked bars, heat matrix, cards
+   International Rulings views — section headers, cards
    ============================================================ */
 
-/* Square legend swatch variant (for type/metric legends) */
-.chart-legend .sw.sq { width:11px; height:11px; border-radius:3px; }
-
-/* Stacked share bar (ruling mix by type) */
+/* Chart-card section header (e.g. "Requests over time, by instrument") */
 .stack-h { font-size:13px; font-weight:700; color:var(--fg-1); margin:18px 0 9px; display:flex; align-items:baseline; gap:8px; }
 .stack-h:first-child { margin-top:0; }
 .stack-h .osub { font-size:12px; font-weight:700; color:var(--fg-brand); background:var(--brand-green-50); padding:1px 9px; border-radius:var(--radius-pill); font-variant-numeric:tabular-nums; }
 [data-theme="dark"] .stack-h .osub { background:rgba(31,168,74,.16); color:var(--brand-green-300); }
-.stackbar { display:flex; width:100%; height:34px; border-radius:var(--radius-sm); overflow:hidden; background:var(--bg-sunken); margin-bottom:6px; box-shadow:inset 0 0 0 1px var(--border-subtle); }
-.stackbar .seg { display:block; height:100%; min-width:2px; transition:width var(--dur-base) var(--ease),filter var(--dur-fast) var(--ease); cursor:default; }
-.stackbar .seg:hover { filter:brightness(1.08) saturate(1.1); }
-.stackbar .seg + .seg { box-shadow:inset 1px 0 0 rgba(255,255,255,.35); }
-[data-theme="dark"] .stackbar .seg + .seg { box-shadow:inset 1px 0 0 rgba(0,0,0,.35); }
-
-/* Processing-time heat matrix */
-.heat-wrap { overflow-x:auto; }
-.heat { border-collapse:separate; border-spacing:4px; width:100%; min-width:480px; font-variant-numeric:tabular-nums; }
-.heat th { font-size:12px; font-weight:700; color:var(--fg-2); text-align:center; padding:6px 4px; white-space:nowrap; }
-.heat th.corner { background:transparent; }
-.heat td.rowlbl { font-size:13px; font-weight:600; color:var(--fg-2); text-align:left; white-space:nowrap; padding-right:10px; }
-.heat td.cell { text-align:center; font-size:14px; font-weight:700; color:var(--fg-1); padding:12px 8px; border-radius:var(--radius-sm); background:color-mix(in srgb,var(--brand-navy-500) calc(var(--a,0)*100%),var(--bg-sunken)); }
-.heat td.cell.hi { color:#fff; }                                   /* light theme: dark tint → white text */
-.heat td.na { text-align:center; font-size:14px; font-weight:600; color:var(--fg-3); padding:12px 8px; border-radius:var(--radius-sm); background:var(--bg-sunken); }
-[data-theme="dark"] .heat td.cell { background:color-mix(in srgb,var(--brand-navy-300) calc(var(--a,0)*100%),var(--bg-sunken)); color:var(--fg-1); }
-[data-theme="dark"] .heat td.cell.hi { color:var(--brand-navy-800); } /* dark theme: light tint → dark text */
 
 /* Defining-positions cards (prominent inRange commentary) */
 .pos-group { font-size:13px; font-weight:700; color:var(--fg-1); margin:24px 0 12px; padding-bottom:7px; border-bottom:1px solid var(--border-subtle); }
@@ -281,13 +254,11 @@ small { font-size:12px; color:var(--fg-3); }
   .container { padding:0 18px; }
   .key-facts { grid-template-columns:1fr 1fr; }
   .tabbar-inner { padding:0 14px; }
-  .statgrid { grid-template-columns:1fr; }
   .obar { grid-template-columns:1fr 40px; }
   .obar .otrack { grid-column:1 / -1; order:3; }
   .pbar { grid-template-columns:110px 1fr 42px; gap:8px; }
   .chart-card, .panel { padding:16px 16px; }
   .positions { grid-template-columns:1fr; }
-  .stackbar { height:30px; }
   .footer-grid { grid-template-columns:1fr; gap:24px; }
 }
 @media (max-width:420px) {
@@ -298,8 +269,6 @@ small { font-size:12px; color:var(--fg-3); }
   .pbar { grid-template-columns:1fr 40px; gap:6px 10px; }
   .pbar .ptrack { grid-column:1 / -1; order:3; height:16px; }
   .chart-card, .panel { padding:14px 13px; }
-  .heat { border-spacing:3px; }
-  .heat td.cell, .heat td.na { padding:9px 5px; font-size:13px; }
 }
 
 /* ---- Print ----
@@ -307,8 +276,7 @@ small { font-size:12px; color:var(--fg-3); }
    So we print the CURRENTLY-ACTIVE tab cleanly: hide all interactive chrome
    (header/theme button, scroll bar, tab bar, chips), keep the hero title + lede
    + KPIs for context, and keep the data footer.
-   Charts scale via viewBox and the heat matrix is allowed to overflow naturally
-   (no inner scrollbar) so nothing clips. */
+   Charts scale via viewBox so nothing clips. */
 @media print {
   .site-header, .scroll-progress, .tabbar, .chip-row { display:none!important; }
   html, body { background:#fff!important; color:#000; }
@@ -317,14 +285,11 @@ small { font-size:12px; color:var(--fg-3); }
   .hero h1 { font-size:24pt; }
   .hero .lede { font-size:12pt; margin-bottom:16px; }
   #views { padding:16px 0 0; min-height:0; }
-  .chart-card, .panel, .stat, .explainer, .takeaway, .position, .out-readout .ror, .obar, .pbar
+  .chart-card, .panel, .explainer, .takeaway, .position, .out-readout .ror, .obar, .pbar
     { break-inside:avoid; box-shadow:none; }
   .chart-card, .panel { border-color:var(--border-default); }
-  /* Let the heat matrix print in full instead of clipping behind a scrollbar. */
-  .heat-wrap { overflow-x:visible; }
-  .heat { min-width:0; width:100%; }
   /* Force chart/cell fills to render in print (browsers strip backgrounds by default). */
-  .chart, .heat td.cell, .stackbar, .stackbar .seg, .ofill, .pfill, .delta:not(:empty), .osub
+  .chart, .ofill, .pfill, .delta:not(:empty), .osub
     { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
   .site-footer { margin-top:16px; padding-top:16px; break-inside:avoid; }
 }
@@ -408,18 +373,6 @@ small { font-size:12px; color:var(--fg-3); }
   //  Shared chart toolkit (hand-built inline SVG, brand tokens)
   // ===========================================================
   var D = MAP_DATA;
-  var STREAMS = [
-    { key: 'INT',   label: 'Interpretation',   c: 'var(--brand-navy-500)' },
-    { key: 'TP',    label: 'Transfer pricing',  c: 'var(--brand-green-600)' },
-    { key: 'TB',    label: 'Tie-breaker',       c: 'var(--accent-ochre)' },
-    { key: 'MLMAP', label: 'Multilateral',      c: 'var(--brand-navy-300)' },
-    { key: 'BAPA',  label: 'BAPA',              c: 'var(--brand-green-400)' },
-    { key: 'MAPA',  label: 'MAPA',              c: 'var(--accent-terra)' }
-  ];
-  function streamOf(key) {
-    for (var i = 0; i < STREAMS.length; i++) if (STREAMS[i].key === key) return STREAMS[i];
-    return null;
-  }
 
   // ===========================================================
   //  Unified instrument taxonomy + by-type accessor (additive)
@@ -548,56 +501,6 @@ small { font-size:12px; color:var(--fg-3); }
       });
       el.addEventListener('mouseleave', function () { tp.classList.remove('show'); });
     });
-  }
-
-  // Multi-series line builder (received solid + closed dashed) shared by
-  // Caseload and TP deep-dive. `keys` = array of stream keys to draw.
-  function lineChart(keys, opts) {
-    opts = opts || {};
-    var W = opts.W || 900, H = opts.H || 380, padL = 48, padB = 28, padTop = 16;
-    var plotW = W - padL - 16, plotH = H - padB - padTop;
-    var series = keys.map(streamOf).filter(Boolean);
-    var vals = [1];
-    series.forEach(function (s) {
-      vals = vals.concat(D.caseload[s.key].received, D.caseload[s.key].closed);
-    });
-    var max = niceMax(Math.max.apply(null, vals));
-    var ys = yScale(plotH, padTop, max);
-    var xs = function (i) { return padL + (i / (D.years.length - 1)) * plotW; };
-    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
-      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
-      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
-        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
-    }).join('');
-    var lines = series.map(function (s) {
-      var rPts = D.caseload[s.key].received.map(function (v, i) { return [xs(i), ys(v)]; });
-      var cPts = D.caseload[s.key].closed.map(function (v, i) { return [xs(i), ys(v)]; });
-      var rDots = rPts.map(function (p, i) {
-        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + s.label + ' ' + D.years[i] + '</b><br>Received: ' + D.caseload[s.key].received[i] + '"/>' +
-          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + s.c + '"/>';
-      }).join('');
-      var cDots = cPts.map(function (p, i) {
-        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + s.label + ' ' + D.years[i] + '</b><br>Closed: ' + D.caseload[s.key].closed[i] + '"/>';
-      }).join('');
-      return '<path d="' + linePath(rPts) + '" fill="none" stroke="' + s.c + '" stroke-width="2.5" stroke-linejoin="round"/>' +
-        '<path d="' + linePath(cPts) + '" fill="none" stroke="' + s.c + '" stroke-width="2" stroke-dasharray="4 4" stroke-linejoin="round"/>' +
-        rDots + cDots;
-    }).join('');
-    var xlabels = D.years.map(function (y, i) {
-      return '<text x="' + xs(i) + '" y="' + (H - 8) + '" class="xtick">' + y + '</text>';
-    }).join('');
-    return svgEl(W, H, grid + lines + xlabels, opts.title);
-  }
-
-  function legendRow(keys) {
-    var items = keys.map(streamOf).filter(Boolean).map(function (s) {
-      return '<span class="lg" style="color:' + s.c + '"><span class="sw"></span>' + gloss(s.label, s.key) + '</span>';
-    }).join('');
-    return '<div class="chart-legend">' + items +
-      '<span class="lg" style="color:var(--fg-3)"><span class="sw"></span>Received</span>' +
-      '<span class="lg" style="color:var(--fg-3)"><span class="sw dashed"></span>Closed</span></div>';
   }
 
   // Begin → received → (−closed) → end waterfall. Shared by the MAP inventory
@@ -999,6 +902,7 @@ small { font-size:12px; color:var(--fg-3); }
         '<p class="partner-foot">APA from the international-rulings report (2023–2025); BAPA/MAPA from the MAP team’s caseload (2019–2025). ' + SOT_FOOTNOTE + '</p>' +
       '</div>' +
       '<div class="panel"><h4>Side by side, 2025 <small>received · closed · year-end stock</small></h4><div class="outcols">' + cmpBars + '</div>' +
+        '<p class="note">' + MAP_DATA.facts.apaShareOfTP + '</p>' +
         '<p class="partner-foot">' + SOT_FOOTNOTE + '</p></div>';
   }
 
@@ -1058,7 +962,9 @@ small { font-size:12px; color:var(--fg-3); }
     return '<div class="view-head"><h2>TP case studies</h2>' +
       '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary.</p></div>' +
       '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
-      '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>';
+      '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>' +
+      '<aside class="explainer"><p class="eyebrow">inRange view · not in the data</p>' +
+      '<p>' + D.facts.methodNote + ' In practice, Dutch TP MAP/APA cases most often turn on the ' + gloss('TNMM', 'TNMM') + ' and, for integrated or IP-heavy structures, the profit-split method — but the official statistics do not break this out.</p></aside>';
   }
 
   // ---- Render functions ----

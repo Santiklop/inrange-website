@@ -68,6 +68,23 @@ small { font-size:12px; color:var(--fg-3); }
 .icon-btn:hover { background:var(--bg-sunken); color:var(--fg-1); border-color:var(--border-default); }
 .icon-btn svg { width:16px; height:16px; }
 
+/* ---- Sources download menu (header, top-right) ---- */
+.src-menu { position:relative; }
+.src-btn { display:inline-flex; align-items:center; gap:7px; height:34px; padding:0 12px; background:transparent; border:1px solid var(--border-subtle); color:var(--fg-2); border-radius:var(--radius-sm); cursor:pointer; font-family:var(--font-sans); font-size:13px; font-weight:600; transition:all var(--dur-fast) var(--ease); }
+.src-btn:hover, .src-btn[aria-expanded="true"] { background:var(--bg-sunken); color:var(--fg-1); border-color:var(--border-default); }
+.src-btn svg { width:15px; height:15px; flex-shrink:0; }
+.src-panel { position:absolute; right:0; top:calc(100% + 8px); width:330px; max-width:86vw; background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); box-shadow:var(--shadow-lg); padding:8px; z-index:80; }
+.src-panel[hidden] { display:none; }
+.src-panel h5 { font-size:10.5px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-3); margin:12px 8px 4px; }
+.src-panel h5:first-child { margin-top:4px; }
+.src-doc { display:flex; align-items:center; gap:11px; padding:9px 8px; border-radius:var(--radius-sm); color:var(--fg-1); text-decoration:none; transition:background var(--dur-fast) var(--ease); }
+.src-doc:hover { background:var(--bg-sunken); }
+.src-doc .ic { color:var(--fg-brand); flex-shrink:0; display:inline-flex; }
+.src-doc .meta { min-width:0; }
+.src-doc .t { display:block; font-size:13px; font-weight:600; line-height:1.3; color:var(--fg-1); }
+.src-doc .s { display:block; font-size:11px; color:var(--fg-3); margin-top:1px; }
+@media (max-width:520px) { .src-btn-label { display:none; } .src-btn { padding:0; width:34px; justify-content:center; } }
+
 /* ---- Hero ---- */
 .hero { padding:60px 0 30px; background:radial-gradient(900px 400px at 90% -60px,rgba(31,168,74,.07),transparent 60%),radial-gradient(700px 360px at 5% 0%,rgba(20,39,63,.04),transparent 60%); }
 [data-theme="dark"] .hero { background:radial-gradient(900px 400px at 90% -60px,rgba(31,168,74,.12),transparent 60%),radial-gradient(700px 360px at 5% 0%,rgba(78,107,138,.16),transparent 60%); }
@@ -321,6 +338,15 @@ small { font-size:12px; color:var(--fg-3); }
       <span class="brand-text">in<span style="color:var(--fg-1)">Range</span></span>
     </a>
     <div class="header-tools">
+      <div class="src-menu" id="srcMenu">
+        <button class="src-btn" id="srcBtn" aria-haspopup="true" aria-expanded="false" title="Download source documents">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M12 11v6"/><path d="M9.5 14.5 12 17l2.5-2.5"/>
+          </svg>
+          <span class="src-btn-label">Sources</span>
+        </button>
+        <div class="src-panel" id="srcPanel" role="menu" aria-label="Source documents" hidden></div>
+      </div>
       <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="4"/>
@@ -358,6 +384,28 @@ small { font-size:12px; color:var(--fg-3); }
       document.documentElement.setAttribute('data-theme', next);
       localStorage.setItem('ir-theme', next);
     });
+  })();
+
+  // ---- Sources download menu (header, top-right) ----
+  (function () {
+    function fmtMB(b) { return (b / 1048576).toFixed(1) + ' MB'; }
+    var fileIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="20" height="20" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>';
+    function group(title, arr) {
+      return '<h5>' + title + '</h5>' + arr.map(function (s) {
+        return '<a class="src-doc" href="' + s.file + '" download role="menuitem">' +
+          '<span class="ic">' + fileIcon + '</span>' +
+          '<span class="meta"><span class="t">' + s.title + '</span><span class="s">PDF &middot; ' + fmtMB(s.bytes) + '</span></span></a>';
+      }).join('');
+    }
+    document.getElementById('srcPanel').innerHTML =
+      group('MAP team reports', MAP_DATA.sources) +
+      group('International rulings', RULINGS_DATA.sources);
+
+    var btn = document.getElementById('srcBtn'), panel = document.getElementById('srcPanel'), menu = document.getElementById('srcMenu');
+    function setOpen(open) { panel.hidden = !open; btn.setAttribute('aria-expanded', String(open)); }
+    btn.addEventListener('click', function (e) { e.stopPropagation(); setOpen(panel.hidden); });
+    document.addEventListener('click', function (e) { if (!panel.hidden && !menu.contains(e.target)) setOpen(false); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { setOpen(false); btn.focus(); } });
   })();
 
   // ---- Scroll progress bar ----

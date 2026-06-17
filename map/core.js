@@ -108,9 +108,9 @@ var MAP_DATA = {
   },
 
   sources: [
-    { year: 2023, title: 'MAP Annual Report 2023 (Dutch Tax Administration MAP team)' },
-    { year: 2024, title: 'MAP Annual Report 2024 (publ. 26 May 2025)' },
-    { year: 2025, title: 'MAP Annual Report 2025 (publ. June 2026)' }
+    { year: 2023, title: 'MAP Annual Report 2023 (Dutch Tax Administration MAP team)', file: 'sources/map-annual-report-2023.pdf', bytes: 320670 },
+    { year: 2024, title: 'MAP Annual Report 2024 (publ. 26 May 2025)', file: 'sources/map-annual-report-2024.pdf', bytes: 505206 },
+    { year: 2025, title: 'MAP Annual Report 2025 (publ. June 2026)', file: 'sources/map-annual-report-2025.pdf', bytes: 543928 }
   ],
 
   methodologyNote: "Figures are the MAP team's own stock-administration counts and can differ from later OECD-published MAP statistics (different start-date counting and treatment of cases awaiting taxpayer acceptance)."
@@ -240,9 +240,9 @@ var RULINGS_DATA = {
   publishedSummaries2025: { ATR: 273, 'APA/BAPA': 104, Innovatiebox: 157, Overige: 31 },
 
   sources: [
-    { year: 2023, title: 'International Rulings Annual Report 2023' },
-    { year: 2024, title: 'Summary of Dutch International Tax Ruling Practice 2024' },
-    { year: 2025, title: 'International Rulings Annual Report 2025' }
+    { year: 2023, title: 'International Rulings Annual Report 2023', file: 'sources/international-rulings-2023.pdf', bytes: 1090743 },
+    { year: 2024, title: 'Summary of Dutch International Tax Ruling Practice 2024', file: 'sources/international-rulings-2024.pdf', bytes: 1303351 },
+    { year: 2025, title: 'International Rulings Annual Report 2025', file: 'sources/international-rulings-2025.pdf', bytes: 958454 }
   ],
 
   processingNote: 'Gross processing time (from filing to agreement/withdrawal/rejection), including time spent awaiting requested information. Net handling time is materially shorter.'

@@ -622,6 +622,7 @@ small { font-size:12px; color:var(--fg-3); }
   var monthsYear = 2025;                             // "typical months by instrument" year
   // Advance-pricing tab
   var apType = 'APA';                                // 'APA' | 'BAPA' | 'MAPA'
+  var apCmpYear = 2025;                              // side-by-side comparison year (2023–2025)
 
   // ===========================================================
   //  Shared by-type builders (reuse the svgEl/linePath/yScale toolkit)
@@ -972,8 +973,9 @@ small { font-size:12px; color:var(--fg-3); }
         '<p class="partner-foot">The MAP report — the source of truth for ' + apType + ' volumes here — does not publish a per-outcome split for ' + apType + '. ' +
         'The waterfall above tracks begin → received → closed → end. (The international-rulings report carries an outcome split for ' + apType + ', but on a different cut-off and counting.)</p></div>';
     }
-    // Side-by-side comparison: the three types' 2025 received / closed / end.
-    var cmp = ['APA', 'BAPA', 'MAPA'].map(function (k) { return { t: typeOf(k), s: typeStats(k, 2025) }; });
+    // Side-by-side comparison: the three types' received / closed / end for the
+    // selected comparison year (2023–2025 — all three types have data each year).
+    var cmp = ['APA', 'BAPA', 'MAPA'].map(function (k) { return { t: typeOf(k), s: typeStats(k, apCmpYear) }; });
     var cmpMax = 1; cmp.forEach(function (c) { cmpMax = Math.max(cmpMax, c.s.received, c.s.closed, c.s.end); });
     // Grouped comparison: one block per type, three bars (received/closed/end).
     var cmpBars = cmp.map(function (c) {
@@ -993,10 +995,20 @@ small { font-size:12px; color:var(--fg-3); }
       return '<button class="chip' + (k === apType ? ' on' : '') + '" data-apt="' + k + '" style="--chip:' + t.c + '"' + titleAttr(t.glossKey) + '>' + t.short + '</button>';
     }).join('');
     var onKeys = ['APA', 'BAPA', 'MAPA'];
+    var cmpYears = [2023, 2024, 2025].map(function (y) {
+      return '<button class="chip plain' + (y === apCmpYear ? ' on' : '') + '" data-acy="' + y + '">' + y + '</button>';
+    }).join('');
+    var sideBySide = '<div class="chart-card">' +
+      '<h4 class="stack-h">Side by side, ' + apCmpYear + ' <span class="osub">received · closed · year-end</span></h4>' +
+      '<div class="chip-row" id="apCmpYears"><span class="chip-label">Year</span>' + cmpYears + '</div>' +
+      '<div class="outcols">' + cmpBars + '</div>' +
+      '<p class="note">' + MAP_DATA.facts.apaShareOfTP + '</p>' +
+      '<p class="partner-foot">' + SOT_FOOTNOTE + '</p></div>';
 
     return '<div class="view-head"><h2>Advance pricing — ' + gloss('APA', 'APA') + ' vs ' + gloss('BAPA', 'BAPA') + ' vs ' + gloss('MAPA', 'MAPA') + '</h2>' +
       '<p class="lede">The three advance-pricing instruments compared head to head: unilateral ' + gloss('APA', 'APA') + 's from the ruling practice, and bilateral/multilateral ' +
       gloss('BAPA', 'BAPA') + 's and ' + gloss('MAPA', 'MAPA') + 's from the MAP team.</p></div>' +
+      sideBySide +
       '<div class="chip-row" id="apTypes"><span class="chip-label">Instrument</span>' + typeChips + '</div>' +
       '<div class="panel"><h4>Stock flow 2025 <small>' + typeOf(apType).label + '</small></h4>' +
         '<div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
@@ -1007,10 +1019,7 @@ small { font-size:12px; color:var(--fg-3); }
         '<h4 class="stack-h">Requests over time <span class="osub">APA / BAPA / MAPA</span></h4>' +
         '<div class="chart-wrap">' + dualTrendChart(onKeys) + '<div class="tooltip"></div></div>' + dualLegend(onKeys) +
         '<p class="partner-foot">Solid = received, dashed = closed. APA from the international-rulings report (2023–2025); BAPA/MAPA from the MAP team’s caseload (2019–2025). ' + SOT_FOOTNOTE + '</p>' +
-      '</div>' +
-      '<div class="panel"><h4>Side by side, 2025 <small>received · closed · year-end stock</small></h4><div class="outcols">' + cmpBars + '</div>' +
-        '<p class="note">' + MAP_DATA.facts.apaShareOfTP + '</p>' +
-        '<p class="partner-foot">' + SOT_FOOTNOTE + '</p></div>';
+      '</div>';
   }
 
   // ===========================================================
@@ -1172,6 +1181,7 @@ small { font-size:12px; color:var(--fg-3); }
     if ((b = e.target.closest('[data-mty]')))  { monthsYear = +b.getAttribute('data-mty'); render(); return; }
     if ((b = e.target.closest('[data-outy]'))) { outYear = +b.getAttribute('data-outy'); render(); return; }
     // Advance pricing
+    if ((b = e.target.closest('[data-acy]')))  { apCmpYear = +b.getAttribute('data-acy'); render(); return; }
     if ((b = e.target.closest('[data-apt]')))  { apType = b.getAttribute('data-apt'); render(); return; }
   });
 

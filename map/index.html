@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dutch MAP, APA &amp; Rulings Explorer — inRange</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='6' y='18' width='5' height='10' rx='1.2' fill='%231FA84A'/><rect x='13.5' y='13' width='5' height='15' rx='1.2' fill='%231FA84A'/><rect x='21' y='7' width='5' height='21' rx='1.2' fill='%231FA84A'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+/* ---- Design tokens (copied from Adyen house reference) ---- */
+:root {
+  --brand-green-50:#EBF8EE; --brand-green-100:#CFEFD8; --brand-green-200:#9FDFB1;
+  --brand-green-300:#6CCE89; --brand-green-400:#3FBB65; --brand-green-500:#1FA84A;
+  --brand-green-600:#15893B; --brand-green-700:#0F6B2E;
+  --brand-navy-50:#EEF2F7; --brand-navy-100:#D6DEE9; --brand-navy-200:#ADBCCE;
+  --brand-navy-300:#7E93AE; --brand-navy-400:#4F6B8A; --brand-navy-500:#2C4868;
+  --brand-navy-600:#1E3551; --brand-navy-700:#14273F; --brand-navy-800:#0D1B2D;
+  --neutral-0:#FFFFFF; --neutral-50:#F7F8FA; --neutral-100:#EEF0F3; --neutral-200:#DEE2E8;
+  --neutral-300:#C3CAD3; --neutral-400:#9BA5B1; --neutral-500:#6E7887; --neutral-600:#4C5665;
+  --neutral-700:#343D4C; --neutral-800:#1F2733;
+  --accent-ochre:#C98A2B; --accent-terra:#B25838;
+  --danger:#C8412F; --warning:#D89B1F;
+  --bg:var(--neutral-0); --bg-muted:var(--neutral-50); --bg-sunken:var(--neutral-100);
+  --surface:var(--neutral-0);
+  --fg-1:var(--brand-navy-800); --fg-2:var(--neutral-700); --fg-3:var(--neutral-500);
+  --fg-brand:var(--brand-green-600);
+  --border-subtle:var(--neutral-200); --border-default:var(--neutral-300);
+  --font-sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  --font-serif:"Source Serif 4",ui-serif,Georgia,serif;
+  --shadow-xs:0 1px 2px rgba(20,39,63,.05); --shadow-sm:0 1px 3px rgba(20,39,63,.06);
+  --shadow-md:0 4px 12px -4px rgba(20,39,63,.08),0 1px 3px rgba(20,39,63,.04);
+  --shadow-lg:0 16px 32px -8px rgba(20,39,63,.14),0 4px 8px rgba(20,39,63,.05);
+  --radius-sm:6px; --radius-md:10px; --radius-lg:14px; --radius-xl:20px; --radius-pill:999px;
+  --ease:cubic-bezier(.2,.8,.2,1); --dur-fast:140ms; --dur-base:220ms; --container:1200px;
+}
+[data-theme="dark"] {
+  --bg:#0A1220; --bg-muted:#0D1B2D; --bg-sunken:#14273F; --surface:#0F1E32;
+  --fg-1:#E7ECF3; --fg-2:#B6C2D1; --fg-3:#7E93AE; --fg-brand:var(--brand-green-400);
+  --border-subtle:#1F3350; --border-default:#2C4868;
+}
+* { box-sizing: border-box; }
+html { font-family:var(--font-sans); color:var(--fg-1); background:var(--bg); scroll-behavior:smooth; scroll-padding-top:120px; }
+body { margin:0; font-size:16px; line-height:1.55; color:var(--fg-2); -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; background:var(--bg); transition:background var(--dur-base) var(--ease); }
+h1,h2,h3,h4,h5 { font-family:var(--font-sans); color:var(--fg-1); margin:0; letter-spacing:-.02em; }
+h1 { font-size:40px; font-weight:800; line-height:1.1; letter-spacing:-.03em; }
+h2 { font-size:25px; font-weight:700; line-height:1.2; }
+h3 { font-size:18px; font-weight:700; line-height:1.3; }
+h4 { font-size:15px; font-weight:600; }
+p { margin:0 0 12px; text-wrap:pretty; }
+small { font-size:12px; color:var(--fg-3); }
+.eyebrow { font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-brand); }
+.container { max-width:var(--container); margin:0 auto; padding:0 28px; }
+
+/* ---- Scroll progress ---- */
+.scroll-progress { position:fixed; top:0; left:0; height:2px; width:0%; background:var(--brand-green-500); z-index:100; transition:width 80ms linear; }
+
+/* ---- Site header ---- */
+.site-header { position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(180%) blur(12px); -webkit-backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--border-subtle); }
+[data-theme="dark"] .site-header { background:rgba(10,18,32,.88); }
+.header-inner { max-width:var(--container); margin:0 auto; padding:12px 28px; display:flex; align-items:center; gap:24px; }
+.brand { display:flex; align-items:center; gap:10px; text-decoration:none; line-height:1; }
+.brand-mark { width:26px; height:26px; flex-shrink:0; transform:translateY(-1px); }
+.brand-text { font-weight:800; font-size:17px; color:var(--fg-1); letter-spacing:-.02em; }
+.header-tools { display:flex; gap:6px; align-items:center; margin-left:auto; }
+.icon-btn { background:transparent; border:1px solid var(--border-subtle); color:var(--fg-2); width:34px; height:34px; border-radius:var(--radius-sm); cursor:pointer; display:inline-flex; align-items:center; justify-content:center; transition:all var(--dur-fast) var(--ease); padding:0; }
+.icon-btn:hover { background:var(--bg-sunken); color:var(--fg-1); border-color:var(--border-default); }
+.icon-btn svg { width:16px; height:16px; }
+
+/* ---- Hero ---- */
+.hero { padding:60px 0 30px; background:radial-gradient(900px 400px at 90% -60px,rgba(31,168,74,.07),transparent 60%),radial-gradient(700px 360px at 5% 0%,rgba(20,39,63,.04),transparent 60%); }
+[data-theme="dark"] .hero { background:radial-gradient(900px 400px at 90% -60px,rgba(31,168,74,.12),transparent 60%),radial-gradient(700px 360px at 5% 0%,rgba(78,107,138,.16),transparent 60%); }
+.hero .eyebrow { margin-bottom:12px; }
+.hero h1 { max-width:920px; margin-bottom:16px; }
+.hero .lede { font-size:18px; line-height:1.55; color:var(--fg-2); max-width:860px; margin-bottom:24px; }
+
+/* ---- Key facts / KPI tiles ---- */
+.key-facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; max-width:940px; }
+.key-facts .kf { padding:12px 14px; border-left:2px solid var(--border-default); transition:border-left-color var(--dur-fast) var(--ease),padding var(--dur-fast) var(--ease); }
+.key-facts .kf:hover { border-left-color:var(--brand-green-500); padding-left:16px; padding-right:12px; }
+.key-facts .kf small { display:block; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3); margin-bottom:4px; }
+.key-facts .kf strong { display:block; font-size:15px; color:var(--fg-1); font-weight:700; }
+.delta { font-size:12px; font-weight:600; color:var(--brand-green-600); margin-left:4px; }
+.delta:not(:empty) { background:var(--brand-green-50); padding:2px 6px; border-radius:var(--radius-pill); }
+[data-theme="dark"] .delta:not(:empty) { background:rgba(31,168,74,.14); color:var(--brand-green-300); }
+
+/* ---- Area switch (segmented control) ---- */
+.area-switch { display:inline-flex; align-items:center; background:var(--bg-sunken); border:1px solid var(--border-subtle); border-radius:var(--radius-pill); padding:3px; gap:2px; margin-bottom:24px; }
+.area-switch .seg { background:transparent; border:none; color:var(--fg-3); font-family:var(--font-sans); font-size:13px; font-weight:600; padding:7px 18px; border-radius:var(--radius-pill); cursor:pointer; transition:all var(--dur-fast) var(--ease); white-space:nowrap; }
+.area-switch .seg:hover { color:var(--fg-1); background:var(--bg); }
+.area-switch .seg.on { background:var(--brand-green-500); color:#fff; box-shadow:var(--shadow-sm); }
+[data-theme="dark"] .area-switch .seg.on { background:var(--brand-green-600); }
+
+/* ---- Tab bar ---- */
+.tabbar { position:sticky; top:51px; z-index:40; background:var(--bg); border-bottom:1px solid var(--border-subtle); }
+[data-theme="dark"] .tabbar { background:var(--bg); }
+.tabbar-inner { max-width:var(--container); margin:0 auto; padding:0 28px; display:flex; gap:4px; overflow-x:auto; }
+.tab-btn { background:transparent; border:none; border-bottom:2px solid transparent; color:var(--fg-3); padding:14px 16px; font-family:inherit; font-size:13.5px; font-weight:700; cursor:pointer; transition:color var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease); white-space:nowrap; }
+.tab-btn:hover { color:var(--fg-1); }
+.tab-btn.active { color:var(--brand-green-700); border-bottom-color:var(--brand-green-500); }
+.tab-btn .tnum { display:inline-flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%; background:var(--bg-sunken); color:var(--fg-3); font-size:11px; margin-right:7px; }
+.tab-btn.active .tnum { background:var(--brand-green-500); color:#fff; }
+
+/* ---- Main content area ---- */
+#views { padding:40px 0; min-height:400px; }
+
+/* ---- Footer ---- */
+.site-footer { margin-top:24px; padding:24px 0 40px; border-top:1px solid var(--border-subtle); color:var(--fg-3); font-size:12px; }
+.site-footer h4 { font-size:13px; font-weight:700; color:var(--fg-2); margin-bottom:10px; }
+.srclist { margin:0 0 14px; padding-left:18px; }
+.srclist li { margin-bottom:4px; line-height:1.5; }
+.note { font-size:12px; color:var(--fg-3); line-height:1.6; margin-bottom:8px; }
+
+/* ---- Empty-state placeholder ---- */
+.view-placeholder { padding:60px 0; text-align:center; color:var(--fg-3); font-size:14px; }
+
+/* ---- Responsive ---- */
+@media (max-width:720px) {
+  h1 { font-size:28px; }
+  .hero { padding:40px 0 24px; }
+  .container { padding:0 18px; }
+  .key-facts { grid-template-columns:1fr 1fr; }
+  .tabbar-inner { padding:0 14px; }
+  .area-switch { flex-wrap:wrap; border-radius:var(--radius-lg); }
+}
+
+/* ---- Print ---- */
+@media print {
+  .site-header, .scroll-progress, .tabbar { display:none!important; }
+  body { font-size:11pt; background:#fff; }
+  #views { padding:0; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="https://inrange.nl" target="_blank" rel="noopener" aria-label="inRange">
+      <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="6" y="18" width="5" height="10" rx="1.2" fill="#1FA84A"/>
+        <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
+        <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
+      </svg>
+      <span class="brand-text">in<span style="color:var(--fg-1)">Range</span></span>
+    </a>
+    <div class="header-tools">
+      <button class="icon-btn" id="themeBtn" title="Toggle theme" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <p class="eyebrow">Dutch tax authority &middot; annual reports</p>
+    <h1 id="heroTitle">Dutch MAP &amp; APA Explorer</h1>
+    <p class="lede" id="heroLede"></p>
+    <div class="area-switch" id="areaSwitch"></div>
+    <div class="key-facts" id="kpis"></div>
+  </div>
+</section>
+
+<nav class="tabbar"><div class="tabbar-inner" id="tabs"></div></nav>
+<main class="container" id="views"></main>
+<footer class="site-footer container" id="footer"></footer>
+
+<script src="core.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  // ---- Theme toggle (copied from Adyen, with localStorage persistence) ----
+  (function () {
+    var saved = localStorage.getItem('ir-theme');
+    if (saved) { document.documentElement.setAttribute('data-theme', saved); }
+    document.getElementById('themeBtn').addEventListener('click', function () {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      var next = isDark ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('ir-theme', next);
+    });
+  })();
+
+  // ---- Scroll progress bar ----
+  window.addEventListener('scroll', function () {
+    var h = document.documentElement;
+    var st = h.scrollTop || document.body.scrollTop;
+    var sh = h.scrollHeight - h.clientHeight;
+    document.getElementById('scrollProgress').style.width = (sh > 0 ? (st / sh * 100) : 0) + '%';
+  });
+
+  // ---- area registry: each area owns its KPIs builder, lede, and sub-tabs ----
+  var AREAS = {
+    map: {
+      label: 'MAP & APA',
+      title: 'Dutch MAP &amp; APA Explorer',
+      lede: "The Belastingdienst MAP-team’s mutual-agreement and advance-pricing figures, 2019–2025.",
+      tabs: [
+        { id: 'caseload',  label: 'Caseload trends' },
+        { id: 'inventory', label: 'Inventory flow' },
+        { id: 'outcomes',  label: 'Outcomes & resolution' },
+        { id: 'timing',    label: 'Timing · countries · APAs' },
+        { id: 'tp',        label: 'TP deep-dive' }
+      ],
+      kpis: function () {
+        var k = MAP_DATA.kpis[2025], p = MAP_DATA.kpis[2024];
+        return [
+          ['Requests received', k.received,          yoy(k.received, p.received)],
+          ['Cases closed',      k.closed,             yoy(k.closed,   p.closed)],
+          ['Resolution rate',   k.resolutionRate + '%', ''],
+          ['Year-end inventory',k.endInventory,       ''],
+          ['Full elimination',  k.fullElimPct + '%',  '']
+        ];
+      }
+    },
+    rulings: {
+      label: 'International Rulings',
+      title: 'Dutch International Rulings Explorer',
+      lede: "The APA/ATR practice (College IFZ): rulings with an international character, 2023–2025.",
+      tabs: [
+        { id: 'rOverview',   label: 'Overview' },
+        { id: 'rFlow',       label: 'By type & flow' },
+        { id: 'rTiming',     label: 'Processing times' },
+        { id: 'rPositions',  label: 'Defining positions' }
+      ],
+      kpis: function () { return []; } // filled in Task 13
+    }
+  };
+
+  var area   = 'map';
+  var active = AREAS.map.tabs[0].id;
+
+  // ---- Render functions ----
+
+  function renderHero() {
+    var A = AREAS[area];
+    document.getElementById('heroTitle').innerHTML = A.title;
+    document.getElementById('heroLede').textContent = A.lede;
+    document.getElementById('areaSwitch').innerHTML = Object.keys(AREAS).map(function (key) {
+      return '<button class="seg' + (key === area ? ' on' : '') + '" data-area="' + key + '">' +
+        AREAS[key].label + '</button>';
+    }).join('');
+    var tiles = A.kpis();
+    document.getElementById('kpis').innerHTML = tiles.map(function (t) {
+      return '<div class="kf"><small>' + t[0] + '</small><strong>' + t[1] +
+        (t[2] ? ' <span class="delta">' + t[2] + '</span>' : '') + '</strong></div>';
+    }).join('');
+  }
+
+  function renderTabs() {
+    var A = AREAS[area];
+    document.getElementById('tabs').innerHTML = A.tabs.map(function (t, i) {
+      return '<button class="tab-btn' + (t.id === active ? ' active' : '') +
+        '" data-tab="' + t.id + '"><span class="tnum">' + (i + 1) + '</span>' + t.label + '</button>';
+    }).join('');
+  }
+
+  function renderView() {
+    /* dispatch filled in Tasks 6-10 (map) and 13-15 (rulings) */
+    document.getElementById('views').innerHTML =
+      '<div class="view-placeholder">Views coming in Tasks 6–10 and 13–15.</div>';
+  }
+
+  function renderFooter() {
+    /* filled in Task 11 */
+  }
+
+  function render() { renderHero(); renderTabs(); renderView(); renderFooter(); }
+
+  // ---- Event: area switch ----
+  document.getElementById('areaSwitch').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-area]');
+    if (!b) return;
+    area   = b.getAttribute('data-area');
+    active = AREAS[area].tabs[0].id; // reset to first sub-tab of the new area
+    render();
+  });
+
+  // ---- Event: tab clicks ----
+  document.getElementById('tabs').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-tab]');
+    if (!b) return;
+    active = b.getAttribute('data-tab');
+    render();
+  });
+
+  // ---- Init ----
+  render();
+
+})();
+</script>
+</body>
+</html>

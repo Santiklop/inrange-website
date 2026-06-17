@@ -693,7 +693,7 @@ function V2_Modern() {
                 Dutch MAP, APA &amp; Rulings Explorer
               </h3>
               <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
-                An interactive read of the Dutch tax authority&rsquo;s annual reports (2019&ndash;2025): mutual agreement (MAP) and advance-pricing (APA / BAPA / MAPA) caseloads, resolution timing, head-to-head comparisons, and transfer-pricing case studies &mdash; with downloadable source documents.
+                An interactive dashboard of the Dutch tax authority&rsquo;s annual statistics reports: mutual agreement (MAP) and advance-pricing (APA / BAPA / MAPA) caseloads, resolution timing and mini-case studies.
               </p>
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: 8,

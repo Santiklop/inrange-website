@@ -204,6 +204,26 @@ var RULINGS_DATA = {
       icon: '🧭', group: 'Access', title: 'Economic Nexus, Made Concrete',
       body: "For participation- and withholding-exemption certainty, the authorities weigh both the quality and the quantity of Dutch personnel that actually steer the foreign holdings — judged on the full facts, not on whether costs are recharged.",
       source: 'Rulings 2024-25'
+    },
+    {
+      icon: '💧', group: 'TP', title: 'Cash-Pool Synergies: Who Keeps Them?',
+      body: "2023 brought a wave of financing-TP questions on splitting cash-pool synergy benefits versus rewarding the cash-pool leader. The line drawn: the leader is usually a coordinator earning a routine return, so the synergy benefit accrues to the participating group companies — not to the leader. Don't let a 'leader' label pull excess profit into the cash-pool entity.",
+      source: 'Rulings 2023'
+    },
+    {
+      icon: '🎛️', group: 'TP', title: 'How Much Financial Control Buys Nexus?',
+      body: "Once the authorities gained access to financial databases, financing cases turned on one question: how much financial control is needed for relevant economic nexus, and when is financial capacity sufficient? The takeaway: to price and own a financing risk in the Netherlands, the people and decision-making for that risk must actually sit here — capital alone is not enough.",
+      source: 'Rulings 2023'
+    },
+    {
+      icon: '🏛️', group: 'Access', title: 'Certainty for Dual-Resident Listed Groups',
+      body: "In 2025 the College IFZ gave some listed dual-resident companies advance certainty on Dutch dividend withholding even where the group no longer had operational nexus here — weighing the taxpayer's interest, the specific facts, and the authority's own oversight interest. A narrow, fact-driven opening; the restrictive line for relocated non-listed dual residents still holds.",
+      source: 'Rulings 2025'
+    },
+    {
+      icon: '🔗', group: 'Access', title: 'The New "Qualifying Entity" Test',
+      body: "From 2025, withholding-tax rulings test for a 'qualifying entity' — parties acting together with a main purpose of avoiding withholding tax, for example by splitting one qualifying interest into several non-qualifying ones. The main-purpose element is decisive, and everyone involved in the splitting is pulled into the qualifying entity. Fragmenting interests to dodge withholding will be looked through.",
+      source: 'Rulings 2025'
     }
   ],
 

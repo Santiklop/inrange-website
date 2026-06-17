@@ -81,6 +81,7 @@ small { font-size:12px; color:var(--fg-3); }
 .key-facts .kf:hover { border-left-color:var(--brand-green-500); padding-left:16px; padding-right:12px; }
 .key-facts .kf small { display:block; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3); margin-bottom:4px; }
 .key-facts .kf strong { display:block; font-size:15px; color:var(--fg-1); font-weight:700; }
+.kpi-note { font-size:12px; color:var(--fg-3); margin:12px 0 0; }
 .delta { font-size:12px; font-weight:600; color:var(--brand-green-600); margin-left:4px; }
 .delta:not(:empty) { background:var(--brand-green-50); padding:2px 6px; border-radius:var(--radius-pill); }
 [data-theme="dark"] .delta:not(:empty) { background:rgba(31,168,74,.14); color:var(--brand-green-300); }
@@ -364,6 +365,7 @@ small { font-size:12px; color:var(--fg-3); }
     <p class="lede" id="heroLede"></p>
     <div class="area-switch" id="areaSwitch"></div>
     <div class="key-facts" id="kpis"></div>
+    <p class="kpi-note" id="kpiNote"></p>
   </div>
 </section>
 
@@ -823,6 +825,35 @@ small { font-size:12px; color:var(--fg-3); }
     }).join('') + '</div>';
   }
 
+  // Overview trend: one line per ruling type over R.years, for a chosen metric.
+  var rTrendMetric = 'received'; // 'received' | 'closed'
+  function rulingTrendChart(metric) {
+    var W = 720, H = 320, padL = 44, padTop = 16, padB = 26;
+    var plotW = W - padL - 16, plotH = H - padTop - padB;
+    var vals = [1];
+    R.types.forEach(function (t) { R.years.forEach(function (y) { vals.push(R.flow[y][t][metric]); }); });
+    var max = niceMax(Math.max.apply(null, vals));
+    var ys = yScale(plotH, padTop, max);
+    var xs = function (i) { return R.years.length === 1 ? padL + plotW / 2 : padL + (i / (R.years.length - 1)) * plotW; };
+    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+    }).join('');
+    var mLabel = metric.charAt(0).toUpperCase() + metric.slice(1);
+    var lines = R.types.map(function (t) {
+      var pts = R.years.map(function (y, i) { return [xs(i), ys(R.flow[y][t][metric])]; });
+      var dots = pts.map(function (p, i) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + R.typeLabels[t] + ' ' + R.years[i] + '</b><br>' + mLabel + ': ' + R.flow[R.years[i]][t][metric] + '"/>' +
+          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + RTYPE_COLORS[t] + '"/>';
+      }).join('');
+      return '<path d="' + linePath(pts) + '" fill="none" stroke="' + RTYPE_COLORS[t] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
+    }).join('');
+    var xl = R.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 6) + '" class="xtick">' + y + '</text>'; }).join('');
+    return svgEl(W, H, grid + lines + xl, 'International rulings ' + metric + ' by type, 2023–2025');
+  }
+
   // ---- View: Rulings overview (Task 13) ----
   function viewROverview() {
     var rec = rulingMix(rYear, 'received'), cl = rulingMix(rYear, 'closed');
@@ -837,7 +868,16 @@ small { font-size:12px; color:var(--fg-3); }
         '<h4 class="stack-h">Received ' + rYear + ' <span class="osub">' + sum(rec) + '</span></h4>' + stackedBar(rec) +
         '<h4 class="stack-h">Closed ' + rYear + ' <span class="osub">' + sum(cl) + '</span></h4>' + stackedBar(cl) +
         rTypeLegend() +
-      '<div class="tooltip"></div></div></div>';
+      '<div class="tooltip"></div></div></div>' +
+      '<div class="chart-card">' +
+        '<h4 class="stack-h">' + (rTrendMetric === 'received' ? 'Received' : 'Closed') + ' over time, by type <span class="osub">2023–2025</span></h4>' +
+        '<div class="chip-row" id="rTrendToggle"><span class="chip-label">Metric</span>' +
+          ['received', 'closed'].map(function (m) {
+            return '<button class="chip plain' + (m === rTrendMetric ? ' on' : '') + '" data-rtm="' + m + '">' + (m === 'received' ? 'Received' : 'Closed') + '</button>';
+          }).join('') +
+        '</div>' +
+        '<div class="chart-wrap">' + rulingTrendChart(rTrendMetric) + '<div class="tooltip"></div></div>' + rTypeLegend() +
+      '</div>';
   }
 
   // Mini multi-line trend (received / closed / end) over R.years for one type.
@@ -983,6 +1023,7 @@ small { font-size:12px; color:var(--fg-3); }
       return '<div class="kf"><small>' + t[0] + '</small><strong>' + t[1] +
         (t[2] ? ' <span class="delta">' + t[2] + '</span>' : '') + '</strong></div>';
     }).join('');
+    document.getElementById('kpiNote').textContent = 'Headline figures are for FY2025; the green figure is the change versus FY2024.';
   }
 
   function renderTabs() {
@@ -1076,6 +1117,7 @@ small { font-size:12px; color:var(--fg-3); }
     if ((b = e.target.closest('[data-outy]')))  { outYear = +b.getAttribute('data-outy'); render(); return; }
     // ---- Rulings controls ----
     if ((b = e.target.closest('[data-ry]')))    { rYear = +b.getAttribute('data-ry'); render(); return; }
+    if ((b = e.target.closest('[data-rtm]')))   { rTrendMetric = b.getAttribute('data-rtm'); render(); return; }
     if ((b = e.target.closest('[data-rft]')))   { rFlowType = b.getAttribute('data-rft'); render(); return; }
     if ((b = e.target.closest('[data-rfy]')))   { rFlowYear = +b.getAttribute('data-rfy'); render(); return; }
     if ((b = e.target.closest('[data-rty]')))   { rtYear = +b.getAttribute('data-rty'); render(); return; }

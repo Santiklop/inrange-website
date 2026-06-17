@@ -353,8 +353,11 @@ small { font-size:12px; color:var(--fg-3); }
     for (var i = 0; i < STREAMS.length; i++) if (STREAMS[i].key === key) return STREAMS[i];
     return null;
   }
-  function svgEl(w, h, body) {
-    return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="chart" role="img" preserveAspectRatio="xMidYMid meet">' + body + '</svg>';
+  function svgEl(w, h, body, title) {
+    var aria = title ? ' aria-label="' + title + '"' : '';
+    var titleEl = title ? '<title>' + title + '</title>' : '';
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" class="chart" role="img"' + aria +
+      ' preserveAspectRatio="xMidYMid meet">' + titleEl + body + '</svg>';
   }
   function linePath(pts) { // pts: [[x,y],...] -> SVG path "d"
     return pts.map(function (p, i) { return (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' ');
@@ -417,7 +420,7 @@ small { font-size:12px; color:var(--fg-3); }
     var xlabels = D.years.map(function (y, i) {
       return '<text x="' + xs(i) + '" y="' + (H - 8) + '" class="xtick">' + y + '</text>';
     }).join('');
-    return svgEl(W, H, grid + lines + xlabels);
+    return svgEl(W, H, grid + lines + xlabels, opts.title);
   }
 
   function legendRow(keys) {
@@ -446,7 +449,7 @@ small { font-size:12px; color:var(--fg-3); }
         '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '">' + s.label + '</button>';
     }).join('');
     var chart = keys.length
-      ? '<div class="chart-wrap">' + lineChart(keys) + '<div class="tooltip"></div></div>' + legendRow(keys)
+      ? '<div class="chart-wrap">' + lineChart(keys, { title: 'MAP cases received vs closed by year' }) + '<div class="tooltip"></div></div>' + legendRow(keys)
       : '<p class="partner-foot">Select at least one workstream to plot.</p>';
     return '<div class="view-head"><h2>Caseload trends</h2>' +
       '<p class="lede">New requests (solid) vs. cases closed (dashed), 2019–2025.</p></div>' +
@@ -512,7 +515,7 @@ small { font-size:12px; color:var(--fg-3); }
       '<p class="lede">How the case stock moved: begin + received − closed = end.</p></div>' +
       '<div class="chip-row" id="invYears"><span class="chip-label">Year</span>' + years + '</div>' +
       '<div class="chip-row" id="invStreams"><span class="chip-label">Workstream</span>' + streams + '</div>' +
-      '<div class="chart-card"><div class="chart-wrap">' + svgEl(W, H, grid + connectors + bars) + '<div class="tooltip"></div></div>' +
+      '<div class="chart-card"><div class="chart-wrap">' + svgEl(W, H, grid + connectors + bars, 'MAP case inventory flow: begin plus received minus closed equals end') + '<div class="tooltip"></div></div>' +
       '<p class="partner-foot">' + d.begin + ' + ' + d.received + ' − ' + d.closed + ' = <strong style="color:var(--fg-1)">' + d.end + '</strong>' +
       (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>';
   }
@@ -542,10 +545,12 @@ small { font-size:12px; color:var(--fg-3); }
     }).join('');
     var fullElim = g.bi.items.filter(function (o) { return o.cat === 4; })[0];
     var fullElimPct = fullElim ? (fullElim.count / total * 100).toFixed(1) : '0';
+    var resRate = resolutionRate(outYear);
     var readout = '<div class="out-readout">' +
       '<div class="ror"><small>Cases closed</small><strong>' + total + '</strong></div>' +
       '<div class="ror"><small>Bilateral subtotal</small><strong>' + g.bi.subtotal + '</strong></div>' +
       '<div class="ror"><small>Full elimination</small><strong>' + (fullElim ? fullElim.count : 0) + ' · ' + fullElimPct + '%</strong></div>' +
+      '<div class="ror"><small>Resolution rate</small><strong>' + (resRate == null ? '—' : resRate + '%') + '</strong></div>' +
       '</div>';
     return '<div class="view-head"><h2>Outcomes &amp; resolution</h2>' +
       '<p class="lede">The ten OECD outcome categories for cases the Dutch authority closed in ' + outYear + '. Bar width is share of all closed cases.</p></div>' +
@@ -606,10 +611,12 @@ small { font-size:12px; color:var(--fg-3); }
     return '<div class="view-head"><h2>Timing · countries · APAs</h2>' +
       '<p class="lede">How long cases take, who the Netherlands resolves them with, and why advance pricing agreements matter.</p></div>' +
       '<div class="panel"><h4>Average cycle time (months) <small>approximate, read from the report chart (±~0.5 mo)</small></h4>' +
-      '<div class="chart-wrap">' + svgEl(W, H, grid + norm + lines + xl) + '<div class="tooltip"></div></div>' + legend + takeaway + '</div>' +
+      '<div class="chart-wrap">' + svgEl(W, H, grid + norm + lines + xl, 'Average MAP cycle time vs 24-month norm') + '<div class="tooltip"></div></div>' + legend + takeaway + '</div>' +
       '<div class="panel"><h4>Top treaty partners, 2025 <small>cases per partner; named top-5 + Overig</small></h4>' +
       '<div class="pbars">' + partnerBars + '</div>' +
-      '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p></div>';
+      '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p></div>' +
+      '<div class="panel"><h4>Dispute prevention — BAPA &amp; MAPA <small>requests received vs. closed, 2019–2025</small></h4>' +
+      '<div class="chart-wrap">' + lineChart(['BAPA','MAPA'], { H: 300, title: 'BAPA and MAPA requests over time' }) + '<div class="tooltip"></div></div>' + legendRow(['BAPA','MAPA']) + '</div>';
   }
 
   // ===========================================================
@@ -620,7 +627,7 @@ small { font-size:12px; color:var(--fg-3); }
     return '<div class="view-head"><h2>Transfer pricing — deep dive</h2>' +
       '<p class="lede">The transfer-pricing workstream on its own: volumes, timing, and how much of it is now advance pricing.</p></div>' +
       '<div class="panel"><h4>TP cases received vs. closed <small>2019–2025</small></h4>' +
-      '<div class="chart-wrap">' + lineChart(['TP'], { H: 320 }) + '<div class="tooltip"></div></div>' + legendRow(['TP']) + '</div>' +
+      '<div class="chart-wrap">' + lineChart(['TP'], { H: 320, title: 'Transfer-pricing MAP cases received vs closed' }) + '<div class="tooltip"></div></div>' + legendRow(['TP']) + '</div>' +
       '<div class="statgrid">' +
         '<div class="stat"><strong>' + pc.TP + '</strong><small>treaty partners with TP cases</small></div>' +
         '<div class="stat"><strong>~half</strong><small>of TP inventory is now APA requests</small></div>' +

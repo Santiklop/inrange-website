@@ -23,6 +23,8 @@ test('2025 core inventory reconciles: begin + received - closed === end', () => 
 test('2025 outcomes percentages sum to ~100', () => {
   const total = C.MAP_DATA.outcomes[2025].reduce((a, o) => a + o.count, 0);
   assert.strictEqual(total, 490);
+  const pctSum = C.MAP_DATA.outcomes[2025].reduce((a, o) => a + o.pct, 0);
+  assert.ok(Math.abs(pctSum - 100) < 0.5);
 });
 
 // ---------------------------------------------------------------------------
@@ -94,8 +96,8 @@ test('outcomeGroups buckets the 10 categories into uni/bi/oth with subtotals', (
   assert.strictEqual(g.oth.subtotal, 48);   // 21+26+1
 });
 
-test('resolutionRate excludes denied/objection-not-justified from numerator', () => {
-  // 97% headline is published; helper recomputes the "resolved share" consistently
+test('resolutionRate(2025) returns the published 97% headline', () => {
+  // 97% headline is published; the helper returns a hardcoded value per year
   assert.strictEqual(C.resolutionRate(2025), 97);
 });
 
@@ -139,4 +141,22 @@ test('rulingMix(2025, "received") sums to 528 and ATR is the largest share', () 
   const atr = rows.find(r => r.type === 'ATR');
   const maxVal = Math.max(...rows.map(r => r.value));
   assert.strictEqual(atr.value, maxVal);
+});
+
+test('outcomeGroups throws on unknown phase', () => {
+  // Temporarily monkey-patch outcomes to inject a bad phase, then restore
+  const original = C.MAP_DATA.outcomes[2025];
+  C.MAP_DATA.outcomes[9999] = [{ cat: 99, label: 'Bad', phase: 'typo', count: 1 }];
+  assert.throws(
+    () => C.outcomeGroups(9999),
+    /outcomeGroups: unknown phase "typo"/
+  );
+  delete C.MAP_DATA.outcomes[9999];
+});
+
+test('rulingMix throws on bad metric', () => {
+  assert.throws(
+    () => C.rulingMix(2025, 'nope'),
+    /rulingMix: bad metric "nope"/
+  );
 });

@@ -224,10 +224,12 @@ var RULINGS_DATA = {
 // ---------------------------------------------------------------------------
 
 function yoy(curr, prev) {
+  if (!prev) return '—';
   var d = (curr - prev) / prev * 100;
   return (d >= 0 ? '+' : '') + d.toFixed(1) + '%';
 }
 
+// Expects a positive integer-scale value (axis ceiling for count data).
 function niceMax(v) {
   if (v <= 0) return 10;
   var mag = Math.pow(10, Math.floor(Math.log10(v)));
@@ -243,6 +245,7 @@ function outcomeGroups(year) {
     oth: { items: [], subtotal: 0 }
   };
   list.forEach(function (o) {
+    if (!g[o.phase]) throw new Error('outcomeGroups: unknown phase "' + o.phase + '"');
     g[o.phase].items.push(o);
     g[o.phase].subtotal += o.count;
   });
@@ -252,10 +255,12 @@ function outcomeGroups(year) {
 function resolutionRate(year) {
   // Published definition: resolved share of cases actually handled in MAP.
   // Hardcoded to the published headline per year to avoid divergence from source.
-  return ({ 2025: 97 })[year];
+  var table = { 2025: 97 };
+  return (year in table) ? table[year] : null;
 }
 
 function rulingMix(year, metric) { // metric: 'received' | 'closed' | 'end'
+  if (['received','closed','end'].indexOf(metric) === -1) throw new Error('rulingMix: bad metric "' + metric + '"');
   var f = RULINGS_DATA.flow[year];
   var rows = RULINGS_DATA.types.map(function (t) {
     return { type: t, label: RULINGS_DATA.typeLabels[t], value: f[t][metric] };

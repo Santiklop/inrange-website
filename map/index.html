@@ -233,10 +233,10 @@ small { font-size:12px; color:var(--fg-3); }
 .heat th.corner { background:transparent; }
 .heat td.rowlbl { font-size:13px; font-weight:600; color:var(--fg-2); text-align:left; white-space:nowrap; padding-right:10px; }
 .heat td.cell { text-align:center; font-size:14px; font-weight:700; color:var(--fg-1); padding:12px 8px; border-radius:var(--radius-sm); background:color-mix(in srgb,var(--brand-navy-500) calc(var(--a,0)*100%),var(--bg-sunken)); }
-.heat td.cell[style*="--a"] { color:#fff; }
+.heat td.cell.hi { color:#fff; }                                   /* light theme: dark tint → white text */
 .heat td.na { text-align:center; font-size:14px; font-weight:600; color:var(--fg-3); padding:12px 8px; border-radius:var(--radius-sm); background:var(--bg-sunken); }
-[data-theme="dark"] .heat td.cell { background:color-mix(in srgb,var(--brand-navy-300) calc(var(--a,0)*100%),var(--bg-sunken)); }
-[data-theme="dark"] .heat td.cell[style*="--a"] { color:var(--brand-navy-800); }
+[data-theme="dark"] .heat td.cell { background:color-mix(in srgb,var(--brand-navy-300) calc(var(--a,0)*100%),var(--bg-sunken)); color:var(--fg-1); }
+[data-theme="dark"] .heat td.cell.hi { color:var(--brand-navy-800); } /* dark theme: light tint → dark text */
 
 /* Defining-positions cards (prominent inRange commentary) */
 .pos-group { font-size:13px; font-weight:700; color:var(--fg-1); margin:24px 0 12px; padding-bottom:7px; border-bottom:1px solid var(--border-subtle); }
@@ -846,8 +846,9 @@ small { font-size:12px; color:var(--fg-3); }
       return '<tr><td class="rowlbl">' + o[1] + '</td>' + R.types.map(function (t) {
         var v = pt[t][o[0]];
         if (v == null) return '<td class="cell na">—</td>';
-        var a = (0.10 + 0.85 * (v / maxMo)).toFixed(3);
-        return '<td class="cell" style="--a:' + a + '" title="' + R.typeLabels[t] + ' · ' + o[1] + ': ' + v + ' months">' + v + '</td>';
+        var aNum = 0.10 + 0.85 * (v / maxMo);
+        var tone = aNum >= 0.5 ? ' hi' : '';   // hi = heavily tinted → flip text colour for contrast
+        return '<td class="cell' + tone + '" style="--a:' + aNum.toFixed(3) + '" title="' + R.typeLabels[t] + ' · ' + o[1] + ': ' + v + ' months">' + v + '</td>';
       }).join('') + '</tr>';
     }).join('');
     var years = [2024, 2025].map(function (y) {

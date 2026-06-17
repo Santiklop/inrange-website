@@ -208,6 +208,48 @@ small { font-size:12px; color:var(--fg-3); }
 .explainer .eyebrow { color:var(--accent-ochre); margin-bottom:8px; }
 .explainer p:not(.eyebrow) { font-family:var(--font-serif); font-size:15px; line-height:1.55; color:var(--fg-1); margin:0; }
 
+/* ============================================================
+   International Rulings views — stacked bars, heat matrix, cards
+   ============================================================ */
+
+/* Square legend swatch variant (for type/metric legends) */
+.chart-legend .sw.sq { width:11px; height:11px; border-radius:3px; }
+
+/* Stacked share bar (ruling mix by type) */
+.stack-h { font-size:13px; font-weight:700; color:var(--fg-1); margin:18px 0 9px; display:flex; align-items:baseline; gap:8px; }
+.stack-h:first-child { margin-top:0; }
+.stack-h .osub { font-size:12px; font-weight:700; color:var(--fg-brand); background:var(--brand-green-50); padding:1px 9px; border-radius:var(--radius-pill); font-variant-numeric:tabular-nums; }
+[data-theme="dark"] .stack-h .osub { background:rgba(31,168,74,.16); color:var(--brand-green-300); }
+.stackbar { display:flex; width:100%; height:34px; border-radius:var(--radius-sm); overflow:hidden; background:var(--bg-sunken); margin-bottom:6px; box-shadow:inset 0 0 0 1px var(--border-subtle); }
+.stackbar .seg { display:block; height:100%; min-width:2px; transition:width var(--dur-base) var(--ease),filter var(--dur-fast) var(--ease); cursor:default; }
+.stackbar .seg:hover { filter:brightness(1.08) saturate(1.1); }
+.stackbar .seg + .seg { box-shadow:inset 1px 0 0 rgba(255,255,255,.35); }
+[data-theme="dark"] .stackbar .seg + .seg { box-shadow:inset 1px 0 0 rgba(0,0,0,.35); }
+
+/* Processing-time heat matrix */
+.heat-wrap { overflow-x:auto; }
+.heat { border-collapse:separate; border-spacing:4px; width:100%; min-width:480px; font-variant-numeric:tabular-nums; }
+.heat th { font-size:12px; font-weight:700; color:var(--fg-2); text-align:center; padding:6px 4px; white-space:nowrap; }
+.heat th.corner { background:transparent; }
+.heat td.rowlbl { font-size:13px; font-weight:600; color:var(--fg-2); text-align:left; white-space:nowrap; padding-right:10px; }
+.heat td.cell { text-align:center; font-size:14px; font-weight:700; color:var(--fg-1); padding:12px 8px; border-radius:var(--radius-sm); background:color-mix(in srgb,var(--brand-navy-500) calc(var(--a,0)*100%),var(--bg-sunken)); }
+.heat td.cell[style*="--a"] { color:#fff; }
+.heat td.na { text-align:center; font-size:14px; font-weight:600; color:var(--fg-3); padding:12px 8px; border-radius:var(--radius-sm); background:var(--bg-sunken); }
+[data-theme="dark"] .heat td.cell { background:color-mix(in srgb,var(--brand-navy-300) calc(var(--a,0)*100%),var(--bg-sunken)); }
+[data-theme="dark"] .heat td.cell[style*="--a"] { color:var(--brand-navy-800); }
+
+/* Defining-positions cards (prominent inRange commentary) */
+.pos-group { font-size:13px; font-weight:700; color:var(--fg-1); margin:24px 0 12px; padding-bottom:7px; border-bottom:1px solid var(--border-subtle); }
+.pos-group:first-of-type { margin-top:0; }
+.positions { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:16px; margin-bottom:8px; }
+.position { background:linear-gradient(135deg,var(--brand-navy-50) 0%,var(--surface) 60%); border:1px solid var(--border-subtle); border-left:4px solid var(--brand-green-500); border-radius:var(--radius-md); padding:18px 20px; box-shadow:var(--shadow-xs); transition:transform var(--dur-fast) var(--ease),box-shadow var(--dur-fast) var(--ease); }
+.position:hover { transform:translateY(-2px); box-shadow:var(--shadow-md); }
+[data-theme="dark"] .position { background:linear-gradient(135deg,rgba(78,107,138,.14) 0%,var(--surface) 60%); }
+.position .eyebrow { color:var(--brand-green-600); margin-bottom:8px; }
+[data-theme="dark"] .position .eyebrow { color:var(--brand-green-400); }
+.position h3 { font-size:17px; margin-bottom:8px; line-height:1.3; }
+.position p:not(.eyebrow) { font-family:var(--font-serif); font-size:14.5px; line-height:1.55; color:var(--fg-1); margin:0; }
+
 /* ---- Responsive ---- */
 @media (max-width:720px) {
   h1 { font-size:28px; }
@@ -221,6 +263,8 @@ small { font-size:12px; color:var(--fg-3); }
   .obar .otrack { grid-column:1 / -1; order:3; }
   .pbar { grid-template-columns:110px 1fr 42px; gap:8px; }
   .chart-card, .panel { padding:16px 16px; }
+  .positions { grid-template-columns:1fr; }
+  .stackbar { height:30px; }
 }
 
 /* ---- Print ---- */
@@ -228,7 +272,9 @@ small { font-size:12px; color:var(--fg-3); }
   .site-header, .scroll-progress, .tabbar, .chip-row { display:none!important; }
   body { font-size:11pt; background:#fff; }
   #views { padding:0; }
-  .chart-card, .panel, .stat, .explainer, .takeaway { break-inside:avoid; box-shadow:none; }
+  .chart-card, .panel, .stat, .explainer, .takeaway, .position { break-inside:avoid; box-shadow:none; }
+  .heat td.cell { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
+  .stackbar .seg { print-color-adjust:exact; -webkit-print-color-adjust:exact; }
 }
 </style>
 </head>
@@ -330,7 +376,15 @@ small { font-size:12px; color:var(--fg-3); }
         { id: 'rTiming',     label: 'Processing times' },
         { id: 'rPositions',  label: 'Defining positions' }
       ],
-      kpis: function () { return []; } // filled in Task 13
+      kpis: function () {
+        var k = RULINGS_DATA.kpis[2025], p = RULINGS_DATA.kpis[2024];
+        return [
+          ['Requests received', k.received,     yoy(k.received, p.received)],
+          ['Requests closed',   k.closed,       yoy(k.closed,   p.closed)],
+          ['(Partly) granted',  k.granted,      yoy(k.granted,  p.granted)],
+          ['Year-end inventory',k.endInventory, yoy(k.endInventory, p.endInventory)]
+        ];
+      }
     }
   };
 
@@ -432,45 +486,20 @@ small { font-size:12px; color:var(--fg-3); }
       '<span class="lg" style="color:var(--fg-3)"><span class="sw dashed"></span>Closed</span></div>';
   }
 
-  // ===========================================================
-  //  Per-view control state
-  // ===========================================================
-  var caseloadOn = { INT: true, TP: true, TB: false, MLMAP: false, BAPA: false, MAPA: false };
-  var invYear = 2025, invStream = 'INT';
-  var outYear = 2025;
-
-  // ===========================================================
-  //  View: Caseload trends (Task 6)
-  // ===========================================================
-  function viewCaseload() {
-    var keys = STREAMS.filter(function (s) { return caseloadOn[s.key]; }).map(function (s) { return s.key; });
-    var toggles = STREAMS.map(function (s) {
-      return '<button class="chip' + (caseloadOn[s.key] ? ' on' : '') + '" data-cl="' + s.key +
-        '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '">' + s.label + '</button>';
-    }).join('');
-    var chart = keys.length
-      ? '<div class="chart-wrap">' + lineChart(keys, { title: 'MAP cases received vs closed by year' }) + '<div class="tooltip"></div></div>' + legendRow(keys)
-      : '<p class="partner-foot">Select at least one workstream to plot.</p>';
-    return '<div class="view-head"><h2>Caseload trends</h2>' +
-      '<p class="lede">New requests (solid) vs. cases closed (dashed), 2019–2025.</p></div>' +
-      '<div class="chip-row" id="clToggles"><span class="chip-label">Workstreams</span>' + toggles + '</div>' +
-      '<div class="chart-card">' + chart + '</div>';
-  }
-
-  // ===========================================================
-  //  View: Inventory flow waterfall (Task 7)
-  // ===========================================================
-  function viewInventory() {
-    var d = D.inventory[invYear][invStream];
+  // Begin → received → (−closed) → end waterfall. Shared by the MAP inventory
+  // view and the rulings by-type flow view (DRY). Returns the SVG markup only;
+  // callers wrap it in .chart-wrap + .tooltip and add a reconciliation readout.
+  function buildWaterfall(begin, received, closed, end, opts) {
+    opts = opts || {};
     var steps = [
-      { label: 'Begin',    v: d.begin,    base: 0,                  kind: 'tot' },
-      { label: 'Received', v: d.received, base: d.begin,            kind: 'up' },
-      { label: 'Closed',   v: -d.closed,  base: d.begin + d.received, kind: 'down' },
-      { label: 'End',      v: d.end,      base: 0,                  kind: 'tot' }
+      { label: 'Begin',    v: begin,    base: 0,                kind: 'tot' },
+      { label: 'Received', v: received, base: begin,            kind: 'up' },
+      { label: 'Closed',   v: -closed,  base: begin + received, kind: 'down' },
+      { label: 'End',      v: end,      base: 0,                kind: 'tot' }
     ];
-    var W = 720, H = 340, padL = 44, padB = 28, padTop = 22;
+    var W = opts.W || 720, H = opts.H || 340, padL = 44, padB = 28, padTop = 22;
     var plotW = W - padL - 16, plotH = H - padB - padTop;
-    var max = niceMax(d.begin + d.received);
+    var max = niceMax(begin + received);
     var ys = yScale(plotH, padTop, max);
     var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
       var y = padTop + f * plotH, v = Math.round(max * (1 - f));
@@ -503,6 +532,54 @@ small { font-size:12px; color:var(--fg-3); }
         '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (H - 8) + '" class="xtick">' + s.label + '</text>' +
         '<text x="' + (x + bw / 2).toFixed(1) + '" y="' + (y0 - 6).toFixed(1) + '" class="barval">' + sign + Math.abs(s.v) + '</text>';
     }).join('');
+    return svgEl(W, H, grid + connectors + bars, opts.title || 'Begin plus received minus closed equals end');
+  }
+
+  // ===========================================================
+  //  Per-view control state
+  // ===========================================================
+  var caseloadOn = { INT: true, TP: true, TB: false, MLMAP: false, BAPA: false, MAPA: false };
+  var invYear = 2025, invStream = 'INT';
+  var outYear = 2025;
+  // Rulings views
+  var R = RULINGS_DATA;
+  var RTYPE_COLORS = {
+    ATR:          'var(--brand-navy-500)',
+    APA:          'var(--brand-green-600)',
+    BAPA:         'var(--brand-green-400)',
+    Innovatiebox: 'var(--accent-ochre)',
+    Overige:      'var(--neutral-400)'
+  };
+  var rYear = 2025;                       // overview
+  var rFlowType = 'ATR', rFlowYear = 2025; // by type & flow
+  var rtYear = 2025;                      // processing times
+
+  // ===========================================================
+  //  View: Caseload trends (Task 6)
+  // ===========================================================
+  function viewCaseload() {
+    var keys = STREAMS.filter(function (s) { return caseloadOn[s.key]; }).map(function (s) { return s.key; });
+    var toggles = STREAMS.map(function (s) {
+      return '<button class="chip' + (caseloadOn[s.key] ? ' on' : '') + '" data-cl="' + s.key +
+        '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '">' + s.label + '</button>';
+    }).join('');
+    var chart = keys.length
+      ? '<div class="chart-wrap">' + lineChart(keys, { title: 'MAP cases received vs closed by year' }) + '<div class="tooltip"></div></div>' + legendRow(keys)
+      : '<p class="partner-foot">Select at least one workstream to plot.</p>';
+    return '<div class="view-head"><h2>Caseload trends</h2>' +
+      '<p class="lede">New requests (solid) vs. cases closed (dashed), 2019–2025.</p></div>' +
+      '<div class="chip-row" id="clToggles"><span class="chip-label">Workstreams</span>' + toggles + '</div>' +
+      '<div class="chart-card">' + chart + '</div>';
+  }
+
+  // ===========================================================
+  //  View: Inventory flow waterfall (Task 7)
+  // ===========================================================
+  function viewInventory() {
+    var d = D.inventory[invYear][invStream];
+    var waterfall = buildWaterfall(d.begin, d.received, d.closed, d.end, {
+      title: 'MAP case inventory flow: begin plus received minus closed equals end'
+    });
     var years = [2023, 2024, 2025].map(function (y) {
       return '<button class="chip plain' + (y === invYear ? ' on' : '') + '" data-invy="' + y + '">' + y + '</button>';
     }).join('');
@@ -515,7 +592,7 @@ small { font-size:12px; color:var(--fg-3); }
       '<p class="lede">How the case stock moved: begin + received − closed = end.</p></div>' +
       '<div class="chip-row" id="invYears"><span class="chip-label">Year</span>' + years + '</div>' +
       '<div class="chip-row" id="invStreams"><span class="chip-label">Workstream</span>' + streams + '</div>' +
-      '<div class="chart-card"><div class="chart-wrap">' + svgEl(W, H, grid + connectors + bars, 'MAP case inventory flow: begin plus received minus closed equals end') + '<div class="tooltip"></div></div>' +
+      '<div class="chart-card"><div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
       '<p class="partner-foot">' + d.begin + ' + ' + d.received + ' − ' + d.closed + ' = <strong style="color:var(--fg-1)">' + d.end + '</strong>' +
       (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>';
   }
@@ -638,6 +715,165 @@ small { font-size:12px; color:var(--fg-3); }
       'integrated or IP-heavy structures, the profit-split method — but the official statistics do not break this out.</p></aside>';
   }
 
+  // ===========================================================
+  //  Rulings helpers + views (Tasks 13-15)
+  // ===========================================================
+
+  // Horizontal stacked bar of a rulingMix() result (segments by type, % width).
+  function stackedBar(rows) {
+    return '<div class="stackbar">' + rows.map(function (r) {
+      return '<span class="seg" style="width:' + r.pct + '%;background:' + RTYPE_COLORS[r.type] + '" ' +
+        'data-tip="<b>' + R.typeLabels[r.type] + '</b><br>' + r.value + ' · ' + r.pct + '%"></span>';
+    }).join('') + '</div>';
+  }
+
+  function rTypeLegend() {
+    return '<div class="chart-legend">' + R.types.map(function (t) {
+      return '<span class="lg" style="color:' + RTYPE_COLORS[t] + '"><span class="sw sq"></span>' + R.typeLabels[t] + '</span>';
+    }).join('') + '</div>';
+  }
+
+  // ---- View: Rulings overview (Task 13) ----
+  function viewROverview() {
+    var rec = rulingMix(rYear, 'received'), cl = rulingMix(rYear, 'closed');
+    var sum = function (rows) { return rows.reduce(function (a, r) { return a + r.value; }, 0); };
+    var years = R.years.map(function (y) {
+      return '<button class="chip plain' + (y === rYear ? ' on' : '') + '" data-ry="' + y + '">' + y + '</button>';
+    }).join('');
+    return '<div class="view-head"><h2>Rulings overview</h2>' +
+      '<p class="lede">International rulings issued by the APA/ATR practice, split by type.</p></div>' +
+      '<div class="chip-row" id="rYears"><span class="chip-label">Year</span>' + years + '</div>' +
+      '<div class="chart-card"><div class="chart-wrap">' +
+        '<h4 class="stack-h">Received ' + rYear + ' <span class="osub">' + sum(rec) + '</span></h4>' + stackedBar(rec) +
+        '<h4 class="stack-h">Closed ' + rYear + ' <span class="osub">' + sum(cl) + '</span></h4>' + stackedBar(cl) +
+        rTypeLegend() +
+      '<div class="tooltip"></div></div></div>';
+  }
+
+  // Mini multi-line trend (received / closed / end) over R.years for one type.
+  function buildTypeTrend(type) {
+    var W = 620, H = 260, padL = 40, padTop = 16, padB = 26;
+    var plotW = W - padL - 16, plotH = H - padTop - padB;
+    var metrics = [
+      ['received', 'Received', 'var(--brand-green-600)'],
+      ['closed',   'Closed',   'var(--danger)'],
+      ['end',      'Year-end', 'var(--brand-navy-400)']
+    ];
+    var vals = [1];
+    metrics.forEach(function (m) {
+      R.years.forEach(function (y) { vals.push(R.flow[y][type][m[0]]); });
+    });
+    var max = niceMax(Math.max.apply(null, vals));
+    var ys = yScale(plotH, padTop, max);
+    var xs = function (i) { return R.years.length === 1 ? padL + plotW / 2 : padL + (i / (R.years.length - 1)) * plotW; };
+    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+    }).join('');
+    var lines = metrics.map(function (m) {
+      var pts = R.years.map(function (y, i) { return [xs(i), ys(R.flow[y][type][m[0]])]; });
+      var dots = pts.map(function (p, i) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + m[1] + ' ' + R.years[i] + '</b><br>' + R.flow[R.years[i]][type][m[0]] + '"/>' +
+          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + m[2] + '"/>';
+      }).join('');
+      return '<path d="' + linePath(pts) + '" fill="none" stroke="' + m[2] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
+    }).join('');
+    var xl = R.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 6) + '" class="xtick">' + y + '</text>'; }).join('');
+    var legend = '<div class="chart-legend">' + metrics.map(function (m) {
+      return '<span class="lg" style="color:' + m[2] + '"><span class="sw"></span>' + m[1] + '</span>';
+    }).join('') + '</div>';
+    return '<div class="chart-wrap">' + svgEl(W, H, grid + lines + xl, R.typeLabels[type] + ' received, closed and year-end stock, 2023–2025') + '<div class="tooltip"></div></div>' + legend;
+  }
+
+  // ---- View: Rulings by type & flow (Task 14) ----
+  function viewRFlow() {
+    var c = R.flow[rFlowYear][rFlowType], o = c.outcomes;
+    var waterfall = buildWaterfall(c.begin, c.received, c.closed, c.end, {
+      title: R.typeLabels[rFlowType] + ' ' + rFlowYear + ' stock flow: begin plus received minus closed equals end'
+    });
+    var reconciles = (c.begin + c.received - c.closed) === c.end;
+    var outRows = [
+      ['(Partly) granted',   o.granted,        'var(--brand-green-500)'],
+      ['Rejected',           o.rejected,       'var(--danger)'],
+      ['Withdrawn',          o.withdrawn,      'var(--accent-ochre)'],
+      ['Out of treatment',   o.outOfTreatment, 'var(--neutral-400)'],
+      ['No int’l character', o.noIntl,    'var(--brand-navy-300)']
+    ];
+    var maxO = Math.max.apply(null, outRows.map(function (r) { return r[1]; }).concat([1]));
+    var closedTotal = outRows.reduce(function (a, r) { return a + r[1]; }, 0);
+    var outBars = outRows.map(function (r) {
+      var pct = closedTotal ? (r[1] / closedTotal * 100).toFixed(1) : '0';
+      return '<div class="obar"><span class="olabel">' + r[0] + '</span>' +
+        '<span class="otrack" title="' + pct + '% of closed"><span class="ofill" style="width:' + (r[1] / maxO * 100).toFixed(1) + '%;background:' + r[2] + '"></span></span>' +
+        '<span class="oval">' + r[1] + '</span></div>';
+    }).join('');
+    var types = R.types.map(function (t) {
+      return '<button class="chip plain' + (t === rFlowType ? ' on' : '') + '" data-rft="' + t + '">' + R.typeLabels[t] + '</button>';
+    }).join('');
+    var years = R.years.map(function (y) {
+      return '<button class="chip plain' + (y === rFlowYear ? ' on' : '') + '" data-rfy="' + y + '">' + y + '</button>';
+    }).join('');
+    return '<div class="view-head"><h2>By type &amp; flow</h2>' +
+      '<p class="lede">Stock movement, closing outcomes and the multi-year trend for one ruling type.</p></div>' +
+      '<div class="chip-row" id="rfTypes"><span class="chip-label">Type</span>' + types + '</div>' +
+      '<div class="chip-row" id="rfYears"><span class="chip-label">Year</span>' + years + '</div>' +
+      '<div class="panel"><h4>Stock flow ' + rFlowYear + ' <small>' + R.typeLabels[rFlowType] + '</small></h4>' +
+      '<div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
+      '<p class="partner-foot">' + c.begin + ' + ' + c.received + ' − ' + c.closed + ' = <strong style="color:var(--fg-1)">' + c.end + '</strong>' +
+      (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>' +
+      '<div class="panel"><h4>Outcome split ' + rFlowYear + ' <small>of ' + closedTotal + ' closed</small></h4><div class="outcols">' + outBars + '</div></div>' +
+      '<div class="panel"><h4>Received, closed &amp; year-end stock <small>2023–2025</small></h4>' + buildTypeTrend(rFlowType) + '</div>';
+  }
+
+  // ---- View: Rulings processing times (Task 15) ----
+  function viewRTiming() {
+    var pt = R.processingTime[rtYear];
+    var outs = [
+      ['granted',        '(Partly) granted'],
+      ['rejected',       'Rejected'],
+      ['withdrawn',      'Withdrawn'],
+      ['outOfTreatment', 'Out of treatment']
+    ];
+    // Shade scale: deepest tint at the longest gross time in the table.
+    var maxMo = 1;
+    outs.forEach(function (o) {
+      R.types.forEach(function (t) { var v = pt[t][o[0]]; if (v != null && v > maxMo) maxMo = v; });
+    });
+    var head = '<tr><th class="corner"></th>' + R.types.map(function (t) { return '<th>' + t + '</th>'; }).join('') + '</tr>';
+    var rows = outs.map(function (o) {
+      return '<tr><td class="rowlbl">' + o[1] + '</td>' + R.types.map(function (t) {
+        var v = pt[t][o[0]];
+        if (v == null) return '<td class="cell na">—</td>';
+        var a = (0.10 + 0.85 * (v / maxMo)).toFixed(3);
+        return '<td class="cell" style="--a:' + a + '" title="' + R.typeLabels[t] + ' · ' + o[1] + ': ' + v + ' months">' + v + '</td>';
+      }).join('') + '</tr>';
+    }).join('');
+    var years = [2024, 2025].map(function (y) {
+      return '<button class="chip plain' + (y === rtYear ? ' on' : '') + '" data-rty="' + y + '">' + y + '</button>';
+    }).join('');
+    return '<div class="view-head"><h2>Processing times</h2>' +
+      '<p class="lede">Gross processing time in months, by ruling type and closing outcome.</p></div>' +
+      '<div class="chip-row" id="rtYears"><span class="chip-label">Year</span>' + years + '</div>' +
+      '<div class="chart-card"><div class="heat-wrap"><table class="heat"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>' +
+      '<p class="note">' + R.processingNote + '</p></div>';
+  }
+
+  // ---- View: Rulings defining positions (Task 15) ----
+  function viewRPositions() {
+    function cards(group) {
+      return R.positions.filter(function (p) { return p.group === group; }).map(function (p) {
+        return '<article class="position"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
+          '<h3>' + p.icon + ' ' + p.title + '</h3><p>' + p.body + '</p></article>';
+      }).join('');
+    }
+    return '<div class="view-head"><h2>Defining positions</h2>' +
+      '<p class="lede">Selected “beeldbepalende standpunten” from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary.</p></div>' +
+      '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
+      '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>';
+  }
+
   // ---- Render functions ----
 
   function renderHero() {
@@ -673,13 +909,11 @@ small { font-size:12px; color:var(--fg-3); }
       case 'outcomes':  html = viewOutcomes();  break;
       case 'timing':    html = viewTiming();    break;
       case 'tp':        html = viewTp();        break;
-      // ---- Rulings views (Tasks 13-15, not yet built) ----
-      case 'rOverview':
-      case 'rFlow':
-      case 'rTiming':
-      case 'rPositions':
-        html = '<div class="view-placeholder">International Rulings views are coming next.</div>';
-        break;
+      // ---- International Rulings views (Tasks 13-15) ----
+      case 'rOverview':  html = viewROverview();  break;
+      case 'rFlow':      html = viewRFlow();      break;
+      case 'rTiming':    html = viewRTiming();    break;
+      case 'rPositions': html = viewRPositions(); break;
       default:
         html = '<div class="view-placeholder">Unknown view.</div>';
     }
@@ -722,6 +956,11 @@ small { font-size:12px; color:var(--fg-3); }
     if ((b = e.target.closest('[data-invy]')))  { invYear = +b.getAttribute('data-invy'); render(); return; }
     if ((b = e.target.closest('[data-invs]')))  { invStream = b.getAttribute('data-invs'); render(); return; }
     if ((b = e.target.closest('[data-outy]')))  { outYear = +b.getAttribute('data-outy'); render(); return; }
+    // ---- Rulings controls ----
+    if ((b = e.target.closest('[data-ry]')))    { rYear = +b.getAttribute('data-ry'); render(); return; }
+    if ((b = e.target.closest('[data-rft]')))   { rFlowType = b.getAttribute('data-rft'); render(); return; }
+    if ((b = e.target.closest('[data-rfy]')))   { rFlowYear = +b.getAttribute('data-rfy'); render(); return; }
+    if ((b = e.target.closest('[data-rty]')))   { rtYear = +b.getAttribute('data-rty'); render(); return; }
   });
 
   // ---- Init ----

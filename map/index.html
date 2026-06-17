@@ -784,9 +784,13 @@ small { font-size:12px; color:var(--fg-3); }
   // Uses typeStats() so each instrument is routed to its source of truth.
   function byTypeBars(year) {
     var inv = MAP_DATA.inventory[year];
-    // MAP total broken down by workstream for a metric (shown in the bar's tooltip).
+    // Rich, styled tooltip for the aggregate MAP bar: title + total + per-workstream split.
+    var MAP_TIP_TITLE = { received: 'New MAP cases by type', closed: 'MAP cases closed by type' };
     function mapTip(metric) {
-      return inv ? 'of which:\n' + MAP_DISPUTE_STREAMS.map(function (s) { return WS_LABEL[s] + ': ' + inv[s][metric]; }).join('\n') : '';
+      if (!inv) return '';
+      var total = MAP_DISPUTE_STREAMS.reduce(function (a, s) { return a + inv[s][metric]; }, 0);
+      return '<b>' + MAP_TIP_TITLE[metric] + '</b> &middot; ' + total + ' total' +
+        MAP_DISPUTE_STREAMS.map(function (s) { return '<br>&middot; ' + WS_LABEL[s] + ': ' + inv[s][metric]; }).join('');
     }
     var rows = TYPES.map(function (t) {
       var s = typeStats(t.key, year);
@@ -794,20 +798,22 @@ small { font-size:12px; color:var(--fg-3); }
     });
     var maxV = 1;
     rows.forEach(function (r) { if (r.received != null) maxV = Math.max(maxV, r.received, r.closed); });
-    function bar(val, color, tip) {
-      if (val == null) return '<span class="otrack" title="no data for ' + year + '"><span class="ofill" style="width:0%;background:' + color + '"></span></span><span class="oval">—</span>';
-      return '<span class="otrack" title="' + (tip || val) + '"><span class="ofill" style="width:' + (val / maxV * 100).toFixed(1) + '%;background:' + color + '"></span></span><span class="oval">' + val + '</span>';
+    function bar(t, val, metric, color) {
+      var mLabel = metric === 'received' ? 'Received' : 'Closed';
+      if (val == null) return '<span class="otrack" data-tip="<b>' + t.label + ' ' + year + '</b><br>no data for ' + year + '"><span class="ofill" style="width:0%;background:' + color + '"></span></span><span class="oval">—</span>';
+      var tip = (t.key === 'MAP' && inv) ? mapTip(metric) : '<b>' + t.label + ' ' + year + '</b><br>' + mLabel + ': ' + val;
+      return '<span class="otrack" data-tip="' + tip + '"><span class="ofill" style="width:' + (val / maxV * 100).toFixed(1) + '%;background:' + color + '"></span></span><span class="oval">' + val + '</span>';
     }
     var body = rows.map(function (r) {
-      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.received, r.t.c, r.t.key === 'MAP' ? mapTip('received') : null) + '</div>';
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.t, r.received, 'received', r.t.c) + '</div>';
     }).join('');
     var bodyClosed = rows.map(function (r) {
-      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.closed, 'var(--neutral-400)', r.t.key === 'MAP' ? mapTip('closed') : null) + '</div>';
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.t, r.closed, 'closed', 'var(--neutral-400)') + '</div>';
     }).join('');
-    return '<div class="outcols">' +
+    return '<div class="chart-wrap"><div class="outcols">' +
       '<h4>Received ' + year + '</h4>' + body +
       '<h4>Closed ' + year + '</h4>' + bodyClosed +
-      '</div>';
+      '</div><div class="tooltip"></div></div>';
   }
 
   // MAP average cycle-time line vs the 24-month norm (carried over from the old
@@ -888,15 +894,25 @@ small { font-size:12px; color:var(--fg-3); }
       { label: 'ATR · time to granted',  v: rulVal('ATR'),   n: rulCount('ATR'),   kind: 'ruling', c: 'var(--brand-navy-300)' }
     ].filter(function (r) { return r.v != null; }).sort(function (a, b) { return b.v - a.v; });
     var maxV = 1; rows.forEach(function (r) { maxV = Math.max(maxV, r.v); });
+    // For the aggregate "all cases" MAP bar, break the closed count down by workstream.
+    function mapBreakdown() {
+      if (sel === 'avg') return '';
+      var i = MAP_DATA.years.indexOf(sel); if (i < 0) return '';
+      return '<br><b>Cases closed by type</b>' + MAP_DISPUTE_STREAMS.map(function (s) {
+        return '<br>&middot; ' + WS_LABEL[s] + ': ' + MAP_DATA.caseload[s].closed[i];
+      }).join('');
+    }
     var bars = rows.map(function (r) {
       var metricLbl = r.kind === 'map' ? 'avg cycle time' : 'gross time to granted';
       var nLbl = sel === 'avg' ? '2022–2025 average'
         : (r.n != null ? r.n + (r.kind === 'map' ? ' cases closed' : ' granted') + ' in ' + sel : '');
+      var extra = (r.kind === 'map' && r.label.indexOf('all cases') >= 0) ? mapBreakdown() : '';
+      var tip = '<b>' + r.label + '</b><br>' + (r.kind === 'map' ? '~' : '') + r.v + ' months &middot; ' + metricLbl + (nLbl ? '<br>' + nLbl : '') + extra;
       return '<div class="obar"><span class="olabel">' + r.label + '</span>' +
-        '<span class="otrack" title="' + r.v + ' months · ' + metricLbl + (nLbl ? ' · ' + nLbl : '') + '"><span class="ofill" style="width:' + (r.v / maxV * 100).toFixed(1) + '%;background:' + r.c + '"></span></span>' +
+        '<span class="otrack" data-tip="' + tip + '"><span class="ofill" style="width:' + (r.v / maxV * 100).toFixed(1) + '%;background:' + r.c + '"></span></span>' +
         '<span class="oval">' + r.v + '</span></div>';
     }).join('');
-    return '<div class="outcols">' + bars + '</div>';
+    return '<div class="chart-wrap"><div class="outcols">' + bars + '</div><div class="tooltip"></div></div>';
   }
 
   // MAP treaty-partner horizontal bars for a given year (2024 or 2025).

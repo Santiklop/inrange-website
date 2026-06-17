@@ -279,6 +279,46 @@ var RULINGS_DATA = {
       icon: '🧮', group: 'TP', title: 'Cost-Plus: Which Costs Belong in the Base?',
       body: "When the arm's-length reward for a service uses operating profit over costs as the profit-level indicator, which costs go in the cost base? Align with the base the benchmark comparables use. Under the 2022 Transfer Pricing Decree, pass-through costs can be stripped out only if independent parties would likewise earn no profit on them — and a routine reward should still absorb or pass through financing costs.",
       source: 'Rulings 2025'
+    },
+    {
+      icon: '🎯', group: 'TP', title: 'Price to the Median',
+      body: "Without a CUP or a profit split, the Dutch authority anchors the arm's-length reward to the median of the range — correcting to the middle to absorb unknown comparability defects. You can sit elsewhere in the range, but only with a documented reason: a materially different turnover, a COVID-hit market, a higher or lower functional-and-risk profile. In one 2022 APA the off-median point wasn't substantiated and no agreement was reached; bilateral cases get more room to negotiate a specific point.",
+      source: 'Rulings 2022'
+    },
+    {
+      icon: '💶', group: 'TP', title: 'Cash-Pool Leader Reward',
+      body: "Two 2022 cash-pool requests, opposite outcomes. Where the Dutch entity genuinely ran the pool — setting rates, contracting with banks, owning the risks with the staff to match — the authority gave certainty on the leader's reward on arm's-length terms, though not yet on the interest rates themselves. Where control over the flows was thin and it wasn't even clear a real pool existed, the request was withdrawn. A 'leader' label earns nothing without the functions behind it.",
+      source: 'Rulings 2022'
+    },
+    {
+      icon: '🔎', group: 'TP', title: 'Look at the Other Side Too',
+      body: "A Dutch company sought certainty on a routine procurement and logistics reward, with all dealings running to an EU head office. The authority kept asking what that head office actually did — and whether its large carry-forward losses were the real reason flows were routed through it — until the request was withdrawn. The lesson: a clean arm's-length return in the Netherlands isn't enough; they also test whether the foreign counterparty's functionality fits and whether the structure exists mainly for tax.",
+      source: 'Rulings 2022'
+    },
+    {
+      icon: '🧩', group: 'Access', title: 'Nexus That Arrives With the Deal',
+      body: "Can economic substance that lands in the Netherlands right after an external acquisition count when judging access to certainty on the closely-connected steps that precede it? In 2022 the College IFZ said yes — where those steps sit in a very short window before the deal, the post-acquisition nexus can be weighed. A pragmatic read of the access test for acquisition structuring.",
+      source: 'Rulings 2022'
+    },
+    {
+      icon: '⚖️', group: 'TP', title: 'Two Cash Pools, Two Answers',
+      body: "2021 made the financing-substance test concrete with a published pair. One cash pool — 11 to 25 people in the Netherlands setting rates, contracting with banks and managing the risks — earned its arm's-length reward. Another, where the work was purely administrative and the real functions sat abroad, was refused certainty on its reward. Same instrument, opposite outcomes, one dividing line: control has to live where you book the return.",
+      source: 'Rulings 2021'
+    },
+    {
+      icon: '💡', group: 'TP', title: 'Royalties Into a Tax-Free Zone',
+      body: "A routine Dutch distributor paid royalties to a foreign IP owner whose receipts were almost untaxed and whose functionality, on a quick look, was thin. The authority read a tax-saving motive and refused certainty. The signal is general: they are sceptical of royalty flows for IP parked in untaxed or low-taxed environments, and will test the substance on the far end before pricing the deduction here.",
+      source: 'Rulings 2021'
+    },
+    {
+      icon: '🔁', group: 'TP', title: 'Re-Invoicing: Allowed, Barely',
+      body: "A Dutch company ran routine re-invoicing on a cost-plus reward. The authority — in its own words, extremely reticent about these requests — pressed hard on the commercial rationale and whether the aim was to save foreign withholding tax. Here there were valid business reasons and no tax advantage, so a reward was agreed. Read it as a warning shot: pure re-invoicing without substance won't get certainty.",
+      source: 'Rulings 2021'
+    },
+    {
+      icon: '🛡️', group: 'Access', title: 'No Ruling Under an Integrity Cloud',
+      body: "While handling an APA request, the authority pressed for more on the ultimate beneficial owners after public signals of serious financial crime abroad. The signals weren't dispelled, and the request was withdrawn. Access to certainty runs through an integrity gate: a suspicion of money laundering or serious offences — absent proof to the contrary — is enough to close the door, whatever the technical merits.",
+      source: 'Rulings 2021'
     }
   ],
 

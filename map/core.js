@@ -224,6 +224,16 @@ var RULINGS_DATA = {
       icon: '🔗', group: 'Access', title: 'The New "Qualifying Entity" Test',
       body: "From 2025, withholding-tax rulings test for a 'qualifying entity' — parties acting together with a main purpose of avoiding withholding tax, for example by splitting one qualifying interest into several non-qualifying ones. The main-purpose element is decisive, and everyone involved in the splitting is pulled into the qualifying entity. Fragmenting interests to dodge withholding will be looked through.",
       source: 'Rulings 2025'
+    },
+    {
+      icon: '🏦', group: 'TP', title: 'A Routine Reward for Treasury Support',
+      body: "2025 prefilings asked whether the Netherlands can get an APA for a routine financing activity that serves a foreign 'group treasury' which holds control over the treasury functions. The answer: in principle yes — provided the financial flows don't run over the Dutch company's balance sheet and P&L. Control sitting abroad caps the Dutch reward at a routine service fee, not the financing spread.",
+      source: 'Rulings 2025'
+    },
+    {
+      icon: '🧮', group: 'TP', title: 'Cost-Plus: Which Costs Belong in the Base?',
+      body: "When the arm's-length reward for a service uses operating profit over costs as the profit-level indicator, which costs go in the cost base? Align with the base the benchmark comparables use. Under the 2022 Transfer Pricing Decree, pass-through costs can be stripped out only if independent parties would likewise earn no profit on them — and a routine reward should still absorb or pass through financing costs.",
+      source: 'Rulings 2025'
     }
   ],
 

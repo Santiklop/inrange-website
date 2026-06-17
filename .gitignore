@@ -1,5 +1,6 @@
 _design/
 .claude/
+.superpowers/
 .DS_Store
 Thumbs.db
 node_modules/

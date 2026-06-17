@@ -421,7 +421,7 @@ small { font-size:12px; color:var(--fg-3); }
     { id: 'overview', label: 'Overview' },
     { id: 'timing',   label: 'Timing & resolution' },
     { id: 'advance',  label: 'Advance pricing' },
-    { id: 'cases',    label: 'TP case studies' }
+    { id: 'cases',    label: 'APA case studies' }
   ];
 
   var active = TABS[0].id;
@@ -622,7 +622,6 @@ small { font-size:12px; color:var(--fg-3); }
   var monthsYear = 2025;                             // "typical months by instrument" year
   // Advance-pricing tab
   var apType = 'APA';                                // 'APA' | 'BAPA' | 'MAPA'
-  var apTrendMetric = 'received';                    // 'received' | 'closed'
 
   // ===========================================================
   //  Shared by-type builders (reuse the svgEl/linePath/yScale toolkit)
@@ -674,6 +673,54 @@ small { font-size:12px; color:var(--fg-3); }
     var note = metric ? '<span class="lg" style="color:var(--fg-3)"><span class="sw"></span>' +
       (metric === 'received' ? 'Received' : 'Closed') + '</span>' : '';
     return '<div class="chart-legend">' + items + note + '</div>';
+  }
+
+  // Dual-metric trend: per type, received (solid) + closed (dashed) in the same
+  // colour, over the 2019–2025 axis. Used by the Advance-pricing tab.
+  function dualTrendChart(onKeys) {
+    var W = 900, H = 360, padL = 48, padTop = 16, padB = 28;
+    var plotW = W - padL - 16, plotH = H - padTop - padB;
+    var keys = onKeys.length ? onKeys : ['APA'];
+    var vals = [1];
+    keys.forEach(function (k) {
+      ['received', 'closed'].forEach(function (m) { typeSeries(k, m).forEach(function (v) { if (v != null) vals.push(v); }); });
+    });
+    var max = niceMax(Math.max.apply(null, vals));
+    var ys = yScale(plotH, padTop, max);
+    var xs = function (i) { return padL + (i / (MAP_DATA.years.length - 1)) * plotW; };
+    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+    }).join('');
+    function metricLines(k, metric, dashed) {
+      var t = typeOf(k), ser = typeSeries(k, metric), mLabel = metric === 'received' ? 'Received' : 'Closed';
+      var pts = [];
+      ser.forEach(function (v, i) { if (v != null) pts.push([xs(i), ys(v), i]); });
+      if (!pts.length) return '';
+      var dash = dashed ? ' stroke-dasharray="4 4"' : '';
+      var path = pts.length > 1 ? '<path d="' + linePath(pts.map(function (p) { return [p[0], p[1]]; })) +
+        '" fill="none" stroke="' + t.c + '" stroke-width="' + (dashed ? 2 : 2.5) + '"' + dash + ' stroke-linejoin="round"/>' : '';
+      var dots = pts.map(function (p) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + t.label + ' ' + MAP_DATA.years[p[2]] + '</b><br>' + mLabel + ': ' + ser[p[2]] + '"/>' +
+          (dashed ? '' : '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + t.c + '"/>');
+      }).join('');
+      return path + dots;
+    }
+    var lines = keys.map(function (k) { return metricLines(k, 'received', false) + metricLines(k, 'closed', true); }).join('');
+    var xl = MAP_DATA.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 8) + '" class="xtick">' + y + '</text>'; }).join('');
+    return svgEl(W, H, grid + lines + xl, 'APA, BAPA and MAPA requests received (solid) and closed (dashed), 2019–2025');
+  }
+
+  // Legend for the dual-metric trend: type colours + solid=received / dashed=closed.
+  function dualLegend(keys) {
+    var items = keys.map(typeOf).filter(Boolean).map(function (t) {
+      return '<span class="lg" style="color:' + t.c + '"><span class="sw"></span>' + gloss(t.label, t.glossKey) + '</span>';
+    }).join('');
+    return '<div class="chart-legend">' + items +
+      '<span class="lg" style="color:var(--fg-3)"><span class="sw"></span>Received</span>' +
+      '<span class="lg" style="color:var(--fg-3)"><span class="sw dashed"></span>Closed</span></div>';
   }
 
   // Horizontal by-type bars (received & closed) for a selected year, all 7 types.
@@ -946,9 +993,6 @@ small { font-size:12px; color:var(--fg-3); }
       return '<button class="chip' + (k === apType ? ' on' : '') + '" data-apt="' + k + '" style="--chip:' + t.c + '"' + titleAttr(t.glossKey) + '>' + t.short + '</button>';
     }).join('');
     var onKeys = ['APA', 'BAPA', 'MAPA'];
-    var metricToggle = ['received', 'closed'].map(function (m) {
-      return '<button class="chip plain' + (m === apTrendMetric ? ' on' : '') + '" data-apm="' + m + '">' + (m === 'received' ? 'Received' : 'Closed') + '</button>';
-    }).join('');
 
     return '<div class="view-head"><h2>Advance pricing — ' + gloss('APA', 'APA') + ' vs ' + gloss('BAPA', 'BAPA') + ' vs ' + gloss('MAPA', 'MAPA') + '</h2>' +
       '<p class="lede">The three advance-pricing instruments compared head to head: unilateral ' + gloss('APA', 'APA') + 's from the ruling practice, and bilateral/multilateral ' +
@@ -961,9 +1005,8 @@ small { font-size:12px; color:var(--fg-3); }
       outcomeHtml +
       '<div class="chart-card">' +
         '<h4 class="stack-h">Requests over time <span class="osub">APA / BAPA / MAPA</span></h4>' +
-        '<div class="chip-row" id="apTrendToggle"><span class="chip-label">Metric</span>' + metricToggle + '</div>' +
-        '<div class="chart-wrap">' + unifiedTrendChart(apTrendMetric, onKeys) + '<div class="tooltip"></div></div>' + typeLegend(onKeys, apTrendMetric) +
-        '<p class="partner-foot">APA from the international-rulings report (2023–2025); BAPA/MAPA from the MAP team’s caseload (2019–2025). ' + SOT_FOOTNOTE + '</p>' +
+        '<div class="chart-wrap">' + dualTrendChart(onKeys) + '<div class="tooltip"></div></div>' + dualLegend(onKeys) +
+        '<p class="partner-foot">Solid = received, dashed = closed. APA from the international-rulings report (2023–2025); BAPA/MAPA from the MAP team’s caseload (2019–2025). ' + SOT_FOOTNOTE + '</p>' +
       '</div>' +
       '<div class="panel"><h4>Side by side, 2025 <small>received · closed · year-end stock</small></h4><div class="outcols">' + cmpBars + '</div>' +
         '<p class="note">' + MAP_DATA.facts.apaShareOfTP + '</p>' +
@@ -1017,14 +1060,18 @@ small { font-size:12px; color:var(--fg-3); }
   //  Tab 4 — TP case studies (defining positions; unchanged content)
   // ===========================================================
   function viewCases() {
+    // Sort year from the source tag (e.g. "Rulings 2024", "Rulings 2024-25" → 2025).
+    function yearOf(src) { var m = String(src).match(/(\d{4})(?:-(\d{2}))?/); return m ? (m[2] ? 2000 + (+m[2]) : +m[1]) : 0; }
     function cards(group) {
-      return R.positions.filter(function (p) { return p.group === group; }).map(function (p) {
-        return '<article class="position"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
-          '<h3>' + p.icon + ' ' + p.title + '</h3><p>' + p.body + '</p></article>';
-      }).join('');
+      return R.positions.filter(function (p) { return p.group === group; })
+        .slice().sort(function (a, b) { return yearOf(b.source) - yearOf(a.source); })
+        .map(function (p) {
+          return '<article class="position"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
+            '<h3>' + p.icon + ' ' + p.title + '</h3><p>' + p.body + '</p></article>';
+        }).join('');
     }
-    return '<div class="view-head"><h2>TP case studies</h2>' +
-      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary.</p></div>' +
+    return '<div class="view-head"><h2>APA case studies</h2>' +
+      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary. Newest first.</p></div>' +
       '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
       '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>' +
       '<aside class="explainer"><p class="eyebrow">inRange view · not in the data</p>' +
@@ -1126,7 +1173,6 @@ small { font-size:12px; color:var(--fg-3); }
     if ((b = e.target.closest('[data-outy]'))) { outYear = +b.getAttribute('data-outy'); render(); return; }
     // Advance pricing
     if ((b = e.target.closest('[data-apt]')))  { apType = b.getAttribute('data-apt'); render(); return; }
-    if ((b = e.target.closest('[data-apm]')))  { apTrendMetric = b.getAttribute('data-apm'); render(); return; }
   });
 
   // ---- Init ----

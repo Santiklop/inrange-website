@@ -123,6 +123,11 @@ small { font-size:12px; color:var(--fg-3); }
 .footer-sources, .footer-notes { min-width:0; }
 .srclist { margin:0; padding-left:18px; }
 .srclist li { margin-bottom:5px; line-height:1.5; color:var(--fg-2); }
+.srclist a.src-dl { color:var(--fg-2); text-decoration:none; display:inline-flex; align-items:baseline; gap:5px; transition:color var(--dur-fast) var(--ease); }
+.srclist a.src-dl:hover, .srclist a.src-dl:focus { color:var(--fg-brand); text-decoration:underline; outline:none; }
+.srclist a.src-dl .dl-ic { flex-shrink:0; align-self:center; opacity:.7; }
+.srclist a.src-dl:hover .dl-ic { opacity:1; }
+.srclist a.src-dl .src-sz { color:var(--fg-3); font-size:11px; }
 .note { font-size:12px; color:var(--fg-3); line-height:1.6; margin-bottom:10px; }
 .footer-notes .note:last-child { margin-bottom:0; }
 .footer-stamp { font-weight:600; color:var(--fg-2); padding-top:4px; border-top:1px solid var(--border-subtle); }
@@ -1177,8 +1182,13 @@ small { font-size:12px; color:var(--fg-3); }
   // Footer: published sources from BOTH reports (labelled), both methodology
   // notes, the BAPA/MAPA source-of-truth note, and the "data through FY2025" stamp.
   function renderFooter() {
-    var mapSrc = MAP_DATA.sources.map(function (s) { return '<li>' + s.title + '</li>'; }).join('');
-    var rulSrc = RULINGS_DATA.sources.map(function (s) { return '<li>' + s.title + '</li>'; }).join('');
+    var dlIc = '<svg viewBox="0 0 16 16" width="12" height="12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="dl-ic"><path d="M8 2v8"/><path d="M5 7l3 3 3-3"/><path d="M3 13h10"/></svg>';
+    function srcLi(s) {
+      return '<li><a class="src-dl" href="' + s.file + '" download title="Download PDF">' + s.title + dlIc +
+        '<span class="src-sz">' + (s.bytes / 1048576).toFixed(1) + ' MB</span></a></li>';
+    }
+    var mapSrc = MAP_DATA.sources.map(srcLi).join('');
+    var rulSrc = RULINGS_DATA.sources.map(srcLi).join('');
     var stamp = 'Data through FY2025 · figures are the authorities’ published counts.';
     document.getElementById('footer').innerHTML =
       '<div class="footer-grid">' +

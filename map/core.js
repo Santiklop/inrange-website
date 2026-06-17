@@ -80,7 +80,8 @@ var MAP_DATA = {
     norm: 24
   },
 
-  // partners[year] = [{name, count}] desc; includes 'Other'
+  // partners[year] = [{name, count}] desc. 2025 includes an 'Other' slice; the
+  // 2024 report charts only the named top-5. partnerCounts keyed by year.
   partners: {
     2025: [
       { name: 'Belgium',         count: 264 },
@@ -90,7 +91,17 @@ var MAP_DATA = {
       { name: 'Spain',           count: 83  },
       { name: 'United Kingdom',  count: 60  }
     ],
-    partnerCounts: { total: 60, INT: 54, TP: 32, TB: 11 }
+    2024: [
+      { name: 'Belgium',         count: 248 },
+      { name: 'Germany',         count: 168 },
+      { name: 'Spain',           count: 74  },
+      { name: 'United Kingdom',  count: 69  },
+      { name: 'Italy',           count: 37  }
+    ],
+    partnerCounts: {
+      2025: { total: 60, INT: 54, TP: 32, TB: 11 },
+      2024: { total: 58, INT: 58, TP: 32, TB: 10 }
+    }
   },
 
   // KPI headline values + YoY for the hero

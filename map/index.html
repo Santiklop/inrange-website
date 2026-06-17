@@ -632,7 +632,8 @@ small { font-size:12px; color:var(--fg-3); }
   var ovOn = { MAP: true, ATR: true, APA: true, BAPA: true, MAPA: true, INNO: true, OTHER: true };
   // Timing tab
   var outYear = 2025;                                // MAP outcome-breakdown year (2024/2025)
-  var monthsYear = 2025;                             // "typical months by instrument" year
+  var monthsYear = 2025;                             // "typical months by instrument": year or 'avg'
+  var partnerYear = 2025;                            // top treaty partners year (2024/2025)
   // Advance-pricing tab
   var apType = 'APA';                                // 'APA' | 'BAPA' | 'MAPA'
   var apCmpYear = 2025;                              // side-by-side comparison year (2023–2025)
@@ -800,19 +801,29 @@ small { font-size:12px; color:var(--fg-3); }
   // Ranked "typical months by type" horizontal bar: MAP cycle time (TP/INT/Total
   // 2025) alongside ruling gross time-to-granted (ATR/APA/BAPA/INNO/OTHER 2025).
   // Two different metrics — clearly labelled + footnoted by the caller.
-  function monthsByTypeBar(year) {
-    var ct = D.cycleTimes, idx = ct.years.indexOf(year);
-    if (idx < 0) idx = ct.years.length - 1;
-    var pg = R.processingTime[year] || R.processingTime[2025];
+  // sel: a year number, or 'avg' for the 2023–2025 average.
+  function monthsByTypeBar(sel) {
+    var ct = D.cycleTimes, avgYears = [2023, 2024, 2025];
+    function r1(x) { return Math.round(x * 10) / 10; }
+    function avg(vs) { return r1(vs.reduce(function (a, b) { return a + b; }, 0) / vs.length); }
+    function mapVal(key) {
+      if (sel === 'avg') return avg(avgYears.map(function (y) { return ct[key][ct.years.indexOf(y)]; }));
+      var idx = ct.years.indexOf(sel); if (idx < 0) idx = ct.years.length - 1;
+      return ct[key][idx];
+    }
+    function rulVal(type) {
+      if (sel === 'avg') return avg(avgYears.map(function (y) { return R.processingTime[y][type].granted; }));
+      return (R.processingTime[sel] || R.processingTime[2025])[type].granted;
+    }
     var rows = [
-      { label: 'MAP · transfer pricing', short: 'MAP TP',  v: ct.TP[idx],    kind: 'map', c: 'var(--brand-green-600)' },
-      { label: 'MAP · interpretation',   short: 'MAP INT', v: ct.INT[idx],   kind: 'map', c: 'var(--brand-navy-500)' },
-      { label: 'MAP · all cases',        short: 'MAP all', v: ct.Total[idx], kind: 'map', c: 'var(--brand-navy-300)' },
-      { label: 'BAPA · time to granted', short: 'BAPA',    v: pg.BAPA.granted, kind: 'ruling', c: 'var(--brand-green-400)' },
-      { label: 'Innovation box · to granted', short: 'Innovation box', v: pg.Innovatiebox.granted, kind: 'ruling', c: 'var(--accent-ochre)' },
-      { label: 'APA · time to granted',  short: 'APA',     v: pg.APA.granted,  kind: 'ruling', c: 'var(--brand-green-600)' },
-      { label: 'Other · time to granted', short: 'Other',  v: pg.Overige.granted, kind: 'ruling', c: 'var(--neutral-400)' },
-      { label: 'ATR · time to granted',  short: 'ATR',     v: pg.ATR.granted,  kind: 'ruling', c: 'var(--brand-navy-300)' }
+      { label: 'MAP · transfer pricing', v: mapVal('TP'),    kind: 'map', c: 'var(--brand-green-600)' },
+      { label: 'MAP · interpretation',   v: mapVal('INT'),   kind: 'map', c: 'var(--brand-navy-500)' },
+      { label: 'MAP · all cases',        v: mapVal('Total'), kind: 'map', c: 'var(--brand-navy-300)' },
+      { label: 'BAPA · time to granted', v: rulVal('BAPA'),  kind: 'ruling', c: 'var(--brand-green-400)' },
+      { label: 'Innovation box · to granted', v: rulVal('Innovatiebox'), kind: 'ruling', c: 'var(--accent-ochre)' },
+      { label: 'APA · time to granted',  v: rulVal('APA'),   kind: 'ruling', c: 'var(--brand-green-600)' },
+      { label: 'Other · time to granted', v: rulVal('Overige'), kind: 'ruling', c: 'var(--neutral-400)' },
+      { label: 'ATR · time to granted',  v: rulVal('ATR'),   kind: 'ruling', c: 'var(--brand-navy-300)' }
     ].sort(function (a, b) { return b.v - a.v; });
     var maxV = 1; rows.forEach(function (r) { maxV = Math.max(maxV, r.v); });
     var bars = rows.map(function (r) {
@@ -824,15 +835,16 @@ small { font-size:12px; color:var(--fg-3); }
     return '<div class="outcols">' + bars + '</div>';
   }
 
-  // MAP treaty-partner horizontal bars (carried over from the old timing view).
-  function treatyPartnerBars() {
-    var maxP = D.partners[2025][0].count;
-    var bars = D.partners[2025].map(function (p) {
+  // MAP treaty-partner horizontal bars for a given year (2024 or 2025).
+  function treatyPartnerBars(year) {
+    var list = D.partners[year] || D.partners[2025];
+    var maxP = list[0].count;
+    var bars = list.map(function (p) {
       return '<div class="pbar"><span class="plabel">' + p.name + '</span>' +
         '<span class="ptrack"><span class="pfill" style="width:' + (p.count / maxP * 100).toFixed(1) + '%"></span></span>' +
         '<span class="pval">' + p.count + '</span></div>';
     }).join('');
-    var pc = D.partners.partnerCounts;
+    var pc = D.partners.partnerCounts[year];
     return '<div class="pbars">' + bars + '</div>' +
       '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p>';
   }
@@ -917,11 +929,12 @@ small { font-size:12px; color:var(--fg-3); }
     return '<div class="view-head"><h2>Timing &amp; resolution</h2>' +
       '<p class="lede">How long each instrument takes, how Dutch ' + gloss('MAP', 'MAP') + ' cases resolve, and who the Netherlands resolves them with.</p></div>' +
       '<p class="note" style="margin-bottom:16px">' + D.facts.awards + '</p>' +
-      '<div class="panel"><h4>Typical months by instrument, ' + monthsYear + ' <small>ranked; longest at the top</small></h4>' +
-        '<div class="chip-row" id="mtyYears"><span class="chip-label">Year</span>' +
+      '<div class="panel"><h4>Typical months by instrument, ' + (monthsYear === 'avg' ? '2023–2025 average' : monthsYear) + ' <small>ranked; longest at the top</small></h4>' +
+        '<div class="chip-row" id="mtyYears"><span class="chip-label">Period</span>' +
           D.cycleTimes.years.filter(function (y) { return R.processingTime[y]; }).map(function (y) {
             return '<button class="chip plain' + (y === monthsYear ? ' on' : '') + '" data-mty="' + y + '">' + y + '</button>';
           }).join('') +
+          '<button class="chip plain' + (monthsYear === 'avg' ? ' on' : '') + '" data-mty="avg">3-yr avg</button>' +
         '</div>' +
         monthsByTypeBar(monthsYear) +
         '<p class="partner-foot">Two different metrics shown side by side: ' + gloss('MAP', 'MAP') + ' bars are the <strong>average cycle time</strong> ' +
@@ -943,8 +956,14 @@ small { font-size:12px; color:var(--fg-3); }
       '<div class="panel"><h4>MAP outcome breakdown <small>ten ' + gloss('OECD', 'OECD') + ' categories; share of all closed cases</small></h4>' +
         outcomesBlock(outYear) +
       '</div>' +
-      '<div class="panel"><h4>Top treaty partners, 2025 <small>MAP cases per partner; named top-5 + Other</small></h4>' +
-        treatyPartnerBars() +
+      '<div class="panel"><h4>Top treaty partners, ' + partnerYear + ' <small>MAP cases per partner; ' +
+        (D.partners[partnerYear].some(function (p) { return p.name === 'Other'; }) ? 'named top-5 + Other' : 'top five countries') + '</small></h4>' +
+        '<div class="chip-row" id="ptYears"><span class="chip-label">Year</span>' +
+          Object.keys(D.partners).filter(function (k) { return /^\d+$/.test(k); }).map(Number).sort().map(function (y) {
+            return '<button class="chip plain' + (y === partnerYear ? ' on' : '') + '" data-pty="' + y + '">' + y + '</button>';
+          }).join('') +
+        '</div>' +
+        treatyPartnerBars(partnerYear) +
       '</div>';
   }
 
@@ -1197,7 +1216,8 @@ small { font-size:12px; color:var(--fg-3); }
     if ((b = e.target.closest('[data-ovm]')))  { ovTrendMetric = b.getAttribute('data-ovm'); render(); return; }
     if ((b = e.target.closest('[data-ovt]')))  { var k = b.getAttribute('data-ovt'); ovOn[k] = !ovOn[k]; render(); return; }
     // Timing
-    if ((b = e.target.closest('[data-mty]')))  { monthsYear = +b.getAttribute('data-mty'); render(); return; }
+    if ((b = e.target.closest('[data-mty]')))  { var mv = b.getAttribute('data-mty'); monthsYear = (mv === 'avg') ? 'avg' : +mv; render(); return; }
+    if ((b = e.target.closest('[data-pty]')))  { partnerYear = +b.getAttribute('data-pty'); render(); return; }
     if ((b = e.target.closest('[data-outy]'))) { outYear = +b.getAttribute('data-outy'); render(); return; }
     // Advance pricing
     if ((b = e.target.closest('[data-acy]')))  { apCmpYear = +b.getAttribute('data-acy'); render(); return; }

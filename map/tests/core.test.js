@@ -66,11 +66,11 @@ test('cycle times: TP is the only series over 24 months at peak', () => {
   assert.ok(Math.max(...ct.INT) < 24 && Math.max(...ct.Total) < 24);
 });
 
-test('top treaty partners 2025 sorted desc, named top-5 + Overig', () => {
+test('top treaty partners 2025 sorted desc, named top-5 + Other', () => {
   const tp = C.MAP_DATA.partners[2025];
-  assert.strictEqual(tp[0].name, 'België');
+  assert.strictEqual(tp[0].name, 'Belgium');
   assert.strictEqual(tp[0].count, 264);
-  assert.ok(tp.some(p => p.name === 'Overig' && p.count === 258));
+  assert.ok(tp.some(p => p.name === 'Other' && p.count === 258));
 });
 
 // ---------------------------------------------------------------------------

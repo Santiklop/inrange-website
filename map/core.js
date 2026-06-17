@@ -80,15 +80,15 @@ var MAP_DATA = {
     norm: 24
   },
 
-  // partners[year] = [{name, count}] desc; includes 'Overig'
+  // partners[year] = [{name, count}] desc; includes 'Other'
   partners: {
     2025: [
-      { name: 'België',              count: 264 },
-      { name: 'Overig',              count: 258 },
-      { name: 'Duitsland',           count: 167 },
-      { name: 'Verenigde Staten',    count: 105 },
-      { name: 'Spanje',              count: 83  },
-      { name: 'Verenigd Koninkrijk', count: 60  }
+      { name: 'Belgium',         count: 264 },
+      { name: 'Other',           count: 258 },
+      { name: 'Germany',         count: 167 },
+      { name: 'United States',   count: 105 },
+      { name: 'Spain',           count: 83  },
+      { name: 'United Kingdom',  count: 60  }
     ],
     partnerCounts: { total: 60, INT: 54, TP: 32, TB: 11 }
   },
@@ -103,17 +103,17 @@ var MAP_DATA = {
   facts: {
     awards: 'OECD MAP awards 2022, 2023, 2024',
     apaShareOfTP: 'About half of the TP MAP inventory is now APA (BAPA/MAPA) requests',
-    arbitration: 'Two arbitration procedures ongoing, expected to conclude in 2026; none yet under the Wet fiscale arbitrage',
+    arbitration: 'Two arbitration procedures ongoing, expected to conclude in 2026; none yet under the Dutch Tax Arbitration Act (Wet fiscale arbitrage)',
     methodNote: 'TP method (TNMM, CUP, profit split, …) is not published in MAP statistics — the OECD MAP Statistics Framework does not capture it.'
   },
 
   sources: [
-    { year: 2023, title: 'MAP-Jaarverslag 2023' },
-    { year: 2024, title: 'Jaarverslag MAP 2024 (publ. 26 May 2025)' },
-    { year: 2025, title: 'Mutual Agreement Procedures Jaarverslag 2025 (publ. June 2026)' }
+    { year: 2023, title: 'MAP Annual Report 2023 (Dutch Tax Administration MAP team)' },
+    { year: 2024, title: 'MAP Annual Report 2024 (publ. 26 May 2025)' },
+    { year: 2025, title: 'MAP Annual Report 2025 (publ. June 2026)' }
   ],
 
-  methodologyNote: "Figures are the MAP-team's own stock-administration counts and can differ from later OECD-published MAP statistics (different start-date counting and treatment of cases awaiting taxpayer acceptance)."
+  methodologyNote: "Figures are the MAP team's own stock-administration counts and can differ from later OECD-published MAP statistics (different start-date counting and treatment of cases awaiting taxpayer acceptance)."
 };
 
 // ---------------------------------------------------------------------------
@@ -210,9 +210,9 @@ var RULINGS_DATA = {
   publishedSummaries2025: { ATR: 273, 'APA/BAPA': 104, Innovatiebox: 157, Overige: 31 },
 
   sources: [
-    { year: 2023, title: 'Jaarverslag 2023 rulings met een internationaal karakter' },
-    { year: 2024, title: 'Summary of Dutch international tax ruling practice 2024' },
-    { year: 2025, title: 'Rulings met een internationaal karakter — Jaarverslag 2025' }
+    { year: 2023, title: 'International Rulings Annual Report 2023' },
+    { year: 2024, title: 'Summary of Dutch International Tax Ruling Practice 2024' },
+    { year: 2025, title: 'International Rulings Annual Report 2025' }
   ],
 
   processingNote: 'Gross processing time (from filing to agreement/withdrawal/rejection), including time spent awaiting requested information. Net handling time is materially shorter.'

@@ -167,6 +167,27 @@ small { font-size:12px; color:var(--fg-3); }
 .tooltip b { color:#fff; font-weight:700; }
 [data-theme="dark"] .tooltip { background:var(--brand-navy-600); border:1px solid var(--border-default); }
 
+/* ---- Glossary term (hover to define technical terms) ---- */
+.gloss { border-bottom:1px dotted var(--fg-3); cursor:help; position:relative; text-decoration:none; }
+.gloss:hover, .gloss:focus { color:var(--fg-1); border-bottom-color:var(--brand-green-500); outline:none; }
+.gloss::after {
+  content:attr(data-def); position:absolute; left:50%; bottom:calc(100% + 9px);
+  transform:translateX(-50%); width:max-content; max-width:260px; white-space:normal; text-align:left;
+  background:var(--brand-navy-800); color:#fff; font-family:var(--font-sans); font-weight:500;
+  font-size:12px; line-height:1.45; letter-spacing:0; text-transform:none;
+  padding:9px 12px; border-radius:var(--radius-sm); box-shadow:var(--shadow-lg);
+  opacity:0; pointer-events:none; transition:opacity var(--dur-fast) var(--ease); z-index:60;
+}
+.gloss::before {
+  content:""; position:absolute; left:50%; bottom:calc(100% + 4px); transform:translateX(-50%);
+  border:5px solid transparent; border-top-color:var(--brand-navy-800);
+  opacity:0; pointer-events:none; transition:opacity var(--dur-fast) var(--ease); z-index:60;
+}
+.gloss:hover::after, .gloss:focus::after, .gloss:hover::before, .gloss:focus::before { opacity:1; }
+[data-theme="dark"] .gloss::after { background:var(--brand-navy-600); border:1px solid var(--border-default); }
+[data-theme="dark"] .gloss::before { border-top-color:var(--brand-navy-600); }
+@media print { .gloss { border-bottom:none; } .gloss::after, .gloss::before { display:none!important; } }
+
 /* Generic panel (used by timing / TP views) */
 .panel { background:var(--surface); border:1px solid var(--border-subtle); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:20px; box-shadow:var(--shadow-sm); }
 .panel > h4 { font-size:13px; font-weight:700; color:var(--fg-1); margin-bottom:14px; display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; }
@@ -275,7 +296,7 @@ small { font-size:12px; color:var(--fg-3); }
   h1 { font-size:25px; }
   .container { padding:0 14px; }
   .key-facts { grid-template-columns:1fr; gap:10px; }
-  /* Treaty-partner long labels (e.g. "Verenigd Koninkrijk") get more room. */
+  /* Treaty-partner long labels (e.g. "United Kingdom") get more room. */
   .pbar { grid-template-columns:1fr 40px; gap:6px 10px; }
   .pbar .ptrack { grid-column:1 / -1; order:3; height:16px; }
   .chart-card, .panel { padding:14px 13px; }
@@ -380,7 +401,7 @@ small { font-size:12px; color:var(--fg-3); }
     map: {
       label: 'MAP & APA',
       title: 'Dutch MAP &amp; APA Explorer',
-      lede: "The Belastingdienst MAP-team’s mutual-agreement and advance-pricing figures, 2019–2025.",
+      lede: "The Dutch Tax Administration MAP team’s mutual-agreement and advance-pricing figures, 2019–2025.",
       tabs: [
         { id: 'caseload',  label: 'Caseload trends' },
         { id: 'inventory', label: 'Inventory flow' },
@@ -402,7 +423,7 @@ small { font-size:12px; color:var(--fg-3); }
     rulings: {
       label: 'International Rulings',
       title: 'Dutch International Rulings Explorer',
-      lede: "The APA/ATR practice (College IFZ): rulings with an international character, 2023–2025.",
+      lede: "The Dutch APA/ATR ruling practice (College IFZ): rulings with an international character, 2023–2025.",
       tabs: [
         { id: 'rOverview',   label: 'Overview' },
         { id: 'rFlow',       label: 'By type & flow' },
@@ -440,6 +461,41 @@ small { font-size:12px; color:var(--fg-3); }
     for (var i = 0; i < STREAMS.length; i++) if (STREAMS[i].key === key) return STREAMS[i];
     return null;
   }
+
+  // ---- Glossary: plain-English definitions for technical terms ----
+  var GLOSSARY = {
+    MAP:   "Mutual Agreement Procedure — the tax-treaty mechanism where two countries' competent authorities work together to resolve double taxation or taxation contrary to the treaty.",
+    INT:   "Interpretation cases — how a tax treaty applies, e.g. cross-border employment and pensions, or withholding tax on dividends, interest and royalties, and permanent-establishment questions.",
+    TP:    "Transfer pricing — the arm's-length pricing of transactions between group companies, and the allocation of profit to permanent establishments.",
+    TB:    "Corporate tie-breaker — deciding a company's treaty residence when two countries both treat it as resident.",
+    MLMAP: "Multilateral MAP — a transfer-pricing case involving more than two countries at the same time.",
+    APA:   "Advance Pricing Agreement — upfront certainty on the transfer pricing of intra-group transactions, agreed with the tax authority.",
+    BAPA:  "Bilateral (or multilateral) Advance Pricing Agreement — transfer-pricing certainty agreed in advance with one or more treaty-partner countries.",
+    MAPA:  "Multilateral Advance Pricing Agreement — an APA agreed with two or more treaty partners together.",
+    ATR:   "Advance Tax Ruling — upfront certainty on the tax consequences of a structure, e.g. the participation exemption or the dividend-withholding exemption.",
+    Innovatiebox: "Innovation box — a reduced effective corporate-tax rate on profits from qualifying self-developed intangible assets.",
+    Overige: "Other international rulings, outside the ATR, APA/BAPA and innovation-box categories.",
+    BEPS:  "BEPS Action 14 — the OECD minimum standard under which countries aim to resolve MAP cases within an average of 24 months.",
+    GROSS: "Gross processing time — from filing to agreement (or withdrawal/rejection), including time spent waiting for requested information. Net handling time is shorter.",
+    WORKSTREAM: "Workstream — the category of case: interpretation, transfer pricing, multilateral, or corporate tie-breaker.",
+    OECD:  "OECD — the Organisation for Economic Co-operation and Development, which sets the MAP statistics framework and the BEPS minimum standards.",
+    TNMM:  "Transactional Net Margin Method — a transfer-pricing method that benchmarks a tested party's net profit margin against comparable independent companies."
+  };
+  function escAttr(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+  // Styled hover-definition span (for non-interactive text: legends, prose, headers).
+  function gloss(text, key) {
+    var d = GLOSSARY[key];
+    return d ? '<span class="gloss" tabindex="0" data-def="' + escAttr(d) + '">' + text + '</span>' : text;
+  }
+  // Native title attribute (for interactive elements like chips, to avoid nested focus).
+  function titleAttr(key) {
+    var d = GLOSSARY[key];
+    return d ? ' title="' + escAttr(d) + '"' : '';
+  }
+  // Short, English type labels for compact spots (e.g. matrix headers).
+  var RTYPE_SHORT = { ATR: 'ATR', APA: 'APA', BAPA: 'BAPA', Innovatiebox: 'Innovation box', Overige: 'Other' };
   function svgEl(w, h, body, title) {
     var aria = title ? ' aria-label="' + title + '"' : '';
     var titleEl = title ? '<title>' + title + '</title>' : '';
@@ -512,7 +568,7 @@ small { font-size:12px; color:var(--fg-3); }
 
   function legendRow(keys) {
     var items = keys.map(streamOf).filter(Boolean).map(function (s) {
-      return '<span class="lg" style="color:' + s.c + '"><span class="sw"></span>' + s.label + '</span>';
+      return '<span class="lg" style="color:' + s.c + '"><span class="sw"></span>' + gloss(s.label, s.key) + '</span>';
     }).join('');
     return '<div class="chart-legend">' + items +
       '<span class="lg" style="color:var(--fg-3)"><span class="sw"></span>Received</span>' +
@@ -594,14 +650,14 @@ small { font-size:12px; color:var(--fg-3); }
     var keys = STREAMS.filter(function (s) { return caseloadOn[s.key]; }).map(function (s) { return s.key; });
     var toggles = STREAMS.map(function (s) {
       return '<button class="chip' + (caseloadOn[s.key] ? ' on' : '') + '" data-cl="' + s.key +
-        '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '">' + s.label + '</button>';
+        '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '"' + titleAttr(s.key) + '>' + s.label + '</button>';
     }).join('');
     var chart = keys.length
       ? '<div class="chart-wrap">' + lineChart(keys, { title: 'MAP cases received vs closed by year' }) + '<div class="tooltip"></div></div>' + legendRow(keys)
       : '<p class="partner-foot">Select at least one workstream to plot.</p>';
     return '<div class="view-head"><h2>Caseload trends</h2>' +
-      '<p class="lede">New requests (solid) vs. cases closed (dashed), 2019–2025.</p></div>' +
-      '<div class="chip-row" id="clToggles"><span class="chip-label">Workstreams</span>' + toggles + '</div>' +
+      '<p class="lede">New ' + gloss('MAP', 'MAP') + ' requests (solid) vs. cases closed (dashed) across the four workstreams, 2019–2025.</p></div>' +
+      '<div class="chip-row" id="clToggles"><span class="chip-label">' + gloss('Workstreams', 'WORKSTREAM') + '</span>' + toggles + '</div>' +
       '<div class="chart-card">' + chart + '</div>';
   }
 
@@ -618,13 +674,13 @@ small { font-size:12px; color:var(--fg-3); }
     }).join('');
     var streams = ['INT', 'TP', 'MLMAP', 'TB', 'BAPA', 'MAPA'].map(function (k) {
       var s = streamOf(k);
-      return '<button class="chip' + (k === invStream ? ' on' : '') + '" data-invs="' + k + '" style="--chip:' + s.c + '">' + s.label + '</button>';
+      return '<button class="chip' + (k === invStream ? ' on' : '') + '" data-invs="' + k + '" style="--chip:' + s.c + '"' + titleAttr(k) + '>' + s.label + '</button>';
     }).join('');
     var reconciles = (d.begin + d.received - d.closed) === d.end;
     return '<div class="view-head"><h2>Inventory flow</h2>' +
       '<p class="lede">How the case stock moved: begin + received − closed = end.</p></div>' +
       '<div class="chip-row" id="invYears"><span class="chip-label">Year</span>' + years + '</div>' +
-      '<div class="chip-row" id="invStreams"><span class="chip-label">Workstream</span>' + streams + '</div>' +
+      '<div class="chip-row" id="invStreams"><span class="chip-label">' + gloss('Workstream', 'WORKSTREAM') + '</span>' + streams + '</div>' +
       '<div class="chart-card"><div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
       '<p class="partner-foot">' + d.begin + ' + ' + d.received + ' − ' + d.closed + ' = <strong style="color:var(--fg-1)">' + d.end + '</strong>' +
       (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>';
@@ -663,7 +719,7 @@ small { font-size:12px; color:var(--fg-3); }
       '<div class="ror"><small>Resolution rate</small><strong>' + (resRate == null ? '—' : resRate + '%') + '</strong></div>' +
       '</div>';
     return '<div class="view-head"><h2>Outcomes &amp; resolution</h2>' +
-      '<p class="lede">The ten OECD outcome categories for cases the Dutch authority closed in ' + outYear + '. Bar width is share of all closed cases.</p></div>' +
+      '<p class="lede">The ten ' + gloss('OECD', 'OECD') + ' outcome categories for ' + gloss('MAP', 'MAP') + ' cases the Dutch authority closed in ' + outYear + '. Bar width is share of all closed cases.</p></div>' +
       '<div class="chip-row" id="outYears"><span class="chip-label">Year</span>' + years + '</div>' +
       readout +
       '<div class="chart-card outcols">' +
@@ -704,8 +760,8 @@ small { font-size:12px; color:var(--fg-3); }
     }).join('');
     var xl = ct.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 6) + '" class="xtick">' + y + '</text>'; }).join('');
     var legend = '<div class="chart-legend">' + series.map(function (s) {
-      return '<span class="lg" style="color:' + s[1] + '"><span class="sw"></span>' + s[2] + '</span>';
-    }).join('') + '<span class="lg" style="color:var(--accent-ochre)"><span class="sw dashed"></span>24-mo norm</span></div>';
+      return '<span class="lg" style="color:' + s[1] + '"><span class="sw"></span>' + gloss(s[2], s[0]) + '</span>';
+    }).join('') + '<span class="lg" style="color:var(--accent-ochre)"><span class="sw dashed"></span>' + gloss('24-mo norm', 'BEPS') + '</span></div>';
 
     var maxP = D.partners[2025][0].count;
     var partnerBars = D.partners[2025].map(function (p) {
@@ -723,7 +779,7 @@ small { font-size:12px; color:var(--fg-3); }
       '<p class="note" style="margin-bottom:16px">' + D.facts.awards + '</p>' +
       '<div class="panel"><h4>Average cycle time (months) <small>approximate, read from the report chart (±~0.5 mo)</small></h4>' +
       '<div class="chart-wrap">' + svgEl(W, H, grid + norm + lines + xl, 'Average MAP cycle time vs 24-month norm') + '<div class="tooltip"></div></div>' + legend + takeaway + '</div>' +
-      '<div class="panel"><h4>Top treaty partners, 2025 <small>cases per partner; named top-5 + Overig</small></h4>' +
+      '<div class="panel"><h4>Top treaty partners, 2025 <small>cases per partner; named top-5 + Other</small></h4>' +
       '<div class="pbars">' + partnerBars + '</div>' +
       '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p></div>' +
       '<div class="panel"><h4>Dispute prevention — BAPA &amp; MAPA <small>requests received vs. closed, 2019–2025</small></h4>' +
@@ -740,12 +796,12 @@ small { font-size:12px; color:var(--fg-3); }
       '<div class="panel"><h4>TP cases received vs. closed <small>2019–2025</small></h4>' +
       '<div class="chart-wrap">' + lineChart(['TP'], { H: 320, title: 'Transfer-pricing MAP cases received vs closed' }) + '<div class="tooltip"></div></div>' + legendRow(['TP']) + '</div>' +
       '<div class="statgrid">' +
-        '<div class="stat"><strong>' + pc.TP + '</strong><small>treaty partners with TP cases</small></div>' +
+        '<div class="stat"><strong>' + pc.TP + '</strong><small>treaty partners with ' + gloss('TP', 'TP') + ' cases</small></div>' +
         '<div class="stat"><strong>~half</strong><small>' + D.facts.apaShareOfTP + '</small></div>' +
-        '<div class="stat"><strong>&gt;24 mo</strong><small>only stream over the BEPS Action 14 norm</small></div>' +
+        '<div class="stat"><strong>&gt;24 mo</strong><small>only stream over the ' + gloss('BEPS Action 14', 'BEPS') + ' norm</small></div>' +
       '</div>' +
       '<aside class="explainer"><p class="eyebrow">inRange view · not in the data</p>' +
-      '<p>' + D.facts.methodNote + ' In practice, Dutch TP MAP/APA cases most often turn on the TNMM and, for ' +
+      '<p>' + D.facts.methodNote + ' In practice, Dutch TP MAP/APA cases most often turn on the ' + gloss('TNMM', 'TNMM') + ' and, for ' +
       'integrated or IP-heavy structures, the profit-split method — but the official statistics do not break this out.</p></aside>';
   }
 
@@ -763,7 +819,7 @@ small { font-size:12px; color:var(--fg-3); }
 
   function rTypeLegend() {
     return '<div class="chart-legend">' + R.types.map(function (t) {
-      return '<span class="lg" style="color:' + RTYPE_COLORS[t] + '"><span class="sw sq"></span>' + R.typeLabels[t] + '</span>';
+      return '<span class="lg" style="color:' + RTYPE_COLORS[t] + '"><span class="sw sq"></span>' + gloss(R.typeLabels[t], t) + '</span>';
     }).join('') + '</div>';
   }
 
@@ -844,7 +900,7 @@ small { font-size:12px; color:var(--fg-3); }
         '<span class="oval">' + r[1] + '</span></div>';
     }).join('');
     var types = R.types.map(function (t) {
-      return '<button class="chip plain' + (t === rFlowType ? ' on' : '') + '" data-rft="' + t + '">' + R.typeLabels[t] + '</button>';
+      return '<button class="chip plain' + (t === rFlowType ? ' on' : '') + '" data-rft="' + t + '"' + titleAttr(t) + '>' + R.typeLabels[t] + '</button>';
     }).join('');
     var years = R.years.map(function (y) {
       return '<button class="chip plain' + (y === rFlowYear ? ' on' : '') + '" data-rfy="' + y + '">' + y + '</button>';
@@ -875,7 +931,7 @@ small { font-size:12px; color:var(--fg-3); }
     outs.forEach(function (o) {
       R.types.forEach(function (t) { var v = pt[t][o[0]]; if (v != null && v > maxMo) maxMo = v; });
     });
-    var head = '<tr><th class="corner"></th>' + R.types.map(function (t) { return '<th>' + t + '</th>'; }).join('') + '</tr>';
+    var head = '<tr><th class="corner"></th>' + R.types.map(function (t) { return '<th' + titleAttr(t) + '>' + RTYPE_SHORT[t] + '</th>'; }).join('') + '</tr>';
     var rows = outs.map(function (o) {
       return '<tr><td class="rowlbl">' + o[1] + '</td>' + R.types.map(function (t) {
         var v = pt[t][o[0]];
@@ -889,9 +945,9 @@ small { font-size:12px; color:var(--fg-3); }
       return '<button class="chip plain' + (y === rtYear ? ' on' : '') + '" data-rty="' + y + '">' + y + '</button>';
     }).join('');
     var ps = R.publishedSummaries2025;
-    var psLine = 'Published summaries 2025: ATR ' + ps.ATR + ' · APA/BAPA ' + ps['APA/BAPA'] + ' · Innovatiebox ' + ps.Innovatiebox + ' · Overige ' + ps.Overige;
+    var psLine = 'Published summaries 2025: ATR ' + ps.ATR + ' · APA/BAPA ' + ps['APA/BAPA'] + ' · Innovation box ' + ps.Innovatiebox + ' · Other ' + ps.Overige;
     return '<div class="view-head"><h2>Processing times</h2>' +
-      '<p class="lede">Gross processing time in months, by ruling type and closing outcome.</p></div>' +
+      '<p class="lede">' + gloss('Gross processing time', 'GROSS') + ' in months, by ruling type and closing outcome.</p></div>' +
       '<div class="chip-row" id="rtYears"><span class="chip-label">Year</span>' + years + '</div>' +
       '<div class="chart-card"><div class="heat-wrap"><table class="heat"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>' +
       '<p class="note">' + psLine + '</p>' +
@@ -907,7 +963,7 @@ small { font-size:12px; color:var(--fg-3); }
       }).join('');
     }
     return '<div class="view-head"><h2>Defining positions</h2>' +
-      '<p class="lede">Selected “beeldbepalende standpunten” from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary.</p></div>' +
+      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary.</p></div>' +
       '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
       '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>';
   }

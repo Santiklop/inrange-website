@@ -227,7 +227,7 @@ var RULINGS_DATA = {
   positions: [
     {
       icon: '🤝', group: 'TP', title: 'Shared Control = Profit Split?',
-      body: "In one APA, the Dutch entity and a foreign affiliate jointly performed key treasury functions and controlled the financing risks — leading to a contribution-based (profit-split) allocation of treasury profits such as cash-pooling and intercompany financing.",
+      body: "In one APA, the Dutch entity and a foreign affiliate jointly performed key treasury functions and controlled the financing risks, leading to a contribution-based (profit-split) allocation of treasury profits such as cash-pooling and intercompany financing.",
       source: 'Rulings 2024'
     },
     {
@@ -237,72 +237,72 @@ var RULINGS_DATA = {
     },
     {
       icon: '⚠️', group: 'TP', title: 'Comparability Adjustments: Handle with Care',
-      body: "A toll manufacturer applied TNMM against comparables that owned inventory and bore real operational risk, then tried to adjust their margins by stripping out material costs. The authorities found the comparables functionally unsuitable and the adjustments unreliable — the APA was not accepted and the request was withdrawn.",
+      body: "A toll manufacturer applied TNMM against comparables that owned inventory and bore real operational risk, then tried to adjust their margins by stripping out material costs. The authorities found the comparables functionally unsuitable and the adjustments unreliable, so the APA was not accepted and the request was withdrawn.",
       source: 'Rulings 2024'
     },
     {
       icon: '🚫', group: 'Access', title: 'No APAs with Low-Tax Jurisdictions',
-      body: "Certainty up front is not granted in anticipation of a future restructuring — the low-tax disconnection must be fully completed beforehand. Only narrow exceptions apply for genuinely dismantling tax-avoidance structures, and a >30%-of-revenue-from-LTJ test bars access.",
+      body: "Certainty up front is not granted in anticipation of a future restructuring; the low-tax disconnection must be fully completed beforehand. Only narrow exceptions apply for genuinely dismantling tax-avoidance structures, and a >30%-of-revenue-from-LTJ test bars access.",
       source: 'Rulings 2024'
     },
     {
       icon: '🧭', group: 'Access', title: 'Economic Nexus, Made Concrete',
-      body: "For participation- and withholding-exemption certainty, the authorities weigh both the quality and the quantity of Dutch personnel that actually steer the foreign holdings — judged on the full facts, not on whether costs are recharged.",
+      body: "For participation- and withholding-exemption certainty, the authorities weigh both the quality and the quantity of Dutch personnel that actually steer the foreign holdings, judged on the full facts, not on whether costs are recharged.",
       source: 'Rulings 2024-25'
     },
     {
       icon: '💧', group: 'TP', title: 'Cash-Pool Synergies: Who Keeps Them?',
-      body: "2023 brought a wave of financing-TP questions on splitting cash-pool synergy benefits versus rewarding the cash-pool leader. The line drawn: the leader is usually a coordinator earning a routine return, so the synergy benefit accrues to the participating group companies — not to the leader. Don't let a 'leader' label pull excess profit into the cash-pool entity.",
+      body: "2023 brought a wave of financing-TP questions on splitting cash-pool synergy benefits versus rewarding the cash-pool leader. The line drawn: the leader is usually a coordinator earning a routine return, so the synergy benefit accrues to the participating group companies, not to the leader. Don't let a 'leader' label pull excess profit into the cash-pool entity.",
       source: 'Rulings 2023'
     },
     {
       icon: '🎛️', group: 'TP', title: 'How Much Financial Control Buys Nexus?',
-      body: "Once the authorities gained access to financial databases, financing cases turned on one question: how much financial control is needed for relevant economic nexus, and when is financial capacity sufficient? The takeaway: to price and own a financing risk in the Netherlands, the people and decision-making for that risk must actually sit here — capital alone is not enough.",
+      body: "Once the authorities gained access to financial databases, financing cases turned on one question: how much financial control is needed for relevant economic nexus, and when is financial capacity sufficient? The takeaway: to price and own a financing risk in the Netherlands, the people and decision-making for that risk must actually sit here. Capital alone is not enough.",
       source: 'Rulings 2023'
     },
     {
       icon: '🏛️', group: 'Access', title: 'Certainty for Dual-Resident Listed Groups',
-      body: "In 2025 the College IFZ gave some listed dual-resident companies advance certainty on Dutch dividend withholding even where the group no longer had operational nexus here — weighing the taxpayer's interest, the specific facts, and the authority's own oversight interest. A narrow, fact-driven opening; the restrictive line for relocated non-listed dual residents still holds.",
+      body: "In 2025 the College IFZ gave some listed dual-resident companies advance certainty on Dutch dividend withholding even where the group no longer had operational nexus here, weighing the taxpayer's interest, the specific facts, and the authority's own oversight interest. A narrow, fact-driven opening; the restrictive line for relocated non-listed dual residents still holds.",
       source: 'Rulings 2025'
     },
     {
       icon: '🔗', group: 'Access', title: 'The New "Qualifying Entity" Test',
-      body: "From 2025, withholding-tax rulings test for a 'qualifying entity' — parties acting together with a main purpose of avoiding withholding tax, for example by splitting one qualifying interest into several non-qualifying ones. The main-purpose element is decisive, and everyone involved in the splitting is pulled into the qualifying entity. Fragmenting interests to dodge withholding will be looked through.",
+      body: "From 2025, withholding-tax rulings test for a 'qualifying entity': parties acting together with a main purpose of avoiding withholding tax, for example by splitting one qualifying interest into several non-qualifying ones. The main-purpose element is decisive, and everyone involved in the splitting is pulled into the qualifying entity. Fragmenting interests to dodge withholding will be looked through.",
       source: 'Rulings 2025'
     },
     {
       icon: '🏦', group: 'TP', title: 'A Routine Reward for Treasury Support',
-      body: "2025 prefilings asked whether the Netherlands can get an APA for a routine financing activity that serves a foreign 'group treasury' which holds control over the treasury functions. The answer: in principle yes — provided the financial flows don't run over the Dutch company's balance sheet and P&L. Control sitting abroad caps the Dutch reward at a routine service fee, not the financing spread.",
+      body: "2025 prefilings asked whether the Netherlands can get an APA for a routine financing activity that serves a foreign 'group treasury' which holds control over the treasury functions. The answer: in principle yes, provided the financial flows don't run over the Dutch company's balance sheet and P&L. Control sitting abroad caps the Dutch reward at a routine service fee, not the financing spread.",
       source: 'Rulings 2025'
     },
     {
       icon: '🧮', group: 'TP', title: 'Cost-Plus: Which Costs Belong in the Base?',
-      body: "When the arm's-length reward for a service uses operating profit over costs as the profit-level indicator, which costs go in the cost base? Align with the base the benchmark comparables use. Under the 2022 Transfer Pricing Decree, pass-through costs can be stripped out only if independent parties would likewise earn no profit on them — and a routine reward should still absorb or pass through financing costs.",
+      body: "When the arm's-length reward for a service uses operating profit over costs as the profit-level indicator, which costs go in the cost base? Align with the base the benchmark comparables use. Under the 2022 Transfer Pricing Decree, pass-through costs can be stripped out only if independent parties would likewise earn no profit on them, and a routine reward should still absorb or pass through financing costs.",
       source: 'Rulings 2025'
     },
     {
       icon: '🎯', group: 'TP', title: 'Price to the Median',
-      body: "Without a CUP or a profit split, the Dutch authority anchors the arm's-length reward to the median of the range — correcting to the middle to absorb unknown comparability defects. You can sit elsewhere in the range, but only with a documented reason: a materially different turnover, a COVID-hit market, a higher or lower functional-and-risk profile. In one 2022 APA the off-median point wasn't substantiated and no agreement was reached; bilateral cases get more room to negotiate a specific point.",
+      body: "Without a CUP or a profit split, the Dutch authority anchors the arm's-length reward to the median of the range, correcting to the middle to absorb unknown comparability defects. You can sit elsewhere in the range, but only with a documented reason: a materially different turnover, a COVID-hit market, a higher or lower functional-and-risk profile. In one 2022 APA the off-median point wasn't substantiated and no agreement was reached; bilateral cases get more room to negotiate a specific point.",
       source: 'Rulings 2022'
     },
     {
       icon: '💶', group: 'TP', title: 'Cash-Pool Leader Reward',
-      body: "Two 2022 cash-pool requests, opposite outcomes. Where the Dutch entity genuinely ran the pool — setting rates, contracting with banks, owning the risks with the staff to match — the authority gave certainty on the leader's reward on arm's-length terms, though not yet on the interest rates themselves. Where control over the flows was thin and it wasn't even clear a real pool existed, the request was withdrawn. A 'leader' label earns nothing without the functions behind it.",
+      body: "Two 2022 cash-pool requests, opposite outcomes. Where the Dutch entity genuinely ran the pool (setting rates, contracting with banks, owning the risks with the staff to match), the authority gave certainty on the leader's reward on arm's-length terms, though not yet on the interest rates themselves. Where control over the flows was thin and it wasn't even clear a real pool existed, the request was withdrawn. A 'leader' label earns nothing without the functions behind it.",
       source: 'Rulings 2022'
     },
     {
       icon: '🔎', group: 'TP', title: 'Look at the Other Side Too',
-      body: "A Dutch company sought certainty on a routine procurement and logistics reward, with all dealings running to an EU head office. The authority kept asking what that head office actually did — and whether its large carry-forward losses were the real reason flows were routed through it — until the request was withdrawn. The lesson: a clean arm's-length return in the Netherlands isn't enough; they also test whether the foreign counterparty's functionality fits and whether the structure exists mainly for tax.",
+      body: "A Dutch company sought certainty on a routine procurement and logistics reward, with all dealings running to an EU head office. The authority kept asking what that head office actually did, and whether its large carry-forward losses were the real reason flows were routed through it, until the request was withdrawn. The lesson: a clean arm's-length return in the Netherlands isn't enough; they also test whether the foreign counterparty's functionality fits and whether the structure exists mainly for tax.",
       source: 'Rulings 2022'
     },
     {
       icon: '🧩', group: 'Access', title: 'Nexus That Arrives With the Deal',
-      body: "Can economic substance that lands in the Netherlands right after an external acquisition count when judging access to certainty on the closely-connected steps that precede it? In 2022 the College IFZ said yes — where those steps sit in a very short window before the deal, the post-acquisition nexus can be weighed. A pragmatic read of the access test for acquisition structuring.",
+      body: "Can economic substance that lands in the Netherlands right after an external acquisition count when judging access to certainty on the closely-connected steps that precede it? In 2022 the College IFZ said yes: where those steps sit in a very short window before the deal, the post-acquisition nexus can be weighed. A pragmatic read of the access test for acquisition structuring.",
       source: 'Rulings 2022'
     },
     {
       icon: '⚖️', group: 'TP', title: 'Two Cash Pools, Two Answers',
-      body: "2021 made the financing-substance test concrete with a published pair. One cash pool — 11 to 25 people in the Netherlands setting rates, contracting with banks and managing the risks — earned its arm's-length reward. Another, where the work was purely administrative and the real functions sat abroad, was refused certainty on its reward. Same instrument, opposite outcomes, one dividing line: control has to live where you book the return.",
+      body: "2021 made the financing-substance test concrete with a published pair. One cash pool, with 11 to 25 people in the Netherlands setting rates, contracting with banks and managing the risks, earned its arm's-length reward. Another, where the work was purely administrative and the real functions sat abroad, was refused certainty on its reward. Same instrument, opposite outcomes, one dividing line: control has to live where you book the return.",
       source: 'Rulings 2021'
     },
     {
@@ -312,12 +312,12 @@ var RULINGS_DATA = {
     },
     {
       icon: '🔁', group: 'TP', title: 'Re-Invoicing: Allowed, Barely',
-      body: "A Dutch company ran routine re-invoicing on a cost-plus reward. The authority — in its own words, extremely reticent about these requests — pressed hard on the commercial rationale and whether the aim was to save foreign withholding tax. Here there were valid business reasons and no tax advantage, so a reward was agreed. Read it as a warning shot: pure re-invoicing without substance won't get certainty.",
+      body: "A Dutch company ran routine re-invoicing on a cost-plus reward. The authority, in its own words extremely reticent about these requests, pressed hard on the commercial rationale and whether the aim was to save foreign withholding tax. Here there were valid business reasons and no tax advantage, so a reward was agreed. Read it as a warning shot: pure re-invoicing without substance won't get certainty.",
       source: 'Rulings 2021'
     },
     {
       icon: '🛡️', group: 'Access', title: 'No Ruling Under an Integrity Cloud',
-      body: "While handling an APA request, the authority pressed for more on the ultimate beneficial owners after public signals of serious financial crime abroad. The signals weren't dispelled, and the request was withdrawn. Access to certainty runs through an integrity gate: a suspicion of money laundering or serious offences — absent proof to the contrary — is enough to close the door, whatever the technical merits.",
+      body: "While handling an APA request, the authority pressed for more on the ultimate beneficial owners after public signals of serious financial crime abroad. The signals weren't dispelled, and the request was withdrawn. Access to certainty runs through an integrity gate: a suspicion of money laundering or serious offences, absent proof to the contrary, is enough to close the door, whatever the technical merits.",
       source: 'Rulings 2021'
     }
   ],

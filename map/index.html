@@ -1204,7 +1204,7 @@ small { font-size:12px; color:var(--fg-3); }
       return R.positions.filter(function (p) { return p.group === group; })
         .slice().sort(function (a, b) { return yearOf(b.source) - yearOf(a.source); })
         .map(function (p) {
-          return '<article class="position yr-' + yearOf(p.source) + '"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
+          return '<article class="position yr-' + yearOf(p.source) + '"><p class="eyebrow">' + p.source + '</p>' +
             '<h3>' + p.icon + ' ' + p.title + '</h3>' +
             '<p class="pos-body">' + p.body + '</p>' +
             '<button class="pos-more" type="button" aria-expanded="false" hidden><span class="pos-more-lbl">Read more</span><svg class="chev" viewBox="0 0 16 16" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 6 8 10 12 6"/></svg></button>' +
@@ -1219,7 +1219,7 @@ small { font-size:12px; color:var(--fg-3); }
       '<span class="yl"><i style="background:var(--neutral-400)"></i>2021</span>' +
       '</div>';
     return '<div class="view-head"><h2>APA case studies</h2>' +
-      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary. Newest first, colour-coded by report year.</p>' +
+      '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens. inRange’s own commentary. Newest first, colour-coded by report year.</p>' +
       yrLegend + '</div>' +
       '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
       '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>' +

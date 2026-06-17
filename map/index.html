@@ -489,6 +489,7 @@ small { font-size:12px; color:var(--fg-3); }
   //    ATR, APA, INNO, OTHER = international-rulings report
   // ===========================================================
   var MAP_DISPUTE_STREAMS = ['INT', 'TP', 'TB', 'MLMAP']; // MAP aggregate (excl. BAPA/MAPA)
+  var WS_LABEL = { INT: 'Interpretation', TP: 'Transfer pricing', TB: 'Tie-breaker', MLMAP: 'Multilateral' };
   var TYPES = [
     { key: 'MAP',   label: 'MAP (dispute)',     short: 'MAP',   c: 'var(--brand-navy-500)', glossKey: 'MAP',   src: 'map'     },
     { key: 'ATR',   label: 'ATR',               short: 'ATR',   c: 'var(--brand-navy-300)', glossKey: 'ATR',   src: 'rulings' },
@@ -706,7 +707,6 @@ small { font-size:12px; color:var(--fg-3); }
       if (!pts.length) return '';
       var path = pts.length > 1 ? '<path d="' + linePath(pts.map(function (p) { return [p[0], p[1]]; })) +
         '" fill="none" stroke="' + t.c + '" stroke-width="2.5" stroke-linejoin="round"/>' : '';
-      var WS_LABEL = { INT: 'Interpretation', TP: 'Transfer pricing', TB: 'Tie-breaker', MLMAP: 'Multilateral' };
       var dots = pts.map(function (p) {
         // For the aggregate MAP line, break the total down by workstream for that year.
         var extra = (k === 'MAP') ? MAP_DISPUTE_STREAMS.map(function (s) {
@@ -783,21 +783,26 @@ small { font-size:12px; color:var(--fg-3); }
   // Horizontal by-type bars (received & closed) for a selected year, all 7 types.
   // Uses typeStats() so each instrument is routed to its source of truth.
   function byTypeBars(year) {
+    var inv = MAP_DATA.inventory[year];
+    // MAP total broken down by workstream for a metric (shown in the bar's tooltip).
+    function mapTip(metric) {
+      return inv ? 'of which:\n' + MAP_DISPUTE_STREAMS.map(function (s) { return WS_LABEL[s] + ': ' + inv[s][metric]; }).join('\n') : '';
+    }
     var rows = TYPES.map(function (t) {
       var s = typeStats(t.key, year);
       return { t: t, received: s ? s.received : null, closed: s ? s.closed : null };
     });
     var maxV = 1;
     rows.forEach(function (r) { if (r.received != null) maxV = Math.max(maxV, r.received, r.closed); });
-    function bar(val, color) {
+    function bar(val, color, tip) {
       if (val == null) return '<span class="otrack" title="no data for ' + year + '"><span class="ofill" style="width:0%;background:' + color + '"></span></span><span class="oval">—</span>';
-      return '<span class="otrack" title="' + val + '"><span class="ofill" style="width:' + (val / maxV * 100).toFixed(1) + '%;background:' + color + '"></span></span><span class="oval">' + val + '</span>';
+      return '<span class="otrack" title="' + (tip || val) + '"><span class="ofill" style="width:' + (val / maxV * 100).toFixed(1) + '%;background:' + color + '"></span></span><span class="oval">' + val + '</span>';
     }
     var body = rows.map(function (r) {
-      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.received, r.t.c) + '</div>';
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.received, r.t.c, r.t.key === 'MAP' ? mapTip('received') : null) + '</div>';
     }).join('');
     var bodyClosed = rows.map(function (r) {
-      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.closed, 'var(--neutral-400)') + '</div>';
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.closed, 'var(--neutral-400)', r.t.key === 'MAP' ? mapTip('closed') : null) + '</div>';
     }).join('');
     return '<div class="outcols">' +
       '<h4>Received ' + year + '</h4>' + body +

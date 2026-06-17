@@ -840,8 +840,9 @@ small { font-size:12px; color:var(--fg-3); }
       var dots = pts.map(function (p, i) {
         var ci = MAP_DATA.years.indexOf(ct.years[i]);
         var n = s[0] === 'Total' ? MAP_DISPUTE_STREAMS.reduce(function (a, st) { return a + MAP_DATA.caseload[st].closed[ci]; }, 0) : MAP_DATA.caseload[s[0]].closed[ci];
+        var byType = s[0] === 'Total' ? '<br><b>Cases closed by type</b>' + MAP_DISPUTE_STREAMS.map(function (st) { return '<br>&middot; ' + WS_LABEL[st] + ': ' + MAP_DATA.caseload[st].closed[ci]; }).join('') : '';
         return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + s[2] + ' ' + ct.years[i] + '</b><br>~' + ct[s[0]][i] + ' months<br>' + n + ' cases closed"/>' +
+          'data-tip="<b>' + s[2] + ' ' + ct.years[i] + '</b><br>~' + ct[s[0]][i] + ' months<br>' + n + ' cases closed' + byType + '"/>' +
           '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + s[1] + '"/>';
       }).join('');
       return '<path d="' + linePath(pts) + '" fill="none" stroke="' + s[1] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
@@ -1162,10 +1163,12 @@ small { font-size:12px; color:var(--fg-3); }
     var body = rows.map(function (r, i) {
       var y = padTop + i * rowH + rowH / 2;
       var d = r.b - r.a;
+      var na = (R.flow[2024] && R.flow[2024][r.t]) ? R.flow[2024][r.t].outcomes.granted : null;
+      var nb = (R.flow[2025] && R.flow[2025][r.t]) ? R.flow[2025][r.t].outcomes.granted : null;
       var col = d < 0 ? 'var(--brand-green-500)' : d > 0 ? 'var(--danger)' : 'var(--neutral-400)';
       var dlabel = (d > 0 ? '+' : d < 0 ? '−' : '±') + Math.abs(d) + ' mo';
       var xa = xs(r.a), xb = xs(r.b);
-      var tip = '<b>' + R.typeLabels[r.t] + '</b><br>2024: ' + r.a + ' mo → 2025: ' + r.b + ' mo<br>' +
+      var tip = '<b>' + R.typeLabels[r.t] + '</b><br>2024: ' + r.a + ' mo' + (na != null ? ' (' + na + ' granted)' : '') + ' → 2025: ' + r.b + ' mo' + (nb != null ? ' (' + nb + ' granted)' : '') + '<br>' +
         (d === 0 ? 'no change' : (d < 0 ? Math.abs(d) + ' mo faster' : d + ' mo slower'));
       return '<text x="' + (padL - 12) + '" y="' + (y + 4).toFixed(1) + '" class="db-lbl">' + RTYPE_SHORT[r.t] + '</text>' +
         '<line x1="' + xa.toFixed(1) + '" y1="' + y.toFixed(1) + '" x2="' + xb.toFixed(1) + '" y2="' + y.toFixed(1) + '" stroke="' + col + '" stroke-width="3" stroke-linecap="round"/>' +

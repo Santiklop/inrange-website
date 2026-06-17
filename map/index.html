@@ -832,8 +832,10 @@ small { font-size:12px; color:var(--fg-3); }
     var lines = series.map(function (s) {
       var pts = ct[s[0]].map(function (v, i) { return [xs(i), ys(v)]; });
       var dots = pts.map(function (p, i) {
+        var ci = MAP_DATA.years.indexOf(ct.years[i]);
+        var n = s[0] === 'Total' ? MAP_DISPUTE_STREAMS.reduce(function (a, st) { return a + MAP_DATA.caseload[st].closed[ci]; }, 0) : MAP_DATA.caseload[s[0]].closed[ci];
         return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + s[2] + ' ' + ct.years[i] + '</b><br>~' + ct[s[0]][i] + ' months"/>' +
+          'data-tip="<b>' + s[2] + ' ' + ct.years[i] + '</b><br>~' + ct[s[0]][i] + ' months<br>' + n + ' cases closed"/>' +
           '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + s[1] + '"/>';
       }).join('');
       return '<path d="' + linePath(pts) + '" fill="none" stroke="' + s[1] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
@@ -863,21 +865,35 @@ small { font-size:12px; color:var(--fg-3); }
       var pg = R.processingTime[sel] || R.processingTime[2025];
       return pg[type] ? pg[type].granted : null;   // null where a year doesn't report that type (e.g. 2021 APA/BAPA)
     }
+    // Case count behind each figure: MAP = cases closed (resolved) that year;
+    // rulings = the (partly) granted count. null for the multi-year average.
+    function mapCount(key) {
+      if (sel === 'avg') return null;
+      var i = MAP_DATA.years.indexOf(sel); if (i < 0) return null;
+      if (key === 'Total') return MAP_DISPUTE_STREAMS.reduce(function (a, s) { return a + MAP_DATA.caseload[s].closed[i]; }, 0);
+      return MAP_DATA.caseload[key].closed[i];
+    }
+    function rulCount(type) {
+      if (sel === 'avg') return null;
+      var f = R.flow[sel]; return (f && f[type]) ? f[type].outcomes.granted : null;
+    }
     var rows = [
-      { label: 'MAP · transfer pricing', v: mapVal('TP'),    kind: 'map', c: 'var(--brand-green-600)' },
-      { label: 'MAP · interpretation',   v: mapVal('INT'),   kind: 'map', c: 'var(--brand-navy-500)' },
-      { label: 'MAP · all cases',        v: mapVal('Total'), kind: 'map', c: 'var(--brand-navy-300)' },
-      { label: 'BAPA · time to granted', v: rulVal('BAPA'),  kind: 'ruling', c: 'var(--brand-green-400)' },
-      { label: 'Innovation box · to granted', v: rulVal('Innovatiebox'), kind: 'ruling', c: 'var(--accent-ochre)' },
-      { label: 'APA · time to granted',  v: rulVal('APA'),   kind: 'ruling', c: 'var(--brand-green-600)' },
-      { label: 'Other · time to granted', v: rulVal('Overige'), kind: 'ruling', c: 'var(--neutral-400)' },
-      { label: 'ATR · time to granted',  v: rulVal('ATR'),   kind: 'ruling', c: 'var(--brand-navy-300)' }
+      { label: 'MAP · transfer pricing', v: mapVal('TP'),    n: mapCount('TP'),    kind: 'map', c: 'var(--brand-green-600)' },
+      { label: 'MAP · interpretation',   v: mapVal('INT'),   n: mapCount('INT'),   kind: 'map', c: 'var(--brand-navy-500)' },
+      { label: 'MAP · all cases',        v: mapVal('Total'), n: mapCount('Total'), kind: 'map', c: 'var(--brand-navy-300)' },
+      { label: 'BAPA · time to granted', v: rulVal('BAPA'),  n: rulCount('BAPA'),  kind: 'ruling', c: 'var(--brand-green-400)' },
+      { label: 'Innovation box · to granted', v: rulVal('Innovatiebox'), n: rulCount('Innovatiebox'), kind: 'ruling', c: 'var(--accent-ochre)' },
+      { label: 'APA · time to granted',  v: rulVal('APA'),   n: rulCount('APA'),   kind: 'ruling', c: 'var(--brand-green-600)' },
+      { label: 'Other · time to granted', v: rulVal('Overige'), n: rulCount('Overige'), kind: 'ruling', c: 'var(--neutral-400)' },
+      { label: 'ATR · time to granted',  v: rulVal('ATR'),   n: rulCount('ATR'),   kind: 'ruling', c: 'var(--brand-navy-300)' }
     ].filter(function (r) { return r.v != null; }).sort(function (a, b) { return b.v - a.v; });
     var maxV = 1; rows.forEach(function (r) { maxV = Math.max(maxV, r.v); });
     var bars = rows.map(function (r) {
       var metricLbl = r.kind === 'map' ? 'avg cycle time' : 'gross time to granted';
+      var nLbl = sel === 'avg' ? '2022–2025 average'
+        : (r.n != null ? r.n + (r.kind === 'map' ? ' cases closed' : ' granted') + ' in ' + sel : '');
       return '<div class="obar"><span class="olabel">' + r.label + '</span>' +
-        '<span class="otrack" title="' + r.v + ' months · ' + metricLbl + '"><span class="ofill" style="width:' + (r.v / maxV * 100).toFixed(1) + '%;background:' + r.c + '"></span></span>' +
+        '<span class="otrack" title="' + r.v + ' months · ' + metricLbl + (nLbl ? ' · ' + nLbl : '') + '"><span class="ofill" style="width:' + (r.v / maxV * 100).toFixed(1) + '%;background:' + r.c + '"></span></span>' +
         '<span class="oval">' + r.v + '</span></div>';
     }).join('');
     return '<div class="outcols">' + bars + '</div>';

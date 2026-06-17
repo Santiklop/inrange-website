@@ -105,20 +105,25 @@ test('resolutionRate(2025) returns the published 97% headline', () => {
 // Task 12: RULINGS_DATA module + reconciliation tests
 // ---------------------------------------------------------------------------
 
-test('RULINGS_DATA has all five types for 2023-2025 and reconciles', () => {
+test('RULINGS_DATA flow reconciles for every reported year and type', () => {
   const R = C.RULINGS_DATA;
-  assert.deepStrictEqual(R.years, [2023, 2024, 2025]);
+  assert.deepStrictEqual(R.years, [2021, 2022, 2023, 2024, 2025]);
+  // 2021 reported only ATR/Innovatiebox/Overige (APA & BAPA were combined); the
+  // others report all five. Reconcile whatever types each year actually has.
   for (const y of R.years) {
     const f = R.flow[y];
-    for (const t of ['ATR','APA','BAPA','Innovatiebox','Overige']) {
+    const types = Object.keys(f);
+    assert.ok(types.length >= 3, `${y} has types`);
+    for (const t of types) {
       const c = f[t];
-      // begin + received - closed === end, per type
       assert.strictEqual(c.begin + c.received - c.closed, c.end, `${y} ${t}`);
-      // outcome sub-rows sum to closed
       const o = c.outcomes;
       assert.strictEqual(o.granted + o.rejected + o.withdrawn + o.outOfTreatment + o.noIntl, c.closed, `${y} ${t} outcomes`);
     }
   }
+  // 2021 must NOT have separable APA/BAPA; 2022+ must.
+  assert.ok(!R.flow[2021].APA && !R.flow[2021].BAPA, '2021 has no separate APA/BAPA');
+  assert.ok(R.flow[2022].APA && R.flow[2022].BAPA, '2022 has APA + BAPA');
 });
 
 test('rulings totals match published headline (2025: 528 received, 591 closed, 644 end)', () => {

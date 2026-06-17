@@ -818,7 +818,8 @@ small { font-size:12px; color:var(--fg-3); }
     }
     function rulVal(type) {
       if (sel === 'avg') return avg(avgYears.map(function (y) { return R.processingTime[y][type].granted; }));
-      return (R.processingTime[sel] || R.processingTime[2025])[type].granted;
+      var pg = R.processingTime[sel] || R.processingTime[2025];
+      return pg[type] ? pg[type].granted : null;   // null where a year doesn't report that type (e.g. 2021 APA/BAPA)
     }
     var rows = [
       { label: 'MAP · transfer pricing', v: mapVal('TP'),    kind: 'map', c: 'var(--brand-green-600)' },
@@ -829,7 +830,7 @@ small { font-size:12px; color:var(--fg-3); }
       { label: 'APA · time to granted',  v: rulVal('APA'),   kind: 'ruling', c: 'var(--brand-green-600)' },
       { label: 'Other · time to granted', v: rulVal('Overige'), kind: 'ruling', c: 'var(--neutral-400)' },
       { label: 'ATR · time to granted',  v: rulVal('ATR'),   kind: 'ruling', c: 'var(--brand-navy-300)' }
-    ].sort(function (a, b) { return b.v - a.v; });
+    ].filter(function (r) { return r.v != null; }).sort(function (a, b) { return b.v - a.v; });
     var maxV = 1; rows.forEach(function (r) { maxV = Math.max(maxV, r.v); });
     var bars = rows.map(function (r) {
       var metricLbl = r.kind === 'map' ? 'avg cycle time' : 'gross time to granted';
@@ -918,7 +919,7 @@ small { font-size:12px; color:var(--fg-3); }
         '<div class="chip-row" id="ovTrendToggle"><span class="chip-label">Metric</span>' + metricToggle + '</div>' +
         '<div class="chip-row" id="ovToggles"><span class="chip-label">Instruments</span>' + toggles + '</div>' +
         trend +
-        '<p class="partner-foot">Rulings types (ATR, APA, innovation box, other) are reported only from 2023, so their lines start mid-axis. ' + SOT_FOOTNOTE + '</p>' +
+        '<p class="partner-foot">Ruling types are reported from 2021 (ATR, innovation box, other); unilateral APA only separately from 2022 (before that it was combined with BAPA). BAPA/MAPA come from the MAP team and span 2019–2025. ' + SOT_FOOTNOTE + '</p>' +
       '</div>' +
       '<div class="chip-row" id="ovYears"><span class="chip-label">Snapshot year</span>' + years + '</div>' +
       '<div class="chart-card">' + byTypeBars(ovYear) + '</div>';

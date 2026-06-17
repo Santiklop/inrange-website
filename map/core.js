@@ -130,7 +130,7 @@ var MAP_DATA = {
 // ---------------------------------------------------------------------------
 
 var RULINGS_DATA = {
-  years: [2023, 2024, 2025],
+  years: [2021, 2022, 2023, 2024, 2025],
   types: ['ATR', 'APA', 'BAPA', 'Innovatiebox', 'Overige'],
   typeLabels: {
     ATR:          'ATR',
@@ -163,6 +163,20 @@ var RULINGS_DATA = {
       BAPA:         { begin: 101, received: 35,  closed: 28,  end: 108, outcomes: { granted: 21,  rejected: 1,  withdrawn: 0,  outOfTreatment: 4,  noIntl: 2  } },
       Innovatiebox: { begin: 355, received: 182, closed: 210, end: 327, outcomes: { granted: 147, rejected: 0,  withdrawn: 13, outOfTreatment: 14, noIntl: 36 } },
       Overige:      { begin: 35,  received: 32,  closed: 37,  end: 30,  outcomes: { granted: 15,  rejected: 1,  withdrawn: 9,  outOfTreatment: 4,  noIntl: 8  } }
+    },
+    2022: {
+      ATR:          { begin: 142, received: 258, closed: 220, end: 180, outcomes: { granted: 162, rejected: 3,  withdrawn: 35, outOfTreatment: 10, noIntl: 10 } },
+      APA:          { begin: 87,  received: 67,  closed: 84,  end: 70,  outcomes: { granted: 57,  rejected: 4,  withdrawn: 12, outOfTreatment: 8,  noIntl: 3  } },
+      BAPA:         { begin: 85,  received: 35,  closed: 19,  end: 101, outcomes: { granted: 12,  rejected: 1,  withdrawn: 3,  outOfTreatment: 3,  noIntl: 0  } },
+      Innovatiebox: { begin: 380, received: 154, closed: 179, end: 355, outcomes: { granted: 126, rejected: 0,  withdrawn: 16, outOfTreatment: 3,  noIntl: 34 } },
+      Overige:      { begin: 32,  received: 45,  closed: 42,  end: 35,  outcomes: { granted: 21,  rejected: 1,  withdrawn: 17, outOfTreatment: 3,  noIntl: 0  } }
+    },
+    // 2021: the report combined unilateral APA with BAPA (one "APA" column), so
+    // APA/BAPA are not separable for 2021 — only ATR, innovation box and other.
+    2021: {
+      ATR:          { begin: 141, received: 241, closed: 240, end: 142, outcomes: { granted: 165, rejected: 6,  withdrawn: 49, outOfTreatment: 10, noIntl: 10 } },
+      Innovatiebox: { begin: 406, received: 207, closed: 233, end: 380, outcomes: { granted: 164, rejected: 1,  withdrawn: 14, outOfTreatment: 4,  noIntl: 50 } },
+      Overige:      { begin: 38,  received: 43,  closed: 49,  end: 32,  outcomes: { granted: 25,  rejected: 3,  withdrawn: 11, outOfTreatment: 5,  noIntl: 5  } }
     }
   },
 
@@ -188,6 +202,19 @@ var RULINGS_DATA = {
       BAPA:         { granted: 40, rejected: 6,    withdrawn: null, outOfTreatment: 53 },
       Innovatiebox: { granted: 18, rejected: null, withdrawn: 33,   outOfTreatment: 41 },
       Overige:      { granted: 9,  rejected: 9,    withdrawn: 12,   outOfTreatment: 12 }
+    },
+    2022: {
+      ATR:          { granted: 8,  rejected: 15,   withdrawn: 9,  outOfTreatment: 8  },
+      APA:          { granted: 13, rejected: 14,   withdrawn: 20, outOfTreatment: 23 },
+      BAPA:         { granted: 35, rejected: 51,   withdrawn: 33, outOfTreatment: 45 },
+      Innovatiebox: { granted: 17, rejected: null, withdrawn: 28, outOfTreatment: 28 },
+      Overige:      { granted: 7,  rejected: 14,   withdrawn: 7,  outOfTreatment: 7  }
+    },
+    // 2021: APA/BAPA combined in the source report — only ATR, innovation box, other.
+    2021: {
+      ATR:          { granted: 6,  rejected: 8,    withdrawn: 10, outOfTreatment: 7  },
+      Innovatiebox: { granted: 17, rejected: 10,   withdrawn: 24, outOfTreatment: 21 },
+      Overige:      { granted: 10, rejected: 13,   withdrawn: 8,  outOfTreatment: 10 }
     }
   },
 
@@ -258,6 +285,8 @@ var RULINGS_DATA = {
   publishedSummaries2025: { ATR: 273, 'APA/BAPA': 104, Innovatiebox: 157, Overige: 31 },
 
   sources: [
+    { year: 2021, title: 'International Rulings Annual Report 2021', file: 'sources/international-rulings-2021.pdf', bytes: 340281 },
+    { year: 2022, title: 'International Rulings Annual Report 2022', file: 'sources/international-rulings-2022.pdf', bytes: 692268 },
     { year: 2023, title: 'International Rulings Annual Report 2023', file: 'sources/international-rulings-2023.pdf', bytes: 1090743 },
     { year: 2024, title: 'International Rulings Annual Report 2024', file: 'sources/international-rulings-2024.pdf', bytes: 1303351 },
     { year: 2025, title: 'International Rulings Annual Report 2025', file: 'sources/international-rulings-2025.pdf', bytes: 958454 }

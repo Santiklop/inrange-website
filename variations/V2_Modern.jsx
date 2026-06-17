@@ -610,105 +610,52 @@ function V2_Modern() {
         </div>
       </section>
 
-      {/* OPEN PRACTICE — free TP resources we publish for the community */}
-      <section id="open-practice" style={{ padding: isMobile ? '64px 20px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
+      {/* OPEN PRACTICE: free TP resources we publish for the community */}
+      <section id="open-practice" style={{ padding: isMobile ? '56px 20px' : (isTablet ? '72px 32px' : '96px 40px'), background: '#fff', scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 1320, margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: isMobile ? 40 : 56, maxWidth: 820, marginLeft: 'auto', marginRight: 'auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: isMobile ? 28 : 36, maxWidth: 640, marginLeft: 'auto', marginRight: 'auto' }}>
             <Eyebrow>Open Practice</Eyebrow>
-            <h2 style={{ margin: '16px 0 20px', fontSize: isMobile ? 32 : (isTablet ? 42 : 52), letterSpacing: '-0.03em', lineHeight: 1.05 }}>
+            <h2 style={{ margin: '14px 0 12px', fontSize: isMobile ? 28 : (isTablet ? 34 : 38), letterSpacing: '-0.02em', lineHeight: 1.1 }}>
               Free tools for the transfer pricing community.
             </h2>
-            <p style={{ fontSize: isMobile ? 15.5 : 17, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 }}>
-              A portal where we publish free-to-use materials &mdash; interactive walkthroughs, dashboards, and analytics.
+            <p style={{ fontSize: isMobile ? 15 : 16, lineHeight: 1.55, color: 'var(--fg-2)', margin: 0 }}>
+              A portal of free-to-use materials: interactive walkthroughs, dashboards and analytics.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr', gap: isMobile ? 16 : 24, maxWidth: 880, margin: '0 auto' }}>
-            <a
-              href="/Chapter6/"
-              style={{
-                display: 'block',
-                background: 'var(--neutral-50)',
-                border: '1px solid var(--border-subtle)',
-                borderLeft: '4px solid var(--brand-green-500)',
-                borderRadius: 20,
-                padding: isMobile ? 24 : 36,
-                textDecoration: 'none',
-                color: 'inherit',
-                transition: 'all 220ms var(--ease-standard)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-              onMouseEnter={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; e.currentTarget.style.background = '#fff'; } }}
-              onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'var(--neutral-50)'; } }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-                <Badge tone="success" dot={false}>Interactive walkthrough</Badge>
-                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', color: 'var(--fg-3)', textTransform: 'uppercase' }}>Live</span>
-              </div>
-              <h3 style={{ fontSize: isMobile ? 22 : 26, margin: '0 0 14px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>
-                OECD TP Guidelines - Interactive Learning Experience
-              </h3>
-              <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
-                This project provides a walkthrough of the examples contained in the OECD TP Guidelines. The aim is to facilitate the common understanding of TP principles by practitioners and tax administrations.
-              </p>
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'var(--brand-green-500)', color: '#fff',
-                fontWeight: 600, fontSize: 14,
-                padding: '10px 18px', borderRadius: 999,
-                transition: 'background 140ms var(--ease)',
-              }}>
-                Open the walkthrough
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="3" y1="8" x2="13" y2="8" />
-                  <polyline points="9 4 13 8 9 12" />
-                </svg>
-              </div>
-            </a>
-
-            <a
-              href="/map/"
-              style={{
-                display: 'block',
-                background: 'var(--neutral-50)',
-                border: '1px solid var(--border-subtle)',
-                borderLeft: '4px solid var(--brand-green-500)',
-                borderRadius: 20,
-                padding: isMobile ? 24 : 36,
-                textDecoration: 'none',
-                color: 'inherit',
-                transition: 'all 220ms var(--ease-standard)',
-                position: 'relative',
-                overflow: 'hidden',
-              }}
-              onMouseEnter={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = 'var(--shadow-lg)'; e.currentTarget.style.background = '#fff'; } }}
-              onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; e.currentTarget.style.background = 'var(--neutral-50)'; } }}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 18 }}>
-                <Badge tone="success" dot={false}>Interactive analytics</Badge>
-                <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.06em', color: 'var(--fg-3)', textTransform: 'uppercase' }}>Live</span>
-              </div>
-              <h3 style={{ fontSize: isMobile ? 22 : 26, margin: '0 0 14px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>
-                Dutch MAP, APA &amp; Rulings Explorer
-              </h3>
-              <p style={{ fontSize: 15, color: 'var(--fg-2)', lineHeight: 1.6, margin: '0 0 24px' }}>
-                An interactive dashboard of the Dutch tax authority&rsquo;s annual statistics reports: mutual agreement (MAP) and advance-pricing (APA / BAPA / MAPA) caseloads, resolution timing and mini-case studies.
-              </p>
-              <div style={{
-                display: 'inline-flex', alignItems: 'center', gap: 8,
-                background: 'var(--brand-green-500)', color: '#fff',
-                fontWeight: 600, fontSize: 14,
-                padding: '10px 18px', borderRadius: 999,
-                transition: 'background 140ms var(--ease)',
-              }}>
-                Open the explorer
-                <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <line x1="3" y1="8" x2="13" y2="8" />
-                  <polyline points="9 4 13 8 9 12" />
-                </svg>
-              </div>
-            </a>
+          <div style={{ maxWidth: 760, margin: '0 auto', background: '#fff', border: '1px solid var(--border-subtle)', borderRadius: 18, overflow: 'hidden', boxShadow: '0 1px 2px rgba(13,27,45,0.05)' }}>
+            {[
+              { href: '/Chapter6/', title: 'OECD TP Guidelines walkthrough', desc: 'Walk through the examples in the OECD TP Guidelines to build a shared understanding of TP principles.', kind: 'book' },
+              { href: '/map/', title: 'Dutch MAP, APA & Rulings Explorer', desc: "An interactive dashboard of the Dutch authority's MAP and advance-pricing statistics: caseloads, resolution timing and mini-case studies.", kind: 'chart' },
+            ].map((r, i) => (
+              <a
+                key={r.href}
+                href={r.href}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: isMobile ? 14 : 18,
+                  padding: isMobile ? '16px 16px' : '20px 22px',
+                  borderTop: i ? '1px solid var(--border-subtle)' : 'none',
+                  textDecoration: 'none', color: 'inherit',
+                  transition: 'background 160ms var(--ease-standard)',
+                }}
+                onMouseEnter={(e) => { if (!isNarrow) e.currentTarget.style.background = 'var(--neutral-50)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent'; }}
+              >
+                <span style={{ width: 44, height: 44, flex: 'none', borderRadius: 12, background: 'var(--brand-green-50, #e9f6ee)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {r.kind === 'book'
+                    ? (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--brand-green-500)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 4h6a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2z" /><path d="M22 4h-6a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22z" /></svg>)
+                    : (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--brand-green-500)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="13" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="18" y1="20" x2="18" y2="9" /></svg>)}
+                </span>
+                <span style={{ flex: 1, minWidth: 0 }}>
+                  <span style={{ display: 'block', fontSize: isMobile ? 15 : 16, fontWeight: 700, color: 'var(--fg-1)', letterSpacing: '-0.01em' }}>{r.title}</span>
+                  <span style={{ display: 'block', fontSize: 13.5, color: 'var(--fg-2)', lineHeight: 1.45, marginTop: 3 }}>{r.desc}</span>
+                </span>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, flex: 'none', fontSize: 13.5, fontWeight: 700, color: '#15863b' }}>
+                  <span style={{ display: isMobile ? 'none' : 'inline' }}>Open</span>
+                  <svg viewBox="0 0 16 16" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8" /><polyline points="9 4 13 8 9 12" /></svg>
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

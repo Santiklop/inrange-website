@@ -921,11 +921,11 @@ small { font-size:12px; color:var(--fg-3); }
     var maxP = list[0].count;
     var bars = list.map(function (p) {
       return '<div class="pbar"><span class="plabel">' + p.name + '</span>' +
-        '<span class="ptrack"><span class="pfill" style="width:' + (p.count / maxP * 100).toFixed(1) + '%"></span></span>' +
+        '<span class="ptrack" data-tip="<b>' + p.name + '</b><br>' + p.count + ' MAP cases in ' + year + '"><span class="pfill" style="width:' + (p.count / maxP * 100).toFixed(1) + '%"></span></span>' +
         '<span class="pval">' + p.count + '</span></div>';
     }).join('');
     var pc = D.partners.partnerCounts[year];
-    return '<div class="pbars">' + bars + '</div>' +
+    return '<div class="chart-wrap"><div class="pbars">' + bars + '</div><div class="tooltip"></div></div>' +
       '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p>';
   }
 
@@ -940,7 +940,7 @@ small { font-size:12px; color:var(--fg-3); }
         var w = (o.count / maxCount * 100).toFixed(1);
         var pct = (o.count / total * 100).toFixed(1);
         return '<div class="obar"><span class="olabel">' + o.cat + '. ' + o.label + '</span>' +
-          '<span class="otrack" title="' + pct + '% of closed cases"><span class="ofill" style="width:' + w + '%;background:' + color + '"></span></span>' +
+          '<span class="otrack" data-tip="<b>' + o.cat + '. ' + o.label + '</b><br>' + o.count + ' cases &middot; ' + pct + '% of closed"><span class="ofill" style="width:' + w + '%;background:' + color + '"></span></span>' +
           '<span class="oval">' + o.count + '</span></div>';
       }).join('');
       return '<h4>' + title + ' <span class="osub">' + grp.subtotal + '</span></h4>' + rows;
@@ -959,11 +959,11 @@ small { font-size:12px; color:var(--fg-3); }
     }).join('');
     return '<div class="chip-row" id="outYears"><span class="chip-label">Year</span>' + years + '</div>' +
       readout +
-      '<div class="chart-card outcols">' +
+      '<div class="chart-wrap"><div class="chart-card outcols">' +
         rowBars(g.bi, 'var(--brand-green-500)', 'Bilateral phase') +
         rowBars(g.uni, 'var(--brand-navy-400)', 'Unilateral phase') +
         rowBars(g.oth, 'var(--neutral-400)', 'Other') +
-      '</div>';
+      '</div><div class="tooltip"></div></div>';
   }
 
   // ===========================================================
@@ -1075,10 +1075,10 @@ small { font-size:12px; color:var(--fg-3); }
       var outBars = outRows.map(function (r) {
         var pct = closedTotal ? (r[1] / closedTotal * 100).toFixed(1) : '0';
         return '<div class="obar"><span class="olabel">' + r[0] + '</span>' +
-          '<span class="otrack" title="' + pct + '% of closed"><span class="ofill" style="width:' + (r[1] / maxO * 100).toFixed(1) + '%;background:' + r[2] + '"></span></span>' +
+          '<span class="otrack" data-tip="<b>' + r[0] + '</b><br>' + r[1] + ' cases &middot; ' + pct + '% of closed"><span class="ofill" style="width:' + (r[1] / maxO * 100).toFixed(1) + '%;background:' + r[2] + '"></span></span>' +
           '<span class="oval">' + r[1] + '</span></div>';
       }).join('');
-      outcomeHtml = '<div class="panel"><h4>APA outcome split 2025 <small>of ' + closedTotal + ' closed · rulings report</small></h4><div class="outcols">' + outBars + '</div></div>';
+      outcomeHtml = '<div class="panel"><h4>APA outcome split 2025 <small>of ' + closedTotal + ' closed · rulings report</small></h4><div class="chart-wrap"><div class="outcols">' + outBars + '</div><div class="tooltip"></div></div></div>';
     } else {
       outcomeHtml = '<div class="panel"><h4>Outcome split <small>' + typeOf(apType).label + '</small></h4>' +
         '<p class="partner-foot">The MAP report — the source of truth for ' + apType + ' volumes here — does not publish a per-outcome split for ' + apType + '. ' +
@@ -1091,8 +1091,9 @@ small { font-size:12px; color:var(--fg-3); }
     // Grouped comparison: one block per type, three bars (received/closed/end).
     var cmpBars = cmp.map(function (c) {
       function seg(val, color, lbl) {
+        var tip = '<b>' + c.t.label + ' ' + apCmpYear + '</b><br>' + lbl + ': ' + val;
         return '<div class="obar"><span class="olabel" style="min-width:0">' + lbl + '</span>' +
-          '<span class="otrack" title="' + val + '"><span class="ofill" style="width:' + (val / cmpMax * 100).toFixed(1) + '%;background:' + color + '"></span></span>' +
+          '<span class="otrack" data-tip="' + tip + '"><span class="ofill" style="width:' + (val / cmpMax * 100).toFixed(1) + '%;background:' + color + '"></span></span>' +
           '<span class="oval">' + val + '</span></div>';
       }
       return '<h4>' + gloss(c.t.label, c.t.glossKey) + '</h4>' +
@@ -1112,7 +1113,7 @@ small { font-size:12px; color:var(--fg-3); }
     var sideBySide = '<div class="chart-card">' +
       '<h4 class="stack-h">Side by side, ' + apCmpYear + ' <span class="osub">received · closed · year-end</span></h4>' +
       '<div class="chip-row" id="apCmpYears"><span class="chip-label">Year</span>' + cmpYears + '</div>' +
-      '<div class="outcols">' + cmpBars + '</div>' +
+      '<div class="chart-wrap"><div class="outcols">' + cmpBars + '</div><div class="tooltip"></div></div>' +
       '<p class="note">' + MAP_DATA.facts.apaShareOfTP + '</p>' +
       '<p class="partner-foot">' + SOT_FOOTNOTE + '</p></div>';
 

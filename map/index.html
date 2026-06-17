@@ -108,11 +108,28 @@ small { font-size:12px; color:var(--fg-3); }
 .hero .lede { font-size:18px; line-height:1.55; color:var(--fg-2); max-width:860px; margin-bottom:24px; }
 
 /* ---- Key facts / KPI tiles ---- */
-.key-facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:14px; max-width:940px; }
-.key-facts .kf { padding:12px 14px; border-left:2px solid var(--border-default); transition:border-left-color var(--dur-fast) var(--ease),padding var(--dur-fast) var(--ease); }
-.key-facts .kf:hover { border-left-color:var(--brand-green-500); padding-left:16px; padding-right:12px; }
-.key-facts .kf small { display:block; font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3); margin-bottom:4px; }
-.key-facts .kf strong { display:block; font-size:15px; color:var(--fg-1); font-weight:700; }
+.key-facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:16px; max-width:1000px; }
+.key-facts .kf { position:relative; cursor:help; padding:14px 16px; border-left:3px solid var(--border-default); transition:border-left-color var(--dur-fast) var(--ease),padding var(--dur-fast) var(--ease); }
+.key-facts .kf:hover { border-left-color:var(--brand-green-500); padding-left:18px; padding-right:14px; }
+.key-facts .kf small { display:inline-block; font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--fg-3); margin-bottom:6px; border-bottom:1px dotted var(--border-default); }
+.key-facts .kf:hover small { color:var(--fg-2); border-bottom-color:var(--brand-green-400); }
+.key-facts .kf strong { display:block; font-size:32px; color:var(--fg-1); font-weight:800; line-height:1.05; letter-spacing:-.02em; font-variant-numeric:tabular-nums; }
+/* Professionally-styled hover tooltip explaining each headline instrument */
+.key-facts .kf-tip {
+  position:absolute; top:calc(100% + 11px); left:0; width:max-content; max-width:290px;
+  background:var(--brand-navy-800); color:#fff; font-family:var(--font-sans); font-weight:500;
+  font-size:12.5px; line-height:1.5; letter-spacing:0; text-transform:none; text-align:left;
+  padding:12px 15px; border-radius:var(--radius-md); box-shadow:var(--shadow-lg);
+  opacity:0; pointer-events:none; transform:translateY(-5px);
+  transition:opacity var(--dur-fast) var(--ease),transform var(--dur-fast) var(--ease); z-index:70;
+}
+.key-facts .kf:hover .kf-tip, .key-facts .kf:focus-within .kf-tip { opacity:1; transform:translateY(0); }
+.key-facts .kf:last-child .kf-tip { left:auto; right:0; }
+.key-facts .kf-tip::before { content:""; position:absolute; bottom:100%; left:22px; border:6px solid transparent; border-bottom-color:var(--brand-navy-800); }
+.key-facts .kf:last-child .kf-tip::before { left:auto; right:22px; }
+[data-theme="dark"] .key-facts .kf-tip { background:var(--brand-navy-600); border:1px solid var(--border-default); }
+[data-theme="dark"] .key-facts .kf-tip::before { border-bottom-color:var(--brand-navy-600); }
+@media print { .key-facts .kf-tip { display:none!important; } }
 .kpi-note { font-size:12px; color:var(--fg-3); margin:12px 0 0; }
 .delta { font-size:12px; font-weight:600; color:var(--brand-green-600); margin-left:4px; }
 .delta:not(:empty) { background:var(--brand-green-50); padding:2px 6px; border-radius:var(--radius-pill); }
@@ -949,7 +966,6 @@ small { font-size:12px; color:var(--fg-3); }
       'norm — which is part of why advance certainty (a BAPA/MAPA) is increasingly preferred over after-the-fact MAP.</aside>';
     return '<div class="view-head"><h2>Timing &amp; resolution</h2>' +
       '<p class="lede">How long each instrument takes, how Dutch ' + gloss('MAP', 'MAP') + ' cases resolve, and who the Netherlands resolves them with.</p></div>' +
-      '<p class="note" style="margin-bottom:16px">' + D.facts.awards + '</p>' +
       '<div class="panel"><h4>Typical months by instrument, ' + (monthsYear === 'avg' ? '2022–2025 average' : monthsYear) + ' <small>ranked; longest at the top</small></h4>' +
         '<div class="chip-row" id="mtyYears"><span class="chip-label">Period</span>' +
           D.cycleTimes.years.filter(function (y) { return R.processingTime[y] && Object.keys(R.processingTime[y]).length >= 5; }).map(function (y) {
@@ -1155,15 +1171,15 @@ small { font-size:12px; color:var(--fg-3); }
     return ['MAP', 'ATR', 'APA', 'BAPA', 'MAPA'].map(function (k) {
       var t = typeOf(k);
       var cur = typeStats(k, 2025), prev = typeStats(k, 2024);
-      return [t.short, cur.received, yoy(cur.received, prev.received)];
+      return { label: t.short, value: cur.received, delta: yoy(cur.received, prev.received), def: GLOSSARY[t.glossKey] || '' };
     });
   }
 
   function renderHero() {
-    var tiles = byTypeKpis();
-    document.getElementById('kpis').innerHTML = tiles.map(function (t) {
-      return '<div class="kf"><small>' + t[0] + '</small><strong>' + t[1] +
-        (t[2] ? ' <span class="delta">' + t[2] + '</span>' : '') + '</strong></div>';
+    document.getElementById('kpis').innerHTML = byTypeKpis().map(function (t) {
+      return '<div class="kf" tabindex="0"><small>' + t.label + '</small><strong>' + t.value +
+        (t.delta ? ' <span class="delta">' + t.delta + '</span>' : '') + '</strong>' +
+        (t.def ? '<span class="kf-tip">' + t.def + '</span>' : '') + '</div>';
     }).join('');
     document.getElementById('kpiNote').textContent = 'New requests received in FY2025 (green = change vs FY2024).';
   }

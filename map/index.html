@@ -86,13 +86,6 @@ small { font-size:12px; color:var(--fg-3); }
 .delta:not(:empty) { background:var(--brand-green-50); padding:2px 6px; border-radius:var(--radius-pill); }
 [data-theme="dark"] .delta:not(:empty) { background:rgba(31,168,74,.14); color:var(--brand-green-300); }
 
-/* ---- Area switch (segmented control) ---- */
-.area-switch { display:inline-flex; align-items:center; background:var(--bg-sunken); border:1px solid var(--border-subtle); border-radius:var(--radius-pill); padding:3px; gap:2px; margin-bottom:24px; }
-.area-switch .seg { background:transparent; border:none; color:var(--fg-3); font-family:var(--font-sans); font-size:13px; font-weight:600; padding:7px 18px; border-radius:var(--radius-pill); cursor:pointer; transition:all var(--dur-fast) var(--ease); white-space:nowrap; }
-.area-switch .seg:hover { color:var(--fg-1); background:var(--bg); }
-.area-switch .seg.on { background:var(--brand-green-500); color:#fff; box-shadow:var(--shadow-sm); }
-[data-theme="dark"] .area-switch .seg.on { background:var(--brand-green-600); }
-
 /* ---- Tab bar ---- */
 .tabbar { position:sticky; top:51px; z-index:40; background:var(--bg); border-bottom:1px solid var(--border-subtle); }
 [data-theme="dark"] .tabbar { background:var(--bg); }
@@ -288,7 +281,6 @@ small { font-size:12px; color:var(--fg-3); }
   .container { padding:0 18px; }
   .key-facts { grid-template-columns:1fr 1fr; }
   .tabbar-inner { padding:0 14px; }
-  .area-switch { flex-wrap:wrap; border-radius:var(--radius-lg); }
   .statgrid { grid-template-columns:1fr; }
   .obar { grid-template-columns:1fr 40px; }
   .obar .otrack { grid-column:1 / -1; order:3; }
@@ -311,14 +303,14 @@ small { font-size:12px; color:var(--fg-3); }
 }
 
 /* ---- Print ----
-   A tab SPA can't honestly print "all nine views" — only the active one is in
-   the DOM. So we print the CURRENTLY-ACTIVE view cleanly: hide all interactive
-   chrome (header/theme button, scroll bar, area switch, sub-tab bar, chips),
-   keep the hero title + lede + KPIs for context, and keep the data footer.
+   A tab SPA can't honestly print every tab — only the active one is in the DOM.
+   So we print the CURRENTLY-ACTIVE tab cleanly: hide all interactive chrome
+   (header/theme button, scroll bar, tab bar, chips), keep the hero title + lede
+   + KPIs for context, and keep the data footer.
    Charts scale via viewBox and the heat matrix is allowed to overflow naturally
    (no inner scrollbar) so nothing clips. */
 @media print {
-  .site-header, .scroll-progress, .tabbar, .chip-row, .area-switch { display:none!important; }
+  .site-header, .scroll-progress, .tabbar, .chip-row { display:none!important; }
   html, body { background:#fff!important; color:#000; }
   body { font-size:11pt; }
   .hero { padding:0 0 16px; background:none; }
@@ -366,9 +358,8 @@ small { font-size:12px; color:var(--fg-3); }
 <section class="hero">
   <div class="container">
     <p class="eyebrow">Dutch tax authority &middot; annual reports</p>
-    <h1 id="heroTitle">Dutch MAP &amp; APA Explorer</h1>
-    <p class="lede" id="heroLede"></p>
-    <div class="area-switch" id="areaSwitch"></div>
+    <h1 id="heroTitle">Dutch MAP, APA &amp; Rulings Explorer</h1>
+    <p class="lede" id="heroLede">The Dutch competent authority's mutual-agreement, advance-pricing and international-rulings figures in one place — disputes (MAP), advance certainty (APA / BAPA / MAPA) and the wider ruling practice (ATR, innovation box, other), drawn from the MAP-team and APA/ATR (College IFZ) annual reports.</p>
     <div class="key-facts" id="kpis"></div>
     <p class="kpi-note" id="kpiNote"></p>
   </div>
@@ -403,54 +394,15 @@ small { font-size:12px; color:var(--fg-3); }
     document.getElementById('scrollProgress').style.width = (sh > 0 ? (st / sh * 100) : 0) + '%';
   });
 
-  // ---- area registry: each area owns its KPIs builder, lede, and sub-tabs ----
-  var AREAS = {
-    map: {
-      label: 'MAP & APA',
-      title: 'Dutch MAP &amp; APA Explorer',
-      lede: "The Dutch Tax Administration MAP team’s mutual-agreement and advance-pricing figures, 2019–2025.",
-      tabs: [
-        { id: 'caseload',  label: 'Caseload trends' },
-        { id: 'inventory', label: 'Inventory flow' },
-        { id: 'outcomes',  label: 'Outcomes & resolution' },
-        { id: 'timing',    label: 'Timing · countries · APAs' },
-        { id: 'tp',        label: 'TP deep-dive' }
-      ],
-      kpis: function () {
-        var k = MAP_DATA.kpis[2025], p = MAP_DATA.kpis[2024];
-        return [
-          ['Requests received', k.received,          yoy(k.received, p.received)],
-          ['Cases closed',      k.closed,             yoy(k.closed,   p.closed)],
-          ['Resolution rate',   k.resolutionRate + '%', ''],
-          ['Year-end inventory',k.endInventory,       ''],
-          ['Full elimination',  k.fullElimPct + '%',  '']
-        ];
-      }
-    },
-    rulings: {
-      label: 'International Rulings',
-      title: 'Dutch International Rulings Explorer',
-      lede: "The Dutch APA/ATR ruling practice (College IFZ): rulings with an international character, 2023–2025.",
-      tabs: [
-        { id: 'rOverview',   label: 'Overview' },
-        { id: 'rFlow',       label: 'By type & flow' },
-        { id: 'rTiming',     label: 'Processing times' },
-        { id: 'rPositions',  label: 'Defining positions' }
-      ],
-      kpis: function () {
-        var k = RULINGS_DATA.kpis[2025], p = RULINGS_DATA.kpis[2024];
-        return [
-          ['Requests received', k.received,     yoy(k.received, p.received)],
-          ['Requests closed',   k.closed,       yoy(k.closed,   p.closed)],
-          ['(Partly) granted',  k.granted,      yoy(k.granted,  p.granted)],
-          ['Year-end inventory',k.endInventory, yoy(k.endInventory, p.endInventory)]
-        ];
-      }
-    }
-  };
+  // ---- The four tabs of the merged page (no area switch) ----
+  var TABS = [
+    { id: 'overview', label: 'Overview' },
+    { id: 'timing',   label: 'Timing & resolution' },
+    { id: 'advance',  label: 'Advance pricing' },
+    { id: 'cases',    label: 'TP case studies' }
+  ];
 
-  var area   = 'map';
-  var active = AREAS.map.tabs[0].id;
+  var active = TABS[0].id;
 
   // ===========================================================
   //  Shared chart toolkit (hand-built inline SVG, brand tokens)
@@ -468,6 +420,72 @@ small { font-size:12px; color:var(--fg-3); }
     for (var i = 0; i < STREAMS.length; i++) if (STREAMS[i].key === key) return STREAMS[i];
     return null;
   }
+
+  // ===========================================================
+  //  Unified instrument taxonomy + by-type accessor (additive)
+  //  Source-of-truth routing per the spec v2 section:
+  //    MAP        = MAP report, aggregate of INT+TP+TB+ML (pure dispute count)
+  //    BAPA, MAPA = MAP report (single source of truth)
+  //    ATR, APA, INNO, OTHER = international-rulings report
+  // ===========================================================
+  var MAP_DISPUTE_STREAMS = ['INT', 'TP', 'TB', 'MLMAP']; // MAP aggregate (excl. BAPA/MAPA)
+  var TYPES = [
+    { key: 'MAP',   label: 'MAP (dispute)',     short: 'MAP',   c: 'var(--brand-navy-500)', glossKey: 'MAP',   src: 'map'     },
+    { key: 'ATR',   label: 'ATR',               short: 'ATR',   c: 'var(--brand-navy-300)', glossKey: 'ATR',   src: 'rulings' },
+    { key: 'APA',   label: 'APA (unilateral)',  short: 'APA',   c: 'var(--brand-green-600)', glossKey: 'APA',  src: 'rulings' },
+    { key: 'BAPA',  label: 'BAPA',              short: 'BAPA',  c: 'var(--brand-green-400)', glossKey: 'BAPA',  src: 'map'     },
+    { key: 'MAPA',  label: 'MAPA',              short: 'MAPA',  c: 'var(--accent-terra)',    glossKey: 'MAPA',  src: 'map'     },
+    { key: 'INNO',  label: 'Innovation box',    short: 'Innovation box', c: 'var(--accent-ochre)', glossKey: 'Innovatiebox', src: 'rulings' },
+    { key: 'OTHER', label: 'Other rulings',     short: 'Other', c: 'var(--neutral-400)',     glossKey: 'Overige', src: 'rulings' }
+  ];
+  function typeOf(key) {
+    for (var i = 0; i < TYPES.length; i++) if (TYPES[i].key === key) return TYPES[i];
+    return null;
+  }
+  // Maps a unified TYPES key to its RULINGS_DATA.flow key (where applicable).
+  var RULING_KEY_OF = { ATR: 'ATR', APA: 'APA', INNO: 'Innovatiebox', OTHER: 'Overige' };
+
+  // typeStats(typeKey, year) -> {begin, received, closed, end} from the correct source.
+  // Inventory exists for 2023/2024/2025 only (fine for the by-type snapshot).
+  function typeStats(typeKey, year) {
+    if (typeKey === 'MAP') {
+      var inv = MAP_DATA.inventory[year];
+      if (!inv) return null;
+      var acc = { begin: 0, received: 0, closed: 0, end: 0 };
+      MAP_DISPUTE_STREAMS.forEach(function (s) {
+        acc.begin += inv[s].begin; acc.received += inv[s].received;
+        acc.closed += inv[s].closed; acc.end += inv[s].end;
+      });
+      return acc;
+    }
+    if (typeKey === 'BAPA' || typeKey === 'MAPA') {
+      var i = MAP_DATA.inventory[year];
+      return i ? { begin: i[typeKey].begin, received: i[typeKey].received, closed: i[typeKey].closed, end: i[typeKey].end } : null;
+    }
+    var rk = RULING_KEY_OF[typeKey];
+    var f = rk && RULINGS_DATA.flow[year] ? RULINGS_DATA.flow[year][rk] : null;
+    return f ? { begin: f.begin, received: f.received, closed: f.closed, end: f.end } : null;
+  }
+
+  // Multi-year received/closed series for a unified type, aligned to MAP_DATA.years
+  // (2019–2025). Rulings types only exist 2023–2025, so earlier years are null
+  // (the line is only plotted for years that exist).
+  function typeSeries(typeKey, metric) {
+    var t = typeOf(typeKey);
+    return MAP_DATA.years.map(function (yr, i) {
+      if (t.src === 'map') {
+        if (typeKey === 'MAP') {
+          return MAP_DISPUTE_STREAMS.reduce(function (a, s) { return a + MAP_DATA.caseload[s][metric][i]; }, 0);
+        }
+        return MAP_DATA.caseload[typeKey][metric][i]; // BAPA / MAPA span the full axis
+      }
+      var rk = RULING_KEY_OF[typeKey];
+      return (RULINGS_DATA.flow[yr] && RULINGS_DATA.flow[yr][rk]) ? RULINGS_DATA.flow[yr][rk][metric] : null;
+    });
+  }
+
+  // The BAPA/MAPA source-of-truth footnote (must appear where their volumes show).
+  var SOT_FOOTNOTE = 'BAPA/MAPA volumes use the MAP team’s figures; the international-rulings report reports slightly different numbers (different team, cut-off and counting).';
 
   // ---- Glossary: plain-English definitions for technical terms ----
   var GLOSSARY = {
@@ -632,114 +650,99 @@ small { font-size:12px; color:var(--fg-3); }
   }
 
   // ===========================================================
-  //  Per-view control state
+  //  Per-tab control state
   // ===========================================================
-  var caseloadOn = { INT: true, TP: true, TB: false, MLMAP: false, BAPA: false, MAPA: false };
-  var invYear = 2025, invStream = 'INT';
-  var outYear = 2025;
-  // Rulings views
   var R = RULINGS_DATA;
-  var RTYPE_COLORS = {
-    ATR:          'var(--brand-navy-500)',
-    APA:          'var(--brand-green-600)',
-    BAPA:         'var(--brand-green-400)',
-    Innovatiebox: 'var(--accent-ochre)',
-    Overige:      'var(--neutral-400)'
-  };
-  var rYear = 2025;                       // overview
-  var rFlowType = 'ATR', rFlowYear = 2025; // by type & flow
-  var rtYear = 2025;                      // processing times
+  // Overview tab
+  var ovYear = 2025;                                 // by-type snapshot year (2023–2025)
+  var ovTrendMetric = 'received';                    // 'received' | 'closed'
+  var ovOn = { MAP: true, ATR: true, APA: true, BAPA: true, MAPA: false, INNO: false, OTHER: false };
+  // Timing tab
+  var outYear = 2025;                                // MAP outcome-breakdown year (2024/2025)
+  // Advance-pricing tab
+  var apType = 'APA';                                // 'APA' | 'BAPA' | 'MAPA'
+  var apTrendMetric = 'received';                    // 'received' | 'closed'
 
   // ===========================================================
-  //  View: Caseload trends (Task 6)
+  //  Shared by-type builders (reuse the svgEl/linePath/yScale toolkit)
   // ===========================================================
-  function viewCaseload() {
-    var keys = STREAMS.filter(function (s) { return caseloadOn[s.key]; }).map(function (s) { return s.key; });
-    var toggles = STREAMS.map(function (s) {
-      return '<button class="chip' + (caseloadOn[s.key] ? ' on' : '') + '" data-cl="' + s.key +
-        '" style="--chip:' + s.c + '" aria-pressed="' + caseloadOn[s.key] + '"' + titleAttr(s.key) + '>' + s.label + '</button>';
-    }).join('');
-    var chart = keys.length
-      ? '<div class="chart-wrap">' + lineChart(keys, { title: 'MAP cases received vs closed by year' }) + '<div class="tooltip"></div></div>' + legendRow(keys)
-      : '<p class="partner-foot">Select at least one workstream to plot.</p>';
-    return '<div class="view-head"><h2>Caseload trends</h2>' +
-      '<p class="lede">New ' + gloss('MAP', 'MAP') + ' requests (solid) vs. cases closed (dashed) across the four workstreams, 2019–2025.</p></div>' +
-      '<div class="chip-row" id="clToggles"><span class="chip-label">' + gloss('Workstreams', 'WORKSTREAM') + '</span>' + toggles + '</div>' +
-      '<div class="chart-card">' + chart + '</div>';
-  }
 
-  // ===========================================================
-  //  View: Inventory flow waterfall (Task 7)
-  // ===========================================================
-  function viewInventory() {
-    var d = D.inventory[invYear][invStream];
-    var waterfall = buildWaterfall(d.begin, d.received, d.closed, d.end, {
-      title: 'MAP case inventory flow: begin plus received minus closed equals end'
+  // Unified multi-type trend over MAP_DATA.years (2019–2025). MAP/BAPA/MAPA span
+  // the full axis; ATR/APA/INNO/OTHER only have points 2023–2025 (their line
+  // starts mid-axis — only plot points/segments for years that exist).
+  function unifiedTrendChart(metric, onKeys) {
+    var W = 900, H = 360, padL = 48, padTop = 16, padB = 28;
+    var plotW = W - padL - 16, plotH = H - padTop - padB;
+    var keys = onKeys.length ? onKeys : ['MAP'];
+    var vals = [1];
+    keys.forEach(function (k) {
+      typeSeries(k, metric).forEach(function (v) { if (v != null) vals.push(v); });
     });
-    var years = [2023, 2024, 2025].map(function (y) {
-      return '<button class="chip plain' + (y === invYear ? ' on' : '') + '" data-invy="' + y + '">' + y + '</button>';
+    var max = niceMax(Math.max.apply(null, vals));
+    var ys = yScale(plotH, padTop, max);
+    var xs = function (i) { return padL + (i / (MAP_DATA.years.length - 1)) * plotW; };
+    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
+      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
+      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
+        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
     }).join('');
-    var streams = ['INT', 'TP', 'MLMAP', 'TB', 'BAPA', 'MAPA'].map(function (k) {
-      var s = streamOf(k);
-      return '<button class="chip' + (k === invStream ? ' on' : '') + '" data-invs="' + k + '" style="--chip:' + s.c + '"' + titleAttr(k) + '>' + s.label + '</button>';
-    }).join('');
-    var reconciles = (d.begin + d.received - d.closed) === d.end;
-    return '<div class="view-head"><h2>Inventory flow</h2>' +
-      '<p class="lede">How the case stock moved: begin + received − closed = end.</p></div>' +
-      '<div class="chip-row" id="invYears"><span class="chip-label">Year</span>' + years + '</div>' +
-      '<div class="chip-row" id="invStreams"><span class="chip-label">' + gloss('Workstream', 'WORKSTREAM') + '</span>' + streams + '</div>' +
-      '<div class="chart-card"><div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
-      '<p class="partner-foot">' + d.begin + ' + ' + d.received + ' − ' + d.closed + ' = <strong style="color:var(--fg-1)">' + d.end + '</strong>' +
-      (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>';
-  }
-
-  // ===========================================================
-  //  View: Outcomes & resolution (Task 8)
-  // ===========================================================
-  function viewOutcomes() {
-    var g = outcomeGroups(outYear);
-    var total = g.uni.subtotal + g.bi.subtotal + g.oth.subtotal;
-    var maxCount = 0;
-    [g.uni, g.bi, g.oth].forEach(function (grp) {
-      grp.items.forEach(function (o) { if (o.count > maxCount) maxCount = o.count; });
-    });
-    function rowBars(grp, color, title) {
-      var rows = grp.items.map(function (o) {
-        var w = (o.count / maxCount * 100).toFixed(1);
-        var pct = (o.count / total * 100).toFixed(1);
-        return '<div class="obar"><span class="olabel">' + o.cat + '. ' + o.label + '</span>' +
-          '<span class="otrack" title="' + pct + '% of closed cases"><span class="ofill" style="width:' + w + '%;background:' + color + '"></span></span>' +
-          '<span class="oval">' + o.count + '</span></div>';
+    var mLabel = metric === 'received' ? 'Received' : 'Closed';
+    var lines = keys.map(function (k) {
+      var t = typeOf(k), ser = typeSeries(k, metric);
+      var pts = [];
+      ser.forEach(function (v, i) { if (v != null) pts.push([xs(i), ys(v), i]); });
+      if (!pts.length) return '';
+      var path = pts.length > 1 ? '<path d="' + linePath(pts.map(function (p) { return [p[0], p[1]]; })) +
+        '" fill="none" stroke="' + t.c + '" stroke-width="2.5" stroke-linejoin="round"/>' : '';
+      var dots = pts.map(function (p) {
+        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
+          'data-tip="<b>' + t.label + ' ' + MAP_DATA.years[p[2]] + '</b><br>' + mLabel + ': ' + ser[p[2]] + '"/>' +
+          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + t.c + '"/>';
       }).join('');
-      return '<h4>' + title + ' <span class="osub">' + grp.subtotal + '</span></h4>' + rows;
-    }
-    var years = [2024, 2025].map(function (y) {
-      return '<button class="chip plain' + (y === outYear ? ' on' : '') + '" data-outy="' + y + '">' + y + '</button>';
+      return path + dots;
     }).join('');
-    var fullElim = g.bi.items.filter(function (o) { return o.cat === 4; })[0];
-    var fullElimPct = fullElim ? (fullElim.count / total * 100).toFixed(1) : '0';
-    var resRate = resolutionRate(outYear);
-    var readout = '<div class="out-readout">' +
-      '<div class="ror"><small>Cases closed</small><strong>' + total + '</strong></div>' +
-      '<div class="ror"><small>Bilateral subtotal</small><strong>' + g.bi.subtotal + '</strong></div>' +
-      '<div class="ror"><small>Full elimination</small><strong>' + (fullElim ? fullElim.count : 0) + ' · ' + fullElimPct + '%</strong></div>' +
-      '<div class="ror"><small>Resolution rate</small><strong>' + (resRate == null ? '—' : resRate + '%') + '</strong></div>' +
-      '</div>';
-    return '<div class="view-head"><h2>Outcomes &amp; resolution</h2>' +
-      '<p class="lede">The ten ' + gloss('OECD', 'OECD') + ' outcome categories for ' + gloss('MAP', 'MAP') + ' cases the Dutch authority closed in ' + outYear + '. Bar width is share of all closed cases.</p></div>' +
-      '<div class="chip-row" id="outYears"><span class="chip-label">Year</span>' + years + '</div>' +
-      readout +
-      '<div class="chart-card outcols">' +
-        rowBars(g.bi, 'var(--brand-green-500)', 'Bilateral phase') +
-        rowBars(g.uni, 'var(--brand-navy-400)', 'Unilateral phase') +
-        rowBars(g.oth, 'var(--neutral-400)', 'Other') +
+    var xl = MAP_DATA.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 8) + '" class="xtick">' + y + '</text>'; }).join('');
+    return svgEl(W, H, grid + lines + xl, 'Requests ' + metric + ' by instrument, 2019–2025');
+  }
+
+  // Legend for a set of unified-type keys, with the received/closed metric note.
+  function typeLegend(keys, metric) {
+    var items = keys.map(typeOf).filter(Boolean).map(function (t) {
+      return '<span class="lg" style="color:' + t.c + '"><span class="sw"></span>' + gloss(t.label, t.glossKey) + '</span>';
+    }).join('');
+    var note = metric ? '<span class="lg" style="color:var(--fg-3)"><span class="sw"></span>' +
+      (metric === 'received' ? 'Received' : 'Closed') + '</span>' : '';
+    return '<div class="chart-legend">' + items + note + '</div>';
+  }
+
+  // Horizontal by-type bars (received & closed) for a selected year, all 7 types.
+  // Uses typeStats() so each instrument is routed to its source of truth.
+  function byTypeBars(year) {
+    var rows = TYPES.map(function (t) {
+      var s = typeStats(t.key, year);
+      return { t: t, received: s ? s.received : null, closed: s ? s.closed : null };
+    });
+    var maxV = 1;
+    rows.forEach(function (r) { if (r.received != null) maxV = Math.max(maxV, r.received, r.closed); });
+    function bar(val, color) {
+      if (val == null) return '<span class="otrack" title="no data for ' + year + '"><span class="ofill" style="width:0%;background:' + color + '"></span></span><span class="oval">—</span>';
+      return '<span class="otrack" title="' + val + '"><span class="ofill" style="width:' + (val / maxV * 100).toFixed(1) + '%;background:' + color + '"></span></span><span class="oval">' + val + '</span>';
+    }
+    var body = rows.map(function (r) {
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.received, r.t.c) + '</div>';
+    }).join('');
+    var bodyClosed = rows.map(function (r) {
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.closed, 'var(--neutral-400)') + '</div>';
+    }).join('');
+    return '<div class="outcols">' +
+      '<h4>Received ' + year + '</h4>' + body +
+      '<h4>Closed ' + year + '</h4>' + bodyClosed +
       '</div>';
   }
 
-  // ===========================================================
-  //  View: Timing · countries · APAs (Task 9)
-  // ===========================================================
-  function viewTiming() {
+  // MAP average cycle-time line vs the 24-month norm (carried over from the old
+  // MAP timing view). Returns {svg, legend}.
+  function cycleTimeChart() {
     var ct = D.cycleTimes, W = 760, H = 320, padL = 40, padTop = 16, padB = 26;
     var plotW = W - padL - 16, plotH = H - padTop - padB, max = 30;
     var ys = yScale(plotH, padTop, max);
@@ -769,200 +772,241 @@ small { font-size:12px; color:var(--fg-3); }
     var legend = '<div class="chart-legend">' + series.map(function (s) {
       return '<span class="lg" style="color:' + s[1] + '"><span class="sw"></span>' + gloss(s[2], s[0]) + '</span>';
     }).join('') + '<span class="lg" style="color:var(--accent-ochre)"><span class="sw dashed"></span>' + gloss('24-mo norm', 'BEPS') + '</span></div>';
+    return { svg: svgEl(W, H, grid + norm + lines + xl, 'Average MAP cycle time vs 24-month norm'), legend: legend };
+  }
 
+  // Ranked "typical months by type" horizontal bar: MAP cycle time (TP/INT/Total
+  // 2025) alongside ruling gross time-to-granted (ATR/APA/BAPA/INNO/OTHER 2025).
+  // Two different metrics — clearly labelled + footnoted by the caller.
+  function monthsByTypeBar() {
+    var ct = D.cycleTimes, last = ct.years.length - 1;
+    var pg = R.processingTime[2025];
+    var rows = [
+      { label: 'MAP · transfer pricing', short: 'MAP TP',  v: ct.TP[last],    kind: 'map', c: 'var(--brand-green-600)' },
+      { label: 'MAP · interpretation',   short: 'MAP INT', v: ct.INT[last],   kind: 'map', c: 'var(--brand-navy-500)' },
+      { label: 'MAP · all cases',        short: 'MAP all', v: ct.Total[last], kind: 'map', c: 'var(--brand-navy-300)' },
+      { label: 'BAPA · time to granted', short: 'BAPA',    v: pg.BAPA.granted, kind: 'ruling', c: 'var(--brand-green-400)' },
+      { label: 'Innovation box · to granted', short: 'Innovation box', v: pg.Innovatiebox.granted, kind: 'ruling', c: 'var(--accent-ochre)' },
+      { label: 'APA · time to granted',  short: 'APA',     v: pg.APA.granted,  kind: 'ruling', c: 'var(--brand-green-600)' },
+      { label: 'Other · time to granted', short: 'Other',  v: pg.Overige.granted, kind: 'ruling', c: 'var(--neutral-400)' },
+      { label: 'ATR · time to granted',  short: 'ATR',     v: pg.ATR.granted,  kind: 'ruling', c: 'var(--brand-navy-300)' }
+    ].sort(function (a, b) { return b.v - a.v; });
+    var maxV = 1; rows.forEach(function (r) { maxV = Math.max(maxV, r.v); });
+    var bars = rows.map(function (r) {
+      var metricLbl = r.kind === 'map' ? 'avg cycle time' : 'gross time to granted';
+      return '<div class="obar"><span class="olabel">' + r.label + '</span>' +
+        '<span class="otrack" title="' + r.v + ' months · ' + metricLbl + '"><span class="ofill" style="width:' + (r.v / maxV * 100).toFixed(1) + '%;background:' + r.c + '"></span></span>' +
+        '<span class="oval">' + r.v + '</span></div>';
+    }).join('');
+    return '<div class="outcols">' + bars + '</div>';
+  }
+
+  // MAP treaty-partner horizontal bars (carried over from the old timing view).
+  function treatyPartnerBars() {
     var maxP = D.partners[2025][0].count;
-    var partnerBars = D.partners[2025].map(function (p) {
+    var bars = D.partners[2025].map(function (p) {
       return '<div class="pbar"><span class="plabel">' + p.name + '</span>' +
         '<span class="ptrack"><span class="pfill" style="width:' + (p.count / maxP * 100).toFixed(1) + '%"></span></span>' +
         '<span class="pval">' + p.count + '</span></div>';
     }).join('');
     var pc = D.partners.partnerCounts;
-
-    var takeaway = '<aside class="takeaway">Transfer-pricing cases are the only stream that runs past the 24-month ' +
-      'norm — which is part of why advance certainty (a BAPA/MAPA) is increasingly preferred over after-the-fact MAP.</aside>';
-
-    return '<div class="view-head"><h2>Timing · countries · APAs</h2>' +
-      '<p class="lede">How long cases take, who the Netherlands resolves them with, and why advance pricing agreements matter.</p></div>' +
-      '<p class="note" style="margin-bottom:16px">' + D.facts.awards + '</p>' +
-      '<div class="panel"><h4>Average cycle time (months) <small>approximate, read from the report chart (±~0.5 mo)</small></h4>' +
-      '<div class="chart-wrap">' + svgEl(W, H, grid + norm + lines + xl, 'Average MAP cycle time vs 24-month norm') + '<div class="tooltip"></div></div>' + legend + takeaway + '</div>' +
-      '<div class="panel"><h4>Top treaty partners, 2025 <small>cases per partner; named top-5 + Other</small></h4>' +
-      '<div class="pbars">' + partnerBars + '</div>' +
-      '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p></div>' +
-      '<div class="panel"><h4>Dispute prevention — BAPA &amp; MAPA <small>requests received vs. closed, 2019–2025</small></h4>' +
-      '<div class="chart-wrap">' + lineChart(['BAPA','MAPA'], { H: 300, title: 'BAPA and MAPA requests over time' }) + '<div class="tooltip"></div></div>' + legendRow(['BAPA','MAPA']) + '</div>';
+    return '<div class="pbars">' + bars + '</div>' +
+      '<p class="partner-foot">' + pc.total + ' treaty partners in total · ' + pc.TP + ' with transfer-pricing cases.</p>';
   }
 
-  // ===========================================================
-  //  View: TP deep-dive + method explainer (Task 10)
-  // ===========================================================
-  function viewTp() {
-    var pc = D.partners.partnerCounts;
-    return '<div class="view-head"><h2>Transfer pricing — deep dive</h2>' +
-      '<p class="lede">The transfer-pricing workstream on its own: volumes, timing, and how much of it is now advance pricing.</p></div>' +
-      '<div class="panel"><h4>TP cases received vs. closed <small>2019–2025</small></h4>' +
-      '<div class="chart-wrap">' + lineChart(['TP'], { H: 320, title: 'Transfer-pricing MAP cases received vs closed' }) + '<div class="tooltip"></div></div>' + legendRow(['TP']) + '</div>' +
-      '<div class="statgrid">' +
-        '<div class="stat"><strong>' + pc.TP + '</strong><small>treaty partners with ' + gloss('TP', 'TP') + ' cases</small></div>' +
-        '<div class="stat"><strong>~half</strong><small>' + D.facts.apaShareOfTP + '</small></div>' +
-        '<div class="stat"><strong>&gt;24 mo</strong><small>only stream over the ' + gloss('BEPS Action 14', 'BEPS') + ' norm</small></div>' +
-      '</div>' +
-      '<aside class="explainer"><p class="eyebrow">inRange view · not in the data</p>' +
-      '<p>' + D.facts.methodNote + ' In practice, Dutch TP MAP/APA cases most often turn on the ' + gloss('TNMM', 'TNMM') + ' and, for ' +
-      'integrated or IP-heavy structures, the profit-split method — but the official statistics do not break this out.</p></aside>';
-  }
-
-  // ===========================================================
-  //  Rulings helpers + views (Tasks 13-15)
-  // ===========================================================
-
-  // Horizontal stacked bar of a rulingMix() result (segments by type, % width).
-  function stackedBar(rows) {
-    return '<div class="stackbar">' + rows.map(function (r) {
-      return '<span class="seg" style="width:' + r.pct + '%;background:' + RTYPE_COLORS[r.type] + '" ' +
-        'data-tip="<b>' + R.typeLabels[r.type] + '</b><br>' + r.value + ' · ' + r.pct + '%"></span>';
-    }).join('') + '</div>';
-  }
-
-  function rTypeLegend() {
-    return '<div class="chart-legend">' + R.types.map(function (t) {
-      return '<span class="lg" style="color:' + RTYPE_COLORS[t] + '"><span class="sw sq"></span>' + gloss(R.typeLabels[t], t) + '</span>';
-    }).join('') + '</div>';
-  }
-
-  // Overview trend: one line per ruling type over R.years, for a chosen metric.
-  var rTrendMetric = 'received'; // 'received' | 'closed'
-  function rulingTrendChart(metric) {
-    var W = 720, H = 320, padL = 44, padTop = 16, padB = 26;
-    var plotW = W - padL - 16, plotH = H - padTop - padB;
-    var vals = [1];
-    R.types.forEach(function (t) { R.years.forEach(function (y) { vals.push(R.flow[y][t][metric]); }); });
-    var max = niceMax(Math.max.apply(null, vals));
-    var ys = yScale(plotH, padTop, max);
-    var xs = function (i) { return R.years.length === 1 ? padL + plotW / 2 : padL + (i / (R.years.length - 1)) * plotW; };
-    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
-      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
-      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
-        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
-    }).join('');
-    var mLabel = metric.charAt(0).toUpperCase() + metric.slice(1);
-    var lines = R.types.map(function (t) {
-      var pts = R.years.map(function (y, i) { return [xs(i), ys(R.flow[y][t][metric])]; });
-      var dots = pts.map(function (p, i) {
-        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + R.typeLabels[t] + ' ' + R.years[i] + '</b><br>' + mLabel + ': ' + R.flow[R.years[i]][t][metric] + '"/>' +
-          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + RTYPE_COLORS[t] + '"/>';
+  // MAP outcome breakdown (10 OECD categories) for a year — reuses outcomeGroups().
+  function outcomesBlock(year) {
+    var g = outcomeGroups(year);
+    var total = g.uni.subtotal + g.bi.subtotal + g.oth.subtotal;
+    var maxCount = 0;
+    [g.uni, g.bi, g.oth].forEach(function (grp) { grp.items.forEach(function (o) { if (o.count > maxCount) maxCount = o.count; }); });
+    function rowBars(grp, color, title) {
+      var rows = grp.items.map(function (o) {
+        var w = (o.count / maxCount * 100).toFixed(1);
+        var pct = (o.count / total * 100).toFixed(1);
+        return '<div class="obar"><span class="olabel">' + o.cat + '. ' + o.label + '</span>' +
+          '<span class="otrack" title="' + pct + '% of closed cases"><span class="ofill" style="width:' + w + '%;background:' + color + '"></span></span>' +
+          '<span class="oval">' + o.count + '</span></div>';
       }).join('');
-      return '<path d="' + linePath(pts) + '" fill="none" stroke="' + RTYPE_COLORS[t] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
+      return '<h4>' + title + ' <span class="osub">' + grp.subtotal + '</span></h4>' + rows;
+    }
+    var fullElim = g.bi.items.filter(function (o) { return o.cat === 4; })[0];
+    var fullElimPct = fullElim ? (fullElim.count / total * 100).toFixed(1) : '0';
+    var resRate = resolutionRate(year);
+    var readout = '<div class="out-readout">' +
+      '<div class="ror"><small>Cases closed</small><strong>' + total + '</strong></div>' +
+      '<div class="ror"><small>Bilateral subtotal</small><strong>' + g.bi.subtotal + '</strong></div>' +
+      '<div class="ror"><small>Full elimination</small><strong>' + (fullElim ? fullElim.count : 0) + ' · ' + fullElimPct + '%</strong></div>' +
+      '<div class="ror"><small>Resolution rate</small><strong>' + (resRate == null ? '—' : resRate + '%') + '</strong></div>' +
+      '</div>';
+    var years = [2024, 2025].map(function (y) {
+      return '<button class="chip plain' + (y === year ? ' on' : '') + '" data-outy="' + y + '">' + y + '</button>';
     }).join('');
-    var xl = R.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 6) + '" class="xtick">' + y + '</text>'; }).join('');
-    return svgEl(W, H, grid + lines + xl, 'International rulings ' + metric + ' by type, 2023–2025');
-  }
-
-  // ---- View: Rulings overview (Task 13) ----
-  function viewROverview() {
-    var rec = rulingMix(rYear, 'received'), cl = rulingMix(rYear, 'closed');
-    var sum = function (rows) { return rows.reduce(function (a, r) { return a + r.value; }, 0); };
-    var years = R.years.map(function (y) {
-      return '<button class="chip plain' + (y === rYear ? ' on' : '') + '" data-ry="' + y + '">' + y + '</button>';
-    }).join('');
-    return '<div class="view-head"><h2>Rulings overview</h2>' +
-      '<p class="lede">International rulings issued by the APA/ATR practice, split by type.</p></div>' +
-      '<div class="chip-row" id="rYears"><span class="chip-label">Year</span>' + years + '</div>' +
-      '<div class="chart-card"><div class="chart-wrap">' +
-        '<h4 class="stack-h">Received ' + rYear + ' <span class="osub">' + sum(rec) + '</span></h4>' + stackedBar(rec) +
-        '<h4 class="stack-h">Closed ' + rYear + ' <span class="osub">' + sum(cl) + '</span></h4>' + stackedBar(cl) +
-        rTypeLegend() +
-      '<div class="tooltip"></div></div></div>' +
-      '<div class="chart-card">' +
-        '<h4 class="stack-h">' + (rTrendMetric === 'received' ? 'Received' : 'Closed') + ' over time, by type <span class="osub">2023–2025</span></h4>' +
-        '<div class="chip-row" id="rTrendToggle"><span class="chip-label">Metric</span>' +
-          ['received', 'closed'].map(function (m) {
-            return '<button class="chip plain' + (m === rTrendMetric ? ' on' : '') + '" data-rtm="' + m + '">' + (m === 'received' ? 'Received' : 'Closed') + '</button>';
-          }).join('') +
-        '</div>' +
-        '<div class="chart-wrap">' + rulingTrendChart(rTrendMetric) + '<div class="tooltip"></div></div>' + rTypeLegend() +
+    return '<div class="chip-row" id="outYears"><span class="chip-label">Year</span>' + years + '</div>' +
+      readout +
+      '<div class="chart-card outcols">' +
+        rowBars(g.bi, 'var(--brand-green-500)', 'Bilateral phase') +
+        rowBars(g.uni, 'var(--brand-navy-400)', 'Unilateral phase') +
+        rowBars(g.oth, 'var(--neutral-400)', 'Other') +
       '</div>';
   }
 
-  // Mini multi-line trend (received / closed / end) over R.years for one type.
-  function buildTypeTrend(type) {
-    var W = 620, H = 260, padL = 40, padTop = 16, padB = 26;
-    var plotW = W - padL - 16, plotH = H - padTop - padB;
-    var metrics = [
-      ['received', 'Received', 'var(--brand-green-600)'],
-      ['closed',   'Closed',   'var(--danger)'],
-      ['end',      'Year-end', 'var(--brand-navy-400)']
-    ];
-    var vals = [1];
-    metrics.forEach(function (m) {
-      R.years.forEach(function (y) { vals.push(R.flow[y][type][m[0]]); });
-    });
-    var max = niceMax(Math.max.apply(null, vals));
-    var ys = yScale(plotH, padTop, max);
-    var xs = function (i) { return R.years.length === 1 ? padL + plotW / 2 : padL + (i / (R.years.length - 1)) * plotW; };
-    var grid = [0, 0.25, 0.5, 0.75, 1].map(function (f) {
-      var y = padTop + f * plotH, v = Math.round(max * (1 - f));
-      return '<line x1="' + padL + '" y1="' + y + '" x2="' + (padL + plotW) + '" y2="' + y + '" class="grid"/>' +
-        '<text x="' + (padL - 8) + '" y="' + (y + 4) + '" class="ytick">' + v + '</text>';
+  // ===========================================================
+  //  Tab 1 — Overview: all instruments
+  // ===========================================================
+  function viewOverview() {
+    var years = [2023, 2024, 2025].map(function (y) {
+      return '<button class="chip plain' + (y === ovYear ? ' on' : '') + '" data-ovy="' + y + '">' + y + '</button>';
     }).join('');
-    var lines = metrics.map(function (m) {
-      var pts = R.years.map(function (y, i) { return [xs(i), ys(R.flow[y][type][m[0]])]; });
-      var dots = pts.map(function (p, i) {
-        return '<circle class="hit" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="9" fill="transparent" ' +
-          'data-tip="<b>' + m[1] + ' ' + R.years[i] + '</b><br>' + R.flow[R.years[i]][type][m[0]] + '"/>' +
-          '<circle class="dot" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="3" fill="' + m[2] + '"/>';
+    var onKeys = TYPES.filter(function (t) { return ovOn[t.key]; }).map(function (t) { return t.key; });
+    var toggles = TYPES.map(function (t) {
+      return '<button class="chip' + (ovOn[t.key] ? ' on' : '') + '" data-ovt="' + t.key +
+        '" style="--chip:' + t.c + '" aria-pressed="' + ovOn[t.key] + '"' + titleAttr(t.glossKey) + '>' + t.short + '</button>';
+    }).join('');
+    var trend = onKeys.length
+      ? '<div class="chart-wrap">' + unifiedTrendChart(ovTrendMetric, onKeys) + '<div class="tooltip"></div></div>' + typeLegend(onKeys, ovTrendMetric)
+      : '<p class="partner-foot">Select at least one instrument to plot.</p>';
+    var metricToggle = ['received', 'closed'].map(function (m) {
+      return '<button class="chip plain' + (m === ovTrendMetric ? ' on' : '') + '" data-ovm="' + m + '">' + (m === 'received' ? 'Received' : 'Closed') + '</button>';
+    }).join('');
+    return '<div class="view-head"><h2>Overview — all instruments</h2>' +
+      '<p class="lede">Every Dutch instrument in one frame: disputes (' + gloss('MAP', 'MAP') + '), advance pricing (' +
+      gloss('APA', 'APA') + ' / ' + gloss('BAPA', 'BAPA') + ' / ' + gloss('MAPA', 'MAPA') + ') and the wider ruling practice (' +
+      gloss('ATR', 'ATR') + ', ' + gloss('innovation box', 'Innovatiebox') + ', ' + gloss('other', 'Overige') + ').</p></div>' +
+      '<div class="chip-row" id="ovYears"><span class="chip-label">Snapshot year</span>' + years + '</div>' +
+      '<div class="chart-card">' + byTypeBars(ovYear) + '</div>' +
+      '<div class="chart-card">' +
+        '<h4 class="stack-h">Requests over time, by instrument <span class="osub">2019–2025</span></h4>' +
+        '<div class="chip-row" id="ovTrendToggle"><span class="chip-label">Metric</span>' + metricToggle + '</div>' +
+        '<div class="chip-row" id="ovToggles"><span class="chip-label">Instruments</span>' + toggles + '</div>' +
+        trend +
+        '<p class="partner-foot">Rulings types (ATR, APA, innovation box, other) are reported only from 2023, so their lines start mid-axis. ' + SOT_FOOTNOTE + '</p>' +
+      '</div>';
+  }
+
+  // ===========================================================
+  //  Tab 2 — Timing & resolution
+  // ===========================================================
+  function viewTiming() {
+    var ctc = cycleTimeChart();
+    var takeaway = '<aside class="takeaway">Transfer-pricing cases are the only MAP stream that runs past the 24-month ' +
+      'norm — which is part of why advance certainty (a BAPA/MAPA) is increasingly preferred over after-the-fact MAP.</aside>';
+    return '<div class="view-head"><h2>Timing &amp; resolution</h2>' +
+      '<p class="lede">How long each instrument takes, how Dutch ' + gloss('MAP', 'MAP') + ' cases resolve, and who the Netherlands resolves them with.</p></div>' +
+      '<p class="note" style="margin-bottom:16px">' + D.facts.awards + '</p>' +
+      '<div class="panel"><h4>Typical months by instrument, 2025 <small>ranked; longest at the top</small></h4>' +
+        monthsByTypeBar() +
+        '<p class="partner-foot">Two different metrics shown side by side: ' + gloss('MAP', 'MAP') + ' bars are the <strong>average cycle time</strong> ' +
+        '(approximate, ±~0.5 mo); ruling bars are the <strong>' + gloss('gross time to a granted ruling', 'GROSS') + '</strong> from the international-rulings report. They are not directly comparable.</p>' +
+      '</div>' +
+      '<div class="panel"><h4>MAP average cycle time (months) <small>approximate, read from the report chart (±~0.5 mo)</small></h4>' +
+        '<div class="chart-wrap">' + ctc.svg + '<div class="tooltip"></div></div>' + ctc.legend + takeaway +
+      '</div>' +
+      '<div class="panel"><h4>How ruling timing shifted — 2024 → 2025 <small>' + gloss('gross', 'GROSS') + ' time to a granted ruling, months; the dot moves from 2024 to 2025</small></h4>' +
+        '<div class="chart-wrap">' + rulingTimingDelta() + '<div class="tooltip"></div></div>' +
+        '<div class="chart-legend">' +
+          '<span class="lg" style="color:var(--fg-3)"><span class="db-sw open"></span>2024</span>' +
+          '<span class="lg" style="color:var(--brand-navy-600)"><span class="db-sw filled"></span>2025</span>' +
+          '<span class="lg" style="color:var(--brand-green-600)"><span class="sw"></span>faster in 2025</span>' +
+          '<span class="lg" style="color:var(--danger)"><span class="sw"></span>slower in 2025</span>' +
+        '</div>' +
+        '<p class="partner-foot">Ruling processing times are from the international-rulings report; BAPA/MAPA volumes elsewhere use the MAP team’s figures.</p>' +
+      '</div>' +
+      '<div class="panel"><h4>MAP outcome breakdown <small>ten ' + gloss('OECD', 'OECD') + ' categories; share of all closed cases</small></h4>' +
+        outcomesBlock(outYear) +
+      '</div>' +
+      '<div class="panel"><h4>Top treaty partners, 2025 <small>MAP cases per partner; named top-5 + Other</small></h4>' +
+        treatyPartnerBars() +
+      '</div>';
+  }
+
+  // ===========================================================
+  //  Tab 3 — Advance pricing: APA vs BAPA vs MAPA
+  // ===========================================================
+
+  // 3-type received/closed trend (APA from rulings 2023–2025; BAPA/MAPA from MAP
+  // caseload 2019–2025) over the full 2019–2025 axis. Reuses unifiedTrendChart.
+  function viewAdvance() {
+    var s = typeStats(apType, 2025);
+    var waterfall = buildWaterfall(s.begin, s.received, s.closed, s.end, {
+      title: typeOf(apType).label + ' 2025 stock flow: begin plus received minus closed equals end'
+    });
+    var reconciles = (s.begin + s.received - s.closed) === s.end;
+    // Outcome split (where available): APA from rulings; BAPA/MAPA have no
+    // published outcome split in the MAP report, so we note that instead.
+    var outcomeHtml = '';
+    if (apType === 'APA') {
+      var o = R.flow[2025].APA.outcomes;
+      var outRows = [
+        ['(Partly) granted',   o.granted,        'var(--brand-green-500)'],
+        ['Rejected',           o.rejected,       'var(--danger)'],
+        ['Withdrawn',          o.withdrawn,      'var(--accent-ochre)'],
+        ['Out of treatment',   o.outOfTreatment, 'var(--neutral-400)'],
+        ['No int’l character', o.noIntl,         'var(--brand-navy-300)']
+      ];
+      var maxO = Math.max.apply(null, outRows.map(function (r) { return r[1]; }).concat([1]));
+      var closedTotal = outRows.reduce(function (a, r) { return a + r[1]; }, 0);
+      var outBars = outRows.map(function (r) {
+        var pct = closedTotal ? (r[1] / closedTotal * 100).toFixed(1) : '0';
+        return '<div class="obar"><span class="olabel">' + r[0] + '</span>' +
+          '<span class="otrack" title="' + pct + '% of closed"><span class="ofill" style="width:' + (r[1] / maxO * 100).toFixed(1) + '%;background:' + r[2] + '"></span></span>' +
+          '<span class="oval">' + r[1] + '</span></div>';
       }).join('');
-      return '<path d="' + linePath(pts) + '" fill="none" stroke="' + m[2] + '" stroke-width="2.5" stroke-linejoin="round"/>' + dots;
+      outcomeHtml = '<div class="panel"><h4>APA outcome split 2025 <small>of ' + closedTotal + ' closed · rulings report</small></h4><div class="outcols">' + outBars + '</div></div>';
+    } else {
+      outcomeHtml = '<div class="panel"><h4>Outcome split <small>' + typeOf(apType).label + '</small></h4>' +
+        '<p class="partner-foot">The MAP report — the source of truth for ' + apType + ' volumes here — does not publish a per-outcome split for ' + apType + '. ' +
+        'The waterfall above tracks begin → received → closed → end. (The international-rulings report carries an outcome split for ' + apType + ', but on a different cut-off and counting.)</p></div>';
+    }
+    // Side-by-side comparison: the three types' 2025 received / closed / end.
+    var cmp = ['APA', 'BAPA', 'MAPA'].map(function (k) { return { t: typeOf(k), s: typeStats(k, 2025) }; });
+    var cmpMax = 1; cmp.forEach(function (c) { cmpMax = Math.max(cmpMax, c.s.received, c.s.closed, c.s.end); });
+    // Grouped comparison: one block per type, three bars (received/closed/end).
+    var cmpBars = cmp.map(function (c) {
+      function seg(val, color, lbl) {
+        return '<div class="obar"><span class="olabel" style="min-width:0">' + lbl + '</span>' +
+          '<span class="otrack" title="' + val + '"><span class="ofill" style="width:' + (val / cmpMax * 100).toFixed(1) + '%;background:' + color + '"></span></span>' +
+          '<span class="oval">' + val + '</span></div>';
+      }
+      return '<h4>' + gloss(c.t.label, c.t.glossKey) + '</h4>' +
+        seg(c.s.received, 'var(--brand-green-500)', 'Received') +
+        seg(c.s.closed, 'var(--danger)', 'Closed') +
+        seg(c.s.end, 'var(--brand-navy-400)', 'Year-end');
     }).join('');
-    var xl = R.years.map(function (y, i) { return '<text x="' + xs(i) + '" y="' + (H - 6) + '" class="xtick">' + y + '</text>'; }).join('');
-    var legend = '<div class="chart-legend">' + metrics.map(function (m) {
-      return '<span class="lg" style="color:' + m[2] + '"><span class="sw"></span>' + m[1] + '</span>';
-    }).join('') + '</div>';
-    return '<div class="chart-wrap">' + svgEl(W, H, grid + lines + xl, R.typeLabels[type] + ' received, closed and year-end stock, 2023–2025') + '<div class="tooltip"></div></div>' + legend;
+
+    var typeChips = ['APA', 'BAPA', 'MAPA'].map(function (k) {
+      var t = typeOf(k);
+      return '<button class="chip' + (k === apType ? ' on' : '') + '" data-apt="' + k + '" style="--chip:' + t.c + '"' + titleAttr(t.glossKey) + '>' + t.short + '</button>';
+    }).join('');
+    var onKeys = ['APA', 'BAPA', 'MAPA'];
+    var metricToggle = ['received', 'closed'].map(function (m) {
+      return '<button class="chip plain' + (m === apTrendMetric ? ' on' : '') + '" data-apm="' + m + '">' + (m === 'received' ? 'Received' : 'Closed') + '</button>';
+    }).join('');
+
+    return '<div class="view-head"><h2>Advance pricing — ' + gloss('APA', 'APA') + ' vs ' + gloss('BAPA', 'BAPA') + ' vs ' + gloss('MAPA', 'MAPA') + '</h2>' +
+      '<p class="lede">The three advance-pricing instruments compared head to head: unilateral ' + gloss('APA', 'APA') + 's from the ruling practice, and bilateral/multilateral ' +
+      gloss('BAPA', 'BAPA') + 's and ' + gloss('MAPA', 'MAPA') + 's from the MAP team.</p></div>' +
+      '<div class="chip-row" id="apTypes"><span class="chip-label">Instrument</span>' + typeChips + '</div>' +
+      '<div class="panel"><h4>Stock flow 2025 <small>' + typeOf(apType).label + '</small></h4>' +
+        '<div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
+        '<p class="partner-foot">' + s.begin + ' + ' + s.received + ' − ' + s.closed + ' = <strong style="color:var(--fg-1)">' + s.end + '</strong>' +
+        (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>' +
+      outcomeHtml +
+      '<div class="chart-card">' +
+        '<h4 class="stack-h">Requests over time <span class="osub">APA / BAPA / MAPA</span></h4>' +
+        '<div class="chip-row" id="apTrendToggle"><span class="chip-label">Metric</span>' + metricToggle + '</div>' +
+        '<div class="chart-wrap">' + unifiedTrendChart(apTrendMetric, onKeys) + '<div class="tooltip"></div></div>' + typeLegend(onKeys, apTrendMetric) +
+        '<p class="partner-foot">APA from the international-rulings report (2023–2025); BAPA/MAPA from the MAP team’s caseload (2019–2025). ' + SOT_FOOTNOTE + '</p>' +
+      '</div>' +
+      '<div class="panel"><h4>Side by side, 2025 <small>received · closed · year-end stock</small></h4><div class="outcols">' + cmpBars + '</div>' +
+        '<p class="partner-foot">' + SOT_FOOTNOTE + '</p></div>';
   }
 
-  // ---- View: Rulings by type & flow (Task 14) ----
-  function viewRFlow() {
-    var c = R.flow[rFlowYear][rFlowType], o = c.outcomes;
-    var waterfall = buildWaterfall(c.begin, c.received, c.closed, c.end, {
-      title: R.typeLabels[rFlowType] + ' ' + rFlowYear + ' stock flow: begin plus received minus closed equals end'
-    });
-    var reconciles = (c.begin + c.received - c.closed) === c.end;
-    var outRows = [
-      ['(Partly) granted',   o.granted,        'var(--brand-green-500)'],
-      ['Rejected',           o.rejected,       'var(--danger)'],
-      ['Withdrawn',          o.withdrawn,      'var(--accent-ochre)'],
-      ['Out of treatment',   o.outOfTreatment, 'var(--neutral-400)'],
-      ['No int’l character', o.noIntl,    'var(--brand-navy-300)']
-    ];
-    var maxO = Math.max.apply(null, outRows.map(function (r) { return r[1]; }).concat([1]));
-    var closedTotal = outRows.reduce(function (a, r) { return a + r[1]; }, 0);
-    var outBars = outRows.map(function (r) {
-      var pct = closedTotal ? (r[1] / closedTotal * 100).toFixed(1) : '0';
-      return '<div class="obar"><span class="olabel">' + r[0] + '</span>' +
-        '<span class="otrack" title="' + pct + '% of closed"><span class="ofill" style="width:' + (r[1] / maxO * 100).toFixed(1) + '%;background:' + r[2] + '"></span></span>' +
-        '<span class="oval">' + r[1] + '</span></div>';
-    }).join('');
-    var types = R.types.map(function (t) {
-      return '<button class="chip plain' + (t === rFlowType ? ' on' : '') + '" data-rft="' + t + '"' + titleAttr(t) + '>' + R.typeLabels[t] + '</button>';
-    }).join('');
-    var years = R.years.map(function (y) {
-      return '<button class="chip plain' + (y === rFlowYear ? ' on' : '') + '" data-rfy="' + y + '">' + y + '</button>';
-    }).join('');
-    return '<div class="view-head"><h2>By type &amp; flow</h2>' +
-      '<p class="lede">Stock movement, closing outcomes and the multi-year trend for one ruling type.</p></div>' +
-      '<div class="chip-row" id="rfTypes"><span class="chip-label">Type</span>' + types + '</div>' +
-      '<div class="chip-row" id="rfYears"><span class="chip-label">Year</span>' + years + '</div>' +
-      '<div class="panel"><h4>Stock flow ' + rFlowYear + ' <small>' + R.typeLabels[rFlowType] + '</small></h4>' +
-      '<div class="chart-wrap">' + waterfall + '<div class="tooltip"></div></div>' +
-      '<p class="partner-foot">' + c.begin + ' + ' + c.received + ' − ' + c.closed + ' = <strong style="color:var(--fg-1)">' + c.end + '</strong>' +
-      (reconciles ? '' : ' ⚠️ does not reconcile') + '</p></div>' +
-      '<div class="panel"><h4>Outcome split ' + rFlowYear + ' <small>of ' + closedTotal + ' closed</small></h4><div class="outcols">' + outBars + '</div></div>' +
-      '<div class="panel"><h4>Received, closed &amp; year-end stock <small>2023–2025</small></h4>' + buildTypeTrend(rFlowType) + '</div>';
-  }
+  // ===========================================================
+  //  Rulings chart helpers reused by the tabs
+  // ===========================================================
 
-  // ---- View: Rulings processing times (Task 15) ----
+  // ---- Ruling-timing dumbbell (reused by the Timing & resolution tab) ----
   // Dumbbell: time-to-a-granted-ruling per type, 2024 dot → 2025 dot, line
   // coloured by direction (green = faster in 2025, red = slower). The 'granted'
   // outcome is the headline metric and the only one with complete 2024+2025 data.
@@ -1001,59 +1045,17 @@ small { font-size:12px; color:var(--fg-3); }
     return svgEl(W, H, ticks + body, 'Time to a granted ruling by type, 2024 versus 2025');
   }
 
-  function viewRTiming() {
-    var pt = R.processingTime[rtYear];
-    var outs = [
-      ['granted',        '(Partly) granted'],
-      ['rejected',       'Rejected'],
-      ['withdrawn',      'Withdrawn'],
-      ['outOfTreatment', 'Out of treatment']
-    ];
-    // Shade scale: deepest tint at the longest gross time in the table.
-    var maxMo = 1;
-    outs.forEach(function (o) {
-      R.types.forEach(function (t) { var v = pt[t][o[0]]; if (v != null && v > maxMo) maxMo = v; });
-    });
-    var head = '<tr><th class="corner"></th>' + R.types.map(function (t) { return '<th' + titleAttr(t) + '>' + RTYPE_SHORT[t] + '</th>'; }).join('') + '</tr>';
-    var rows = outs.map(function (o) {
-      return '<tr><td class="rowlbl">' + o[1] + '</td>' + R.types.map(function (t) {
-        var v = pt[t][o[0]];
-        if (v == null) return '<td class="cell na">—</td>';
-        var aNum = 0.10 + 0.85 * (v / maxMo);
-        var tone = aNum >= 0.5 ? ' hi' : '';   // hi = heavily tinted → flip text colour for contrast
-        return '<td class="cell' + tone + '" style="--a:' + aNum.toFixed(3) + '" title="' + R.typeLabels[t] + ' · ' + o[1] + ': ' + v + ' months">' + v + '</td>';
-      }).join('') + '</tr>';
-    }).join('');
-    var years = [2024, 2025].map(function (y) {
-      return '<button class="chip plain' + (y === rtYear ? ' on' : '') + '" data-rty="' + y + '">' + y + '</button>';
-    }).join('');
-    var ps = R.publishedSummaries2025;
-    var psLine = 'Published summaries 2025: ATR ' + ps.ATR + ' · APA/BAPA ' + ps['APA/BAPA'] + ' · Innovation box ' + ps.Innovatiebox + ' · Other ' + ps.Overige;
-    return '<div class="view-head"><h2>Processing times</h2>' +
-      '<p class="lede">' + gloss('Gross processing time', 'GROSS') + ' in months, by ruling type and closing outcome.</p></div>' +
-      '<div class="chip-row" id="rtYears"><span class="chip-label">Year</span>' + years + '</div>' +
-      '<div class="chart-card"><div class="heat-wrap"><table class="heat"><thead>' + head + '</thead><tbody>' + rows + '</tbody></table></div>' +
-      '<p class="note">' + psLine + '</p>' +
-      '<p class="note">' + R.processingNote + '</p></div>' +
-      '<div class="panel"><h4>How timing shifted — 2024 → 2025 <small>time to a granted ruling, gross months; the dot moves from 2024 to 2025</small></h4>' +
-      '<div class="chart-wrap">' + rulingTimingDelta() + '<div class="tooltip"></div></div>' +
-      '<div class="chart-legend">' +
-        '<span class="lg" style="color:var(--fg-3)"><span class="db-sw open"></span>2024</span>' +
-        '<span class="lg" style="color:var(--brand-navy-600)"><span class="db-sw filled"></span>2025</span>' +
-        '<span class="lg" style="color:var(--brand-green-600)"><span class="sw"></span>faster in 2025</span>' +
-        '<span class="lg" style="color:var(--danger)"><span class="sw"></span>slower in 2025</span>' +
-      '</div></div>';
-  }
-
-  // ---- View: Rulings defining positions (Task 15) ----
-  function viewRPositions() {
+  // ===========================================================
+  //  Tab 4 — TP case studies (defining positions; unchanged content)
+  // ===========================================================
+  function viewCases() {
     function cards(group) {
       return R.positions.filter(function (p) { return p.group === group; }).map(function (p) {
         return '<article class="position"><p class="eyebrow">inRange view · ' + p.source + '</p>' +
           '<h3>' + p.icon + ' ' + p.title + '</h3><p>' + p.body + '</p></article>';
       }).join('');
     }
-    return '<div class="view-head"><h2>Defining positions</h2>' +
+    return '<div class="view-head"><h2>TP case studies</h2>' +
       '<p class="lede">Selected defining positions from the ruling practice, read through a transfer-pricing lens — inRange’s own commentary.</p></div>' +
       '<h4 class="pos-group">Transfer pricing</h4><div class="positions">' + cards('TP') + '</div>' +
       '<h4 class="pos-group">Access conditions</h4><div class="positions">' + cards('Access') + '</div>';
@@ -1061,25 +1063,28 @@ small { font-size:12px; color:var(--fg-3); }
 
   // ---- Render functions ----
 
+  // The five by-type headline tiles: new requests received, FY2025 (Δ vs FY2024).
+  // Non-overlapping — MAP is the pure dispute count (excludes BAPA/MAPA). Each
+  // value is computed from data via typeStats(); BAPA/MAPA from the MAP report.
+  function byTypeKpis() {
+    return ['MAP', 'ATR', 'APA', 'BAPA', 'MAPA'].map(function (k) {
+      var t = typeOf(k);
+      var cur = typeStats(k, 2025), prev = typeStats(k, 2024);
+      return [t.short, cur.received, yoy(cur.received, prev.received)];
+    });
+  }
+
   function renderHero() {
-    var A = AREAS[area];
-    document.getElementById('heroTitle').innerHTML = A.title;
-    document.getElementById('heroLede').textContent = A.lede;
-    document.getElementById('areaSwitch').innerHTML = Object.keys(AREAS).map(function (key) {
-      return '<button class="seg' + (key === area ? ' on' : '') + '" data-area="' + key + '">' +
-        AREAS[key].label + '</button>';
-    }).join('');
-    var tiles = A.kpis();
+    var tiles = byTypeKpis();
     document.getElementById('kpis').innerHTML = tiles.map(function (t) {
       return '<div class="kf"><small>' + t[0] + '</small><strong>' + t[1] +
         (t[2] ? ' <span class="delta">' + t[2] + '</span>' : '') + '</strong></div>';
     }).join('');
-    document.getElementById('kpiNote').textContent = 'Headline figures are for FY2025; the green figure is the change versus FY2024.';
+    document.getElementById('kpiNote').textContent = 'New requests received in FY2025 (green = change vs FY2024).';
   }
 
   function renderTabs() {
-    var A = AREAS[area];
-    document.getElementById('tabs').innerHTML = A.tabs.map(function (t, i) {
+    document.getElementById('tabs').innerHTML = TABS.map(function (t, i) {
       return '<button class="tab-btn' + (t.id === active ? ' active' : '') +
         '" data-tab="' + t.id + '"><span class="tnum">' + (i + 1) + '</span>' + t.label + '</button>';
     }).join('');
@@ -1089,17 +1094,10 @@ small { font-size:12px; color:var(--fg-3); }
     var views = document.getElementById('views');
     var html;
     switch (active) {
-      // ---- MAP & APA views ----
-      case 'caseload':  html = viewCaseload();  break;
-      case 'inventory': html = viewInventory(); break;
-      case 'outcomes':  html = viewOutcomes();  break;
-      case 'timing':    html = viewTiming();    break;
-      case 'tp':        html = viewTp();        break;
-      // ---- International Rulings views (Tasks 13-15) ----
-      case 'rOverview':  html = viewROverview();  break;
-      case 'rFlow':      html = viewRFlow();      break;
-      case 'rTiming':    html = viewRTiming();    break;
-      case 'rPositions': html = viewRPositions(); break;
+      case 'overview': html = viewOverview(); break;
+      case 'timing':   html = viewTiming();   break;
+      case 'advance':  html = viewAdvance();  break;
+      case 'cases':    html = viewCases();    break;
       default:
         html = '<div class="view-placeholder">Unknown view.</div>';
     }
@@ -1112,44 +1110,31 @@ small { font-size:12px; color:var(--fg-3); }
     });
   }
 
-  // Area-aware footer: the active area's published sources + the shared
-  // methodology caveat(s) + a "data through FY2025" stamp. For the rulings
-  // area we also surface the gross-vs-net processing caveat here (the rTiming
-  // view shows its own copy inline; the footer carries the methodology stamp).
+  // Footer: published sources from BOTH reports (labelled), both methodology
+  // notes, the BAPA/MAPA source-of-truth note, and the "data through FY2025" stamp.
   function renderFooter() {
-    var A = AREAS[area];
-    var data = area === 'map' ? MAP_DATA : RULINGS_DATA;
-    var src = data.sources.map(function (s) {
-      return '<li>' + s.title + '</li>';
-    }).join('');
-    var notes = '<p class="note">' +
-      (area === 'map' ? MAP_DATA.methodologyNote : RULINGS_DATA.processingNote) +
-      '</p>';
+    var mapSrc = MAP_DATA.sources.map(function (s) { return '<li>' + s.title + '</li>'; }).join('');
+    var rulSrc = RULINGS_DATA.sources.map(function (s) { return '<li>' + s.title + '</li>'; }).join('');
     var stamp = 'Data through FY2025 · figures are the authorities’ published counts.';
     document.getElementById('footer').innerHTML =
       '<div class="footer-grid">' +
         '<div class="footer-sources">' +
-          '<h4>Sources · ' + A.label + '</h4>' +
-          '<ul class="srclist">' + src + '</ul>' +
+          '<h4>Sources · MAP team</h4>' +
+          '<ul class="srclist">' + mapSrc + '</ul>' +
+          '<h4 style="margin-top:16px">Sources · International rulings (College IFZ)</h4>' +
+          '<ul class="srclist">' + rulSrc + '</ul>' +
         '</div>' +
         '<div class="footer-notes">' +
           '<h4>Methodology</h4>' +
-          notes +
+          '<p class="note">' + MAP_DATA.methodologyNote + '</p>' +
+          '<p class="note">' + RULINGS_DATA.processingNote + '</p>' +
+          '<p class="note">' + SOT_FOOTNOTE + '</p>' +
           '<p class="note footer-stamp">' + stamp + '</p>' +
         '</div>' +
       '</div>';
   }
 
   function render() { renderHero(); renderTabs(); renderView(); renderFooter(); }
-
-  // ---- Event: area switch ----
-  document.getElementById('areaSwitch').addEventListener('click', function (e) {
-    var b = e.target.closest('[data-area]');
-    if (!b) return;
-    area   = b.getAttribute('data-area');
-    active = AREAS[area].tabs[0].id; // reset to first sub-tab of the new area
-    render();
-  });
 
   // ---- Event: tab clicks ----
   document.getElementById('tabs').addEventListener('click', function (e) {
@@ -1159,19 +1144,18 @@ small { font-size:12px; color:var(--fg-3); }
     render();
   });
 
-  // ---- Event: per-view controls (delegated once on the stable #views) ----
+  // ---- Event: per-tab controls (delegated once on the stable #views) ----
   document.getElementById('views').addEventListener('click', function (e) {
     var b;
-    if ((b = e.target.closest('[data-cl]')))   { var k = b.getAttribute('data-cl'); caseloadOn[k] = !caseloadOn[k]; render(); return; }
-    if ((b = e.target.closest('[data-invy]')))  { invYear = +b.getAttribute('data-invy'); render(); return; }
-    if ((b = e.target.closest('[data-invs]')))  { invStream = b.getAttribute('data-invs'); render(); return; }
-    if ((b = e.target.closest('[data-outy]')))  { outYear = +b.getAttribute('data-outy'); render(); return; }
-    // ---- Rulings controls ----
-    if ((b = e.target.closest('[data-ry]')))    { rYear = +b.getAttribute('data-ry'); render(); return; }
-    if ((b = e.target.closest('[data-rtm]')))   { rTrendMetric = b.getAttribute('data-rtm'); render(); return; }
-    if ((b = e.target.closest('[data-rft]')))   { rFlowType = b.getAttribute('data-rft'); render(); return; }
-    if ((b = e.target.closest('[data-rfy]')))   { rFlowYear = +b.getAttribute('data-rfy'); render(); return; }
-    if ((b = e.target.closest('[data-rty]')))   { rtYear = +b.getAttribute('data-rty'); render(); return; }
+    // Overview
+    if ((b = e.target.closest('[data-ovy]')))  { ovYear = +b.getAttribute('data-ovy'); render(); return; }
+    if ((b = e.target.closest('[data-ovm]')))  { ovTrendMetric = b.getAttribute('data-ovm'); render(); return; }
+    if ((b = e.target.closest('[data-ovt]')))  { var k = b.getAttribute('data-ovt'); ovOn[k] = !ovOn[k]; render(); return; }
+    // Timing
+    if ((b = e.target.closest('[data-outy]'))) { outYear = +b.getAttribute('data-outy'); render(); return; }
+    // Advance pricing
+    if ((b = e.target.closest('[data-apt]')))  { apType = b.getAttribute('data-apt'); render(); return; }
+    if ((b = e.target.closest('[data-apm]')))  { apTrendMetric = b.getAttribute('data-apm'); render(); return; }
   });
 
   // ---- Init ----

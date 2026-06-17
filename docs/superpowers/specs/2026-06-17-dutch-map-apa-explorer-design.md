@@ -362,3 +362,81 @@ Cards live in `RULINGS_DATA.positions`; copy is editable text (not chart data).
   Defining-Positions cards are clearly framed as inRange commentary, in Aleks's
   voice.
 - Updating to FY2026 = editing `MAP_DATA` / `RULINGS_DATA` in `core.js` only.
+
+---
+
+## v2 — Merged single-page structure (supersedes the two-area layout)
+
+The two areas (MAP & APA | International Rulings) are merged into **one page with
+four tabs** that read as a narrative. `core.js` data is unchanged; a thin
+presentation-layer "by type" accessor routes each instrument to the correct
+source. Tests stay green.
+
+### Unified instrument taxonomy + source-of-truth
+
+Seven types. **Volume** figures (received / closed / begin / end) are sourced as:
+
+| Type | Label | Volume source | Notes |
+|---|---|---|---|
+| MAP | MAP (dispute) | MAP report | = INT+TP+tie-breaker+multilateral, aggregated |
+| ATR | ATR | Rulings report | |
+| APA | APA (unilateral) | Rulings report | |
+| BAPA | BAPA | **MAP report** | single source of truth |
+| MAPA | MAPA | **MAP report** | single source of truth |
+| INNO | Innovation box | Rulings report | Overview only |
+| OTHER | Other rulings | Rulings report | Overview only |
+
+**Source-of-truth footnote (must appear where BAPA/MAPA volumes show):** "BAPA/MAPA
+volumes use the MAP team's figures; the international-rulings report reports
+slightly different numbers (different team, cut-off and counting)."
+**Timing note:** processing-time for ATR/APA/BAPA exists *only* in the rulings
+report, so the timing tab draws those from there (footnoted); MAP cycle time is
+the MAP report's avg resolution time — a different metric.
+
+### Headline KPIs (same on every tab)
+
+Five non-overlapping tiles — **new requests received, FY2025 (Δ vs FY2024)**:
+MAP **468** (+6.8%, vs 438) · ATR **231** (−19.8%, vs 288) · APA **63** (+3.3%,
+vs 61) · BAPA **34** (+41.7%, vs 24) · MAPA **4** (+33.3%, vs 3). MAP is the pure
+dispute count (excludes BAPA/MAPA to avoid double-counting). Caption: "New
+requests received in FY2025 (green = change vs FY2024)."
+
+### The four tabs
+
+1. **Overview — all instruments.** By-type requests for a selected year
+   (received/closed) across all seven types, plus a multi-year **trend** with a
+   received/closed toggle. Trend x-axis = 2019–2025: MAP/BAPA/MAPA lines run the
+   full span (from `MAP_DATA.caseload`, MAP = INT+TP+TB+ML summed); ATR/APA/INNO/
+   OTHER lines appear only 2023–2025 (from `RULINGS_DATA.flow`). Type toggles;
+   sensible default subset on. Source-of-truth footnote here.
+2. **Timing & resolution.** (a) A ranked **"typical months by type"** bar — MAP
+   cycle time (TP ~24.5, INT ~10.5, total ~12.5 for 2025) alongside ruling
+   time-to-granted (BAPA 39, Innovation box 20, APA 11, ATR 6, Other 8) — with
+   the metric-difference footnote; (b) MAP cycle-time trend vs the 24-month norm
+   (existing); (c) the 2024→2025 processing-time **dumbbell** (existing); (d) the
+   **MAP outcome breakdown** (10 OECD categories / 97% resolution — moved here);
+   (e) **top treaty-partner countries** (moved here).
+3. **Advance pricing — APA vs BAPA vs MAPA.** The three compared head-to-head:
+   begin→received→closed→end **waterfall** per selected APA type, received/closed
+   **trend**, and a side-by-side comparison. APA from rulings; BAPA/MAPA from the
+   MAP report. Footnote as above.
+4. **TP case studies.** The defining-positions cards (TP + Access), 2023–2025 —
+   unchanged from the current `viewRPositions`.
+
+### Migration of existing views
+- Caseload trends + rulings Overview → **Overview** (tab 1).
+- MAP Timing·countries·APAs + rulings Processing-times (+ dumbbell) + Outcomes +
+  treaty partners → **Timing & resolution** (tab 2).
+- MAP Inventory waterfall + rulings By-type-&-flow → **Advance pricing** (tab 3)
+  for APA/BAPA/MAPA; MAP TP deep-dive's method explainer can move to tab 4 or 2.
+- Defining positions → **TP case studies** (tab 4).
+- The area switch, `AREAS` two-area registry, and per-area KPI builders are
+  removed; replaced by a single `TABS` list + one by-type KPI builder.
+
+### v2 success criteria (in addition to the originals)
+- No area switch; one 4-tab bar; deep state survives light/dark + print.
+- Headline tiles are the five by-type received counts (FY2025 vs FY2024),
+  non-overlapping (MAP excludes BAPA/MAPA).
+- BAPA/MAPA volumes come from `MAP_DATA` everywhere, with the source-of-truth
+  footnote visible; Innovation box/Other appear only in Overview.
+- All existing chart types preserved and redistributed; `node --test` stays 17/17.

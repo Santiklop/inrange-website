@@ -124,7 +124,7 @@ var MAP_DATA = {
     { year: 2025, title: 'MAP Annual Report 2025', file: 'sources/map-annual-report-2025.pdf', bytes: 543928 }
   ],
 
-  methodologyNote: "Figures are the MAP team's own stock-administration counts and can differ from later OECD-published MAP statistics (different start-date counting and treatment of cases awaiting taxpayer acceptance)."
+  methodologyNote: "Figures are the MAP team's own stock-administration counts and can differ from later OECD-published MAP statistics (different start-date counting and treatment of cases awaiting taxpayer acceptance). MAP cycle times run from the start date of the MAP case (when the request is received), so the preceding tax-audit or domestic-procedure discussions, and the pre-filing stage, are not included."
 };
 
 // ---------------------------------------------------------------------------
@@ -332,7 +332,7 @@ var RULINGS_DATA = {
     { year: 2025, title: 'International Rulings Annual Report 2025', file: 'sources/international-rulings-2025.pdf', bytes: 958454 }
   ],
 
-  processingNote: 'Gross processing time (from filing to agreement/withdrawal/rejection), including time spent awaiting requested information. Net handling time is materially shorter.'
+  processingNote: 'Gross processing time, from the formal request to agreement/withdrawal/rejection, including time spent awaiting requested information. It runs from the formal request, so the pre-filing (vooroverleg) stage for APA/BAPA is not counted. Net handling time is materially shorter.'
 };
 
 // ---------------------------------------------------------------------------

@@ -332,7 +332,7 @@ var RULINGS_DATA = {
     { year: 2025, title: 'International Rulings Annual Report 2025', file: 'sources/international-rulings-2025.pdf', bytes: 958454 }
   ],
 
-  processingNote: 'Gross processing time, from the formal request to agreement/withdrawal/rejection, including time spent awaiting requested information. It runs from the formal request, so the pre-filing (vooroverleg) stage for APA/BAPA is not counted. Net handling time is materially shorter.'
+  processingNote: 'Gross processing time, from the formal request to agreement/withdrawal/rejection, including time spent awaiting requested information. It runs from the formal request, so the pre-filing (vooroverleg) stage for APA/BAPA is not counted.'
 };
 
 // ---------------------------------------------------------------------------

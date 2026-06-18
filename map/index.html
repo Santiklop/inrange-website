@@ -1284,7 +1284,7 @@ small { font-size:12px; color:var(--fg-3); }
   function renderTabs() {
     document.getElementById('tabs').innerHTML = TABS.map(function (t, i) {
       return '<button class="tab-btn' + (t.id === active ? ' active' : '') + (t.id === 'cases' ? ' tab-insight' : '') +
-        '" data-tab="' + t.id + '"><span class="tnum">' + (i + 1) + '</span>' + t.label + (t.id === 'cases' ? '<span class="tab-tag">our view</span>' : '') + '</button>';
+        '" data-tab="' + t.id + '"><span class="tnum">' + (i + 1) + '</span>' + t.label + (t.id === 'cases' ? '<span class="tab-tag">Insights</span>' : '') + '</button>';
     }).join('');
   }
 

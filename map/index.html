@@ -35,6 +35,8 @@
   --neutral-0:#FFFFFF; --neutral-50:#F7F8FA; --neutral-100:#EEF0F3; --neutral-200:#DEE2E8;
   --neutral-300:#C3CAD3; --neutral-400:#9BA5B1; --neutral-500:#6E7887; --neutral-600:#4C5665;
   --neutral-700:#343D4C; --neutral-800:#1F2733;
+  /* chart series tones - theme-aware (lighter in dark mode for contrast) */
+  --ct-500:var(--brand-navy-500); --ct-400:var(--brand-navy-400); --ct-300:var(--brand-navy-300); --ct-600:var(--brand-navy-600); --ct-grey:var(--neutral-400);
   --accent-ochre:#C98A2B; --accent-terra:#B25838;
   --danger:#C8412F; --warning:#D89B1F;
   --bg:var(--neutral-0); --bg-muted:var(--neutral-50); --bg-sunken:var(--neutral-100);
@@ -54,6 +56,7 @@
   --bg:#0A1220; --bg-muted:#0D1B2D; --bg-sunken:#14273F; --surface:#0F1E32;
   --fg-1:#E7ECF3; --fg-2:#B6C2D1; --fg-3:#7E93AE; --fg-brand:var(--brand-green-400);
   --border-subtle:#1F3350; --border-default:#2C4868;
+  --ct-500:var(--brand-navy-300); --ct-400:var(--brand-navy-200); --ct-300:var(--brand-navy-200); --ct-600:var(--brand-navy-200); --ct-grey:var(--neutral-300);
 }
 * { box-sizing: border-box; }
 html { font-family:var(--font-sans); color:var(--fg-1); background:var(--bg); scroll-behavior:smooth; scroll-padding-top:120px; }
@@ -205,7 +208,7 @@ small { font-size:12px; color:var(--fg-3); }
 .chart .db-lbl { font-size:12.5px; fill:var(--fg-1); font-weight:600; text-anchor:end; }
 .chart .db-delta { font-size:12px; font-weight:800; text-anchor:start; font-variant-numeric:tabular-nums; }
 .chart-legend .db-sw { width:11px; height:11px; border-radius:50%; flex-shrink:0; }
-.chart-legend .db-sw.open { background:var(--surface); border:2px solid var(--neutral-400); }
+.chart-legend .db-sw.open { background:var(--surface); border:2px solid var(--ct-grey); }
 .chart-legend .db-sw.filled { background:currentColor; }
 
 /* Chart legend */
@@ -505,13 +508,13 @@ small { font-size:12px; color:var(--fg-3); }
   var MAP_DISPUTE_STREAMS = ['INT', 'TP', 'TB', 'MLMAP']; // MAP aggregate (excl. BAPA/MAPA)
   var WS_LABEL = { INT: 'Interpretation', TP: 'Transfer pricing', TB: 'Tie-breaker', MLMAP: 'Multilateral' };
   var TYPES = [
-    { key: 'MAP',   label: 'MAP (dispute)',     short: 'MAP',   c: 'var(--brand-navy-500)', glossKey: 'MAP',   src: 'map'     },
-    { key: 'ATR',   label: 'ATR',               short: 'ATR',   c: 'var(--brand-navy-300)', glossKey: 'ATR',   src: 'rulings' },
+    { key: 'MAP',   label: 'MAP (dispute)',     short: 'MAP',   c: 'var(--ct-500)', glossKey: 'MAP',   src: 'map'     },
+    { key: 'ATR',   label: 'ATR',               short: 'ATR',   c: 'var(--ct-300)', glossKey: 'ATR',   src: 'rulings' },
     { key: 'APA',   label: 'APA (unilateral)',  short: 'APA',   c: 'var(--brand-green-600)', glossKey: 'APA',  src: 'rulings' },
     { key: 'BAPA',  label: 'BAPA',              short: 'BAPA',  c: 'var(--brand-green-400)', glossKey: 'BAPA',  src: 'map'     },
     { key: 'MAPA',  label: 'MAPA',              short: 'MAPA',  c: 'var(--accent-terra)',    glossKey: 'MAPA',  src: 'map'     },
     { key: 'INNO',  label: 'Innovation box',    short: 'Innovation box', c: 'var(--accent-ochre)', glossKey: 'Innovatiebox', src: 'rulings' },
-    { key: 'OTHER', label: 'Other rulings',     short: 'Other', c: 'var(--neutral-400)',     glossKey: 'Overige', src: 'rulings' }
+    { key: 'OTHER', label: 'Other rulings',     short: 'Other', c: 'var(--ct-grey)',     glossKey: 'Overige', src: 'rulings' }
   ];
   function typeOf(key) {
     for (var i = 0; i < TYPES.length; i++) if (TYPES[i].key === key) return TYPES[i];
@@ -663,7 +666,7 @@ small { font-size:12px; color:var(--fg-3); }
       var x = slot(i);
       var top = s.kind === 'down' ? ys(s.base) : ys(s.base + Math.max(s.v, 0));
       var bot = s.kind === 'down' ? ys(s.base + s.v) : ys(s.base);
-      var fill = s.kind === 'tot' ? 'var(--brand-navy-500)' : s.kind === 'up' ? 'var(--brand-green-500)' : 'var(--danger)';
+      var fill = s.kind === 'tot' ? 'var(--ct-500)' : s.kind === 'up' ? 'var(--brand-green-500)' : 'var(--danger)';
       var y0 = Math.min(top, bot), hgt = Math.abs(bot - top);
       var sign = s.kind === 'up' ? '+' : s.kind === 'down' ? '−' : '';
       return '<rect class="hit" x="' + x.toFixed(1) + '" y="' + y0.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + hgt.toFixed(1) +
@@ -822,7 +825,7 @@ small { font-size:12px; color:var(--fg-3); }
       return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.t, r.received, 'received', r.t.c) + '</div>';
     }).join('');
     var bodyClosed = rows.map(function (r) {
-      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.t, r.closed, 'closed', 'var(--neutral-400)') + '</div>';
+      return '<div class="obar"><span class="olabel">' + gloss(r.t.label, r.t.glossKey) + '</span>' + bar(r.t, r.closed, 'closed', 'var(--ct-grey)') + '</div>';
     }).join('');
     return '<div class="chart-wrap"><div class="outcols">' +
       '<h4>Received ' + year + '</h4>' + body +
@@ -846,8 +849,8 @@ small { font-size:12px; color:var(--fg-3); }
       '" class="norm"/><text x="' + (padL + plotW) + '" y="' + (ys(ct.norm) - 5) + '" class="normlbl">24-mo norm</text>';
     var series = [
       ['TP', 'var(--brand-green-600)', 'Transfer pricing'],
-      ['INT', 'var(--brand-navy-500)', 'Interpretation'],
-      ['Total', 'var(--brand-navy-300)', 'All cases']
+      ['INT', 'var(--ct-500)', 'Interpretation'],
+      ['Total', 'var(--ct-300)', 'All cases']
     ];
     var lines = series.map(function (s) {
       var pts = ct[s[0]].map(function (v, i) { return [xs(i), ys(v)]; });
@@ -900,13 +903,13 @@ small { font-size:12px; color:var(--fg-3); }
     }
     var rows = [
       { label: 'MAP · transfer pricing', v: mapVal('TP'),    n: mapCount('TP'),    kind: 'map', c: 'var(--brand-green-600)' },
-      { label: 'MAP · interpretation',   v: mapVal('INT'),   n: mapCount('INT'),   kind: 'map', c: 'var(--brand-navy-500)' },
-      { label: 'MAP · all cases',        v: mapVal('Total'), n: mapCount('Total'), kind: 'map', c: 'var(--brand-navy-300)' },
+      { label: 'MAP · interpretation',   v: mapVal('INT'),   n: mapCount('INT'),   kind: 'map', c: 'var(--ct-500)' },
+      { label: 'MAP · all cases',        v: mapVal('Total'), n: mapCount('Total'), kind: 'map', c: 'var(--ct-300)' },
       { label: 'BAPA · time to granted', v: rulVal('BAPA'),  n: rulCount('BAPA'),  kind: 'ruling', c: 'var(--brand-green-400)' },
       { label: 'Innovation box · to granted', v: rulVal('Innovatiebox'), n: rulCount('Innovatiebox'), kind: 'ruling', c: 'var(--accent-ochre)' },
       { label: 'APA · time to granted',  v: rulVal('APA'),   n: rulCount('APA'),   kind: 'ruling', c: 'var(--brand-green-600)' },
-      { label: 'Other · time to granted', v: rulVal('Overige'), n: rulCount('Overige'), kind: 'ruling', c: 'var(--neutral-400)' },
-      { label: 'ATR · time to granted',  v: rulVal('ATR'),   n: rulCount('ATR'),   kind: 'ruling', c: 'var(--brand-navy-300)' }
+      { label: 'Other · time to granted', v: rulVal('Overige'), n: rulCount('Overige'), kind: 'ruling', c: 'var(--ct-grey)' },
+      { label: 'ATR · time to granted',  v: rulVal('ATR'),   n: rulCount('ATR'),   kind: 'ruling', c: 'var(--ct-300)' }
     ].filter(function (r) { return r.v != null; }).sort(function (a, b) { return b.v - a.v; });
     var maxV = 1; rows.forEach(function (r) { maxV = Math.max(maxV, r.v); });
     // For the aggregate "all cases" MAP bar, break the closed count down by workstream.
@@ -976,8 +979,8 @@ small { font-size:12px; color:var(--fg-3); }
       readout +
       '<div class="chart-wrap"><div class="chart-card outcols">' +
         rowBars(g.bi, 'var(--brand-green-500)', 'Bilateral phase') +
-        rowBars(g.uni, 'var(--brand-navy-400)', 'Unilateral phase') +
-        rowBars(g.oth, 'var(--neutral-400)', 'Other') +
+        rowBars(g.uni, 'var(--ct-400)', 'Unilateral phase') +
+        rowBars(g.oth, 'var(--ct-grey)', 'Other') +
       '</div><div class="tooltip"></div></div>';
   }
 
@@ -1041,7 +1044,7 @@ small { font-size:12px; color:var(--fg-3); }
         '<div class="chart-wrap">' + rulingTimingDelta() + '<div class="tooltip"></div></div>' +
         '<div class="chart-legend">' +
           '<span class="lg" style="color:var(--fg-3)"><span class="db-sw open"></span>2024</span>' +
-          '<span class="lg" style="color:var(--brand-navy-600)"><span class="db-sw filled"></span>2025</span>' +
+          '<span class="lg" style="color:var(--ct-600)"><span class="db-sw filled"></span>2025</span>' +
           '<span class="lg" style="color:var(--brand-green-600)"><span class="sw"></span>faster in 2025</span>' +
           '<span class="lg" style="color:var(--danger)"><span class="sw"></span>slower in 2025</span>' +
         '</div>' +
@@ -1082,8 +1085,8 @@ small { font-size:12px; color:var(--fg-3); }
         ['(Partly) granted',   o.granted,        'var(--brand-green-500)'],
         ['Rejected',           o.rejected,       'var(--danger)'],
         ['Withdrawn',          o.withdrawn,      'var(--accent-ochre)'],
-        ['Out of treatment',   o.outOfTreatment, 'var(--neutral-400)'],
-        ['No int’l character', o.noIntl,         'var(--brand-navy-300)']
+        ['Out of treatment',   o.outOfTreatment, 'var(--ct-grey)'],
+        ['No int’l character', o.noIntl,         'var(--ct-300)']
       ];
       var maxO = Math.max.apply(null, outRows.map(function (r) { return r[1]; }).concat([1]));
       var closedTotal = outRows.reduce(function (a, r) { return a + r[1]; }, 0);
@@ -1114,7 +1117,7 @@ small { font-size:12px; color:var(--fg-3); }
       return '<h4>' + gloss(c.t.label, c.t.glossKey) + '</h4>' +
         seg(c.s.received, 'var(--brand-green-500)', 'Received') +
         seg(c.s.closed, 'var(--danger)', 'Closed') +
-        seg(c.s.end, 'var(--brand-navy-400)', 'Year-end');
+        seg(c.s.end, 'var(--ct-400)', 'Year-end');
     }).join('');
 
     var typeChips = ['APA', 'BAPA', 'MAPA'].map(function (k) {
@@ -1179,15 +1182,15 @@ small { font-size:12px; color:var(--fg-3); }
       var d = r.b - r.a;
       var na = (R.flow[2024] && R.flow[2024][r.t]) ? R.flow[2024][r.t].outcomes.granted : null;
       var nb = (R.flow[2025] && R.flow[2025][r.t]) ? R.flow[2025][r.t].outcomes.granted : null;
-      var col = d < 0 ? 'var(--brand-green-500)' : d > 0 ? 'var(--danger)' : 'var(--neutral-400)';
+      var col = d < 0 ? 'var(--brand-green-500)' : d > 0 ? 'var(--danger)' : 'var(--ct-grey)';
       var dlabel = (d > 0 ? '+' : d < 0 ? '−' : '±') + Math.abs(d) + ' mo';
       var xa = xs(r.a), xb = xs(r.b);
       var tip = '<b>' + R.typeLabels[r.t] + '</b><br>2024: ' + r.a + ' mo' + (na != null ? ' (' + na + ' granted)' : '') + ' → 2025: ' + r.b + ' mo' + (nb != null ? ' (' + nb + ' granted)' : '') + '<br>' +
         (d === 0 ? 'no change' : (d < 0 ? Math.abs(d) + ' mo faster' : d + ' mo slower'));
       return '<text x="' + (padL - 12) + '" y="' + (y + 4).toFixed(1) + '" class="db-lbl">' + RTYPE_SHORT[r.t] + '</text>' +
         '<line x1="' + xa.toFixed(1) + '" y1="' + y.toFixed(1) + '" x2="' + xb.toFixed(1) + '" y2="' + y.toFixed(1) + '" stroke="' + col + '" stroke-width="3" stroke-linecap="round"/>' +
-        '<circle cx="' + xa.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5.5" fill="var(--surface)" stroke="var(--neutral-400)" stroke-width="2"/>' +
-        '<circle cx="' + xb.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5.5" fill="var(--brand-navy-600)"/>' +
+        '<circle cx="' + xa.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5.5" fill="var(--surface)" stroke="var(--ct-grey)" stroke-width="2"/>' +
+        '<circle cx="' + xb.toFixed(1) + '" cy="' + y.toFixed(1) + '" r="5.5" fill="var(--ct-600)"/>' +
         '<rect class="hit" x="' + padL + '" y="' + (y - rowH / 2).toFixed(1) + '" width="' + plotW + '" height="' + rowH + '" fill="transparent" data-tip="' + tip + '"/>' +
         '<text x="' + (W - padR + 10) + '" y="' + (y + 4).toFixed(1) + '" class="db-delta" fill="' + col + '">' + dlabel + '</text>';
     }).join('');

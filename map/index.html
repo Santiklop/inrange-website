@@ -313,6 +313,19 @@ small { font-size:12px; color:var(--fg-3); }
 [data-theme="dark"] .pos-more { color:var(--brand-green-400); }
 .pos-more .chev { transition:transform var(--dur-fast) var(--ease); }
 .position.expanded .pos-more .chev { transform:rotate(180deg); }
+/* Overview teaser highlighting the APA case studies + tab "our view" marker */
+.case-teaser { background:linear-gradient(135deg,rgba(31,168,74,.06) 0%,var(--surface) 60%); border:1px solid var(--border-subtle); border-left:4px solid var(--brand-green-500); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:20px; box-shadow:var(--shadow-xs); }
+[data-theme="dark"] .case-teaser { background:linear-gradient(135deg,rgba(31,168,74,.12) 0%,var(--surface) 60%); }
+.case-teaser h3 { font-size:18px; margin:0 0 6px; letter-spacing:-.01em; }
+.case-teaser .ct-sub { font-size:13.5px; color:var(--fg-2); margin:0; line-height:1.5; }
+.ct-list { display:flex; flex-wrap:wrap; gap:9px; margin:14px 0 2px; }
+.ct-item { display:inline-flex; align-items:center; gap:8px; background:var(--bg-muted); border:1px solid var(--border-subtle); border-radius:var(--radius-pill); padding:7px 13px; font-family:var(--font-sans); font-size:12.5px; font-weight:600; color:var(--fg-1); cursor:pointer; transition:transform var(--dur-fast) var(--ease),border-color var(--dur-fast) var(--ease),color var(--dur-fast) var(--ease); text-align:left; }
+.ct-item:hover { border-color:var(--brand-green-400); color:var(--fg-brand); transform:translateY(-1px); }
+.ct-item .ct-ic { font-size:14px; }
+.ct-cta { display:inline-flex; align-items:center; gap:7px; margin-top:14px; padding:0; background:none; border:none; cursor:pointer; font-family:var(--font-sans); font-size:13.5px; font-weight:700; color:var(--brand-green-600); }
+.ct-cta:hover { text-decoration:underline; }
+[data-theme="dark"] .ct-cta { color:var(--brand-green-400); }
+.tab-tag { display:inline-block; margin-left:7px; font-size:9.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#fff; background:var(--brand-green-500); padding:2px 6px; border-radius:var(--radius-pill); vertical-align:middle; }
 /* Year colour-coding: newest = green, then navy, then ochre (left border + eyebrow) */
 .position.yr-2025 { border-left-color:var(--brand-green-500); }
 .position.yr-2025 .eyebrow { color:var(--brand-green-600); }
@@ -987,6 +1000,22 @@ small { font-size:12px; color:var(--fg-3); }
   // ===========================================================
   //  Tab 1 — Overview: all instruments
   // ===========================================================
+  function caseTeaser() {
+    function yrOf(src) { var t = String(src).split(' ').pop(); if (t.indexOf('-') >= 0) { return 2000 + (+t.split('-')[1]); } return +t; }
+    var feat = R.positions.filter(function (p) { return p.group === 'TP'; })
+      .slice().sort(function (a, b) { return yrOf(b.source) - yrOf(a.source); }).slice(0, 3);
+    var items = feat.map(function (p) {
+      return '<button class="ct-item" type="button" data-goto="cases"><span class="ct-ic">' + p.icon + '</span>' + p.title + '</button>';
+    }).join('');
+    return '<div class="case-teaser">' +
+      '<h3>Learn from actual APA cases</h3>' +
+      '<p class="ct-sub">Our read on defining positions from the Dutch ruling practice, beyond the headline numbers.</p>' +
+      '<div class="ct-list">' + items + '</div>' +
+      '<button class="ct-cta" type="button" data-goto="cases">Read all ' + R.positions.length + ' case studies' +
+      '<svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="8" x2="13" y2="8"/><polyline points="9 4 13 8 9 12"/></svg></button>' +
+      '</div>';
+  }
+
   function viewOverview() {
     var years = [2023, 2024, 2025].map(function (y) {
       return '<button class="chip plain' + (y === ovYear ? ' on' : '') + '" data-ovy="' + y + '">' + y + '</button>';
@@ -1014,7 +1043,7 @@ small { font-size:12px; color:var(--fg-3); }
         '<p class="partner-foot">Ruling types are reported from 2021 (ATR, innovation box, other); unilateral APA only separately from 2022 (before that it was combined with BAPA). BAPA/MAPA come from the MAP team and span 2019–2025. ' + SOT_FOOTNOTE + '</p>' +
       '</div>' +
       '<div class="chip-row" id="ovYears"><span class="chip-label">Snapshot year</span>' + years + '</div>' +
-      '<div class="chart-card">' + byTypeBars(ovYear) + '</div>';
+      '<div class="chart-card">' + byTypeBars(ovYear) + '</div>' + caseTeaser();
   }
 
   // ===========================================================
@@ -1254,8 +1283,8 @@ small { font-size:12px; color:var(--fg-3); }
 
   function renderTabs() {
     document.getElementById('tabs').innerHTML = TABS.map(function (t, i) {
-      return '<button class="tab-btn' + (t.id === active ? ' active' : '') +
-        '" data-tab="' + t.id + '"><span class="tnum">' + (i + 1) + '</span>' + t.label + '</button>';
+      return '<button class="tab-btn' + (t.id === active ? ' active' : '') + (t.id === 'cases' ? ' tab-insight' : '') +
+        '" data-tab="' + t.id + '"><span class="tnum">' + (i + 1) + '</span>' + t.label + (t.id === 'cases' ? '<span class="tab-tag">our view</span>' : '') + '</button>';
     }).join('');
   }
 
@@ -1332,6 +1361,8 @@ small { font-size:12px; color:var(--fg-3); }
   // ---- Event: per-tab controls (delegated once on the stable #views) ----
   document.getElementById('views').addEventListener('click', function (e) {
     var b;
+    // Teaser / cross-links: jump to a tab
+    if ((b = e.target.closest('[data-goto]'))) { active = b.getAttribute('data-goto'); render(); document.getElementById('tabs').scrollIntoView({ behavior: 'smooth', block: 'start' }); return; }
     // Cases: expand/collapse a position card (no re-render — keeps other cards' state)
     if ((b = e.target.closest('.pos-more'))) {
       var pos = b.closest('.position');

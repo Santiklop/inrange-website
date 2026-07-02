@@ -9,7 +9,7 @@ function Icon({ name, size = 20, className = '', style = {} }) {
 }
 
 function Logo({ variant = 'color', height = 28 }) {
-  // SVG bar-chart mark + wordmark — matches the TP Documentation page exactly.
+  // SVG bar-chart mark + wordmark — single-ink wordmark, matching the client dashboards.
   // `height` controls the bar-mark side; text scales proportionally (~65%).
   const markSize = height;
   const textSize = Math.round(height * 0.65);
@@ -26,7 +26,7 @@ function Logo({ variant = 'color', height = 28 }) {
         fontFamily: 'var(--font-sans)', fontWeight: 800, fontSize: textSize,
         color: inkColor, letterSpacing: '-0.02em', lineHeight: 1,
       }}>
-        in<span style={{ color: 'var(--brand-green-600)' }}>Range</span>
+        inRange
       </span>
     </span>
   );

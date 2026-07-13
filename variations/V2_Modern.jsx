@@ -158,7 +158,10 @@ function V2_Modern() {
               margin: 0, fontSize: isMobile ? 42 : (isTablet ? 58 : 76), lineHeight: 0.95, letterSpacing: '-0.035em', fontWeight: 700,
             }}>
               Your trusted{isNarrow ? ' ' : <br/>}transfer pricing <span style={{
-                background: 'linear-gradient(105deg, var(--brand-green-500), var(--brand-green-700))',
+                // backgroundImage (not the background shorthand): Chromium serializes
+                // the shorthand + backgroundClip combo to empty longhands, which
+                // breaks the prerendered snapshot.
+                backgroundImage: 'linear-gradient(105deg, var(--brand-green-500), var(--brand-green-700))',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
               }}>partner.</span>
             </h1>

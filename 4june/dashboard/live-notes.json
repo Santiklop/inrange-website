@@ -3,19 +3,19 @@
   "useCases": [
     {
       "text": "Used Claude Code to build this whole dashboard last night.",
-      "attribution": "Aleks D"
+      "attribution": "Guest 01"
     },
     {
       "text": "Used Chat GPT to select the best ice cream to eat for breakfast today.",
-      "attribution": "Valon"
+      "attribution": "Guest 32"
     },
     {
       "text": "Used Claude to create Instagram captions.",
-      "attribution": "Roza"
+      "attribution": "Guest 28"
     },
     {
       "text": "Drafted a function-conversion tax memo in 30 minutes with AI — replaced a 50K EUR advisor quote, even covered GDPR.",
-      "attribution": "Valon"
+      "attribution": "Guest 32"
     },
     {
       "text": "Premium Co-Pilot filters the IBFD newsletter and surfaces only what's relevant. Drafted a memo for India — the local expert confirmed it was correct. Also generated a PowerPoint from it.",
@@ -27,11 +27,11 @@
     },
     {
       "text": "Built a 30-day study plan with AI as her trainer — daily readings + quizzes, AI decides when to go deeper.",
-      "attribution": "Min (IBFD)"
+      "attribution": "Guest 21"
     },
     {
       "text": "Uses LocTax for complex tax setups globally — gives advice with IBFD references by jurisdiction. Claude takes a more risk-heavy approach; LocTax stays more neutral. Recommends it.",
-      "attribution": "Raymond"
+      "attribution": "Guest 27"
     },
     {
       "text": "Used an AI agent to analyse a 2025 transfer-pricing court case — full answers + notices in 2 minutes once the company data was shared. Agent matures with every prompt.",
@@ -39,7 +39,7 @@
     },
     {
       "text": "Uses Co-Pilot to summarise his hundreds of daily email chains and pull out the key highlights.",
-      "attribution": "Vito"
+      "attribution": "Guest 33"
     },
     {
       "text": "Used AI to crunch complex financial computations.",
@@ -47,11 +47,11 @@
     },
     {
       "text": "Grok is linked to her Gmail, prior tax returns, payslips and passport. Voice-prompts country-specific returns; Grok scans, summarises, sends to the receiver — saves her half a day.",
-      "attribution": "Navida"
+      "attribution": "Guest 23"
     },
     {
       "text": "Voice translation at a VvE meeting (Dutch ↔ English) — phone records voice + translation so she can contribute live.",
-      "attribution": "Navida"
+      "attribution": "Guest 23"
     },
     {
       "text": "Used Claude to translate while travelling in Japan.",
@@ -63,7 +63,7 @@
     },
     {
       "text": "Financial modelling with AI as a base — change a variable, AI adjusts the rest. Surprisingly accurate across markets.",
-      "attribution": "Navida"
+      "attribution": "Guest 23"
     },
     {
       "text": "Built one- and two-pager financial models from scratch via prompt, data pulled from Google. Change the tax rate and the agent adjusts entry/exit multiples automatically.",
@@ -87,7 +87,7 @@
     },
     {
       "text": "Uses Alteryx for data analysis and recognising patterns in tax data.",
-      "attribution": "Servais"
+      "attribution": "Guest 02"
     },
     {
       "text": "Used AI agents to file tax returns.",
@@ -97,15 +97,15 @@
   "frustrations": [
     {
       "text": "I'd want AI to do the dishes at home",
-      "attribution": "Valon"
+      "attribution": "Guest 32"
     },
     {
       "text": "AI-generated Instagram captions aren't human enough.",
-      "attribution": "Roza"
+      "attribution": "Guest 28"
     },
     {
       "text": "Co-Pilot's answers can sometimes feel less analytical than expected.",
-      "attribution": "Valon"
+      "attribution": "Guest 32"
     },
     {
       "text": "LocTax is ~3,000 EUR / month for 5 users — a big investment for many tax teams.",

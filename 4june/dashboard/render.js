@@ -560,7 +560,7 @@ function colorFor(text) {
  * Diff-render a list of items into a sticker container.
  * Items can be:
  *   - a string (legacy shape): "the use case"
- *   - an object: { text: "...", attribution: "Aleks" }
+ *   - an object: { text: "...", attribution: "Guest 01" }
  * If attribution is non-empty, hovering the sticker shows "Shared by <name>".
  *
  * - Existing cards whose text matches stay in place (no re-animation)

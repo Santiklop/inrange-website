@@ -153,7 +153,7 @@ function V2_Modern() {
 
       {/* HERO */}
       <section id="top" style={{ padding: isMobile ? '40px 20px 16px' : (isTablet ? '56px 32px 24px' : '72px 40px 24px'), maxWidth: 1320, margin: '0 auto', position: 'relative' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.35fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: 'start' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: isNarrow ? 'minmax(0, 1fr)' : '1.35fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: 'start' }}>
           {/* LEFT: headline */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 16 : 24 }}>

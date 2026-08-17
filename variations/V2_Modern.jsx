@@ -268,7 +268,7 @@ function V2_Modern() {
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)', marginBottom: 12 }}>Trusted by</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px 18px' }}>
                   {TRUSTED_CLIENTS.map(name => (
-                    <span key={name} className="tp-client" style={{ fontSize: 13.5, fontWeight: 600 }}>{name}</span>
+                    <span key={name} style={{ fontSize: 13.5, fontWeight: 600, color: 'rgba(255,255,255,0.87)' }}>{name}</span>
                   ))}
                 </div>
               </div>
@@ -807,8 +807,6 @@ function V2_Modern() {
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes tpMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .tp-client { color: rgba(255,255,255,0.87); transition: color 160ms ease; }
-        .tp-client:hover { color: var(--brand-green-300); }
       `}</style>
 
       {toast && (

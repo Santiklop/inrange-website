@@ -246,20 +246,20 @@ function V2_Modern() {
             <div style={{ position: 'absolute', top: -80, right: -80, width: 220, height: 220, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.1 }} />
             <div style={{ position: 'relative' }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)' }}>At a glance</div>
-              <div style={{ marginTop: 24, display: 'flex', flexDirection: 'column', gap: 4 }}>
+              <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {[
                   { big: '15+', unit: 'years', label: 'Average experience per specialist' },
                   { big: '60%', unit: 'faster', label: 'Turnaround, AI-enabled' },
                   { big: '40%', unit: 'more', label: 'Value for money vs. Big Four engagements' },
                 ].map((s, i) => (
                   <div key={s.big} style={{
-                    display: 'flex', alignItems: 'baseline', gap: 12, padding: '18px 0',
+                    display: 'flex', alignItems: 'baseline', gap: 12, padding: '8px 0',
                     borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)',
                   }}>
-                    <div style={{ fontFamily: 'var(--font-display)', fontSize: isMobile ? 38 : 48, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 0.9, color: '#fff', minWidth: isMobile ? 82 : 100 }}>{s.big}</div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 0.9, color: '#fff', minWidth: 68 }}>{s.big}</div>
                     <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--brand-green-300)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{s.unit}</div>
-                      <div style={{ fontSize: 13, color: 'rgba(255,255,255,0.75)', marginTop: 2, lineHeight: 1.4 }}>{s.label}</div>
+                      <div style={{ fontSize: 11, fontWeight: 700, color: 'var(--brand-green-300)', letterSpacing: '0.12em', textTransform: 'uppercase' }}>{s.unit}</div>
+                      <div style={{ fontSize: 12.5, color: 'rgba(255,255,255,0.75)', marginTop: 2, lineHeight: 1.35 }}>{s.label}</div>
                     </div>
                   </div>
                 ))}

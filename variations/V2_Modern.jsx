@@ -190,7 +190,7 @@ function V2_Modern() {
                   {[
                     { big: '15+', unit: 'years', label: 'Avg. experience per specialist' },
                     { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
-                    { big: '40%', unit: 'more value', label: 'vs. Big Four' },
+                    { big: '70%', unit: 'more value', label: 'vs. Big Four' },
                   ].map((s, i) => (
                     <div key={s.big} style={{
                       paddingLeft: i === 0 ? 0 : 14,
@@ -250,7 +250,7 @@ function V2_Modern() {
                 {[
                   { big: '15+', unit: 'years', label: 'Average experience per specialist' },
                   { big: '60%', unit: 'faster', label: 'Turnaround, AI-enabled' },
-                  { big: '40%', unit: 'more', label: 'Value for money vs. Big Four engagements' },
+                  { big: '70%', unit: 'more', label: 'Value for money vs. Big Four engagements' },
                 ].map((s, i) => (
                   <div key={s.big} style={{
                     display: 'flex', alignItems: 'center', gap: 12, padding: '12px 0',

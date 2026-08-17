@@ -1,5 +1,10 @@
 // V2 — Modern & Clean. Copy aligned verbatim with inrange.nl where possible.
 
+// Client roster for the "Trusted by" blocks (order: most recognizable first).
+// Shared by the desktop/tablet card grid and the mobile rolling band.
+// Company names only — never people's names, no logos (see docs/superpowers/specs/2026-08-17-trusted-by-clients-design.md).
+const TRUSTED_CLIENTS = ['Adyen', 'Just Eat Takeaway', 'Revolut', 'Nutanix', 'Miki Travel', 'ACT', 'Humble', 'Bentham', 'Taiga', 'Pinnacle'];
+
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
   const [activeService, setActiveService] = React.useState(-1);
@@ -232,10 +237,10 @@ function V2_Modern() {
                 ))}
               </div>
               <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: 12 }}>Industries we serve</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
-                  {['SaaS & Technology', 'Consumer & Retail', 'Travel', 'Food Delivery', 'Industrial', 'Payments', 'Construction', 'FMCG'].map(t => (
-                    <span key={t} style={{ fontSize: 11.5, fontWeight: 600, padding: '6px 10px', borderRadius: 999, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.9)' }}>{t}</span>
+                <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: 12 }}>Trusted by</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px 18px' }}>
+                  {TRUSTED_CLIENTS.map(name => (
+                    <span key={name} style={{ fontSize: 13.5, fontWeight: 600, color: 'rgba(255,255,255,0.87)' }}>{name}</span>
                   ))}
                 </div>
               </div>

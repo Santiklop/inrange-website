@@ -12,6 +12,7 @@ function V2_Modern() {
   const isMobile = window.useMediaQuery('(max-width: 767px)');
   const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const isNarrow = isMobile || isTablet;
+  const reducedMotion = window.useMediaQuery('(prefers-reduced-motion: reduce)');
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
   React.useEffect(() => {
     if (!isNarrow && activeService === -1) setActiveService(0);
@@ -180,32 +181,59 @@ function V2_Modern() {
 
             {/* Mobile-only compact proof strip (replaces the at-a-glance card) */}
             {isMobile && (
-              <div style={{
-                marginTop: 36, paddingTop: 28,
-                borderTop: '1px solid var(--border-subtle)',
-                display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14,
-              }}>
-                {[
-                  { big: '15+', unit: 'years', label: 'Avg. experience per specialist' },
-                  { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
-                  { big: '40%', unit: 'more value', label: 'vs. Big Four' },
-                ].map((s, i) => (
-                  <div key={s.big} style={{
-                    paddingLeft: i === 0 ? 0 : 14,
-                    borderLeft: i === 0 ? 'none' : '1px solid var(--border-subtle)',
-                  }}>
+              <>
+                <div style={{
+                  marginTop: 36, paddingTop: 28,
+                  borderTop: '1px solid var(--border-subtle)',
+                  display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14,
+                }}>
+                  {[
+                    { big: '15+', unit: 'years', label: 'Avg. experience per specialist' },
+                    { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
+                    { big: '40%', unit: 'more value', label: 'vs. Big Four' },
+                  ].map((s, i) => (
+                    <div key={s.big} style={{
+                      paddingLeft: i === 0 ? 0 : 14,
+                      borderLeft: i === 0 ? 'none' : '1px solid var(--border-subtle)',
+                    }}>
+                      <div style={{
+                        fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 700,
+                        letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--brand-navy-800)',
+                      }}>{s.big}</div>
+                      <div style={{
+                        fontSize: 10.5, fontWeight: 700, letterSpacing: '0.1em',
+                        textTransform: 'uppercase', color: 'var(--fg-brand)', marginTop: 6,
+                      }}>{s.unit}</div>
+                      <div style={{ fontSize: 11.5, color: 'var(--fg-3)', marginTop: 4, lineHeight: 1.35 }}>{s.label}</div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Trusted-by band: endless slow scroll of client names; static list for reduced motion. */}
+                <div style={{ marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
+                  <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-3)', marginBottom: 10 }}>Trusted by</div>
+                  {reducedMotion ? (
+                    <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)', lineHeight: 1.9 }}>
+                      {TRUSTED_CLIENTS.join(' · ')}
+                    </div>
+                  ) : (
                     <div style={{
-                      fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 700,
-                      letterSpacing: '-0.03em', lineHeight: 1, color: 'var(--brand-navy-800)',
-                    }}>{s.big}</div>
-                    <div style={{
-                      fontSize: 10.5, fontWeight: 700, letterSpacing: '0.1em',
-                      textTransform: 'uppercase', color: 'var(--fg-brand)', marginTop: 6,
-                    }}>{s.unit}</div>
-                    <div style={{ fontSize: 11.5, color: 'var(--fg-3)', marginTop: 4, lineHeight: 1.35 }}>{s.label}</div>
-                  </div>
-                ))}
-              </div>
+                      overflow: 'hidden', whiteSpace: 'nowrap',
+                      WebkitMaskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
+                      maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
+                    }}>
+                      <div style={{ display: 'inline-flex', alignItems: 'center', gap: 24, paddingRight: 24, animation: 'tpMarquee 26s linear infinite', willChange: 'transform' }}>
+                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((name, i) => (
+                          <React.Fragment key={`${name}-${i}`}>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)' }}>{name}</span>
+                            <span style={{ width: 3, height: 3, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
+                          </React.Fragment>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
 
@@ -778,6 +806,7 @@ function V2_Modern() {
       <style>{`
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes tpMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
       `}</style>
 
       {toast && (

@@ -253,7 +253,7 @@ function V2_Modern() {
                   { big: '40%', unit: 'more', label: 'Value for money vs. Big Four engagements' },
                 ].map((s, i) => (
                   <div key={s.big} style={{
-                    display: 'flex', alignItems: 'baseline', gap: 12, padding: '8px 0',
+                    display: 'flex', alignItems: 'center', gap: 12, padding: '12px 0',
                     borderTop: i === 0 ? 'none' : '1px solid rgba(255,255,255,0.1)',
                   }}>
                     <div style={{ fontFamily: 'var(--font-display)', fontSize: 30, fontWeight: 700, letterSpacing: '-0.035em', lineHeight: 0.9, color: '#fff', minWidth: 68 }}>{s.big}</div>

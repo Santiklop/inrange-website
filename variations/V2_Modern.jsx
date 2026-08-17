@@ -189,7 +189,7 @@ function V2_Modern() {
                 }}>
                   {[
                     { big: '15+', unit: 'years', label: 'Avg. experience per specialist' },
-                    { big: '60%', unit: 'faster', label: 'AI-enabled turnaround' },
+                    { big: '3×', unit: 'faster', label: 'AI-enabled turnaround' },
                     { big: '70%', unit: 'more value', label: 'vs. Big Four' },
                   ].map((s, i) => (
                     <div key={s.big} style={{
@@ -249,7 +249,7 @@ function V2_Modern() {
               <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 2 }}>
                 {[
                   { big: '15+', unit: 'years', label: 'Average experience per specialist' },
-                  { big: '60%', unit: 'faster', label: 'Turnaround, AI-enabled' },
+                  { big: '3×', unit: 'faster', label: 'Turnaround, AI-enabled' },
                   { big: '70%', unit: 'more', label: 'Value for money vs. Big Four engagements' },
                 ].map((s, i) => (
                   <div key={s.big} style={{
@@ -614,7 +614,7 @@ function V2_Modern() {
               },
               {
                 tag: 'Efficient Delivery',
-                big: '60%', unit: 'faster',
+                big: '3×', unit: 'faster',
                 title: 'AI-enabled documentation and research.',
                 body: 'Our dedicated, AI-enabled compliance and research software streamlines economic analyses and TP documentation — cutting turnaround time on Master file, Local files and benchmarks without compromising local-country compliance.',
               },

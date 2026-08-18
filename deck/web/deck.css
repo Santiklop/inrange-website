@@ -309,7 +309,7 @@ h2.title {
   display: grid;
   grid-template-columns: 22mm 1fr;
   gap: 4mm;
-  align-items: baseline;
+  align-items: center;
   padding: 2.2mm 0;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }

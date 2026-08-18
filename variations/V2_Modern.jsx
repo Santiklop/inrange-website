@@ -5,9 +5,9 @@
 // Company names only — never people's names, no logos (see docs/superpowers/specs/2026-08-17-trusted-by-clients-design.md).
 // Industry labels show as pills on the desktop card only; confirm each label with Aleks before deploying changes.
 const TRUSTED_CLIENTS = [
-  { name: 'Adyen', industry: 'Fintech' },
+  { name: 'Adyen', industry: 'Payments / Fintech' },
   { name: 'Just Eat Takeaway', industry: 'Food Delivery' },
-  { name: 'Revolut', industry: 'Fintech' },
+  { name: 'Revolut', industry: 'Bank / Fintech' },
   { name: 'Nutanix', industry: 'SaaS & Tech' },
   { name: 'Miki Travel', industry: 'Travel' },
   { name: 'ACT', industry: 'Commodities' },

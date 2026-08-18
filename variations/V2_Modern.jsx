@@ -3,7 +3,19 @@
 // Client roster for the "Trusted by" blocks (order: most recognizable first).
 // Shared by the desktop/tablet card grid and the mobile rolling band.
 // Company names only — never people's names, no logos (see docs/superpowers/specs/2026-08-17-trusted-by-clients-design.md).
-const TRUSTED_CLIENTS = ['Adyen', 'Just Eat Takeaway', 'Revolut', 'Nutanix', 'Miki Travel', 'ACT', 'Humble', 'Bentham', 'Taiga', 'Pinnacle'];
+// Industry labels show as pills on the desktop card only; confirm each label with Aleks before deploying changes.
+const TRUSTED_CLIENTS = [
+  { name: 'Adyen', industry: 'Payments' },
+  { name: 'Just Eat Takeaway', industry: 'Food Delivery' },
+  { name: 'Revolut', industry: 'Fintech' },
+  { name: 'Nutanix', industry: 'SaaS & Tech' },
+  { name: 'Miki Travel', industry: 'Travel' },
+  { name: 'ACT', industry: 'Commodities' },
+  { name: 'Humble', industry: 'FMCG' },
+  { name: 'Bentham', industry: 'Industrial' },
+  { name: 'Taiga', industry: 'Construction' },
+  { name: 'Pinnacle', industry: 'Consumer & Retail' },
+];
 
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
@@ -214,7 +226,7 @@ function V2_Modern() {
                   <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-3)', marginBottom: 10 }}>Trusted by</div>
                   {reducedMotion ? (
                     <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)', lineHeight: 1.9 }}>
-                      {TRUSTED_CLIENTS.join(' · ')}
+                      {TRUSTED_CLIENTS.map(c => c.name).join(' · ')}
                     </div>
                   ) : (
                     <div style={{
@@ -223,9 +235,9 @@ function V2_Modern() {
                       maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
                     }}>
                       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 24, paddingRight: 24, animation: 'tpMarquee 26s linear infinite', willChange: 'transform' }}>
-                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((name, i) => (
-                          <React.Fragment key={`${name}-${i}`}>
-                            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)' }}>{name}</span>
+                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((c, i) => (
+                          <React.Fragment key={`${c.name}-${i}`}>
+                            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)' }}>{c.name}</span>
                             <span style={{ width: 3, height: 3, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
                           </React.Fragment>
                         ))}
@@ -266,9 +278,14 @@ function V2_Modern() {
               </div>
               <div style={{ marginTop: 20, paddingTop: 20, borderTop: '1px solid rgba(255,255,255,0.1)' }}>
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)', marginBottom: 12 }}>Trusted by</div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px 18px' }}>
-                  {TRUSTED_CLIENTS.map(name => (
-                    <span key={name} style={{ fontSize: 13.5, fontWeight: 600, color: 'rgba(255,255,255,0.87)' }}>{name}</span>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px 14px' }}>
+                  {TRUSTED_CLIENTS.map(c => (
+                    <span key={c.name} style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+                      <span style={{ fontSize: 13.5, fontWeight: 600, color: 'rgba(255,255,255,0.87)', whiteSpace: 'nowrap' }}>{c.name}</span>
+                      {!isTablet && c.industry && (
+                        <span style={{ fontSize: 8.5, fontWeight: 600, letterSpacing: '0.02em', padding: '2px 6px', borderRadius: 999, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.6)', whiteSpace: 'nowrap' }}>{c.industry}</span>
+                      )}
+                    </span>
                   ))}
                 </div>
               </div>

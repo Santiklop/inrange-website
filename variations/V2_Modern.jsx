@@ -5,15 +5,15 @@
 // Company names only — never people's names, no logos (see docs/superpowers/specs/2026-08-17-trusted-by-clients-design.md).
 // Industry labels show as pills on the desktop card only; confirm each label with Aleks before deploying changes.
 const TRUSTED_CLIENTS = [
-  { name: 'Adyen', industry: 'Payments' },
+  { name: 'Adyen', industry: 'Fintech' },
   { name: 'Just Eat Takeaway', industry: 'Food Delivery' },
   { name: 'Revolut', industry: 'Fintech' },
   { name: 'Nutanix', industry: 'SaaS & Tech' },
   { name: 'Miki Travel', industry: 'Travel' },
   { name: 'ACT', industry: 'Commodities' },
   { name: 'Humble', industry: 'FMCG' },
-  { name: 'Bentham', industry: 'Industrial' },
-  { name: 'Taiga', industry: 'Construction' },
+  { name: 'Bentham', industry: 'Consulting' },
+  { name: 'Taiga', industry: 'Consulting' },
   { name: 'Pinnacle', industry: 'Consumer & Retail' },
 ];
 
@@ -280,10 +280,10 @@ function V2_Modern() {
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)', marginBottom: 12 }}>Trusted by</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px 14px' }}>
                   {TRUSTED_CLIENTS.map(c => (
-                    <span key={c.name} style={{ display: 'flex', alignItems: 'center', gap: 6, minWidth: 0 }}>
+                    <span key={c.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, minWidth: 0 }}>
                       <span style={{ fontSize: 13.5, fontWeight: 600, color: 'rgba(255,255,255,0.87)', whiteSpace: 'nowrap' }}>{c.name}</span>
                       {!isTablet && c.industry && (
-                        <span style={{ fontSize: 8.5, fontWeight: 600, letterSpacing: '0.02em', padding: '2px 6px', borderRadius: 999, background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.6)', whiteSpace: 'nowrap' }}>{c.industry}</span>
+                        <span className="tp-pill" style={{ fontSize: 8.5, fontWeight: 600, letterSpacing: '0.02em', padding: '2px 6px', borderRadius: 999, whiteSpace: 'nowrap' }}>{c.industry}</span>
                       )}
                     </span>
                   ))}
@@ -824,6 +824,8 @@ function V2_Modern() {
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes tpMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .tp-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); transition: background 160ms ease, border-color 160ms ease, color 160ms ease; }
+        .tp-pill:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.92); }
       `}</style>
 
       {toast && (

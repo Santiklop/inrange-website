@@ -10,7 +10,7 @@ const TRUSTED_CLIENTS = [
   { name: 'Revolut', industry: 'Bank / Fintech' },
   { name: 'Nutanix', industry: 'SaaS & Tech' },
   { name: 'Miki Travel', industry: 'Travel' },
-  { name: 'ACT', industry: 'Commodities' },
+  { name: 'ACT', industry: 'Commodities & Trading' },
   { name: 'Humble', industry: 'FMCG' },
   { name: 'Bentham', industry: 'Consulting' },
   { name: 'Taiga', industry: 'Consulting' },

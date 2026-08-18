@@ -225,7 +225,7 @@ function V2_Modern() {
                 <div style={{ marginTop: 24, paddingTop: 16, borderTop: '1px solid var(--border-subtle)' }}>
                   <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-3)', marginBottom: 10 }}>Trusted by</div>
                   {reducedMotion ? (
-                    <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)', lineHeight: 1.9 }}>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)', lineHeight: 1.9 }}>
                       {TRUSTED_CLIENTS.map(c => c.name).join(' · ')}
                     </div>
                   ) : (
@@ -237,7 +237,7 @@ function V2_Modern() {
                       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 24, paddingRight: 24, animation: 'tpMarquee 26s linear infinite', willChange: 'transform' }}>
                         {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((c, i) => (
                           <React.Fragment key={`${c.name}-${i}`}>
-                            <span style={{ fontSize: 13, fontWeight: 600, color: 'var(--fg-1)' }}>{c.name}</span>
+                            <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)' }}>{c.name}</span>
                             <span style={{ width: 3, height: 3, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
                           </React.Fragment>
                         ))}

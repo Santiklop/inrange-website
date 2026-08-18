@@ -280,7 +280,7 @@ function V2_Modern() {
                 <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)', marginBottom: 12 }}>Trusted by</div>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '9px 14px' }}>
                   {TRUSTED_CLIENTS.map(c => (
-                    <span key={c.name} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8, minWidth: 0 }}>
+                    <span key={c.name} style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
                       <span style={{ fontSize: 13.5, fontWeight: 600, color: 'rgba(255,255,255,0.87)', whiteSpace: 'nowrap' }}>{c.name}</span>
                       {!isTablet && c.industry && (
                         <span className="tp-pill" style={{ fontSize: 8.5, fontWeight: 600, letterSpacing: '0.02em', padding: '2px 6px', borderRadius: 999, whiteSpace: 'nowrap' }}>{c.industry}</span>

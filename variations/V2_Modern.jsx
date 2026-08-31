@@ -16,6 +16,12 @@ const TRUSTED_CLIENTS = [
   { name: 'Taiga', industry: 'Consulting' },
   { name: 'Pinnacle', industry: 'Consumer & Retail' },
 ];
+// Mobile band leads with ACT and Bentham; the rest follow in roster order. Desktop keeps TRUSTED_CLIENTS order.
+const MOBILE_BAND_LEAD = ['ACT', 'Bentham'];
+const MOBILE_BAND_CLIENTS = [
+  ...MOBILE_BAND_LEAD.map(n => TRUSTED_CLIENTS.find(c => c.name === n)),
+  ...TRUSTED_CLIENTS.filter(c => !MOBILE_BAND_LEAD.includes(c.name)),
+];
 
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
@@ -226,7 +232,7 @@ function V2_Modern() {
                   <div style={{ fontSize: 10.5, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-3)', marginBottom: 10 }}>Trusted by</div>
                   {reducedMotion ? (
                     <div style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)', lineHeight: 1.9 }}>
-                      {TRUSTED_CLIENTS.map(c => c.name).join(' · ')}
+                      {MOBILE_BAND_CLIENTS.map(c => c.name).join(' · ')}
                     </div>
                   ) : (
                     <div style={{
@@ -235,7 +241,7 @@ function V2_Modern() {
                       maskImage: 'linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent)',
                     }}>
                       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 24, paddingRight: 24, animation: 'tpMarquee 26s linear infinite', willChange: 'transform' }}>
-                        {[...TRUSTED_CLIENTS, ...TRUSTED_CLIENTS].map((c, i) => (
+                        {[...MOBILE_BAND_CLIENTS, ...MOBILE_BAND_CLIENTS].map((c, i) => (
                           <React.Fragment key={`${c.name}-${i}`}>
                             <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)' }}>{c.name}</span>
                             <span style={{ width: 3, height: 3, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />

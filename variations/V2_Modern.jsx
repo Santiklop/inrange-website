@@ -689,7 +689,7 @@ function V2_Modern() {
             {[
               { href: '/Chapter6/', title: 'OECD TP Guidelines walkthrough', desc: 'Walk through the examples in the OECD TP Guidelines to build a shared understanding of TP principles.', kind: 'book' },
               { href: '/map/', title: 'Dutch MAP, APA & Rulings Explorer', desc: "An interactive dashboard of the Dutch authority's MAP and advance-pricing statistics: caseloads, resolution timing and mini-case studies.", kind: 'chart' },
-              { href: '/benchmarks/', title: 'EMEA Benchmark Explorer', desc: 'Summary of the results of 2022–2024 EMEA services benchmarks performed by inRange: ranges by service, country and independence, and a lab to mix your own comparable set.', kind: 'flask' },
+              { href: '/benchmarks/', title: 'EMEA Benchmark Explorer', desc: 'A sneak peek into the latest benchmark results across back-office, IT development and other services for 2022–2024. Filter by service type, country and independence.', kind: 'flask' },
             ].map((r, i) => (
               <a
                 key={r.href}

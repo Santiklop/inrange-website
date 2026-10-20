@@ -35,7 +35,7 @@ function PotionButton({ label, href }) {
         fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14, whiteSpace: 'nowrap',
         padding: '10px 18px', borderRadius: 10, textDecoration: 'none', color: '#fff',
         border: `1px solid ${hov ? 'rgba(93,208,138,0.95)' : 'rgba(93,208,138,0.55)'}`,
-        background: hov ? 'rgba(31,168,74,0.30)' : 'rgba(31,168,74,0.14)',
+        background: hov ? 'rgba(255,255,255,0.08)' : 'transparent',
         transition: 'all 220ms cubic-bezier(0.2, 0.8, 0.2, 1)',
       }}
     >

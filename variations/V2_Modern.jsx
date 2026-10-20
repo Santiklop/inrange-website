@@ -109,6 +109,7 @@ function V2_Modern() {
       title: 'Economic Analyses',
       sub: 'Financial & non-financial data',
       body: 'Get expert support in analysing financial and non-financial data for Transfer Pricing purposes.',
+      extra: { label: 'Explore EMEA benchmarks', href: '/benchmarks/' },
     },
     {
       icon: 'file-signature',
@@ -396,6 +397,7 @@ function V2_Modern() {
                               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                                 <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
                                 <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
+                                {s.extra && <Button variant="outlineInverted" onClick={() => { window.location.href = s.extra.href; }}>{s.extra.label}</Button>}
                               </div>
                             );
                           })()}
@@ -457,6 +459,7 @@ function V2_Modern() {
                     <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
                       <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
                       <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
+                      {svc.extra && <Button variant="outlineInverted" onClick={() => { window.location.href = svc.extra.href; }}>{svc.extra.label}</Button>}
                     </div>
                   );
                 })()}
@@ -686,6 +689,7 @@ function V2_Modern() {
             {[
               { href: '/Chapter6/', title: 'OECD TP Guidelines walkthrough', desc: 'Walk through the examples in the OECD TP Guidelines to build a shared understanding of TP principles.', kind: 'book' },
               { href: '/map/', title: 'Dutch MAP, APA & Rulings Explorer', desc: "An interactive dashboard of the Dutch authority's MAP and advance-pricing statistics: caseloads, resolution timing and mini-case studies.", kind: 'chart' },
+              { href: '/benchmarks/', title: 'EMEA Benchmark Explorer', desc: 'Summary of the results of 2022–2024 EMEA services benchmarks performed by inRange: ranges by service, country and independence, and a lab to mix your own comparable set.', kind: 'flask' },
             ].map((r, i) => (
               <a
                 key={r.href}
@@ -703,6 +707,8 @@ function V2_Modern() {
                 <span style={{ width: 44, height: 44, flex: 'none', borderRadius: 12, background: 'var(--brand-green-50, #e9f6ee)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   {r.kind === 'book'
                     ? (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--brand-green-500)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M2 4h6a3 3 0 0 1 3 3v13a2.5 2.5 0 0 0-2.5-2.5H2z" /><path d="M22 4h-6a3 3 0 0 0-3 3v13a2.5 2.5 0 0 1 2.5-2.5H22z" /></svg>)
+                    : r.kind === 'flask'
+                    ? (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--brand-green-500)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M9 3h6" /><path d="M10 3v6.5L4.6 18.3A1.8 1.8 0 0 0 6.1 21h11.8a1.8 1.8 0 0 0 1.5-2.7L14 9.5V3" /><path d="M7.5 15h9" /></svg>)
                     : (<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="var(--brand-green-500)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><line x1="6" y1="20" x2="6" y2="13" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="18" y1="20" x2="18" y2="9" /></svg>)}
                 </span>
                 <span style={{ flex: 1, minWidth: 0 }}>

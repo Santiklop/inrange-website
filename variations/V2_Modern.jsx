@@ -23,6 +23,35 @@ const MOBILE_BAND_CLIENTS = [
   ...TRUSTED_CLIENTS.filter(c => !MOBILE_BAND_LEAD.includes(c.name)),
 ];
 
+// Link button with a potion flask (green liquid, two bubbles) that tilts on hover — used for the benchmark explorer.
+function PotionButton({ label, href }) {
+  const [hov, setHov] = React.useState(false);
+  return (
+    <a href={href}
+      onMouseEnter={() => setHov(true)}
+      onMouseLeave={() => setHov(false)}
+      style={{
+        display: 'inline-flex', alignItems: 'center', gap: 9,
+        fontFamily: 'var(--font-sans)', fontWeight: 600, fontSize: 14, whiteSpace: 'nowrap',
+        padding: '10px 18px', borderRadius: 10, textDecoration: 'none', color: '#fff',
+        border: `1px solid ${hov ? 'rgba(93,208,138,0.95)' : 'rgba(93,208,138,0.55)'}`,
+        background: hov ? 'rgba(31,168,74,0.30)' : 'rgba(31,168,74,0.14)',
+        transition: 'all 220ms cubic-bezier(0.2, 0.8, 0.2, 1)',
+      }}
+    >
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true"
+        style={{ flexShrink: 0, transformOrigin: '50% 85%', transform: hov ? 'rotate(-14deg)' : 'none', transition: 'transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1)' }}>
+        <path d="M6.9 14.5h10.2l2.3 3.8a1.8 1.8 0 0 1-1.5 2.7H6.1a1.8 1.8 0 0 1-1.5-2.7z" fill="var(--brand-green-500)" />
+        <path d="M9 3h6" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M10 3v6.5L4.6 18.3A1.8 1.8 0 0 0 6.1 21h11.8a1.8 1.8 0 0 0 1.5-2.7L14 9.5V3" stroke="#fff" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="10.3" cy="17.6" r="0.9" fill="#fff" opacity="0.9" />
+        <circle cx="13.6" cy="16.1" r="0.6" fill="#fff" opacity="0.9" />
+      </svg>
+      {label}
+    </a>
+  );
+}
+
 function V2_Modern() {
   const SignalMapSection = window.SignalMapSection;
   const [activeService, setActiveService] = React.useState(-1);
@@ -396,8 +425,8 @@ function V2_Modern() {
                             return (
                               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                                 <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
-                                <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
-                                {s.extra && <Button variant="outlineInverted" onClick={() => { window.location.href = s.extra.href; }}>{s.extra.label}</Button>}
+                                {!s.extra && <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>}
+                                {s.extra && <PotionButton label={s.extra.label} href={s.extra.href} />}
                               </div>
                             );
                           })()}
@@ -458,8 +487,8 @@ function V2_Modern() {
                   return (
                     <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
                       <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
-                      <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>
-                      {svc.extra && <Button variant="outlineInverted" onClick={() => { window.location.href = svc.extra.href; }}>{svc.extra.label}</Button>}
+                      {!svc.extra && <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>}
+                      {svc.extra && <PotionButton label={svc.extra.label} href={svc.extra.href} />}
                     </div>
                   );
                 })()}

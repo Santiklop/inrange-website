@@ -84,6 +84,7 @@ p{margin:0 0 12px}
 .f-count b{color:var(--fg-1);font-weight:800}
 .hero-opts{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:24px}
 .hero-opts .chip-label{min-width:0}
+.hero-opts .chip{white-space:normal;text-align:left}
 .hero{padding:56px 0 34px}
 body{background:radial-gradient(1000px 460px at 88% 40px,rgba(31,168,74,.07),transparent 60%),radial-gradient(900px 420px at 8% 60px,rgba(20,39,63,.04),transparent 60%),var(--bg);background-repeat:no-repeat}
 [data-theme="dark"] body{background:radial-gradient(1000px 460px at 88% 40px,rgba(31,168,74,.12),transparent 60%),radial-gradient(900px 420px at 8% 60px,rgba(78,107,138,.16),transparent 60%),var(--bg);background-repeat:no-repeat}
@@ -92,7 +93,7 @@ body{background:radial-gradient(1000px 460px at 88% 40px,rgba(31,168,74,.07),tra
 .hero .lede{font-size:18px;line-height:1.55;color:var(--fg-2);max-width:860px;margin-bottom:26px}
 .key-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(176px,1fr));gap:16px}
 .kf{padding:12px 16px;border-left:3px solid var(--kc,var(--border-default));transition:padding var(--dur-fast) var(--ease)}
-.kf:hover{padding-left:19px}
+@media (hover:hover){.kf:hover{padding-left:19px}}
 .kf small{display:block;font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);margin-bottom:6px}
 .kf strong{display:block;font-size:30px;color:var(--fg-1);font-weight:800;line-height:1.05;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
 .kf span{display:block;font-size:12.5px;color:var(--fg-3);margin-top:7px;font-variant-numeric:tabular-nums}
@@ -129,7 +130,7 @@ main{padding:12px 0 24px}
 .shelf-h i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .vials{display:flex;flex-wrap:wrap;gap:6px}
 .vial{--vc:var(--fg-3);width:90px;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 4px 7px;background:transparent;border:1px solid transparent;border-radius:var(--radius-md);cursor:pointer;font-family:var(--font-sans);transition:transform var(--dur-fast) var(--ease),background var(--dur-base) var(--ease),border-color var(--dur-base) var(--ease)}
-.vial:hover{transform:translateY(-2px);border-color:var(--border-default)}
+@media (hover:hover){.vial:hover{transform:translateY(-2px);border-color:var(--border-default)}}
 .vial.on{background:color-mix(in srgb,var(--vc) 12%,transparent);border-color:color-mix(in srgb,var(--vc) 48%,transparent)}
 .vial svg{width:30px;height:64px;overflow:visible}
 .vial .liq{transition:opacity var(--dur-base) var(--ease)}
@@ -209,10 +210,47 @@ main{padding:12px 0 24px}
 .site-footer.compact h4{grid-column:1;grid-row:1;margin:0}
 .site-footer.compact .note{grid-column:2;margin:0 0 4px;line-height:1.55}
 .site-footer.compact .footer-stamp{margin:4px 0 0;padding-top:6px}
-@media (max-width:1180px){.lab-grid{grid-template-columns:1fr}.flask-col{max-width:420px}}
-@media (max-width:1000px){.layout,.layout.right{grid-template-columns:1fr;gap:0}.filters,.layout.right .filters{order:0;position:static;max-height:none;overflow:visible;padding:22px 0 6px;border-bottom:1px solid var(--border-subtle)}}
+/* narrow screens: filter sheet, mini flask and sideways chip rows; hidden or neutral on desktop */
+.tab-filter,.sheet-x,.sheet-foot,.sheet-bg,.mini,.tab-btn .tshort{display:none}
+.chip-track{display:contents}
+.halo{paint-order:stroke;stroke:var(--surface);stroke-width:4px;stroke-linejoin:round}
+@media (max-width:1180px){.lab-grid{grid-template-columns:1fr}.flask-col{max-width:420px}
+.mini{display:flex;align-items:center;gap:12px;position:sticky;top:var(--pin-top,118px);z-index:30;width:100%;margin:2px 0 14px;padding:9px 14px;border:1px solid var(--border-default);border-radius:var(--radius-md);background:color-mix(in srgb,var(--surface) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:var(--shadow-md);color:var(--fg-2);font-family:var(--font-sans);text-align:left;cursor:pointer;transition:opacity .2s var(--ease),transform .2s var(--ease)}
+.mini.away{opacity:0;transform:translateY(-6px);pointer-events:none}
+.mini-flask{width:36px;height:29px;flex-shrink:0;overflow:visible}
+.mini-flask .glass{fill:none;stroke:var(--fg-2);stroke-width:14;stroke-linejoin:round}
+.mini-flask .lyr{transition:y .6s var(--ease),height .6s var(--ease)}
+.mini-v{display:flex;flex-direction:column;gap:1px;min-width:0;font-variant-numeric:tabular-nums}
+.mini-v b{font-size:13.5px;font-weight:800;color:var(--fg-1);line-height:1.3}
+.mini-v span{font-size:12px;color:var(--fg-2);line-height:1.35}}
+@media (max-width:1000px){.layout,.layout.right{grid-template-columns:1fr;gap:0}
+.tab-filter{display:inline-flex;align-items:center;gap:7px;margin:8px 0 8px auto;padding:5px 13px;border:1px solid var(--border-default);border-radius:var(--radius-pill);background:var(--surface);color:var(--fg-1);font-family:var(--font-sans);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;flex-shrink:0}
+.tab-filter svg{width:14px;height:14px;color:var(--fg-brand)}
+.tab-filter .fdot{display:none;width:7px;height:7px;border-radius:50%;background:var(--brand-green-500)}
+.tab-filter.active{border-color:var(--brand-green-500)}
+.tab-filter.active .fdot{display:inline-block}
+.filters,.layout.right .filters{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:80;max-height:86vh;max-height:86dvh;overflow-y:auto;overscroll-behavior:contain;padding:0 18px;background:var(--surface);border:1px solid var(--border-subtle);border-bottom:0;border-radius:18px 18px 0 0;box-shadow:0 -12px 40px rgba(5,10,18,.35);transform:translateY(102%);visibility:hidden;transition:transform .3s var(--ease),visibility 0s linear .3s}
+.filters.open{transform:none;visibility:visible;transition:transform .3s var(--ease),visibility 0s}
+.filters .f-title{position:sticky;top:0;z-index:2;background:var(--surface);margin:0 0 6px;padding:16px 0 10px}
+.sheet-x{display:inline-flex;margin-left:auto}
+.sheet-foot{display:block;position:sticky;bottom:0;z-index:2;background:var(--surface);margin-top:6px;padding:12px 0 calc(14px + env(safe-area-inset-bottom));border-top:1px solid var(--border-subtle)}
+.sheet-done{display:block;width:100%;padding:12px 16px;border:0;border-radius:var(--radius-md);background:var(--brand-green-500);color:#fff;font-family:var(--font-sans);font-size:15px;font-weight:700;cursor:pointer}
+[data-theme="dark"] .sheet-done{background:var(--brand-green-600)}
+.sheet-bg{display:block;position:fixed;inset:0;z-index:79;background:rgba(5,10,18,.55);opacity:0;pointer-events:none;transition:opacity .25s var(--ease)}
+.sheet-bg.show{opacity:1;pointer-events:auto}
+html.sheet-lock,html.sheet-lock body{overflow:hidden}}
 @media (max-width:720px){h1{font-size:28px}.hero{padding:40px 0 24px}.container,.header-inner,.tabbar-inner,.layout{padding-left:18px;padding-right:18px}.footer-grid{grid-template-columns:1fr}.site-footer.compact .footer-grid>div{display:block}.site-footer.compact h4{margin-bottom:6px}.chart-card{padding:16px}.chip-label{min-width:0;width:100%}}
-@media print{.site-header,.tabbar,.scroll-progress,.chip-row,.filters,.hero-opts,.flask-top,#replay{display:none!important}.layout{display:block}.chart-card{break-inside:avoid;box-shadow:none}}
+/* phones: header scrolls away, results first, sideways chip rows, potions three to a row */
+@media (max-width:720px){html{scroll-padding-top:62px}
+.site-header{position:relative}.tabbar{top:0}.tabbar-inner{gap:0}.tab-btn{padding:13px 10px}.tab-btn .tlong{display:none}.tab-btn .tshort{display:inline}
+.hero{padding:26px 0 18px}.hero .eyebrow{margin-bottom:10px}.hero h1{margin-bottom:12px}.hero .lede{font-size:16px;margin-bottom:20px}.hero-opts{margin-top:18px}.hero-opts .chip{line-height:1.35}
+.key-facts{grid-template-columns:1fr 1fr;gap:12px 14px}.kf{padding:8px 12px}.kf small{font-size:10.5px;margin-bottom:4px}.kf strong{font-size:26px}.kf span{font-size:12px;margin-top:5px}.kf.common{grid-column:1 / -1}.kf.common strong,.kf.common strong.long{font-size:24px}.kf:not(.common) small{min-height:33px;display:flex;align-items:flex-end}
+.chart-card{padding:14px 12px}
+.chip-track{display:flex;flex-wrap:nowrap;gap:8px;overflow-x:auto;width:calc(100% + 24px);margin:0 -12px;padding:2px 12px 4px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent,#000 12px,#000 calc(100% - 28px),transparent)}
+.chip-track::-webkit-scrollbar{display:none}.chip-track .chip{flex-shrink:0}
+.vials{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.vial{width:auto;padding:6px 3px;gap:2px}.vial svg{width:20px;height:43px}.vial .vn{font-size:11.5px;line-height:1.2;min-height:28px}.vial .vs{font-size:11px}
+.shelf-group{margin-bottom:14px}.shelf-h{margin-bottom:6px}}
+@media print{.site-header,.tabbar,.scroll-progress,.chip-row,.filters,.hero-opts,.flask-top,#replay,.tab-filter,.sheet-bg,.mini{display:none!important}.layout{display:block}.chart-card{break-inside:avoid;box-shadow:none}}
 </style>
 </head>
 <body>
@@ -223,20 +261,23 @@ main{padding:12px 0 24px}
 <div class="header-tools"><button class="icon-btn" id="themeBtn" type="button" aria-label="Switch between dark and light"></button></div>
 </div></header>
 <nav class="tabbar" aria-label="Sections"><div class="tabbar-inner">
-<a class="tab-btn active" href="#sets"><span class="tnum">1</span>Searches and sets</a>
+<a class="tab-btn active" href="#sets"><span class="tnum">1</span><span class="tlong">Searches and sets</span><span class="tshort">Searches</span></a>
 <a class="tab-btn" href="#lab"><span class="tnum">2</span>Potion lab</a>
+<button type="button" class="tab-filter" id="filterBtn" aria-controls="filters" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg>Filters<i class="fdot" aria-hidden="true"></i></button>
 </div></nav>
+<div class="sheet-bg" id="sheetBg"></div>
 <div class="layout">
 <aside class="filters" id="filters" aria-label="Filters">
-<div class="f-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg><p class="eyebrow">Filters</p></div>
+<div class="f-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h18l-7 8v6l-4 2v-8z"/></svg><p class="eyebrow">Filters</p><button type="button" class="icon-btn sheet-x" id="sheetClose" aria-label="Close the filters"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
 <div class="f-block"><div class="f-sub">Independence</div><div id="indep"></div><div class="f-count" id="fCount"></div></div>
 <div class="places" id="places"></div>
+<div class="sheet-foot"><button type="button" class="sheet-done" id="sheetDone">Show companies</button></div>
 </aside>
 <div class="main-col">
 <section class="hero"><div class="container">
 <p class="eyebrow">Transfer pricing benchmarks · FY2022–2024</p>
 <h1>Four EMEA benchmarking studies, one view</h1>
-<p class="lede">Summary of the results of 2022–2024 EMEA services benchmarks performed by inRange. Filter by country or independence, or mix your own set in the potion lab.</p>
+<p class="lede">Summary of the 2022–2024 EMEA services benchmarks performed by inRange. Filter by country or independence, or mix your own set in the potion lab.</p>
 <div class="key-facts" id="kf"></div>
 <div class="hero-opts" id="heroOpts"><span class="chip-label">Back and middle office</span></div>
 </div></section>
@@ -256,6 +297,7 @@ main{padding:12px 0 24px}
 <div class="chart-card">
 <div class="chip-row" id="presets"><span class="chip-label">Pre-mixes</span></div>
 <div class="chip-row" id="altmixes"><span class="chip-label">Alternative mixes</span></div>
+<button type="button" class="mini" id="mini" aria-label="Your mix: go to the flask"><svg class="mini-flask" viewBox="0 0 300 240" aria-hidden="true"></svg><span class="mini-v" id="miniV"></span></button>
 <div class="lab-grid">
 <div id="shelf"></div>
 <div class="flask-col">
@@ -321,16 +363,24 @@ function applyColors(){const th=theme(),r=document.documentElement.style;
     subs.forEach((p,j)=>{const t=subs.length>1?j/(subs.length-1):0;
       r.setProperty('--'+p.id,th==='dark'?mix(base,'#FFFFFF',0.04+0.52*t):mix(mix(base,'#000000',0.18),'#FFFFFF',0.62*t));});});}
 
-/* tooltip */
+/* tooltip: follows the mouse; on touch, a tap on a chart element opens it above the finger (chips and potions just act) */
 const tip=$('tip');
-function showTip(e,html){tip.innerHTML=html;tip.classList.add('show');moveTip(e);}
-function moveTip(e){const pad=14,r=tip.getBoundingClientRect();let x=e.clientX+pad,y=e.clientY+pad;
-  if(x+r.width>innerWidth-8)x=e.clientX-r.width-pad;if(y+r.height>innerHeight-8)y=e.clientY-r.height-pad;
+let touchy=false;
+addEventListener('pointerdown',e=>{touchy=e.pointerType!=='mouse';},{capture:true,passive:true});
+addEventListener('pointermove',e=>{if(e.pointerType==='mouse')touchy=false;},{passive:true});
+function showTip(e,html,above){tip.innerHTML=html;tip.classList.add('show');moveTip(e,above);}
+function moveTip(e,above){const pad=14,r=tip.getBoundingClientRect();let x=e.clientX+pad,y=e.clientY+pad;
+  if(above){x=Math.min(e.clientX-r.width/2,innerWidth-r.width-8);y=e.clientY-r.height-22;if(y<4)y=e.clientY+26;}
+  else{if(x+r.width>innerWidth-8)x=e.clientX-r.width-pad;if(y+r.height>innerHeight-8)y=e.clientY-r.height-pad;}
   tip.style.transform=`translate(${Math.max(4,x)}px,${Math.max(4,y)}px)`;}
 function hideTip(){tip.classList.remove('show');}
-function bindTips(root){root.addEventListener('mousemove',e=>{const t=e.target.closest('[data-tip],[data-ci],[data-vial]');
-  if(!t){hideTip();return;}showTip(e,t.dataset.ci!=null?dotTip(+t.dataset.ci):t.dataset.vial!=null?vialTip(t.dataset.vial):t.dataset.tip);});
-  root.addEventListener('mouseleave',hideTip);}
+const tipOf=t=>t.dataset.ci!=null?dotTip(+t.dataset.ci):t.dataset.vial!=null?vialTip(t.dataset.vial):t.dataset.tip;
+function bindTips(root){root.addEventListener('mousemove',e=>{if(touchy)return;const t=e.target.closest('[data-tip],[data-ci],[data-vial]');
+  if(!t){hideTip();return;}showTip(e,tipOf(t));});
+  root.addEventListener('mouseleave',()=>{if(!touchy)hideTip();});
+  root.addEventListener('click',e=>{if(!touchy)return;const t=e.target.closest('svg [data-tip],svg [data-ci]');if(t)showTip(e,tipOf(t),true);});}
+addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'&&!e.target.closest('svg [data-tip],svg [data-ci]'))hideTip();},{passive:true});
+addEventListener('scroll',()=>{if(touchy)hideTip();},{passive:true});
 function dotTip(i){const c=COS[i],p=SUBS[SUBIDX[c.t]];
   let h=`<b>${esc(c.n)}</b><br><span class="ts">${esc(p.full)} · ${esc(c.c)} · indicator ${esc(c.i)}</span><br>Weighted FCMU 2022–24: <b>${pct(c.w)}</b>`;
   if(c.d)h+=`<br><span class="ts">One of the 27: found by the ${c.ds==='IT'?'IT development':'strategic management'} search, accepted for back and middle office</span>`;
@@ -338,11 +388,14 @@ function dotTip(i){const c=COS[i],p=SUBS[SUBIDX[c.t]];
 function vialTip(id){const p=SUBS[SUBIDX[id]],s=stats(COS.filter(c=>c.t===id&&inScope(c)&&inPlace(c)).map(c=>c.w));
   return `<b>${esc(p.full)}</b><br>${s.n?`${fmt(s.n)} companies · median <b>${pct(s.med)}</b><br><span class="ts">Interquartile range ${pct(s.lq)} to ${pct(s.uq)}</span>`:'No companies with the current options'}`;}
 
-/* 1 · allocation of the screened companies */
+/* 1 · allocation of the screened companies: side by side above 720 px, top to bottom on phones */
+const PHONE=matchMedia('(max-width:720px)');
 const FX={IT:12,BO:236,SM:460,SMS:684},FW=200,TX=908,TW=180,SRCY=10,SRCH=74,PIPEY=116,BT=182,BB=362,PITCH=9.6,COLS=18,R=3.5;
 const DRIP={IT:[FX.IT+120,SRCY+SRCH,FX.BO+50],SM:[FX.SM+64,SRCY+SRCH,FX.BO+150]};
-let DOTS=[];
-function buildFlow(){const svg=$('flowSvg');let s='';
+let DOTS=[],played=false;
+function buildFlow(){(PHONE.matches?buildFlowTall:buildFlowWide)();
+  $('osubFlow').textContent=`${fmt(ORD.reduce((t,k)=>t+S[k].initial,0))} screened`;}
+function buildFlowWide(){const svg=$('flowSvg');svg.setAttribute('viewBox','0 0 1100 462');let s='';
   const tankCx=TX+TW/2;
   s+=`<path class="pipe" d="M${FX.IT+FW-26} ${PIPEY} H${tankCx-18} Q${tankCx} ${PIPEY} ${tankCx} ${PIPEY+18} V${BT-6}"/>`;
   ORD.forEach(k=>{const f=S[k],x=FX[k],cx=x+FW/2,sx=x+FW-26;
@@ -384,11 +437,44 @@ function buildFlow(){const svg=$('flowSvg');let s='';
         order.push({i,dx:from[0]-cx,dy:from[1]-cy,delay:(c.d?1250:0)+r*60+col*7+Math.round(Math.random()*90)});});
       row+=Math.ceil(list.length/COLS);gap+=5;});});
   svg.innerHTML=s+`<g id="dotsG">${dots}</g>`;
-  const els=svg.querySelectorAll('.dot');DOTS=order.map((o,j)=>Object.assign(o,{el:els[j],c:COS[o.i]}));
-  $('osubFlow').textContent=`${fmt(ORD.reduce((t,k)=>t+S[k].initial,0))} screened`;}
+  const els=svg.querySelectorAll('.dot');DOTS=order.map((o,j)=>Object.assign(o,{el:els[j],c:COS[o.i]}));}
+/* phones: a card per search with its bucket of dots below, the 27 in a right-hand gutter, the rejected tank last */
+const TV=320,TC=280,TGX=304,THD=62,TCOL=24,TPI=11.2,TRAD=3.8;
+function buildFlowTall(){const svg=$('flowSvg');let s='',dots='';const order=[],g={};let y=2;
+  ORD.forEach(k=>{const rows=Math.max(1,Math.ceil(COS.filter(c=>c.s===k).length/TCOL)),bt=y+THD+8,bb=Math.round(bt+rows*TPI+14);g[k]={y,bt,bb};y=bb+18;});
+  const tank=Math.round(y),H=tank+96,bm=(g.BO.bt+g.BO.bb)/2,ya=g.IT.y+THD/2,yc=g.SM.y+THD/2;
+  const PATH={IT:`M${TC} ${ya} H${TGX-12} Q${TGX} ${ya} ${TGX} ${ya+12} V${(bm-20).toFixed(1)} Q${TGX} ${(bm-8).toFixed(1)} ${TGX-12} ${(bm-8).toFixed(1)} H${TC-2}`,
+              SM:`M${TC} ${yc} H${TGX-12} Q${TGX} ${yc} ${TGX} ${yc-12} V${(bm+20).toFixed(1)} Q${TGX} ${(bm+8).toFixed(1)} ${TGX-12} ${(bm+8).toFixed(1)} H${TC-2}`};
+  const FROM={IT:[TC,ya],SM:[TC,yc]};
+  ORD.forEach(k=>{const f=S[k],b=g[k],bb=b.bb.toFixed(1);
+    s+=`<rect class="src-card" id="sc-${k}" x="0" y="${b.y}" width="${TC}" height="${THD}" rx="10"/><rect x="0" y="${b.y}" width="4" height="${THD}" rx="2" style="fill:var(--c${k})"/>`;
+    s+=`<text class="t1" x="16" y="${b.y+21}" style="font-size:14px;font-weight:700">${esc(f.name)}</text>`;
+    s+=`<text class="t3" x="16" y="${b.y+38}" style="font-size:11.5px" data-tip="${esc(`<b>${fmt(f.rejected)}</b> of the ${fmt(f.initial)} companies screened by the ${SEARCH[k]} rejected${f.drip?`<br><span class="ts">${f.drip} more were accepted for back and middle office</span>`:''}`)}">${fmt(f.initial)} screened · <tspan id="bc-${k}"></tspan></text>`;
+    s+=`<text x="16" y="${b.y+54}" style="font-size:11.5px"><tspan class="t1" id="bm-${k}" style="font-size:12.5px;font-weight:800"></tspan><tspan class="t2" id="bi-${k}" dx="8"></tspan></text>`;
+    s+=`<rect class="bucket-bg" x="2" y="${b.bt}" width="${TC-4}" height="${(b.bb-b.bt).toFixed(1)}" rx="10"/>`;
+    s+=`<path class="bucket" d="M2 ${b.bt} V${(b.bb-10).toFixed(1)} Q2 ${bb} 12 ${bb} H${TC-12} Q${TC-2} ${bb} ${TC-2} ${(b.bb-10).toFixed(1)} V${b.bt}"/>`;});
+  ['IT','SM'].forEach((k,j)=>{const d=PATH[k],py=k==='IT'?(ya+bm-8)/2:(yc+bm+8)/2;
+    s+=`<path class="drip-path" d="${d}" style="stroke:var(--cBO)"/><path class="hit" d="${d}" data-tip="${esc(`<b>${S[k].drip}</b> companies screened by the ${SEARCH[k]} and accepted for back and middle office<br><span class="ts">Found by back-office strategy ${k==='IT'?'B':'C'}, which uses the same export; rejected in the ${LOWER[k]} study for their activities</span>`)}"/>`;
+    for(let i=0;i<3;i++){const t0=(i*0.9+j*0.45).toFixed(2);
+      s+=`<path d="M0 -4.6 L4.6 0 L0 4.6 L-4.6 0 Z" style="fill:var(--cBO)" opacity="0"><animateMotion dur="2.7s" begin="${t0}s" repeatCount="indefinite" path="${d}"/><animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.12;0.85;1" dur="2.7s" begin="${t0}s" repeatCount="indefinite"/></path>`;}
+    s+=`<rect class="pill" x="${TGX-16}" y="${(py-10).toFixed(1)}" width="32" height="20" rx="10" style="stroke:var(--cBO)"/><text class="t1" x="${TGX}" y="${(py+4.3).toFixed(1)}" text-anchor="middle" style="font-size:12px;font-weight:800">+${S[k].drip}</text>`;});
+  const rej=ORD.reduce((t,k)=>t+S[k].rejected,0);
+  s+=`<path class="bucket" d="M2 ${tank} V${H-12} Q2 ${H-2} 12 ${H-2} H${TV-12} Q${TV-2} ${H-2} ${TV-2} ${H-12} V${tank}"/>`;
+  s+=`<rect class="tank-liq" x="5" y="${tank+8}" width="${TV-10}" height="${H-tank-13}" rx="8"/>`;
+  s+=`<text class="t1" x="18" y="${tank+44}" style="font-size:26px;font-weight:800">${fmt(rej)}</text><text class="t2" x="18" y="${tank+63}" style="font-size:12.5px">rejected</text>`;
+  ORD.forEach((k,j)=>{const ty=tank+28+j*17;s+=`<text class="t3" x="150" y="${ty}" style="font-size:12px">${SHORT[k]}</text><text class="t2" x="${TV-16}" y="${ty}" text-anchor="end" style="font-size:12px;font-weight:700">${fmt(S[k].rejected)}</text>`;});
+  ORD.forEach(k=>{const b=g[k],x0=2+(TC-4-(TCOL-1)*TPI)/2;let j=0;
+    SUBS.filter(p=>p.s===k).forEach(p=>{COS.map((c,i)=>[c,i]).filter(([c])=>c.t===p.id).sort((u,v)=>u[0].d-v[0].d).forEach(([c,i])=>{
+      const r=Math.floor(j/TCOL),col=j%TCOL,cx=x0+col*TPI,cy=b.bb-7-TPI/2-r*TPI,from=c.d?FROM[c.ds]:[TC/2,b.y+THD];j++;
+      dots+=c.d?`<path class="dot drip" data-ci="${i}" d="M${cx.toFixed(1)} ${(cy-5.1).toFixed(1)} L${(cx+5.1).toFixed(1)} ${cy.toFixed(1)} L${cx.toFixed(1)} ${(cy+5.1).toFixed(1)} L${(cx-5.1).toFixed(1)} ${cy.toFixed(1)} Z" style="fill:var(--${p.id});stroke:var(--${p.id});stroke-width:1.3"/>`
+               :`<circle class="dot" data-ci="${i}" cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${TRAD}" style="fill:var(--${p.id})"/>`;
+      order.push({i,dx:from[0]-cx,dy:from[1]-cy,delay:(c.d?1250:0)+r*60+col*7+Math.round(Math.random()*90)});});});});
+  svg.setAttribute('viewBox',`0 0 ${TV} ${H}`);
+  svg.innerHTML=s+`<g id="dotsG">${dots}</g>`;
+  const els=svg.querySelectorAll('.dot');DOTS=order.map((o,j)=>Object.assign(o,{el:els[j],c:COS[o.i]}));}
 function startPose(){DOTS.forEach(o=>{const e=o.el;e.style.transition='none';e.style.transform=`translate(${o.dx.toFixed(1)}px,${o.dy.toFixed(1)}px)`;e.style.opacity='0';});
   void $('flowSvg').getBoundingClientRect();}
-function play(){DOTS.forEach(o=>{const e=o.el;e.style.transition=`transform 1.15s cubic-bezier(.2,.8,.2,1) ${o.delay}ms,opacity .35s ease ${o.delay}ms,fill-opacity .3s,stroke-opacity .3s`;
+function play(){played=true;DOTS.forEach(o=>{const e=o.el;e.style.transition=`transform 1.15s cubic-bezier(.2,.8,.2,1) ${o.delay}ms,opacity .35s ease ${o.delay}ms,fill-opacity .3s,stroke-opacity .3s`;
   e.style.transform='translate(0px,0px)';e.style.opacity='1';});}
 function updateFlow(){
   ORD.forEach(k=>{const s=studyStats(k),all=COS.filter(c=>c.s===k&&optScope(c)),inn=all.filter(inPlace),base=inn.filter(c=>!c.d).length,dr=inn.filter(c=>c.d).length;
@@ -400,13 +486,14 @@ function updateFlow(){
     else e.style.fillOpacity=m?'1':'0.16';});}
 
 /* interquartile ranges of the four sets, common range and average median */
-function drawRange(){const X=v=>250+820*Math.min(Math.max(v*100,0),30)/30;let s='';
-  const rows={IT:66,BO:98,SM:130,SMS:162},top=44,bot=184;
-  for(let t=0;t<=30;t+=5)s+=`<line class="grid-l" x1="${X(t/100)}" y1="${top}" x2="${X(t/100)}" y2="${bot}"/><text class="t3" x="${X(t/100)}" y="${bot+22}" text-anchor="middle" style="font-size:11.5px;font-weight:600">${t}%</text>`;
-  const ss={};ORD.forEach(k=>{ss[k]=studyStats(k);});const ks=ORD.filter(k=>ss[k].n);
+function commonRange(){const ss={};ORD.forEach(k=>{ss[k]=studyStats(k);});const ks=ORD.filter(k=>ss[k].n);
   let L=-Infinity,U=Infinity,hl=null,lu=null;ks.forEach(k=>{if(ss[k].lq>L){L=ss[k].lq;hl=k;}if(ss[k].uq<U){U=ss[k].uq;lu=k;}});
   const avg=ks.length?ks.reduce((t,k)=>t+ss[k].med,0)/ks.length:null;
-  COMMON={ok:ks.length>0&&L<=U,L,U,avg,hl,lu,sets:ks.length};
+  COMMON={ok:ks.length>0&&L<=U,L,U,avg,hl,lu,sets:ks.length};return ss;}
+function drawRange(){if(PHONE.matches){drawRangeTall();return;}const X=v=>250+820*Math.min(Math.max(v*100,0),30)/30;let s='';
+  const rows={IT:66,BO:98,SM:130,SMS:162},top=44,bot=184;
+  for(let t=0;t<=30;t+=5)s+=`<line class="grid-l" x1="${X(t/100)}" y1="${top}" x2="${X(t/100)}" y2="${bot}"/><text class="t3" x="${X(t/100)}" y="${bot+22}" text-anchor="middle" style="font-size:11.5px;font-weight:600">${t}%</text>`;
+  const ss=commonRange(),ks=ORD.filter(k=>ss[k].n),{L,U,avg,hl,lu}=COMMON;
   if(COMMON.ok){const tipc=esc(`<b>Common range ${pct(L)} to ${pct(U)}</b><br><span class="ts">From the highest lower quartile (${LOWER[hl]}) to the lowest upper quartile (${LOWER[lu]})</span>`);
     s+=`<rect class="band" x="${X(L)}" y="${top-4}" width="${X(U)-X(L)}" height="${bot-top+8}" data-tip="${tipc}"/>`;
     s+=`<line class="band-edge" x1="${X(L)}" y1="${top-4}" x2="${X(L)}" y2="${bot+4}"/><line class="band-edge" x1="${X(U)}" y1="${top-4}" x2="${X(U)}" y2="${bot+4}"/>`;
@@ -417,7 +504,24 @@ function drawRange(){const X=v=>250+820*Math.min(Math.max(v*100,0),30)/30;let s=
   if(avg!=null){const ax=X(avg),near=COMMON.ok&&(ax-X(L)<52||X(U)-ax<52);
     s+=`<line class="avg" x1="${ax}" y1="${top-8}" x2="${ax}" y2="${bot+8}"/><line class="hit" x1="${ax}" y1="${top-8}" x2="${ax}" y2="${bot+8}" data-tip="${esc(`<b>Average of the ${ks.length===4?'four':ks.length} medians ${pct(avg)}</b>`)}"/>`;
     s+=`<text class="t1" x="${ax}" y="${near?top-26:top-12}" text-anchor="middle" style="font-size:12px;font-weight:800">${pct(avg)}</text>`;}
-  $('rangeSvg').innerHTML=s;}
+  $('rangeSvg').setAttribute('viewBox','0 0 1100 212');$('rangeSvg').innerHTML=s;}
+/* phones: each set's name above its bar, the 0–30% scale across the full width */
+function drawRangeTall(){const X=v=>14+292*Math.min(Math.max(v*100,0),30)/30;let s='',names='';
+  const rows={IT:72,BO:116,SM:160,SMS:204},top=44,bot=220;
+  for(let t=0;t<=30;t+=5)s+=`<line class="grid-l" x1="${X(t/100)}" y1="${top}" x2="${X(t/100)}" y2="${bot}"/><text class="t3" x="${X(t/100)}" y="${bot+18}" text-anchor="middle" style="font-size:11px;font-weight:600">${t}%</text>`;
+  const ss=commonRange(),ks=ORD.filter(k=>ss[k].n),{L,U,avg,hl,lu}=COMMON;
+  if(COMMON.ok){const tipc=esc(`<b>Common range ${pct(L)} to ${pct(U)}</b><br><span class="ts">From the highest lower quartile (${LOWER[hl]}) to the lowest upper quartile (${LOWER[lu]})</span>`);
+    s+=`<rect class="band" x="${X(L)}" y="${top-4}" width="${X(U)-X(L)}" height="${bot-top+8}" data-tip="${tipc}"/>`;
+    s+=`<line class="band-edge" x1="${X(L)}" y1="${top-4}" x2="${X(L)}" y2="${bot+4}"/><line class="band-edge" x1="${X(U)}" y1="${top-4}" x2="${X(U)}" y2="${bot+4}"/>`;
+    s+=`<text x="${X(L)-5}" y="${top-12}" text-anchor="end" style="font-size:11px;font-weight:700;fill:var(--band-edge)">${pct(L)}</text><text x="${X(U)+5}" y="${top-12}" style="font-size:11px;font-weight:700;fill:var(--band-edge)">${pct(U)}</text>`;}
+  ORD.forEach(k=>{const y=rows[k],r=ss[k];
+    names+=`<text class="${r.n?'t1':'t3'} halo" x="14" y="${y-13}" style="font-size:12px;font-weight:700">${esc(S[k].name)}${r.n?'':' · no companies in the filter'}</text>`;
+    if(!r.n)return;const tipb=esc(`<b>${esc(S[k].name)}</b> · ${fmt(r.n)} companies<br>Lower quartile ${pct(r.lq)} · median <b>${pct(r.med)}</b> · upper quartile ${pct(r.uq)}`);
+    s+=`<g data-tip="${tipb}"><rect x="${X(r.lq)}" y="${y-7}" width="${Math.max(X(r.uq)-X(r.lq),2)}" height="14" rx="4" style="fill:var(--c${k})"/><line class="medtick" x1="${X(r.med)}" y1="${y-11}" x2="${X(r.med)}" y2="${y+11}"/></g>`;});
+  if(avg!=null){const ax=X(avg);
+    s+=`<line class="avg" x1="${ax}" y1="${top-8}" x2="${ax}" y2="${bot+8}"/><line class="hit" x1="${ax}" y1="${top-8}" x2="${ax}" y2="${bot+8}" data-tip="${esc(`<b>Average of the ${ks.length===4?'four':ks.length} medians ${pct(avg)}</b>`)}"/>`;
+    s+=`<text class="t1" x="${ax}" y="${top-27}" text-anchor="middle" style="font-size:11px;font-weight:800">${pct(avg)}</text>`;}
+  $('rangeSvg').setAttribute('viewBox','0 0 320 246');$('rangeSvg').innerHTML=s+names;}
 
 /* 2 · potion lab */
 function buildShelf(){let h='';
@@ -433,14 +537,17 @@ function buildFlask(){const svg=$('flaskSvg');let s=`<defs><clipPath id="fclip">
   [190,160,130,100].forEach(y=>{const xe=172+(y-80)*94/120;s+=`<line class="grad" x1="${(xe-16).toFixed(1)}" y1="${y}" x2="${(xe-5).toFixed(1)}" y2="${y}"/>`;});
   svg.innerHTML=s;const g=svg.querySelector('#lyrs');
   SUBS.forEach(p=>{const r=document.createElementNS(NS,'rect');r.setAttribute('class','lyr');r.id='ly-'+p.id;r.setAttribute('x','0');r.setAttribute('width','300');r.setAttribute('y',String(FBOT));r.setAttribute('height','0');r.style.fill=`var(--${p.id})`;g.appendChild(r);});
-  const b=svg.querySelector('#bubs');for(let i=0;i<7;i++){const c=document.createElementNS(NS,'circle');c.setAttribute('class','bub');c.setAttribute('r',String(1.8+Math.random()*2.2));b.appendChild(c);}}
+  const b=svg.querySelector('#bubs');for(let i=0;i<7;i++){const c=document.createElementNS(NS,'circle');c.setAttribute('class','bub');c.setAttribute('r',String(1.8+Math.random()*2.2));b.appendChild(c);}
+  $('mini').querySelector('svg').innerHTML=`<defs><clipPath id="mclip"><path d="${FLASK}"/></clipPath></defs><g clip-path="url(#mclip)">${SUBS.map(p=>`<rect class="lyr" id="mly-${p.id}" x="0" y="${FBOT}" width="300" height="0" style="fill:var(--${p.id})"/>`).join('')}</g><path class="glass" d="${FLASK}"/><rect x="118" y="0" width="64" height="18" rx="8" style="fill:var(--fg-2)"/>`;}
 function bubble(){const n=COS.filter(inMix).length;if(!n)return;const H=FMAX*Math.sqrt(n/430);
   $('flaskSvg').querySelectorAll('.bub').forEach((c,i)=>{c.classList.remove('go');c.setAttribute('cx',String(70+Math.random()*160));c.setAttribute('cy',String(FBOT-6-Math.random()*Math.max(4,H*0.4)));
     c.style.animationDelay=(i*0.09)+'s';void c.getBoundingClientRect();c.classList.add('go');});}
 function updateLab(){const m=stats(COS.filter(inMix).map(c=>c.w)),n=m.n,H=n?FMAX*Math.sqrt(n/430):0;let y=FBOT;
-  SUBS.forEach(p=>{const cnt=COS.filter(c=>c.t===p.id&&inMix(c)).length,h=n?H*cnt/n:0;y-=h;const r=$('ly-'+p.id);r.setAttribute('y',y.toFixed(2));r.setAttribute('height',h.toFixed(2));});
+  SUBS.forEach(p=>{const cnt=COS.filter(c=>c.t===p.id&&inMix(c)).length,h=n?H*cnt/n:0;y-=h;
+    [$('ly-'+p.id),$('mly-'+p.id)].forEach(r=>{r.setAttribute('y',y.toFixed(2));r.setAttribute('height',h.toFixed(2));});});
   const me=$('meni');me.setAttribute('y',(FBOT-H-1).toFixed(2));me.style.opacity=n?'1':'0';
-  $('readout').innerHTML=n?[['Companies',fmt(n)],['Median',pct(m.med)],['Lower quartile',pct(m.lq)],['Upper quartile',pct(m.uq)]].map(([a,b])=>`<div class="ror"><small>${a}</small><strong>${b}</strong></div>`).join(''):`<p class="empty-note">${!st.sel.size?'Pick potions from the shelf to fill the flask.':!st.countries.size?'Pick countries in the filters on the left.':'No companies match this selection.'}</p>`;
+  $('readout').innerHTML=n?[['Companies',fmt(n)],['Median',pct(m.med)],['Lower quartile',pct(m.lq)],['Upper quartile',pct(m.uq)]].map(([a,b])=>`<div class="ror"><small>${a}</small><strong>${b}</strong></div>`).join(''):`<p class="empty-note">${!st.sel.size?'Pick potions from the shelf to fill the flask.':!st.countries.size?'Pick countries in the filters.':'No companies match this selection.'}</p>`;
+  $('miniV').innerHTML=n?`<b>${fmt(n)} ${n===1?'company':'companies'} · median ${pct(m.med)}</b><span>Interquartile range ${pct(m.lq)} to ${pct(m.uq)}</span>`:'<b>Empty flask</b><span>Pick potions to fill it</span>';
   drawMix(m);
   SUBS.forEach(p=>{const b=document.querySelector(`.vial[data-id="${p.id}"]`);b.classList.toggle('on',st.sel.has(p.id));b.setAttribute('aria-pressed',st.sel.has(p.id)?'true':'false');
     const v=stats(COS.filter(c=>c.t===p.id&&inScope(c)).map(c=>c.w));$('vs-'+p.id).textContent=v.n?`${v.n} · ${pct(v.med)}`:'none';});
@@ -469,7 +576,9 @@ function updatePlaces(){const avail={};COS.forEach(c=>{if(optScope(c))avail[c.c]
     b.setAttribute('aria-pressed',st.countries.has(c)?'true':'false');});
   REGS.forEach((r,ri)=>{const cs=REGC[r],on=cs.filter(c=>st.countries.has(c)).length,b=document.querySelector(`#places .reg-chip[data-reg="${ri}"]`);
     b.classList.toggle('on',on===cs.length);b.classList.toggle('part',on>0&&on<cs.length);$('rc-'+ri).textContent=cs.reduce((t,c)=>t+(avail[c]||0),0);});
-  $('plNote').textContent=st.countries.size===ALLC.length?'all selected':`${st.countries.size} of ${ALLC.length}`;}
+  $('plNote').textContent=st.countries.size===ALLC.length?'all selected':`${st.countries.size} of ${ALLC.length}`;
+  $('sheetDone').textContent=`Show ${fmt(inView)} ${inView===1?'company':'companies'}`;
+  $('filterBtn').classList.toggle('active',st.aOnly||st.countries.size!==ALLC.length);}
 function drawMix(m){const X=v=>14+272*Math.min(Math.max(v*100,0),30)/30;let s='';
   if(COMMON.ok)s+=`<rect class="band" x="${X(COMMON.L)}" y="22" width="${X(COMMON.U)-X(COMMON.L)}" height="50" data-tip="${esc(`<b>Common range ${pct(COMMON.L)} to ${pct(COMMON.U)}</b>`)}"/>`;
   [0,10,20,30].forEach(t=>{s+=`<line class="grid-l" x1="${X(t/100)}" y1="22" x2="${X(t/100)}" y2="72"/><text class="t3" x="${X(t/100)}" y="90" text-anchor="middle" style="font-size:11px;font-weight:600">${t}%</text>`;});
@@ -481,8 +590,9 @@ function mixChip(row,name,ids,k){const b=document.createElement('button');b.type
 function toggleChip(row,key,label,col,t){const b=document.createElement('button');b.type='button';b.className='chip'+(st[key]?' on':'');b.style.setProperty('--chip',col);b.textContent=label;b.dataset.tip=t;
   b.addEventListener('click',()=>{st[key]=!st[key];b.classList.toggle('on',st[key]);update(true);});row.appendChild(b);}
 function buildChips(){
-  MAINMIX.forEach(([name,ids,k])=>mixChip($('presets'),name,ids,k));
-  ALTMIX.forEach(([name,ids])=>mixChip($('altmixes'),name,ids,null));
+  const track=id=>{const t=document.createElement('div');t.className='chip-track';$(id).appendChild(t);return t;},pre=track('presets'),alt=track('altmixes');
+  MAINMIX.forEach(([name,ids,k])=>mixChip(pre,name,ids,k));
+  ALTMIX.forEach(([name,ids])=>mixChip(alt,name,ids,null));
   $('emptyBtn').addEventListener('click',()=>{st.sel=new Set();update(true);});
   toggleChip($('heroOpts'),'drip','Include the 27 companies from the IT development and strategic management searches','var(--cBO)','27 companies found only by back-office strategies B and C, which use the exports of the IT development search (22) and the strategic management search (5); all 27 were rejected there for their activities');
   toggleChip($('indep'),'aOnly','A only (A+, A, A-)','var(--brand-green-500)','Only companies with independence indicator A+, A or A-');}
@@ -506,6 +616,17 @@ addEventListener('scroll',()=>{const h=document.documentElement,p=h.scrollTop/((
 const tabs=[...document.querySelectorAll('.tab-btn')];
 const tio=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)tabs.forEach(t=>t.classList.toggle('active',t.getAttribute('href')==='#'+e.target.id));});},{rootMargin:'-45% 0px -50% 0px'});
 ['sets','lab'].forEach(id=>tio.observe($(id)));
+
+/* filter sheet (up to 1,000 px): the sidebar panel slides up from the bottom */
+const SHEETQ=matchMedia('(max-width:1000px)'),fBtn=$('filterBtn'),fPanel=$('filters'),fBg=$('sheetBg');
+function openSheet(){fPanel.classList.add('open');fBg.classList.add('show');fBtn.setAttribute('aria-expanded','true');fPanel.setAttribute('role','dialog');fPanel.setAttribute('aria-modal','true');
+  document.documentElement.classList.add('sheet-lock');hideTip();setTimeout(()=>$('sheetClose').focus({preventScroll:true}),60);}
+function closeSheet(){if(!fPanel.classList.contains('open'))return;fPanel.classList.remove('open');fBg.classList.remove('show');fBtn.setAttribute('aria-expanded','false');fPanel.removeAttribute('role');fPanel.removeAttribute('aria-modal');
+  document.documentElement.classList.remove('sheet-lock');if(SHEETQ.matches)fBtn.focus({preventScroll:true});}
+fBtn.addEventListener('click',openSheet);
+[fBg,$('sheetClose'),$('sheetDone')].forEach(el=>el.addEventListener('click',closeSheet));
+addEventListener('keydown',e=>{if(e.key==='Escape')closeSheet();});
+SHEETQ.addEventListener('change',()=>{if(!SHEETQ.matches)closeSheet();});
 const NAMEOF={IT:'IT development',SMS:'Sales and marketing',SM:'Strategic management',BO:'Back and middle office (search A)',BOC:'Back and middle office (combined A, B and C: source of the 27)'};
 if(D.sourceNote){const p=document.createElement('p');p.className='note';p.textContent=D.sourceNote;$('srcList').replaceWith(p);}
 else $('srcList').innerHTML=D.sources.map(s=>`<li>${esc(NAMEOF[s.study])}: ${esc(s.file.split('\\').pop())} <span class="when">(saved ${esc(s.saved)})</span></li>`).join('');
@@ -517,6 +638,15 @@ update(false);
 const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 if(!reduce&&'IntersectionObserver' in window){startPose();const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){play();io.disconnect();}});},{threshold:.2});io.observe($('flowSvg'));}
 $('replay').addEventListener('click',()=>{startPose();requestAnimationFrame(()=>requestAnimationFrame(play));});
+/* crossing 720 px (e.g. turning a tablet): redraw the flow and the range chart; dots wait for the animation if it has not run */
+PHONE.addEventListener('change',()=>{buildFlow();updateFlow();drawRange();if(!played&&!reduce&&'IntersectionObserver' in window)startPose();});
+
+/* mini flask (up to 1,180 px): pinned under the tab bar in the potion lab, hidden while the big flask is in view */
+function pinTop(){const hd=document.querySelector('.site-header'),tb=document.querySelector('.tabbar');
+  document.documentElement.style.setProperty('--pin-top',((getComputedStyle(hd).position==='sticky'?hd.offsetHeight:0)+tb.offsetHeight+8)+'px');}
+pinTop();addEventListener('resize',pinTop);
+if('IntersectionObserver' in window){const fo=new IntersectionObserver(es=>{es.forEach(e=>$('mini').classList.toggle('away',e.isIntersecting));},{threshold:.35});fo.observe(document.querySelector('.flask-col'));}
+$('mini').addEventListener('click',()=>$('flaskSvg').scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'}));
 })();
 </script>
 </body>

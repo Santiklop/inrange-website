@@ -1,7 +1,4 @@
 User-agent: *
-Disallow: /sport/
-Disallow: /4june/
 Disallow: /docs/
-Disallow: /deck/
 
 Sitemap: https://www.inrange.nl/sitemap.xml

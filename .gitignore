@@ -4,7 +4,10 @@ _design/
 .DS_Store
 Thumbs.db
 node_modules/
-deck/node_modules/
-deck/package-lock.json
-deck/slide-*.png
-deck/web/_build.html
+
+# Internal material: kept on this computer only, not on GitHub or the website
+deck/
+LinkedIn_Iceberg/
+marketing/
+tools/
+inRange_LinkedIn_Icebergs.pdf

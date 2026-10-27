@@ -10,7 +10,7 @@ Show prospects which companies trust inRange — impactful but restrained. Compa
 
 ## Client roster (fixed order, most recognizable first)
 
-Adyen, Just Eat Takeaway, Revolut, Nutanix, Miki Travel, ACT, Humble, Bentham, Taiga, Pinnacle.
+Adyen, Just Eat Takeaway, Nutanix, Miki Travel, ACT, Humble, Bentham, Taiga, Pinnacle.
 
 Name forms are the short common ones (e.g. "Just Eat Takeaway", not "Just Eat Takeaway.com"). The list lives in one JS array in `V2_Modern.jsx` so both renderings share it.
 

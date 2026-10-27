@@ -7,7 +7,6 @@
 const TRUSTED_CLIENTS = [
   { name: 'Adyen', industry: 'Payments / Fintech' },
   { name: 'Just Eat Takeaway', industry: 'Food Delivery' },
-  { name: 'Revolut', industry: 'Bank / Fintech' },
   { name: 'Nutanix', industry: 'SaaS & Tech' },
   { name: 'Miki Travel', industry: 'Travel' },
   { name: 'ACT', industry: 'Commodities & Trading' },

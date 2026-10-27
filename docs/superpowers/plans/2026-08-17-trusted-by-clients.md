@@ -46,7 +46,7 @@ Insert the roster between the comment and the function so it reads:
 // Client roster for the "Trusted by" blocks (order: most recognizable first).
 // Shared by the desktop/tablet card grid and the mobile rolling band.
 // Company names only — never people's names, no logos (see docs/superpowers/specs/2026-08-17-trusted-by-clients-design.md).
-const TRUSTED_CLIENTS = ['Adyen', 'Just Eat Takeaway', 'Nutanix', 'Miki Travel', 'ACT', 'Humble', 'Bentham', 'Taiga', 'Pinnacle'];
+const TRUSTED_CLIENTS = ['Adyen', 'Just Eat Takeaway', 'Revolut', 'Nutanix', 'Miki Travel', 'ACT', 'Humble', 'Bentham', 'Taiga', 'Pinnacle'];
 
 function V2_Modern() {
 ```

@@ -45,7 +45,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "Annex to Ch.III · ¶1 and ¶8: working-capital adjustments may be warranted under TNMM (and, less commonly, cost plus or resale price) when the reliability of the comparables WILL BE IMPROVED and reasonably accurate adjustments can be made. They should not be made automatically and would not automatically be accepted by tax administrations. The mechanical 'always-adjust' option misses the reliability test; the 'never' option ignores ¶3.47–3.54 of the Guidelines.",
+          "Annex to Ch.III · ¶1 and ¶8: working-capital adjustments may be warranted under TNMM (and, less commonly, cost plus or resale price) when the reliability of the comparables WILL BE IMPROVED and reasonably accurate adjustments can be made. They should not be made automatically and would not automatically be accepted by tax administrations. Adjusting mechanically for every difference misses the reliability test; refusing adjustments altogether ignores ¶3.47–3.54 of the Guidelines.",
         verdict: "Adjust — when reliability improves"
       },
       {
@@ -228,7 +228,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "Annex to Ch.VIII · Example 1 · ¶5–7. Under the CCA, each participant's contribution should correspond to its proportionate share of expected benefits (50%). At value, A contributes 3 600 and B contributes 2 100, so B must top up by 750. Crucially, the alternative-to-the-CCA scenario (independent market purchases) yields exactly 750 from B to A — confirming that contributions-at-value is the route to an arm's-length outcome. Contributions-at-cost (the 500 answer) systematically under-compensates the higher-value provider.",
+          "Annex to Ch.VIII · Example 1 · ¶5–7. Under the CCA, each participant's contribution should correspond to its proportionate share of expected benefits (50%). At value, A contributes 3 600 and B contributes 2 100, so B must top up by 750. Crucially, the alternative-to-the-CCA scenario (independent market purchases) yields exactly 750 from B to A — confirming that contributions-at-value is the route to an arm's-length outcome. Measuring contributions at cost, which would give a payment of 500 (¶6), systematically under-compensates the higher-value provider.",
         verdict: "Balancing payment 750 — at value"
       }
     ],
@@ -276,7 +276,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "Annex to Ch.VIII · Example 1A · ¶9–11. The two-step approach (¶8.27) reaches the same answer (750) as contributions-at-value: 500 for the cost share + 250 for A's additional value contribution. ¶11 flags that the two-step method is particularly useful for DEVELOPMENT CCAs where one participant brings pre-existing contributions (e.g. intangibles). Skipping Step 2 (the 500 option) would systematically under-compensate the higher-value provider; double-counting (1 050) ignores the netting in the cost share.",
+          "Annex to Ch.VIII · Example 1A · ¶9–11. The two-step approach (¶8.27) reaches the same answer (750) as contributions-at-value: 500 for the cost share + 250 for A's additional value contribution. ¶11 flags that the two-step method is particularly useful for DEVELOPMENT CCAs where one participant brings pre-existing contributions (e.g. intangibles). Stopping after Step 1 (a payment of 500) would systematically under-compensate the higher-value provider, and Step 2 is itself a net figure: the 300 of extra value B receives, less the 50 that A receives.",
         verdict: "Same answer (750) — different mechanics"
       }
     ],
@@ -324,7 +324,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "Annex to Ch.VIII · Example 2 · ¶14. Where all contributions are LOW-VALUE SERVICES, the practical approach of valuing at cost will produce results broadly consistent with the arm's-length principle. The Example 1 rule still holds in general; Example 2 carves out a tightly scoped practical exception. The 'identical units / identical cost' option is not the OECD's condition — what matters is that the contributions themselves are low-value in nature.",
+          "Annex to Ch.VIII · Example 2 · ¶14. Where all contributions are LOW-VALUE SERVICES, the practical approach of valuing at cost will produce results broadly consistent with the arm's-length principle. The Example 1 rule still holds in general; Example 2 carves out a tightly scoped practical exception. Identical numbers of units or identical costs are not the OECD's condition — what matters is that the contributions themselves are low-value in nature.",
         verdict: "At cost OK for low-value services"
       }
     ],
@@ -416,7 +416,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "Annex to Ch.VIII · Example 4 · ¶20. A's contribution is funding; B's contribution combines pre-existing intangibles AND the development activity. A's arm's-length return for the funding risk is USD 110m/yr — but the CCA hands A anticipated profits of USD 330m/yr. The excess of USD 220m/yr per year (in PV terms) is properly attributable to B's pre-existing contributions and must be paid to B as a balancing payment. The 'B pays A' answer mistakes funding for the principal economic contribution; the 'no payment' answer ignores that the territorial split itself only makes sense once B's pre-existing IP is paid for.",
+          "Annex to Ch.VIII · Example 4 · ¶20. A's contribution is funding; B's contribution combines pre-existing intangibles AND the development activity. A's arm's-length return for the funding risk is USD 110m/yr — but the CCA hands A anticipated profits of USD 330m/yr. The excess of USD 220m/yr per year (in PV terms) is properly attributable to B's pre-existing contributions and must be paid to B as a balancing payment. A payment from B to A would mistake funding for the principal economic contribution; no payment at all would ignore that the territorial split itself only makes sense once B's pre-existing IP is paid for.",
         verdict: "A pays B — for the pre-existing IP"
       }
     ],
@@ -463,7 +463,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "Annex to Ch.VIII · Example 5 · ¶22 is explicit: where the functional analysis shows that A does not control its specific risks under the CCA in accordance with ¶8.15, A is not entitled to a share in the output of the CCA. This mirrors the control-of-risk framework in Section D.1 of Chapter I — a contractual allocation of risk to a party that doesn't control it (and doesn't have the financial capacity to bear it) doesn't hold for TP purposes. The 'funding alone is enough' answer is exactly what ¶8.15 rules out; the 'discounted share' answer invents a half-measure the OECD doesn't endorse.",
+          "Annex to Ch.VIII · Example 5 · ¶22 is explicit: where the functional analysis shows that A does not control its specific risks under the CCA in accordance with ¶8.15, A is not entitled to a share in the output of the CCA. This mirrors the control-of-risk framework in Section D.1 of Chapter I — a contractual allocation of risk to a party that doesn't control it (and doesn't have the financial capacity to bear it) doesn't hold for TP purposes. That funding alone is enough is exactly what ¶8.15 rules out, and a discounted share of the output would be a half-measure the OECD doesn't endorse.",
         verdict: "Not a participant — no output share"
       }
     ],

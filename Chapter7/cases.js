@@ -1109,6 +1109,386 @@ globalThis.CASES = [
       "Chapter V Annex II",
       "Example 3 (duplication)"
     ]
-  }
+  },
+
+{
+  id: 22,
+  theme: "services-and-intangibles",
+  themeLabel: "Services and intangibles",
+  title: "Manufacturing services using the parent's intangibles",
+  group: "Parent Co · Company B",
+  refs: "Draft (June 2026) · Main text · ¶7.12",
+  atGlance:
+    "Company B manufactures for its parent, Parent Co, on a specialised production line that Company B owns. The unique and valuable intangibles used in the process were developed by Parent Co, which authorises Company B to use them for the services. How should that contribution be reflected when Company B's manufacturing services are priced?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Company B", role: "Subsidiary · owns the production machinery · manufacturing services" },
+    right: { name: "Parent Co", role: "Parent · developed the intangibles · authorises their use" },
+    arrowLabel: "manufacturing services →",
+    note: "The intangibles come from Parent Co; the machinery belongs to Company B."
+  },
+  timeline: [
+    "The manufacturing services rely on unique and valuable intangibles, which Parent Co has developed.",
+    "Company B provides manufacturing services to Parent Co, its parent. The production process depends heavily on a specialised production line that includes robotics and quality-control machinery.",
+    "The functional analysis shows that these machines belong to Company B, which uses them solely for the manufacturing services it renders to Parent Co.",
+    "Company B has Parent Co's authorisation to use the intangibles in performing the services. Responsibility for maintaining and further developing them, and the economically significant risks inherent in them, lie with the parent (the draft's text names \"Parent B\" here; this case reads that as Parent Co)."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "Company B owns the specialised machinery and uses it solely for the services to Parent Co. The unique and valuable intangibles were developed by Parent Co, which authorises Company B to use them for the services. As this case reads the draft, Parent Co is also responsible for maintaining and further developing them and assumes the economically significant risks inherent in them.",
+      question: "How should Parent Co's intangibles be treated in pricing Company B's manufacturing services?",
+      mcq: [
+        "Company B earns an arm's-length return for its manufacturing services, set on the basis that Parent Co contributed the intangibles.",
+        "Company B shares in the return on the intangibles as well, because it is the party that actually uses them in the production process.",
+        "The intangibles can be left out of the analysis, because the transaction is a manufacturing service and not a licence of intangibles."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft treats the assets that each party uses or contributes as relevant to delineating an intra-group service. Company B owns and uses the machinery, but the unique and valuable intangibles were developed by Parent Co, which authorises their use. The draft's text names \"Parent B\", a party that appears nowhere else in the example, as responsible for maintaining and further developing the intangibles and as assuming the economically significant risks inherent in them; this case reads that as Parent Co, which fits the conclusion that follows. The draft concludes that Company B should receive an arm's-length remuneration for its manufacturing services, and that the comparability analysis and the choice of the most appropriate method should take into account that the intangibles were contributed by Parent Co. It does not name a method or indicate a level of return.",
+      verdict: "Account for Parent Co's contribution"
+    }
+  ],
+  takeaway:
+    "When delineating and pricing a service, look at the assets each party uses or contributes. Where the service provider works with unique and valuable intangibles contributed by another party, the comparability analysis and the choice of method should take that contribution into account.",
+  crossRefs: [
+    "Section B (accurate delineation of intra-group services)",
+    "Chapter VI · Section C.2 (use of intangibles in connection with sales of goods or performance of services)",
+    "Annex I, Example 18 (Core IP and the choice of tested party)"
+  ]
+},
+
+{
+  id: 23,
+  theme: "benefit-test",
+  themeLabel: "Benefit test",
+  title: "IT support despite a cheaper alternative",
+  group: "Parent Co · Company B",
+  refs: "Draft (June 2026) · Main text · ¶7.20",
+  atGlance:
+    "Parent Co in Country A performs IT support services for its affiliate Company B in Country B. Company B could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Parent Co (Country A)", role: "Performs IT support services" },
+    right: { name: "Company B (Country B)", role: "Affiliate · recipient · cheaper options available" },
+    arrowLabel: "IT support services →"
+  },
+  timeline: [
+    "Parent Co is located in Country A; its affiliate Company B is located in Country B.",
+    "Parent Co carries out certain IT support services for Company B.",
+    "Company B could have carried out these activities in-house or bought them from local independent providers at lower cost."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The accurate delineation of the transaction indicates that Company B, had it been an independent enterprise in comparable circumstances, would have been willing to pay for the activities. It could, however, have done the work in-house or bought it from local independent providers at lower cost.",
+      question: "Does the cheaper alternative mean that the benefit test is not met?",
+      mcq: [
+        "No — the test is whether the activity gives Company B economic or commercial value; the arm's-length charge is a separate issue.",
+        "Yes — an independent enterprise would not pay for IT support that it could perform itself or buy from local providers for less.",
+        "In part — a service is recognised only up to the cost of the cheaper local alternative, and the remainder fails the benefit test."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft concludes that Company B obtains a benefit from Parent Co's activities, since as an independent enterprise in comparable circumstances it would have been willing to pay for them. Whether the benefit test is met does not turn on whether the provider's cost is higher or lower than the cost of buying the service from an independent provider, nor on whether the recipient had the resources and the capacity to do the work itself for less. It turns on whether the activity gives the recipient economic or commercial value that enhances or maintains its business position. What Company B should pay is a separate question of arm's-length pricing, which the example does not answer.",
+      verdict: "Benefit test met"
+    }
+  ],
+  takeaway:
+    "The benefit test asks whether an activity gives the recipient economic or commercial value, not whether the recipient could have obtained it for less. Whether the charge is arm's length is a separate analysis that should not be conflated with the benefit test.",
+  crossRefs: [
+    "Section B.1.3 (the benefit test and the arm's-length remuneration)",
+    "Section C.2.1 (selection of the most appropriate transfer pricing method)",
+    "Annex I, Example 3 (accounting and legal alongside in-house staff)"
+  ]
+},
+
+{
+  id: 24,
+  theme: "shareholder",
+  themeLabel: "Shareholder activity",
+  title: "Group-wide training developed by the parent",
+  group: "Electronics MNE",
+  refs: "Draft (June 2026) · Main text · ¶7.30–7.31",
+  atGlance:
+    "Each entity of an electronics group used to run its own capacity and knowledge-building activities. After introducing new business procedures, the parent, Company A, implements a group-wide training programme for all group entities, its own employees included. Company A benefits too: is this a shareholder activity or an intra-group service?",
+  parties: {
+    kind: "provider-to-recipients",
+    provider: { name: "Company A", role: "Parent · develops the training programmes and materials" },
+    recipients: [{ name: "Subsidiaries", role: "Group entities · receive the training" }],
+    arrowLabel: "group-wide training →",
+    note: "Company A's own employees take part in the training as well."
+  },
+  timeline: [
+    "The MNE group manufactures and sells electronic products, and Company A is its parent. Historically, each group entity looked after its own capacity and knowledge-building activities.",
+    "Company A introduces new business procedures, which make it necessary to update the capacity-building activities for the group's employees.",
+    "In response to these operational and business changes, Company A implements a group-wide training programme and develops the training programmes and materials.",
+    "The training goes to every group entity, and Company A's own employees take part as well."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The programme will benefit group entities by giving them consistent, timely and high-quality training, which they would otherwise have to carry out themselves or pay an independent enterprise to provide. Company A, the shareholder, gains economic or commercial value from it as well.",
+      question: "Is the training programme a shareholder activity or an intra-group service?",
+      mcq: [
+        "An intra-group service to the subsidiaries — the benefit test is met for them, and Company A's benefit does not make it a shareholder activity.",
+        "A shareholder activity — Company A set up the programme because of its own new business procedures and also benefits from it as the parent.",
+        "Not a service — each entity used to handle its own training, so the parent's programme merely duplicates what the entities do for themselves."
+      ],
+      correctIdx: 0,
+      analysis:
+        "Under the draft, what a shareholder does both for itself and for other group members counts as an intra-group service where the benefit test is satisfied. The training gives the group entities economic and commercial value that enhances and maintains their business position, and it is something they would otherwise have to do themselves or buy from an independent enterprise. The draft therefore concludes that Company A provides intra-group services to the subsidiaries and that the benefit test is satisfied for the group entities. The shareholder, Company A, also derives value from the activities, but that does not make them shareholder activities. The draft adds a caution on the charge: it is important to ensure that the share of Company A's costs for the programme that matches the benefit it obtains itself as a user is not inappropriately passed on to the other group entities, for instance through a charging method that divides the costs between the recipients and Company A on an appropriate basis.",
+      verdict: "Service to the subsidiaries"
+    }
+  ],
+  takeaway:
+    "An activity is not a shareholder activity merely because the parent performs it and also benefits from it. If it gives other group members value that they would otherwise have to produce themselves or pay for, it satisfies the benefit test for them.",
+  crossRefs: [
+    "Section B.2.1.4 (activities performed by a shareholder that satisfy the benefit test)"
+  ]
+},
+
+{
+  id: 25,
+  theme: "services-and-intangibles",
+  themeLabel: "Services and intangibles",
+  title: "Strategic advice built on proprietary know-how",
+  group: "MNE Group X · MNE Group Y",
+  refs: "Draft (June 2026) · Main text · ¶7.41",
+  atGlance:
+    "After MNE Group X acquires MNE Group Y, Parent Co (the parent company of MNE Group X) gives the new subsidiaries strategic advice and information built on its proprietary know-how, frameworks and methodologies. Is this only a service, or can it in effect also transfer know-how to the new subsidiaries?",
+  parties: {
+    kind: "provider-to-recipients",
+    provider: { name: "Parent Co", role: "Parent company of MNE Group X · proprietary know-how" },
+    recipients: [{ name: "New subsidiaries", role: "Acquired with MNE Group Y" }],
+    arrowLabel: "strategic advice and information →"
+  },
+  timeline: [
+    "MNE Group Y is acquired by MNE Group X.",
+    "Parent Co is the parent company of MNE Group X. Once the acquisition has taken place, it gives the new subsidiaries strategic advice and information.",
+    "For this it relies on its proprietary know-how, frameworks and methodologies: for example pricing frameworks, risk assessment tools or unique market entry models."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "Parent Co's advice draws on its proprietary know-how, frameworks and methodologies. As a consequence, the new subsidiaries may become able to apply and adapt that know-how independently.",
+      question: "Is Parent Co's advice to the new subsidiaries only a service?",
+      mcq: [
+        "Not necessarily — if the subsidiaries become able to apply and adapt the know-how themselves, it is in effect transferred to them.",
+        "Yes — advice remains a service, however much of Parent Co's know-how the subsidiaries may absorb in the course of receiving it.",
+        "No, never — any advice that draws on proprietary know-how is a transfer of that know-how to the recipient and not a service."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft uses the example to show that it may be difficult to tell the provision of services apart from a transfer of intangibles or of rights in intangibles. The advice Parent Co gives rests on know-how, frameworks and methodologies that are proprietary to it. As a consequence, the subsidiaries may gain the ability to apply and adapt that know-how independently, which the draft describes as effectively a transfer of know-how to them. The draft stops there: it does not say how the arrangement should be priced, and refers to Annex I, Example 16.",
+      verdict: "Possible transfer of know-how"
+    }
+  ],
+  takeaway:
+    "Advice that draws on proprietary know-how can do more than serve the recipient. If it leaves the recipient able to apply and adapt that know-how on its own, the know-how has in effect been transferred, and the line between a service and a transfer of intangibles may be hard to draw.",
+  crossRefs: [
+    "Section B.3 (provision of services in connection with other transactions)",
+    "Annex I, Example 16 (machine learning model; services resulting in transfers of intangibles)"
+  ]
+},
+
+{
+  id: 26,
+  theme: "charging",
+  themeLabel: "Charging approaches",
+  title: "Direct or indirect charging for IT services",
+  group: "Company A · regional affiliates",
+  refs: "Draft (June 2026) · Main text · ¶7.44",
+  atGlance:
+    "Company A provides IT services to affiliates in its region: projects for individual affiliates, such as designing, installing or making major upgrades to a full IT system, and region-wide services based on a centralised pool of costs. Should it charge directly for all of them, indirectly for all of them, or combine the two approaches?",
+  parties: {
+    kind: "provider-to-recipients",
+    provider: { name: "Company A", role: "Affiliate · IT services in its region" },
+    recipients: [{ name: "Affiliates in the region", role: "Affiliate-specific projects · region-wide services" }],
+    arrowLabel: "IT services →"
+  },
+  timeline: [
+    "Company A, an affiliate, provides IT services to other affiliates in its region.",
+    "Some of its services are specific to an individual affiliate: projects in which a full IT system is designed, installed or given a major upgrade. Timing and resources vary from project to project, depending on each affiliate's needs.",
+    "Company A also often rolls out IT services across the region. These draw on a centralised pool of costs: for example, new software and cloud server upgrades that apply to all the affiliated recipients, and related general support for those centralised IT systems."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The affiliate-specific projects differ in timing and in the resources used, according to each affiliate's needs. The region-wide services rest on a centralised pool of costs, such as new software and cloud server upgrades that apply to all the affiliated recipients, with related general support.",
+      question: "How should Company A charge for these two kinds of IT service?",
+      mcq: [
+        "Directly for each affiliate-specific project, on that project's data; the centralised cost pool could be charged indirectly with an appropriate key.",
+        "Directly for everything — each affiliate must be billed on records of the work actually done for it, whatever kind of service Company A provides.",
+        "Indirectly for everything — a single allocation key across all of Company A's IT costs is simpler to apply and treats every affiliate in the same way."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft regards a direct charge as appropriate where a specific group member receives the service and the provider has the information needed for a separate charge without disproportionate compliance costs, while accepting that this may not always be possible. For the affiliate-specific projects, it says the individual data on the costs, time and resources of each project should be the basis for a direct charge to each recipient. For the region-wide services, it says the centralised IT cost pool could be charged under an indirect approach, with an allocation key that is appropriate and consistent with arm's-length conditions. The draft does not say which key that would be.",
+      verdict: "Direct for projects, indirect possible"
+    }
+  ],
+  takeaway:
+    "One provider can use both approaches: the choice depends on the service and the facts. Services rendered to a specific recipient, where the data for a separate charge are available without disproportionate cost, are suited to a direct charge; costs pooled for services to all recipients may be charged indirectly with an appropriate allocation key.",
+  crossRefs: [
+    "Section C.1.1 (direct-charge approaches)",
+    "Section C.1.2 (indirect-charge approaches)"
+  ]
+},
+
+{
+  id: 27,
+  theme: "charging",
+  themeLabel: "Charging approaches",
+  title: "Allocation key: one new market among mature ones",
+  group: "Regional marketing centre",
+  refs: "Draft (June 2026) · Main text · ¶7.48",
+  atGlance:
+    "A regional marketing centre provides marketing services to several recipients. One of them is in a new market; all the others are in mature markets. Is a key based on actual sales in the year of the services a suitable way to allocate the charge, or would the share of time spent on each market match the expected benefit more closely?",
+  parties: {
+    kind: "provider-to-recipients",
+    provider: { name: "Regional marketing centre", role: "Provides marketing services" },
+    recipients: [
+      { name: "One service recipient", role: "New market" },
+      { name: "All other service recipients", role: "Mature markets" }
+    ],
+    arrowLabel: "marketing services →"
+  },
+  timeline: [
+    "A regional marketing centre provides marketing services to several service recipients.",
+    "One of the recipients is in a new market.",
+    "All the other recipients are in mature markets."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The charge is to be allocated among the recipients, one of which is in a new market while the others are in mature markets. Two keys are compared: actual sales accrued in the year in which the marketing services were performed, and the share of time spent on each market.",
+      question: "Which key is more likely to match the charges to the benefit the recipients can expect?",
+      mcq: [
+        "Time spent on each market — it may align more closely with the expected benefit, while the year's actual sales may be inappropriate here.",
+        "Actual sales for the year — sales figures are measurable, easy to verify and readily available for every one of the service recipients.",
+        "An equal share for each recipient — all of them draw on the same regional marketing centre, so each should bear the same part of the charge."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft says an allocation key should rest on an appropriate measure of usage and expected benefit, and that it must be workable in practice while still accurate enough to keep the intra-group charges from departing significantly from the expected benefits. Where one recipient is in a new market and the others are in mature ones, it says a key based on actual sales in the year of the services may be inappropriate, whereas a key that follows the share of time spent on each market may align more closely with the benefit the recipients can expect. Both statements are qualified with \"may\": the draft does not rule out a sales key in general, and it does not spell out its reasoning.",
+      verdict: "Time spent may fit better"
+    }
+  ],
+  takeaway:
+    "An allocation key must be practical, but it must also follow usage and expected benefit closely enough to avoid significant disparities between benefits and charges. A key that is easy to measure, such as the year's sales, may fail that test when the recipients' markets are at different stages.",
+  crossRefs: [
+    "Section C.1.2 (indirect-charge approaches)",
+    "¶7.47 (what any indirect charge has to satisfy)"
+  ]
+},
+
+{
+  id: 28,
+  theme: "low-value-adding",
+  themeLabel: "Low value-adding services",
+  title: "Credit risk analysis in two different groups",
+  group: "Shoe manufacturer · investment banking group",
+  refs: "Draft (June 2026) · Main text · ¶7.81",
+  atGlance:
+    "Company A, a shoe manufacturer, analyses the credit risk of its subsidiary B's customers from reports bought from a credit reporting agency. Company X performs credit risk analysis for a worldwide investment banking group, using internally developed confidential models. Is the service low value-adding in both settings?",
+  timeline: [
+    "Company A, in Country A, manufactures shoes and distributes them wholesale in the North-West region. Its wholly-owned subsidiary B, in Country B, is a wholesale distributor of A's shoes in the South-East region.",
+    "In the course of its operations, A routinely analyses the credit risk of its customers, working from reports it buys from a credit reporting agency. It carries out the same analysis of B's customers on B's behalf, with the same methods and approaches.",
+    "Separately, a worldwide investment banking group has a subsidiary, Company X. Company X assesses the credit risk of potential counterparties to transactions in financial derivatives contracts and draws up credit reports for the group.",
+    "The group uses Company X's credit analyses when it sets the prices of financial derivatives for its clients. Company X's personnel have developed special expertise and work with confidential credit risk analysis models, algorithms and software that were developed internally."
+  ],
+  scenarios: [
+    {
+      letter: "A",
+      facts:
+        "Company A, a shoe manufacturer and wholesale distributor, routinely analyses the credit risk of its own customers from reports bought from a credit reporting agency. It performs the same analysis of the customers of its wholly-owned subsidiary B, on B's behalf, using the same methods and approaches.",
+      question: "Is the credit risk analysis that A performs for B a low value-adding intra-group service?",
+      mcq: [
+        "Yes — on these facts it could reasonably be concluded that the routine analysis A performs for B is a low value-adding service.",
+        "Yes — credit risk analysis is by its nature a back-office task, so it is low value-adding in whichever group it is performed.",
+        "No — the analysis concerns B's customers, so it belongs to sales and distribution, which cannot be low value-adding services."
+      ],
+      correctIdx: 0,
+      analysis:
+        "On these facts and circumstances, the draft finds it reasonable to conclude that A is providing B with a low value-adding intra-group service. A's business is making shoes and distributing them wholesale; the credit risk analysis is something it does routinely in the course of that business, working from reports bought from a credit reporting agency. The draft gives the example to illustrate that low value-adding services should not include services that are part of the MNE's core business.",
+      verdict: "Could reasonably be low value-adding"
+    },
+    {
+      letter: "B",
+      facts:
+        "Company X analyses the credit risk of potential counterparties to financial derivatives transactions and prepares credit reports for its worldwide investment banking group, which uses the analyses to set the prices of financial derivatives for its clients. Its personnel have developed special expertise and use internally developed confidential models, algorithms and software.",
+      question: "Is Company X's credit risk analysis a low value-adding intra-group service?",
+      mcq: [
+        "No — that could not be concluded here: the analyses feed the group's derivatives pricing and rest on special expertise and confidential tools.",
+        "Yes — it is the same kind of service as in the shoe business, and the nature of a service is what decides whether it is low value-adding.",
+        "Yes — Company X only supplies analyses and credit reports; it is the group itself that uses them to set derivatives prices for its clients."
+      ],
+      correctIdx: 0,
+      analysis:
+        "For Company X the draft comes to the opposite view: on the facts and circumstances of the case, one could not conclude that its service to the banking group is a low value-adding intra-group service. The group uses the analyses to establish the prices of financial derivatives for its clients, and Company X's personnel have developed special expertise and work with internally developed confidential models, algorithms and software. The draft does not say which element of the definition is decisive. It presents the pair to show that superficially similar services may or may not be low value-adding depending on their context: such services should not be part of the MNE's core business, and a service may also fail to qualify because, in its context, it creates significant risk or unique and valuable intangibles.",
+      verdict: "Not low value-adding here"
+    }
+  ],
+  takeaway:
+    "Whether a service is low value-adding depends on its context, not on its label. The same kind of work can be routine support in one group and, in another, part of the core business or a source of significant risk or unique and valuable intangibles.",
+  crossRefs: [
+    "Section E.1 (definition of low value-adding intra-group services)",
+    "¶7.76 (the elements of the definition)",
+    "The same two examples are in the 2022 Guidelines at ¶7.50"
+  ]
+},
+
+{
+  id: 29,
+  theme: "low-value-adding",
+  themeLabel: "Low value-adding services",
+  title: "Shared service centre whose only activity is IT support",
+  group: "Dairy products MNE",
+  refs: "Draft (June 2026) · Main text · ¶7.82",
+  atGlance:
+    "An MNE group develops, produces, sells and markets dairy products worldwide. It sets up a shared services company whose sole activity is to serve as a global IT support service centre, so that IT support is that company's principal business activity. Does that prevent the IT support from qualifying as a low value-adding intra-group service?",
+  parties: {
+    kind: "provider-to-recipients",
+    provider: { name: "Shared services company", role: "Global IT support service centre · its only activity" },
+    recipients: [{ name: "Service recipients", role: "Dairy products MNE group" }],
+    arrowLabel: "IT support services →"
+  },
+  timeline: [
+    "An MNE group develops, produces, sells and markets dairy products worldwide.",
+    "The group sets up a shared services company.",
+    "That company has a single activity: it acts as a global IT support service centre. From its own perspective, providing the IT services is its principal business activity."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "IT support is the shared services company's only activity and therefore its principal business activity. The group itself is in the dairy business: it develops, produces, sells and markets dairy products worldwide.",
+      question: "Can the IT support qualify as a low value-adding intra-group service?",
+      mcq: [
+        "Yes, it may — what matters is that IT support is not a core business activity for the service recipients or for the group as a whole.",
+        "No — a service that is the provider's principal business activity is core business, and core business services cannot qualify.",
+        "Yes, automatically — IT support is a typical low value-adding service, so the position of the provider and the group need not be examined."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft recalls that low value-adding services are, by definition, supportive in nature and outside the core business of the MNE group. An entity such as a shared service centre may have such services as its principal business activity, provided they are unrelated to the group's core business. Here IT support is the shared services company's principal business activity, but for the service recipients, and for the MNE group as a whole, it is not a core business activity. The draft concludes that, for this reason, the service may qualify as a low value-adding intra-group service; it does not say that it does, and the example deals only with the core business element of the definition.",
+      verdict: "May qualify as low value-adding"
+    }
+  ],
+  takeaway:
+    "Whether a service belongs to the core business is judged from the standpoint of the service recipients and of the MNE group as a whole, not of the entity that provides it. A shared service centre whose only activity is a support service may still be providing a low value-adding intra-group service.",
+  crossRefs: [
+    "Section E.1 (definition of low value-adding intra-group services, set out in ¶7.76)",
+    "¶7.80 (services likely to meet the definition, including IT services)",
+    "The same example is in the 2022 Guidelines at ¶7.51"
+  ]
+}
 
 ];

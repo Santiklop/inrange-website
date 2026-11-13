@@ -2010,6 +2010,28 @@ globalThis.QUIZ_POOL = [
     "verdict": "No intra-group service"
   },
   {
+    "id": "chapter7-c23-x",
+    "source": "Chapter VII · Intra-group services",
+    "chapterShort": "Chapter VII",
+    "caseId": 23,
+    "caseTitle": "IT support despite a cheaper alternative",
+    "timeline": [
+      "Parent Co and Company B are affiliates, located in Country A and Country B respectively.",
+      "Company B receives certain IT support services, which Parent Co performs.",
+      "Company B was in a position to carry out these activities in-house or to buy them from local independent providers at lower cost."
+    ],
+    "facts": "The accurate delineation of the transaction indicates that Company B, had it been an independent enterprise in comparable circumstances, would have been willing to pay for the activities. It could, however, have done the work in-house or bought it from local independent providers at lower cost.",
+    "question": "Does the cheaper alternative mean that the benefit test is not met?",
+    "mcq": [
+      "No — the test is whether the activity gives Company B economic or commercial value; the arm's-length charge is a separate issue.",
+      "Yes — an independent enterprise would not pay for IT support that it could perform itself or buy from local providers for less.",
+      "In part — a service is recognised only up to the cost of the cheaper local alternative, and the remainder fails the benefit test."
+    ],
+    "correctIdx": 0,
+    "analysis": "The draft concludes that Company B obtains a benefit from Parent Co's activities, since as an independent enterprise in comparable circumstances it would have been willing to pay for them. Whether the benefit test is met does not turn on whether the provider's cost is higher or lower than the cost of buying the service from an independent provider, nor on whether the recipient had the resources and the capacity to do the work itself for less. It turns on whether the activity gives the recipient economic or commercial value that enhances or maintains its business position. What Company B should pay is a separate question of arm's-length pricing, which the example does not answer.",
+    "verdict": "Benefit test met"
+  },
+  {
     "id": "chapter7-c5-x",
     "source": "Chapter VII · Intra-group services",
     "chapterShort": "Chapter VII",
@@ -2100,6 +2122,29 @@ globalThis.QUIZ_POOL = [
     "correctIdx": 0,
     "analysis": "The acquisition activities are performed by Parent Co solely because of its ownership interest and only provide a benefit to itself. Any benefits to Companies A and B are incidental — at the time of the acquisition the potential benefits were indirect or remote such that independent enterprises in comparable circumstances would not pay for these acquisition activities or perform them.",
     "verdict": "Shareholder costs"
+  },
+  {
+    "id": "chapter7-c24-x",
+    "source": "Chapter VII · Intra-group services",
+    "chapterShort": "Chapter VII",
+    "caseId": 24,
+    "caseTitle": "Group-wide training developed by the parent",
+    "timeline": [
+      "The MNE group manufactures and sells electronic products, and Company A is its parent. Capacity and knowledge-building activities used to be each group entity's own responsibility.",
+      "Company A introduces new business procedures, which make it necessary to update the capacity-building activities for the group's employees.",
+      "In response to these operational and business changes, Company A implements a group-wide training programme and develops the training programmes and materials.",
+      "The training goes to every group entity, and Company A's own employees take part as well."
+    ],
+    "facts": "The programme will benefit group entities by giving them consistent, timely and high-quality training, which they would otherwise have to carry out themselves or pay an independent enterprise to provide. Company A, the shareholder, gains economic or commercial value from it as well.",
+    "question": "Is the training programme a shareholder activity or an intra-group service?",
+    "mcq": [
+      "An intra-group service to the subsidiaries — the benefit test is met for them, and Company A's benefit does not make it a shareholder activity.",
+      "A shareholder activity — Company A set up the programme because of its own new business procedures and also benefits from it as the parent.",
+      "Not a service — each entity used to handle its own training, so the parent's programme merely duplicates what the entities do for themselves."
+    ],
+    "correctIdx": 0,
+    "analysis": "Under the draft, what a shareholder does both for itself and for other group members counts as an intra-group service where the benefit test is satisfied. The training gives the group entities economic and commercial value that enhances and maintains their business position, and it is something they would otherwise have to do themselves or buy from an independent enterprise. The draft therefore concludes that Company A provides intra-group services to the subsidiaries and that the benefit test is satisfied for the group entities. The shareholder, Company A, also derives value from the activities, but that does not make them shareholder activities. The draft adds a caution on the charge: it is important to ensure that the share of Company A's costs for the programme that matches the benefit it obtains itself as a user is not inappropriately passed on to the other group entities, for instance through a charging method that divides the costs between the recipients and Company A on an appropriate basis.",
+    "verdict": "Service to the subsidiaries"
   },
   {
     "id": "chapter7-c4-x",
@@ -2439,51 +2484,6 @@ globalThis.QUIZ_POOL = [
     "correctIdx": 0,
     "analysis": "The draft treats the assets that each party uses or contributes as relevant to delineating an intra-group service. Company B owns and uses the machinery, but the unique and valuable intangibles were developed by Parent Co, which authorises their use. The draft's text names \"Parent B\", a party that appears nowhere else in the example, as responsible for maintaining and further developing the intangibles and as assuming the economically significant risks inherent in them; this case reads that as Parent Co, which fits the conclusion that follows. The draft concludes that Company B should receive an arm's-length remuneration for its manufacturing services, and that the comparability analysis and the choice of the most appropriate method should take into account that the intangibles were contributed by Parent Co. It does not name a method or indicate a level of return.",
     "verdict": "Account for Parent Co's contribution"
-  },
-  {
-    "id": "chapter7-c23-x",
-    "source": "Chapter VII · Intra-group services",
-    "chapterShort": "Chapter VII",
-    "caseId": 23,
-    "caseTitle": "IT support despite a cheaper alternative",
-    "timeline": [
-      "Parent Co and Company B are affiliates, located in Country A and Country B respectively.",
-      "Company B receives certain IT support services, which Parent Co performs.",
-      "Company B was in a position to carry out these activities in-house or to buy them from local independent providers at lower cost."
-    ],
-    "facts": "The accurate delineation of the transaction indicates that Company B, had it been an independent enterprise in comparable circumstances, would have been willing to pay for the activities. It could, however, have done the work in-house or bought it from local independent providers at lower cost.",
-    "question": "Does the cheaper alternative mean that the benefit test is not met?",
-    "mcq": [
-      "No — the test is whether the activity gives Company B economic or commercial value; the arm's-length charge is a separate issue.",
-      "Yes — an independent enterprise would not pay for IT support that it could perform itself or buy from local providers for less.",
-      "In part — a service is recognised only up to the cost of the cheaper local alternative, and the remainder fails the benefit test."
-    ],
-    "correctIdx": 0,
-    "analysis": "The draft concludes that Company B obtains a benefit from Parent Co's activities, since as an independent enterprise in comparable circumstances it would have been willing to pay for them. Whether the benefit test is met does not turn on whether the provider's cost is higher or lower than the cost of buying the service from an independent provider, nor on whether the recipient had the resources and the capacity to do the work itself for less. It turns on whether the activity gives the recipient economic or commercial value that enhances or maintains its business position. What Company B should pay is a separate question of arm's-length pricing, which the example does not answer.",
-    "verdict": "Benefit test met"
-  },
-  {
-    "id": "chapter7-c24-x",
-    "source": "Chapter VII · Intra-group services",
-    "chapterShort": "Chapter VII",
-    "caseId": 24,
-    "caseTitle": "Group-wide training developed by the parent",
-    "timeline": [
-      "The MNE group manufactures and sells electronic products, and Company A is its parent. Capacity and knowledge-building activities used to be each group entity's own responsibility.",
-      "Company A introduces new business procedures, which make it necessary to update the capacity-building activities for the group's employees.",
-      "In response to these operational and business changes, Company A implements a group-wide training programme and develops the training programmes and materials.",
-      "The training goes to every group entity, and Company A's own employees take part as well."
-    ],
-    "facts": "The programme will benefit group entities by giving them consistent, timely and high-quality training, which they would otherwise have to carry out themselves or pay an independent enterprise to provide. Company A, the shareholder, gains economic or commercial value from it as well.",
-    "question": "Is the training programme a shareholder activity or an intra-group service?",
-    "mcq": [
-      "An intra-group service to the subsidiaries — the benefit test is met for them, and Company A's benefit does not make it a shareholder activity.",
-      "A shareholder activity — Company A set up the programme because of its own new business procedures and also benefits from it as the parent.",
-      "Not a service — each entity used to handle its own training, so the parent's programme merely duplicates what the entities do for themselves."
-    ],
-    "correctIdx": 0,
-    "analysis": "Under the draft, what a shareholder does both for itself and for other group members counts as an intra-group service where the benefit test is satisfied. The training gives the group entities economic and commercial value that enhances and maintains their business position, and it is something they would otherwise have to do themselves or buy from an independent enterprise. The draft therefore concludes that Company A provides intra-group services to the subsidiaries and that the benefit test is satisfied for the group entities. The shareholder, Company A, also derives value from the activities, but that does not make them shareholder activities. The draft adds a caution on the charge: it is important to ensure that the share of Company A's costs for the programme that matches the benefit it obtains itself as a user is not inappropriately passed on to the other group entities, for instance through a charging method that divides the costs between the recipients and Company A on an appropriate basis.",
-    "verdict": "Service to the subsidiaries"
   },
   {
     "id": "chapter7-c25-x",
@@ -3830,6 +3830,98 @@ globalThis.QUIZ_POOL = [
     "verdict": "Tested-party borrowing rate"
   },
   {
+    "id": "otherexamples-c8-A",
+    "source": "Other examples",
+    "chapterShort": "Other examples",
+    "caseId": 8,
+    "caseTitle": "Two products, one manufacturer: choosing the tested party",
+    "timeline": [
+      "Company A is the manufacturer of two types of products, P1 and P2.",
+      "Company B, which buys both from A, is an associated enterprise in a different country.",
+      "A makes P1 with valuable, unique intangibles belonging to B and works to technical specifications that B sets.",
+      "For P2, the valuable, unique intangibles (such as valuable patents and trademarks) are ones that A itself owns and uses, and B acts as distributor."
+    ],
+    "facts": "P1: the valuable, unique intangibles used to make the product belong to B, and B sets the technical specifications that A follows. A's own part in the transaction is limited to simple functions, with no valuable, unique contribution.",
+    "question": "Which company would most often be the tested party for the P1 transaction?",
+    "mcq": [
+      "Company A, because it performs only simple functions and makes no valuable, unique contribution to the P1 transaction.",
+      "Company B, because it owns the valuable, unique intangibles used for P1 and sets the technical specifications.",
+      "Either company, because both are parties to the P1 transaction and the taxpayer may test whichever it prefers."
+    ],
+    "correctIdx": 0,
+    "analysis": "A tested party is needed whenever a cost plus, resale price or transactional net margin method is applied, and the choice should be in line with the functional analysis of the transaction (¶3.18). The general rule turns on reliability: the tested party is the one for which the method, and the comparables found for it, are the most reliable, and that will most often be the party with the less complex functional analysis. For P1 the valuable, unique intangibles belong to B, while A performs only simple functions and makes no valuable, unique contribution. On those facts A is the party that would most often be tested for P1.",
+    "verdict": "Most often Company A"
+  },
+  {
+    "id": "otherexamples-c8-B",
+    "source": "Other examples",
+    "chapterShort": "Other examples",
+    "caseId": 8,
+    "caseTitle": "Two products, one manufacturer: choosing the tested party",
+    "timeline": [
+      "Company A is the manufacturer of two types of products, P1 and P2.",
+      "Company B, which buys both from A, is an associated enterprise in a different country.",
+      "A makes P1 with valuable, unique intangibles belonging to B and works to technical specifications that B sets.",
+      "For P2, the valuable, unique intangibles (such as valuable patents and trademarks) are ones that A itself owns and uses, and B acts as distributor."
+    ],
+    "facts": "P2: the valuable, unique intangibles, such as valuable patents and trademarks, are owned and used by A, and B's role is that of distributor. B's part in the transaction is limited to simple functions, with no valuable, unique contribution.",
+    "question": "Which company would most often be the tested party for the P2 transaction?",
+    "mcq": [
+      "Company B, because it performs only simple functions and makes no valuable, unique contribution to the P2 transaction.",
+      "The same company as for P1, because one tested party should be used for every transaction between the same two companies.",
+      "Company A, because it is the manufacturer, and a manufacturer's mark-up on costs is the natural indicator to test."
+    ],
+    "correctIdx": 0,
+    "analysis": "For P2 the positions are reversed. A owns and uses the valuable, unique intangibles, such as valuable patents and trademarks, while B acts as distributor, performs only simple functions and makes no valuable, unique contribution. B is therefore the party that would most often be tested for P2. The same two companies would thus most often have a different tested party for each product, because what guides the choice is the functional analysis of each transaction (¶3.18).",
+    "verdict": "Most often Company B"
+  },
+  {
+    "id": "otherexamples-c10-A",
+    "source": "Other examples",
+    "chapterShort": "Other examples",
+    "caseId": 10,
+    "caseTitle": "When divergent burden of proof rules guide behaviour",
+    "timeline": [
+      "A controlled transaction that is under examination involves two jurisdictions.",
+      "In the first jurisdiction it is the taxpayer who carries the burden of proof.",
+      "In the second jurisdiction it is the tax administration that carries it.",
+      "The example assumes that the burden of proof guides behaviour: taxpayers and tax administrations rely on their strict legal rights under those rules to decide how to act."
+    ],
+    "facts": "In the first jurisdiction it is the taxpayer who carries the burden of proof, and in the second the tax administration does. The burden of proof is guiding behaviour: taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave.",
+    "question": "What could follow if the burden of proof guides behaviour in this way?",
+    "mcq": [
+      "It could be that neither the tax administration in the first jurisdiction nor the taxpayer in the second tries to establish an acceptable arm's-length price, which would open the way to significant conflict and to double taxation.",
+      "The two that carry the burden, the taxpayer in the first jurisdiction and the tax administration in the second, can each be expected to establish an arm's-length price, so the transaction is likely to be properly tested from both sides.",
+      "Whatever the tax administration in the first jurisdiction asserts and the taxpayer accepts would settle the price for both jurisdictions, so the second tax administration could be expected to follow it and double taxation should not arise."
+    ],
+    "correctIdx": 0,
+    "analysis": "If behaviour follows the burden of proof, the tax administration in the first jurisdiction might put forward a view of the transfer pricing without substantiating it, and the taxpayer might accept it. It would then be for the tax administration in the second jurisdiction, which carries the burden there, to disprove the pricing. It could be that the two with no burden to carry, the tax administration in the first jurisdiction and the taxpayer in the second, make no effort to establish an acceptable arm's-length price. Behaviour of that kind would open the way to significant conflict and to double taxation. ¶4.16 calls this a misuse of the burden of proof, one that jurisdictions and taxpayers alike should, in practice, avoid.",
+    "verdict": "Risks conflict and double taxation"
+  },
+  {
+    "id": "otherexamples-c10-B",
+    "source": "Other examples",
+    "chapterShort": "Other examples",
+    "caseId": 10,
+    "caseTitle": "When divergent burden of proof rules guide behaviour",
+    "timeline": [
+      "A controlled transaction that is under examination involves two jurisdictions.",
+      "In the first jurisdiction it is the taxpayer who carries the burden of proof.",
+      "In the second jurisdiction it is the tax administration that carries it.",
+      "The example assumes that the burden of proof guides behaviour: taxpayers and tax administrations rely on their strict legal rights under those rules to decide how to act."
+    ],
+    "facts": "The facts are the same and the burden of proof again guides behaviour, but the taxpayer in the first jurisdiction is now a subsidiary of a taxpayer in the second. The subsidiary may be unable or unwilling to show its transfer prices to be arm's length. The tax administration in the first jurisdiction examines the case and, acting in good faith on the information it has, makes an adjustment.",
+    "question": "What follows for the two tax administrations?",
+    "mcq": [
+      "The parent is not obliged to give its own tax administration information showing the pricing was arm's length, and the two tax administrations will find it difficult to agree in competent authority proceedings.",
+      "The tax administration in the second jurisdiction is expected to accept the adjustment and give corresponding relief, because the first acted in good faith after examining the case on the information available to it.",
+      "The tax administration in the second jurisdiction will be well placed to contest the adjustment, because it carries the burden of proof and can therefore require the parent to supply the evidence that it needs."
+    ],
+    "correctIdx": 0,
+    "analysis": "The subsidiary carries the burden of proof in the first jurisdiction, yet, notwithstanding that burden and the Guidelines, it may be unable or unwilling to demonstrate that its transfer prices are at arm's length; after examination, the tax administration there adjusts in good faith on the information it has. In the second jurisdiction the burden rests with the tax administration, so the parent is not obliged to give it any information showing that the pricing was arm's length. The result, according to the text, is that the two tax administrations will find agreement hard to reach in competent authority proceedings. ¶4.17 adds that in such proceedings it is for the State proposing the primary adjustment to satisfy the other State that both the principle and the amount of the adjustment are justified, and that a cooperative approach is expected of both competent authorities.",
+    "verdict": "Competent authority agreement difficult"
+  },
+  {
     "id": "otherexamples-c2-x",
     "source": "Other examples",
     "chapterShort": "Other examples",
@@ -3970,52 +4062,6 @@ globalThis.QUIZ_POOL = [
     "verdict": "Not a participant — no output share"
   },
   {
-    "id": "otherexamples-c8-A",
-    "source": "Other examples",
-    "chapterShort": "Other examples",
-    "caseId": 8,
-    "caseTitle": "Two products, one manufacturer: choosing the tested party",
-    "timeline": [
-      "Company A is the manufacturer of two types of products, P1 and P2.",
-      "Company B, which buys both from A, is an associated enterprise in a different country.",
-      "A makes P1 with valuable, unique intangibles belonging to B and works to technical specifications that B sets.",
-      "For P2, the valuable, unique intangibles (such as valuable patents and trademarks) are ones that A itself owns and uses, and B acts as distributor."
-    ],
-    "facts": "P1: the valuable, unique intangibles used to make the product belong to B, and B sets the technical specifications that A follows. A's own part in the transaction is limited to simple functions, with no valuable, unique contribution.",
-    "question": "Which company would most often be the tested party for the P1 transaction?",
-    "mcq": [
-      "Company A, because it performs only simple functions and makes no valuable, unique contribution to the P1 transaction.",
-      "Company B, because it owns the valuable, unique intangibles used for P1 and sets the technical specifications.",
-      "Either company, because both are parties to the P1 transaction and the taxpayer may test whichever it prefers."
-    ],
-    "correctIdx": 0,
-    "analysis": "A tested party is needed whenever a cost plus, resale price or transactional net margin method is applied, and the choice should be in line with the functional analysis of the transaction (¶3.18). The general rule turns on reliability: the tested party is the one for which the method, and the comparables found for it, are the most reliable, and that will most often be the party with the less complex functional analysis. For P1 the valuable, unique intangibles belong to B, while A performs only simple functions and makes no valuable, unique contribution. On those facts A is the party that would most often be tested for P1.",
-    "verdict": "Most often Company A"
-  },
-  {
-    "id": "otherexamples-c8-B",
-    "source": "Other examples",
-    "chapterShort": "Other examples",
-    "caseId": 8,
-    "caseTitle": "Two products, one manufacturer: choosing the tested party",
-    "timeline": [
-      "Company A is the manufacturer of two types of products, P1 and P2.",
-      "Company B, which buys both from A, is an associated enterprise in a different country.",
-      "A makes P1 with valuable, unique intangibles belonging to B and works to technical specifications that B sets.",
-      "For P2, the valuable, unique intangibles (such as valuable patents and trademarks) are ones that A itself owns and uses, and B acts as distributor."
-    ],
-    "facts": "P2: the valuable, unique intangibles, such as valuable patents and trademarks, are owned and used by A, and B's role is that of distributor. B's part in the transaction is limited to simple functions, with no valuable, unique contribution.",
-    "question": "Which company would most often be the tested party for the P2 transaction?",
-    "mcq": [
-      "Company B, because it performs only simple functions and makes no valuable, unique contribution to the P2 transaction.",
-      "The same company as for P1, because one tested party should be used for every transaction between the same two companies.",
-      "Company A, because it is the manufacturer, and a manufacturer's mark-up on costs is the natural indicator to test."
-    ],
-    "correctIdx": 0,
-    "analysis": "For P2 the positions are reversed. A owns and uses the valuable, unique intangibles, such as valuable patents and trademarks, while B acts as distributor, performs only simple functions and makes no valuable, unique contribution. B is therefore the party that would most often be tested for P2. The same two companies would thus most often have a different tested party for each product, because what guides the choice is the functional analysis of each transaction (¶3.18).",
-    "verdict": "Most often Company B"
-  },
-  {
     "id": "otherexamples-c9-x",
     "source": "Other examples",
     "chapterShort": "Other examples",
@@ -4038,51 +4084,5 @@ globalThis.QUIZ_POOL = [
     "correctIdx": 0,
     "analysis": "Where participants' shares of the value contributed are out of line with their shares of the expected benefits, the arm's-length principle would generally require an adjustment, generally through a balancing payment (¶8.34). The pre-existing contributions come to 16 million, of which a 75:25 split would be 12 million for Company A and 4 million for Company B, against the 10 million and 6 million contributed. Company A is therefore required to pay Company B a net 2 million, since a balancing payment adds to the payer's contribution and reduces the payee's. The text sets the 2 million out as 4.5 million from A to B less 2.5 million from B to A (the working is not shown, but these equal 75% of B's 6 million and 25% of A's 10 million). The calculation covers the pre-existing contributions only: the text puts no value on the two kinds of current contributions, which ¶8.33 says should each be analysed and valued separately.",
     "verdict": "A pays B 2 million"
-  },
-  {
-    "id": "otherexamples-c10-A",
-    "source": "Other examples",
-    "chapterShort": "Other examples",
-    "caseId": 10,
-    "caseTitle": "When divergent burden of proof rules guide behaviour",
-    "timeline": [
-      "A controlled transaction that is under examination involves two jurisdictions.",
-      "In the first jurisdiction it is the taxpayer who carries the burden of proof.",
-      "In the second jurisdiction it is the tax administration that carries it.",
-      "The example assumes that the burden of proof guides behaviour: taxpayers and tax administrations rely on their strict legal rights under those rules to decide how to act."
-    ],
-    "facts": "In the first jurisdiction it is the taxpayer who carries the burden of proof, and in the second the tax administration does. The burden of proof is guiding behaviour: taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave.",
-    "question": "What could follow if the burden of proof guides behaviour in this way?",
-    "mcq": [
-      "It could be that neither the tax administration in the first jurisdiction nor the taxpayer in the second tries to establish an acceptable arm's-length price, which would open the way to significant conflict and to double taxation.",
-      "The two that carry the burden, the taxpayer in the first jurisdiction and the tax administration in the second, can each be expected to establish an arm's-length price, so the transaction is likely to be properly tested from both sides.",
-      "Whatever the tax administration in the first jurisdiction asserts and the taxpayer accepts would settle the price for both jurisdictions, so the second tax administration could be expected to follow it and double taxation should not arise."
-    ],
-    "correctIdx": 0,
-    "analysis": "If behaviour follows the burden of proof, the tax administration in the first jurisdiction might put forward a view of the transfer pricing without substantiating it, and the taxpayer might accept it. It would then be for the tax administration in the second jurisdiction, which carries the burden there, to disprove the pricing. It could be that the two with no burden to carry, the tax administration in the first jurisdiction and the taxpayer in the second, make no effort to establish an acceptable arm's-length price. Behaviour of that kind would open the way to significant conflict and to double taxation. ¶4.16 calls this a misuse of the burden of proof, one that jurisdictions and taxpayers alike should, in practice, avoid.",
-    "verdict": "Risks conflict and double taxation"
-  },
-  {
-    "id": "otherexamples-c10-B",
-    "source": "Other examples",
-    "chapterShort": "Other examples",
-    "caseId": 10,
-    "caseTitle": "When divergent burden of proof rules guide behaviour",
-    "timeline": [
-      "A controlled transaction that is under examination involves two jurisdictions.",
-      "In the first jurisdiction it is the taxpayer who carries the burden of proof.",
-      "In the second jurisdiction it is the tax administration that carries it.",
-      "The example assumes that the burden of proof guides behaviour: taxpayers and tax administrations rely on their strict legal rights under those rules to decide how to act."
-    ],
-    "facts": "The facts are the same and the burden of proof again guides behaviour, but the taxpayer in the first jurisdiction is now a subsidiary of a taxpayer in the second. The subsidiary may be unable or unwilling to show its transfer prices to be arm's length. The tax administration in the first jurisdiction examines the case and, acting in good faith on the information it has, makes an adjustment.",
-    "question": "What follows for the two tax administrations?",
-    "mcq": [
-      "The parent is not obliged to give its own tax administration information showing the pricing was arm's length, and the two tax administrations will find it difficult to agree in competent authority proceedings.",
-      "The tax administration in the second jurisdiction is expected to accept the adjustment and give corresponding relief, because the first acted in good faith after examining the case on the information available to it.",
-      "The tax administration in the second jurisdiction will be well placed to contest the adjustment, because it carries the burden of proof and can therefore require the parent to supply the evidence that it needs."
-    ],
-    "correctIdx": 0,
-    "analysis": "The subsidiary carries the burden of proof in the first jurisdiction, yet, notwithstanding that burden and the Guidelines, it may be unable or unwilling to demonstrate that its transfer prices are at arm's length; after examination, the tax administration there adjusts in good faith on the information it has. In the second jurisdiction the burden rests with the tax administration, so the parent is not obliged to give it any information showing that the pricing was arm's length. The result, according to the text, is that the two tax administrations will find agreement hard to reach in competent authority proceedings. ¶4.17 adds that in such proceedings it is for the State proposing the primary adjustment to satisfy the other State that both the principle and the amount of the adjustment are justified, and that a cooperative approach is expected of both competent authorities.",
-    "verdict": "Competent authority agreement difficult"
   }
 ];

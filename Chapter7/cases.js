@@ -11,7 +11,7 @@
 
 globalThis.CASES = [
 
-  /* ===================================================================
+/* ===================================================================
      BENEFIT TEST (Examples 1, 2, 3, 9, 10)
      =================================================================== */
 
@@ -76,7 +76,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 2,
     theme: "benefit-test",
     themeLabel: "Benefit test",
@@ -155,7 +155,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 3,
     theme: "benefit-test",
     themeLabel: "Benefit test",
@@ -199,7 +199,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 9,
     theme: "benefit-test",
     themeLabel: "Benefit test",
@@ -274,7 +274,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 10,
     theme: "benefit-test",
     themeLabel: "Benefit test",
@@ -321,7 +321,53 @@ globalThis.CASES = [
     ]
   },
 
-  /* ===================================================================
+{
+  id: 23,
+  theme: "benefit-test",
+  themeLabel: "Benefit test",
+  title: "IT support despite a cheaper alternative",
+  group: "Parent Co · Company B",
+  refs: "Draft (June 2026) · Main text · ¶7.20",
+  atGlance:
+    "Company B, located in Country B, receives certain IT support services from its affiliate in Country A, Parent Co. It could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Parent Co (Country A)", role: "Performs IT support services" },
+    right: { name: "Company B (Country B)", role: "Affiliate · recipient · cheaper options available" },
+    arrowLabel: "IT support services →"
+  },
+  timeline: [
+    "Parent Co and Company B are affiliates, located in Country A and Country B respectively.",
+    "Company B receives certain IT support services, which Parent Co performs.",
+    "Company B was in a position to carry out these activities in-house or to buy them from local independent providers at lower cost."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The accurate delineation of the transaction indicates that Company B, had it been an independent enterprise in comparable circumstances, would have been willing to pay for the activities. It could, however, have done the work in-house or bought it from local independent providers at lower cost.",
+      question: "Does the cheaper alternative mean that the benefit test is not met?",
+      mcq: [
+        "No — the test is whether the activity gives Company B economic or commercial value; the arm's-length charge is a separate issue.",
+        "Yes — an independent enterprise would not pay for IT support that it could perform itself or buy from local providers for less.",
+        "In part — a service is recognised only up to the cost of the cheaper local alternative, and the remainder fails the benefit test."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The draft concludes that Company B obtains a benefit from Parent Co's activities, since as an independent enterprise in comparable circumstances it would have been willing to pay for them. Whether the benefit test is met does not turn on whether the provider's cost is higher or lower than the cost of buying the service from an independent provider, nor on whether the recipient had the resources and the capacity to do the work itself for less. It turns on whether the activity gives the recipient economic or commercial value that enhances or maintains its business position. What Company B should pay is a separate question of arm's-length pricing, which the example does not answer.",
+      verdict: "Benefit test met"
+    }
+  ],
+  takeaway:
+    "The benefit test asks whether an activity gives the recipient economic or commercial value, not whether the recipient could have obtained it for less. Whether the charge is arm's length is a separate analysis that should not be conflated with the benefit test.",
+  crossRefs: [
+    "Section B.1.3 (the benefit test and the arm's-length remuneration)",
+    "Section C.2.1 (selection of the most appropriate transfer pricing method)",
+    "Annex I, Example 3 (accounting and legal alongside in-house staff)"
+  ]
+},
+
+/* ===================================================================
      SHAREHOLDER ACTIVITY (Examples 5, 6, 7, 8)
      =================================================================== */
 
@@ -370,7 +416,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 6,
     theme: "shareholder",
     themeLabel: "Shareholder activity",
@@ -416,7 +462,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 7,
     theme: "shareholder",
     themeLabel: "Shareholder activity",
@@ -463,7 +509,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 8,
     theme: "shareholder",
     themeLabel: "Shareholder activity",
@@ -509,7 +555,53 @@ globalThis.CASES = [
     ]
   },
 
-  /* ===================================================================
+{
+  id: 24,
+  theme: "shareholder",
+  themeLabel: "Shareholder activity",
+  title: "Group-wide training developed by the parent",
+  group: "Electronics MNE",
+  refs: "Draft (June 2026) · Main text · ¶7.30–7.31",
+  atGlance:
+    "Each entity of an electronics group used to run its own capacity and knowledge-building activities. After introducing new business procedures, the parent, Company A, implements a group-wide training programme for all group entities, its own employees included. Company A benefits too: is this a shareholder activity or an intra-group service?",
+  parties: {
+    kind: "provider-to-recipients",
+    provider: { name: "Company A", role: "Parent · develops the training programmes and materials" },
+    recipients: [{ name: "Subsidiaries", role: "Group entities · receive the training" }],
+    arrowLabel: "group-wide training →",
+    note: "Company A's own employees take part in the training as well."
+  },
+  timeline: [
+    "The MNE group manufactures and sells electronic products, and Company A is its parent. Capacity and knowledge-building activities used to be each group entity's own responsibility.",
+    "Company A introduces new business procedures, which make it necessary to update the capacity-building activities for the group's employees.",
+    "In response to these operational and business changes, Company A implements a group-wide training programme and develops the training programmes and materials.",
+    "The training goes to every group entity, and Company A's own employees take part as well."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The programme will benefit group entities by giving them consistent, timely and high-quality training, which they would otherwise have to carry out themselves or pay an independent enterprise to provide. Company A, the shareholder, gains economic or commercial value from it as well.",
+      question: "Is the training programme a shareholder activity or an intra-group service?",
+      mcq: [
+        "An intra-group service to the subsidiaries — the benefit test is met for them, and Company A's benefit does not make it a shareholder activity.",
+        "A shareholder activity — Company A set up the programme because of its own new business procedures and also benefits from it as the parent.",
+        "Not a service — each entity used to handle its own training, so the parent's programme merely duplicates what the entities do for themselves."
+      ],
+      correctIdx: 0,
+      analysis:
+        "Under the draft, what a shareholder does both for itself and for other group members counts as an intra-group service where the benefit test is satisfied. The training gives the group entities economic and commercial value that enhances and maintains their business position, and it is something they would otherwise have to do themselves or buy from an independent enterprise. The draft therefore concludes that Company A provides intra-group services to the subsidiaries and that the benefit test is satisfied for the group entities. The shareholder, Company A, also derives value from the activities, but that does not make them shareholder activities. The draft adds a caution on the charge: it is important to ensure that the share of Company A's costs for the programme that matches the benefit it obtains itself as a user is not inappropriately passed on to the other group entities, for instance through a charging method that divides the costs between the recipients and Company A on an appropriate basis.",
+      verdict: "Service to the subsidiaries"
+    }
+  ],
+  takeaway:
+    "An activity is not a shareholder activity merely because the parent performs it and also benefits from it. If it gives other group members value that they would otherwise have to produce themselves or pay for, it satisfies the benefit test for them.",
+  crossRefs: [
+    "Section B.2.1.4 (activities performed by a shareholder that satisfy the benefit test)"
+  ]
+},
+
+/* ===================================================================
      ALREADY COMPENSATED (Example 4)
      =================================================================== */
 
@@ -557,7 +649,7 @@ globalThis.CASES = [
     ]
   },
 
-  /* ===================================================================
+/* ===================================================================
      SELECTING THE TP METHOD (Examples 11–18)
      =================================================================== */
 
@@ -606,7 +698,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 12,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -654,7 +746,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 13,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -700,7 +792,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 14,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -748,7 +840,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 15,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -810,7 +902,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 16,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -856,7 +948,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 17,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -904,7 +996,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 18,
     theme: "methods",
     themeLabel: "Selecting the TP method",
@@ -950,7 +1042,7 @@ globalThis.CASES = [
     ]
   },
 
-  /* ===================================================================
+/* ===================================================================
      MARK-UP AND PASS-THROUGH (Examples 19, 20)
      =================================================================== */
 
@@ -999,7 +1091,7 @@ globalThis.CASES = [
     ]
   },
 
-  {
+{
     id: 20,
     theme: "pass-through",
     themeLabel: "Mark-up & pass-through",
@@ -1047,7 +1139,7 @@ globalThis.CASES = [
     ]
   },
 
-  /* ===================================================================
+/* ===================================================================
      DOCUMENTATION (Example 21)
      =================================================================== */
 
@@ -1156,98 +1248,6 @@ globalThis.CASES = [
     "Section B (accurate delineation of intra-group services)",
     "Chapter VI · Section C.2 (use of intangibles in connection with sales of goods or performance of services)",
     "Annex I, Example 18 (Core IP and the choice of tested party)"
-  ]
-},
-
-{
-  id: 23,
-  theme: "benefit-test",
-  themeLabel: "Benefit test",
-  title: "IT support despite a cheaper alternative",
-  group: "Parent Co · Company B",
-  refs: "Draft (June 2026) · Main text · ¶7.20",
-  atGlance:
-    "Company B, located in Country B, receives certain IT support services from its affiliate in Country A, Parent Co. It could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
-  parties: {
-    kind: "tested-party",
-    left: { name: "Parent Co (Country A)", role: "Performs IT support services" },
-    right: { name: "Company B (Country B)", role: "Affiliate · recipient · cheaper options available" },
-    arrowLabel: "IT support services →"
-  },
-  timeline: [
-    "Parent Co and Company B are affiliates, located in Country A and Country B respectively.",
-    "Company B receives certain IT support services, which Parent Co performs.",
-    "Company B was in a position to carry out these activities in-house or to buy them from local independent providers at lower cost."
-  ],
-  scenarios: [
-    {
-      letter: "—",
-      facts:
-        "The accurate delineation of the transaction indicates that Company B, had it been an independent enterprise in comparable circumstances, would have been willing to pay for the activities. It could, however, have done the work in-house or bought it from local independent providers at lower cost.",
-      question: "Does the cheaper alternative mean that the benefit test is not met?",
-      mcq: [
-        "No — the test is whether the activity gives Company B economic or commercial value; the arm's-length charge is a separate issue.",
-        "Yes — an independent enterprise would not pay for IT support that it could perform itself or buy from local providers for less.",
-        "In part — a service is recognised only up to the cost of the cheaper local alternative, and the remainder fails the benefit test."
-      ],
-      correctIdx: 0,
-      analysis:
-        "The draft concludes that Company B obtains a benefit from Parent Co's activities, since as an independent enterprise in comparable circumstances it would have been willing to pay for them. Whether the benefit test is met does not turn on whether the provider's cost is higher or lower than the cost of buying the service from an independent provider, nor on whether the recipient had the resources and the capacity to do the work itself for less. It turns on whether the activity gives the recipient economic or commercial value that enhances or maintains its business position. What Company B should pay is a separate question of arm's-length pricing, which the example does not answer.",
-      verdict: "Benefit test met"
-    }
-  ],
-  takeaway:
-    "The benefit test asks whether an activity gives the recipient economic or commercial value, not whether the recipient could have obtained it for less. Whether the charge is arm's length is a separate analysis that should not be conflated with the benefit test.",
-  crossRefs: [
-    "Section B.1.3 (the benefit test and the arm's-length remuneration)",
-    "Section C.2.1 (selection of the most appropriate transfer pricing method)",
-    "Annex I, Example 3 (accounting and legal alongside in-house staff)"
-  ]
-},
-
-{
-  id: 24,
-  theme: "shareholder",
-  themeLabel: "Shareholder activity",
-  title: "Group-wide training developed by the parent",
-  group: "Electronics MNE",
-  refs: "Draft (June 2026) · Main text · ¶7.30–7.31",
-  atGlance:
-    "Each entity of an electronics group used to run its own capacity and knowledge-building activities. After introducing new business procedures, the parent, Company A, implements a group-wide training programme for all group entities, its own employees included. Company A benefits too: is this a shareholder activity or an intra-group service?",
-  parties: {
-    kind: "provider-to-recipients",
-    provider: { name: "Company A", role: "Parent · develops the training programmes and materials" },
-    recipients: [{ name: "Subsidiaries", role: "Group entities · receive the training" }],
-    arrowLabel: "group-wide training →",
-    note: "Company A's own employees take part in the training as well."
-  },
-  timeline: [
-    "The MNE group manufactures and sells electronic products, and Company A is its parent. Capacity and knowledge-building activities used to be each group entity's own responsibility.",
-    "Company A introduces new business procedures, which make it necessary to update the capacity-building activities for the group's employees.",
-    "In response to these operational and business changes, Company A implements a group-wide training programme and develops the training programmes and materials.",
-    "The training goes to every group entity, and Company A's own employees take part as well."
-  ],
-  scenarios: [
-    {
-      letter: "—",
-      facts:
-        "The programme will benefit group entities by giving them consistent, timely and high-quality training, which they would otherwise have to carry out themselves or pay an independent enterprise to provide. Company A, the shareholder, gains economic or commercial value from it as well.",
-      question: "Is the training programme a shareholder activity or an intra-group service?",
-      mcq: [
-        "An intra-group service to the subsidiaries — the benefit test is met for them, and Company A's benefit does not make it a shareholder activity.",
-        "A shareholder activity — Company A set up the programme because of its own new business procedures and also benefits from it as the parent.",
-        "Not a service — each entity used to handle its own training, so the parent's programme merely duplicates what the entities do for themselves."
-      ],
-      correctIdx: 0,
-      analysis:
-        "Under the draft, what a shareholder does both for itself and for other group members counts as an intra-group service where the benefit test is satisfied. The training gives the group entities economic and commercial value that enhances and maintains their business position, and it is something they would otherwise have to do themselves or buy from an independent enterprise. The draft therefore concludes that Company A provides intra-group services to the subsidiaries and that the benefit test is satisfied for the group entities. The shareholder, Company A, also derives value from the activities, but that does not make them shareholder activities. The draft adds a caution on the charge: it is important to ensure that the share of Company A's costs for the programme that matches the benefit it obtains itself as a user is not inappropriately passed on to the other group entities, for instance through a charging method that divides the costs between the recipients and Company A on an appropriate basis.",
-      verdict: "Service to the subsidiaries"
-    }
-  ],
-  takeaway:
-    "An activity is not a shareholder activity merely because the parent performs it and also benefits from it. If it gives other group members value that they would otherwise have to produce themselves or pay for, it satisfies the benefit test for them.",
-  crossRefs: [
-    "Section B.2.1.4 (activities performed by a shareholder that satisfy the benefit test)"
   ]
 },
 

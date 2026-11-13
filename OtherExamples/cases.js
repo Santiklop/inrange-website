@@ -376,7 +376,7 @@ globalThis.CASES = [
   },
   timeline: [
     "Company A is the manufacturer of two types of products, P1 and P2.",
-    "It sells both to Company B, an associated enterprise located in another country.",
+    "Company B, which buys both from A, is an associated enterprise in a different country.",
     "A makes P1 with valuable, unique intangibles belonging to B and works to technical specifications that B sets.",
     "For P2, the valuable, unique intangibles (such as valuable patents and trademarks) are ones that A itself owns and uses, and B acts as distributor."
   ],
@@ -437,10 +437,10 @@ globalThis.CASES = [
     note: "Each company is experienced in developing intangibles, has its own R&D personnel and controls its development risk under the CCA (¶8.14–8.16)."
   },
   timeline: [
-    "Two members of an MNE group, Company A in Country A and Company B in Country B, enter into a CCA to develop intangibles; B is entitled to exploit them in Country B and A in the rest of the world.",
+    "Two members of an MNE group, Company A in Country A and Company B in Country B, enter into a CCA to develop intangibles; it entitles B to exploit them in Country B, while the rest of the world is for A to exploit.",
     "Sales are expected to split 75% for A and 25% for B, and the parties put their shares of the expected benefits from the CCA at 75:25.",
     "As pre-existing contributions, A brings in intangibles recently acquired from a third party and B brings in proprietary analytical techniques that it developed to improve efficiency and speed to market.",
-    "The current contributions are day-to-day research, 80% of it by B and 20% by A, and the guidance of a leadership team drawn from the two companies in the ratio 90:10 in favour of A.",
+    "The current contributions are of two kinds: day-to-day research, of which B is to perform 80% and A 20%, and its guidance by a leadership team staffed 90:10 in A's favour by the two companies.",
     "The pre-existing contributions are valued, in the first year, at 10 million (Company A) and 6 million (Company B)."
   ],
   scenarios: [
@@ -477,18 +477,18 @@ globalThis.CASES = [
   group: "Taxpayers and tax administrations · two jurisdictions",
   refs: "Chapter IV · ¶4.14–4.15",
   atGlance:
-    "Two jurisdictions are involved in a controlled transaction that is under examination. One puts the burden of proof on the taxpayer, the other on the tax administration. If taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave, what follows?",
+    "Two jurisdictions are involved in a controlled transaction that is under examination. In one of them it is the taxpayer who carries the burden of proof, in the other the tax administration. If taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave, what follows?",
   timeline: [
     "A controlled transaction that is under examination involves two jurisdictions.",
-    "The first jurisdiction places the burden of proof on the taxpayer.",
-    "The second jurisdiction places the burden of proof on the tax administration.",
+    "In the first jurisdiction it is the taxpayer who carries the burden of proof.",
+    "In the second jurisdiction it is the tax administration that carries it.",
     "The example assumes that the burden of proof guides behaviour: taxpayers and tax administrations rely on their strict legal rights under those rules to decide how to act."
   ],
   scenarios: [
     {
       letter: "A",
       facts:
-        "The first jurisdiction puts the burden of proof on the taxpayer and the second puts it on the tax administration. The burden of proof is guiding behaviour: taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave.",
+        "In the first jurisdiction it is the taxpayer who carries the burden of proof, and in the second the tax administration does. The burden of proof is guiding behaviour: taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave.",
       question: "What could follow if the burden of proof guides behaviour in this way?",
       mcq: [
         "It could be that neither the tax administration in the first jurisdiction nor the taxpayer in the second tries to establish an acceptable arm's-length price, which would open the way to significant conflict and to double taxation.",

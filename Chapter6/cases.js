@@ -1552,13 +1552,13 @@ globalThis.CASES = [
         "The controlled transaction is the sale of cars. The patents are used to make the cars and add significantly to their value, yet the distributors obtain no right in them.",
       question: "How should the manufacturer's patents be treated in the transfer pricing analysis of the car sales?",
       mcq: [
-        "Identify the patents and the value they add, and take both into account in the comparability analysis and in choosing the method and the tested party.",
+        "Identify the patents and the value they add, and take both into account when analysing comparability and when choosing the method and the tested party.",
         "Leave the patents out of the analysis altogether, because the distributors acquire no right in them and the transaction is only a sale of cars.",
         "Treat each sale as also passing rights in the patents to the distributors, and set a price for those rights separately from the price of the cars."
       ],
       correctIdx: 0,
       analysis:
-        "An intangible can play a part in a controlled transaction even though neither it nor any right in it changes hands (¶6.104). Here the patents, and the value they add, should be identified and taken into account at three points in the analysis of the car sales: the comparability analysis, the selection of the most appropriate method and the selection of the tested party. The distributors acquire no right in the patents, so there is no transfer: the patents are an input to manufacturing that may affect the value of the cars.",
+        "An intangible can play a part in a controlled transaction even though neither it nor any right in it changes hands (¶6.104). Here an analysis of the car sales should identify the patents and the value they add, and take both into account at three points: when comparability is analysed, when the most appropriate method is selected and when the tested party is chosen. The distributors acquire no right in the patents, so there is no transfer: the patents are an input to manufacturing that may affect the value of the cars.",
       verdict: "Used, not transferred"
     }
   ],
@@ -1595,16 +1595,16 @@ globalThis.CASES = [
     {
       letter: "—",
       facts:
-        "The controlled transaction is the provision of exploration services. The exploration company performs them with the help of its data, software and know-how, and the associated enterprise is assumed to obtain no rights in those intangibles.",
+        "In the controlled transaction, the exploration company performs exploration services for an associated enterprise with the help of its data, software and know-how. That enterprise is assumed to obtain no rights in those intangibles.",
       question: "What part do the exploration company's intangibles play in the transfer pricing analysis of the services?",
       mcq: [
-        "They should be identified and taken into account in the comparability analysis and in choosing the method and the tested party, though none is transferred.",
+        "They should be identified and taken into account when comparability is analysed and the method and tested party are chosen, though none is transferred.",
         "They play no part in the analysis, because the associated enterprise obtains no rights in them and what it pays for is the exploration services alone.",
         "They are treated as passing to the associated enterprise together with the services, so the data, software and know-how need a price of their own."
       ],
       correctIdx: 0,
       analysis:
-        "This is a second illustration of intangibles being used in a controlled transaction without being transferred, this time in a provision of services. The geological data and analysis, the software and the know-how should be identified and then taken into account in three places: the comparability analysis of the services, the choice of the most appropriate method and the choice of the tested party. On the assumption that the associated enterprise acquires no rights in them, they are not transferred: they are used to perform the services and may affect the value of those services.",
+        "This is a second illustration of intangibles being used in a controlled transaction without being transferred, this time in a provision of services. The geological data and analysis, the software and the know-how should be identified, and then taken into account when the comparability of the services is analysed, when the most appropriate method is selected and when the tested party is chosen. On the assumption that the associated enterprise acquires no rights in them, they are not transferred: they are used to perform the services and may affect the value of those services.",
       verdict: "Used in services, not transferred"
     }
   ],

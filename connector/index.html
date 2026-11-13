@@ -50,7 +50,7 @@
 <li>Open <strong>Customize &gt; Connectors</strong>.</li>
 <li>Select <strong>Add</strong>, then <strong>Add custom connector</strong>.</li>
 <li>Enter a name, for example <em>OECD TP examples</em>, and the address above. Select <strong>Continue</strong>.</li>
-<li>For authentication choose <strong>No sign-in</strong>, then select <strong>Add</strong>.</li>
+<li>For authentication choose <strong>No sign-in</strong>, then select <strong>Add</strong>. Claude may first say that it could not determine how the server signs in. That is expected, because the connector has no login.</li>
 <li>In a chat, open the <strong>+</strong> menu, choose <strong>Connectors</strong> and switch it on.</li>
 </ol>
 <p>On a Team or Enterprise plan, an Owner adds it once for the organisation under <strong>Organization settings &gt; Connectors</strong>. Members then find it under <strong>Customize &gt; Connectors</strong>. The Free plan allows one custom connector.</p>
@@ -73,8 +73,8 @@
 <table>
 <thead><tr><th scope="col">Tool</th><th scope="col">What it returns</th></tr></thead>
 <tbody>
-<tr><td><code>search_examples</code></td><td>The examples closest to a description of a transaction or issue: up to five in brief, then further candidates as single lines. A paragraph number also works.</td></tr>
-<tr><td><code>get_example</code></td><td>One example in full: the parties, the events, the facts, the question, the conclusion the Guidelines support, and the reasoning with paragraph references.</td></tr>
+<tr><td><code>search_examples</code></td><td>The examples closest to a description of a transaction or issue: up to five in brief, then further candidates as single lines. A paragraph or example number also works. When no example is about the question, it says so.</td></tr>
+<tr><td><code>get_example</code></td><td>One example in full: the parties, the events, the facts, the question, the conclusion, and the reasoning with paragraph references.</td></tr>
 <tr><td><code>list_examples</code></td><td>The examples by chapter and topic, one line each, after a statement of what is covered.</td></tr>
 </tbody>
 </table>
@@ -82,7 +82,7 @@
 <p>All three only read. None of them can change anything, anywhere.</p>
 
 <h2 id="covered">What is covered, and how it is labelled</h2>
-<p>About 150 cases: the same ones as the <a href="/Chapter6/">interactive walkthrough</a> on this site. Every result carries one of three labels, so a draft or an illustration is never mistaken for the final OECD text.</p>
+<p>About 150 cases: the same ones as the <a href="/Chapter6/">interactive walkthrough</a> on this site. Every example carries one of three labels, so a draft or an illustration is never mistaken for the final OECD text.</p>
 <ul class="labels">
 <li><strong>OECD Guidelines 2022.</strong> A worked example from the 2022 edition: Chapters I, II, III, IV, VI, VIII, IX and X and their annexes.</li>
 <li class="draft"><strong>OECD discussion draft, June 2026 (not final).</strong> The examples of the draft revision of Chapter VII on intra-group services.</li>

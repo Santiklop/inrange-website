@@ -1522,6 +1522,99 @@ globalThis.CASES = [
       "Paragraph 6.183 (alternative payment structures)",
       "Paragraph 6.192 (use of ex-post evidence)"
     ]
-  }
+  },
+
+{
+  id: 32,
+  theme: "main-text",
+  themeLabel: "Use of intangibles in sales and services (main text)",
+  title: "Patents used to make cars sold to associated distributors",
+  group: "Car manufacturer · associated distributors",
+  refs: "Chapter VI · main text · ¶6.105",
+  atGlance:
+    "A car manufacturer sells its cars to associated distributors. The cars are built using the manufacturer's valuable proprietary patents, which add significantly to their value, but the distributors acquire no right in those patents. Do the patents matter when the car sales are priced and, if so, at which points in the analysis?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Car manufacturer", role: "Uses valuable proprietary patents · makes the cars" },
+    right: { name: "Associated distributors", role: "Buy the cars · acquire no right in the patents" },
+    arrowLabel: "sale of cars"
+  },
+  timeline: [
+    "A car manufacturer builds its cars using valuable proprietary patents.",
+    "The patents make a significant contribution to the value of the cars.",
+    "The manufacturer sells the cars to associated distributors.",
+    "In buying the cars, the distributors obtain no right in the manufacturer's patents."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The controlled transaction is the sale of cars. The patents are used to make the cars and add significantly to their value, yet the distributors obtain no right in them.",
+      question: "How should the manufacturer's patents be treated in the transfer pricing analysis of the car sales?",
+      mcq: [
+        "Identify the patents and the value they add, and take both into account in the comparability analysis and in choosing the method and the tested party.",
+        "Leave the patents out of the analysis altogether, because the distributors acquire no right in them and the transaction is only a sale of cars.",
+        "Treat each sale as also passing rights in the patents to the distributors, and set a price for those rights separately from the price of the cars."
+      ],
+      correctIdx: 0,
+      analysis:
+        "An intangible can play a part in a controlled transaction even though neither it nor any right in it changes hands (¶6.104). Here the patents, and the value they add, should be identified and taken into account at three points in the analysis of the car sales: the comparability analysis, the selection of the most appropriate method and the selection of the tested party. The distributors acquire no right in the patents, so there is no transfer: the patents are an input to manufacturing that may affect the value of the cars.",
+      verdict: "Used, not transferred"
+    }
+  ],
+  takeaway:
+    "An intangible used to make goods may affect their value without being transferred with them. It should still be identified and taken into account when comparability is analysed, the method is chosen and the tested party is selected.",
+  crossRefs: [
+    "Section C.2 (use of intangibles in sales of goods or performance of services)",
+    "¶6.106 (the same point for services)",
+    "Sections D.1 and D.5 (supplemental guidance; ¶6.104 cites the latter as D.4, but in the 2022 edition it is Section D.5, ¶6.196–6.212)"
+  ]
+},
+
+{
+  id: 33,
+  theme: "main-text",
+  themeLabel: "Use of intangibles in sales and services (main text)",
+  title: "Geological data and know-how used in exploration services",
+  group: "Exploration company · associated enterprise",
+  refs: "Chapter VI · main text · ¶6.106",
+  atGlance:
+    "An exploration company holds valuable geological data and analysis, as well as sophisticated exploratory software and know-how, which it has acquired or developed. It uses them to perform exploration services for an associated enterprise, which is assumed to acquire no rights in them. What part do these intangibles play when the services are priced?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Exploration company", role: "Geological data and analysis · exploratory software · know-how" },
+    right: { name: "Associated enterprise", role: "Receives the services · assumed to acquire no rights in the intangibles" },
+    arrowLabel: "exploration services"
+  },
+  timeline: [
+    "An exploration company holds valuable geological data and analysis and sophisticated exploratory software and know-how, which it has acquired or developed.",
+    "It draws on those intangibles when performing exploration services for an associated enterprise.",
+    "It is assumed that the associated enterprise obtains no rights in the exploration company's intangibles."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "The controlled transaction is the provision of exploration services. The exploration company performs them with the help of its data, software and know-how, and the associated enterprise is assumed to obtain no rights in those intangibles.",
+      question: "What part do the exploration company's intangibles play in the transfer pricing analysis of the services?",
+      mcq: [
+        "They should be identified and taken into account in the comparability analysis and in choosing the method and the tested party, though none is transferred.",
+        "They play no part in the analysis, because the associated enterprise obtains no rights in them and what it pays for is the exploration services alone.",
+        "They are treated as passing to the associated enterprise together with the services, so the data, software and know-how need a price of their own."
+      ],
+      correctIdx: 0,
+      analysis:
+        "This is a second illustration of intangibles being used in a controlled transaction without being transferred, this time in a provision of services. The geological data and analysis, the software and the know-how should be identified and then taken into account in three places: the comparability analysis of the services, the choice of the most appropriate method and the choice of the tested party. On the assumption that the associated enterprise acquires no rights in them, they are not transferred: they are used to perform the services and may affect the value of those services.",
+      verdict: "Used in services, not transferred"
+    }
+  ],
+  takeaway:
+    "Intangibles that a provider uses to perform services may affect the value of those services, and should be identified and taken into account when comparability is analysed and the method and tested party are chosen. That nothing is transferred rests on the assumption that the recipient acquires no rights in them.",
+  crossRefs: [
+    "Section C.2 (use of intangibles in sales of goods or performance of services)",
+    "¶6.105 (the same point for a sale of goods)",
+    "Sections D.1 and D.5 (supplemental guidance; ¶6.104 cites the latter as D.4, but in the 2022 edition it is Section D.5, ¶6.196–6.212)"
+  ]
+}
 
 ];

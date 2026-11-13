@@ -357,6 +357,116 @@ globalThis.CASES = [
       "Section D.1.2.1 of Chapter I (six-step risk framework)",
       "Example 4 (same facts, with risk control intact)"
     ]
-  }
+  },
+
+{
+  id: 8,
+  theme: "tested-party",
+  themeLabel: "Choosing the tested party (Ch.III)",
+  title: "Two products, one manufacturer: choosing the tested party",
+  group: "Company A · Company B",
+  refs: "Chapter III · ¶3.19",
+  atGlance:
+    "Company A manufactures P1 and P2 and sells both product types to Company B, an associated enterprise in a different country. For P1 the valuable, unique intangibles and the technical specifications are B's; for P2 the valuable, unique intangibles are A's own and B acts as distributor. Which company would most often be the tested party for each product?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Company A", role: "Manufactures P1 and P2 · owns the intangibles used for P2" },
+    right: { name: "Company B", role: "In another country · owns the intangibles used for P1 · distributor of P2" },
+    arrowLabel: "sales of P1 and P2"
+  },
+  timeline: [
+    "Company A is the manufacturer of two types of products, P1 and P2.",
+    "It sells both to Company B, an associated enterprise located in another country.",
+    "A makes P1 with valuable, unique intangibles belonging to B and works to technical specifications that B sets.",
+    "For P2, the valuable, unique intangibles (such as valuable patents and trademarks) are ones that A itself owns and uses, and B acts as distributor."
+  ],
+  scenarios: [
+    {
+      letter: "A",
+      facts:
+        "P1: the valuable, unique intangibles used to make the product belong to B, and B sets the technical specifications that A follows. A's own part in the transaction is limited to simple functions, with no valuable, unique contribution.",
+      question: "Which company would most often be the tested party for the P1 transaction?",
+      mcq: [
+        "Company A, because it performs only simple functions and makes no valuable, unique contribution to the P1 transaction.",
+        "Company B, because it owns the valuable, unique intangibles used for P1 and sets the technical specifications.",
+        "Either company, because both are parties to the P1 transaction and the taxpayer may test whichever it prefers."
+      ],
+      correctIdx: 0,
+      analysis:
+        "A tested party is needed whenever a cost plus, resale price or transactional net margin method is applied, and the choice should be in line with the functional analysis of the transaction (¶3.18). The general rule turns on reliability: the tested party is the one for which the method, and the comparables found for it, are the most reliable, and that will most often be the party with the less complex functional analysis. For P1 the valuable, unique intangibles belong to B, while A performs only simple functions and makes no valuable, unique contribution. On those facts A is the party that would most often be tested for P1.",
+      verdict: "Most often Company A"
+    },
+    {
+      letter: "B",
+      facts:
+        "P2: the valuable, unique intangibles, such as valuable patents and trademarks, are owned and used by A, and B's role is that of distributor. B's part in the transaction is limited to simple functions, with no valuable, unique contribution.",
+      question: "Which company would most often be the tested party for the P2 transaction?",
+      mcq: [
+        "Company B, because it performs only simple functions and makes no valuable, unique contribution to the P2 transaction.",
+        "The same company as for P1, because one tested party should be used for every transaction between the same two companies.",
+        "Company A, because it is the manufacturer, and a manufacturer's mark-up on costs is the natural indicator to test."
+      ],
+      correctIdx: 0,
+      analysis:
+        "For P2 the positions are reversed. A owns and uses the valuable, unique intangibles, such as valuable patents and trademarks, while B acts as distributor, performs only simple functions and makes no valuable, unique contribution. B is therefore the party that would most often be tested for P2. The same two companies would thus most often have a different tested party for each product, because what guides the choice is the functional analysis of each transaction (¶3.18).",
+      verdict: "Most often Company B"
+    }
+  ],
+  takeaway:
+    "The tested party should be chosen for each transaction in line with its functional analysis, and will most often be the party with the less complex functional analysis. Between the same two companies that may be the manufacturer for one product and the distributor for another.",
+  crossRefs: [
+    "Section A.3.3 of Chapter III, ¶3.18 (general rule on the choice of the tested party)",
+    "Chapter II (cost plus, resale price and transactional net margin methods, for which a tested party is chosen)"
+  ]
+},
+
+{
+  id: 9,
+  theme: "cost-contribution",
+  themeLabel: "Cost contribution arrangements (Ch.VIII)",
+  title: "Contributions and benefits in a 75:25 development CCA",
+  group: "Company A · Company B · development CCA",
+  refs: "Chapter VIII · ¶8.33, 8.38",
+  atGlance:
+    "Company A and Company B conclude a CCA to develop intangibles, expecting 75% of the benefits to go to A and 25% to B. Each makes a pre-existing contribution, valued in the first year at 10 million for A and 6 million for B. Do the contributions match the expected benefits and, if not, who owes whom a balancing payment, and how much?",
+  parties: {
+    kind: "tested-party",
+    left: { name: "Company A", role: "Country A · rest-of-world rights · 75% of expected benefits" },
+    right: { name: "Company B", role: "Country B · Country B rights · 25% of expected benefits" },
+    arrowLabel: "CCA to develop intangibles",
+    note: "Each company is experienced in developing intangibles, has its own R&D personnel and controls its development risk under the CCA (¶8.14–8.16)."
+  },
+  timeline: [
+    "Two members of an MNE group, Company A in Country A and Company B in Country B, enter into a CCA to develop intangibles; B is entitled to exploit them in Country B and A in the rest of the world.",
+    "Sales are expected to split 75% for A and 25% for B, and the parties put their shares of the expected benefits from the CCA at 75:25.",
+    "As pre-existing contributions, A brings in intangibles recently acquired from a third party and B brings in proprietary analytical techniques that it developed to improve efficiency and speed to market.",
+    "The current contributions are day-to-day research, 80% of it by B and 20% by A, and the guidance of a leadership team drawn from the two companies in the ratio 90:10 in favour of A.",
+    "The pre-existing contributions are valued, in the first year, at 10 million (Company A) and 6 million (Company B)."
+  ],
+  scenarios: [
+    {
+      letter: "—",
+      facts:
+        "Expected benefits are shared 75:25 between Company A and Company B. In the first year, A's pre-existing contribution is worth 10 million and B's 6 million.",
+      question: "What balancing payment, if any, do these figures require?",
+      mcq: [
+        "Company A pays Company B a net 2 million, taking A's contribution to 12 million and B's to 4 million, in line with the 75:25 ratio.",
+        "Company B pays Company A a net 2 million, because A has contributed 4 million more and that difference should be evened out.",
+        "No balancing payment is required, because both companies have made pre-existing contributions and both take part in the research."
+      ],
+      correctIdx: 0,
+      analysis:
+        "Where participants' shares of the value contributed are out of line with their shares of the expected benefits, the arm's-length principle would generally require an adjustment, generally through a balancing payment (¶8.34). The pre-existing contributions come to 16 million, of which a 75:25 split would be 12 million for Company A and 4 million for Company B, against the 10 million and 6 million contributed. Company A is therefore required to pay Company B a net 2 million, since a balancing payment adds to the payer's contribution and reduces the payee's. The text sets the 2 million out as 4.5 million from A to B less 2.5 million from B to A (the working is not shown, but these equal 75% of B's 6 million and 25% of A's 10 million). The calculation covers the pre-existing contributions only: the text puts no value on the two kinds of current contributions, which ¶8.33 says should each be analysed and valued separately.",
+      verdict: "A pays B 2 million"
+    }
+  ],
+  takeaway:
+    "Each participant's share of the value contributed to a CCA should be in line with its share of the expected benefits. Where it is not, the arm's-length principle would generally require a balancing payment, which adds to the payer's contribution and reduces the payee's.",
+  crossRefs: [
+    "Section C.5 of Chapter VIII, ¶8.34–8.37 (balancing payments)",
+    "¶8.14–8.16 (determining participants: control of risk)",
+    "Sections D.3 and D.4 of Chapter VI (hard-to-value intangibles)"
+  ]
+}
 
 ];

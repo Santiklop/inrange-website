@@ -97,7 +97,7 @@
       },
       el("div", { class: "quiz-mode-card__eyebrow" }, "5 questions"),
       el("div", { class: "quiz-mode-card__title" }, "Sprint"),
-      el("p", { class: "quiz-mode-card__body" }, "Five random questions drawn from across all six chapters. Score yourself out of 5; come back tomorrow.")
+      el("p", { class: "quiz-mode-card__body" }, "Five random questions drawn from across the whole walkthrough. Score yourself out of 5; come back tomorrow.")
     );
 
     const deathRunCard = el("button",
@@ -306,6 +306,8 @@
 
   // ---------- Chapter suggestion (for low scores) ----------
   const CHAPTERS = {
+    "Chapter I":      { url: "/Chapter1/",       topic: "The arm's length principle" },
+    "Chapter II":     { url: "/Chapter2/",       topic: "Transfer pricing methods" },
     "Chapter VI":     { url: "/Chapter6/",       topic: "Intangibles" },
     "Chapter VII":    { url: "/Chapter7/",       topic: "Intra-group services" },
     "Chapter IX":     { url: "/Chapter9/",       topic: "Business restructurings" },

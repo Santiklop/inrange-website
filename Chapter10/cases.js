@@ -195,7 +195,7 @@ globalThis.CASES = [
   group: "Company A · Company B · Company P",
   refs: "Chapter X · ¶10.25",
   atGlance:
-    "Company B receives an advance of funds from Company A. Accurate delineation shows that Company A performs no control functions in relation to the advance, while Company P, the MNE group's parent company, exercises control over the risks of the advance and has the financial capacity to assume them. What return is Company A entitled to?",
+    "Company A advances funds to Company B but, as accurate delineation shows, performs no control functions in relation to the advance. Company P, the MNE group's parent company, exercises control over the risks of the advance and has the financial capacity to assume them. What return is Company A entitled to?",
   parties: {
     kind: "tested-party",
     left: { name: "Company A", role: "Advances the funds · no control functions" },
@@ -204,10 +204,9 @@ globalThis.CASES = [
     note: "Company P, the MNE group's parent company, exercises control over the risks of the advance and has the financial capacity to assume them."
   },
   timeline: [
-    "Company B receives an advance of funds from Company A.",
-    "Company A performs no control functions in relation to the advance.",
-    "The MNE group's parent company, Company P, exercises control over the risks associated with the advance.",
-    "Company P has the financial capacity to assume those risks."
+    "The advance of funds is made by Company A to Company B.",
+    "Company A exercises no control functions in connection with the advance.",
+    "The MNE group's parent company, Company P, exercises control over the risks associated with the advance and has the financial capacity to assume them."
   ],
   scenarios: [
     {
@@ -239,7 +238,7 @@ globalThis.CASES = [
   id: 5,
   theme: "loans",
   themeLabel: "Delineating intra-group loans",
-  title: "A 10-year loan for short-term working capital",
+  title: "A 10-year advance for a short-term working capital need",
   group: "AB Group",
   refs: "Chapter X · ¶10.37",
   atGlance:
@@ -249,11 +248,11 @@ globalThis.CASES = [
     left: { name: "Company A", role: "Member of AB Group · advances the funds" },
     right: { name: "Company B", role: "Associated enterprise · short-term working capital need" },
     arrowLabel: "advance with a 10-year term",
-    note: "AB Group's policy and practices: a one-year revolving loan is used to manage short-term working capital."
+    note: "Under AB Group's policy and practices, short-term working capital is managed with a one-year revolving loan."
   },
   timeline: [
     "Company A belongs to AB Group. It makes a 10-year advance of funds to Company B, an associated enterprise.",
-    "Company B will use the money for short-term working capital purposes.",
+    "The money is for Company B's short-term working capital.",
     "Company B has no other loan on its balance sheet.",
     "AB Group's policy and practices show that, for short-term working capital, the group relies on a one-year revolving loan."
   ],
@@ -291,19 +290,19 @@ globalThis.CASES = [
   group: "Company M · Company D",
   refs: "Chapter X · ¶10.184–10.186 · Example 1",
   atGlance:
-    "Company D, rated BBB on a stand-alone basis, needs a EUR 10 million loan from an independent lender. Passive association lifts its credit standing to A, and an explicit guarantee from Company M, the group's AAA-rated parent, lifts it to AAA, where lenders charge 6% rather than 8%; Company M's fee is 3%. Would an independent borrower pay that fee?",
+    "Company D needs EUR 10 million from an independent lender, and its stand-alone credit rating is only BBB. Passive association lifts its credit standing to A, and an explicit guarantee from Company M, the group's AAA-rated parent, lifts it to AAA, where lenders charge 6%, not 8%; Company M's fee is 3%. Would an independent borrower pay that fee?",
   parties: {
     kind: "tested-party",
     left: { name: "Company M", role: "Parent entity of the MNE group · AAA rating" },
     right: { name: "Company D", role: "Group member · BBB stand-alone · A with passive association" },
     arrowLabel: "explicit guarantee (for a 3% fee)",
-    note: "Company D needs a EUR 10 million loan from an independent lender. Independent lenders charge interest of 8% to entities rated A and 6% to entities rated AAA."
+    note: "The EUR 10 million that Company D needs is to be borrowed from an independent lender. At an A rating such lenders charge 8% interest, at AAA 6%."
   },
   timeline: [
-    "Company M is the parent entity of an MNE group; the strength of the group's consolidated balance sheet gives it an AAA credit rating.",
+    "Company M, an MNE group's parent entity, owes its AAA credit rating to the strength of the group's consolidated balance sheet.",
     "Company D belongs to the same group. Its stand-alone credit rating is only BBB, and it needs a loan of EUR 10 million from an independent lender.",
     "The effect of passive association is to lift Company D's credit standing from BBB to A; an explicit guarantee from Company M lifts it further, to AAA.",
-    "Independent lenders charge interest of 8% to entities rated A and 6% to entities rated AAA.",
+    "The interest rate that independent lenders charge is 8% for an entity rated A and 6% for one rated AAA.",
     "Company D is charged a fee of 3% by Company M for the guarantee."
   ],
   scenarios: [
@@ -311,7 +310,7 @@ globalThis.CASES = [
       letter: "—",
       facts:
         "The explicit guarantee takes Company D's credit standing from A to AAA. Independent lenders charge 8% at A and 6% at AAA, and Company M's fee for the guarantee is 3%.",
-      question: "Would an independent enterprise borrowing on the same conditions as Company D be expected to pay Company M this fee?",
+      question: "If an independent enterprise borrowed on Company D's conditions, would it be expected to pay Company M the 3% fee?",
       mcq: [
         "The analysis may indicate that it would not be expected to pay 3%, because at that fee Company D is better off without the guarantee.",
         "It would pay 3%, because the guarantee moves Company D from A to AAA and any improvement in its credit rating justifies the fee.",
@@ -340,27 +339,27 @@ globalThis.CASES = [
   group: "Company M · Company D",
   refs: "Chapter X · ¶10.187–10.188 · Example 2",
   atGlance:
-    "Passive association lifts Company D's credit standing from a stand-alone BBB to A; an explicit guarantee from Company M, the group's AAA-rated parent, lifts it to AAA, where lenders charge 6%, not 8%. Comparable uncontrolled transactions put the arm's-length price of a comparable guarantee at 1% to 1.5%. Would Company D be expected to pay a fee?",
+    "Passive association lifts Company D's credit standing from a stand-alone BBB to A; an explicit guarantee from Company M, the group's AAA-rated parent, lifts it to AAA, where lenders charge 6%, not 8%. Comparable uncontrolled transactions put the arm's-length price of a comparable guarantee at 1% to 1.5%. Is a fee to be expected from Company D?",
   parties: {
     kind: "tested-party",
     left: { name: "Company M", role: "Parent entity of the MNE group · AAA rating" },
     right: { name: "Company D", role: "Group member · BBB stand-alone · A with passive association" },
     arrowLabel: "explicit guarantee",
-    note: "Company D needs a EUR 10 million loan from an independent lender. Independent lenders charge 8% at A and 6% at AAA. Comparable guarantees: arm's-length price of between 1% and 1.5%."
+    note: "The EUR 10 million that Company D needs is to be borrowed from an independent lender. At an A rating such lenders charge 8% interest, at AAA 6%. Comparable guarantees: arm's-length price of between 1% and 1.5%."
   },
   timeline: [
-    "Company M is the parent entity of an MNE group; the strength of the group's consolidated balance sheet gives it an AAA credit rating.",
+    "Company M, an MNE group's parent entity, owes its AAA credit rating to the strength of the group's consolidated balance sheet.",
     "Company D belongs to the same group. Its stand-alone credit rating is only BBB, and it needs a loan of EUR 10 million from an independent lender.",
     "The effect of passive association is to lift Company D's credit standing from BBB to A; an explicit guarantee from Company M lifts it further, to AAA.",
-    "Independent lenders charge interest of 8% to entities rated A and 6% to entities rated AAA.",
-    "Applying the guidance in Section D.2, comparable uncontrolled transactions are identified; they show that a comparable guarantee has an arm's-length price of between 1% and 1.5%."
+    "The interest rate that independent lenders charge is 8% for an entity rated A and 6% for one rated AAA.",
+    "Comparable uncontrolled transactions, found by applying the guidance in Section D.2, put the arm's-length price of a comparable guarantee between 1% and 1.5%."
   ],
   scenarios: [
     {
       letter: "—",
       facts:
         "The facts are those of Example 1 in the same section of the Guidelines (¶10.184–10.186), in which Company M charged a fee of 3%. What is new is the comparables: they price a comparable guarantee, at arm's length, at between 1% and 1.5%.",
-      question: "Would Company D be expected to pay Company M a fee for the explicit guarantee?",
+      question: "For the explicit guarantee, would Company D be expected to pay Company M a fee?",
       mcq: [
         "Yes, an arm's-length fee, because the move from A to AAA comes from the guarantee and Company D is better off with it than without.",
         "No, because Company D's stronger credit standing is a benefit of belonging to the group, and group membership carries no fee.",
@@ -423,7 +422,7 @@ globalThis.CASES = [
     }
   ],
   takeaway:
-    "A benefit that comes from buying insurance cover collectively is a group synergy, to be shared among the insured members by reference to the premiums they contributed. The captive insurance is rewarded for the basic services it provides.",
+    "A benefit that comes from buying insurance cover collectively is a group synergy, to be shared among the insured members by reference to the premiums they contributed. The reward due to the captive insurance is an appropriate one for the basic services it provides.",
   crossRefs: [
     "Section E.3.3 (group synergy)",
     "¶10.222 (the captive's reward for basic services and discounted premiums)"
@@ -451,7 +450,7 @@ globalThis.CASES = [
     "Company A sells high-value new technology consumer goods as a high street retailer.",
     "Third-party customers are offered a policy by A at the point of sale, covering accidental damage and theft for a 3-year period.",
     "Company B, an insurer in the same MNE group as A, insures the policies; A is paid a commission, and B receives substantially all of the profit made on the insurance contracts.",
-    "A full factual and functional analysis finds the contracts very profitable, and finds an active market for insuring and reinsuring risks of the type covered.",
+    "Two findings come out of a full factual and functional analysis: the insurance contracts are very profitable, and the type of risk they cover has an active insurance and reinsurance market.",
     "Benchmarking puts A's commission in line with independent agents that sell similar cover as a standalone product; B earns more profit than insurers that provide similar cover."
   ],
   scenarios: [
@@ -467,7 +466,7 @@ globalThis.CASES = [
       ],
       correctIdx: 0,
       analysis:
-        "¶10.226. What matters is how the high profitability arises and what each party contributes to it. The policy is substantially the same as what any insurer in the general market could offer; the chance of a high profit comes from A's advantage of contact with the customer at the point of sale. A has an alternative, since it could have another insurer underwrite the policies and still keep most of the profit, whereas no other agent that B could find has that advantage. B's arm's-length remuneration would therefore be in line with the benchmarked return of insurers that insure similar risks, and the rest of the profit should be allocated to A.",
+        "¶10.226. What matters is how the high profitability arises and what each party contributes to it. A policy that is substantially the same could be obtained from any other insurer in the general market; the chance of a high profit comes from A's advantage of contact with the customer at the point of sale. A has an alternative, since it could have another insurer underwrite the policies and still keep most of the profit, whereas no other agent that B could find has that advantage. B's arm's-length remuneration would therefore be in line with the benchmarked return of insurers that insure similar risks, and the rest of the profit should be allocated to A.",
       verdict: "Balance of profit to A"
     }
   ],

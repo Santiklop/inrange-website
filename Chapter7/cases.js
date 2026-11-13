@@ -1129,7 +1129,7 @@ globalThis.CASES = [
   },
   timeline: [
     "The manufacturing services rely on unique and valuable intangibles, which Parent Co has developed.",
-    "Company B provides manufacturing services to Parent Co, its parent. The production process depends heavily on a specialised production line that includes robotics and quality-control machinery.",
+    "Parent Co receives manufacturing services from its subsidiary, Company B. Production depends to a large extent on a specialised production line, whose equipment includes robotics and quality-control machinery.",
     "The functional analysis shows that these machines belong to Company B, which uses them solely for the manufacturing services it renders to Parent Co.",
     "Company B has Parent Co's authorisation to use the intangibles in performing the services. Responsibility for maintaining and further developing them, and the economically significant risks inherent in them, lie with the parent (the draft's text names \"Parent B\" here; this case reads that as Parent Co)."
   ],
@@ -1167,7 +1167,7 @@ globalThis.CASES = [
   group: "Parent Co · Company B",
   refs: "Draft (June 2026) · Main text · ¶7.20",
   atGlance:
-    "Parent Co in Country A performs IT support services for its affiliate Company B in Country B. Company B could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
+    "Company B, located in Country B, receives certain IT support services from its affiliate in Country A, Parent Co. It could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
   parties: {
     kind: "tested-party",
     left: { name: "Parent Co (Country A)", role: "Performs IT support services" },
@@ -1175,9 +1175,9 @@ globalThis.CASES = [
     arrowLabel: "IT support services →"
   },
   timeline: [
-    "Parent Co is located in Country A; its affiliate Company B is located in Country B.",
-    "Parent Co carries out certain IT support services for Company B.",
-    "Company B could have carried out these activities in-house or bought them from local independent providers at lower cost."
+    "Parent Co and Company B are affiliates, located in Country A and Country B respectively.",
+    "Company B receives certain IT support services, which Parent Co performs.",
+    "Company B was in a position to carry out these activities in-house or to buy them from local independent providers at lower cost."
   ],
   scenarios: [
     {
@@ -1222,7 +1222,7 @@ globalThis.CASES = [
     note: "Company A's own employees take part in the training as well."
   },
   timeline: [
-    "The MNE group manufactures and sells electronic products, and Company A is its parent. Historically, each group entity looked after its own capacity and knowledge-building activities.",
+    "The MNE group manufactures and sells electronic products, and Company A is its parent. Capacity and knowledge-building activities used to be each group entity's own responsibility.",
     "Company A introduces new business procedures, which make it necessary to update the capacity-building activities for the group's employees.",
     "In response to these operational and business changes, Company A implements a group-wide training programme and develops the training programmes and materials.",
     "The training goes to every group entity, and Company A's own employees take part as well."
@@ -1268,14 +1268,14 @@ globalThis.CASES = [
   },
   timeline: [
     "MNE Group Y is acquired by MNE Group X.",
-    "Parent Co is the parent company of MNE Group X. Once the acquisition has taken place, it gives the new subsidiaries strategic advice and information.",
+    "The parent company of the acquiring group, Parent Co, then gives the new subsidiaries strategic advice and information.",
     "For this it relies on its proprietary know-how, frameworks and methodologies: for example pricing frameworks, risk assessment tools or unique market entry models."
   ],
   scenarios: [
     {
       letter: "—",
       facts:
-        "Parent Co's advice draws on its proprietary know-how, frameworks and methodologies. As a consequence, the new subsidiaries may become able to apply and adapt that know-how independently.",
+        "Parent Co's advice draws on its proprietary know-how, frameworks and methodologies. The new subsidiaries may, as a result, become able to apply and adapt that know-how on their own.",
       question: "Is Parent Co's advice to the new subsidiaries only a service?",
       mcq: [
         "Not necessarily — if the subsidiaries become able to apply and adapt the know-how themselves, it is in effect transferred to them.",
@@ -1304,7 +1304,7 @@ globalThis.CASES = [
   group: "Company A · regional affiliates",
   refs: "Draft (June 2026) · Main text · ¶7.44",
   atGlance:
-    "Company A provides IT services to affiliates in its region: projects for individual affiliates, such as designing, installing or making major upgrades to a full IT system, and region-wide services based on a centralised pool of costs. Should it charge directly for all of them, indirectly for all of them, or combine the two approaches?",
+    "Company A's IT services for the affiliates in its region include both projects for individual affiliates, such as designing, installing or making major upgrades to a full IT system, and region-wide services based on a centralised pool of costs. Should Company A charge all of them directly, all of them indirectly, or combine the two approaches?",
   parties: {
     kind: "provider-to-recipients",
     provider: { name: "Company A", role: "Affiliate · IT services in its region" },
@@ -1368,7 +1368,7 @@ globalThis.CASES = [
     {
       letter: "—",
       facts:
-        "The charge is to be allocated among the recipients, one of which is in a new market while the others are in mature markets. Two keys are compared: actual sales accrued in the year in which the marketing services were performed, and the share of time spent on each market.",
+        "The charge is to be allocated among the recipients, one of which is in a new market while the others are in mature markets. One candidate key is the actual sales accrued in the year of the marketing services; the other is each market's share of the time spent.",
       question: "Which key is more likely to match the charges to the benefit the recipients can expect?",
       mcq: [
         "Time spent on each market — it may align more closely with the expected benefit, while the year's actual sales may be inappropriate here.",
@@ -1399,7 +1399,7 @@ globalThis.CASES = [
   atGlance:
     "Company A, a shoe manufacturer, analyses the credit risk of its subsidiary B's customers from reports bought from a credit reporting agency. Company X performs credit risk analysis for a worldwide investment banking group, using internally developed confidential models. Is the service low value-adding in both settings?",
   timeline: [
-    "Company A, in Country A, manufactures shoes and distributes them wholesale in the North-West region. Its wholly-owned subsidiary B, in Country B, is a wholesale distributor of A's shoes in the South-East region.",
+    "Company A, in Country A, manufactures shoes and distributes them wholesale in the North-West region. The same shoes are distributed wholesale in the South-East region by B, A's wholly-owned subsidiary in Country B.",
     "In the course of its operations, A routinely analyses the credit risk of its customers, working from reports it buys from a credit reporting agency. It carries out the same analysis of B's customers on B's behalf, with the same methods and approaches.",
     "Separately, a worldwide investment banking group has a subsidiary, Company X. Company X assesses the credit risk of potential counterparties to transactions in financial derivatives contracts and draws up credit reports for the group.",
     "The group uses Company X's credit analyses when it sets the prices of financial derivatives for its clients. Company X's personnel have developed special expertise and work with confidential credit risk analysis models, algorithms and software that were developed internally."
@@ -1423,7 +1423,7 @@ globalThis.CASES = [
     {
       letter: "B",
       facts:
-        "Company X analyses the credit risk of potential counterparties to financial derivatives transactions and prepares credit reports for its worldwide investment banking group, which uses the analyses to set the prices of financial derivatives for its clients. Its personnel have developed special expertise and use internally developed confidential models, algorithms and software.",
+        "Company X analyses the credit risk of potential counterparties to financial derivatives transactions and prepares credit reports for its worldwide investment banking group, which uses the analyses to set the prices of financial derivatives for its clients. Its personnel work with confidential credit risk analysis models, algorithms and software that were developed internally, and have built up special expertise.",
       question: "Is Company X's credit risk analysis a low value-adding intra-group service?",
       mcq: [
         "No — that could not be concluded here: the analyses feed the group's derivatives pricing and rest on special expertise and confidential tools.",

@@ -106,7 +106,7 @@ globalThis.CASES = [
           "Sub A didn't just transfer trademarks — it also moved customer contracts and a key R&D team. Between independents this looks like the transfer of an integrated business unit.",
         question: "Price item-by-item, or as a single ongoing concern?",
         mcq: [
-          "As an ongoing concern, with the valuation reflecting all valuable elements together (including the assembled workforce), per Section E.2 of Part I.",
+          "As an ongoing concern, with the valuation reflecting all valuable elements together (including the assembled workforce), per Section E.3 of Part I.",
           "Strictly element-by-element: trademark valuation + workforce valuation + contracts valuation, summed.",
           "Only the trademark needs a transfer price; workforce and contracts are never separately compensable."
         ],
@@ -329,7 +329,7 @@ globalThis.CASES = [
     takeaway:
       "When the package is functionally integrated — assets + workforce + contracts + the capacity to carry on the business — the right arm's-length price is for the whole ongoing concern, not the sum of the parts. The assembled workforce is part of the value, not a free rider.",
     crossRefs: [
-      "Section E.3 of Part I (¶9.68–9.74 ongoing concern)",
+      "Section E.3 of Part I (¶9.68–9.73 ongoing concern)",
       "Section D.7 of Chapter I (assembled workforce)",
       "Section A.4.6 of Chapter VI (goodwill / ongoing concern value)",
       "Example 2 (IP centralisation as ongoing concern)"
@@ -380,7 +380,7 @@ globalThis.CASES = [
     takeaway:
       "Labels don't drive the TP. When a post-restructuring 'LRD' is loss-making and the functional review shows retained intangibles or market risks, either the conversion was under-priced (¶9.105) or the post-restructuring TP is mischaracterising the entity (¶9.108) — usually a bit of both.",
     crossRefs: [
-      "Section D of Part II (¶9.100–9.107 pre/post comparison)",
+      "Section A of Part II (¶9.100–9.107 restructured vs newly set-up operations)",
       "Section B of Part II (¶9.108 post-restructuring method)",
       "Example 1 (compensation at conversion)",
       "Example 4 (substance over contract on risk)"
@@ -424,7 +424,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "¶9.129 is exactly on point: where the relocated activity is highly competitive and reliable comparables exist for the low-cost market, an arm's-length contract manufacturer would generally be attributed very little, if any, of the location savings — to do otherwise would put the associated manufacturer in a position different from an independent contract manufacturer in the same market, contrary to the arm's-length principle. ¶9.131 generalises: the allocation turns on functions/risks/assets, options realistically available, bargaining power, and market features.",
+          "¶9.129 is exactly on point: where the relocated activity is highly competitive and reliable comparables exist for the low-cost market, an arm's-length contract manufacturer would generally be attributed very little, if any, of the location savings — to do otherwise would put the associated manufacturer in a position different from an independent contract manufacturer in the same market, contrary to the arm's-length principle. ¶9.131 generalises: the allocation turns on functions/risks/assets and the options realistically available to each party.",
         verdict: "Location savings follow the comparables"
       }
     ],

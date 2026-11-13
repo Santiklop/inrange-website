@@ -2680,7 +2680,7 @@ globalThis.QUIZ_POOL = [
     "facts": "Sub A didn't just transfer trademarks — it also moved customer contracts and a key R&D team. Between independents this looks like the transfer of an integrated business unit.",
     "question": "Price item-by-item, or as a single ongoing concern?",
     "mcq": [
-      "As an ongoing concern, with the valuation reflecting all valuable elements together (including the assembled workforce), per Section E.2 of Part I.",
+      "As an ongoing concern, with the valuation reflecting all valuable elements together (including the assembled workforce), per Section E.3 of Part I.",
       "Strictly element-by-element: trademark valuation + workforce valuation + contracts valuation, summed.",
       "Only the trademark needs a transfer price; workforce and contracts are never separately compensable."
     ],
@@ -2846,7 +2846,7 @@ globalThis.QUIZ_POOL = [
       "All of the location savings are automatically attributed to Contract Mfr-B as the entity in the low-cost country."
     ],
     "correctIdx": 0,
-    "analysis": "¶9.129 is exactly on point: where the relocated activity is highly competitive and reliable comparables exist for the low-cost market, an arm's-length contract manufacturer would generally be attributed very little, if any, of the location savings — to do otherwise would put the associated manufacturer in a position different from an independent contract manufacturer in the same market, contrary to the arm's-length principle. ¶9.131 generalises: the allocation turns on functions/risks/assets, options realistically available, bargaining power, and market features.",
+    "analysis": "¶9.129 is exactly on point: where the relocated activity is highly competitive and reliable comparables exist for the low-cost market, an arm's-length contract manufacturer would generally be attributed very little, if any, of the location savings — to do otherwise would put the associated manufacturer in a position different from an independent contract manufacturer in the same market, contrary to the arm's-length principle. ¶9.131 generalises: the allocation turns on functions/risks/assets and the options realistically available to each party.",
     "verdict": "Location savings follow the comparables"
   },
   {

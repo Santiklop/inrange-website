@@ -19,6 +19,7 @@ globalThis.CASES = [
     title: "Full-fledged → limited-risk distributor",
     group: "MNE Group · sales conversion",
     refs: "Ch.IX · ¶9.2, 9.39, 9.41, 9.45",
+    origin: "inrange-illustration",
     atGlance:
       "A long-established full-fledged distributor in Country A is converted into an LRD for a Principal in Country B. Profit potential drops sharply. Is something owed at the moment of conversion — and on what basis?",
     parties: {
@@ -81,6 +82,7 @@ globalThis.CASES = [
     title: "Centralisation of intangibles in an IP company",
     group: "MNE Group · IP holding structure",
     refs: "Ch.IX · ¶9.2 (3rd bullet), 9.57, 9.65–9.66, 9.68–9.70",
+    origin: "inrange-illustration",
     atGlance:
       "Local operating entities transfer their trademarks, know-how and customer contracts to a newly-created group IP company, which then licenses them back. How many distinct transactions need to be priced — and on what basis?",
     parties: {
@@ -146,6 +148,7 @@ globalThis.CASES = [
     title: "Recognition or disregard of the restructuring",
     group: "MNE Group · principal in a low-tax jurisdiction",
     refs: "Ch.IX · ¶9.34–9.38, cross-ref Section D.2 of Chapter I (¶1.142)",
+    origin: "inrange-illustration",
     editorial:
       "This scenario sits at the boundary between Chapters I and IX. It is included because business restructurings occasionally raise the threshold question of whether the arrangement itself should be respected before any transfer-pricing analysis can be undertaken.",
     atGlance:
@@ -195,6 +198,7 @@ globalThis.CASES = [
     title: "Risk reallocated to a low-substance principal",
     group: "MNE Group · risk-transfer audit",
     refs: "Ch.IX · ¶9.19–9.23, cross-ref Section D.1.2.1 of Chapter I",
+    origin: "inrange-illustration",
     atGlance:
       "The contract reallocates bad-debt and inventory risk from the local distributor to a foreign principal. The principal has no people with credit or inventory decision-making roles and no balance sheet to absorb a loss. Does the contractual reallocation hold?",
     parties: {
@@ -242,6 +246,7 @@ globalThis.CASES = [
     title: "Indemnification on contract termination",
     group: "MNE Group · distribution termination",
     refs: "Ch.IX · ¶9.75–9.79, 9.88",
+    origin: "inrange-illustration",
     atGlance:
       "Principal-B terminates Distributor-A's distribution agreement unilaterally, before the end of its term. A seeks indemnification. Is it owed — and on what test?",
     parties: {
@@ -289,6 +294,7 @@ globalThis.CASES = [
     title: "Transfer of an ongoing concern",
     group: "MNE Group · manufacturing relocation",
     refs: "Ch.IX · ¶9.68–9.70",
+    origin: "inrange-illustration",
     atGlance:
       "Manufacturing moves from M1 to M2: machinery, inventory, patents, processes, supplier and customer contracts — and key employees. Three valuation routes are on the table. Which one is right?",
     parties: {
@@ -337,6 +343,7 @@ globalThis.CASES = [
     title: "Loss-making LRD post-conversion",
     group: "MNE Group · post-restructuring review",
     refs: "Ch.IX · ¶9.105, 9.108",
+    origin: "inrange-illustration",
     editorial:
       "While this issue is closely connected to comparability and pricing analyses elsewhere in the Guidelines, it is frequently encountered following conversions of entrepreneurial entities into limited-risk entities and therefore provides a useful post-restructuring perspective.",
     atGlance:
@@ -387,6 +394,7 @@ globalThis.CASES = [
     title: "Location savings on a manufacturing relocation",
     group: "MNE Group · brand-name clothing manufacturer",
     refs: "Ch.IX · ¶9.126–9.131",
+    origin: "inrange-illustration",
     atGlance:
       "A high-cost-country brand owner moves basic clothing manufacturing to a low-cost-country affiliate operating as a contract manufacturer. Significant location savings emerge. Who keeps them?",
     parties: {

@@ -21,7 +21,7 @@ globalThis.CASES = [
     themeLabel: "Benefit test",
     title: "Cybersecurity services",
     group: "Retailer Group",
-    refs: "Annex I · ¶1–9",
+    refs: "Draft (June 2026) · Annex I · ¶1–9",
     atGlance:
       "A retailer's central IT function commissions and implements a group-wide cybersecurity programme. Does that still count as an intra-group service if a breach later occurs? What if a recipient is loss-making?",
     parties: {
@@ -82,7 +82,7 @@ globalThis.CASES = [
     themeLabel: "Benefit test",
     title: "Centralised marketing",
     group: "Hotel Group",
-    refs: "Annex I · ¶10–15",
+    refs: "Draft (June 2026) · Annex I · ¶10–15",
     atGlance:
       "A central marketing team in Country A serves group hotels in Countries A and B through a new corporate-clients unit. Is it still a service when revenue grows as expected? When competition wipes the growth out? When an unrelated country grows for reasons of its own?",
     parties: {
@@ -161,7 +161,7 @@ globalThis.CASES = [
     themeLabel: "Benefit test",
     title: "Accounting & legal alongside in-house staff",
     group: null,
-    refs: "Annex I · ¶16–17",
+    refs: "Draft (June 2026) · Annex I · ¶16–17",
     atGlance:
       "Company B pays Company A for accounting and legal support. Company B also employs its own accountants and lawyers — but their work is different from what Company A provides.",
     parties: {
@@ -205,7 +205,7 @@ globalThis.CASES = [
     themeLabel: "Benefit test",
     title: "Marketing scope & duplication",
     group: "Apparel MNE",
-    refs: "Annex I · ¶34–39",
+    refs: "Draft (June 2026) · Annex I · ¶34–39",
     atGlance:
       "Company A and Company B both work on the marketing for a new product launch. When does that overlap count as duplication, and when is it really two different activities? Three scenarios test the line — by content, by geography, and by scope.",
     parties: {
@@ -280,7 +280,7 @@ globalThis.CASES = [
     themeLabel: "Benefit test",
     title: "Passive association (supplier discount)",
     group: null,
-    refs: "Annex I · ¶40–42",
+    refs: "Draft (June 2026) · Annex I · ¶40–42",
     atGlance:
       "An independent supplier offers Company A a discounted price not because group members did anything, but because the supplier hopes to win future business from other group members. Is the discount the result of an intra-group service?",
     parties: {
@@ -331,7 +331,7 @@ globalThis.CASES = [
     themeLabel: "Shareholder activity",
     title: "Management information system",
     group: null,
-    refs: "Annex I · ¶21–23",
+    refs: "Draft (June 2026) · Annex I · ¶21–23",
     atGlance:
       "Company A (the parent) runs a management information system fed by data from all group entities. Part of what it produces is consolidation for Company A's own reporting. Part is operational advice to subsidiaries. Is this one charge, two, or neither?",
     parties: {
@@ -376,7 +376,7 @@ globalThis.CASES = [
     themeLabel: "Shareholder activity",
     title: "Identifying buyers for a subsidiary",
     group: null,
-    refs: "Annex I · ¶24–26",
+    refs: "Draft (June 2026) · Annex I · ¶24–26",
     atGlance:
       "Parent Co starts a project to identify buyers for one of its subsidiaries. Later, it reuses what it learned to improve other subsidiaries' operations. Is this shareholder activity throughout, or does the second phase become an intra-group service?",
     parties: {
@@ -422,7 +422,7 @@ globalThis.CASES = [
     themeLabel: "Shareholder activity",
     title: "Divesting a loss-making subsidiary",
     group: null,
-    refs: "Annex I · ¶27–30",
+    refs: "Draft (June 2026) · Annex I · ¶27–30",
     atGlance:
       "Parent Co sells Company A to an external buyer. The rest of the group benefits too — reduced funding costs, more cash flow. Does that turn the divestment work into an intra-group service the group should pay for?",
     parties: {
@@ -469,7 +469,7 @@ globalThis.CASES = [
     themeLabel: "Shareholder activity",
     title: "Acquiring an independent target",
     group: null,
-    refs: "Annex I · ¶31–33",
+    refs: "Draft (June 2026) · Annex I · ¶31–33",
     atGlance:
       "Parent Co acquires an independent foreign company to diversify into a new industry. The deal lifts shareholder value at the parent level but doesn't change how the existing subsidiaries operate. Whose costs are the acquisition costs?",
     parties: {
@@ -519,7 +519,7 @@ globalThis.CASES = [
     themeLabel: "Already compensated",
     title: "Franchise fee covering brand activities",
     group: null,
-    refs: "Annex I · ¶18–20",
+    refs: "Draft (June 2026) · Annex I · ¶18–20",
     atGlance:
       "Company A pays a franchise fee to Company B for the brand and related intangibles. Under the franchise agreement, Company B must also perform global marketing. Should a separate service fee be charged for that global marketing?",
     parties: {
@@ -567,7 +567,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "CUP without geographic adjustments",
     group: null,
-    refs: "Annex I · ¶43–45",
+    refs: "Draft (June 2026) · Annex I · ¶43–45",
     atGlance:
       "Company A in a low-cost country provides IT and back-office services to a principal in a high-cost country. The taxpayer uses the CUP method based on a global median, with no geographic adjustment. Reliable comparables data to adjust does not exist. Does the CUP method work?",
     parties: {
@@ -612,7 +612,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "CUP and limited procurement support",
     group: null,
-    refs: "Annex I · ¶46–50",
+    refs: "Draft (June 2026) · Annex I · ¶46–50",
     atGlance:
       "Company S provides limited procurement support to Company A, while Company A keeps the substantive negotiation and risks. Company S benchmarks itself against full-service procurement agents. Are those agents really comparable?",
     parties: {
@@ -660,7 +660,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "Pharma R&D — milestone pricing",
     group: "Pharma Co",
-    refs: "Annex I · ¶51–55",
+    refs: "Draft (June 2026) · Annex I · ¶51–55",
     atGlance:
       "Company A engages a specialised affiliate (Company B) to run clinical trials using its own proprietary computational biology. The risk of R&D failure is borne by Company A, but Company B contributes unique IP and proven outcome-shortening capability. How is Company B compensated?",
     parties: {
@@ -706,7 +706,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "Contract manufacturing",
     group: "Group X",
-    refs: "Annex I · ¶56–61",
+    refs: "Draft (June 2026) · Annex I · ¶56–61",
     atGlance:
       "Company B manufactures consumer electronics under detailed instructions from Company A — specifications, designs, QA, output, even who to buy raw materials from. Economically significant risks sit with Company A. What method prices Company B's services?",
     parties: {
@@ -754,7 +754,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "Contract research vs. unique R&D",
     group: "Group X · Pharma",
-    refs: "Annex I · ¶62–68",
+    refs: "Draft (June 2026) · Annex I · ¶62–68",
     atGlance:
       "The same pharma group runs two R&D arrangements. One is tightly directed by Company A. The other gives the researcher real autonomy and unique IP. Should the same TP method price them both?",
     parties: {
@@ -816,7 +816,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "ML model with non-routine intangibles",
     group: "Healthcare MNE",
-    refs: "Annex I · ¶69–73",
+    refs: "Draft (June 2026) · Annex I · ¶69–73",
     atGlance:
       "Company A builds and operates a proprietary ML model that delivers personalised treatment plans to affiliates X, Y and Z. Company A owns the model, the data, and assumes the operational risks. Can a one-sided method anchored on Company A's costs reliably price this service?",
     parties: {
@@ -862,7 +862,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "Profit split misapplied",
     group: null,
-    refs: "Annex I · ¶74–76",
+    refs: "Draft (June 2026) · Annex I · ¶74–76",
     atGlance:
       "Company A owns a supply management platform and licenses Company B to use it. Company B uses the platform to provide services to other affiliates and prices its work using the profit split method. Is profit split the right choice when Company B's own contribution is routine?",
     parties: {
@@ -910,7 +910,7 @@ globalThis.CASES = [
     themeLabel: "Selecting the TP method",
     title: "TNMM with Core IP — wrong tested party",
     group: "Group XYZ · Construction",
-    refs: "Annex I · ¶77–80",
+    refs: "Draft (June 2026) · Annex I · ¶77–80",
     atGlance:
       "Company P, the parent, has decades of proprietary construction know-how (\"Core IP\"). It provides oversight and access to Core IP to affiliates running large projects. Affiliates apply TNMM treating Company P as the tested party, against comparables that do not develop or share comparable IP. Reliable?",
     parties: {
@@ -960,7 +960,7 @@ globalThis.CASES = [
     themeLabel: "Mark-up & pass-through",
     title: "5% safe harbour does not bind non-LVA services",
     group: null,
-    refs: "Annex I · ¶81–83",
+    refs: "Draft (June 2026) · Annex I · ¶81–83",
     atGlance:
       "Company A charges a 3% mark-up on total costs for services that don't qualify as low value-adding (LVA). On audit, the tax administration argues the 5% LVA safe harbour should be a floor. Is it?",
     parties: {
@@ -1005,7 +1005,7 @@ globalThis.CASES = [
     themeLabel: "Mark-up & pass-through",
     title: "Advertising pass-through with no mark-up",
     group: "Group G · branded consumer products",
-    refs: "Annex I · ¶84–88",
+    refs: "Draft (June 2026) · Annex I · ¶84–88",
     atGlance:
       "Company Z coordinates marketing for Region Z affiliates, but third-party agencies actually design and place the advertising. Should the €440m/year that flows through Company Z to those agencies be marked up?",
     parties: {
@@ -1057,7 +1057,7 @@ globalThis.CASES = [
     themeLabel: "Documentation",
     title: "Documenting IT support services",
     group: null,
-    refs: "Annex I · ¶89–91",
+    refs: "Draft (June 2026) · Annex I · ¶89–91",
     atGlance:
       "Company A provides IT support to Company B and the arrangement looks well documented. Can the tax authority in Country B still reasonably ask for more? And what changes if Company B also receives similar services from a local provider?",
     parties: {

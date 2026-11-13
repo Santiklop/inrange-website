@@ -467,6 +467,62 @@ globalThis.CASES = [
     "¶8.14–8.16 (determining participants: control of risk)",
     "Sections D.3 and D.4 of Chapter VI (hard-to-value intangibles)"
   ]
+},
+
+{
+  id: 10,
+  theme: "burden-of-proof",
+  themeLabel: "Burden of proof (Ch.IV)",
+  title: "When divergent burden of proof rules guide behaviour",
+  group: "Taxpayers and tax administrations · two jurisdictions",
+  refs: "Chapter IV · ¶4.14–4.15",
+  atGlance:
+    "Two jurisdictions are involved in a controlled transaction that is under examination. One puts the burden of proof on the taxpayer, the other on the tax administration. If taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave, what follows?",
+  timeline: [
+    "A controlled transaction that is under examination involves two jurisdictions.",
+    "The first jurisdiction places the burden of proof on the taxpayer.",
+    "The second jurisdiction places the burden of proof on the tax administration.",
+    "The example assumes that the burden of proof guides behaviour: taxpayers and tax administrations rely on their strict legal rights under those rules to decide how to act."
+  ],
+  scenarios: [
+    {
+      letter: "A",
+      facts:
+        "The first jurisdiction puts the burden of proof on the taxpayer and the second puts it on the tax administration. The burden of proof is guiding behaviour: taxpayers and tax administrations take their strict legal rights under those rules as the guide to how they should behave.",
+      question: "What could follow if the burden of proof guides behaviour in this way?",
+      mcq: [
+        "It could be that neither the tax administration in the first jurisdiction nor the taxpayer in the second tries to establish an acceptable arm's-length price, which would open the way to significant conflict and to double taxation.",
+        "The two that carry the burden, the taxpayer in the first jurisdiction and the tax administration in the second, can each be expected to establish an arm's-length price, so the transaction is likely to be properly tested from both sides.",
+        "Whatever the tax administration in the first jurisdiction asserts and the taxpayer accepts would settle the price for both jurisdictions, so the second tax administration could be expected to follow it and double taxation should not arise."
+      ],
+      correctIdx: 0,
+      analysis:
+        "If behaviour follows the burden of proof, the tax administration in the first jurisdiction might put forward a view of the transfer pricing without substantiating it, and the taxpayer might accept it. It would then be for the tax administration in the second jurisdiction, which carries the burden there, to disprove the pricing. It could be that the two with no burden to carry, the tax administration in the first jurisdiction and the taxpayer in the second, make no effort to establish an acceptable arm's-length price. Behaviour of that kind would open the way to significant conflict and to double taxation. ¶4.16 calls this a misuse of the burden of proof, one that jurisdictions and taxpayers alike should, in practice, avoid.",
+      verdict: "Risks conflict and double taxation"
+    },
+    {
+      letter: "B",
+      facts:
+        "The facts are the same and the burden of proof again guides behaviour, but the taxpayer in the first jurisdiction is now a subsidiary of a taxpayer in the second. The subsidiary may be unable or unwilling to show its transfer prices to be arm's length. The tax administration in the first jurisdiction examines the case and, acting in good faith on the information it has, makes an adjustment.",
+      question: "What follows for the two tax administrations?",
+      mcq: [
+        "The parent is not obliged to give its own tax administration information showing the pricing was arm's length, and the two tax administrations will find it difficult to agree in competent authority proceedings.",
+        "The tax administration in the second jurisdiction is expected to accept the adjustment and give corresponding relief, because the first acted in good faith after examining the case on the information available to it.",
+        "The tax administration in the second jurisdiction will be well placed to contest the adjustment, because it carries the burden of proof and can therefore require the parent to supply the evidence that it needs."
+      ],
+      correctIdx: 0,
+      analysis:
+        "The subsidiary carries the burden of proof in the first jurisdiction, yet, notwithstanding that burden and the Guidelines, it may be unable or unwilling to demonstrate that its transfer prices are at arm's length; after examination, the tax administration there adjusts in good faith on the information it has. In the second jurisdiction the burden rests with the tax administration, so the parent is not obliged to give it any information showing that the pricing was arm's length. The result, according to the text, is that the two tax administrations will find agreement hard to reach in competent authority proceedings. ¶4.17 adds that in such proceedings it is for the State proposing the primary adjustment to satisfy the other State that both the principle and the amount of the adjustment are justified, and that a cooperative approach is expected of both competent authorities.",
+      verdict: "Competent authority agreement difficult"
+    }
+  ],
+  takeaway:
+    "As a matter of good practice, neither tax administrations nor taxpayers should use the burden of proof to justify assertions about transfer pricing that are groundless or cannot be verified. Each should be prepared to show in good faith that its determination, or its pricing, is consistent with the arm's-length principle, wherever the burden of proof lies (¶4.16).",
+  crossRefs: [
+    "Section B.2 of Chapter IV (burden of proof)",
+    "¶4.16 (good practice: care and restraint in relying on the burden of proof)",
+    "¶4.17 (competent authority proceedings; Commentary on paragraph 2 of Article 9 of the OECD Model Tax Convention)"
+  ]
 }
 
 ];

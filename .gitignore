@@ -11,3 +11,6 @@ LinkedIn_Iceberg/
 marketing/
 tools/
 inRange_LinkedIn_Icebergs.pdf
+
+# The Claude connector's code has its own private repository
+mcp-server/

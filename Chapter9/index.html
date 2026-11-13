@@ -304,6 +304,11 @@ details.how-to .how-to-body .how-to-mini strong{color:var(--fg-1);font-weight:60
 .oecd-case__title{margin:0 0 6px;font-size:28px;font-weight:700;line-height:1.18;letter-spacing:-.02em;color:var(--fg-1)}
 @media (max-width:760px){.oecd-case__title{font-size:24px}}
 .oecd-case__refs{font-size:13px;color:var(--fg-3);margin:0 0 24px}
+.oecd-case__origin{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-right:8px;vertical-align:1px}
+.oecd-case__origin--oecd-example{background:var(--brand-green-100);color:var(--brand-green-700)}
+.oecd-case__origin--inrange-illustration{background:var(--accent-sand);color:var(--accent-terra)}
+[data-theme="dark"] .oecd-case__origin--oecd-example{background:rgba(31,168,74,.16);color:var(--brand-green-300)}
+[data-theme="dark"] .oecd-case__origin--inrange-illustration{background:rgba(212,160,98,.14);color:#E8A85A}
 
 .oecd-glance{background:var(--brand-green-50);border-left:3px solid var(--brand-green-500);padding:14px 18px;border-radius:6px;margin:0 0 28px}
 .oecd-glance__label{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-green-700);margin-bottom:4px}
@@ -902,7 +907,18 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
       {},
       el("div", { class: "oecd-case__theme" }, c.themeLabel),
       el("h2", { class: "oecd-case__title" }, `Example ${c.id} — ${c.title}`),
-      el("p", { class: "oecd-case__refs" }, c.refs + (c.group ? ` · ${c.group}` : ""))
+      el(
+        "p",
+        { class: "oecd-case__refs" },
+        c.origin
+          ? el(
+              "span",
+              { class: "oecd-case__origin oecd-case__origin--" + c.origin },
+              c.origin === "oecd-example" ? "OECD example" : "inRange illustration"
+            )
+          : null,
+        c.refs + (c.group ? ` · ${c.group}` : "")
+      )
     );
   }
 

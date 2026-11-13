@@ -504,7 +504,7 @@ globalThis.CASES = [
     },
     timeline: [
       "The starting point is a full-fledged distributor with a long-term contractual arrangement and five years of profitability data. In the set-up in ¶9.45, its rights under that contract give it the realistic option of accepting or refusing a conversion.",
-      "The restructuring converts it into a limited risk distributor for a foreign associated enterprise (the principal): the existing distribution arrangement is renegotiated, and the renegotiation reallocates risk between the parties.",
+      "Under the restructuring it would become a limited risk distributor acting for a foreign associated enterprise, the principal. The existing distribution arrangement is renegotiated, and the renegotiation reallocates risk between the parties.",
       "Profitability is projected on both footings: as a full-fledged distributor over the remaining term of the agreement, and as a limited risk distributor for the next three years.",
       "In all three scenarios the limited risk projection is 2% per year; the historical and full-fledged figures differ from one scenario to the next."
     ],

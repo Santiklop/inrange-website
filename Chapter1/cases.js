@@ -115,7 +115,7 @@ globalThis.CASES = [
       third: { name: "Subsidiaries of Company P", role: "Receive the services · do not reimburse Company P" },
       label1: "engagement and payment",
       label2: "services",
-      note: "There is no service agreement between Company P and the subsidiaries."
+      note: "No service agreement covers these services: Company P and its subsidiaries have not put one in place."
     },
     timeline: [
       "Company P engages an independent party to provide services.",

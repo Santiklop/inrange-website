@@ -1401,7 +1401,7 @@ Expected for each page: `cases` and `sidebarItems` equal the count in the table 
 
 - [ ] **Step 1: Summarise for Aleks.** Report what was added per page, the counts, what the independent review found and how it was resolved, and anything the Guidelines leave open that a case had to reflect. Give him the local preview address.
 
-- [ ] **Step 2: Flag what else the push publishes.** `main` carries one earlier local commit that has not been pushed, the client-quotes design document (`docs/superpowers/specs/2026-10-20-client-quotes-design.md`). Pushing publishes it, together with this plan and its spec, under `/docs/` (which `robots.txt` excludes from search engines but which is public). Ask him whether that is fine.
+- [ ] **Step 2: Flag what else the push publishes.** Pushing publishes this plan and its spec under `/docs/` (which `robots.txt` excludes from search engines but which is public), together with any earlier commit on `main` that has not been pushed yet (`git log origin/main..main`). Ask him whether that is fine. Outcome: one earlier, unrelated design note was kept out at his request and removed from the unpushed history before the push.
 
 - [ ] **Step 3: Wait for his go-ahead.** Pushing `main` deploys the public site. Do not push before he says so.
 

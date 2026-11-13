@@ -76,7 +76,7 @@ Rule for cases: one case per OECD example. Where the Guidelines return to an exa
 
 ### Labels that tell sources apart
 
-- **Chapter IX:** cases get an optional `origin` field. The eight existing cases are `"inrange-illustration"`; the eight new ones are `"oecd-example"`. The Chapter IX page shows it as a small label beside the reference ("OECD example" or "inRange illustration").
+- **Chapter IX:** cases get an optional `origin` field. The nine new cases are `"oecd-example"`. Of the eight existing cases, six are `"inrange-illustration"`; cases 6 and 8 are `"oecd-example"`, because they retell the OECD's own examples in ¶9.70 and ¶9.128–9.129 (decided by Aleks at hand-over). That makes eleven OECD examples and six inRange illustrations. The Chapter IX page shows the field as a small label beside the reference ("OECD example" or "inRange illustration").
 - **Chapter VII:** every reference starts with `Draft (June 2026) · `, including the 21 existing cases. The chapter menu on every page reads "Intra-group services (draft)". The existing "Discussion draft only" banner stays.
 
 ## Page changes

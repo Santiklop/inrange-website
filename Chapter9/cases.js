@@ -294,7 +294,7 @@ globalThis.CASES = [
     title: "Transfer of an ongoing concern",
     group: "MNE Group · manufacturing relocation",
     refs: "Ch.IX · ¶9.68–9.70",
-    origin: "inrange-illustration",
+    origin: "oecd-example",
     atGlance:
       "Manufacturing moves from M1 to M2: machinery, inventory, patents, processes, supplier and customer contracts — and key employees. Three valuation routes are on the table. Which one is right?",
     parties: {
@@ -394,7 +394,7 @@ globalThis.CASES = [
     title: "Location savings on a manufacturing relocation",
     group: "MNE Group · brand-name clothing manufacturer",
     refs: "Ch.IX · ¶9.126–9.131",
-    origin: "inrange-illustration",
+    origin: "oecd-example",
     atGlance:
       "A high-cost-country brand owner moves basic clothing manufacturing to a low-cost-country affiliate operating as a contract manufacturer. Significant location savings emerge. Who keeps them?",
     parties: {

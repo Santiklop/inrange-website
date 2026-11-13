@@ -586,7 +586,7 @@ globalThis.CASES = [
       "The restructuring involves setting up a foreign associated enterprise, which acquires intangibles from several affiliates, the taxpayer among them.",
       "Under the new model, the foreign associated enterprise acquires the raw materials and places them on consignment at the taxpayer's premises for manufacturing against a fee. The foreign associated enterprise owns the stock of finished products; the taxpayer buys them for immediate resale, only after it has made a sale to a customer.",
       "Inventory risk, previously borne by the taxpayer, is now assumed under the contract by the foreign associated enterprise, which both controls that risk and has the financial capacity to assume it.",
-      "To move to the new arrangement, the taxpayer transfers to the foreign associated enterprise the raw materials and finished products that are on its balance sheet at that time."
+      "To move to the new arrangement, the taxpayer hands over to the foreign associated enterprise the raw materials and finished products then on its own balance sheet."
     ],
     scenarios: [
       {
@@ -634,7 +634,7 @@ globalThis.CASES = [
     },
     timeline: [
       "A's long-term contracts with independent customers are valuable: they carry significant profit potential for A.",
-      "Later, A ends these contracts of its own accord.",
+      "Later, A ends these contracts by its own choice.",
       "The circumstances are such that the customers are obligated, legally or commercially, to make similar arrangements with B, a foreign entity belonging to the same MNE group as A.",
       "As a result, B now holds the contractual rights and the profit potential attached to them, which A held before."
     ],
@@ -895,7 +895,7 @@ globalThis.CASES = [
         ],
         correctIdx: 0,
         analysis:
-          "The Guidelines offer this as a case in which the CUP method could possibly be applied. Because the enterprise dealt with the group independently before it was acquired, the conditions of those uncontrolled transactions might provide a CUP for the controlled transactions that follow, but only after the five economically relevant characteristics (the comparability factors) have been reviewed, together with the possible effect of the two sets of transactions taking place at different times. Where the restructuring has changed the conditions, an adjustment for the functions, assets and/or risks transferred might still be feasible if the facts and circumstances allow it; the paragraph's own illustration is a comparability adjustment to reflect that the bad debt risk is assumed by a different party. The objection to before-and-after comparisons in ¶9.118 concerns earlier controlled transactions; here the earlier transactions were uncontrolled (¶9.125). Every step is put as a possibility: the paragraph does not say that the earlier transactions will in fact be reliable comparables.",
+          "The Guidelines offer this as a case in which the CUP method could possibly be applied. Because the enterprise dealt with the group independently before it was acquired, the conditions of those uncontrolled transactions might provide a CUP for the controlled transactions that follow, but only after the five economically relevant characteristics (the comparability factors) have been reviewed, together with the possible effect of the two sets of transactions taking place at different times. Where the restructuring has changed the conditions, an adjustment for the functions, assets and/or risks transferred might still be feasible if the facts and circumstances allow it; the paragraph's own illustration is a comparability adjustment to reflect that the bad debt risk is assumed by a different party. The objection to before-and-after comparisons in ¶9.118 concerns earlier controlled transactions; here the earlier transactions were uncontrolled (¶9.125). Every step is put as a possibility: ¶9.110 does not say that the earlier transactions will in fact be reliable comparables.",
         verdict: "Possible CUP, subject to review"
       }
     ],

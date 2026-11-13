@@ -329,7 +329,7 @@ globalThis.CASES = [
   group: "Parent Co · Company B",
   refs: "Draft (June 2026) · Main text · ¶7.20",
   atGlance:
-    "Company B, located in Country B, receives certain IT support services from its affiliate in Country A, Parent Co. It could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
+    "Company B, located in Country B, receives certain IT support services from its affiliate in Country A, Parent Co. Company B could have done the work in-house or bought it from local independent providers at lower cost. Does the cheaper alternative mean that the benefit test is not met?",
   parties: {
     kind: "tested-party",
     left: { name: "Parent Co (Country A)", role: "Performs IT support services" },

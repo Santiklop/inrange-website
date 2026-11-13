@@ -466,7 +466,7 @@ globalThis.CASES = [
       ],
       correctIdx: 0,
       analysis:
-        "¶10.226. What matters is how the high profitability arises and what each party contributes to it. A policy that is substantially the same could be obtained from any other insurer in the general market; the chance of a high profit comes from A's advantage of contact with the customer at the point of sale. A has an alternative, since it could have another insurer underwrite the policies and still keep most of the profit, whereas no other agent that B could find has that advantage. B's arm's-length remuneration would therefore be in line with the benchmarked return of insurers that insure similar risks, and the rest of the profit should be allocated to A.",
+        "¶10.226. What matters is how the high profitability arises and what each party contributes to it. Substantially the same policy is available from any other insurer in the general market; the chance of a high profit comes from A's advantage of contact with the customer at the point of sale. A has an alternative, since it could have another insurer underwrite the policies and still keep most of the profit, whereas no other agent that B could find has that advantage. B's arm's-length remuneration would therefore be in line with the benchmarked return of insurers that insure similar risks, and the rest of the profit should be allocated to A.",
       verdict: "Balance of profit to A"
     }
   ],

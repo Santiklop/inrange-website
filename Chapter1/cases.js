@@ -115,7 +115,7 @@ globalThis.CASES = [
       third: { name: "Subsidiaries of Company P", role: "Receive the services · do not reimburse Company P" },
       label1: "engagement and payment",
       label2: "services",
-      note: "No service agreement covers these services: Company P and its subsidiaries have not put one in place."
+      note: "Company P and its subsidiaries have not put a service agreement in place between them."
     },
     timeline: [
       "Company P engages an independent party to provide services.",
@@ -669,7 +669,7 @@ globalThis.CASES = [
       {
         letter: "—",
         facts:
-          "As lender, Company F has control of the financial risk on its loan, while the development risk lies wholly with the borrower, Company D. Exploiting the developed intangible then yields results above, or below, those calculated ex ante.",
+          "Company F, the lender, has control of the financial risk on its loan, while the development risk lies wholly with the borrower, Company D. Exploiting the developed intangible then yields results above, or below, those calculated ex ante.",
         question: "What is Company F entitled to?",
         mcq: [
           "A risk-adjusted rate of return on its loan, and no part of the difference between the projected and the actual results.",

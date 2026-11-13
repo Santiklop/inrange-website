@@ -388,7 +388,7 @@ globalThis.QUIZ_POOL = [
       "The development risk is not Company F's: as the transaction is accurately delineated, Company D assumes all of it.",
       "Once the developed intangible is exploited, actual results may come out above or below those calculated beforehand."
     ],
-    "facts": "As lender, Company F has control of the financial risk on its loan, while the development risk lies wholly with the borrower, Company D. Exploiting the developed intangible then yields results above, or below, those calculated ex ante.",
+    "facts": "Company F, the lender, has control of the financial risk on its loan, while the development risk lies wholly with the borrower, Company D. Exploiting the developed intangible then yields results above, or below, those calculated ex ante.",
     "question": "What is Company F entitled to?",
     "mcq": [
       "A risk-adjusted rate of return on its loan, and no part of the difference between the projected and the actual results.",
@@ -2952,7 +2952,7 @@ globalThis.QUIZ_POOL = [
       "The restructuring involves setting up a foreign associated enterprise, which acquires intangibles from several affiliates, the taxpayer among them.",
       "Under the new model, the foreign associated enterprise acquires the raw materials and places them on consignment at the taxpayer's premises for manufacturing against a fee. The foreign associated enterprise owns the stock of finished products; the taxpayer buys them for immediate resale, only after it has made a sale to a customer.",
       "Inventory risk, previously borne by the taxpayer, is now assumed under the contract by the foreign associated enterprise, which both controls that risk and has the financial capacity to assume it.",
-      "To move to the new arrangement, the taxpayer transfers to the foreign associated enterprise the raw materials and finished products that are on its balance sheet at that time."
+      "To move to the new arrangement, the taxpayer hands over to the foreign associated enterprise the raw materials and finished products then on its own balance sheet."
     ],
     "facts": "When the new arrangement starts, the taxpayer still has raw materials and finished products on its balance sheet, and these are transferred to the foreign associated enterprise. The taxpayer has manufactured the finished products, while the marketing and distribution functions for them still remain to be performed.",
     "question": "How is the arm's-length transfer price for the inventory determined?",
@@ -2973,7 +2973,7 @@ globalThis.QUIZ_POOL = [
     "caseTitle": "Customer contracts ended so an affiliate can step in",
     "timeline": [
       "A's long-term contracts with independent customers are valuable: they carry significant profit potential for A.",
-      "Later, A ends these contracts of its own accord.",
+      "Later, A ends these contracts by its own choice.",
       "The circumstances are such that the customers are obligated, legally or commercially, to make similar arrangements with B, a foreign entity belonging to the same MNE group as A.",
       "As a result, B now holds the contractual rights and the profit potential attached to them, which A held before."
     ],
@@ -3100,7 +3100,7 @@ globalThis.QUIZ_POOL = [
       "No: before-and-after comparisons are irrelevant under the arm's-length principle, so transactions from before a restructuring can never serve as comparables."
     ],
     "correctIdx": 0,
-    "analysis": "The Guidelines offer this as a case in which the CUP method could possibly be applied. Because the enterprise dealt with the group independently before it was acquired, the conditions of those uncontrolled transactions might provide a CUP for the controlled transactions that follow, but only after the five economically relevant characteristics (the comparability factors) have been reviewed, together with the possible effect of the two sets of transactions taking place at different times. Where the restructuring has changed the conditions, an adjustment for the functions, assets and/or risks transferred might still be feasible if the facts and circumstances allow it; the paragraph's own illustration is a comparability adjustment to reflect that the bad debt risk is assumed by a different party. The objection to before-and-after comparisons in ¶9.118 concerns earlier controlled transactions; here the earlier transactions were uncontrolled (¶9.125). Every step is put as a possibility: the paragraph does not say that the earlier transactions will in fact be reliable comparables.",
+    "analysis": "The Guidelines offer this as a case in which the CUP method could possibly be applied. Because the enterprise dealt with the group independently before it was acquired, the conditions of those uncontrolled transactions might provide a CUP for the controlled transactions that follow, but only after the five economically relevant characteristics (the comparability factors) have been reviewed, together with the possible effect of the two sets of transactions taking place at different times. Where the restructuring has changed the conditions, an adjustment for the functions, assets and/or risks transferred might still be feasible if the facts and circumstances allow it; the paragraph's own illustration is a comparability adjustment to reflect that the bad debt risk is assumed by a different party. The objection to before-and-after comparisons in ¶9.118 concerns earlier controlled transactions; here the earlier transactions were uncontrolled (¶9.125). Every step is put as a possibility: ¶9.110 does not say that the earlier transactions will in fact be reliable comparables.",
     "verdict": "Possible CUP, subject to review"
   },
   {
@@ -3354,7 +3354,7 @@ globalThis.QUIZ_POOL = [
       "A and B share the profit above their benchmarks equally, because the sale needs both A's customers and B's insurance cover."
     ],
     "correctIdx": 0,
-    "analysis": "¶10.226. What matters is how the high profitability arises and what each party contributes to it. A policy that is substantially the same could be obtained from any other insurer in the general market; the chance of a high profit comes from A's advantage of contact with the customer at the point of sale. A has an alternative, since it could have another insurer underwrite the policies and still keep most of the profit, whereas no other agent that B could find has that advantage. B's arm's-length remuneration would therefore be in line with the benchmarked return of insurers that insure similar risks, and the rest of the profit should be allocated to A.",
+    "analysis": "¶10.226. What matters is how the high profitability arises and what each party contributes to it. Substantially the same policy is available from any other insurer in the general market; the chance of a high profit comes from A's advantage of contact with the customer at the point of sale. A has an alternative, since it could have another insurer underwrite the policies and still keep most of the profit, whereas no other agent that B could find has that advantage. B's arm's-length remuneration would therefore be in line with the benchmarked return of insurers that insure similar risks, and the rest of the profit should be allocated to A.",
     "verdict": "Balance of profit to A"
   },
   {

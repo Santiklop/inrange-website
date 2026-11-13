@@ -19,23 +19,25 @@ Put every worked example in the OECD Transfer Pricing Guidelines on the site, so
 
 - **In:** passages the Guidelines label as an example or illustration, or that set out a fact pattern and draw a conclusion from it.
 - **Out:** illustrations of a sentence or two inside a paragraph (¶1.52, 1.170, 1.175, 2.48, 2.78, 6.41, 8.8) and passing "for example" phrases.
-- Chapters IV and V and their annexes have no worked examples. Amount B (2024 annex to Chapter IV) is outside the 2022 edition and out of scope.
+- Chapter V and the annexes to Chapters IV and V have no worked examples. Amount B (2024 annex to Chapter IV) is outside the 2022 edition and out of scope.
 
 The approved list, with a one-line description of each example, is in `tools/oecd-missing-examples-inventory.md`. The appendix below repeats the paragraph numbers so the scope is under version control.
 
 ## Scope and placement
 
-63 examples, written as 61 cases. The site goes from 85 cases to 146.
+66 examples, written as 64 cases. The site goes from 85 cases to 149.
+
+Aleks approved 63 of these on 13 November 2026. The independent review of the drafts then found three more passages that the Guidelines themselves treat as examples, and one variation of an example already on the list. They were added the same day and are reported to him at hand-over: ¶2.111 (the first of the three TNMM examples), ¶9.110 (a CUP from pre-acquisition transactions), ¶4.14–4.15 (burden of proof), and ¶1.90 (a variation of risk Example 1, added as a scenario).
 
 | Page | Today | Added | After |
 |---|---|---|---|
 | Chapter I (new, `Chapter1/`) | none | 21 examples as 20 cases | 20 |
-| Chapter II (new, `Chapter2/`) | none | 14 | 14 |
+| Chapter II (new, `Chapter2/`) | none | 15 | 15 |
 | Chapter VI | 31 | 2 from the main text | 33 |
 | Chapter VII (draft) | 21 | 9 from the draft's main text as 8 cases | 29 |
-| Chapter IX | 8 | 8 | 16 |
+| Chapter IX | 8 | 9 | 17 |
 | Chapter X | 2 | 7 | 9 |
-| Other examples | 7 | 2 (Chapters III and VIII) | 9 |
+| Other examples | 7 | 3 (Chapters III, IV and VIII) | 10 |
 | Profit split | 16 | none | 16 |
 
 Rule for cases: one case per OECD example. Where the Guidelines return to an example with changed facts, the variation is an extra scenario in the same case. Two pairs are merged because the Guidelines present them as a contrast: ¶1.114 with ¶1.125, and draft ¶7.81(a) with ¶7.81(b).
@@ -65,12 +67,12 @@ Rule for cases: one case per OECD example. Where the Guidelines return to an exa
 ### Themes (sidebar groups)
 
 - **Chapter I:** Contract versus conduct (¶1.44, 1.48, 1.50); Control over risk (¶1.69, 1.70); Economic significance of risk (¶1.74, 1.75); Risk analysis in six steps (¶1.83, 1.84, 1.85, 1.89); Risk-free and risk-adjusted returns (¶1.114 with 1.125, 1.119); Non-recognition (¶1.146, 1.148); Group synergies (¶1.184, 1.187, 1.188, 1.189, 1.190).
-- **Chapter II:** CUP method (3); Resale price method (3); Cost plus method (3); Transactional net margin method (2); Gross versus net profit indicators, Annex I (3).
+- **Chapter II:** CUP method (3); Resale price method (3); Cost plus method (3); Transactional net margin method (3); Gross versus net profit indicators, Annex I (3).
 - **Chapter VI:** new group "Use of intangibles in sales and services (main text)" (2).
 - **Chapter VII:** ¶7.20 joins "Benefit test"; ¶7.30 joins "Shareholder activity"; new groups "Services and intangibles" (¶7.12, 7.41), "Charging approaches" (¶7.44, 7.48) and "Low value-adding services" (¶7.81, 7.82).
-- **Chapter IX:** ¶9.25 joins "Risk reallocation & recognition"; ¶9.46–9.47, 9.49–9.53, 9.67, 9.74 and 9.94–9.97 join "Compensation for the restructuring itself"; ¶9.122–9.124 and 9.130–9.131 join "Post-restructuring TP & location savings".
+- **Chapter IX:** ¶9.25 joins "Risk reallocation & recognition"; ¶9.46–9.47, 9.49–9.53, 9.67, 9.74 and 9.94–9.97 join "Compensation for the restructuring itself"; ¶9.110, 9.122–9.124 and 9.130–9.131 join "Post-restructuring TP & location savings".
 - **Chapter X:** new groups "Delineating intra-group loans" (¶10.13, 10.25, 10.37), "Financial guarantees" (2) and "Captive insurance" (2).
-- **Other examples:** new group "Choosing the tested party (Ch.III)" (¶3.19); ¶8.33 with 8.38 joins "Cost contribution arrangements (Ch.VIII)".
+- **Other examples:** new groups "Choosing the tested party (Ch.III)" (¶3.19) and "Burden of proof (Ch.IV)" (¶4.14–4.15); ¶8.33 with 8.38 joins "Cost contribution arrangements (Ch.VIII)".
 
 ### Labels that tell sources apart
 
@@ -80,7 +82,7 @@ Rule for cases: one case per OECD example. Where the Guidelines return to an exa
 ## Page changes
 
 1. **Two new pages.** `Chapter1/` and `Chapter2/`, each a copy of `Chapter10/index.html` with its page-specific parts changed (about 25 lines: title, meta and share tags, active menu item, hero, closing call to action, footer source line, share constants, storage key), plus its own `cases.js`, `og-image.svg` and `og-image.png`.
-2. **Chapter menu on all eight pages plus the Quiz.** New items I ("The arm's length principle") and II ("Transfer pricing methods") at the start, in both the drop-down menu and the pill row. Counts become: I 20, II 14, VI 33, VII 29, IX 16, X 9, PS 16, Other 9.
+2. **Chapter menu on all eight pages plus the Quiz.** New items I ("The arm's length principle") and II ("Transfer pricing methods") at the start, in both the drop-down menu and the pill row. Counts become: I 20, II 15, VI 33, VII 29, IX 17, X 9, PS 16, Other 10.
 3. **Page text where the content changed.** Title, meta description, share tags, hero lead, footer source line and share text for Chapter VI (adds "and two from the main text"), Chapter VII (adds the main-text examples), Chapter IX (no longer "eight curated examples"), Chapter X (no longer only cash pooling) and Other examples (adds Chapters III and VIII main text).
 4. **Share images.** New `og-image.svg` and `og-image.png` (2400×1260) for the two new pages; updated ones wherever the image states a count or a scope that changed. PNGs are rendered from the SVGs with the puppeteer install in `deck/`.
 5. **Sitemap.** Add `/Chapter1/` and `/Chapter2/`; update `lastmod` on the changed pages.
@@ -118,10 +120,10 @@ Rule for cases: one case per OECD example. Where the Guidelines return to an exa
 
 Paragraph numbers are from the 2022 edition, except Chapter VII, which uses the June 2026 draft.
 
-- **Chapter I (21 examples, 20 cases):** ¶1.44; 1.48; 1.50; 1.69; 1.70; 1.74; 1.75; 1.83 (Example 1, with 1.101); 1.84 (Example 2, with 1.91 and 1.102); 1.85 (Example 3, with 1.92, 1.103, 1.106); 1.89; 1.114 with 1.125 (one case); 1.119; 1.146–1.147 (Example 1); 1.148 (Example 2); 1.184–1.186 (Example 1); 1.187 (Example 2); 1.188 (Example 3); 1.189 (Example 4); 1.190–1.193 (Example 5).
-- **Chapter II (14):** ¶2.24; 2.25; 2.26; 2.42; 2.43; 2.44; 2.59; 2.60; 2.61; 2.112; 2.113; Annex I Illustrations 1, 2 and 3.
+- **Chapter I (21 examples, 20 cases):** ¶1.44; 1.48; 1.50; 1.69; 1.70; 1.74; 1.75; 1.83 (Example 1, with 1.90 and 1.101); 1.84 (Example 2, with 1.91 and 1.102); 1.85 (Example 3, with 1.92, 1.103, 1.106); 1.89; 1.114 with 1.125 (one case); 1.119; 1.146–1.147 (Example 1); 1.148 (Example 2); 1.184–1.186 (Example 1); 1.187 (Example 2); 1.188 (Example 3); 1.189 (Example 4); 1.190–1.193 (Example 5).
+- **Chapter II (15):** ¶2.24; 2.25; 2.26; 2.42; 2.43; 2.44; 2.59; 2.60; 2.61; 2.111; 2.112; 2.113; Annex I Illustrations 1, 2 and 3.
 - **Chapter VI (2):** ¶6.105; 6.106.
 - **Chapter VII, draft (9 examples, 8 cases):** ¶7.12; 7.20; 7.30; 7.41; 7.44; 7.48; 7.81(a) with 7.81(b) (one case); 7.82.
-- **Chapter IX (8):** ¶9.25; 9.46–9.47; 9.49–9.53; 9.67; 9.74; 9.94–9.97; 9.122–9.124; 9.130–9.131.
+- **Chapter IX (9):** ¶9.25; 9.46–9.47; 9.49–9.53; 9.67; 9.74; 9.94–9.97; 9.110; 9.122–9.124; 9.130–9.131.
 - **Chapter X (7):** ¶10.13; 10.25; 10.37; 10.184–10.186 (Example 1); 10.187–10.188 (Example 2); 10.223; 10.225–10.226.
-- **Other examples (2):** ¶3.19; 8.33 with 8.38.
+- **Other examples (3):** ¶3.19; 4.14–4.15; 8.33 with 8.38.

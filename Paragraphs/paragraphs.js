@@ -108,26 +108,38 @@ function setupScrollProgress()       {
   update();
 }
 
-/** Highlights the section in view in the contents list. */
+/** Highlights, in the contents list, the section being read: the last one whose heading has passed
+ *  the reading line just below the sticky header. Works after a jump into the middle of a section too. */
 function setupScrollSpy()       {
   const sidebar = document.getElementById('sidebar');
   if (!sidebar) return;
-  const items = new Map                     ();
-  for (const link of sidebar.querySelectorAll                   ('li a[href^="#"]')) items.set(decodeURIComponent(link.hash.slice(1)), link.parentElement );
-  const observer = new IntersectionObserver(entries => {
-    for (const entry of entries) {
-      const item = entry.isIntersecting ? items.get(entry.target.id) : undefined;
-      if (!item) continue;
-      for (const other of items.values()) other.classList.remove('toc__item--active');
-      item.classList.add('toc__item--active');
-      const outside = item.offsetTop < sidebar.scrollTop || item.offsetTop > sidebar.scrollTop + sidebar.clientHeight - 40;
-      if (outside && !matchMedia('(max-width: 1023px)').matches) sidebar.scrollTo({ top: item.offsetTop - sidebar.clientHeight / 3 });
-    }
-  }, { rootMargin: '-90px 0px -70% 0px' });
-  for (const id of items.keys()) {
-    const heading = document.getElementById(id);
-    if (heading) observer.observe(heading);
+  const sections                                                = [];
+  for (const link of sidebar.querySelectorAll                   ('li a[href^="#"]')) {
+    const heading = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+    if (heading) sections.push({ item: link.parentElement , heading });
   }
+  if (!sections.length) return;
+  let current                     = null;
+  const update = () => {
+    let found                     = null;
+    // The headings come in page order, so the first one below the line ends the search.
+    for (const { item, heading } of sections) {
+      if (heading.getBoundingClientRect().top > 120) break;
+      found = item;
+    }
+    if (found === current) return;
+    current?.classList.remove('toc__item--active');
+    found?.classList.add('toc__item--active');
+    current = found;
+    if (!found || matchMedia('(max-width: 1023px)').matches) return;
+    const outside = found.offsetTop < sidebar.scrollTop || found.offsetTop > sidebar.scrollTop + sidebar.clientHeight - 40;
+    if (outside) sidebar.scrollTo({ top: found.offsetTop - sidebar.clientHeight / 3 });
+  };
+  // Browsers send scroll events at most once per frame, so the update can run on each one.
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update, { passive: true });
+  window.addEventListener('load', update);
+  update();
 }
 
 // ---------- paragraphs: copy, link, footnotes ----------

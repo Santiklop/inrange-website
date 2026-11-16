@@ -58,7 +58,6 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 }
 [data-theme="dark"] .site-header{background:rgba(10,16,24,.78);border-bottom-color:rgba(255,255,255,.08)}
 [data-theme="dark"] .brand-text{color:#EBEFF5}
-[data-theme="dark"] .brand-text .accent{color:var(--brand-green-300)}
 [data-theme="dark"] .header-btn.ghost{color:var(--fg-1);border-color:var(--border-default)}
 [data-theme="dark"] .header-btn.ghost:hover{background:var(--bg-muted)}
 [data-theme="dark"] .header-btn.primary{background:var(--brand-green-500);border-color:var(--brand-green-500);color:#fff}
@@ -149,7 +148,6 @@ body{margin:0;font-family:var(--font-sans);font-size:16px;line-height:1.55;color
 .brand-mark{width:28px;height:28px;flex-shrink:0}
 @media (max-width:767px){.brand-mark{width:24px;height:24px}}
 .brand-text{font-family:var(--font-sans);font-weight:800;font-size:18px;color:var(--fg-1);letter-spacing:-.02em}
-.brand-text .accent{color:var(--brand-green-600)}
 @media (max-width:767px){.brand-text{display:none}}
 .brand-corner{display:none;align-items:center;text-decoration:none;flex-shrink:0;transition:opacity 140ms ease}
 .brand-corner:hover{opacity:.75}
@@ -525,6 +523,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 [data-theme="dark"] .chapter-pill--quiz:hover{background:var(--brand-navy-300);border-color:var(--brand-navy-300);color:var(--brand-navy-900)}
 
 [data-theme="dark"] .chapter-pill--quiz .chapter-pill__num{background:rgba(255,255,255,.22);color:#fff}
+/* reference line: paragraph numbers link to the OECD text on /Paragraphs/ */
+.oecd-case__ref-link{color:var(--fg-link);text-decoration:underline;text-decoration-color:var(--brand-green-200);text-underline-offset:2px}
+.oecd-case__ref-link:hover{text-decoration-color:currentColor}
+[data-theme="dark"] .oecd-case__ref-link{color:var(--brand-green-300);text-decoration-color:rgba(108,206,137,.4)}
 </style>
 </head>
 <body>
@@ -558,7 +560,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
           <rect x="13.5" y="13" width="5" height="15" rx="1.2" fill="#1FA84A"/>
           <rect x="21" y="7" width="5" height="21" rx="1.2" fill="#1FA84A"/>
         </svg>
-        <span class="brand-text">in<span class="accent">Range</span></span>
+        <span class="brand-text">inRange</span>
       </a>
     </div>
     <div class="header-actions">
@@ -613,6 +615,11 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
             <span class="chapter-nav-item__num">+</span>
             <span class="chapter-nav-item__title">Other examples</span>
             <span class="chapter-nav-item__count">10</span>
+          </a>
+          <a class="chapter-nav-item" href="/Paragraphs/" role="menuitem">
+            <span class="chapter-nav-item__num">¶</span>
+            <span class="chapter-nav-item__title">OECD TPG by paragraph</span>
+            <span class="chapter-nav-item__count">2,034</span>
           </a>
         </div>
       </div>
@@ -696,6 +703,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
             <span class="chapter-pill__num">+</span>
             <span class="chapter-pill__title">Other examples</span>
           </a>
+          <a class="chapter-pill" href="/Paragraphs/" data-pill-num="¶">
+            <span class="chapter-pill__num">¶</span>
+            <span class="chapter-pill__title">OECD TPG by paragraph</span>
+          </a>
         </nav>
         <p class="how-to-mini"><strong>🧠 Test yourself</strong> — three options per scenario, instant feedback. <strong>👀 Show OECD answer</strong> — skip the test.</p>
       </div>
@@ -772,6 +783,7 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   </main>
 </div>
 
+<script src="/Paragraphs/ref-links.js"></script>
 <script src="cases.js"></script>
 <script>
 (function () {
@@ -909,13 +921,30 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
   }
 
   // ---------- renderers ----------
+  // Paragraph numbers in the reference line link to the OECD text on /Paragraphs/. Their places come
+  // from /Paragraphs/ref-links.js (built by mcp-server/scripts/tpg/build-pages.ts); a line that no
+  // longer matches them is shown as plain text.
+  function refsNodes(c) {
+    const links = ((globalThis.TPG_REF_LINKS || {})["Chapter7"] || {})[c.id] || [];
+    const tail = c.group ? ` · ${c.group}` : "";
+    if (!links.every(([start, end, , text]) => c.refs.slice(start, end) === text)) return [c.refs + tail];
+    const out = [];
+    let at = 0;
+    for (const [start, end, href] of links) {
+      if (start > at) out.push(c.refs.slice(at, start));
+      out.push(el("a", { class: "oecd-case__ref-link", attrs: { href } }, c.refs.slice(start, end)));
+      at = end;
+    }
+    out.push(c.refs.slice(at) + tail);
+    return out;
+  }
   function renderHeader(c) {
     return el(
       "header",
       {},
       el("div", { class: "oecd-case__theme" }, c.themeLabel),
       el("h2", { class: "oecd-case__title" }, `Example ${c.id} — ${c.title}`),
-      el("p", { class: "oecd-case__refs" }, c.refs + (c.group ? ` · ${c.group}` : ""))
+      el("p", { class: "oecd-case__refs" }, ...refsNodes(c))
     );
   }
 

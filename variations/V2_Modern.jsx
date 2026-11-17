@@ -832,7 +832,31 @@ function V2_Modern() {
             </div>
           ))}
         </div>
-        <div style={{ maxWidth: 1320, margin: isMobile ? '36px auto 0' : '56px auto 0', paddingTop: 24, borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 12 : 0, justifyContent: 'space-between', fontSize: 12, color: 'var(--fg-3)' }}>
+        {/* Quiet links to every free section, so that search engines reach them from the homepage.
+            Kept out of the Open Practice list on purpose (Aleks, 17 November 2026): small, under the
+            footer columns and above the copyright line. */}
+        <nav aria-label="Free materials" style={{ maxWidth: 1320, margin: isMobile ? '36px auto 0' : '48px auto 0', display: 'flex', flexWrap: 'wrap', gap: isMobile ? '8px 20px' : '6px 28px', fontSize: 12, lineHeight: 1.7, color: 'var(--fg-3)' }}>
+          {/* In the order Aleks gave: the Guidelines, their examples by chapter, the Quiz, the Claude connector. */}
+          {[
+            ['OECD TP Guidelines', '/Paragraphs/'],
+            ['OECD TP Guidelines Examples', [['Chapter I', '/Chapter1/'], ['Chapter II', '/Chapter2/'], ['Chapter VI', '/Chapter6/'], ['Chapter VII (draft)', '/Chapter7/'], ['Chapter IX', '/Chapter9/'], ['Chapter X', '/Chapter10/'], ['Profit split', '/ProfitSplit/'], ['Chapters III, IV and VIII', '/OtherExamples/']]],
+            ['TP Quiz', '/Quiz/'],
+            ['Claude MCP', '/connector/guidelines/'],
+          ].map(([label, target]) => typeof target === 'string' ? (
+            <a key={target} href={target} style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>{label}</a>
+          ) : (
+            <span key={label}>
+              {`${label}: `}
+              {target.map(([text, href], i) => (
+                <React.Fragment key={href}>
+                  {i > 0 && <span aria-hidden="true"> · </span>}
+                  <a href={href} style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>{text}</a>
+                </React.Fragment>
+              ))}
+            </span>
+          ))}
+        </nav>
+        <div style={{ maxWidth: 1320, margin: isMobile ? '24px auto 0' : '28px auto 0', paddingTop: 24, borderTop: '1px solid var(--border-subtle)', display: 'flex', flexDirection: isMobile ? 'column' : 'row', gap: isMobile ? 12 : 0, justifyContent: 'space-between', fontSize: 12, color: 'var(--fg-3)' }}>
           <div>© 2026 inRange Solutions B.V.</div>
           <div style={{ display: 'flex', gap: 18, flexWrap: 'wrap', alignItems: 'center' }}>
             <a href="#top" onClick={scrollTo('top')} style={{ color: 'inherit', textDecoration: 'none', cursor: 'pointer' }}>Back to top</a>

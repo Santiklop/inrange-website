@@ -507,6 +507,10 @@ a.toc__group-label:hover{color:var(--brand-green-700)}
 .oecd-case__ref-link{color:var(--fg-link);text-decoration:underline;text-decoration-color:var(--brand-green-200);text-underline-offset:2px}
 .oecd-case__ref-link:hover{text-decoration-color:currentColor}
 [data-theme="dark"] .oecd-case__ref-link{color:var(--brand-green-300);text-decoration-color:rgba(108,206,137,.4)}
+/* example title: links to the example's own page, /<page>/examples/<id>/ */
+.oecd-case__title-link{color:inherit;text-decoration:none}
+.oecd-case__title-link:hover,.oecd-case__title-link:focus-visible{text-decoration:underline;text-decoration-color:var(--brand-green-200);text-decoration-thickness:2px;text-underline-offset:4px}
+[data-theme="dark"] .oecd-case__title-link:hover,[data-theme="dark"] .oecd-case__title-link:focus-visible{text-decoration-color:rgba(108,206,137,.5)}
 
 /* scripts/tpg/site/paragraphs.css
    Styles of the /Paragraphs/ pages. build-pages.ts writes the example pages' own styles (from

@@ -862,13 +862,18 @@ function V2_Modern() {
         {/* Quiet links to every free section, so that search engines reach them from the homepage.
             Kept out of the Open Practice list on purpose (Aleks, 17 November 2026): small, at the very bottom. */}
         <nav aria-label="Free materials" style={{ maxWidth: 1320, margin: '20px auto 0', display: 'flex', flexWrap: 'wrap', gap: isMobile ? '8px 20px' : '6px 28px', fontSize: 12, lineHeight: 1.7, color: 'var(--fg-3)' }}>
+          {/* In the order Aleks gave: the Guidelines, their examples by chapter, the Quiz, the Claude connector. */}
           {[
-            ['OECD examples', [['Chapter I', '/Chapter1/'], ['Chapter II', '/Chapter2/'], ['Chapter VI', '/Chapter6/'], ['Chapter VII (draft)', '/Chapter7/'], ['Chapter IX', '/Chapter9/'], ['Chapter X', '/Chapter10/'], ['Profit split', '/ProfitSplit/'], ['Chapters III, IV and VIII', '/OtherExamples/']]],
-            ['Also free', [['OECD TPG by paragraph', '/Paragraphs/'], ['TP Quiz', '/Quiz/'], ['OECD Guidelines in Claude', '/connector/guidelines/']]],
-          ].map(([label, links]) => (
+            ['OECD TP Guidelines', '/Paragraphs/'],
+            ['OECD TP Guidelines Examples', [['Chapter I', '/Chapter1/'], ['Chapter II', '/Chapter2/'], ['Chapter VI', '/Chapter6/'], ['Chapter VII (draft)', '/Chapter7/'], ['Chapter IX', '/Chapter9/'], ['Chapter X', '/Chapter10/'], ['Profit split', '/ProfitSplit/'], ['Chapters III, IV and VIII', '/OtherExamples/']]],
+            ['TP Quiz', '/Quiz/'],
+            ['Claude MCP', '/connector/guidelines/'],
+          ].map(([label, target]) => typeof target === 'string' ? (
+            <a key={target} href={target} style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>{label}</a>
+          ) : (
             <span key={label}>
-              {label}:{' '}
-              {links.map(([text, href], i) => (
+              {`${label}: `}
+              {target.map(([text, href], i) => (
                 <React.Fragment key={href}>
                   {i > 0 && <span aria-hidden="true"> · </span>}
                   <a href={href} style={{ color: 'inherit', textDecoration: 'none', whiteSpace: 'nowrap' }}>{text}</a>

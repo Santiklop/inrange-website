@@ -25,10 +25,24 @@ Make the homepage more recognisably inRange's own by changing details only. The 
 - **Client band (phone layout):** the dots between client names become squares of the same size: 3 px, 0.5 px radius, 50% opacity.
 - **Reduced motion:** visitors whose system asks for less motion see the bars empty (pale green) and still.
 
+## Also changed
+
+- **Services panel label:** the small label above the selected service's title is back in green capitals, as on the other dark sections.
+- **TP Documentation page:** the headline words are navy, and only the full stop is green (the same square).
+- **Capability deck** (assets/inRange_Capability_Deck.pdf). The slides are built locally from deck/web; the folder is not in git. A copy of the previous version is in deck/_backup-2026-11-18. Both versions were updated the same way, the standard one and the one with Aleks's photo:
+  - no green glows or decorative circles;
+  - the logo's bars before "Transfer pricing · Amsterdam" on the cover;
+  - the cover and contact headlines end in the green square instead of a green word;
+  - the services cards get a small green square instead of numbered circles, and straighter (2 mm) corners;
+  - the "At a glance" card has straighter corners;
+  - the advantages are numbered with one, two or three lit bars;
+  - the photo keeps its circle and thin green ring, without the soft halo.
+
 ## Not changed
 
 - Layout, navigation, buttons, cards, icons and copy.
-- The other pages. The TP Documentation headline still has a green word; changing it is a separate decision.
+- The other pages, apart from the TP Documentation headline.
+- In the deck: the "How we work" circles, the projects slide (except its glows), and the short green line under each slide heading.
 
 ## Considered and not chosen
 

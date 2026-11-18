@@ -465,8 +465,8 @@ function V2_Modern() {
               <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', borderRadius: 8, minHeight: 440, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 {(() => { const svc = services[activeService < 0 ? 0 : activeService]; return (
                 <div>
-                  <div style={{ fontSize: 13, fontWeight: 600, color: 'rgba(255,255,255,0.62)' }}>{svc.sub}</div>
-                  <h3 style={{ color: '#fff', fontSize: 40, margin: '14px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{svc.title}</h3>
+                  <Eyebrow color="var(--brand-green-300)">{svc.sub}</Eyebrow>
+                  <h3 style={{ color: '#fff', fontSize: 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{svc.title}</h3>
                   <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{svc.body}</p>
                 </div>
                 ); })()}

@@ -28,6 +28,9 @@ Make the homepage more recognisably inRange's own by changing details only. The 
 ## Also changed
 
 - **Services panel label:** the small label above the selected service's title is back in green capitals, as on the other dark sections.
+- **Top bar:** it no longer runs off the screen. It used to overflow at 768–881 px and at 1024–1146 px.
+  - **768–1023 px:** the links move into the menu, as on phones. The bar shows the logo, the Capability deck button and the menu button.
+  - **1024–1199 px:** the links are slightly tighter, and "Let's connect" is left out.
 - **TP Documentation page:** the headline words are navy, and only the full stop is green (the same square).
 - **Capability deck** (assets/inRange_Capability_Deck.pdf). The slides are built locally from deck/web; the folder is not in git. A copy of the previous version is in deck/_backup-2026-11-18. Both versions were updated the same way, the standard one and the one with Aleks's photo:
   - no green glows or decorative circles;
@@ -36,7 +39,8 @@ Make the homepage more recognisably inRange's own by changing details only. The 
   - the services cards get a small green square instead of numbered circles, and straighter (2 mm) corners;
   - the "At a glance" card has straighter corners;
   - the advantages are numbered with one, two or three lit bars;
-  - the photo keeps its circle and thin green ring, without the soft halo.
+  - the photo keeps its circle and thin green ring, without the soft halo;
+  - the website's logo (three green bars and "inRange") sits top right on the cover and the closing slide, and small in the footers of the other slides. The old logo with the arrow is not used.
 
 ## Not changed
 

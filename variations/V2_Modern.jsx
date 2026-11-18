@@ -87,6 +87,8 @@ function V2_Modern() {
   const isMobile = window.useMediaQuery('(max-width: 767px)');
   const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const isNarrow = isMobile || isTablet;
+  // Small desktops (1024–1199 px): the full top bar needs about 1150 px, so it gets tighter links and no "Let's connect".
+  const isCompactDesktop = window.useMediaQuery('(min-width: 1024px) and (max-width: 1199px)');
   const reducedMotion = window.useMediaQuery('(prefers-reduced-motion: reduce)');
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
   React.useEffect(() => {
@@ -185,10 +187,10 @@ function V2_Modern() {
       }}>
         <div style={{ maxWidth: 1320, margin: '0 auto', padding: isMobile ? '12px 20px' : '14px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
           <Logo height={isMobile ? 24 : 28} />
-          {!isMobile && (
-            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: isTablet ? 3 : 4, borderRadius: 999 }}>
+          {!isNarrow && (
+            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: 4, borderRadius: 999 }}>
               {navLinks.map(([label, target]) => {
-                const linkStyle = { padding: isTablet ? '5px 9px' : '8px 16px', fontSize: isTablet ? 11.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' };
+                const linkStyle = { padding: isCompactDesktop ? '8px 12px' : '8px 16px', fontSize: 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' };
                 return isExternalLink(target)
                   ? <a key={target} href={target} style={linkStyle}>{label}</a>
                   : <a key={target} href={`#${target}`} onClick={scrollTo(target)} style={linkStyle}>{label}</a>;
@@ -196,9 +198,9 @@ function V2_Modern() {
             </div>
           )}
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            {!isNarrow && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
+            {!isNarrow && !isCompactDesktop && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
             {!isMobile && <Button variant="primary" size="sm" iconRight="download" onClick={downloadDeck}>Capability deck</Button>}
-            {isMobile && (
+            {isNarrow && (
               <button
                 aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
                 onClick={() => setMobileNavOpen(o => !o)}
@@ -209,8 +211,8 @@ function V2_Modern() {
             )}
           </div>
         </div>
-        {isMobile && mobileNavOpen && (
-          <div style={{ borderTop: '1px solid var(--border-subtle)', background: '#fff', padding: '12px 20px 20px' }}>
+        {isNarrow && mobileNavOpen && (
+          <div style={{ borderTop: '1px solid var(--border-subtle)', background: '#fff', padding: isMobile ? '12px 20px 20px' : '12px 40px 24px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 16 }}>
               {navLinks.map(([label, target]) => {
                 const linkStyle = { padding: '12px 14px', fontSize: 15, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 10, textDecoration: 'none', cursor: 'pointer' };

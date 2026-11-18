@@ -14,9 +14,14 @@ Make the homepage more recognisably inRange's own by changing details only. The 
     - Each bar keeps a pale copy (brand green 100).
     - Its green level rises and falls between 25% and 100% of the bar, over 1.8 s.
     - Each bar runs 0.3 s after its left neighbour.
-  - **Contact section ("We'd love to hear from you"):** the large faint circle and the ring become a faint copy of the bars in the top-right corner, also waving. On the dark background the colours are see-through greens, 12% for empty and 34% for full, so empty stays the fainter of the two.
-  - **"At a glance" card and the services panel** (wide and narrow layouts): the faint circles become a faint, still copy of the bars.
   - **Advantages:** 01, 02 and 03 become the bars with one, two or three lit.
+- **Dark panels:** none has decoration any more; the faint circles and the ring are gone.
+  - **"At a glance" card and the contact section:** unchanged otherwise, but with 8 px corners (were 20 px and 28 px).
+  - **Services, "navy, simpler":**
+    - no card or shadow around the list, and no icon tiles;
+    - a small square marks each service, filled green for the selected one;
+    - the selected service's description sits in a navy panel with 8 px corners and a sentence-case label above the title;
+    - on phone and tablet the fold-out list keeps working, restyled the same way.
 - **Client band (phone layout):** the dots between client names become squares of the same size: 3 px, 0.5 px radius, 50% opacity.
 - **Reduced motion:** visitors whose system asks for less motion see the bars empty (pale green) and still.
 
@@ -30,15 +35,20 @@ Make the homepage more recognisably inRange's own by changing details only. The 
 - Three larger directions built around the arm's length range: a range line, real benchmark ranges in the hero, and a full-width range band.
 - Four other ways to mark the headline word: the bars as the full stop, an underline, a marker, and a bold word.
 - Two other animations: fill and drain, and light up in turn.
+- A faint copy of the bars in the corners of the dark panels, waving on the contact section. It was built, then dropped.
+- For the dark panels:
+  - light (pale grey) versions;
+  - an open layout: no box at the top, all six services shown at once, and a full-width navy band for contact.
 
 ## Checks
 
 - **Headless checks** at desktop 1280 px, tablet 820 px, phone 375 px, and with reduced motion:
   - no script errors;
   - the headline ends in the green square, with no gradient;
-  - two waving marks;
-  - no circles left;
+  - one waving mark, above the headline;
+  - no decoration on the dark panels, and 8 px corners on all three;
+  - the services list has six squares and no icon tiles; hovering a service (desktop) or tapping it (phone) shows its description;
   - three numbered advantage marks;
   - square separators on the phone;
-  - with reduced motion, the green layer is hidden.
+  - with reduced motion, the bars stay empty.
 - **Prerendered snapshot:** regenerated with `node tools/prerender.mjs`. With JavaScript off, the page shows the new design.

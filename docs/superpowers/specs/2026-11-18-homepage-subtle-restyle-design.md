@@ -40,7 +40,7 @@ Make the homepage more recognisably inRange's own by changing details only. The 
   - the "At a glance" card has straighter corners;
   - the advantages are numbered with one, two or three lit bars;
   - the photo keeps its circle and thin green ring, without the soft halo;
-  - the website's logo (three green bars and "inRange") sits top right on the cover and the closing slide, and small in the footers of the other slides. The old logo with the arrow is not used.
+  - the website's logo (three green bars and "inRange") sits top right on the cover and the closing slide, and small in the footers of the other slides. The old logo with the arrow is not used. The mark is 1.53 times the text size, with a 0.59em gap, and lifted slightly so the bars sit level with the bottom of the letters. On dark slides the wordmark is a soft off-white (#E7ECF3).
 
 ## Not changed
 

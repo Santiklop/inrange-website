@@ -23,6 +23,28 @@ const MOBILE_BAND_CLIENTS = [
   ...TRUSTED_CLIENTS.filter(c => !MOBILE_BAND_LEAD.includes(c.name)),
 ];
 
+// The logo's three bars as a small mark (same geometry as Logo in components/Brand.jsx).
+// `active` turns the later bars pale (1, 2 or 3 green), so the mark can number three items.
+// `wave` animates it: each bar keeps a pale copy while its green level rises and falls a little
+// after its left neighbour (.lb-wave in the page styles). With reduced motion the bars stay pale.
+// On a dark background pass `green` and `pale` as see-through greens, so empty stays the fainter of the two.
+const LOGO_BAR_RECTS = [{ x: 6, y: 18, h: 10 }, { x: 13.5, y: 13, h: 15 }, { x: 21, y: 7, h: 21 }];
+function LogoBars({ height = 12, active = 3, wave = false, green = 'var(--brand-green-500)', pale = 'var(--brand-green-100)', style = {} }) {
+  return (
+    <svg viewBox="5 7 22 21" aria-hidden="true" className={wave ? 'lb-wave' : undefined}
+      style={{ height, width: height * 22 / 21, flexShrink: 0, display: 'block', ...style }}>
+      {LOGO_BAR_RECTS.map((b, i) => wave ? (
+        <g key={i}>
+          <rect x={b.x} y={b.y} width="5" height={b.h} rx="1.2" fill={pale} />
+          <rect className="lb-wave-fill" x={b.x} y={b.y} width="5" height={b.h} rx="1.2" fill={green} style={{ animationDelay: `${(i - 2) * 0.3}s` }} />
+        </g>
+      ) : (
+        <rect key={i} x={b.x} y={b.y} width="5" height={b.h} rx="1.2" fill={i < active ? green : pale} />
+      ))}
+    </svg>
+  );
+}
+
 // Link button with a potion flask (green liquid, two bubbles) that tilts on hover — used for the benchmark explorer.
 function PotionButton({ label, href }) {
   const [hov, setHov] = React.useState(false);
@@ -205,19 +227,13 @@ function V2_Modern() {
           {/* LEFT: headline */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 16 : 24 }}>
-              <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--brand-green-500)', animation: 'pulse 2s ease-in-out infinite' }} />
+              <LogoBars height={13} wave />
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-brand)' }}>Transfer pricing · Amsterdam</span>
             </div>
             <h1 style={{
               margin: 0, fontSize: isMobile ? 42 : (isTablet ? 58 : 76), lineHeight: 0.95, letterSpacing: '-0.035em', fontWeight: 700,
             }}>
-              Your trusted{isNarrow ? ' ' : <br/>}transfer pricing <span style={{
-                // backgroundImage (not the background shorthand): Chromium serializes
-                // the shorthand + backgroundClip combo to empty longhands, which
-                // breaks the prerendered snapshot.
-                backgroundImage: 'linear-gradient(105deg, var(--brand-green-500), var(--brand-green-700))',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-              }}>partner.</span>
+              Your trusted{isNarrow ? ' ' : <br/>}transfer pricing partner<span aria-hidden="true" style={{ display: 'inline-block', width: '0.15em', height: '0.15em', backgroundColor: 'var(--brand-green-500)', borderRadius: '0.025em', marginLeft: '0.05em' }} />
             </h1>
             <p style={{ fontSize: isMobile ? 16 : 20, lineHeight: 1.5, color: 'var(--fg-2)', margin: isMobile ? '20px 0 28px' : '28px 0 36px', maxWidth: 560 }}>
               High-quality Transfer Pricing services for multinational companies.
@@ -274,7 +290,7 @@ function V2_Modern() {
                         {[...MOBILE_BAND_CLIENTS, ...MOBILE_BAND_CLIENTS].map((c, i) => (
                           <React.Fragment key={`${c.name}-${i}`}>
                             <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)' }}>{c.name}</span>
-                            <span style={{ width: 3, height: 3, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
+                            <span style={{ width: 3, height: 3, borderRadius: 0.5, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
                           </React.Fragment>
                         ))}
                       </div>
@@ -291,7 +307,7 @@ function V2_Modern() {
             background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 20, padding: isTablet ? 24 : 32,
             position: 'relative', overflow: 'hidden',
           }}>
-            <div style={{ position: 'absolute', top: -80, right: -80, width: 220, height: 220, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.1 }} />
+            <LogoBars height={isTablet ? 48 : 60} style={{ position: 'absolute', top: isTablet ? 24 : 32, right: isTablet ? 24 : 32, opacity: 0.25 }} />
             <div style={{ position: 'relative' }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)' }}>At a glance</div>
               <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -412,7 +428,7 @@ function V2_Modern() {
                     </div>
                     {active && (
                       <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '4px 24px 28px', margin: '0 0 8px', borderRadius: '0 0 14px 14px', position: 'relative', overflow: 'hidden' }}>
-                        <div style={{ position: 'absolute', top: -60, right: -60, width: 180, height: 180, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
+                        <LogoBars height={48} style={{ position: 'absolute', top: 20, right: 20, opacity: 0.2 }} />
                         <div style={{ position: 'relative' }}>
                           <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
                           {(() => {
@@ -468,7 +484,7 @@ function V2_Modern() {
                 ))}
               </div>
               <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: -80, right: -80, width: 280, height: 280, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
+                <LogoBars height={84} style={{ position: 'absolute', top: 36, right: 40, opacity: 0.2 }} />
                 {(() => { const svc = services[activeService < 0 ? 0 : activeService]; return (
                 <div style={{ position: 'relative' }}>
                   <Eyebrow color="var(--brand-green-300)">{svc.sub}</Eyebrow>
@@ -690,7 +706,7 @@ function V2_Modern() {
                 onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; } }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--brand-green-600)' }}>0{i+1}</div>
+                  <LogoBars height={18} active={i + 1} />
                   <Badge tone="success" dot={false}>{x.tag}</Badge>
                 </div>
                 <h3 style={{ fontSize: 24, margin: '0 0 16px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>{x.title}</h3>
@@ -760,8 +776,7 @@ function V2_Modern() {
           maxWidth: 1320, margin: '0 auto', background: 'var(--brand-navy-800)',
           borderRadius: isMobile ? 20 : 28, padding: isMobile ? '48px 24px' : (isTablet ? '64px 40px' : '96px 80px'), color: '#fff', position: 'relative', overflow: 'hidden',
         }}>
-          <div style={{ position: 'absolute', top: isNarrow ? -80 : -120, right: isNarrow ? -80 : -120, width: isMobile ? 220 : (isTablet ? 300 : 400), height: isMobile ? 220 : (isTablet ? 300 : 400), borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.14 }} />
-          {!isNarrow && <div style={{ position: 'absolute', top: 80, right: 160, width: 180, height: 180, borderRadius: 999, border: '1px solid rgba(255,255,255,0.15)' }} />}
+          <LogoBars height={isMobile ? 56 : (isTablet ? 96 : 132)} wave green="rgba(31, 168, 74, 0.34)" pale="rgba(31, 168, 74, 0.12)" style={{ position: 'absolute', top: isMobile ? 28 : 56, right: isMobile ? 24 : 72 }} />
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.2fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: isNarrow ? 'start' : 'end' }}>
             <div>
               <Eyebrow color="var(--brand-green-300)">We'd love to hear from you</Eyebrow>
@@ -889,6 +904,9 @@ function V2_Modern() {
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes tpMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .lb-wave .lb-wave-fill { transform-box: fill-box; transform-origin: 50% 100%; animation: lbWave 1.8s ease-in-out infinite; }
+        @keyframes lbWave { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+        @media (prefers-reduced-motion: reduce) { .lb-wave .lb-wave-fill { animation: none; opacity: 0; } }
         .tp-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); transition: background 160ms ease, border-color 160ms ease, color 160ms ease; }
         .tp-pill:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.92); }
       `}</style>

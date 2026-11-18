@@ -23,6 +23,34 @@ const MOBILE_BAND_CLIENTS = [
   ...TRUSTED_CLIENTS.filter(c => !MOBILE_BAND_LEAD.includes(c.name)),
 ];
 
+// The logo's three bars as a small mark (same geometry as Logo in components/Brand.jsx).
+// `active` turns the later bars pale (1, 2 or 3 green), so the mark can number three items.
+// `wave` animates it: each bar keeps a pale copy while its green level rises and falls a little
+// after its left neighbour (.lb-wave in the page styles). With reduced motion the bars stay pale.
+const LOGO_BAR_RECTS = [{ x: 6, y: 18, h: 10 }, { x: 13.5, y: 13, h: 15 }, { x: 21, y: 7, h: 21 }];
+function LogoBars({ height = 12, active = 3, wave = false, style = {} }) {
+  const green = 'var(--brand-green-500)';
+  const pale = 'var(--brand-green-100)';
+  return (
+    <svg viewBox="5 7 22 21" aria-hidden="true" className={wave ? 'lb-wave' : undefined}
+      style={{ height, width: height * 22 / 21, flexShrink: 0, display: 'block', ...style }}>
+      {LOGO_BAR_RECTS.map((b, i) => wave ? (
+        <g key={i}>
+          <rect x={b.x} y={b.y} width="5" height={b.h} rx="1.2" fill={pale} />
+          <rect className="lb-wave-fill" x={b.x} y={b.y} width="5" height={b.h} rx="1.2" fill={green} style={{ animationDelay: `${(i - 2) * 0.3}s` }} />
+        </g>
+      ) : (
+        <rect key={i} x={b.x} y={b.y} width="5" height={b.h} rx="1.2" fill={i < active ? green : pale} />
+      ))}
+    </svg>
+  );
+}
+
+// Services list marker: a small square like the headline's full stop, filled for the selected service.
+function ServiceSquare({ on }) {
+  return <span aria-hidden="true" style={{ width: 10, height: 10, borderRadius: 1.7, flexShrink: 0, background: on ? 'var(--brand-green-500)' : 'transparent', boxShadow: on ? 'none' : 'inset 0 0 0 1.5px var(--neutral-300)' }} />;
+}
+
 // Link button with a potion flask (green liquid, two bubbles) that tilts on hover — used for the benchmark explorer.
 function PotionButton({ label, href }) {
   const [hov, setHov] = React.useState(false);
@@ -59,6 +87,8 @@ function V2_Modern() {
   const isMobile = window.useMediaQuery('(max-width: 767px)');
   const isTablet = window.useMediaQuery('(min-width: 768px) and (max-width: 1023px)');
   const isNarrow = isMobile || isTablet;
+  // Small desktops (1024–1199 px): the full top bar needs about 1150 px, so it gets tighter links and no "Let's connect".
+  const isCompactDesktop = window.useMediaQuery('(min-width: 1024px) and (max-width: 1199px)');
   const reducedMotion = window.useMediaQuery('(prefers-reduced-motion: reduce)');
   const [mobileNavOpen, setMobileNavOpen] = React.useState(false);
   React.useEffect(() => {
@@ -157,10 +187,10 @@ function V2_Modern() {
       }}>
         <div style={{ maxWidth: 1320, margin: '0 auto', padding: isMobile ? '12px 20px' : '14px 40px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
           <Logo height={isMobile ? 24 : 28} />
-          {!isMobile && (
-            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: isTablet ? 3 : 4, borderRadius: 999 }}>
+          {!isNarrow && (
+            <div style={{ display: 'flex', gap: 2, background: 'var(--neutral-50)', padding: 4, borderRadius: 999 }}>
               {navLinks.map(([label, target]) => {
-                const linkStyle = { padding: isTablet ? '5px 9px' : '8px 16px', fontSize: isTablet ? 11.5 : 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' };
+                const linkStyle = { padding: isCompactDesktop ? '8px 12px' : '8px 16px', fontSize: 13, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 999, textDecoration: 'none', cursor: 'pointer', whiteSpace: 'nowrap' };
                 return isExternalLink(target)
                   ? <a key={target} href={target} style={linkStyle}>{label}</a>
                   : <a key={target} href={`#${target}`} onClick={scrollTo(target)} style={linkStyle}>{label}</a>;
@@ -168,9 +198,9 @@ function V2_Modern() {
             </div>
           )}
           <div style={{ display: 'flex', gap: 10, alignItems: 'center' }}>
-            {!isNarrow && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
+            {!isNarrow && !isCompactDesktop && <Button variant="ghost" size="sm" onClick={scrollTo('contact')}>Let's connect</Button>}
             {!isMobile && <Button variant="primary" size="sm" iconRight="download" onClick={downloadDeck}>Capability deck</Button>}
-            {isMobile && (
+            {isNarrow && (
               <button
                 aria-label={mobileNavOpen ? 'Close menu' : 'Open menu'}
                 onClick={() => setMobileNavOpen(o => !o)}
@@ -181,8 +211,8 @@ function V2_Modern() {
             )}
           </div>
         </div>
-        {isMobile && mobileNavOpen && (
-          <div style={{ borderTop: '1px solid var(--border-subtle)', background: '#fff', padding: '12px 20px 20px' }}>
+        {isNarrow && mobileNavOpen && (
+          <div style={{ borderTop: '1px solid var(--border-subtle)', background: '#fff', padding: isMobile ? '12px 20px 20px' : '12px 40px 24px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: 16 }}>
               {navLinks.map(([label, target]) => {
                 const linkStyle = { padding: '12px 14px', fontSize: 15, fontWeight: 600, color: 'var(--fg-1)', borderRadius: 10, textDecoration: 'none', cursor: 'pointer' };
@@ -205,19 +235,13 @@ function V2_Modern() {
           {/* LEFT: headline */}
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: isMobile ? 16 : 24 }}>
-              <span style={{ width: 8, height: 8, borderRadius: 999, background: 'var(--brand-green-500)', animation: 'pulse 2s ease-in-out infinite' }} />
+              <LogoBars height={13} wave />
               <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--fg-brand)' }}>Transfer pricing · Amsterdam</span>
             </div>
             <h1 style={{
               margin: 0, fontSize: isMobile ? 42 : (isTablet ? 58 : 76), lineHeight: 0.95, letterSpacing: '-0.035em', fontWeight: 700,
             }}>
-              Your trusted{isNarrow ? ' ' : <br/>}transfer pricing <span style={{
-                // backgroundImage (not the background shorthand): Chromium serializes
-                // the shorthand + backgroundClip combo to empty longhands, which
-                // breaks the prerendered snapshot.
-                backgroundImage: 'linear-gradient(105deg, var(--brand-green-500), var(--brand-green-700))',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
-              }}>partner.</span>
+              Your trusted{isNarrow ? ' ' : <br/>}transfer pricing partner<span aria-hidden="true" style={{ display: 'inline-block', width: '0.15em', height: '0.15em', backgroundColor: 'var(--brand-green-500)', borderRadius: '0.025em', marginLeft: '0.05em' }} />
             </h1>
             <p style={{ fontSize: isMobile ? 16 : 20, lineHeight: 1.5, color: 'var(--fg-2)', margin: isMobile ? '20px 0 28px' : '28px 0 36px', maxWidth: 560 }}>
               High-quality Transfer Pricing services for multinational companies.
@@ -274,7 +298,7 @@ function V2_Modern() {
                         {[...MOBILE_BAND_CLIENTS, ...MOBILE_BAND_CLIENTS].map((c, i) => (
                           <React.Fragment key={`${c.name}-${i}`}>
                             <span style={{ fontSize: 14, fontWeight: 600, color: 'var(--fg-1)' }}>{c.name}</span>
-                            <span style={{ width: 3, height: 3, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
+                            <span style={{ width: 3, height: 3, borderRadius: 0.5, background: 'var(--brand-green-500)', opacity: 0.5, flexShrink: 0 }} />
                           </React.Fragment>
                         ))}
                       </div>
@@ -288,10 +312,9 @@ function V2_Modern() {
           {/* RIGHT: at-a-glance card (desktop + tablet only) */}
           {!isMobile && (
           <div style={{
-            background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 20, padding: isTablet ? 24 : 32,
+            background: 'var(--brand-navy-800)', color: '#fff', borderRadius: 8, padding: isTablet ? 24 : 32,
             position: 'relative', overflow: 'hidden',
           }}>
-            <div style={{ position: 'absolute', top: -80, right: -80, width: 220, height: 220, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.1 }} />
             <div style={{ position: 'relative' }}>
               <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--brand-green-300)' }}>At a glance</div>
               <div style={{ marginTop: 12, display: 'flex', flexDirection: 'column', gap: 2 }}>
@@ -369,11 +392,11 @@ function V2_Modern() {
           </div>
 
           {isNarrow ? (
-            <div style={{ background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)', padding: 8 }}>
+            <div style={{ borderTop: '1px solid var(--fg-1)' }}>
               {services.map((s, i) => {
                 const active = activeService === i;
                 return (
-                  <React.Fragment key={s.title}>
+                  <div key={s.title} style={{ borderTop: i === 0 ? 'none' : '1px solid var(--border-subtle)' }}>
                     <div
                       onClick={(ev) => {
                         const nextIdx = active ? -1 : i;
@@ -388,89 +411,62 @@ function V2_Modern() {
                           });
                         }
                       }}
-                      style={{
-                        padding: '18px 20px', borderRadius: active ? '14px 14px 0 0' : 14, cursor: 'pointer',
-                        background: active ? 'var(--brand-navy-800)' : 'transparent',
-                        color: active ? '#fff' : 'var(--fg-1)',
-                        transition: 'all 180ms var(--ease-standard)',
-                        display: 'flex', alignItems: 'center', gap: 14,
-                      }}
+                      style={{ padding: '18px 0', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 14 }}
                     >
-                      <div style={{
-                        width: 38, height: 38, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                        background: active ? 'var(--brand-green-500)' : 'var(--brand-green-50)',
-                        color: active ? '#fff' : 'var(--brand-green-700)',
-                        flexShrink: 0,
-                      }}>
-                        <Icon name={s.icon} size={19} />
-                      </div>
+                      <ServiceSquare on={active} />
                       <div style={{ flex: 1, minWidth: 0 }}>
-                        <div style={{ fontSize: 15.5, fontWeight: 600, letterSpacing: '-0.01em' }}>{s.title}</div>
-                        <div style={{ fontSize: 12, color: active ? 'var(--brand-green-300)' : 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
+                        <div style={{ fontSize: 15.5, fontWeight: active ? 700 : 600, letterSpacing: '-0.01em', color: 'var(--fg-1)' }}>{s.title}</div>
+                        <div style={{ fontSize: 12, color: 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
                       </div>
                       <Icon name={active ? 'chevron-up' : 'chevron-down'} size={18} style={{ opacity: active ? 1 : 0.5, flexShrink: 0 }} />
                     </div>
                     {active && (
-                      <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '4px 24px 28px', margin: '0 0 8px', borderRadius: '0 0 14px 14px', position: 'relative', overflow: 'hidden' }}>
-                        <div style={{ position: 'absolute', top: -60, right: -60, width: 180, height: 180, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
-                        <div style={{ position: 'relative' }}>
-                          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
-                          {(() => {
-                            const primary = s.link
-                              ? { label: 'See our method', onClick: () => { window.location.href = s.link; } }
-                              : { label: "Let's connect", onClick: scrollTo('contact') };
-                            const secondary = s.link
-                              ? { label: "Let's connect", onClick: scrollTo('contact') }
-                              : { label: 'Recent projects', onClick: scrollTo('projects') };
-                            return (
-                              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-                                <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
-                                {!s.extra && <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>}
-                                {s.extra && <PotionButton label={s.extra.label} href={s.extra.href} />}
-                              </div>
-                            );
-                          })()}
-                        </div>
+                      <div style={{ background: 'var(--brand-navy-800)', color: '#fff', padding: '22px 24px 28px', margin: '0 0 18px', borderRadius: 8 }}>
+                        <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 15, lineHeight: 1.6, margin: '0 0 20px' }}>{s.body}</p>
+                        {(() => {
+                          const primary = s.link
+                            ? { label: 'See our method', onClick: () => { window.location.href = s.link; } }
+                            : { label: "Let's connect", onClick: scrollTo('contact') };
+                          const secondary = s.link
+                            ? { label: "Let's connect", onClick: scrollTo('contact') }
+                            : { label: 'Recent projects', onClick: scrollTo('projects') };
+                          return (
+                            <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                              <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
+                              {!s.extra && <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>}
+                              {s.extra && <PotionButton label={s.extra.label} href={s.extra.href} />}
+                            </div>
+                          );
+                        })()}
                       </div>
                     )}
-                  </React.Fragment>
+                  </div>
                 );
               })}
             </div>
           ) : (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 40, background: '#fff', borderRadius: 24, overflow: 'hidden', border: '1px solid var(--border-subtle)', boxShadow: 'var(--shadow-sm)' }}>
-              <div style={{ padding: 16 }}>
-                {services.map((s, i) => (
-                  <div key={s.title}
-                    onMouseEnter={() => setActiveService(i)}
-                    style={{
-                      padding: '20px 24px', borderRadius: 14, cursor: 'pointer',
-                      background: activeService === i ? 'var(--brand-navy-800)' : 'transparent',
-                      color: activeService === i ? '#fff' : 'var(--fg-1)',
-                      transition: 'all 220ms var(--ease-standard)',
-                      display: 'flex', alignItems: 'center', gap: 18,
-                    }}
-                  >
-                    <div style={{
-                      width: 40, height: 40, borderRadius: 10, display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      background: activeService === i ? 'var(--brand-green-500)' : 'var(--brand-green-50)',
-                      color: activeService === i ? '#fff' : 'var(--brand-green-700)',
-                      flexShrink: 0,
-                    }}>
-                      <Icon name={s.icon} size={20} />
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: 40, alignItems: 'start' }}>
+              <div style={{ borderTop: '1px solid var(--fg-1)' }}>
+                {services.map((s, i) => {
+                  const on = i === (activeService < 0 ? 0 : activeService);
+                  return (
+                    <div key={s.title}
+                      onMouseEnter={() => setActiveService(i)}
+                      onClick={() => setActiveService(i)}
+                      style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '18px 0', borderTop: i === 0 ? 'none' : '1px solid var(--border-subtle)', cursor: 'pointer' }}
+                    >
+                      <ServiceSquare on={on} />
+                      <div style={{ flex: 1 }}>
+                        <div style={{ fontSize: 17, fontWeight: on ? 700 : 600, letterSpacing: '-0.01em', color: 'var(--fg-1)' }}>{s.title}</div>
+                        <div style={{ fontSize: 12.5, color: 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
+                      </div>
                     </div>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: 17, fontWeight: 600, letterSpacing: '-0.01em' }}>{s.title}</div>
-                      <div style={{ fontSize: 12, color: activeService === i ? 'var(--brand-green-300)' : 'var(--fg-3)', fontWeight: 500, marginTop: 2 }}>{s.sub}</div>
-                    </div>
-                    <Icon name="arrow-right" size={18} style={{ opacity: activeService === i ? 1 : 0.3 }} />
-                  </div>
-                ))}
+                  );
+                })}
               </div>
-              <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: -80, right: -80, width: 280, height: 280, borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.08 }} />
+              <div style={{ background: 'var(--brand-navy-800)', padding: 48, color: '#fff', borderRadius: 8, minHeight: 440, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 {(() => { const svc = services[activeService < 0 ? 0 : activeService]; return (
-                <div style={{ position: 'relative' }}>
+                <div>
                   <Eyebrow color="var(--brand-green-300)">{svc.sub}</Eyebrow>
                   <h3 style={{ color: '#fff', fontSize: 40, margin: '16px 0 20px', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{svc.title}</h3>
                   <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: 17, lineHeight: 1.6, margin: 0 }}>{svc.body}</p>
@@ -485,7 +481,7 @@ function V2_Modern() {
                     ? { label: "Let's connect", onClick: scrollTo('contact') }
                     : { label: 'Recent projects', onClick: scrollTo('projects') };
                   return (
-                    <div style={{ marginTop: 40, display: 'flex', gap: 12, position: 'relative', flexWrap: 'wrap' }}>
+                    <div style={{ marginTop: 40, display: 'flex', gap: 12, flexWrap: 'wrap' }}>
                       <Button variant="primary" onClick={primary.onClick}>{primary.label}</Button>
                       {!svc.extra && <Button variant="outlineInverted" onClick={secondary.onClick}>{secondary.label}</Button>}
                       {svc.extra && <PotionButton label={svc.extra.label} href={svc.extra.href} />}
@@ -690,7 +686,7 @@ function V2_Modern() {
                 onMouseLeave={(e) => { if (!isNarrow) { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; } }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 28 }}>
-                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 12, fontWeight: 700, letterSpacing: '0.16em', color: 'var(--brand-green-600)' }}>0{i+1}</div>
+                  <LogoBars height={18} active={i + 1} />
                   <Badge tone="success" dot={false}>{x.tag}</Badge>
                 </div>
                 <h3 style={{ fontSize: 24, margin: '0 0 16px', letterSpacing: '-0.018em', lineHeight: 1.2 }}>{x.title}</h3>
@@ -758,10 +754,8 @@ function V2_Modern() {
       <section id="contact" style={{ padding: isMobile ? '48px 16px' : (isTablet ? '88px 32px' : '112px 40px'), background: '#fff', scrollMarginTop: 80 }}>
         <div style={{
           maxWidth: 1320, margin: '0 auto', background: 'var(--brand-navy-800)',
-          borderRadius: isMobile ? 20 : 28, padding: isMobile ? '48px 24px' : (isTablet ? '64px 40px' : '96px 80px'), color: '#fff', position: 'relative', overflow: 'hidden',
+          borderRadius: 8, padding: isMobile ? '48px 24px' : (isTablet ? '64px 40px' : '96px 80px'), color: '#fff', position: 'relative', overflow: 'hidden',
         }}>
-          <div style={{ position: 'absolute', top: isNarrow ? -80 : -120, right: isNarrow ? -80 : -120, width: isMobile ? 220 : (isTablet ? 300 : 400), height: isMobile ? 220 : (isTablet ? 300 : 400), borderRadius: 999, background: 'var(--brand-green-500)', opacity: 0.14 }} />
-          {!isNarrow && <div style={{ position: 'absolute', top: 80, right: 160, width: 180, height: 180, borderRadius: 999, border: '1px solid rgba(255,255,255,0.15)' }} />}
           <div style={{ position: 'relative', display: 'grid', gridTemplateColumns: isNarrow ? '1fr' : '1.2fr 1fr', gap: isMobile ? 32 : (isTablet ? 40 : 64), alignItems: isNarrow ? 'start' : 'end' }}>
             <div>
               <Eyebrow color="var(--brand-green-300)">We'd love to hear from you</Eyebrow>
@@ -889,6 +883,9 @@ function V2_Modern() {
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.3); } }
         @keyframes toastIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes tpMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .lb-wave .lb-wave-fill { transform-box: fill-box; transform-origin: 50% 100%; animation: lbWave 1.8s ease-in-out infinite; }
+        @keyframes lbWave { 0%, 100% { transform: scaleY(0.25); } 50% { transform: scaleY(1); } }
+        @media (prefers-reduced-motion: reduce) { .lb-wave .lb-wave-fill { animation: none; opacity: 0; } }
         .tp-pill { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); color: rgba(255,255,255,0.6); transition: background 160ms ease, border-color 160ms ease, color 160ms ease; }
         .tp-pill:hover { background: rgba(255,255,255,0.16); border-color: rgba(255,255,255,0.28); color: rgba(255,255,255,0.92); }
       `}</style>
